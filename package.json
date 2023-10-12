@@ -10,6 +10,11 @@
     "astro": "astro"
   },
   "dependencies": {
-    "astro": "^3.3.0"
+    "@astrojs/react": "^3.0.3",
+    "@types/react": "^18.2.28",
+    "@types/react-dom": "^18.2.13",
+    "astro": "^3.3.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
   }
 }
