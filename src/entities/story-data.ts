@@ -7,7 +7,7 @@ type EffectBody = string;
 export type ConditionName = string;
 type ConditionBody = string;
 
-export type Data = {
+export type StoryData = {
   init: Record<ValueName, Value>;
   effects?: Record<EffectName, EffectBody>;
   conditions?: Record<ConditionName, ConditionBody>;
