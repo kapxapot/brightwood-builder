@@ -2,7 +2,7 @@ import type { ConditionName, EffectInvocation } from "./story-data";
 
 type NodeId = number;
 
-type Text = string | string[];
+export type Text = string | string[];
 
 type Action = {
   id: NodeId;

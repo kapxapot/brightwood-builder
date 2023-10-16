@@ -38,7 +38,7 @@ const initialNodes = [
   {
     id: "2",
     type: "action",
-    position: { x: 350, y: 150 },
+    position: { x: 400, y: 200 },
     data: {
       id: 2,
       type: "action",
@@ -59,7 +59,7 @@ const initialNodes = [
   {
     id: "3",
     type: "action",
-    position: { x: 600, y: 100 },
+    position: { x: 700, y: 300 },
     data: {
       id: 3,
       type: "action",
@@ -141,7 +141,7 @@ export default function Flow() {
         id: nodeId,
         type,
         position,
-        data: { id: Number(nodeId), type }
+        data: { id: Number(nodeId), type, text: "Some text" }
       };
 
       setNodes(nodes => nodes.concat(newNode));

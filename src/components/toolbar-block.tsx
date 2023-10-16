@@ -12,7 +12,7 @@ export default function ToolbarBlock({ type, label }: Props) {
   };
 
   return (
-    <div className={`border border-gray-700 p-1 text-center ${Colors[type]}`} onDragStart={(event) => onDragStart(event, type)} draggable>
+    <div className={`border border-gray-700 p-1 text-center cursor-grab ${Colors[type]}`} onDragStart={(event) => onDragStart(event, type)} draggable>
       {label}
     </div>
   )
