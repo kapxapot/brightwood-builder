@@ -18,6 +18,7 @@ export type Link = {
 type BaseStoryNode = {
   id: NodeId;
   label?: string | NodeId;
+  position?: number[];
   effect?: EffectInvocation;
 }
 

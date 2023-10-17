@@ -6,10 +6,6 @@ type Position = {
   y: number;
 };
 
-type NodePosition = Position & {
-  id: number;
-};
-
 type Node = {
   id: string;
   position: Position;
@@ -29,7 +25,7 @@ interface StoryGraph {
   edges: Edge[];
 };
 
-export function buildStoryGraph(story: Story, positions: NodePosition[]): StoryGraph {
+export function buildStoryGraph(story: Story): StoryGraph {
   const nodes: Node[] = [];
   const edges: Edge[] = [];
 
@@ -45,10 +41,10 @@ export function buildStoryGraph(story: Story, positions: NodePosition[]): StoryG
   };
 
   for (const data of story.nodes) {
-    const nodePosition = positions.find(pos => pos.id === data.id);
+    const dpos = data.position;
     const position: Position = { 
-      x: nodePosition?.x ?? 0,
-      y: nodePosition?.y ?? 0
+      x: dpos ? dpos[0] : 0,
+      y: dpos ? dpos[1] : 0
     }; 
 
     const node = {

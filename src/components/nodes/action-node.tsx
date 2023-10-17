@@ -18,14 +18,14 @@ const ActionNode = memo(function ActionNode({ data, selected }: Props) {
   function actionStr(action: Action): string {
     return action.id ? String(action.id) : "?";
   }
-  
+
   return (
     <NodeShell selected={selected} className={Colors.action}>
       <NodeTitle id={data.id} label={data.label ?? "Action"} />
       <NodeText text={data.text} />
 
-      {hasActions && data.actions?.map(action => (
-        <div className="mt-2 text-sm bg-gradient-to-r from-transparent to-green-300 p-1 relative -mr-2">
+      {hasActions && data.actions?.map((action, index) => (
+        <div className="mt-2 text-sm bg-gradient-to-r from-transparent to-green-300 p-1 relative -mr-2" key={index}>
           <div>⚡ {action.label}&nbsp;<NodeRef id={action.id} /></div>
           <Handle id={actionStr(action)} type="source" position={Position.Right} className="bg-slate-600" isConnectable={true} />
         </div>

@@ -6,7 +6,7 @@ import ActionNode from "./nodes/action-node";
 import SkipNode from "./nodes/skip-node";
 import RedirectNode from "./nodes/redirect-node";
 import FinishNode from "./nodes/finish-node";
-import mysteryStory from "../stories/mystery.json";
+import story from "../stories/test.json";
 import { buildStoryGraph } from "../story-graph-builder";
 import type { Story } from "../entities/story";
 
@@ -17,28 +17,7 @@ const nodeTypes = {
   finish: FinishNode
 };
 
-const positions = [
-  { id: 1, x: 50, y: 50 },
-  { id: 2, x: 650, y: 50 },
-  { id: 3, x: 350, y: 50 },
-  { id: 5, x: 950, y: 50 },
-  { id: 6, x: 950, y: 250 },
-  { id: 7, x: 1250, y: 335 },
-  { id: 8, x: 1250, y: 500 },
-  { id: 9, x: 3650, y: 400 },
-  { id: 10, x: 1550, y: 250 },
-  { id: 11, x: 1850, y: 400 },
-  { id: 12, x: 2150, y: 400 },
-  { id: 13, x: 2450, y: 300 },
-  { id: 14, x: 2750, y: 700 },
-  { id: 15, x: 3050, y: 500 },
-  { id: 16, x: 3050, y: 800 },
-  { id: 17, x: 3350, y: 800 },
-  { id: 18, x: 3650, y: 800 },
-  { id: 19, x: 2750, y: 300 },
-];
-
-const storyGraph = buildStoryGraph(mysteryStory as Story, positions);
+const storyGraph = buildStoryGraph(story as Story);
 
 let maxNodeId = Math.max(...storyGraph.nodes.map(n => n.data.id));
 const getNextId = () => String(++maxNodeId);
