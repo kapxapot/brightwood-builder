@@ -18,7 +18,7 @@ const initialNodes = [
   {
     id: "1",
     type: "action",
-    position: { x: 100, y: 100 },
+    position: { x: 50, y: 50 },
     data: {
       id: 1,
       type: "action",
@@ -28,38 +28,29 @@ const initialNodes = [
         "— Дальше не пойдем."
       ],
       actions: [
-        {
-          id: 3,
-          label: "Почему?"
-        }
+        { id: 3, label: "Почему?" }
       ]
     }
   },
   {
     id: "2",
     type: "action",
-    position: { x: 400, y: 200 },
+    position: { x: 650, y: 50 },
     data: {
       id: 2,
       type: "action",
       label: "Мама исчезла",
       text: "Ты приш{ел|ла} домой. Исчезла твоя мама.",
       actions: [
-        {
-          id: 5,
-          label: "Пойти в полицию"
-        },
-        {
-          id: 6,
-          label: "Пойти в тайную местность"
-        }
+        { id: 5, label: "Пойти в полицию" },
+        { id: 6, label: "Пойти в тайную местность" }
       ]
     }
   },
   {
     id: "3",
     type: "action",
-    position: { x: 700, y: 300 },
+    position: { x: 350, y: 50 },
     data: {
       id: 3,
       type: "action",
@@ -69,34 +60,166 @@ const initialNodes = [
         "— Там тайная местность. Там исчезают люди."
       ],
       actions: [
-        {
-          id: 2,
-          label: "Пойти домой"
-        },
-        {
-          id: 6,
-          label: "Пойдем туда!"
-        }
+        { id: 2, label: "Пойти домой" },
+        { id: 6, label: "Пойдем туда!" }
+      ]
+    }
+  },
+  {
+    id: "5",
+    type: "action",
+    position: { x: 950, y: 50 },
+    data: {
+      id: 5,
+      type: "action",
+      label: "Лучше не идти",
+      text: "— Лучше не идти, — говорит Роберт.",
+      actions: [
+        { id: 9, label: "Все равно пойти" },
+        { id: 10, label: "Не идти!" }
+      ]
+    }
+  },
+  {
+    id: "6",
+    type: "action",
+    position: { x: 950, y: 250 },
+    data: {
+      id: 6,
+      type: "action",
+      label: "Эмили не хочет",
+      text: [
+        "Ты предлагаешь Эмили и Роберту пойти в тайную местность.",
+        "Эмили не хочет идти."
+      ],
+      actions: [
+        { id: 7, label: "Трусиха!" },
+        { id: 8, label: "Пусть не идет" }
+      ]
+    }
+  },
+  {
+    id: "7",
+    type: "skip",
+    position: { x: 1250, y: 335 },
+    data: {
+      id: 7,
+      type: "skip",
+      label: "Эмили идет",
+      nextId: 10,
+      text: "Эмили все-таки решает идти с вами."
+    }
+  },
+  {
+    id: "8",
+    type: "skip",
+    position: { x: 1250, y: 500 },
+    data: {
+      id: 8,
+      type: "skip",
+      label: "Идете с Робертом",
+      nextId: 11,
+      text: "Вы с Робертом идете в тайную местность."
+    }
+  },
+  {
+    id: "9",
+    type: "finish",
+    position: { x: 2450, y: 300 },
+    data: {
+      id: 9,
+      type: "finish",
+      label: "Проигрыш",
+      text: "Ты проиграл{|а}... 🙁 Попробуй еще раз!"
+    }
+  },
+  {
+    id: "10",
+    type: "skip",
+    position: { x: 1550, y: 250 },
+    data: {
+      id: 10,
+      type: "skip",
+      label: "Идете втроем",
+      nextId: 11,
+      text: "Вы с Эмили и Робертом идете в тайную местность."
+    }
+  },
+  {
+    id: "11",
+    type: "action",
+    position: { x: 1850, y: 400 },
+    data: {
+      id: 11,
+      type: "action",
+      label: "Крепость",
+      text: "Спустя какое-то время вы подходите к мрачной крепости.",
+      actions: [
+        { id: 12, label: "Зайти внутрь" }
+      ]
+    }
+  },
+  {
+    id: "12",
+    type: "action",
+    position: { x: 2150, y: 400 },
+    data: {
+      id: 12,
+      type: "action",
+      label: "Дракон",
+      text: [
+        "Вы заходите внутрь крепости, повсюду разбросаны кости, видимо, это все, что осталось от пропавших людей. 😥",
+        "Вдруг вы видите огромного... <b>ДРАКОНА</b>!!! 🐉",
+        "Он увидел вас и собирается напасть! 🔥"
+      ],
+      actions: [
+        { "id": 13, "label": "Бежать" },
+        { "id": 9, "label": "Уворачиваться" }
+      ]
+    }
+  },
+  {
+    id: "13",
+    type: "action",
+    position: { x: 2450, y: 700 },
+    data: {
+      id: 13,
+      type: "action",
+      label: "Сокровищница",
+      text: [
+        "Вы прибежали в другую комнату. Там целый клад! 👑",
+        "Вокруг драгоценности, доспехи и оружие.",
+        "Из этой комнаты нет другого выхода — только назад.",
+        "Прежде, чем вернуться назад..."
+      ],
+      actions: [
+        { id: 19, label: "Набрать золота" },
+        { id: 14, label: "Взять мечи получше" }
       ]
     }
   },
 ];
 
 const initialEdges = [
-  {
-    id: "e1-2",
-    source: "1",
-    target: "2"
-  },
-  {
-    id: "e2-3",
-    source: "2",
-    target: "3"
-  },
+  { id: "e1-3", source: "1", sourceHandle: "3", target: "3" },
+  { id: "e3-2", source: "3", sourceHandle: "2", target: "2" },
+  { id: "e2-5", source: "2", sourceHandle: "5", target: "5" },
+  { id: "e2-6", source: "2", sourceHandle: "6", target: "6" },
+  { id: "e3-6", source: "3", sourceHandle: "6", target: "6" },
+  { id: "e5-9", source: "5", sourceHandle: "9", target: "9" },
+  { id: "e5-10", source: "5", sourceHandle: "10", target: "10" },
+  { id: "e6-7", source: "6", sourceHandle: "7", target: "7" },
+  { id: "e6-8", source: "6", sourceHandle: "8", target: "8" },
+  { id: "e7-10", source: "7", sourceHandle: "10", target: "10" },
+  { id: "e8-11", source: "8", sourceHandle: "11", target: "11" },
+  { id: "e10-11", source: "10", sourceHandle: "11", target: "11" },
+  { id: "e11-12", source: "11", sourceHandle: "12", target: "12" },
+  { id: "e12-9", source: "12", sourceHandle: "9", target: "9" },
+  { id: "e12-13", source: "12", sourceHandle: "13", target: "13" },
 ];
 
-let id = 4;
-const getId = () => String(id++);
+let maxNodeId = Math.max(...initialNodes.map(n => n.data.id));
+const getNextId = () => String(++maxNodeId);
 
 export default function Flow() {
   const reactFlowWrapper = useRef<HTMLDivElement>(null);
@@ -135,7 +258,7 @@ export default function Flow() {
         y: event.clientY - reactFlowBounds.top,
       });
 
-      const nodeId = getId();
+      const nodeId = getNextId();
 
       const newNode: Node = {
         id: nodeId,
@@ -166,6 +289,7 @@ export default function Flow() {
             deleteKeyCode={"Delete"}
             className="bg-gray-100"
             nodeTypes={nodeTypes}
+            fitView
           >
             <Controls />
             <MiniMap zoomable pannable />

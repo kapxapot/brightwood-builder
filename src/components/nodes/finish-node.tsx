@@ -17,7 +17,7 @@ const FinishNode = memo(function FinishNode({ data, selected }: Props) {
       <NodeTitle id={data.id} label={data.label ?? "Finish"} />
       <NodeText text={data.text} />
 
-      <Handle type="target" position={Position.Left} className="bg-slate-600" />
+      <Handle type="target" position={Position.Left} className="bg-slate-600 top-5" />
     </NodeShell>
   );
 });

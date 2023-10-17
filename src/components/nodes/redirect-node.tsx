@@ -17,7 +17,7 @@ const RedirectNode = memo(function RedirectNode({ data, selected }: Props) {
       <NodeTitle id={data.id} label={data.label ?? "Redirect"} />
       <NodeText text={data.text} />
 
-      <Handle type="target" position={Position.Left} className="bg-slate-600" />
+      <Handle type="target" position={Position.Left} className="bg-slate-600 top-5" />
       <Handle type="source" position={Position.Right} className="bg-slate-600" />
     </NodeShell>
   );

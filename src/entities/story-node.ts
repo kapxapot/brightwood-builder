@@ -4,12 +4,12 @@ type NodeId = number;
 
 export type Text = string | string[];
 
-type Action = {
+export type Action = {
   id: NodeId;
   label: string;
 };
 
-type Link = {
+export type Link = {
   id: NodeId;
   weight?: number;
   condition?: ConditionName;
