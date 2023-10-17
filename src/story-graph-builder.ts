@@ -41,6 +41,8 @@ export function buildStoryGraph(story: Story): StoryGraph {
   };
 
   for (const data of story.nodes) {
+    data.isStart = data.id === story.startId;
+
     const dpos = data.position;
     const position: Position = { 
       x: dpos ? dpos[0] : 0,

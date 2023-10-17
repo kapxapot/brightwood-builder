@@ -19,7 +19,7 @@ const SkipNode = memo(function SkipNode({ data, selected }: Props) {
 
   return (
     <NodeShell selected={selected} className={Colors.skip}>
-      <NodeTitle id={data.id} label={data.label ?? "Skip"} />
+      <NodeTitle id={data.id} label={data.label ?? "Skip"} isStart={data.isStart} />
       <NodeText text={data.text} />
 
       <div className="mt-2 text-sm bg-gradient-to-r from-transparent to-cyan-300 p-1 relative -mr-2">

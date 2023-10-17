@@ -20,6 +20,7 @@ type BaseStoryNode = {
   label?: string | NodeId;
   position?: number[];
   effect?: EffectInvocation;
+  isStart?: boolean;
 }
 
 type TextStoryNode = BaseStoryNode & {

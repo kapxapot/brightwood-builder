@@ -21,7 +21,7 @@ const ActionNode = memo(function ActionNode({ data, selected }: Props) {
 
   return (
     <NodeShell selected={selected} className={Colors.action}>
-      <NodeTitle id={data.id} label={data.label ?? "Action"} />
+      <NodeTitle id={data.id} label={data.label ?? "Action"} isStart={data.isStart} />
       <NodeText text={data.text} />
 
       {hasActions && data.actions?.map((action, index) => (

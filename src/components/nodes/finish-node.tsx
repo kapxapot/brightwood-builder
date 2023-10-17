@@ -14,7 +14,7 @@ interface Props {
 const FinishNode = memo(function FinishNode({ data, selected }: Props) {
   return (
     <NodeShell selected={selected} className={Colors.finish}>
-      <NodeTitle id={data.id} label={data.label ?? "Finish"} />
+      <NodeTitle id={data.id} label={data.label ?? "Finish"} isStart={data.isStart} />
       <NodeText text={data.text} />
 
       <Handle type="target" position={Position.Left} className="bg-slate-600 top-5" />

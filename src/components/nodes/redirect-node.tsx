@@ -19,14 +19,26 @@ const RedirectNode = memo(function RedirectNode({ data, selected }: Props) {
     return link.id ? String(link.id) : "?";
   }
 
+  function weightStr(link: Link): string {
+    const weight = Math.max(1, link.weight ?? 1);
+
+    let str = "🎲".repeat(weight);
+
+    if (link.weight && (link.weight - Math.floor(link.weight)) > 0) {
+      str += ` x${link.weight}`;
+    }
+
+    return str;
+  }
+
   return (
     <NodeShell selected={selected} className={Colors.redirect}>
-      <NodeTitle id={data.id} label={data.label ?? "Redirect"} />
+      <NodeTitle id={data.id} label={data.label ?? "Redirect"} isStart={data.isStart} />
       <NodeText text={data.text} />
 
       {hasLinks && data.links?.map((link, index) => (
         <div className="mt-2 text-sm bg-gradient-to-r from-transparent to-yellow-300 p-1 relative -mr-2" key={index}>
-          <div>🎲 x{link.weight ?? 1} <NodeRef id={link.id} /></div>
+          <div>{weightStr(link)} <NodeRef id={link.id} /></div>
           <Handle id={linkStr(link)} type="source" position={Position.Right} className="bg-slate-600" isConnectable={true} />
         </div>
       ))}
