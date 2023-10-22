@@ -3,8 +3,6 @@ import { Handle, Position } from 'reactflow';
 import type { Link, RedirectStoryNode } from '../../entities/story-node';
 import { Colors } from '../../lib/constants';
 import NodeShell from '../node-parts/node-shell';
-import NodeTitle from '../node-parts/node-title';
-import NodeText from '../node-parts/node-text';
 import NodeRef from '../node-parts/node-ref';
 
 interface Props {
@@ -32,18 +30,19 @@ const RedirectNode = memo(function RedirectNode({ data, selected }: Props) {
   }
 
   return (
-    <NodeShell selected={selected} className={Colors.redirect}>
-      <NodeTitle id={data.id} label={data.label ?? "Redirect"} isStart={data.isStart} />
-      <NodeText text={data.text} />
-
+    <NodeShell
+      selected={selected}
+      className={Colors.redirect}
+      data={data}
+      label="Redirect"
+    >
       {hasLinks && data.links?.map((link, index) => (
-        <div className="mt-2 text-sm bg-gradient-to-r from-transparent to-yellow-300 p-1 relative -mr-2" key={index}>
+        <div className="mt-2 text-sm bg-gradient-to-r from-transparent to-yellow-300 py-1 relative -mr-2" key={index}>
           <div>{weightStr(link)} <NodeRef id={link.id} /></div>
+          {link.condition && <div className="mt-1"><span className="italic">if:</span> {link.condition}</div>}
           <Handle id={linkStr(link)} type="source" position={Position.Right} className="bg-slate-600" isConnectable={true} />
         </div>
       ))}
-
-      <Handle type="target" position={Position.Left} className="bg-slate-600 top-5" />
     </NodeShell>
   );
 });

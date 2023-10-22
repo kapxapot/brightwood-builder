@@ -13,7 +13,7 @@ export type StoryData = {
   conditions?: Record<ConditionName, ConditionBody>;
 };
 
-export type EffectInvocation = EffectName | {
-  effect: EffectName;
+export type EffectInvocation = {
+  name: EffectName;
   args: Value[];
 }
