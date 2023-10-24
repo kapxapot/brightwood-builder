@@ -6,9 +6,12 @@
     "init": {
       "day": 1
     },
-    "effects": {
-      "nextDay": "day = day + 1"
-    }
+    "effects": [
+      {
+        "name": "nextDay",
+        "statements": "day = day + 1"
+      }
+    ]
   },
   "nodes": [
     {

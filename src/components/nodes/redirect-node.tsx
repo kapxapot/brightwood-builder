@@ -38,8 +38,15 @@ const RedirectNode = memo(function RedirectNode({ data, selected }: Props) {
     >
       {hasLinks && data.links?.map((link, index) => (
         <div className="mt-2 text-sm bg-gradient-to-r from-transparent to-yellow-300 py-1 relative -mr-2" key={index}>
-          <div>{weightStr(link)} <NodeRef id={link.id} /></div>
-          {link.condition && <div className="mt-1"><span className="italic">if:</span> {link.condition}</div>}
+          <div>
+            <span className="mr-1">{weightStr(link)}</span>
+            {link.condition && (
+              <span className="mr-1">
+                <span className="italic">if:</span> {link.condition}
+              </span>
+            )}
+            <NodeRef id={link.id} />
+          </div>
           <Handle id={linkStr(link)} type="source" position={Position.Right} className="bg-slate-600" isConnectable={true} />
         </div>
       ))}

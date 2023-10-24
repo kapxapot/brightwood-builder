@@ -1,0 +1,51 @@
+{
+  "title": "🌲 Лес",
+  "description": "Вы заблудились в лесу и пытаетесь из него выбраться. Или не пытаетесь. Сложность: 3/5",
+  "startId": 1,
+  "prefix": "День: {day}, Здоровье: {hp}",
+  "data": {
+    "init": {
+      "maxHp": 6,
+      "maxShoes": 2,
+      "wanderedEnough": 10,
+      "maxWandersPerDay": 3,
+      "day": 1,
+      "hp": "{maxHp}",
+      "shoes": "{maxShoes}",
+      "wandered": 0,
+      "wanderedToday": 0
+    },
+    "conditions": {
+      "isAlive": "hp > 0",
+      "isDead": "hp <= 0",
+      "hasShoes": "shoes > 0"
+    },
+    "effects": [
+      {
+        "name": "nextDay",
+        "statements": [
+          "day = day + 1",
+          "wanderedToday = 0",
+          "hit(1)"
+        ]
+      },
+      {
+        "name": "removeShoe",
+        "conditions": "hasShoes()",
+        "statements": "shoes = shoes - 1"
+      },
+      {
+        "name": "kill",
+        "statements": "hp = 0"
+      },
+      {
+        "name": "hit",
+        "args": "amount",
+        "conditions": "amount > 0",
+        "statements": "hp = max(hp - amount, 0)"
+      }
+    ]
+  },
+  "nodes": [
+  ]
+}
