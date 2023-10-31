@@ -5,12 +5,12 @@ type NodeId = number;
 export type Text = string | string[];
 
 export type Action = {
-  id: NodeId;
+  id?: NodeId;
   label: string;
 };
 
 export type Link = {
-  id: NodeId;
+  id?: NodeId;
   weight?: number;
   condition?: ConditionName;
 };
@@ -34,7 +34,7 @@ export type ActionStoryNode = TextStoryNode & {
 
 export type SkipStoryNode = TextStoryNode & {
   type: "skip";
-  nextId: NodeId;
+  nextId?: NodeId;
 }
 
 export type RedirectStoryNode = TextStoryNode & {

@@ -14,7 +14,7 @@ const RedirectNode = memo(function RedirectNode({ data, selected }: Props) {
   const hasLinks = data.links && data.links.length;
 
   function linkStr(link: Link): string {
-    return link.id ? String(link.id) : "?";
+    return String(link.id);
   }
 
   function weightStr(link: Link): string {

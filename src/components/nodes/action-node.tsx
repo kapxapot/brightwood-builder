@@ -14,7 +14,7 @@ const ActionNode = memo(function ActionNode({ data, selected }: Props) {
   const hasActions = data.actions && data.actions.length;
 
   function actionStr(action: Action): string {
-    return action.id ? String(action.id) : "?";
+    return String(action.id);
   }
 
   return (

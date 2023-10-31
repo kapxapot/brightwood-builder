@@ -11,10 +11,6 @@ interface Props {
 }
 
 const SkipNode = memo(function SkipNode({ data, selected }: Props) {
-  function nextIdStr(nextId?: number): string {
-    return !!nextId ? String(nextId) : "?";
-  }
-
   return (
     <NodeShell
       selected={selected}
@@ -24,7 +20,7 @@ const SkipNode = memo(function SkipNode({ data, selected }: Props) {
     >
       <div className="mt-2 text-sm bg-gradient-to-r from-transparent to-cyan-300 p-1 relative -mr-2">
         <div>🚀 <NodeRef id={data.nextId} /></div>
-        <Handle id={nextIdStr(data.nextId)} type="source" position={Position.Right} className="bg-slate-600" isConnectable={true} />
+        <Handle type="source" position={Position.Right} className="bg-slate-600" isConnectable={true} />
       </div>
     </NodeShell>
   );

@@ -1,6 +1,6 @@
 import "reactflow/dist/base.css";
 import { useCallback, useRef, useState } from "react";
-import ReactFlow, { MiniMap, Controls, Background, useNodesState, useEdgesState, addEdge, BackgroundVariant, type Connection, ReactFlowProvider, type ReactFlowInstance, type Node } from "reactflow";
+import ReactFlow, { MiniMap, Controls, Background, useNodesState, useEdgesState, addEdge, BackgroundVariant, type Connection, ReactFlowProvider, type ReactFlowInstance, type Node, type Edge } from "reactflow";
 import Toolbar from "./toolbar";
 import ActionNode from "./nodes/action-node";
 import SkipNode from "./nodes/skip-node";
@@ -9,6 +9,7 @@ import FinishNode from "./nodes/finish-node";
 import story from "../stories/test.json";
 import { buildStoryGraph } from "../story-graph-builder";
 import type { Story } from "../entities/story";
+import { removeConnections, updateConnection } from "../lib/node-operations";
 
 interface Props {
   fit: boolean;
@@ -34,59 +35,28 @@ export default function Flow({ fit }: Props) {
 
   const onConnect = useCallback(
     (conn: Connection) => {
-      return setEdges(edges => {
+      console.log("Connection: ", conn);
+
+      setEdges(edges => {
         // remove any existing edge from the source if it exists
         // find an existing edge
         const existingEdge = edges.find(
           e => e.source === conn.source && e.sourceHandle === conn.sourceHandle
         );
 
-        if (existingEdge) {
-          // update the node's data with new connection data
-          setNodes(currentNodes => currentNodes.map(node => {
-            if (node.id == conn.source) {
-              // update the node's corresponding link
-              const data = node.data;
-
-              // modify it
-              switch (data.type) {
-                case "action":
-                  const actions = data.actions.map(action => {
-                    return action.id === Number(existingEdge.target)
-                      ? { ...action, id: Number(conn.target) }
-                      : action;
-                  })
-
-                  node.data = { ...data, actions };
-                  break;
-
-                case "redirect":
-                  const links = data.links.map(link => {
-                    return link.id === Number(existingEdge.target)
-                      ? { ...link, id: Number(conn.target) }
-                      : link;
-                  });
-
-                  node.data = { ...data, links };
-                  break;
-
-                case "skip":
-                  node.data = {
-                    ...data,
-                    nextId: Number(conn.target)
-                  };
-
-                  break;
-              }
-            }
-
-            return node;
-          }));
-        }
+        // update the node's data with new connection data
+        setNodes(curNodes => curNodes.map(node => {
+          return node.id === conn.source
+            ? updateConnection(node, existingEdge?.target, conn.target || undefined)
+            : node;
+        }));
 
         // filter the existing edge from the resulting edges
-        return addEdge(conn, edges.filter(e => e !== existingEdge));
-      })
+        return addEdge(
+          conn,
+          edges.filter(e => e !== existingEdge)
+        );
+      });
     },
     [setEdges]
   );
@@ -131,6 +101,18 @@ export default function Flow({ fit }: Props) {
     [reactFlowInstance]
   );
 
+  const onEdgesDelete = useCallback(
+    (edges: Edge[]) => {
+      console.log('Edges deleted:', edges);
+
+      setNodes(curNodes => curNodes.map(node => {
+        const nodeEdges = edges.filter(e => e.source === node.id);
+        return removeConnections(node, nodeEdges);
+      }));
+    },
+    []
+  );
+
   return (
     <div className="h-screen w-screen flex flex-row flex-grow">
       <ReactFlowProvider>
@@ -145,13 +127,34 @@ export default function Flow({ fit }: Props) {
             onInit={setReactFlowInstance}
             onDrop={onDrop}
             onDragOver={onDragOver}
+            onEdgesDelete={onEdgesDelete}
             deleteKeyCode={"Delete"}
             className="bg-gray-100"
             nodeTypes={nodeTypes}
             fitView={fit}
           >
             <Controls />
-            <MiniMap zoomable pannable />
+            <MiniMap
+              zoomable
+              pannable
+              nodeColor={n => {
+                switch (n.type) {
+                  case "action":
+                    return "green";
+
+                  case "redirect":
+                    return "yellow";
+
+                  case "skip":
+                    return "cyan";
+
+                  case "finish":
+                    return "red";
+                }
+
+                return "gray";
+              }}
+            />
             <Background variant={BackgroundVariant.Dots} gap={12} size={1} />
           </ReactFlow>
         </div>
