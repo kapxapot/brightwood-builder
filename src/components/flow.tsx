@@ -10,6 +10,7 @@ import story from "../stories/test.json";
 import { buildStoryGraph } from "../story-graph-builder";
 import type { Story } from "../entities/story";
 import { removeConnections, updateConnection } from "../lib/node-operations";
+import { isAllowedConnection } from "../lib/node-checks";
 
 interface Props {
   fit: boolean;
@@ -36,6 +37,11 @@ export default function Flow({ fit }: Props) {
   const onConnect = useCallback(
     (conn: Connection) => {
       console.log("Connection: ", conn);
+
+      if (!isAllowedConnection(conn, nodes)) {
+        console.log("Connection not allowed.");
+        return;
+      }
 
       setEdges(edges => {
         // remove any existing edge from the source if it exists

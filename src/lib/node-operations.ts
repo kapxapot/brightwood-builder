@@ -1,7 +1,5 @@
-import type { Edge, Node } from "reactflow";
-import type { StoryNode } from "../entities/story-node";
-
-type NodeType = Node<StoryNode, string | undefined>;
+import type { Edge } from "reactflow";
+import type { NodeType } from "./types";
 
 export function updateConnection(node: NodeType, from?: string, to?: string): NodeType {
   const data = node.data;
