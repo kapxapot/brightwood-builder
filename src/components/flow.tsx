@@ -140,16 +140,16 @@ export default function Flow({ fit }: Props) {
               nodeColor={n => {
                 switch (n.type) {
                   case "action":
-                    return "green";
+                    return "rgb(220, 252, 231)";
 
                   case "redirect":
-                    return "yellow";
+                    return "rgb(254, 249, 195)";
 
                   case "skip":
-                    return "cyan";
+                    return "rgb(207, 250, 254)";
 
                   case "finish":
-                    return "red";
+                    return "rgb(254, 226, 226)";
                 }
 
                 return "gray";
