@@ -113,7 +113,10 @@ export default function Flow({ fit }: Props) {
 
       setNodes(curNodes => curNodes.map(node => {
         const nodeEdges = edges.filter(e => e.source === node.id);
-        return removeConnections(node, nodeEdges);
+
+        return nodeEdges.length
+          ? removeConnections(node, nodeEdges)
+          : node;
       }));
     },
     []

@@ -13,10 +13,6 @@ interface Props {
 const ActionNode = memo(function ActionNode({ data, selected }: Props) {
   const hasActions = data.actions && data.actions.length;
 
-  function actionStr(action: Action): string {
-    return String(action.id);
-  }
-
   return (
     <NodeShell
       selected={selected}
@@ -27,7 +23,7 @@ const ActionNode = memo(function ActionNode({ data, selected }: Props) {
       {hasActions && data.actions?.map((action, index) => (
         <div className="mt-2 text-sm bg-gradient-to-r from-transparent to-green-300 py-1 relative -mr-2" key={index}>
           <div>⚡ {action.label}&nbsp;<NodeRef id={action.id} /></div>
-          <Handle id={actionStr(action)} type="source" position={Position.Right} className="bg-slate-600" isConnectable={true} />
+          <Handle id={String(index)} type="source" position={Position.Right} className="bg-slate-600" isConnectable={true} />
         </div>
       ))}
     </NodeShell>

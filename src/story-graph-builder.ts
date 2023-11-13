@@ -65,18 +65,22 @@ export function buildStoryGraph(story: Story): StoryGraph {
     // get node's edges and add them to the `edges` array
     switch (data.type) {
       case "action":
-        for (const action of data.actions) {
+        for (const ai in data.actions) {
+          const action = data.actions[ai];
+
           if (action.id) {
-            addEdge(node.id, String(action.id), String(action.id));
+            addEdge(node.id, String(action.id), String(ai));
           }
         }
 
         break;
 
       case "redirect":
-        for (const link of data.links) {
+        for (const li in data.links) {
+          const link = data.links[li];
+
           if (link.id) {
-            addEdge(node.id, String(link.id), String(link.id));
+            addEdge(node.id, String(link.id), String(li));
           }
         }
 

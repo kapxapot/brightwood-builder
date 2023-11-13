@@ -13,10 +13,6 @@ interface Props {
 const RedirectNode = memo(function RedirectNode({ data, selected }: Props) {
   const hasLinks = data.links && data.links.length;
 
-  function linkStr(link: Link): string {
-    return String(link.id);
-  }
-
   function weightStr(link: Link): string {
     const weight = Math.max(1, link.weight ?? 1);
 
@@ -47,7 +43,7 @@ const RedirectNode = memo(function RedirectNode({ data, selected }: Props) {
             )}
             <NodeRef id={link.id} />
           </div>
-          <Handle id={linkStr(link)} type="source" position={Position.Right} className="bg-slate-600" isConnectable={true} />
+          <Handle id={String(index)} type="source" position={Position.Right} className="bg-slate-600" isConnectable={true} />
         </div>
       ))}
     </NodeShell>

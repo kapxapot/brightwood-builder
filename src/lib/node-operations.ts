@@ -56,10 +56,10 @@ export function removeConnections(node: NodeType, edges: Edge[]): NodeType {
       if (data.actions) {
         node.data = {
           ...data,
-          actions: data.actions.map(action => {
-            if (sourceHandles.includes(String(action.id))) {
-              const newAction = { ...action, id: 0 };
-              // delete newAction.id;
+          actions: data.actions.map((action, index) => {
+            if (sourceHandles.includes(String(index))) {
+              const newAction = { ...action };
+              delete newAction.id;
 
               return newAction;
             }
@@ -75,10 +75,10 @@ export function removeConnections(node: NodeType, edges: Edge[]): NodeType {
       if (data.links) {
         node.data = {
           ...data,
-          links: data.links.map(link => {
-            if (sourceHandles.includes(String(link.id))) {
-              const newLink = { ...link, id: 0 };
-              // delete newLink.id;
+          links: data.links.map((link, index) => {
+            if (sourceHandles.includes(String(index))) {
+              const newLink = { ...link };
+              delete newLink.id;
 
               return newLink;
             }
