@@ -36,10 +36,9 @@ export default function Flow({ fit }: Props) {
 
   const onConnect = useCallback(
     (conn: Connection) => {
-      console.log("Connection: ", conn);
+      // console.log("Connection: ", conn);
 
       if (!isAllowedConnection(conn, nodes)) {
-        console.log("Connection not allowed.");
         return;
       }
 
@@ -51,11 +50,16 @@ export default function Flow({ fit }: Props) {
         );
 
         // update the node's data with new connection data
-        setNodes(curNodes => curNodes.map(node => {
-          return node.id === conn.source
-            ? updateConnection(node, existingEdge?.target, conn.target || undefined)
-            : node;
-        }));
+        const sourceHandle = conn.sourceHandle;
+        const target = conn.target;
+
+        if (sourceHandle !== null && target !== null) {
+          setNodes(curNodes => curNodes.map(node => {
+            return node.id === conn.source
+              ? updateConnection(node, sourceHandle, target)
+              : node;
+          }));
+        }
 
         // filter the existing edge from the resulting edges
         return addEdge(
@@ -109,7 +113,7 @@ export default function Flow({ fit }: Props) {
 
   const onEdgesDelete = useCallback(
     (edges: Edge[]) => {
-      console.log('Edges deleted:', edges);
+      // console.log('Edges deleted:', edges);
 
       setNodes(curNodes => curNodes.map(node => {
         const nodeEdges = edges.filter(e => e.source === node.id);

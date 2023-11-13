@@ -1,18 +1,18 @@
 import type { Edge } from "reactflow";
 import type { NodeType } from "./types";
 
-export function updateConnection(node: NodeType, from?: string, to?: string): NodeType {
+export function updateConnection(node: NodeType, sourceHandle: string, target: string): NodeType {
   const data = node.data;
-  const fromId = Number(from);
-  const toId = Number(to);
+  const fromIndex = Number(sourceHandle);
+  const toId = Number(target);
 
   switch (data.type) {
     case "action":
       if (data.actions) {
         node.data = {
           ...data,
-          actions: data.actions.map(action => {
-            return action.id === fromId
+          actions: data.actions.map((action, index) => {
+            return index === fromIndex
               ? { ...action, id: toId }
               : action;
           })
@@ -25,8 +25,8 @@ export function updateConnection(node: NodeType, from?: string, to?: string): No
       if (data.links) {
         node.data = {
           ...data,
-          links: data.links.map(link => {
-            return link.id === fromId
+          links: data.links.map((link, index) => {
+            return index === fromIndex
               ? { ...link, id: toId }
               : link;
           })
