@@ -1,6 +1,6 @@
 import { memo } from 'react';
 import { Handle, Position } from 'reactflow';
-import type { Action, ActionStoryNode } from '../../entities/story-node';
+import type { ActionStoryNode } from '../../entities/story-node';
 import { Colors } from '../../lib/constants';
 import NodeShell from '../node-parts/node-shell';
 import NodeRef from '../node-parts/node-ref';
@@ -11,7 +11,22 @@ interface Props {
 }
 
 const ActionNode = memo(function ActionNode({ data, selected }: Props) {
-  const hasActions = data.actions && data.actions.length;
+  const actions = data.actions ?? [];
+  const hasActions = actions.length > 0;
+
+  const addAction = () => {
+    console.log("I want to add an action.");
+
+    data.onChange?.({
+      ...data,
+      actions: [
+        ...actions,
+        {
+          label: `Action ${actions.length + 1}`
+        }
+      ]
+    });
+  }
 
   return (
     <NodeShell
@@ -26,6 +41,9 @@ const ActionNode = memo(function ActionNode({ data, selected }: Props) {
           <Handle id={String(index)} type="source" position={Position.Right} className="bg-slate-600" isConnectable={true} />
         </div>
       ))}
+      <div className="mt-2">
+        <button onClick={addAction}>➕ Add action</button>
+      </div>
     </NodeShell>
   );
 });

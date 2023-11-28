@@ -11,6 +11,7 @@ import { buildStoryGraph } from "../story-graph-builder";
 import type { Story } from "../entities/story";
 import { removeConnections, updateConnection } from "../lib/node-operations";
 import { isAllowedConnection } from "../lib/node-checks";
+import type { StoryNode, StoryNodeType } from "../entities/story-node";
 
 interface Props {
   fit: boolean;
@@ -36,16 +37,14 @@ export default function Flow({ fit }: Props) {
 
   const onConnect = useCallback(
     (conn: Connection) => {
-      // console.log("Connection: ", conn);
-
       if (!isAllowedConnection(conn, nodes)) {
         return;
       }
 
-      setEdges(edges => {
+      setEdges(curEdges => {
         // remove any existing edge from the source if it exists
         // find an existing edge
-        const existingEdge = edges.find(
+        const existingEdge = curEdges.find(
           e => e.source === conn.source && e.sourceHandle === conn.sourceHandle
         );
 
@@ -64,7 +63,7 @@ export default function Flow({ fit }: Props) {
         // filter the existing edge from the resulting edges
         return addEdge(
           conn,
-          edges.filter(e => e !== existingEdge)
+          curEdges.filter(e => e !== existingEdge)
         );
       });
     },
@@ -99,24 +98,71 @@ export default function Flow({ fit }: Props) {
 
       const nodeId = getNextId();
 
-      const newNode: Node = {
+      const newNode: Node<StoryNode> = {
         id: nodeId,
         type,
         position,
-        data: { id: Number(nodeId), type, text: "Some text" }
+        data: buildNodeData(Number(nodeId), type as StoryNodeType)
       };
 
-      setNodes(nodes => nodes.concat(newNode));
+      setNodes(curNodes => curNodes.concat(newNode));
     },
     [reactFlowInstance]
   );
 
-  const onEdgesDelete = useCallback(
-    (edges: Edge[]) => {
-      // console.log('Edges deleted:', edges);
+  const buildNodeData = (id: number, type: StoryNodeType): StoryNode => {
+    switch (type) {
+      case "action":
+        return {
+          id,
+          type,
+          text: "Action text",
+          actions: [],
+          onChange: onNodeDataChange
+        };
 
+      case "skip":
+        return {
+          id,
+          type,
+          text: "Skip text",
+          onChange: onNodeDataChange
+        };
+
+      case "redirect":
+        return {
+          id,
+          type,
+          text: "Redirect text",
+          links: [],
+          onChange: onNodeDataChange
+        };
+
+      case "finish":
+        return {
+          id,
+          type,
+          onChange: onNodeDataChange
+        };
+    }
+  };
+
+  const onNodeDataChange = (data: Partial<StoryNode>): void => {
+    console.log("Got node data change", data);
+
+    setNodes(curNodes => curNodes.map(node => {
+      if (node.data.id === data.id) {
+        node.data = data;
+      }
+
+      return node;
+    }));
+  };
+
+  const onEdgesDelete = useCallback(
+    (curEdges: Edge[]) => {
       setNodes(curNodes => curNodes.map(node => {
-        const nodeEdges = edges.filter(e => e.source === node.id);
+        const nodeEdges = curEdges.filter(e => e.source === node.id);
 
         return nodeEdges.length
           ? removeConnections(node, nodeEdges)
@@ -141,7 +187,7 @@ export default function Flow({ fit }: Props) {
             onDrop={onDrop}
             onDragOver={onDragOver}
             onEdgesDelete={onEdgesDelete}
-            deleteKeyCode={"Delete"}
+            deleteKeyCode="Delete"
             className="bg-gray-100"
             nodeTypes={nodeTypes}
             fitView={fit}

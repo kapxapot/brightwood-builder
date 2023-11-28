@@ -21,6 +21,7 @@ type BaseStoryNode = {
   position?: number[];
   effect?: EffectInvocation;
   isStart?: boolean;
+  onChange?: (data: Partial<StoryNode>) => void;
 }
 
 type TextStoryNode = BaseStoryNode & {
