@@ -15,13 +15,15 @@ export type Link = {
   condition?: ConditionName;
 };
 
+export type OnChangeHandler = (data: StoryNode) => void;
+
 type BaseStoryNode = {
   id: NodeId;
   label?: string | NodeId;
   position?: number[];
   effect?: EffectInvocation;
   isStart?: boolean;
-  onChange?: (data: Partial<StoryNode>) => void;
+  onChange?: OnChangeHandler;
 }
 
 type TextStoryNode = BaseStoryNode & {

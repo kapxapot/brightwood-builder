@@ -1,5 +1,5 @@
 import type { Story } from "./entities/story";
-import type { StoryNode, StoryNodeType } from "./entities/story-node";
+import type { OnChangeHandler, StoryNode, StoryNodeType } from "./entities/story-node";
 
 type Position = {
   x: number;
@@ -25,7 +25,7 @@ interface StoryGraph {
   edges: Edge[];
 };
 
-export function buildStoryGraph(story: Story): StoryGraph {
+export function buildStoryGraph(story: Story, changeHandler: OnChangeHandler): StoryGraph {
   const nodes: Node[] = [];
   const edges: Edge[] = [];
 
@@ -42,6 +42,7 @@ export function buildStoryGraph(story: Story): StoryGraph {
 
   for (const data of story.nodes) {
     data.isStart = data.id === story.startId;
+    data.onChange = changeHandler;
 
     const dpos = data.position;
     const position: Position = { 

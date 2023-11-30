@@ -4,7 +4,7 @@ import { Colors } from '../../lib/constants';
 import NodeShell from '../node-parts/node-shell';
 
 interface Props {
-  data: Partial<FinishStoryNode>,
+  data: FinishStoryNode;
   selected: boolean;
 }
 

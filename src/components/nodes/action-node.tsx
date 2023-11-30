@@ -6,23 +6,18 @@ import NodeShell from '../node-parts/node-shell';
 import NodeRef from '../node-parts/node-ref';
 
 interface Props {
-  data: Partial<ActionStoryNode>,
+  data: ActionStoryNode;
   selected: boolean;
 }
 
 const ActionNode = memo(function ActionNode({ data, selected }: Props) {
-  const actions = data.actions ?? [];
-  const hasActions = actions.length > 0;
-
   const addAction = () => {
-    console.log("I want to add an action.");
-
     data.onChange?.({
       ...data,
       actions: [
-        ...actions,
+        ...data.actions,
         {
-          label: `Action ${actions.length + 1}`
+          label: `Action ${data.actions.length + 1}`
         }
       ]
     });
@@ -35,14 +30,14 @@ const ActionNode = memo(function ActionNode({ data, selected }: Props) {
       data={data}
       label="Action"
     >
-      {hasActions && data.actions?.map((action, index) => (
+      {data.actions.map((action, index) => (
         <div className="mt-2 text-sm bg-gradient-to-r from-transparent to-green-300 py-1 relative -mr-2" key={index}>
           <div>⚡ {action.label}&nbsp;<NodeRef id={action.id} /></div>
           <Handle id={String(index)} type="source" position={Position.Right} className="bg-slate-600" isConnectable={true} />
         </div>
       ))}
       <div className="mt-2">
-        <button onClick={addAction}>➕ Add action</button>
+        <button onClick={addAction} className="border border-slate-400 px-2 pt-0.5 pb-1 rounded-lg text-sm bg-slate-50">Add ⚡</button>
       </div>
     </NodeShell>
   );

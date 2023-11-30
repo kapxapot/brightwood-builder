@@ -8,7 +8,7 @@ import NodeText from './node-text';
 interface Props {
   className?: string,
   selected: boolean;
-  data: Partial<StoryNode>;
+  data: StoryNode;
   label: string;
 }
 

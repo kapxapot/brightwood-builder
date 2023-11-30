@@ -11,7 +11,7 @@ import { buildStoryGraph } from "../story-graph-builder";
 import type { Story } from "../entities/story";
 import { removeConnections, updateConnection } from "../lib/node-operations";
 import { isAllowedConnection } from "../lib/node-checks";
-import type { StoryNode, StoryNodeType } from "../entities/story-node";
+import type { OnChangeHandler, StoryNode, StoryNodeType } from "../entities/story-node";
 
 interface Props {
   fit: boolean;
@@ -24,12 +24,12 @@ const nodeTypes = {
   finish: FinishNode
 };
 
-const storyGraph = buildStoryGraph(story as Story);
-
-let maxNodeId = Math.max(...storyGraph.nodes.map(n => n.data.id));
-const getNextId = () => String(++maxNodeId);
-
 export default function Flow({ fit }: Props) {
+  const storyGraph = buildStoryGraph(story as Story, data => onNodeDataChange(data));
+
+  let maxNodeId = Math.max(...storyGraph.nodes.map(n => n.data.id));
+  const getNextId = () => String(++maxNodeId);
+
   const reactFlowWrapper = useRef<HTMLDivElement>(null);
   const [nodes, setNodes, onNodesChange] = useNodesState(storyGraph.nodes);
   const [edges, setEdges, onEdgesChange] = useEdgesState(storyGraph.edges);
@@ -147,9 +147,7 @@ export default function Flow({ fit }: Props) {
     }
   };
 
-  const onNodeDataChange = (data: Partial<StoryNode>): void => {
-    console.log("Got node data change", data);
-
+  const onNodeDataChange: OnChangeHandler = (data: StoryNode): void => {
     setNodes(curNodes => curNodes.map(node => {
       if (node.data.id === data.id) {
         node.data = data;

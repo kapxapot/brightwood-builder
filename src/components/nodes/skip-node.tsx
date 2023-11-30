@@ -6,7 +6,7 @@ import NodeShell from '../node-parts/node-shell';
 import NodeRef from '../node-parts/node-ref';
 
 interface Props {
-  data: Partial<SkipStoryNode>,
+  data: SkipStoryNode;
   selected: boolean;
 }
 
