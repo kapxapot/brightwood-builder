@@ -37,7 +37,7 @@ const ActionNode = memo(function ActionNode({ data, selected }: Props) {
         </div>
       ))}
       <div className="mt-2">
-        <button onClick={addAction} className="border border-slate-400 px-2 pt-0.5 pb-1 rounded-lg text-sm bg-slate-50">Add ⚡</button>
+        <button onClick={addAction} className="border border-slate-400 px-2 pt-0.5 pb-1 rounded-lg text-sm bg-slate-50 hover:bg-white">Add action ⚡</button>
       </div>
     </NodeShell>
   );
