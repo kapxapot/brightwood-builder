@@ -1,10 +1,9 @@
 import { memo } from 'react';
-import { Handle, Position } from 'reactflow';
 import type { ActionStoryNode } from '../../entities/story-node';
 import { Colors } from '../../lib/constants';
 import NodeShell from '../node-parts/node-shell';
-import NodeRef from '../node-parts/node-ref';
 import Button from '../core/button';
+import NodeAction from '../node-parts/node-action';
 
 interface Props {
   data: ActionStoryNode;
@@ -49,21 +48,15 @@ const ActionNode = memo(function ActionNode({ data, selected }: Props) {
       label="Action"
     >
       <div className="mt-2 space-y-2">
-        {data.actions.map((action, index) => (
-          <div className="relative group text-sm bg-gradient-to-r from-transparent to-green-300 py-1 -mr-2" key={index}>
-            <div>
-              <div>
-                ⚡ <span className={`mr-1 ${!action.label.length && "opacity-30"}`}>{action.label || `Action ${index + 1}`}</span>
-                <NodeRef id={action.id} />
-              </div>
-              <Handle id={String(index)} type="source" position={Position.Right} className="bg-slate-600" isConnectable={true} />
-            </div>
-            <div className="absolute right-2 inset-y-0 space-x-1 hidden group-hover:block">
-              <Button onClick={() => editAction(index)}>Edit</Button>
-              <Button onClick={() => deleteAction(index)}>Delete</Button>
-            </div>
-          </div>
-        ))}
+        {data.actions.map((action, index) =>
+          <NodeAction
+            action={action}
+            index={index}
+            editAction={editAction}
+            deleteAction={deleteAction}
+            key={index}
+          />
+        )}
         <Button onClick={addAction}>
           Add action ⚡
         </Button>
