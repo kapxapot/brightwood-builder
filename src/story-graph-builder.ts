@@ -29,12 +29,12 @@ export function buildStoryGraph(story: Story, changeHandler: OnChangeHandler): S
   const nodes: Node[] = [];
   const edges: Edge[] = [];
 
-  const addEdge = (source: string, target: string, sourceHandle?: string) => {
+  const addEdge = (source: string, target: number, sourceHandle?: number) => {
     const edge = {
       id: `e${source}-${target}`,
       source,
-      sourceHandle: sourceHandle || null,
-      target
+      sourceHandle: String(sourceHandle || 0),
+      target: String(target)
     };
 
     edges.push(edge);
@@ -66,22 +66,22 @@ export function buildStoryGraph(story: Story, changeHandler: OnChangeHandler): S
     // get node's edges and add them to the `edges` array
     switch (data.type) {
       case "action":
-        for (const ai in data.actions) {
-          const action = data.actions[ai];
+        for (let index = 0; index < data.actions.length; index++) {
+          const action = data.actions[index];
 
           if (action.id) {
-            addEdge(node.id, String(action.id), String(ai));
+            addEdge(node.id, action.id, index);
           }
         }
 
         break;
 
       case "redirect":
-        for (const li in data.links) {
-          const link = data.links[li];
+        for (let index = 0; index < data.links.length; index++) {
+          const link = data.links[index];
 
           if (link.id) {
-            addEdge(node.id, String(link.id), String(li));
+            addEdge(node.id, link.id, index);
           }
         }
 
@@ -89,7 +89,7 @@ export function buildStoryGraph(story: Story, changeHandler: OnChangeHandler): S
 
       case "skip":
         if (data.nextId) {
-          addEdge(node.id, String(data.nextId));
+          addEdge(node.id, data.nextId);
         }
 
         break;

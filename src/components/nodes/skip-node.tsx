@@ -20,7 +20,7 @@ const SkipNode = memo(function SkipNode({ data, selected }: Props) {
     >
       <div className="mt-2 text-sm bg-gradient-to-r from-transparent to-cyan-300 p-1 relative -mr-2">
         <div>🚀 <NodeRef id={data.nextId} /></div>
-        <Handle type="source" position={Position.Right} className="bg-slate-600" isConnectable={true} />
+        <Handle id="0" type="source" position={Position.Right} className="bg-slate-600" isConnectable={true} />
       </div>
     </NodeShell>
   );

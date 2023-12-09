@@ -12,7 +12,6 @@ import type { Story } from "../entities/story";
 import { removeConnections, updateConnection } from "../lib/node-operations";
 import { isAllowedConnection } from "../lib/node-checks";
 import type { NodeEvent, OnChangeHandler, StoryNode, StoryNodeType } from "../entities/story-node";
-import type { NodeType } from "../lib/types";
 
 interface Props {
   fit: boolean;
