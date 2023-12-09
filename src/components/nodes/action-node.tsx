@@ -52,7 +52,10 @@ const ActionNode = memo(function ActionNode({ data, selected }: Props) {
         {data.actions.map((action, index) => (
           <div className="relative group text-sm bg-gradient-to-r from-transparent to-green-300 py-1 -mr-2" key={index}>
             <div>
-              <div>⚡ <span className={`${!action.label.length && "opacity-30"}`}>{action.label || `Action ${index + 1}`}</span>&nbsp;<NodeRef id={action.id} /></div>
+              <div>
+                ⚡ <span className={`mr-1 ${!action.label.length && "opacity-30"}`}>{action.label || `Action ${index + 1}`}</span>
+                <NodeRef id={action.id} />
+              </div>
               <Handle id={String(index)} type="source" position={Position.Right} className="bg-slate-600" isConnectable={true} />
             </div>
             <div className="absolute right-2 inset-y-0 space-x-1 hidden group-hover:block">
@@ -61,7 +64,9 @@ const ActionNode = memo(function ActionNode({ data, selected }: Props) {
             </div>
           </div>
         ))}
-        <Button onClick={addAction}>Add action ⚡</Button>
+        <Button onClick={addAction}>
+          Add action ⚡
+        </Button>
       </div>
     </NodeShell>
   );
