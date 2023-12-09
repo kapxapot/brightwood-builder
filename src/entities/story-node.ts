@@ -15,7 +15,12 @@ export type Link = {
   condition?: ConditionName;
 };
 
-export type OnChangeHandler = (data: StoryNode) => void;
+export type NodeEvent = {
+  type: "handleRemoved",
+  handle: string
+};
+
+export type OnChangeHandler = (data: StoryNode, event?: NodeEvent) => void;
 
 type BaseStoryNode = {
   id: NodeId;
@@ -24,11 +29,11 @@ type BaseStoryNode = {
   effect?: EffectInvocation;
   isStart?: boolean;
   onChange?: OnChangeHandler;
-}
+};
 
 type TextStoryNode = BaseStoryNode & {
   text: Text;
-}
+};
 
 export type ActionStoryNode = TextStoryNode & {
   type: "action";
@@ -38,7 +43,7 @@ export type ActionStoryNode = TextStoryNode & {
 export type SkipStoryNode = TextStoryNode & {
   type: "skip";
   nextId?: NodeId;
-}
+};
 
 export type RedirectStoryNode = TextStoryNode & {
   type: "redirect";

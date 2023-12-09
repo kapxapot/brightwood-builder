@@ -11,7 +11,8 @@ import { buildStoryGraph } from "../story-graph-builder";
 import type { Story } from "../entities/story";
 import { removeConnections, updateConnection } from "../lib/node-operations";
 import { isAllowedConnection } from "../lib/node-checks";
-import type { OnChangeHandler, StoryNode, StoryNodeType } from "../entities/story-node";
+import type { NodeEvent, OnChangeHandler, StoryNode, StoryNodeType } from "../entities/story-node";
+import type { NodeType } from "../lib/types";
 
 interface Props {
   fit: boolean;
@@ -25,7 +26,7 @@ const nodeTypes = {
 };
 
 export default function Flow({ fit }: Props) {
-  const storyGraph = buildStoryGraph(story as Story, data => onNodeDataChange(data));
+  const storyGraph = buildStoryGraph(story as Story, (data, event) => onNodeDataChange(data, event));
 
   let maxNodeId = Math.max(...storyGraph.nodes.map(n => n.data.id));
   const getNextId = () => String(++maxNodeId);
@@ -147,7 +148,11 @@ export default function Flow({ fit }: Props) {
     }
   };
 
-  const onNodeDataChange: OnChangeHandler = (data: StoryNode): void => {
+  const onNodeDataChange: OnChangeHandler = (data: StoryNode, event?: NodeEvent) => {
+    if (event) {
+      nodeEventHandler(String(data.id), event);
+    }
+
     setNodes(curNodes => curNodes.map(node => {
       if (node.data.id === data.id) {
         node.data = data;
@@ -155,6 +160,34 @@ export default function Flow({ fit }: Props) {
 
       return node;
     }));
+  };
+
+  const nodeEventHandler = (nodeId: string, event: NodeEvent) => {
+    switch (event.type) {
+      case "handleRemoved":
+        // if the node's handle was removed, remove the corresponding edges
+        setEdges(curEdges => {
+            // remove the edge with the handler
+            const filteredEdges = curEdges.filter(
+              edge => edge.source !== nodeId || edge.sourceHandle !== event.handle
+            );
+
+            // update handlers for next edges (make them -1)
+            return filteredEdges.map(edge => {
+              const numHandle = Number(edge.sourceHandle);
+
+              return (edge.source !== nodeId || numHandle < Number(event.handle))
+                ? edge
+                : {
+                  ...edge,
+                  sourceHandle: String(numHandle - 1)
+                }
+            });
+          }
+        );
+
+        break;
+    }
   };
 
   const onEdgesDelete = useCallback(

@@ -4,6 +4,7 @@ import type { ActionStoryNode } from '../../entities/story-node';
 import { Colors } from '../../lib/constants';
 import NodeShell from '../node-parts/node-shell';
 import NodeRef from '../node-parts/node-ref';
+import Button from '../core/button';
 
 interface Props {
   data: ActionStoryNode;
@@ -17,11 +18,28 @@ const ActionNode = memo(function ActionNode({ data, selected }: Props) {
       actions: [
         ...data.actions,
         {
-          label: `Action ${data.actions.length + 1}`
+          label: ''
         }
       ]
     });
-  }
+  };
+
+  const editAction = (index: number) => {
+    console.log(`Editing action ${index}...`);
+  };
+
+  const deleteAction = (index: number) => {
+    data.onChange?.(
+      {
+        ...data,
+        actions: data.actions.toSpliced(index, 1)
+      },
+      {
+        type: "handleRemoved",
+        handle: String(index)
+      }
+    );
+  };
 
   return (
     <NodeShell
@@ -30,14 +48,20 @@ const ActionNode = memo(function ActionNode({ data, selected }: Props) {
       data={data}
       label="Action"
     >
-      {data.actions.map((action, index) => (
-        <div className="mt-2 text-sm bg-gradient-to-r from-transparent to-green-300 py-1 relative -mr-2" key={index}>
-          <div>⚡ {action.label}&nbsp;<NodeRef id={action.id} /></div>
-          <Handle id={String(index)} type="source" position={Position.Right} className="bg-slate-600" isConnectable={true} />
-        </div>
-      ))}
-      <div className="mt-2">
-        <button onClick={addAction} className="border border-slate-400 px-2 pt-0.5 pb-1 rounded-lg text-sm bg-slate-50 hover:bg-white">Add action ⚡</button>
+      <div className="mt-2 space-y-2">
+        {data.actions.map((action, index) => (
+          <div className="relative group text-sm bg-gradient-to-r from-transparent to-green-300 py-1 -mr-2" key={index}>
+            <div>
+              <div>⚡ {action.label || `Action ${index + 1}`}&nbsp;<NodeRef id={action.id} /></div>
+              <Handle id={String(index)} type="source" position={Position.Right} className="bg-slate-600" isConnectable={true} />
+            </div>
+            <div className="absolute right-2 inset-y-0 space-x-1 hidden group-hover:block">
+              <Button onClick={() => editAction(index)}>Edit</Button>
+              <Button onClick={() => deleteAction(index)}>Delete</Button>
+            </div>
+          </div>
+        ))}
+        <Button onClick={addAction}>Add action ⚡</Button>
       </div>
     </NodeShell>
   );
