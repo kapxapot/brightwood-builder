@@ -101,6 +101,7 @@ export default function Flow({ fit }: Props) {
       const newNode: Node<StoryNode> = {
         id: nodeId,
         type,
+        dragHandle: '.custom-drag-handle',
         position,
         data: buildNodeData(Number(nodeId), type as StoryNodeType)
       };

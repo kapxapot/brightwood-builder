@@ -1,5 +1,5 @@
 import { memo } from 'react';
-import type { ActionStoryNode } from '../../entities/story-node';
+import type { Action, ActionStoryNode } from '../../entities/story-node';
 import { Colors } from '../../lib/constants';
 import NodeShell from '../node-parts/node-shell';
 import Button from '../core/button';
@@ -23,8 +23,15 @@ const ActionNode = memo(function ActionNode({ data, selected }: Props) {
     });
   };
 
-  const editAction = (index: number) => {
-    console.log(`Editing action ${index}...`);
+  const updateAction = (updatedIndex: number, updatedAction: Action) => {
+    console.log(`Updating action ${updatedIndex}: `, updatedAction);
+
+    data.onChange?.({
+      ...data,
+      actions: data.actions.map(
+        (action, index) => index === updatedIndex ? updatedAction : action
+      ),
+    });
   };
 
   const deleteAction = (index: number) => {
@@ -52,8 +59,8 @@ const ActionNode = memo(function ActionNode({ data, selected }: Props) {
           <NodeAction
             action={action}
             index={index}
-            editAction={editAction}
-            deleteAction={deleteAction}
+            updateAction={updatedAction => updateAction(index, updatedAction)}
+            deleteAction={() => deleteAction(index)}
             key={index}
           />
         )}

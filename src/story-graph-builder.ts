@@ -53,6 +53,7 @@ export function buildStoryGraph(story: Story, changeHandler: OnChangeHandler): S
     const node = {
       id: String(data.id),
       type: data.type,
+      dragHandle: '.custom-drag-handle',
       position,
       data
     };

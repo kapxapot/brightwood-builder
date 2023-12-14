@@ -14,8 +14,8 @@ interface Props {
 
 export default function NodeShell({ className, selected, children, data, label }: PropsWithChildren<Props>) {
   return (
-    <div className={`p-2 shadow-md rounded-md border w-[250px] ${selected ? "border-stone-600" : "border-stone-400"} ${className}`}>
-      <NodeTitle id={data.id} label={data.label ?? label} isStart={data.isStart} />
+    <div className={`p-2 shadow-md rounded-md border w-[250px] ${selected ? "border-stone-600" : "border-stone-400"} ${className} cursor-default`}>
+      <NodeTitle id={data.id} label={data.label ?? label} isStart={data.isStart ?? false} />
       <NodeEffect effect={data.effect} />
       <NodeText text={data.text} />
 
