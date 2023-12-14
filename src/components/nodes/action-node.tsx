@@ -24,8 +24,6 @@ const ActionNode = memo(function ActionNode({ data, selected }: Props) {
   };
 
   const updateAction = (updatedIndex: number, updatedAction: Action) => {
-    console.log(`Updating action ${updatedIndex}: `, updatedAction);
-
     data.onChange?.({
       ...data,
       actions: data.actions.map(
