@@ -117,7 +117,7 @@ export default function Flow({ fit }: Props) {
         return {
           id,
           type,
-          text: "Action text",
+          text: "",
           actions: [],
           onChange: onNodeDataChange
         };
@@ -126,7 +126,7 @@ export default function Flow({ fit }: Props) {
         return {
           id,
           type,
-          text: "Skip text",
+          text: "",
           onChange: onNodeDataChange
         };
 
@@ -134,7 +134,7 @@ export default function Flow({ fit }: Props) {
         return {
           id,
           type,
-          text: "Redirect text",
+          text: "",
           links: [],
           onChange: onNodeDataChange
         };

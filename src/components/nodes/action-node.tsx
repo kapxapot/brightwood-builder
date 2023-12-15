@@ -4,6 +4,7 @@ import { Colors } from '../../lib/constants';
 import NodeShell from '../node-parts/node-shell';
 import Button from '../core/button';
 import NodeAction from '../node-parts/node-action';
+import { toArray } from '../../lib/common';
 
 interface Props {
   data: ActionStoryNode;
@@ -17,7 +18,7 @@ const ActionNode = memo(function ActionNode({ data, selected }: Props) {
       actions: [
         ...data.actions,
         {
-          label: ''
+          label: ""
         }
       ]
     });
@@ -45,12 +46,23 @@ const ActionNode = memo(function ActionNode({ data, selected }: Props) {
     );
   };
 
+  const addTextLine = () => {
+    data.onChange?.({
+      ...data,
+      text: [
+        ...toArray(data.text),
+        ""
+      ]
+    });
+  };
+
   return (
     <NodeShell
       selected={selected}
       className={Colors.action}
       data={data}
       label="Action"
+      addTextLine={addTextLine}
     >
       <div className="mt-2 space-y-2">
         {data.actions.map((action, index) =>
