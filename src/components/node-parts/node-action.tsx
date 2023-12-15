@@ -7,11 +7,12 @@ import { useRef, useState } from "react";
 interface Props {
   action: Action;
   index: number;
+  deletable: boolean;
   updateAction: (updatedAction: Action) => void;
   deleteAction: () => void;
 }
 
-export default function NodeAction({ action, index, updateAction, deleteAction }: Props) {
+export default function NodeAction({ action, index, deletable, updateAction, deleteAction }: Props) {
   const [label, setLabel] = useState(action.label);
   const [editing, setEditing] = useState(false);
 
@@ -76,13 +77,11 @@ export default function NodeAction({ action, index, updateAction, deleteAction }
       </div>
       {/* view */}
       {!editing &&
-        <div className="absolute right-2 top-0.5 space-x-1 hidden group-hover:block">
-          <Button padding="sm" onClick={startEdit}>
-            Edit
-          </Button>
-          <Button padding="sm" onClick={deleteAction}>
-            Delete
-          </Button>
+        <div className="absolute right-2 top-[3px] space-x-1 hidden group-hover:block">
+          <Button size="sm" onClick={startEdit}>🖊</Button>
+          {deletable &&
+            <Button size="sm" onClick={deleteAction}>❌</Button>
+          }
         </div>
       }
     </div>

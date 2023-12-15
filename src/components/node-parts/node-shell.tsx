@@ -11,14 +11,21 @@ interface Props {
   data: StoryNode;
   label: string;
   addTextLine: () => void;
+  updateTextLine: (index: number, updatedLine: string) => void;
+  deleteTextLine: (index: number) => void;
 }
 
-export default function NodeShell({ className, selected, children, data, label, addTextLine }: PropsWithChildren<Props>) {
+export default function NodeShell({ className, selected, children, data, label, addTextLine, updateTextLine, deleteTextLine }: PropsWithChildren<Props>) {
   return (
     <div className={`p-2 shadow-md rounded-md border w-[250px] ${selected ? "border-stone-600" : "border-stone-400"} ${className} cursor-default`}>
       <NodeTitle id={data.id} label={data.label ?? label} isStart={data.isStart ?? false} />
       <NodeEffect effect={data.effect} />
-      <NodeText text={data.text} addTextLine={addTextLine} />
+      <NodeText
+        text={data.text}
+        addTextLine={addTextLine}
+        updateTextLine={updateTextLine}
+        deleteTextLine={deleteTextLine}
+      />
 
       {children}
 

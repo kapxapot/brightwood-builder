@@ -118,7 +118,7 @@ export default function Flow({ fit }: Props) {
           id,
           type,
           text: "",
-          actions: [],
+          actions: [{ label: ""}],
           onChange: onNodeDataChange
         };
 
@@ -135,7 +135,7 @@ export default function Flow({ fit }: Props) {
           id,
           type,
           text: "",
-          links: [],
+          links: [{}],
           onChange: onNodeDataChange
         };
 

@@ -29,7 +29,7 @@ const ActionNode = memo(function ActionNode({ data, selected }: Props) {
       ...data,
       actions: data.actions.map(
         (action, index) => index === updatedIndex ? updatedAction : action
-      ),
+      )
     });
   };
 
@@ -56,6 +56,24 @@ const ActionNode = memo(function ActionNode({ data, selected }: Props) {
     });
   };
 
+  const updateTextLine = (updatedIndex: number, updatedLine: string) => {
+    data.onChange?.({
+      ...data,
+      text: toArray(data.text).map(
+        (line, index) => index === updatedIndex ? updatedLine : line
+      )
+    });
+  };
+
+  const deleteTextLine = (index: number) => {
+    data.onChange?.(
+      {
+        ...data,
+        text: toArray(data.text).toSpliced(index, 1)
+      }
+    );
+  };
+
   return (
     <NodeShell
       selected={selected}
@@ -63,20 +81,21 @@ const ActionNode = memo(function ActionNode({ data, selected }: Props) {
       data={data}
       label="Action"
       addTextLine={addTextLine}
+      updateTextLine={updateTextLine}
+      deleteTextLine={deleteTextLine}
     >
       <div className="mt-2 space-y-2">
         {data.actions.map((action, index) =>
           <NodeAction
             action={action}
             index={index}
+            deletable={data.actions.length > 1}
             updateAction={updatedAction => updateAction(index, updatedAction)}
             deleteAction={() => deleteAction(index)}
             key={index}
           />
         )}
-        <Button onClick={addAction}>
-          Add action ⚡
-        </Button>
+        <Button onClick={addAction}>Add action ⚡</Button>
       </div>
     </NodeShell>
   );
