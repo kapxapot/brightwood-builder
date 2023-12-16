@@ -21,10 +21,10 @@ export default function NodeShell({ className, selected, children, data, label, 
       <NodeEffect effect={data.effect} />
       <NodeText
         text={data.text}
-        allowEmpty={allowNoText}
-        addTextLine={() => addTextLine(data)}
-        updateTextLine={(index, updatedLine) => updateTextLine(data, index, updatedLine)}
-        deleteTextLine={(index) => deleteTextLine(data, index)}
+        allowEmpty={allowNoText ?? false}
+        addLine={() => addTextLine(data)}
+        updateLine={(index, updatedLine) => updateTextLine(data, index, updatedLine)}
+        deleteLine={(index) => deleteTextLine(data, index)}
       />
 
       {children}
