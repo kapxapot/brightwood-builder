@@ -13,7 +13,7 @@ export default function NodeTextLine({ line, index, deletable, updateLine, delet
   const [editedLine, setEditedLine] = useState(line);
   const [editing, setEditing] = useState(false);
 
-  const inputRef = useRef<HTMLInputElement>(null);
+  const inputRef = useRef<HTMLTextAreaElement>(null);
 
   function startEdit() {
     setEditing(true);
@@ -34,7 +34,7 @@ export default function NodeTextLine({ line, index, deletable, updateLine, delet
     updateLine?.(editedLine);
   }
 
-  function updateEditedLine(event: React.ChangeEvent<HTMLInputElement>) {
+  function updateEditedLine(event: React.ChangeEvent<HTMLTextAreaElement>) {
     setEditedLine(event.target.value);
   }
 
@@ -42,16 +42,15 @@ export default function NodeTextLine({ line, index, deletable, updateLine, delet
     <div className="text-sm">
       {/* edit */}
       {editing &&
-        <div className="space-y-2 mr-2 my-1">
-          <div>
-            <input
-              type="text"
-              defaultValue={editedLine}
-              onChange={updateEditedLine}
-              className="w-full py-1 px-1.5"
-              ref={inputRef}
-            />
-          </div>
+        <div className="space-y-1 mt-3 mb-1">
+          <textarea
+            defaultValue={editedLine}
+            onChange={updateEditedLine}
+            className="w-full py-1 px-1.5"
+            ref={inputRef}
+            rows={3}
+          >
+          </textarea>
           <div className="space-x-1">
             <Button onClick={commitEdit}>Save</Button>
             <Button onClick={cancelEdit}>Cancel</Button>
