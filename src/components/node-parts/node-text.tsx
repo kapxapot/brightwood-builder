@@ -4,13 +4,13 @@ import Button from "../core/button";
 
 interface Props {
   text?: Text;
-  allowDeleteLast: boolean;
+  allowEmpty: boolean;
   addTextLine: () => void;
   updateTextLine: (index: number, updatedLine: string) => void;
   deleteTextLine: (index: number) => void;
 }
 
-export default function NodeText({ text, allowDeleteLast, addTextLine, updateTextLine, deleteTextLine }: Props) {
+export default function NodeText({ text, allowEmpty, addTextLine, updateTextLine, deleteTextLine }: Props) {
   const lines = toArray(text);
 
   const lineOrDefault = (line: string, index: number) => line || `Text line ${index + 1}`;
@@ -22,7 +22,7 @@ export default function NodeText({ text, allowDeleteLast, addTextLine, updateTex
   return (
     <div className="text-sm mt-2 space-y-2 cursor-text">
       {lines.map((line, index) => (
-        <div className="relative group">
+        <div className="relative group" key={index}>
           <p key={index} className="border border-black border-opacity-20 rounded-lg border-dashed bg-white bg-opacity-50 px-2 py-1">
             <span
               className={`${!line.length && "opacity-30"}`}
@@ -32,7 +32,7 @@ export default function NodeText({ text, allowDeleteLast, addTextLine, updateTex
           </p>
           <div className="absolute right-[3px] top-[3px] space-x-1 hidden group-hover:block">
             <Button size="sm" onClick={startEdit}>🖊</Button>
-            {(allowDeleteLast || lines.length > 1) &&
+            {(allowEmpty || lines.length > 1) &&
               <Button size="sm" onClick={() => deleteTextLine(index)}>❌</Button>
             }
           </div>

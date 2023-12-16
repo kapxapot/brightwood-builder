@@ -11,17 +11,17 @@ interface Props {
   selected: boolean;
   data: StoryNode;
   label: string;
-  allowDeleteAllText?: boolean;
+  allowNoText?: boolean;
 }
 
-export default function NodeShell({ className, selected, children, data, label, allowDeleteAllText }: PropsWithChildren<Props>) {
+export default function NodeShell({ className, selected, children, data, label, allowNoText }: PropsWithChildren<Props>) {
   return (
     <div className={`p-2 shadow-md rounded-md border w-[250px] ${selected ? "border-stone-600" : "border-stone-400"} ${className} cursor-default`}>
       <NodeTitle id={data.id} label={data.label ?? label} isStart={data.isStart ?? false} />
       <NodeEffect effect={data.effect} />
       <NodeText
         text={data.text}
-        allowDeleteLast={allowDeleteAllText}
+        allowEmpty={allowNoText}
         addTextLine={() => addTextLine(data)}
         updateTextLine={(index, updatedLine) => updateTextLine(data, index, updatedLine)}
         deleteTextLine={(index) => deleteTextLine(data, index)}
