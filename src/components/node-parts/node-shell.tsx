@@ -4,27 +4,27 @@ import NodeTitle from './node-title';
 import type { StoryNode } from '../../entities/story-node';
 import NodeEffect from './node-effect';
 import NodeText from './node-text';
+import { addTextLine, deleteTextLine, updateTextLine } from '../../lib/node-data-mutations';
 
 interface Props {
   className?: string,
   selected: boolean;
   data: StoryNode;
   label: string;
-  addTextLine: () => void;
-  updateTextLine: (index: number, updatedLine: string) => void;
-  deleteTextLine: (index: number) => void;
+  allowDeleteAllText?: boolean;
 }
 
-export default function NodeShell({ className, selected, children, data, label, addTextLine, updateTextLine, deleteTextLine }: PropsWithChildren<Props>) {
+export default function NodeShell({ className, selected, children, data, label, allowDeleteAllText }: PropsWithChildren<Props>) {
   return (
     <div className={`p-2 shadow-md rounded-md border w-[250px] ${selected ? "border-stone-600" : "border-stone-400"} ${className} cursor-default`}>
       <NodeTitle id={data.id} label={data.label ?? label} isStart={data.isStart ?? false} />
       <NodeEffect effect={data.effect} />
       <NodeText
         text={data.text}
-        addTextLine={addTextLine}
-        updateTextLine={updateTextLine}
-        deleteTextLine={deleteTextLine}
+        allowDeleteLast={allowDeleteAllText}
+        addTextLine={() => addTextLine(data)}
+        updateTextLine={(index, updatedLine) => updateTextLine(data, index, updatedLine)}
+        deleteTextLine={(index) => deleteTextLine(data, index)}
       />
 
       {children}

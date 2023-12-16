@@ -15,6 +15,7 @@ const FinishNode = memo(function FinishNode({ data, selected }: Props) {
       className={Colors.finish}
       data={data}
       label="Finish"
+      allowDeleteAllText={true}
     />
   );
 });

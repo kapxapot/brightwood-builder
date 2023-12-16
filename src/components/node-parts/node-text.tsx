@@ -4,12 +4,13 @@ import Button from "../core/button";
 
 interface Props {
   text?: Text;
+  allowDeleteLast: boolean;
   addTextLine: () => void;
   updateTextLine: (index: number, updatedLine: string) => void;
   deleteTextLine: (index: number) => void;
 }
 
-export default function NodeText({ text, addTextLine, updateTextLine, deleteTextLine }: Props) {
+export default function NodeText({ text, allowDeleteLast, addTextLine, updateTextLine, deleteTextLine }: Props) {
   const lines = toArray(text);
 
   const lineOrDefault = (line: string, index: number) => line || `Text line ${index + 1}`;
@@ -31,7 +32,7 @@ export default function NodeText({ text, addTextLine, updateTextLine, deleteText
           </p>
           <div className="absolute right-[3px] top-[3px] space-x-1 hidden group-hover:block">
             <Button size="sm" onClick={startEdit}>🖊</Button>
-            {lines.length > 1 &&
+            {(allowDeleteLast || lines.length > 1) &&
               <Button size="sm" onClick={() => deleteTextLine(index)}>❌</Button>
             }
           </div>
