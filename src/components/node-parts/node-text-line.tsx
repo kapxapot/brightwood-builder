@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Button from "../core/button";
 
 interface Props {
@@ -8,13 +8,15 @@ interface Props {
   nodeEditing: boolean;
   updateLine: (updatedLine: string) => void;
   deleteLine: () => void;
-  onEditStarted: () => void;
-  onEditFinished: () => void;
+  onEditStarted?: () => void;
+  onEditFinished?: () => void;
 }
 
 export default function NodeTextLine({ line, index, deletable, nodeEditing, updateLine, deleteLine, onEditStarted, onEditFinished }: Props) {
+  const noText = !line.length;
+
   const [editedLine, setEditedLine] = useState(line);
-  const [editing, setEditing] = useState(false);
+  const [editing, setEditing] = useState(noText);
 
   const inputRef = useRef<HTMLTextAreaElement>(null);
 
@@ -23,8 +25,10 @@ export default function NodeTextLine({ line, index, deletable, nodeEditing, upda
       return;
     }
 
+    setEditedLine(line);
+
     setEditing(true);
-    onEditStarted();
+    onEditStarted?.();
 
     setTimeout(() => {
       inputRef.current?.focus();
@@ -34,14 +38,18 @@ export default function NodeTextLine({ line, index, deletable, nodeEditing, upda
 
   function cancelEdit() {
     setEditing(false);
-    onEditFinished();
+    onEditFinished?.();
 
-    setEditedLine(line);
+    if (line.length) {
+      setEditedLine(line);
+    } else {
+      deleteLine();
+    }
   }
 
   function commitEdit() {
     setEditing(false);
-    onEditFinished();
+    onEditFinished?.();
 
     updateLine(editedLine);
   }
@@ -50,26 +58,31 @@ export default function NodeTextLine({ line, index, deletable, nodeEditing, upda
     setEditedLine(event.target.value);
   }
 
+  useEffect(() => {
+    if (noText) {
+      startEdit();
+    }
+  }, []);
+
   return (
     <>
       {/* edit */}
       {editing &&
         <div className="border border-black border-opacity-20 rounded-lg border-dashed bg-white p-1 space-y-1 mt-3 text-sm">
-          <label className="block text-gray-700 text-sm font-bold" htmlFor="text_line">
-            Text line
-          </label>
           <textarea
             defaultValue={editedLine}
             onChange={updateEditedLine}
             className="w-full py-1 px-1.5 border border-slate-400 rounded-md"
             ref={inputRef}
             rows={3}
-            id="text_line"
+            placeholder="Text line"
           >
           </textarea>
           <div className="space-x-2">
-            <Button onClick={commitEdit}>Save</Button>
-            <Button onClick={cancelEdit}>Cancel</Button>
+            <Button onClick={commitEdit} disabled={!editedLine.length}>Save</Button>
+            {(deletable || !noText) &&
+              <Button onClick={cancelEdit}>Cancel</Button>
+            }
           </div>
         </div>
       }

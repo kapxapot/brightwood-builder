@@ -32,9 +32,7 @@ export default function NodeText({ text, allowEmpty, nodeEditing, addLine, updat
           onEditFinished={onEditFinished}
         />
       )}
-      {!nodeEditing &&
-        <Button onClick={addLine}>Add text 🖊</Button>
-      }
+      <Button onClick={addLine} disabled={nodeEditing}>Add text 🖊</Button>
     </div>
   );
 }

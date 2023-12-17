@@ -1,5 +1,15 @@
-import type { StoryNode } from "../entities/story-node";
+import type { StoryNode, Text } from "../entities/story-node";
 import { toArray } from "./common";
+
+function normalizeText(text?: Text): Text {
+  return toArray(text)
+    .flatMap(line => {
+      const brk = "\n\n";
+      line = line.replace(/(\n){3,}/gm, brk);
+      return line.split(brk);
+    })
+    .map(line => line.trim());
+}
 
 export const addTextLine = (data: StoryNode) => {
   data.onChange?.({
@@ -14,8 +24,10 @@ export const addTextLine = (data: StoryNode) => {
 export const updateTextLine = (data: StoryNode, updatedIndex: number, updatedLine: string) => {
   data.onChange?.({
     ...data,
-    text: toArray(data.text).map(
-      (line, index) => index === updatedIndex ? updatedLine : line
+    text: normalizeText(
+      toArray(data.text).map(
+        (line, index) => index === updatedIndex ? updatedLine : line
+      )
     )
   });
 };

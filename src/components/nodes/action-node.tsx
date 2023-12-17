@@ -71,7 +71,7 @@ const ActionNode = memo(function ActionNode({ data, selected }: Props) {
             key={index}
             index={index}
             action={action}
-            deletable={data.actions.length > 1}
+            deletable={true} // {data.actions.length > 1}
             nodeEditing={nodeEditing}
             updateAction={updatedAction => updateAction(index, updatedAction)}
             deleteAction={() => deleteAction(index)}
@@ -79,9 +79,7 @@ const ActionNode = memo(function ActionNode({ data, selected }: Props) {
             onEditFinished={finishEdit}
           />
         )}
-        {!nodeEditing &&
-          <Button onClick={addAction}>Add action ⚡</Button>
-        }
+        <Button onClick={addAction} disabled={nodeEditing}>Add action ⚡</Button>
       </div>
     </NodeShell>
   );
