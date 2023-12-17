@@ -39,14 +39,14 @@ export default function NodeTextLine({ line, index, deletable, updateLine, delet
   }
 
   return (
-    <div className="text-sm">
+    <>
       {/* edit */}
       {editing &&
-        <div className="space-y-1 mt-3 mb-1">
+        <div className="border border-black border-opacity-20 rounded-lg border-dashed bg-white space-y-1 mt-3 mb-1 text-sm p-1">
           <textarea
             defaultValue={editedLine}
             onChange={updateEditedLine}
-            className="w-full py-1 px-1.5"
+            className="w-full py-1 px-1.5 border border-slate-400 rounded-md"
             ref={inputRef}
             rows={3}
           >
@@ -59,8 +59,12 @@ export default function NodeTextLine({ line, index, deletable, updateLine, delet
       }
       {/* view */}
       {!editing &&
-        <div className="relative group cursor-text">
-          <p key={index} className="border border-black border-opacity-20 rounded-lg border-dashed bg-white bg-opacity-50 px-2 py-1">
+        <div className="relative group cursor-text text-sm">
+          <p
+            key={index}
+            className="border border-black border-opacity-20 rounded-lg border-dashed bg-white bg-opacity-50 px-2 py-1"
+            onClick={startEdit}
+          >
             <span
               className={`${!line.length && "opacity-30"}`}
               dangerouslySetInnerHTML={{ __html: line || `Text line ${index + 1}` }}
@@ -75,6 +79,6 @@ export default function NodeTextLine({ line, index, deletable, updateLine, delet
           </div>
         </div>
       }
-    </div>
+    </>
   );
 }
