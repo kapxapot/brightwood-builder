@@ -12,9 +12,12 @@ interface Props {
   data: StoryNode;
   label: string;
   allowNoText?: boolean;
+  nodeEditing: boolean;
+  onEditStarted: () => void;
+  onEditFinished: () => void;
 }
 
-export default function NodeShell({ className, selected, children, data, label, allowNoText }: PropsWithChildren<Props>) {
+export default function NodeShell({ className, selected, children, data, label, allowNoText, nodeEditing, onEditStarted, onEditFinished }: PropsWithChildren<Props>) {
   return (
     <div className={`p-2 shadow-md rounded-md border w-[250px] ${selected ? "border-stone-600" : "border-stone-400"} ${className} cursor-default`}>
       <NodeTitle id={data.id} label={data.label ?? label} isStart={data.isStart ?? false} />
@@ -22,9 +25,12 @@ export default function NodeShell({ className, selected, children, data, label, 
       <NodeText
         text={data.text}
         allowEmpty={allowNoText ?? false}
+        nodeEditing={nodeEditing}
         addLine={() => addTextLine(data)}
         updateLine={(index, updatedLine) => updateTextLine(data, index, updatedLine)}
         deleteLine={(index) => deleteTextLine(data, index)}
+        onEditStarted={onEditStarted}
+        onEditFinished={onEditFinished}
       />
 
       {children}

@@ -5,18 +5,26 @@ interface Props {
   line: string;
   index: number;
   deletable: boolean;
+  nodeEditing: boolean;
   updateLine: (updatedLine: string) => void;
   deleteLine: () => void;
+  onEditStarted: () => void;
+  onEditFinished: () => void;
 }
 
-export default function NodeTextLine({ line, index, deletable, updateLine, deleteLine }: Props) {
+export default function NodeTextLine({ line, index, deletable, nodeEditing, updateLine, deleteLine, onEditStarted, onEditFinished }: Props) {
   const [editedLine, setEditedLine] = useState(line);
   const [editing, setEditing] = useState(false);
 
   const inputRef = useRef<HTMLTextAreaElement>(null);
 
   function startEdit() {
+    if (nodeEditing) {
+      return;
+    }
+
     setEditing(true);
+    onEditStarted();
 
     setTimeout(() => {
       inputRef.current?.focus();
@@ -26,12 +34,16 @@ export default function NodeTextLine({ line, index, deletable, updateLine, delet
 
   function cancelEdit() {
     setEditing(false);
+    onEditFinished();
+
     setEditedLine(line);
   }
 
   function commitEdit() {
     setEditing(false);
-    updateLine?.(editedLine);
+    onEditFinished();
+
+    updateLine(editedLine);
   }
 
   function updateEditedLine(event: React.ChangeEvent<HTMLTextAreaElement>) {
@@ -42,16 +54,20 @@ export default function NodeTextLine({ line, index, deletable, updateLine, delet
     <>
       {/* edit */}
       {editing &&
-        <div className="border border-black border-opacity-20 rounded-lg border-dashed bg-white space-y-1 mt-3 mb-1 text-sm p-1">
+        <div className="border border-black border-opacity-20 rounded-lg border-dashed bg-white p-1 space-y-1 mt-3 text-sm">
+          <label className="block text-gray-700 text-sm font-bold" htmlFor="text_line">
+            Text line
+          </label>
           <textarea
             defaultValue={editedLine}
             onChange={updateEditedLine}
             className="w-full py-1 px-1.5 border border-slate-400 rounded-md"
             ref={inputRef}
             rows={3}
+            id="text_line"
           >
           </textarea>
-          <div className="space-x-1">
+          <div className="space-x-2">
             <Button onClick={commitEdit}>Save</Button>
             <Button onClick={cancelEdit}>Cancel</Button>
           </div>
@@ -72,9 +88,13 @@ export default function NodeTextLine({ line, index, deletable, updateLine, delet
             </span>
           </p>
           <div className="absolute right-[3px] top-[3px] space-x-1 hidden group-hover:block">
-            <Button size="sm" onClick={startEdit}>🖊</Button>
-            {deletable &&
-              <Button size="sm" onClick={deleteLine}>❌</Button>
+            {!nodeEditing &&
+              <>
+                <Button size="sm" onClick={startEdit}>🖊</Button>
+                {deletable &&
+                  <Button size="sm" onClick={deleteLine}>❌</Button>
+                }
+              </>
             }
           </div>
         </div>

@@ -8,11 +8,14 @@ interface Props {
   action: Action;
   index: number;
   deletable: boolean;
+  nodeEditing: boolean;
   updateAction: (updatedAction: Action) => void;
   deleteAction: () => void;
+  onEditStarted: () => void;
+  onEditFinished: () => void;
 }
 
-export default function NodeAction({ action, index, deletable, updateAction, deleteAction }: Props) {
+export default function NodeAction({ action, index, deletable, nodeEditing, updateAction, deleteAction, onEditStarted, onEditFinished }: Props) {
   const [label, setLabel] = useState(action.label);
   const [editing, setEditing] = useState(false);
 
@@ -20,6 +23,7 @@ export default function NodeAction({ action, index, deletable, updateAction, del
 
   function startEdit() {
     setEditing(true);
+    onEditStarted();
 
     setTimeout(() => {
       inputRef.current?.focus();
@@ -29,11 +33,14 @@ export default function NodeAction({ action, index, deletable, updateAction, del
 
   function cancelEdit() {
     setEditing(false);
+    onEditFinished();
+
     setLabel(action.label);
   }
 
   function commitEdit() {
     setEditing(false);
+    onEditFinished();
 
     updateAction?.({
       ...action,
@@ -50,17 +57,21 @@ export default function NodeAction({ action, index, deletable, updateAction, del
       <div>
         {/* edit */}
         {editing &&
-          <div className="space-y-2 mr-2 my-1">
+          <div className="border border-black border-opacity-20 rounded-lg border-dashed bg-white p-1 space-y-2 mr-2 my-1">
             <div>
+              <label className="block text-gray-700 text-sm font-bold mb-1" htmlFor="action_label">
+                Action label
+              </label>
               <input
                 type="text"
                 defaultValue={label}
                 onChange={updateLabel}
-                className="w-full py-1 px-1.5"
+                className="w-full py-1 px-1.5 border border-slate-400 rounded-md"
                 ref={inputRef}
+                id="action_label"
               />
             </div>
-            <div className="space-x-1">
+            <div className="space-x-2">
               <Button onClick={commitEdit}>Save</Button>
               <Button onClick={cancelEdit}>Cancel</Button>
             </div>
@@ -76,7 +87,7 @@ export default function NodeAction({ action, index, deletable, updateAction, del
         <Handle id={String(index)} type="source" position={Position.Right} className="bg-slate-600" isConnectable={true} />
       </div>
       {/* view */}
-      {!editing &&
+      {!editing && !nodeEditing &&
         <div className="absolute right-2 top-[3px] space-x-1 hidden group-hover:block">
           <Button size="sm" onClick={startEdit}>🖊</Button>
           {deletable &&

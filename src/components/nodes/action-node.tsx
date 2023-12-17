@@ -1,4 +1,4 @@
-import { memo } from 'react';
+import { memo, useState } from 'react';
 import type { Action, ActionStoryNode } from '../../entities/story-node';
 import { Colors } from '../../lib/constants';
 import NodeShell from '../node-parts/node-shell';
@@ -11,6 +11,16 @@ interface Props {
 }
 
 const ActionNode = memo(function ActionNode({ data, selected }: Props) {
+  const [nodeEditing, setNodeEditing] = useState(false);
+
+  function startEdit() {
+    setNodeEditing(true);
+  }
+
+  function finishEdit() {
+    setNodeEditing(false);
+  }
+
   const addAction = () => {
     data.onChange?.({
       ...data,
@@ -51,6 +61,9 @@ const ActionNode = memo(function ActionNode({ data, selected }: Props) {
       className={Colors.action}
       data={data}
       label="Action"
+      nodeEditing={nodeEditing}
+      onEditStarted={startEdit}
+      onEditFinished={finishEdit}
     >
       <div className="mt-2 space-y-2">
         {data.actions.map((action, index) =>
@@ -59,11 +72,16 @@ const ActionNode = memo(function ActionNode({ data, selected }: Props) {
             index={index}
             action={action}
             deletable={data.actions.length > 1}
+            nodeEditing={nodeEditing}
             updateAction={updatedAction => updateAction(index, updatedAction)}
             deleteAction={() => deleteAction(index)}
+            onEditStarted={startEdit}
+            onEditFinished={finishEdit}
           />
         )}
-        <Button onClick={addAction}>Add action ⚡</Button>
+        {!nodeEditing &&
+          <Button onClick={addAction}>Add action ⚡</Button>
+        }
       </div>
     </NodeShell>
   );
