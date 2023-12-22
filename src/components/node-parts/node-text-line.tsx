@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import Button from "../core/button";
+import { autoHeight, focusAndSelect } from "../../lib/ref-operations";
 
 interface Props {
   line: string;
@@ -30,10 +31,7 @@ export default function NodeTextLine({ line, index, deletable, nodeEditing, upda
     setEditing(true);
     onEditStarted?.();
 
-    setTimeout(() => {
-      inputRef.current?.focus();
-      inputRef.current?.select();
-    });
+    setTimeout(() => focusAndSelect(inputRef));
   }
 
   function cancelEdit() {
@@ -63,6 +61,8 @@ export default function NodeTextLine({ line, index, deletable, nodeEditing, upda
       startEdit();
     }
   }, []);
+
+  useEffect(() => autoHeight(inputRef), [editedLine]);
 
   return (
     <>
@@ -95,7 +95,7 @@ export default function NodeTextLine({ line, index, deletable, nodeEditing, upda
             onClick={startEdit}
           >
             <span
-              className={`${!line.length && "opacity-30"}`}
+              className={`whitespace-pre-line ${!line.length && "opacity-30"}`}
               dangerouslySetInnerHTML={{ __html: line || `Text line ${index + 1}` }}
             >
             </span>

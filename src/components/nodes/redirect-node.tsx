@@ -1,9 +1,10 @@
 import { memo } from 'react';
-import type { RedirectStoryNode } from '../../entities/story-node';
+import type { Link, RedirectStoryNode } from '../../entities/story-node';
 import { Colors } from '../../lib/constants';
 import NodeShell from '../node-parts/node-shell';
 import Button from '../core/button';
 import NodeLink from '../node-parts/node-link';
+import { useNodeEditing } from '../../hooks/use-node-editing';
 
 interface Props {
   data: RedirectStoryNode;
@@ -11,18 +12,27 @@ interface Props {
 }
 
 const RedirectNode = memo(function RedirectNode({ data, selected }: Props) {
+  const [nodeEditing, startEdit, finishEdit] = useNodeEditing();
+
   const addLink = () => {
     data.onChange?.({
       ...data,
       links: [
         ...data.links,
-        {}
+        {
+          weight: 0
+        }
       ]
     });
   }
 
-  const editLink = (index: number) => {
-    console.log(`Editing link ${index}...`);
+  const updateLink = (updatedIndex: number, updatedLink: Link) => {
+    data.onChange?.({
+      ...data,
+      links: data.links.map(
+        (link, index) => index === updatedIndex ? updatedLink : link
+      )
+    });
   };
 
   const deleteLink = (index: number) => {
@@ -44,6 +54,9 @@ const RedirectNode = memo(function RedirectNode({ data, selected }: Props) {
       className={Colors.redirect}
       data={data}
       label="Redirect"
+      nodeEditing={nodeEditing}
+      onEditStarted={startEdit}
+      onEditFinished={finishEdit}
     >
       <div className="mt-2 space-y-2">
         {data.links.map((link, index) => 
@@ -52,11 +65,14 @@ const RedirectNode = memo(function RedirectNode({ data, selected }: Props) {
             index={index}
             link={link}
             deletable={data.links.length > 1}
-            editLink={editLink}
-            deleteLink={deleteLink}
+            updateLink={updatedLink => updateLink(index, updatedLink)}
+            deleteLink={() => deleteLink(index)}
+            nodeEditing={nodeEditing}
+            onEditStarted={startEdit}
+            onEditFinished={finishEdit}
           />
         )}
-        <Button onClick={addLink}>Add link 🎲</Button>
+        <Button onClick={addLink} disabled={nodeEditing}>Add link 🎲</Button>
       </div>
     </NodeShell>
   );

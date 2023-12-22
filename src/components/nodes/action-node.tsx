@@ -1,9 +1,10 @@
-import { memo, useState } from 'react';
+import { memo } from 'react';
 import type { Action, ActionStoryNode } from '../../entities/story-node';
 import { Colors } from '../../lib/constants';
 import NodeShell from '../node-parts/node-shell';
 import Button from '../core/button';
 import NodeAction from '../node-parts/node-action';
+import { useNodeEditing } from '../../hooks/use-node-editing';
 
 interface Props {
   data: ActionStoryNode;
@@ -11,15 +12,7 @@ interface Props {
 }
 
 const ActionNode = memo(function ActionNode({ data, selected }: Props) {
-  const [nodeEditing, setNodeEditing] = useState(false);
-
-  function startEdit() {
-    setNodeEditing(true);
-  }
-
-  function finishEdit() {
-    setNodeEditing(false);
-  }
+  const [nodeEditing, startEdit, finishEdit] = useNodeEditing();
 
   const addAction = () => {
     data.onChange?.({
@@ -72,9 +65,9 @@ const ActionNode = memo(function ActionNode({ data, selected }: Props) {
             index={index}
             action={action}
             deletable={true} // {data.actions.length > 1}
-            nodeEditing={nodeEditing}
             updateAction={updatedAction => updateAction(index, updatedAction)}
             deleteAction={() => deleteAction(index)}
+            nodeEditing={nodeEditing}
             onEditStarted={startEdit}
             onEditFinished={finishEdit}
           />

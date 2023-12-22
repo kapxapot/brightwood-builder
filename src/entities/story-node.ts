@@ -11,7 +11,7 @@ export type Action = {
 
 export type Link = {
   id?: NodeId;
-  weight?: number;
+  weight: number;
   condition?: ConditionName;
 };
 

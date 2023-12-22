@@ -3,19 +3,20 @@ import { type Action } from "../../entities/story-node";
 import NodeRef from "./node-ref";
 import Button from "../core/button";
 import { useEffect, useRef, useState } from "react";
+import { autoHeight, focusAndSelect } from "../../lib/ref-operations";
 
 interface Props {
   action: Action;
   index: number;
   deletable: boolean;
-  nodeEditing: boolean;
   updateAction: (updatedAction: Action) => void;
   deleteAction: () => void;
+  nodeEditing: boolean;
   onEditStarted: () => void;
   onEditFinished: () => void;
 }
 
-export default function NodeAction({ action, index, deletable, nodeEditing, updateAction, deleteAction, onEditStarted, onEditFinished }: Props) {
+export default function NodeAction({ action, index, deletable, updateAction, deleteAction, nodeEditing, onEditStarted, onEditFinished }: Props) {
   const initialLabel = action.label;
   const noLabel = !initialLabel.length;
 
@@ -30,10 +31,7 @@ export default function NodeAction({ action, index, deletable, nodeEditing, upda
     setEditing(true);
     onEditStarted();
 
-    setTimeout(() => {
-      inputRef.current?.focus();
-      inputRef.current?.select();
-    });
+    setTimeout(() => focusAndSelect(inputRef));
   }
 
   function cancelEdit() {
@@ -66,6 +64,8 @@ export default function NodeAction({ action, index, deletable, nodeEditing, upda
       startEdit();
     }
   }, []);
+
+  useEffect(() => autoHeight(inputRef), [label]);
 
   return (
     <div className="relative group text-sm bg-gradient-to-r from-transparent to-green-300 py-1 -mr-2">

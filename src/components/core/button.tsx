@@ -14,7 +14,7 @@ export default function Button({ onClick, size, disabled, children }: PropsWithC
   return (
     <button
       onClick={onClick}
-      className={`border border-slate-400 ${sizeStyle} text-sm bg-slate-50 enabled:hover:bg-white disabled:opacity-50`}
+      className={`border border-slate-400 ${sizeStyle} text-sm bg-slate-50 enabled:hover:bg-white disabled:opacity-50 disabled:cursor-not-allowed`}
       disabled={disabled}
     >
       {children}

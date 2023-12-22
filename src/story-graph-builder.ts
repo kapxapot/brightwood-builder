@@ -45,7 +45,7 @@ export function buildStoryGraph(story: Story, changeHandler: OnChangeHandler): S
     data.onChange = changeHandler;
 
     const dpos = data.position;
-    const position: Position = { 
+    const position: Position = {
       x: dpos ? dpos[0] : 0,
       y: dpos ? dpos[1] : 0
     }; 

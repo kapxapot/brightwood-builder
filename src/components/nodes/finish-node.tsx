@@ -2,6 +2,7 @@ import { memo } from 'react';
 import type { FinishStoryNode } from '../../entities/story-node';
 import { Colors } from '../../lib/constants';
 import NodeShell from '../node-parts/node-shell';
+import { useNodeEditing } from '../../hooks/use-node-editing';
 
 interface Props {
   data: FinishStoryNode;
@@ -9,6 +10,8 @@ interface Props {
 }
 
 const FinishNode = memo(function FinishNode({ data, selected }: Props) {
+  const [nodeEditing, startEdit, finishEdit] = useNodeEditing();
+
   return (
     <NodeShell
       selected={selected}
@@ -16,6 +19,9 @@ const FinishNode = memo(function FinishNode({ data, selected }: Props) {
       data={data}
       label="Finish"
       allowNoText={true}
+      nodeEditing={nodeEditing}
+      onEditStarted={startEdit}
+      onEditFinished={finishEdit}
     />
   );
 });
