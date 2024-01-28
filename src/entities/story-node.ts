@@ -20,15 +20,17 @@ export type NodeEvent = {
   handle: string
 };
 
-export type OnChangeHandler = (data: StoryNode, event?: NodeEvent) => void;
+export type OnChangeHandler = (data: GraphNode, event?: NodeEvent) => void;
 
-type BaseStoryNode = {
+type BaseGraphNode = {
   id: NodeId;
-  label?: string | NodeId;
   position?: number[];
-  effect?: EffectInvocation;
-  isStart?: boolean;
   onChange?: OnChangeHandler;
+};
+
+type BaseStoryNode = BaseGraphNode & {
+  label?: string | NodeId;
+  effect?: EffectInvocation;
 };
 
 type TextStoryNode = BaseStoryNode & {
@@ -55,6 +57,22 @@ export type FinishStoryNode = BaseStoryNode & {
   text?: Text;
 };
 
-export type StoryNode = ActionStoryNode | SkipStoryNode | RedirectStoryNode | FinishStoryNode;
+export type StoryInfoGraphNode = BaseGraphNode & {
+  id: NodeId;
+  type: "storyInfo";
+  position?: number[];
+  title: string;
+  description?: string;
+  startId?: NodeId;
+  onChange?: OnChangeHandler;
+};
+
+export type StoryNode = ActionStoryNode
+  | SkipStoryNode
+  | RedirectStoryNode
+  | FinishStoryNode;
+
+export type GraphNode = StoryNode | StoryInfoGraphNode;
 
 export type StoryNodeType = StoryNode["type"];
+export type GraphNodeType = GraphNode["type"];

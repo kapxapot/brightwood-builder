@@ -1,6 +1,6 @@
 import { memo } from 'react';
 import type { Action, ActionStoryNode } from '../../entities/story-node';
-import { Colors } from '../../lib/constants';
+import { colors } from '../../lib/constants';
 import NodeShell from '../node-parts/node-shell';
 import Button from '../core/button';
 import NodeAction from '../node-parts/node-action';
@@ -51,7 +51,7 @@ const ActionNode = memo(function ActionNode({ data, selected }: Props) {
   return (
     <NodeShell
       selected={selected}
-      className={Colors.action}
+      className={colors.action}
       data={data}
       label="Action"
       nodeEditing={nodeEditing}

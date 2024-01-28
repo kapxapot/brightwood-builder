@@ -1,6 +1,6 @@
 import { memo } from 'react';
 import type { FinishStoryNode } from '../../entities/story-node';
-import { Colors } from '../../lib/constants';
+import { colors } from '../../lib/constants';
 import NodeShell from '../node-parts/node-shell';
 import { useNodeEditing } from '../../hooks/use-node-editing';
 
@@ -15,7 +15,7 @@ const FinishNode = memo(function FinishNode({ data, selected }: Props) {
   return (
     <NodeShell
       selected={selected}
-      className={Colors.finish}
+      className={colors.finish}
       data={data}
       label="Finish"
       allowNoText={true}

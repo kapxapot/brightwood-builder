@@ -11,13 +11,15 @@ import { buildStoryGraph } from "../story-graph-builder";
 import type { Story } from "../entities/story";
 import { removeConnections, updateConnection } from "../lib/node-operations";
 import { isAllowedConnection } from "../lib/node-checks";
-import type { NodeEvent, OnChangeHandler, StoryNode, StoryNodeType } from "../entities/story-node";
+import type { GraphNode, NodeEvent, OnChangeHandler, StoryNode, StoryNodeType } from "../entities/story-node";
+import StoryInfoNode from "./nodes/story-info-node";
 
 interface Props {
   fit: boolean;
 }
 
 const nodeTypes = {
+  storyInfo: StoryInfoNode,
   action: ActionNode,
   skip: SkipNode,
   redirect: RedirectNode,
@@ -148,7 +150,7 @@ export default function Flow({ fit }: Props) {
     }
   };
 
-  const onNodeDataChange: OnChangeHandler = (data: StoryNode, event?: NodeEvent) => {
+  const onNodeDataChange: OnChangeHandler = (data: GraphNode, event?: NodeEvent) => {
     if (event) {
       nodeEventHandler(String(data.id), event);
     }
@@ -229,7 +231,10 @@ export default function Flow({ fit }: Props) {
               pannable
               nodeColor={n => {
                 switch (n.type) {
-                  case "action":
+                  case "storyInfo":
+                    return "rgb(243, 232, 255)";
+
+                    case "action":
                     return "rgb(220, 252, 231)";
 
                   case "redirect":

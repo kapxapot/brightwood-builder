@@ -1,6 +1,6 @@
 import { memo } from 'react';
 import type { Link, RedirectStoryNode } from '../../entities/story-node';
-import { Colors } from '../../lib/constants';
+import { colors } from '../../lib/constants';
 import NodeShell from '../node-parts/node-shell';
 import Button from '../core/button';
 import NodeLink from '../node-parts/node-link';
@@ -51,7 +51,7 @@ const RedirectNode = memo(function RedirectNode({ data, selected }: Props) {
   return (
     <NodeShell
       selected={selected}
-      className={Colors.redirect}
+      className={colors.redirect}
       data={data}
       label="Redirect"
       nodeEditing={nodeEditing}

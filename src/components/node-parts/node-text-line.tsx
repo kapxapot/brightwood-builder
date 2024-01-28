@@ -56,13 +56,15 @@ export default function NodeTextLine({ line, index, deletable, nodeEditing, upda
     setEditedLine(event.target.value);
   }
 
-  useEffect(() => {
+  useEffect(function autoEditEmptyLine() {
     if (noText) {
       startEdit();
     }
   }, []);
 
-  useEffect(() => autoHeight(inputRef), [editedLine]);
+  useEffect(function correctHeightOnEdit() {
+    autoHeight(inputRef);
+  }, [editedLine]);
 
   return (
     <>

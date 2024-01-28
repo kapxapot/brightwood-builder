@@ -1,7 +1,8 @@
-import { Colors } from "../lib/constants";
+import type { StoryNodeType } from "../entities/story-node";
+import { colors } from "../lib/constants";
 
 interface Props {
-  type: string;
+  type: StoryNodeType;
   label: string;
 }
 
@@ -12,7 +13,7 @@ export default function ToolbarBlock({ type, label }: Props) {
   };
 
   return (
-    <div className={`border border-gray-700 rounded-md p-1 text-center cursor-grab ${Colors[type]}`} onDragStart={(event) => onDragStart(event, type)} draggable>
+    <div className={`border border-gray-700 rounded-md p-1 text-center cursor-grab ${colors[type]}`} onDragStart={(event) => onDragStart(event, type)} draggable>
       {label}
     </div>
   )

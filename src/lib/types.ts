@@ -1,4 +1,4 @@
 import type { Node } from "reactflow";
-import type { StoryNode } from "../entities/story-node";
+import type { GraphNode } from "../entities/story-node";
 
-export type NodeType = Node<StoryNode, string | undefined>;
+export type NodeType = Node<GraphNode, string | undefined>;

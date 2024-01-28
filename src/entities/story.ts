@@ -7,5 +7,6 @@ export type Story = {
   startId: number;
   prefix?: string;
   data?: StoryData;
+  position?: number[];
   nodes: StoryNode[];
 };

@@ -1,5 +1,6 @@
 import type { Story } from "./entities/story";
-import type { OnChangeHandler, StoryNode, StoryNodeType } from "./entities/story-node";
+import type { GraphNode, GraphNodeType, OnChangeHandler, StoryInfoGraphNode } from "./entities/story-node";
+import { storyInfoNodeId } from "./lib/constants";
 
 type Position = {
   x: number;
@@ -9,8 +10,8 @@ type Position = {
 type Node = {
   id: string;
   position: Position;
-  type: StoryNodeType;
-  data: StoryNode;
+  type: GraphNodeType;
+  data: GraphNode;
 };
 
 type Edge = {
@@ -24,6 +25,11 @@ interface StoryGraph {
   nodes: Node[];
   edges: Edge[];
 };
+
+const positionOrDefault = (dataPosition?: number[]): Position => ({
+  x: dataPosition ? dataPosition[0] : 0,
+  y: dataPosition ? dataPosition[1] : 0
+});
 
 export function buildStoryGraph(story: Story, changeHandler: OnChangeHandler): StoryGraph {
   const nodes: Node[] = [];
@@ -40,21 +46,39 @@ export function buildStoryGraph(story: Story, changeHandler: OnChangeHandler): S
     edges.push(edge);
   };
 
-  for (const data of story.nodes) {
-    data.isStart = data.id === story.startId;
-    data.onChange = changeHandler;
+  // add story info node
+  const storyInfoData: StoryInfoGraphNode = {
+    id: storyInfoNodeId,
+    type: "storyInfo",
+    title: story.title,
+    description: story.description,
+    startId: story.startId,
+    onChange: changeHandler,
+    position: story.position
+  };
 
-    const dpos = data.position;
-    const position: Position = {
-      x: dpos ? dpos[0] : 0,
-      y: dpos ? dpos[1] : 0
-    }; 
+  const storyInfoNode = {
+    id: String(storyInfoData.id),
+    type: storyInfoData.type,
+    dragHandle: '.custom-drag-handle',
+    position: positionOrDefault(storyInfoData.position),
+    data: storyInfoData
+  };
+
+  nodes.push(storyInfoNode);
+
+  if (storyInfoNode.data.startId) {
+    addEdge(storyInfoNode.id, storyInfoNode.data.startId);
+  }
+
+  for (const data of story.nodes) {
+    data.onChange = changeHandler;
 
     const node = {
       id: String(data.id),
       type: data.type,
       dragHandle: '.custom-drag-handle',
-      position,
+      position: positionOrDefault(data.position),
       data
     };
 

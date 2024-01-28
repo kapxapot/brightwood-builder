@@ -4,7 +4,7 @@ import NodeRef from "./node-ref";
 import Button from "../core/button";
 import { useEffect, useRef, useState } from "react";
 import { autoHeight, focusAndSelect } from "../../lib/ref-operations";
-import { Weight } from "../../lib/constants";
+import { weights } from "../../lib/constants";
 
 interface Props {
   link: Link;
@@ -29,7 +29,7 @@ function weightStr(weight: number): string {
 }
 
 export default function NodeLink({ link, index, deletable, updateLink, deleteLink, nodeEditing, onEditStarted, onEditFinished }: Props) {
-  const initialWeight = link.weight || Weight.default;
+  const initialWeight = link.weight || weights.default;
   const noWeight = !link.weight;
 
   const [weight, setWeight] = useState(initialWeight);
@@ -96,16 +96,18 @@ export default function NodeLink({ link, index, deletable, updateLink, deleteLin
                   className="w-full py-1 px-1.5 border border-slate-400 rounded-md"
                   ref={inputRef}
                   placeholder="Link weight"
-                  min={Weight.min}
-                  max={Weight.max}
+                  min={weights.min}
+                  max={weights.max}
                 />
               </div>
-              <div>
-                {!!weight && weightStr(weight)}
-              </div>
+              {!!weight &&
+                <div>
+                  {weightStr(weight)}
+                </div>
+              }
             </div>
             <div className="space-x-2">
-              <Button onClick={commitEdit} disabled={weight <= Weight.min || weight > Weight.max}>Save</Button>
+              <Button onClick={commitEdit} disabled={weight <= weights.min || weight > weights.max}>Save</Button>
               <Button onClick={cancelEdit}>Cancel</Button>
             </div>
           </div>
@@ -128,7 +130,6 @@ export default function NodeLink({ link, index, deletable, updateLink, deleteLin
             type="source"
             position={Position.Right}
             className="bg-slate-600"
-            isConnectable={true}
           />
         }
       </div>

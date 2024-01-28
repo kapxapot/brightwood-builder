@@ -102,7 +102,6 @@ export default function NodeAction({ action, index, deletable, updateAction, del
             type="source"
             position={Position.Right}
             className="bg-slate-600"
-            isConnectable={true}
           />
         }
       </div>
