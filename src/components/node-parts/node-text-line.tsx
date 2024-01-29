@@ -6,14 +6,14 @@ interface Props {
   line: string;
   index: number;
   deletable: boolean;
-  nodeEditing: boolean;
+  readonly: boolean;
   updateLine: (updatedLine: string) => void;
   deleteLine: () => void;
   onEditStarted?: () => void;
   onEditFinished?: () => void;
 }
 
-export default function NodeTextLine({ line, index, deletable, nodeEditing, updateLine, deleteLine, onEditStarted, onEditFinished }: Props) {
+export default function NodeTextLine({ line, index, deletable, readonly, updateLine, deleteLine, onEditStarted, onEditFinished }: Props) {
   const noText = !line.length;
 
   const [editedLine, setEditedLine] = useState(line);
@@ -22,7 +22,7 @@ export default function NodeTextLine({ line, index, deletable, nodeEditing, upda
   const inputRef = useRef<HTMLTextAreaElement>(null);
 
   function startEdit() {
-    if (nodeEditing) {
+    if (readonly) {
       return;
     }
 
@@ -90,20 +90,19 @@ export default function NodeTextLine({ line, index, deletable, nodeEditing, upda
       }
       {/* view */}
       {!editing &&
-        <div className="relative group cursor-text text-sm">
+        <div className={`relative group ${!readonly && "cursor-text"} text-sm`}>
           <p
-            key={index}
-            className="border border-black border-opacity-20 rounded-lg border-dashed bg-white bg-opacity-50 px-2 py-1"
+            className="border border-black border-opacity-20 rounded-lg border-dashed bg-white bg-opacity-50 px-2 py-1 break-words"
             onClick={startEdit}
           >
             <span
-              className={`whitespace-pre-line ${!line.length && "opacity-30"}`}
+              className={`whitespace-pre-line ${noText && "opacity-30"}`}
               dangerouslySetInnerHTML={{ __html: line || `Text line ${index + 1}` }}
             >
             </span>
           </p>
           <div className="absolute right-[3px] top-[3px] space-x-1 hidden group-hover:block">
-            {!nodeEditing &&
+            {!readonly &&
               <>
                 <Button size="sm" onClick={startEdit}>🖊</Button>
                 {deletable &&

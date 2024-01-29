@@ -25,7 +25,7 @@ export default function NodeShell({ className, selected, children, data, label, 
       <NodeText
         text={data.text}
         allowEmpty={allowNoText ?? false}
-        nodeEditing={nodeEditing}
+        readonly={nodeEditing}
         addLine={() => addTextLine(data)}
         updateLine={(index, updatedLine) => updateTextLine(data, index, updatedLine)}
         deleteLine={(index) => deleteTextLine(data, index)}

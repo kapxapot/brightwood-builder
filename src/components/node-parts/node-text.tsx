@@ -6,7 +6,7 @@ import NodeTextLine from "./node-text-line";
 interface Props {
   text?: Text;
   allowEmpty: boolean;
-  nodeEditing: boolean;
+  readonly: boolean;
   addLine: () => void;
   updateLine: (index: number, updatedLine: string) => void;
   deleteLine: (index: number) => void;
@@ -14,7 +14,7 @@ interface Props {
   onEditFinished: () => void;
 }
 
-export default function NodeText({ text, allowEmpty, nodeEditing, addLine, updateLine, deleteLine, onEditStarted, onEditFinished }: Props) {
+export default function NodeText({ text, allowEmpty, readonly, addLine, updateLine, deleteLine, onEditStarted, onEditFinished }: Props) {
   const lines = toArray(text);
 
   return (
@@ -25,14 +25,14 @@ export default function NodeText({ text, allowEmpty, nodeEditing, addLine, updat
           index={index}
           line={line}
           deletable={allowEmpty || lines.length > 1}
-          nodeEditing={nodeEditing}
+          readonly={readonly}
           updateLine={updatedLine => updateLine(index, updatedLine)}
           deleteLine={() => deleteLine(index)}
           onEditStarted={onEditStarted}
           onEditFinished={onEditFinished}
         />
       )}
-      <Button onClick={addLine} disabled={nodeEditing}>Add text 🖊</Button>
+      <Button onClick={addLine} disabled={readonly}>Add text 🖊</Button>
     </div>
   );
 }

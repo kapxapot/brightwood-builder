@@ -91,7 +91,7 @@ export default function NodeAction({ action, index, deletable, updateAction, del
         }
         {/* view */}
         {!editing &&
-          <div>
+          <div className="break-words">
             ⚡ <span className={`mr-1 ${noLabel && "opacity-30"}`}>{initialLabel || `Action ${index + 1}`}</span>
             <NodeRef id={action.id} />
           </div>
