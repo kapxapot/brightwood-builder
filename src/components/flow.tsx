@@ -1,6 +1,6 @@
 import "reactflow/dist/base.css";
-import { useCallback, useRef, useState } from "react";
-import ReactFlow, { MiniMap, Controls, Background, useNodesState, useEdgesState, addEdge, BackgroundVariant, type Connection, ReactFlowProvider, type ReactFlowInstance, type Node, type Edge, type NodeChange } from "reactflow";
+import { useCallback, useEffect, useRef, useState } from "react";
+import ReactFlow, { MiniMap, Controls, Background, useNodesState, useEdgesState, addEdge, BackgroundVariant, type Connection, ReactFlowProvider, type ReactFlowInstance, type Node, type Edge, type OnSelectionChangeParams, useKeyPress } from "reactflow";
 import Toolbar from "./toolbar";
 import ActionNode from "./nodes/action-node";
 import SkipNode from "./nodes/skip-node";
@@ -13,6 +13,7 @@ import { removeConnections, updateConnection } from "../lib/node-operations";
 import { isAllowedConnection, isDeletable } from "../lib/node-checks";
 import type { GraphNode, NodeEvent, OnChangeHandler, StoryNode, StoryNodeType } from "../entities/story-node";
 import StoryInfoNode from "./nodes/story-info-node";
+import type { NodeType } from "../lib/types";
 
 interface Props {
   fit: boolean;
@@ -35,13 +36,17 @@ export default function Flow({ fit }: Props) {
   let maxNodeId = Math.max(...storyGraph.nodes.map(n => n.data.id));
   const getNextId = () => String(++maxNodeId);
 
-  const getNode = (id: string) => nodes.find(n => n.id === id);
-
   const reactFlowWrapper = useRef<HTMLDivElement>(null);
 
   const [nodes, setNodes, onNodesChange] = useNodesState(storyGraph.nodes);
   const [edges, setEdges, onEdgesChange] = useEdgesState(storyGraph.edges);
   const [reactFlowInstance, setReactFlowInstance] = useState<ReactFlowInstance | null>(null);
+
+  const [selectedNodes, setSelectedNodes] = useState([] as Node[]);
+  const [selectedEdges, setSelectedEdges] = useState([] as Edge[]);
+
+  const isNodeSelected = (node: Node) => selectedNodes.some(n => n.id === node.id);
+  const isEdgeSelected = (edge: Edge) => selectedEdges.some(e => e.id === edge.id);
 
   const onConnect = useCallback(
     (conn: Connection) => {
@@ -211,26 +216,49 @@ export default function Flow({ fit }: Props) {
     []
   );
 
-  const nodesChangeHandler = useCallback(
-    (changes: NodeChange[]) => {
-      const nextChanges = changes.reduce((acc, change) => {
-        if (change.type === 'remove') {
-          const node = getNode(change.id)
-  
-          if (node && isDeletable(node)) {
-            return [...acc, change];
-          }
-    
-          return acc;
-        }
-  
-        return [...acc, change];
-      }, [] as NodeChange[])
-
-      onNodesChange(nextChanges);
+  const selectionChangeHandler = useCallback(
+    (params: OnSelectionChangeParams) => {
+      setSelectedNodes(params.nodes);
+      setSelectedEdges(params.edges);
     },
-    [onNodesChange]
+    []
   );
+
+  const deletePressed = useKeyPress(["Delete", "Backspace"]);
+
+  useEffect(function handleDelete() {
+    // if storyInfo node is selected, do not allow to delete it
+    // also do not allow to delete storyInfo edges if their targets are not deleted too
+    setEdges(
+      currentEdges => currentEdges.reduce(
+        (acc, edge) => {
+          // if edge should be deleted, just return acc
+          // otherwise add it to acc
+          if (isEdgeSelected(edge)) {
+            return acc;
+          }
+
+          return [...acc, edge];
+        },
+        [] as Edge[]
+      )
+    );
+
+    setNodes(
+      currentNodes => currentNodes.reduce(
+        (acc, node) => {
+          // if node should be deleted, just return acc
+          // otherwise add it to acc
+          if (isNodeSelected(node) && isDeletable(node)) {
+            return acc;
+          }
+
+          return [...acc, node];
+        },
+        [] as NodeType[]
+      )
+    );
+  }, [deletePressed]);
 
   return (
     <div className="h-screen w-screen flex flex-row flex-grow">
@@ -240,14 +268,15 @@ export default function Flow({ fit }: Props) {
           <ReactFlow
             nodes={nodes}
             edges={edges}
-            onNodesChange={nodesChangeHandler}
+            onSelectionChange={selectionChangeHandler}
+            onNodesChange={onNodesChange}
             onEdgesChange={onEdgesChange}
             onConnect={onConnect}
             onInit={setReactFlowInstance}
             onDrop={onDrop}
             onDragOver={onDragOver}
             onEdgesDelete={onEdgesDelete}
-            deleteKeyCode="Delete"
+            deleteKeyCode={[]}
             className="bg-gray-100"
             nodeTypes={nodeTypes}
             fitView={fit}
