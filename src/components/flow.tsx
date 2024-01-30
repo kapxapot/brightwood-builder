@@ -1,6 +1,6 @@
 import "reactflow/dist/base.css";
 import { useCallback, useRef, useState } from "react";
-import ReactFlow, { MiniMap, Controls, Background, useNodesState, useEdgesState, addEdge, BackgroundVariant, type Connection, ReactFlowProvider, type ReactFlowInstance, type Node, type Edge } from "reactflow";
+import ReactFlow, { MiniMap, Controls, Background, useNodesState, useEdgesState, addEdge, BackgroundVariant, type Connection, ReactFlowProvider, type ReactFlowInstance, type Node, type Edge, type NodeChange } from "reactflow";
 import Toolbar from "./toolbar";
 import ActionNode from "./nodes/action-node";
 import SkipNode from "./nodes/skip-node";
@@ -10,7 +10,7 @@ import story from "../stories/test.json";
 import { buildStoryGraph } from "../story-graph-builder";
 import type { Story } from "../entities/story";
 import { removeConnections, updateConnection } from "../lib/node-operations";
-import { isAllowedConnection } from "../lib/node-checks";
+import { isAllowedConnection, isDeletable } from "../lib/node-checks";
 import type { GraphNode, NodeEvent, OnChangeHandler, StoryNode, StoryNodeType } from "../entities/story-node";
 import StoryInfoNode from "./nodes/story-info-node";
 
@@ -27,12 +27,18 @@ const nodeTypes = {
 };
 
 export default function Flow({ fit }: Props) {
-  const storyGraph = buildStoryGraph(story as Story, (data, event) => onNodeDataChange(data, event));
+  const storyGraph = buildStoryGraph(
+    story as Story,
+    (data, event) => onNodeDataChange(data, event)
+  );
 
   let maxNodeId = Math.max(...storyGraph.nodes.map(n => n.data.id));
   const getNextId = () => String(++maxNodeId);
 
+  const getNode = (id: string) => nodes.find(n => n.id === id);
+
   const reactFlowWrapper = useRef<HTMLDivElement>(null);
+
   const [nodes, setNodes, onNodesChange] = useNodesState(storyGraph.nodes);
   const [edges, setEdges, onEdgesChange] = useEdgesState(storyGraph.edges);
   const [reactFlowInstance, setReactFlowInstance] = useState<ReactFlowInstance | null>(null);
@@ -205,6 +211,27 @@ export default function Flow({ fit }: Props) {
     []
   );
 
+  const nodesChangeHandler = useCallback(
+    (changes: NodeChange[]) => {
+      const nextChanges = changes.reduce((acc, change) => {
+        if (change.type === 'remove') {
+          const node = getNode(change.id)
+  
+          if (node && isDeletable(node)) {
+            return [...acc, change];
+          }
+    
+          return acc;
+        }
+  
+        return [...acc, change];
+      }, [] as NodeChange[])
+
+      onNodesChange(nextChanges);
+    },
+    [onNodesChange]
+  );
+
   return (
     <div className="h-screen w-screen flex flex-row flex-grow">
       <ReactFlowProvider>
@@ -213,7 +240,7 @@ export default function Flow({ fit }: Props) {
           <ReactFlow
             nodes={nodes}
             edges={edges}
-            onNodesChange={onNodesChange}
+            onNodesChange={nodesChangeHandler}
             onEdgesChange={onEdgesChange}
             onConnect={onConnect}
             onInit={setReactFlowInstance}

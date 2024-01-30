@@ -1,5 +1,6 @@
-import type { Connection } from "reactflow";
+import type { Connection, Node } from "reactflow";
 import type { NodeType } from "./types";
+import type { GraphNode } from "../entities/story-node";
 
 export function isAllowedConnection(conn: Connection, nodes: NodeType[]): boolean {
   const sourceNode = nodes.find(n => n.id === conn.source);
@@ -10,4 +11,8 @@ export function isAllowedConnection(conn: Connection, nodes: NodeType[]): boolea
   }
 
   return true;
+}
+
+export function isDeletable(node: Node<GraphNode>): boolean {
+  return node.data.type !== "storyInfo";
 }

@@ -25,7 +25,7 @@ const SkipNode = memo(function SkipNode({ data, selected }: Props) {
       onEditFinished={finishEdit}
     >
       <div className="mt-2 text-sm bg-gradient-to-r from-transparent to-cyan-300 p-1 relative -mr-2">
-        <div>🚀 Skip to <NodeRef id={data.nextId} /></div>
+        <div>🚀 Skips to <NodeRef id={data.nextId} /></div>
         <Handle id="0" type="source" position={Position.Right} className="bg-slate-600" />
       </div>
     </NodeShell>
