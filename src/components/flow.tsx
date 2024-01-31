@@ -224,40 +224,37 @@ export default function Flow({ fit }: Props) {
     []
   );
 
+  const deleteEdges = useCallback(
+    (selector: (edge: Edge) => boolean) => {
+      setEdges(curEdges => {
+        const edgesToDelete = curEdges.filter(selector);
+
+        if (edgesToDelete.length) {
+          onEdgesDelete(edgesToDelete);
+        }
+
+        return curEdges.filter(e => !edgesToDelete.includes(e));
+      });
+     },
+    [setEdges]
+  );
+
   const deletePressed = useKeyPress(["Delete", "Backspace"]);
 
   useEffect(function handleDelete() {
-    // if storyInfo node is selected, do not allow to delete it
-    // also do not allow to delete storyInfo edges if their targets are not deleted too
-    setEdges(
-      currentEdges => currentEdges.reduce(
-        (acc, edge) => {
-          // if edge should be deleted, just return acc
-          // otherwise add it to acc
-          if (isEdgeSelected(edge)) {
-            return acc;
-          }
+    // if storyInfo node is selected, do not allow deleting it
+    // also do not allow deleting storyInfo edges if their targets are not deleted too
+    deleteEdges(e => isEdgeSelected(e));
 
-          return [...acc, edge];
-        },
-        [] as Edge[]
-      )
-    );
+    setNodes(curNodes => {
+      const nodesToDelete = curNodes.filter(n => isNodeSelected(n) && isDeletable(n));
 
-    setNodes(
-      currentNodes => currentNodes.reduce(
-        (acc, node) => {
-          // if node should be deleted, just return acc
-          // otherwise add it to acc
-          if (isNodeSelected(node) && isDeletable(node)) {
-            return acc;
-          }
+      // find all the edges of the nodes to delete
+      // delete these edges too
+      deleteEdges(e => nodesToDelete.some(n => n.id === e.source || n.id === e.target));
 
-          return [...acc, node];
-        },
-        [] as NodeType[]
-      )
-    );
+      return curNodes.filter(n => !nodesToDelete.includes(n));
+    });
   }, [deletePressed]);
 
   return (
@@ -275,7 +272,7 @@ export default function Flow({ fit }: Props) {
             onInit={setReactFlowInstance}
             onDrop={onDrop}
             onDragOver={onDragOver}
-            onEdgesDelete={onEdgesDelete}
+            onEdgesDelete={onEdgesDelete} // doesn't work currently
             deleteKeyCode={[]}
             className="bg-gray-100"
             nodeTypes={nodeTypes}

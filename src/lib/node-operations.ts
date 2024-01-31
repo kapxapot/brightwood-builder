@@ -42,6 +42,14 @@ export function updateConnection(node: NodeType, sourceHandle: string, target: s
       };
 
       break;
+
+    case "storyInfo":
+      node.data = {
+        ...data,
+        startId: toId
+      };
+
+      break;
   }
 
   return node;
@@ -91,10 +99,17 @@ export function removeConnections(node: NodeType, edges: Edge[]): NodeType {
       break;
 
     case "skip":
-      const newData = { ...data };
-      delete newData.nextId;
+      const newSkipData = { ...data };
+      delete newSkipData.nextId;
 
-      node.data = newData;
+      node.data = newSkipData;
+      break;
+
+    case "storyInfo":
+      const newStoryInfoData = { ...data };
+      delete newStoryInfoData.startId;
+
+      node.data = newStoryInfoData;
       break;
   }
 
