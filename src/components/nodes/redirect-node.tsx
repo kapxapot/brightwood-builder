@@ -1,10 +1,10 @@
-import { memo } from 'react';
-import type { Link, RedirectStoryNode } from '../../entities/story-node';
-import { colors } from '../../lib/constants';
-import NodeShell from '../node-parts/node-shell';
-import Button from '../core/button';
-import NodeLink from '../node-parts/node-link';
-import { useNodeEditing } from '../../hooks/use-node-editing';
+import { memo } from "react";
+import type { Link, RedirectStoryNode } from "../../entities/story-node";
+import { colors } from "../../lib/constants";
+import NodeShell from "../node-parts/node-shell";
+import Button from "../core/button";
+import NodeLink from "../node-parts/node-link";
+import { useNodeEditing } from "../../hooks/use-node-editing";
 
 interface Props {
   data: RedirectStoryNode;

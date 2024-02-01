@@ -1,10 +1,10 @@
-import { type PropsWithChildren } from 'react';
-import { Handle, Position } from 'reactflow';
-import NodeTitle from './node-title';
-import type { StoryNode } from '../../entities/story-node';
-import NodeEffect from './node-effect';
-import NodeText from './node-text';
-import { addTextLine, deleteTextLine, updateTextLine } from '../../lib/node-data-mutations';
+import { type PropsWithChildren } from "react";
+import { Handle, Position } from "reactflow";
+import NodeTitle from "./node-title";
+import type { StoryNode } from "../../entities/story-node";
+import NodeEffect from "./node-effect";
+import NodeText from "./node-text";
+import { addTextLine, deleteTextLine, updateTextLine } from "../../lib/node-data-mutations";
 
 interface Props {
   className?: string,
