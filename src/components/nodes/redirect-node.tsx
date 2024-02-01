@@ -64,7 +64,7 @@ const RedirectNode = memo(function RedirectNode({ data, selected }: Props) {
             key={index}
             index={index}
             link={link}
-            deletable={data.links.length > 1}
+            deletable={true}
             updateLink={updatedLink => updateLink(index, updatedLink)}
             deleteLink={() => deleteLink(index)}
             nodeEditing={nodeEditing}
