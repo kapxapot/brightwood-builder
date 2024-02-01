@@ -63,6 +63,7 @@ export default function NodeAction({ action, index, deletable, updateAction, del
     if (noLabel) {
       startEdit();
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => autoHeight(inputRef), [label]);

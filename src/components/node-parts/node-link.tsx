@@ -77,6 +77,7 @@ export default function NodeLink({ link, index, deletable, updateLink, deleteLin
     if (noWeight) {
       startEdit();
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => autoHeight(inputRef), [weight]);

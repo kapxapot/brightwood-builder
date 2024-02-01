@@ -60,6 +60,7 @@ export default function NodeTextLine({ line, index, deletable, readonly, updateL
     if (noText) {
       startEdit();
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(function correctHeightOnEdit() {
