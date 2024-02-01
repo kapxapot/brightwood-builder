@@ -1,11 +1,11 @@
-import { memo } from 'react';
-import { useNodeEditing } from '../../hooks/use-node-editing';
-import NodeTitle from '../node-parts/node-title';
-import { Handle, Position } from 'reactflow';
-import type { StoryInfoGraphNode } from '../../entities/story-node';
-import { colors } from '../../lib/constants';
-import NodeRef from '../node-parts/node-ref';
-import TextInput from '../core/text-input';
+import { memo } from "react";
+import { useNodeEditing } from "../../hooks/use-node-editing";
+import NodeTitle from "../node-parts/node-title";
+import { Handle, Position } from "reactflow";
+import type { StoryInfoGraphNode } from "../../entities/story-node";
+import { colors } from "../../lib/constants";
+import NodeRef from "../node-parts/node-ref";
+import TextInput from "../core/text-input";
 
 interface Props {
   data: StoryInfoGraphNode;

@@ -1,4 +1,4 @@
-import type { EffectInvocation } from "../../entities/story-data"
+import type { EffectInvocation } from "../../entities/story-data";
 
 interface Props {
   effect?: EffectInvocation;

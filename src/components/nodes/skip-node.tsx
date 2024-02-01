@@ -1,10 +1,10 @@
-import { memo } from 'react';
-import { Handle, Position } from 'reactflow';
-import type { SkipStoryNode } from '../../entities/story-node';
-import { colors } from '../../lib/constants';
-import NodeShell from '../node-parts/node-shell';
-import NodeRef from '../node-parts/node-ref';
-import { useNodeEditing } from '../../hooks/use-node-editing';
+import { memo } from "react";
+import { Handle, Position } from "reactflow";
+import type { SkipStoryNode } from "../../entities/story-node";
+import { colors } from "../../lib/constants";
+import NodeShell from "../node-parts/node-shell";
+import NodeRef from "../node-parts/node-ref";
+import { useNodeEditing } from "../../hooks/use-node-editing";
 
 interface Props {
   data: SkipStoryNode;

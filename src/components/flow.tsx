@@ -7,13 +7,13 @@ import SkipNode from "./nodes/skip-node";
 import RedirectNode from "./nodes/redirect-node";
 import FinishNode from "./nodes/finish-node";
 import story from "../stories/test.json";
-import { buildStoryGraph } from "../story-graph-builder";
+import { buildStoryGraph } from "../builders/story-graph-builder";
 import type { Story } from "../entities/story";
 import { removeConnections, updateConnection } from "../lib/node-operations";
 import { isAllowedConnection, isDeletable } from "../lib/node-checks";
 import type { GraphNode, NodeEvent, OnChangeHandler, StoryNode, StoryNodeType } from "../entities/story-node";
 import StoryInfoNode from "./nodes/story-info-node";
-import type { NodeType } from "../lib/types";
+import { buildNodeData } from "../builders/node-builder";
 
 interface Props {
   fit: boolean;
@@ -33,9 +33,6 @@ export default function Flow({ fit }: Props) {
     (data, event) => onNodeDataChange(data, event)
   );
 
-  let maxNodeId = Math.max(...storyGraph.nodes.map(n => n.data.id));
-  const getNextId = () => String(++maxNodeId);
-
   const reactFlowWrapper = useRef<HTMLDivElement>(null);
 
   const [nodes, setNodes, onNodesChange] = useNodesState(storyGraph.nodes);
@@ -44,9 +41,6 @@ export default function Flow({ fit }: Props) {
 
   const [selectedNodes, setSelectedNodes] = useState([] as Node[]);
   const [selectedEdges, setSelectedEdges] = useState([] as Edge[]);
-
-  const isNodeSelected = (node: Node) => selectedNodes.some(n => n.id === node.id);
-  const isEdgeSelected = (edge: Edge) => selectedEdges.some(e => e.id === edge.id);
 
   const onConnect = useCallback(
     (conn: Connection) => {
@@ -80,13 +74,61 @@ export default function Flow({ fit }: Props) {
         );
       });
     },
-    [setEdges]
+    [nodes, setNodes, setEdges]
   );
 
   const onDragOver = useCallback((event: React.DragEvent<HTMLDivElement>) => {
     event.preventDefault();
     event.dataTransfer.dropEffect = 'move';
   }, []);
+
+  const nodeEventHandler = useCallback(
+    (nodeId: string, event: NodeEvent) => {
+      switch (event.type) {
+        case "handleRemoved":
+          // if the node's handle was removed, remove the corresponding edges
+          setEdges(curEdges => {
+              // remove the edge with the handler
+              const filteredEdges = curEdges.filter(
+                edge => edge.source !== nodeId || edge.sourceHandle !== event.handle
+              );
+
+              // update handlers for next edges (make them -1)
+              return filteredEdges.map(edge => {
+                const numHandle = Number(edge.sourceHandle);
+
+                return (edge.source !== nodeId || numHandle < Number(event.handle))
+                  ? edge
+                  : {
+                    ...edge,
+                    sourceHandle: String(numHandle - 1)
+                  }
+              });
+            }
+          );
+
+          break;
+      }
+    },
+    [setEdges]
+  );
+
+  const onNodeDataChange: OnChangeHandler = useCallback(
+    (data: GraphNode, event?: NodeEvent) => {
+      if (event) {
+        nodeEventHandler(String(data.id), event);
+      }
+
+      setNodes(curNodes => curNodes.map(node => {
+        if (node.data.id === data.id) {
+          node.data = data;
+        }
+
+        return node;
+      }));
+    },
+    [setNodes, nodeEventHandler]
+  );
 
   const onDrop = useCallback(
     (event: React.DragEvent<HTMLDivElement>) => {
@@ -109,99 +151,20 @@ export default function Flow({ fit }: Props) {
         y: event.clientY - reactFlowBounds.top,
       });
 
-      const nodeId = getNextId();
+      const nodeId = Math.max(...nodes.map(n => n.data.id)) + 1;
 
       const newNode: Node<StoryNode> = {
-        id: nodeId,
+        id: String(nodeId),
         type,
         dragHandle: '.custom-drag-handle',
         position,
-        data: buildNodeData(Number(nodeId), type as StoryNodeType)
+        data: buildNodeData(nodeId, type as StoryNodeType, onNodeDataChange)
       };
 
       setNodes(curNodes => curNodes.concat(newNode));
     },
-    [reactFlowInstance]
+    [reactFlowInstance, nodes, setNodes, onNodeDataChange]
   );
-
-  const buildNodeData = (id: number, type: StoryNodeType): StoryNode => {
-    switch (type) {
-      case "action":
-        return {
-          id,
-          type,
-          text: "",
-          actions: [],
-          onChange: onNodeDataChange
-        };
-
-      case "skip":
-        return {
-          id,
-          type,
-          text: "",
-          onChange: onNodeDataChange
-        };
-
-      case "redirect":
-        return {
-          id,
-          type,
-          text: "",
-          links: [],
-          onChange: onNodeDataChange
-        };
-
-      case "finish":
-        return {
-          id,
-          type,
-          onChange: onNodeDataChange
-        };
-    }
-  };
-
-  const onNodeDataChange: OnChangeHandler = (data: GraphNode, event?: NodeEvent) => {
-    if (event) {
-      nodeEventHandler(String(data.id), event);
-    }
-
-    setNodes(curNodes => curNodes.map(node => {
-      if (node.data.id === data.id) {
-        node.data = data;
-      }
-
-      return node;
-    }));
-  };
-
-  const nodeEventHandler = (nodeId: string, event: NodeEvent) => {
-    switch (event.type) {
-      case "handleRemoved":
-        // if the node's handle was removed, remove the corresponding edges
-        setEdges(curEdges => {
-            // remove the edge with the handler
-            const filteredEdges = curEdges.filter(
-              edge => edge.source !== nodeId || edge.sourceHandle !== event.handle
-            );
-
-            // update handlers for next edges (make them -1)
-            return filteredEdges.map(edge => {
-              const numHandle = Number(edge.sourceHandle);
-
-              return (edge.source !== nodeId || numHandle < Number(event.handle))
-                ? edge
-                : {
-                  ...edge,
-                  sourceHandle: String(numHandle - 1)
-                }
-            });
-          }
-        );
-
-        break;
-    }
-  };
 
   const onEdgesDelete = useCallback(
     (curEdges: Edge[]) => {
@@ -213,7 +176,7 @@ export default function Flow({ fit }: Props) {
           : node;
       }));
     },
-    []
+    [setNodes]
   );
 
   const selectionChangeHandler = useCallback(
@@ -236,7 +199,7 @@ export default function Flow({ fit }: Props) {
         return curEdges.filter(e => !edgesToDelete.includes(e));
       });
      },
-    [setEdges]
+    [setEdges, onEdgesDelete]
   );
 
   const deletePressed = useKeyPress(["Delete", "Backspace"]);
@@ -244,6 +207,9 @@ export default function Flow({ fit }: Props) {
   useEffect(function handleDelete() {
     // if storyInfo node is selected, do not allow deleting it
     // also do not allow deleting storyInfo edges if their targets are not deleted too
+    const isNodeSelected = (node: Node) => selectedNodes.some(n => n.id === node.id);
+    const isEdgeSelected = (edge: Edge) => selectedEdges.some(e => e.id === edge.id);
+
     deleteEdges(e => isEdgeSelected(e));
 
     setNodes(curNodes => {
@@ -255,6 +221,7 @@ export default function Flow({ fit }: Props) {
 
       return curNodes.filter(n => !nodesToDelete.includes(n));
     });
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [deletePressed]);
 
   return (

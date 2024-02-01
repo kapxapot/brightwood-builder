@@ -10,4 +10,4 @@ export default function NodeTitle({ id, label }: Props) {
       <span className="font-bold">{label}</span>
     </div>
   )
-};
+}
