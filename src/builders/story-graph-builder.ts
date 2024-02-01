@@ -1,6 +1,6 @@
-import type { Story } from "./entities/story";
-import type { GraphNode, GraphNodeType, OnChangeHandler, StoryInfoGraphNode } from "./entities/story-node";
-import { storyInfoNodeId } from "./lib/constants";
+import type { Story } from "../entities/story";
+import type { GraphNode, GraphNodeType, OnChangeHandler, StoryInfoGraphNode } from "../entities/story-node";
+import { storyInfoNodeId } from "../lib/constants";
 
 type Position = {
   x: number;
@@ -24,7 +24,7 @@ type Edge = {
 interface StoryGraph {
   nodes: Node[];
   edges: Edge[];
-};
+}
 
 const positionOrDefault = (dataPosition?: number[]): Position => ({
   x: dataPosition ? dataPosition[0] : 0,
