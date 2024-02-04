@@ -44,7 +44,12 @@ const StoryInfoNode = memo(function StoryInfoNode({ data, selected }: Props) {
       />
       <div className="text-sm bg-gradient-to-r from-transparent to-purple-300 p-1 relative -mr-2">
         <div>🚩 It starts with <NodeRef id={data.startId} /></div>
-        <Handle id="0" type="source" position={Position.Right} className="bg-slate-600" />
+        <Handle
+          id="0"
+          type="source"
+          position={Position.Right}
+          className="bg-slate-600 w-[7px] h-[7px] rounded"
+        />
       </div>
     </div>
   );
