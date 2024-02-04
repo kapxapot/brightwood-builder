@@ -61,17 +61,19 @@ export default function TextInput({ value, label, rowCount, readonly, onValueCha
     <>
       {/* edit */}
       {editing &&
-        <div className="border border-black border-opacity-20 rounded-lg border-dashed bg-white p-1 space-y-1 mt-3 text-sm">
+        <div className="border border-black border-opacity-20 rounded-lg border-dashed bg-white p-1 mt-3 text-sm">
+          <span className="text-xs opacity-50 font-bold">
+            {label}
+          </span>
           <textarea
             defaultValue={editedValue}
             onChange={updateEditedValue}
             className="w-full py-1 px-1.5 border border-slate-400 rounded-md"
             ref={inputRef}
             rows={rowCount ?? defaultRowCount}
-            placeholder={label}
           >
           </textarea>
-          <div className="space-x-2">
+          <div className="pt-1 space-x-2">
             <Button onClick={commitEdit}>Save</Button>
             <Button onClick={cancelEdit}>Cancel</Button>
           </div>
@@ -79,9 +81,14 @@ export default function TextInput({ value, label, rowCount, readonly, onValueCha
       }
       {/* view */}
       {!editing &&
-        <div className={`relative group ${!readonly && "cursor-text"} text-sm`}>
+        <div className={`group ${!readonly && "cursor-text"} text-sm`}>
+          {!noValue &&
+            <span className="text-xs opacity-50 font-bold">
+              {label}
+            </span>
+          }
           <p
-            className="border border-black border-opacity-20 rounded-lg border-dashed bg-white bg-opacity-50 px-2 py-1"
+            className="relative border border-black border-opacity-20 rounded-lg border-dashed bg-white bg-opacity-50 px-2 py-1"
             onClick={startEdit}
           >
             <span
@@ -89,12 +96,12 @@ export default function TextInput({ value, label, rowCount, readonly, onValueCha
               dangerouslySetInnerHTML={{ __html: value || label }}
             >
             </span>
+            <div className="absolute right-[3px] top-[3px] space-x-1 hidden group-hover:block">
+              {!readonly &&
+                <Button size="sm" onClick={startEdit}>🖊</Button>
+              }
+            </div>
           </p>
-          <div className="absolute right-[3px] top-[3px] space-x-1 hidden group-hover:block">
-            {!readonly &&
-              <Button size="sm" onClick={startEdit}>🖊</Button>
-            }
-          </div>
         </div>
       }
     </>
