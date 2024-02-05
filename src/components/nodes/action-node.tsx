@@ -23,7 +23,7 @@ const ActionNode = memo(function ActionNode({ data, selected }: Props) {
   return (
     <NodeShell
       selected={selected}
-      color={colors.action}
+      color={colors.action.tw}
     >
       <NodeTitle id={data.id} label={data.label ?? "Action"} />
 
@@ -53,12 +53,14 @@ const ActionNode = memo(function ActionNode({ data, selected }: Props) {
         />
       )}
 
-      <Button
-        onClick={() => addAction(data)}
-        disabled={nodeEditing}
-      >
-        Add action ⚡
-      </Button>
+      <div>
+        <Button
+          onClick={() => addAction(data)}
+          disabled={nodeEditing}
+        >
+          Add action ⚡
+        </Button>
+      </div>
 
       <HandleIn connected={false} />
     </NodeShell>

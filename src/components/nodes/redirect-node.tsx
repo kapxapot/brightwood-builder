@@ -23,7 +23,7 @@ const RedirectNode = memo(function RedirectNode({ data, selected }: Props) {
   return (
     <NodeShell
       selected={selected}
-      color={colors.redirect}
+      color={colors.redirect.tw}
     >
       <NodeTitle id={data.id} label={data.label ?? "Redirect"} />
 
@@ -53,12 +53,14 @@ const RedirectNode = memo(function RedirectNode({ data, selected }: Props) {
         />
       )}
 
-      <Button
-        onClick={() => addLink(data)}
-        disabled={nodeEditing}
-      >
-        Add link 🎲
-      </Button>
+      <div>
+        <Button
+          onClick={() => addLink(data)}
+          disabled={nodeEditing}
+        >
+          Add link 🎲
+        </Button>
+      </div>
 
       <HandleIn connected={false} />
     </NodeShell>

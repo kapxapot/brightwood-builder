@@ -27,7 +27,7 @@ const StoryInfoNode = memo(function StoryInfoNode({ data, selected }: Props) {
   return (
     <NodeShell
       selected={selected}
-      color={colors.storyInfo}
+      color={colors.storyInfo.tw}
       spaceY="none"
     >
       <NodeTitle id={data.id} label="📚 Story" />

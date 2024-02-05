@@ -20,7 +20,7 @@ const FinishNode = memo(function FinishNode({ data, selected }: Props) {
   return (
     <NodeShell
       selected={selected}
-      color={colors.finish}
+      color={colors.finish.tw}
     >
       <NodeTitle id={data.id} label={data.label ?? "Finish"} />
 

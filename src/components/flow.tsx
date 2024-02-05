@@ -14,6 +14,7 @@ import { isAllowedConnection, isDeletable } from "../lib/node-checks";
 import type { GraphNode, NodeEvent, OnChangeHandler, StoryNode, StoryNodeType } from "../entities/story-node";
 import StoryInfoNode from "./nodes/story-info-node";
 import { buildNodeData } from "../builders/node-builder";
+import { colors } from "../lib/constants";
 
 interface Props {
   fit: boolean;
@@ -249,26 +250,7 @@ export default function Flow({ fit }: Props) {
             <MiniMap
               zoomable
               pannable
-              nodeColor={n => {
-                switch (n.type) {
-                  case "storyInfo":
-                    return "rgb(243, 232, 255)";
-
-                    case "action":
-                    return "rgb(220, 252, 231)";
-
-                  case "redirect":
-                    return "rgb(254, 249, 195)";
-
-                  case "skip":
-                    return "rgb(207, 250, 254)";
-
-                  case "finish":
-                    return "rgb(254, 226, 226)";
-                }
-
-                return "gray";
-              }}
+              nodeColor={n => n.type ? colors[n.type as StoryNodeType].rgb : "gray"}
             />
             <Background variant={BackgroundVariant.Dots} gap={12} size={1} />
           </ReactFlow>

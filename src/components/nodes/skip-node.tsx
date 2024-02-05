@@ -22,7 +22,7 @@ const SkipNode = memo(function SkipNode({ data, selected }: Props) {
   return (
     <NodeShell
       selected={selected}
-      color={colors.skip}
+      color={colors.skip.tw}
     >
       <NodeTitle id={data.id} label={data.label ?? "Skip"} />
 
