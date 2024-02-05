@@ -5,8 +5,8 @@ import NodeTextLine from "./node-text-line";
 
 interface Props {
   text?: Text;
-  allowEmpty: boolean;
-  readonly: boolean;
+  allowEmpty?: boolean;
+  readonly?: boolean;
   addLine: () => void;
   updateLine: (index: number, updatedLine: string) => void;
   deleteLine: (index: number) => void;
@@ -18,7 +18,7 @@ export default function NodeText({ text, allowEmpty, readonly, addLine, updateLi
   const lines = toArray(text);
 
   return (
-    <div className="mt-2 space-y-2">
+    <>
       {lines.map((line, index) =>
         <NodeTextLine
           key={index}
@@ -32,7 +32,8 @@ export default function NodeText({ text, allowEmpty, readonly, addLine, updateLi
           onEditFinished={onEditFinished}
         />
       )}
+
       <Button onClick={addLine} disabled={readonly}>Add text 🖊</Button>
-    </div>
+    </>
   );
 }

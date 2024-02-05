@@ -1,10 +1,15 @@
 import { memo } from "react";
-import { Handle, Position } from "reactflow";
 import type { SkipStoryNode } from "../../entities/story-node";
 import { colors } from "../../lib/constants";
 import NodeShell from "../node-parts/node-shell";
 import NodeRef from "../node-parts/node-ref";
 import { useNodeEditing } from "../../hooks/use-node-editing";
+import HandleIn from "../node-parts/handle-in";
+import NodeTitle from "../node-parts/node-title";
+import NodeEffect from "../node-parts/node-effect";
+import { addTextLine, deleteTextLine, updateTextLine } from "../../lib/node-data-mutations";
+import NodeText from "../node-parts/node-text";
+import HandleOut from "../node-parts/handle-out";
 
 interface Props {
   data: SkipStoryNode;
@@ -17,17 +22,28 @@ const SkipNode = memo(function SkipNode({ data, selected }: Props) {
   return (
     <NodeShell
       selected={selected}
-      className={colors.skip}
-      data={data}
-      label="Skip"
-      nodeEditing={nodeEditing}
-      onEditStarted={startEdit}
-      onEditFinished={finishEdit}
+      color={colors.skip}
     >
-      <div className="mt-2 text-sm bg-gradient-to-r from-transparent to-cyan-300 p-1 relative -mr-2">
+      <NodeTitle id={data.id} label={data.label ?? "Skip"} />
+
+      <NodeEffect effect={data.effect} />
+
+      <NodeText
+        text={data.text}
+        readonly={nodeEditing}
+        addLine={() => addTextLine(data)}
+        updateLine={(index, updatedLine) => updateTextLine(data, index, updatedLine)}
+        deleteLine={(index) => deleteTextLine(data, index)}
+        onEditStarted={startEdit}
+        onEditFinished={finishEdit}
+      />
+
+      <div className="text-sm bg-gradient-to-r from-transparent to-cyan-300 p-1 relative -mr-2">
         <div>🚀 Skips to <NodeRef id={data.nextId} /></div>
-        <Handle id="0" type="source" position={Position.Right} className="bg-slate-600" />
+        <HandleOut connected={!!data.nextId} />
       </div>
+
+      <HandleIn connected={false} />
     </NodeShell>
   );
 });

@@ -50,7 +50,7 @@ export default function TextInput({ value, label, rowCount, readonly, onValueCha
   }
 
   function updateEditedValue(event: React.ChangeEvent<HTMLTextAreaElement>) {
-    setEditedValue(event.target.value);
+    setEditedValue(event.currentTarget.value);
   }
 
   useEffect(function correctHeightOnEdit() {
@@ -58,7 +58,7 @@ export default function TextInput({ value, label, rowCount, readonly, onValueCha
   }, [editedValue]);
 
   return (
-    <>
+    <div className={`${noValue ? "mt-2" : "mt-1"}`}>
       {/* edit */}
       {editing &&
         <div className="border border-black border-opacity-20 rounded-lg border-dashed bg-white p-1 mt-3 text-sm">
@@ -104,6 +104,6 @@ export default function TextInput({ value, label, rowCount, readonly, onValueCha
           </p>
         </div>
       }
-    </>
+    </div>
   );
 }

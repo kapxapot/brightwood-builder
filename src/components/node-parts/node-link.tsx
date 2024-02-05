@@ -1,10 +1,10 @@
-import { Handle, Position } from "reactflow";
 import { type Link } from "../../entities/story-node";
 import NodeRef from "./node-ref";
 import Button from "../core/button";
 import { useEffect, useRef, useState } from "react";
 import { autoHeight, focusAndSelect } from "../../lib/ref-operations";
 import { weights } from "../../lib/constants";
+import HandleOut from "./handle-out";
 
 interface Props {
   link: Link;
@@ -69,7 +69,7 @@ export default function NodeLink({ link, index, deletable, updateLink, deleteLin
 
   function updateWeight(event: React.ChangeEvent<HTMLInputElement>) {
     setWeight(
-      Number(event.target.value)
+      Number(event.currentTarget.value)
     );
   }
 
@@ -108,8 +108,15 @@ export default function NodeLink({ link, index, deletable, updateLink, deleteLin
               }
             </div>
             <div className="space-x-2">
-              <Button onClick={commitEdit} disabled={weight <= weights.min || weight > weights.max}>Save</Button>
-              <Button onClick={cancelEdit}>Cancel</Button>
+              <Button
+                onClick={commitEdit}
+                disabled={weight <= weights.min || weight > weights.max}
+              >
+                Save
+              </Button>
+              <Button onClick={cancelEdit}>
+                Cancel
+              </Button>
             </div>
           </div>
         }
@@ -126,11 +133,9 @@ export default function NodeLink({ link, index, deletable, updateLink, deleteLin
           </div>
         }
         {!noWeight &&
-          <Handle
+          <HandleOut
             id={String(index)}
-            type="source"
-            position={Position.Right}
-            className="bg-slate-600"
+            connected={!!link.id}
           />
         }
       </div>

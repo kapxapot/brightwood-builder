@@ -1,11 +1,12 @@
 import { memo } from "react";
 import { useNodeEditing } from "../../hooks/use-node-editing";
 import NodeTitle from "../node-parts/node-title";
-import { Handle, Position } from "reactflow";
 import type { StoryInfoGraphNode } from "../../entities/story-node";
 import { colors } from "../../lib/constants";
 import NodeRef from "../node-parts/node-ref";
 import TextInput from "../core/text-input";
+import HandleOut from "../node-parts/handle-out";
+import NodeShell from "../node-parts/node-shell";
 
 interface Props {
   data: StoryInfoGraphNode;
@@ -24,8 +25,13 @@ const StoryInfoNode = memo(function StoryInfoNode({ data, selected }: Props) {
   };
 
   return (
-    <div className={`p-2 space-y-2 shadow-md rounded-md border w-[250px] ${selected ? "border-stone-600" : "border-stone-400"} cursor-default ${colors.storyInfo}`}>
+    <NodeShell
+      selected={selected}
+      color={colors.storyInfo}
+      spaceY="none"
+    >
       <NodeTitle id={data.id} label="📚 Story" />
+
       <TextInput
         value={data.title}
         label="Title"
@@ -34,6 +40,7 @@ const StoryInfoNode = memo(function StoryInfoNode({ data, selected }: Props) {
         onEditStarted={startEdit}
         onEditFinished={finishEdit}
       />
+
       <TextInput
         value={data.description}
         label="Description"
@@ -42,16 +49,12 @@ const StoryInfoNode = memo(function StoryInfoNode({ data, selected }: Props) {
         onEditStarted={startEdit}
         onEditFinished={finishEdit}
       />
-      <div className="text-sm bg-gradient-to-r from-transparent to-purple-300 p-1 relative -mr-2">
+
+      <div className="mt-2 text-sm bg-gradient-to-r from-transparent to-purple-300 p-1 relative -mr-2">
         <div>🚩 It starts with <NodeRef id={data.startId} /></div>
-        <Handle
-          id="0"
-          type="source"
-          position={Position.Right}
-          className="bg-slate-600 w-[7px] h-[7px] rounded"
-        />
+        <HandleOut id="0" connected={!!data.startId} />
       </div>
-    </div>
+    </NodeShell>
   );
 });
 

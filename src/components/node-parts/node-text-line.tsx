@@ -6,7 +6,7 @@ interface Props {
   line: string;
   index: number;
   deletable: boolean;
-  readonly: boolean;
+  readonly?: boolean;
   updateLine: (updatedLine: string) => void;
   deleteLine: () => void;
   onEditStarted?: () => void;
@@ -53,7 +53,7 @@ export default function NodeTextLine({ line, index, deletable, readonly, updateL
   }
 
   function updateEditedLine(event: React.ChangeEvent<HTMLTextAreaElement>) {
-    setEditedLine(event.target.value);
+    setEditedLine(event.currentTarget.value);
   }
 
   useEffect(function autoEditEmptyLine() {

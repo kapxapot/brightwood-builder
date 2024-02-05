@@ -1,9 +1,9 @@
-import { Handle, Position } from "reactflow";
 import { type Action } from "../../entities/story-node";
 import NodeRef from "./node-ref";
 import Button from "../core/button";
 import { useEffect, useRef, useState } from "react";
 import { autoHeight, focusAndSelect } from "../../lib/ref-operations";
+import HandleOut from "./handle-out";
 
 interface Props {
   action: Action;
@@ -56,7 +56,7 @@ export default function NodeAction({ action, index, deletable, updateAction, del
   }
 
   function updateLabel(event: React.ChangeEvent<HTMLInputElement>) {
-    setLabel(event.target.value);
+    setLabel(event.currentTarget.value);
   }
 
   useEffect(() => {
@@ -98,11 +98,9 @@ export default function NodeAction({ action, index, deletable, updateAction, del
           </div>
         }
         {!noLabel &&
-          <Handle
+          <HandleOut
             id={String(index)}
-            type="source"
-            position={Position.Right}
-            className="bg-slate-600"
+            connected={!!action.id}
           />
         }
       </div>

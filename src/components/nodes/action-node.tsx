@@ -1,10 +1,16 @@
 import { memo } from "react";
-import type { Action, ActionStoryNode } from "../../entities/story-node";
+import type { ActionStoryNode } from "../../entities/story-node";
 import { colors } from "../../lib/constants";
 import NodeShell from "../node-parts/node-shell";
 import Button from "../core/button";
 import NodeAction from "../node-parts/node-action";
 import { useNodeEditing } from "../../hooks/use-node-editing";
+import NodeTitle from "../node-parts/node-title";
+import NodeEffect from "../node-parts/node-effect";
+import NodeText from "../node-parts/node-text";
+import { addTextLine, deleteTextLine, updateTextLine } from "../../lib/node-data-mutations";
+import HandleIn from "../node-parts/handle-in";
+import { addAction, deleteAction, updateAction } from "../../lib/action-mutations";
 
 interface Props {
   data: ActionStoryNode;
@@ -14,66 +20,47 @@ interface Props {
 const ActionNode = memo(function ActionNode({ data, selected }: Props) {
   const [nodeEditing, startEdit, finishEdit] = useNodeEditing();
 
-  const addAction = () => {
-    data.onChange?.({
-      ...data,
-      actions: [
-        ...data.actions,
-        {
-          label: ""
-        }
-      ]
-    });
-  };
-
-  const updateAction = (updatedIndex: number, updatedAction: Action) => {
-    data.onChange?.({
-      ...data,
-      actions: data.actions.map(
-        (action, index) => index === updatedIndex ? updatedAction : action
-      )
-    });
-  };
-
-  const deleteAction = (index: number) => {
-    data.onChange?.(
-      {
-        ...data,
-        actions: data.actions.toSpliced(index, 1)
-      },
-      {
-        type: "handleRemoved",
-        handle: String(index)
-      }
-    );
-  };
-
   return (
     <NodeShell
       selected={selected}
-      className={colors.action}
-      data={data}
-      label="Action"
-      nodeEditing={nodeEditing}
-      onEditStarted={startEdit}
-      onEditFinished={finishEdit}
+      color={colors.action}
     >
-      <div className="mt-2 space-y-2">
-        {data.actions.map((action, index) =>
-          <NodeAction
-            key={index}
-            index={index}
-            action={action}
-            deletable={true}
-            updateAction={updatedAction => updateAction(index, updatedAction)}
-            deleteAction={() => deleteAction(index)}
-            nodeEditing={nodeEditing}
-            onEditStarted={startEdit}
-            onEditFinished={finishEdit}
-          />
-        )}
-        <Button onClick={addAction} disabled={nodeEditing}>Add action ⚡</Button>
-      </div>
+      <NodeTitle id={data.id} label={data.label ?? "Action"} />
+
+      <NodeEffect effect={data.effect} />
+
+      <NodeText
+        text={data.text}
+        readonly={nodeEditing}
+        addLine={() => addTextLine(data)}
+        updateLine={(index, updatedLine) => updateTextLine(data, index, updatedLine)}
+        deleteLine={(index) => deleteTextLine(data, index)}
+        onEditStarted={startEdit}
+        onEditFinished={finishEdit}
+      />
+
+      {data.actions.map((action, index) =>
+        <NodeAction
+          key={index}
+          index={index}
+          action={action}
+          deletable={true}
+          updateAction={updatedAction => updateAction(data, index, updatedAction)}
+          deleteAction={() => deleteAction(data, index)}
+          nodeEditing={nodeEditing}
+          onEditStarted={startEdit}
+          onEditFinished={finishEdit}
+        />
+      )}
+
+      <Button
+        onClick={() => addAction(data)}
+        disabled={nodeEditing}
+      >
+        Add action ⚡
+      </Button>
+
+      <HandleIn connected={false} />
     </NodeShell>
   );
 });

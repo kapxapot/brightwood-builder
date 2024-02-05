@@ -10,7 +10,7 @@ export default function NodeEffect({ effect }: Props) {
   }
 
   return (
-    <div className="text-sm mt-2">
+    <div className="text-sm">
       <span className="italic">effect:</span> {effect.name}()
     </div>
   );

@@ -6,10 +6,10 @@ interface Props {
   disabled?: boolean;
 }
 
-export default function Button({ onClick, size, disabled, children }: PropsWithChildren<Props>) {
-  const sizeStyle = size === "sm"
-    ? "px-1.5 pb-0.5 rounded-md"
-    : "px-2 pt-0.5 pb-1 rounded-lg";
+export default function Button({ onClick, size = "lg", disabled, children }: PropsWithChildren<Props>) {
+  const sizeStyle = size === "lg"
+    ? "px-2 pt-0.5 pb-1 rounded-lg"
+    : "px-1.5 pb-0.5 rounded-md";
 
   return (
     <button
