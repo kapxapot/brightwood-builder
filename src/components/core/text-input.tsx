@@ -83,11 +83,11 @@ export default function TextInput({ value, label, rowCount, readonly, onValueCha
       {!editing &&
         <div className={`group ${!readonly && "cursor-text"} text-sm`}>
           {!noValue &&
-            <span className="text-xs opacity-50 font-bold">
+            <span className="text-xs opacity-50 font-bold ml-0.5">
               {label}
             </span>
           }
-          <p
+          <div
             className="relative border border-black border-opacity-20 rounded-lg border-dashed bg-white bg-opacity-50 px-2 py-1"
             onClick={startEdit}
           >
@@ -101,7 +101,7 @@ export default function TextInput({ value, label, rowCount, readonly, onValueCha
                 <Button size="sm" onClick={startEdit}>🖊</Button>
               }
             </div>
-          </p>
+          </div>
         </div>
       }
     </div>

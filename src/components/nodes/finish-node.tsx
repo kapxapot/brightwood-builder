@@ -7,7 +7,6 @@ import HandleIn from "../node-parts/handle-in";
 import NodeTitle from "../node-parts/node-title";
 import NodeEffect from "../node-parts/node-effect";
 import NodeText from "../node-parts/node-text";
-import { addTextLine, deleteTextLine, updateTextLine } from "../../lib/node-data-mutations";
 
 interface Props {
   data: FinishStoryNode;
@@ -27,17 +26,14 @@ const FinishNode = memo(function FinishNode({ data, selected }: Props) {
       <NodeEffect effect={data.effect} />
 
       <NodeText
-        text={data.text}
+        data={data}
         allowEmpty={true}
         readonly={nodeEditing}
-        addLine={() => addTextLine(data)}
-        updateLine={(index, updatedLine) => updateTextLine(data, index, updatedLine)}
-        deleteLine={(index) => deleteTextLine(data, index)}
         onEditStarted={startEdit}
         onEditFinished={finishEdit}
       />
 
-      <HandleIn connected={false} />
+      <HandleIn />
     </NodeShell>
   );
 });

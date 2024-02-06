@@ -59,6 +59,7 @@ export type FinishStoryNode = BaseStoryNode & {
 
 export type StoryInfoGraphNode = BaseGraphNode & {
   id: NodeId;
+  uuid: string;
   type: "storyInfo";
   position?: number[];
   title: string;

@@ -1,20 +1,19 @@
-import type { Text } from "../../entities/story-node";
+import type { StoryNode } from "../../entities/story-node";
 import { toArray } from "../../lib/common";
+import { addTextLine, deleteTextLine, updateTextLine } from "../../lib/node-data-mutations";
 import Button from "../core/button";
 import NodeTextLine from "./node-text-line";
 
 interface Props {
-  text?: Text;
+  data: StoryNode;
   allowEmpty?: boolean;
-  readonly?: boolean;
-  addLine: () => void;
-  updateLine: (index: number, updatedLine: string) => void;
-  deleteLine: (index: number) => void;
+  readonly: boolean;
   onEditStarted: () => void;
   onEditFinished: () => void;
 }
 
-export default function NodeText({ text, allowEmpty, readonly, addLine, updateLine, deleteLine, onEditStarted, onEditFinished }: Props) {
+export default function NodeText({ data, allowEmpty, readonly, onEditStarted, onEditFinished }: Props) {
+  const text = data.text;
   const lines = toArray(text);
 
   return (
@@ -26,14 +25,16 @@ export default function NodeText({ text, allowEmpty, readonly, addLine, updateLi
           line={line}
           deletable={allowEmpty || lines.length > 1}
           readonly={readonly}
-          updateLine={updatedLine => updateLine(index, updatedLine)}
-          deleteLine={() => deleteLine(index)}
+          updateLine={updatedLine => updateTextLine(data, index, updatedLine)}
+          deleteLine={() => deleteTextLine(data, index)}
           onEditStarted={onEditStarted}
           onEditFinished={onEditFinished}
         />
       )}
 
-      <Button onClick={addLine} disabled={readonly}>Add text 🖊</Button>
+      <Button onClick={() => addTextLine(data)} disabled={readonly}>
+        Add text 🖊
+      </Button>
     </>
   );
 }

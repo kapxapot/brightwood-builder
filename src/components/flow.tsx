@@ -6,15 +6,16 @@ import ActionNode from "./nodes/action-node";
 import SkipNode from "./nodes/skip-node";
 import RedirectNode from "./nodes/redirect-node";
 import FinishNode from "./nodes/finish-node";
-import story from "../stories/test.json";
-import { buildStoryGraph } from "../builders/story-graph-builder";
-import type { Story } from "../entities/story";
+import importStory from "../stories/test.json";
+import { StoryGraph, buildStoryGraph } from "../builders/story-graph-builder";
+import type { Story, StoryShortcut } from "../entities/story";
 import { removeConnections, updateConnection } from "../lib/node-operations";
 import { isAllowedConnection, isDeletable } from "../lib/node-checks";
-import type { GraphNode, NodeEvent, OnChangeHandler, StoryNode, StoryNodeType } from "../entities/story-node";
+import type { GraphNode, NodeEvent, OnChangeHandler, StoryInfoGraphNode, StoryNode, StoryNodeType } from "../entities/story-node";
 import StoryInfoNode from "./nodes/story-info-node";
 import { buildNodeData } from "../builders/node-builder";
 import { colors } from "../lib/constants";
+import { load, save } from "../lib/storage";
 
 interface Props {
   fit: boolean;
@@ -28,20 +29,62 @@ const nodeTypes = {
   finish: FinishNode
 };
 
+const storyKey = (storyId: string) => `story-${storyId}`;
+
+function updateStoryList(storyId: string, storyTitle: string) {
+  let stories = (load('stories') ?? []) as StoryShortcut[];
+
+  const oldStory = stories.find(s => s.id === storyId);
+
+  const newStory = {
+    id: storyId,
+    title: storyTitle
+  };
+
+  if (!oldStory) {
+    stories.push(newStory);
+  } else {
+    stories = stories.map(s => s.id === storyId ? newStory : s);
+  }
+
+  save('stories', stories);
+}
+
 export default function Flow({ fit }: Props) {
-  const storyGraph = buildStoryGraph(
-    story as Story,
+  function initStoryGraph(story: Story, changeHandler: OnChangeHandler) {
+    const reStory = load<StoryGraph>(storyKey(story.id));
+
+    if (!reStory) {
+      return buildStoryGraph(story, changeHandler);
+    }
+
+    // const { x = 0, y = 0, zoom = 1 } = reStory.viewport;
+    // setViewport({ x, y, zoom });
+
+    return {
+      nodes: reStory.nodes.map(node => {
+        node.data.onChange = changeHandler;
+
+        return node;
+      }),
+      edges: reStory.edges
+    };
+  }
+
+  const story = importStory as Story;
+  const { nodes: initialNodes, edges: initialEdges } = initStoryGraph(
+    story,
     (data, event) => onNodeDataChange(data, event)
   );
 
-  const reactFlowWrapper = useRef<HTMLDivElement>(null);
-
-  const [nodes, setNodes, onNodesChange] = useNodesState(storyGraph.nodes);
-  const [edges, setEdges, onEdgesChange] = useEdgesState(storyGraph.edges);
-  const [reactFlowInstance, setReactFlowInstance] = useState<ReactFlowInstance | null>(null);
+  const [nodes, setNodes, onNodesChange] = useNodesState(initialNodes);
+  const [edges, setEdges, onEdgesChange] = useEdgesState(initialEdges);
 
   const [selectedNodes, setSelectedNodes] = useState([] as Node[]);
   const [selectedEdges, setSelectedEdges] = useState([] as Edge[]);
+
+  const reactFlowWrapper = useRef<HTMLDivElement>(null);
+  const [reactFlowInstance, setReactFlowInstance] = useState<ReactFlowInstance | null>(null);
 
   const onConnect = useCallback(
     (conn: Connection) => {
@@ -225,10 +268,34 @@ export default function Flow({ fit }: Props) {
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [deletePressed]);
 
+  const saveStory = useCallback(() => {
+    const storyInfoNode = nodes.find(n => n.data.type === "storyInfo");
+
+    if (!storyInfoNode || !reactFlowInstance) {
+      return;
+    }
+
+    const { uuid: storyId, title } = storyInfoNode.data as StoryInfoGraphNode;
+
+    save(
+      storyKey(storyId),
+      reactFlowInstance.toObject()
+    );
+
+    updateStoryList(storyId, title);
+  }, [reactFlowInstance, nodes]);
+
+  function loadStory() {
+
+  }
+
   return (
-    <div className="h-screen w-screen flex flex-row flex-grow">
+    <div className="w-screen h-screen flex flex-row flex-grow">
       <ReactFlowProvider>
-        <Toolbar />
+        <Toolbar
+          onSave={saveStory}
+          onLoad={loadStory}
+        />
         <div className="flex-grow w-full" ref={reactFlowWrapper}>
           <ReactFlow
             nodes={nodes}

@@ -7,7 +7,6 @@ import { useNodeEditing } from "../../hooks/use-node-editing";
 import HandleIn from "../node-parts/handle-in";
 import NodeTitle from "../node-parts/node-title";
 import NodeEffect from "../node-parts/node-effect";
-import { addTextLine, deleteTextLine, updateTextLine } from "../../lib/node-data-mutations";
 import NodeText from "../node-parts/node-text";
 import HandleOut from "../node-parts/handle-out";
 
@@ -29,11 +28,8 @@ const SkipNode = memo(function SkipNode({ data, selected }: Props) {
       <NodeEffect effect={data.effect} />
 
       <NodeText
-        text={data.text}
+        data={data}
         readonly={nodeEditing}
-        addLine={() => addTextLine(data)}
-        updateLine={(index, updatedLine) => updateTextLine(data, index, updatedLine)}
-        deleteLine={(index) => deleteTextLine(data, index)}
         onEditStarted={startEdit}
         onEditFinished={finishEdit}
       />
@@ -43,7 +39,7 @@ const SkipNode = memo(function SkipNode({ data, selected }: Props) {
         <HandleOut connected={!!data.nextId} />
       </div>
 
-      <HandleIn connected={false} />
+      <HandleIn />
     </NodeShell>
   );
 });

@@ -1,39 +1,39 @@
 import type { Story } from "../entities/story";
-import type { GraphNode, GraphNodeType, OnChangeHandler, StoryInfoGraphNode } from "../entities/story-node";
+import type { GraphNode, GraphNodeType, OnChangeHandler, StoryInfoGraphNode, StoryNode } from "../entities/story-node";
 import { storyInfoNodeId } from "../lib/constants";
 
-type Position = {
+type BuilderPosition = {
   x: number;
   y: number;
 };
 
-type Node = {
+type BuilderNode = {
   id: string;
-  position: Position;
+  position: BuilderPosition;
   type: GraphNodeType;
   data: GraphNode;
 };
 
-type Edge = {
+type BuilderEdge = {
   id: string;
   source: string;
   sourceHandle: string | null;
   target: string;
 };
 
-interface StoryGraph {
-  nodes: Node[];
-  edges: Edge[];
-}
+export type StoryGraph = {
+  nodes: BuilderNode[];
+  edges: BuilderEdge[];
+};
 
-const positionOrDefault = (dataPosition?: number[]): Position => ({
+const positionOrDefault = (dataPosition?: number[]): BuilderPosition => ({
   x: dataPosition ? dataPosition[0] : 0,
   y: dataPosition ? dataPosition[1] : 0
 });
 
 export function buildStoryGraph(story: Story, changeHandler: OnChangeHandler): StoryGraph {
-  const nodes: Node[] = [];
-  const edges: Edge[] = [];
+  const nodes: BuilderNode[] = [];
+  const edges: BuilderEdge[] = [];
 
   const addEdge = (source: string, target: number, sourceHandle?: number) => {
     const edge = {
@@ -49,19 +49,19 @@ export function buildStoryGraph(story: Story, changeHandler: OnChangeHandler): S
   // add story info node
   const storyInfoData: StoryInfoGraphNode = {
     id: storyInfoNodeId,
+    uuid: story.id,
     type: "storyInfo",
     title: story.title,
     description: story.description,
     startId: story.startId,
     onChange: changeHandler,
-    position: story.position
   };
 
   const storyInfoNode = {
     id: String(storyInfoData.id),
     type: storyInfoData.type,
     dragHandle: '.custom-drag-handle',
-    position: positionOrDefault(storyInfoData.position),
+    position: positionOrDefault(story.position),
     data: storyInfoData
   };
 
@@ -72,14 +72,19 @@ export function buildStoryGraph(story: Story, changeHandler: OnChangeHandler): S
   }
 
   for (const data of story.nodes) {
-    data.onChange = changeHandler;
+    const nodeData: StoryNode = {
+      ...data,
+      onChange: changeHandler
+    };
+
+    delete nodeData.position;
 
     const node = {
-      id: String(data.id),
-      type: data.type,
+      id: String(nodeData.id),
+      type: nodeData.type,
       dragHandle: '.custom-drag-handle',
       position: positionOrDefault(data.position),
-      data
+      data: nodeData
     };
 
     nodes.push(node);

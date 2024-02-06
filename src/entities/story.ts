@@ -2,6 +2,7 @@ import type { StoryData } from "./story-data";
 import type { StoryNode } from "./story-node";
 
 export type Story = {
+  id: string;
   title: string;
   description?: string;
   startId: number;
@@ -9,4 +10,9 @@ export type Story = {
   data?: StoryData;
   position?: number[];
   nodes: StoryNode[];
+};
+
+export type StoryShortcut = {
+  id: string;
+  title: string;
 };

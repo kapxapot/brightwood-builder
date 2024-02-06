@@ -8,7 +8,6 @@ import { useNodeEditing } from "../../hooks/use-node-editing";
 import NodeTitle from "../node-parts/node-title";
 import NodeEffect from "../node-parts/node-effect";
 import NodeText from "../node-parts/node-text";
-import { addTextLine, deleteTextLine, updateTextLine } from "../../lib/node-data-mutations";
 import { addLink, deleteLink, updateLink } from "../../lib/link-mutations";
 import HandleIn from "../node-parts/handle-in";
 
@@ -30,11 +29,8 @@ const RedirectNode = memo(function RedirectNode({ data, selected }: Props) {
       <NodeEffect effect={data.effect} />
 
       <NodeText
-        text={data.text}
+        data={data}
         readonly={nodeEditing}
-        addLine={() => addTextLine(data)}
-        updateLine={(index, updatedLine) => updateTextLine(data, index, updatedLine)}
-        deleteLine={(index) => deleteTextLine(data, index)}
         onEditStarted={startEdit}
         onEditFinished={finishEdit}
       />
@@ -62,7 +58,7 @@ const RedirectNode = memo(function RedirectNode({ data, selected }: Props) {
         </Button>
       </div>
 
-      <HandleIn connected={false} />
+      <HandleIn />
     </NodeShell>
   );
 });
