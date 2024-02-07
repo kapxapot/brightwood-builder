@@ -1,3 +1,4 @@
+import { Viewport } from "reactflow";
 import type { Story } from "../entities/story";
 import type { GraphNode, GraphNodeType, OnChangeHandler, StoryInfoGraphNode, StoryNode } from "../entities/story-node";
 import { storyInfoNodeId } from "../lib/constants";
@@ -21,13 +22,7 @@ type BuilderEdge = {
   target: string;
 };
 
-type BuilderViewport = {
-  x: number;
-  y: number;
-  zoom: number;
-};
-
-export const defaultViewport: BuilderViewport = {
+export const defaultViewport: Viewport = {
   x: 0,
   y: 0,
   zoom: 1
@@ -36,7 +31,7 @@ export const defaultViewport: BuilderViewport = {
 export type StoryGraph = {
   nodes: BuilderNode[];
   edges: BuilderEdge[];
-  viewport?: BuilderViewport;
+  viewport?: Viewport;
 };
 
 const positionOrDefault = (dataPosition?: number[]): BuilderPosition => ({

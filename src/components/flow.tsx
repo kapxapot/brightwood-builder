@@ -62,24 +62,24 @@ export default function Flow({ fit }: Props) {
       return buildStoryGraph(story, changeHandler);
     }
 
-    const viewport = reStory.viewport ?? defaultViewport;
-    setViewport(viewport);
-
     return {
       nodes: reStory.nodes.map(node => {
         node.data.onChange = changeHandler;
 
         return node;
       }),
-      edges: reStory.edges
+      edges: reStory.edges,
+      viewport: reStory.viewport
     };
   }
 
   const story = importStory as Story;
-  const { nodes: initialNodes, edges: initialEdges } = initStoryGraph(
+  const { nodes: initialNodes, edges: initialEdges, viewport = defaultViewport } = initStoryGraph(
     story,
     (data, event) => onNodeDataChange(data, event)
   );
+
+  setViewport(viewport);
 
   const [nodes, setNodes, onNodesChange] = useNodesState(initialNodes);
   const [edges, setEdges, onEdgesChange] = useEdgesState(initialEdges);
@@ -191,7 +191,7 @@ export default function Flow({ fit }: Props) {
         return;
       }
 
-      const position = reactFlowInstance.project({
+      const position = reactFlowInstance.screenToFlowPosition({
         x: event.clientX - reactFlowBounds.left,
         y: event.clientY - reactFlowBounds.top,
       });
