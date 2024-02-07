@@ -16,6 +16,7 @@ import StoryInfoNode from "./nodes/story-info-node";
 import { buildNodeData } from "../builders/node-builder";
 import { colors } from "../lib/constants";
 import { load, save } from "../lib/storage";
+import { useToast } from "./ui/use-toast";
 
 interface Props {
   fit: boolean;
@@ -51,6 +52,8 @@ function updateStoryList(storyId: string, storyTitle: string) {
 }
 
 export default function Flow({ fit }: Props) {
+  const { toast } = useToast();
+
   const reactFlowWrapper = useRef<HTMLDivElement>(null);
   const [reactFlowInstance, setReactFlowInstance] = useState<ReactFlowInstance | null>(null);
   const { setViewport } = useReactFlow();
@@ -79,10 +82,12 @@ export default function Flow({ fit }: Props) {
     (data, event) => onNodeDataChange(data, event)
   );
 
-  setViewport(viewport);
-
   const [nodes, setNodes, onNodesChange] = useNodesState(initialNodes);
   const [edges, setEdges, onEdgesChange] = useEdgesState(initialEdges);
+
+  useEffect(() => {
+    setViewport(viewport);
+  }, [setViewport, viewport]);
 
   const [selectedNodes, setSelectedNodes] = useState([] as Node[]);
   const [selectedEdges, setSelectedEdges] = useState([] as Edge[]);
@@ -284,7 +289,9 @@ export default function Flow({ fit }: Props) {
     );
 
     updateStoryList(storyId, title);
-  }, [reactFlowInstance, nodes]);
+
+    toast({ description: `✔ Story was successfully saved.` });
+  }, [reactFlowInstance, nodes, toast]);
 
   function loadStory() {
 

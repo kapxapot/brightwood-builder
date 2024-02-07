@@ -1,10 +1,14 @@
 import { ReactFlowProvider } from "reactflow";
 import Flow from "./components/flow";
+import { Toaster } from "./components/ui/toaster";
 
 export default function App() {
   return (
-    <ReactFlowProvider>
-      <Flow fit={false} />
-    </ReactFlowProvider>
+    <>
+      <ReactFlowProvider>
+        <Flow fit={false} />
+      </ReactFlowProvider>
+      <Toaster />
+    </>
   );
 }
