@@ -19,7 +19,7 @@ export default function Toolbar({ onSave, onLoad }: Props) {
 
       <div className="mt-20 space-y-3 text-center">
         <Button size="lg" onClick={onSave}>💾 Save</Button>
-        <Button size="lg" onClick={onLoad}>📂 Load</Button>
+        <Button size="lg" onClick={onLoad} disabled={true}>📂 Load</Button>
       </div>
     </aside>
   );
