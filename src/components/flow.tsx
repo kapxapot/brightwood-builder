@@ -1,13 +1,13 @@
 import "reactflow/dist/base.css";
 import { useCallback, useEffect, useRef, useState } from "react";
-import ReactFlow, { MiniMap, Controls, Background, useNodesState, useEdgesState, addEdge, BackgroundVariant, type Connection, type ReactFlowInstance, type Node, type Edge, type OnSelectionChangeParams, useKeyPress, useReactFlow } from "reactflow";
+import ReactFlow, { MiniMap, Controls, Background, useNodesState, useEdgesState, addEdge, BackgroundVariant, type Connection, type ReactFlowInstance, type Node, type Edge, type OnSelectionChangeParams, useKeyPress } from "reactflow";
 import Toolbar from "./toolbar";
 import ActionNode from "./nodes/action-node";
 import SkipNode from "./nodes/skip-node";
 import RedirectNode from "./nodes/redirect-node";
 import FinishNode from "./nodes/finish-node";
 import importStory from "../stories/test.json";
-import { StoryGraph, buildStoryGraph, defaultViewport } from "../builders/story-graph-builder";
+import { defaultViewport } from "../builders/story-graph-builder";
 import type { Story, StoryShortcut } from "../entities/story";
 import { removeConnections, updateConnection } from "../lib/node-operations";
 import { isAllowedConnection, isDeletable } from "../lib/node-checks";
@@ -15,12 +15,9 @@ import type { GraphNode, NodeEvent, OnChangeHandler, StoryInfoGraphNode, StoryNo
 import StoryInfoNode from "./nodes/story-info-node";
 import { buildNodeData } from "../builders/node-builder";
 import { colors } from "../lib/constants";
-import { load, save } from "../lib/storage";
+import { load, save, storyKey } from "../lib/storage";
 import { useToast } from "./ui/use-toast";
-
-interface Props {
-  fit: boolean;
-}
+import { useStoryGraph } from "@/hooks/use-story-graph";
 
 const nodeTypes = {
   storyInfo: StoryInfoNode,
@@ -29,8 +26,6 @@ const nodeTypes = {
   redirect: RedirectNode,
   finish: FinishNode
 };
-
-const storyKey = (storyId: string) => `story-${storyId}`;
 
 function updateStoryList(storyId: string, storyTitle: string) {
   let stories = (load('stories') ?? []) as StoryShortcut[];
@@ -51,43 +46,19 @@ function updateStoryList(storyId: string, storyTitle: string) {
   save('stories', stories);
 }
 
-export default function Flow({ fit }: Props) {
+export default function Flow() {
   const { toast } = useToast();
 
-  const reactFlowWrapper = useRef<HTMLDivElement>(null);
-  const [reactFlowInstance, setReactFlowInstance] = useState<ReactFlowInstance | null>(null);
-  const { setViewport } = useReactFlow();
-
-  function initStoryGraph(story: Story, changeHandler: OnChangeHandler) {
-    const reStory = load<StoryGraph>(storyKey(story.id));
-
-    if (!reStory) {
-      return buildStoryGraph(story, changeHandler);
-    }
-
-    return {
-      nodes: reStory.nodes.map(node => {
-        node.data.onChange = changeHandler;
-
-        return node;
-      }),
-      edges: reStory.edges,
-      viewport: reStory.viewport
-    };
-  }
-
-  const story = importStory as Story;
-  const { nodes: initialNodes, edges: initialEdges, viewport = defaultViewport } = initStoryGraph(
-    story,
+  const storyGraph = useStoryGraph(
+    importStory as Story,
     (data, event) => onNodeDataChange(data, event)
   );
 
-  const [nodes, setNodes, onNodesChange] = useNodesState(initialNodes);
-  const [edges, setEdges, onEdgesChange] = useEdgesState(initialEdges);
+  const [nodes, setNodes, onNodesChange] = useNodesState(storyGraph.nodes);
+  const [edges, setEdges, onEdgesChange] = useEdgesState(storyGraph.edges);
 
-  useEffect(() => {
-    setViewport(viewport);
-  }, [setViewport, viewport]);
+  const reactFlowWrapper = useRef<HTMLDivElement>(null);
+  const [reactFlowInstance, setReactFlowInstance] = useState<ReactFlowInstance | null>(null);
 
   const [selectedNodes, setSelectedNodes] = useState([] as Node[]);
   const [selectedEdges, setSelectedEdges] = useState([] as Edge[]);
@@ -188,7 +159,6 @@ export default function Flow({ fit }: Props) {
         return;
       }
 
-      const reactFlowBounds = reactFlowWrapper.current.getBoundingClientRect();
       const type = event.dataTransfer.getData('application/reactflow');
 
       // check if the dropped element is valid
@@ -197,8 +167,8 @@ export default function Flow({ fit }: Props) {
       }
 
       const position = reactFlowInstance.screenToFlowPosition({
-        x: event.clientX - reactFlowBounds.left,
-        y: event.clientY - reactFlowBounds.top,
+        x: event.clientX,
+        y: event.clientY
       });
 
       const nodeId = Math.max(...nodes.map(n => n.data.id)) + 1;
@@ -314,11 +284,12 @@ export default function Flow({ fit }: Props) {
           onInit={setReactFlowInstance}
           onDrop={onDrop}
           onDragOver={onDragOver}
+          nodeDragThreshold={1}
           onEdgesDelete={onEdgesDelete} // doesn't work currently
           deleteKeyCode={[]}
           className="bg-gray-100"
           nodeTypes={nodeTypes}
-          fitView={fit}
+          defaultViewport={storyGraph.viewport ?? defaultViewport}
         >
           <Controls />
           <MiniMap

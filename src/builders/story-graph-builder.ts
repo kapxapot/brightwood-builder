@@ -8,14 +8,14 @@ type BuilderPosition = {
   y: number;
 };
 
-type BuilderNode = {
+export type BuilderNode = {
   id: string;
   position: BuilderPosition;
   type: GraphNodeType;
   data: GraphNode;
 };
 
-type BuilderEdge = {
+export type BuilderEdge = {
   id: string;
   source: string;
   sourceHandle: string | null;

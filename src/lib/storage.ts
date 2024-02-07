@@ -9,3 +9,5 @@ export function load<T>(key: string, def?: T): T | undefined {
     ? JSON.parse(rawData) as T
     : def;
 }
+
+export const storyKey = (storyId: string) => `story-${storyId}`;

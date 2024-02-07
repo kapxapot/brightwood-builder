@@ -6,7 +6,7 @@ export default function App() {
   return (
     <>
       <ReactFlowProvider>
-        <Flow fit={false} />
+        <Flow />
       </ReactFlowProvider>
       <Toaster />
     </>
