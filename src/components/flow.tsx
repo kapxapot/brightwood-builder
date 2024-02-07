@@ -1,13 +1,13 @@
 import "reactflow/dist/base.css";
 import { useCallback, useEffect, useRef, useState } from "react";
-import ReactFlow, { MiniMap, Controls, Background, useNodesState, useEdgesState, addEdge, BackgroundVariant, type Connection, ReactFlowProvider, type ReactFlowInstance, type Node, type Edge, type OnSelectionChangeParams, useKeyPress } from "reactflow";
+import ReactFlow, { MiniMap, Controls, Background, useNodesState, useEdgesState, addEdge, BackgroundVariant, type Connection, type ReactFlowInstance, type Node, type Edge, type OnSelectionChangeParams, useKeyPress, useReactFlow } from "reactflow";
 import Toolbar from "./toolbar";
 import ActionNode from "./nodes/action-node";
 import SkipNode from "./nodes/skip-node";
 import RedirectNode from "./nodes/redirect-node";
 import FinishNode from "./nodes/finish-node";
 import importStory from "../stories/test.json";
-import { StoryGraph, buildStoryGraph } from "../builders/story-graph-builder";
+import { StoryGraph, buildStoryGraph, defaultViewport } from "../builders/story-graph-builder";
 import type { Story, StoryShortcut } from "../entities/story";
 import { removeConnections, updateConnection } from "../lib/node-operations";
 import { isAllowedConnection, isDeletable } from "../lib/node-checks";
@@ -51,6 +51,10 @@ function updateStoryList(storyId: string, storyTitle: string) {
 }
 
 export default function Flow({ fit }: Props) {
+  const reactFlowWrapper = useRef<HTMLDivElement>(null);
+  const [reactFlowInstance, setReactFlowInstance] = useState<ReactFlowInstance | null>(null);
+  const { setViewport } = useReactFlow();
+
   function initStoryGraph(story: Story, changeHandler: OnChangeHandler) {
     const reStory = load<StoryGraph>(storyKey(story.id));
 
@@ -58,8 +62,8 @@ export default function Flow({ fit }: Props) {
       return buildStoryGraph(story, changeHandler);
     }
 
-    // const { x = 0, y = 0, zoom = 1 } = reStory.viewport;
-    // setViewport({ x, y, zoom });
+    const viewport = reStory.viewport ?? defaultViewport;
+    setViewport(viewport);
 
     return {
       nodes: reStory.nodes.map(node => {
@@ -82,9 +86,6 @@ export default function Flow({ fit }: Props) {
 
   const [selectedNodes, setSelectedNodes] = useState([] as Node[]);
   const [selectedEdges, setSelectedEdges] = useState([] as Edge[]);
-
-  const reactFlowWrapper = useRef<HTMLDivElement>(null);
-  const [reactFlowInstance, setReactFlowInstance] = useState<ReactFlowInstance | null>(null);
 
   const onConnect = useCallback(
     (conn: Connection) => {
@@ -291,38 +292,36 @@ export default function Flow({ fit }: Props) {
 
   return (
     <div className="w-screen h-screen flex flex-row flex-grow">
-      <ReactFlowProvider>
-        <Toolbar
-          onSave={saveStory}
-          onLoad={loadStory}
-        />
-        <div className="flex-grow w-full" ref={reactFlowWrapper}>
-          <ReactFlow
-            nodes={nodes}
-            edges={edges}
-            onSelectionChange={selectionChangeHandler}
-            onNodesChange={onNodesChange}
-            onEdgesChange={onEdgesChange}
-            onConnect={onConnect}
-            onInit={setReactFlowInstance}
-            onDrop={onDrop}
-            onDragOver={onDragOver}
-            onEdgesDelete={onEdgesDelete} // doesn't work currently
-            deleteKeyCode={[]}
-            className="bg-gray-100"
-            nodeTypes={nodeTypes}
-            fitView={fit}
-          >
-            <Controls />
-            <MiniMap
-              zoomable
-              pannable
-              nodeColor={n => n.type ? colors[n.type as StoryNodeType].rgb : "gray"}
-            />
-            <Background variant={BackgroundVariant.Dots} gap={12} size={1} />
-          </ReactFlow>
-        </div>
-      </ReactFlowProvider>
+      <Toolbar
+        onSave={saveStory}
+        onLoad={loadStory}
+      />
+      <div className="flex-grow w-full" ref={reactFlowWrapper}>
+        <ReactFlow
+          nodes={nodes}
+          edges={edges}
+          onSelectionChange={selectionChangeHandler}
+          onNodesChange={onNodesChange}
+          onEdgesChange={onEdgesChange}
+          onConnect={onConnect}
+          onInit={setReactFlowInstance}
+          onDrop={onDrop}
+          onDragOver={onDragOver}
+          onEdgesDelete={onEdgesDelete} // doesn't work currently
+          deleteKeyCode={[]}
+          className="bg-gray-100"
+          nodeTypes={nodeTypes}
+          fitView={fit}
+        >
+          <Controls />
+          <MiniMap
+            zoomable
+            pannable
+            nodeColor={n => n.type ? colors[n.type as StoryNodeType].rgb : "gray"}
+          />
+          <Background variant={BackgroundVariant.Dots} gap={12} size={1} />
+        </ReactFlow>
+      </div>
     </div>
   );
 }

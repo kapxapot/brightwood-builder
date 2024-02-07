@@ -21,9 +21,22 @@ type BuilderEdge = {
   target: string;
 };
 
+type BuilderViewport = {
+  x: number;
+  y: number;
+  zoom: number;
+};
+
+export const defaultViewport: BuilderViewport = {
+  x: 0,
+  y: 0,
+  zoom: 1
+};
+
 export type StoryGraph = {
   nodes: BuilderNode[];
   edges: BuilderEdge[];
+  viewport?: BuilderViewport;
 };
 
 const positionOrDefault = (dataPosition?: number[]): BuilderPosition => ({
