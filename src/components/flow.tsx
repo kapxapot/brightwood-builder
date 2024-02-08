@@ -8,14 +8,14 @@ import RedirectNode from "./nodes/redirect-node";
 import FinishNode from "./nodes/finish-node";
 import importStory from "../stories/test.json";
 import { defaultViewport } from "../builders/story-graph-builder";
-import type { Story, StoryShortcut } from "../entities/story";
+import type { Story } from "../entities/story";
 import { removeConnections, updateConnection } from "../lib/node-operations";
 import { isAllowedConnection, isDeletable } from "../lib/node-checks";
 import type { GraphNode, NodeEvent, OnChangeHandler, StoryInfoGraphNode, StoryNode, StoryNodeType } from "../entities/story-node";
 import StoryInfoNode from "./nodes/story-info-node";
 import { buildNodeData } from "../builders/node-builder";
 import { colors } from "../lib/constants";
-import { load, save, storyKey } from "../lib/storage";
+import { save, storyKey, updateStoryList } from "../lib/storage";
 import { useToast } from "./ui/use-toast";
 import { useStoryGraph } from "@/hooks/use-story-graph";
 
@@ -26,25 +26,6 @@ const nodeTypes = {
   redirect: RedirectNode,
   finish: FinishNode
 };
-
-function updateStoryList(storyId: string, storyTitle: string) {
-  let stories = (load('stories') ?? []) as StoryShortcut[];
-
-  const oldStory = stories.find(s => s.id === storyId);
-
-  const newStory = {
-    id: storyId,
-    title: storyTitle
-  };
-
-  if (!oldStory) {
-    stories.push(newStory);
-  } else {
-    stories = stories.map(s => s.id === storyId ? newStory : s);
-  }
-
-  save('stories', stories);
-}
 
 export default function Flow() {
   const { toast } = useToast();

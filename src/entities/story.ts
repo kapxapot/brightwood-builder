@@ -11,8 +11,3 @@ export type Story = {
   position?: number[];
   nodes: StoryNode[];
 };
-
-export type StoryShortcut = {
-  id: string;
-  title: string;
-};

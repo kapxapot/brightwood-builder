@@ -13,7 +13,6 @@ export function useStoryGraph(story: Story, changeHandler: OnChangeHandler): Sto
   return {
     nodes: reStory.nodes.map(node => {
       node.data.onChange = changeHandler;
-
       return node;
     }),
     edges: reStory.edges,
