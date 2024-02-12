@@ -10,7 +10,6 @@ import NodeEffect from "../node-parts/node-effect";
 import NodeText from "../node-parts/node-text";
 import HandleIn from "../node-parts/handle-in";
 import { addAction, deleteAction, updateAction } from "../../lib/action-mutations";
-import { Bolt } from "../core/icons";
 import { PlusIcon } from "@heroicons/react/24/solid";
 
 interface Props {
