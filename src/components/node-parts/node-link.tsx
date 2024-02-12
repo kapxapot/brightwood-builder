@@ -5,6 +5,8 @@ import { useEffect, useRef, useState } from "react";
 import { autoHeight, focusAndSelect } from "../../lib/ref-operations";
 import { weights } from "../../lib/constants";
 import HandleOut from "./handle-out";
+import { WeightDices } from "./weight-dices";
+import { Delete, Edit } from "../core/icons";
 
 interface Props {
   link: Link;
@@ -15,17 +17,6 @@ interface Props {
   nodeEditing: boolean;
   onEditStarted: () => void;
   onEditFinished: () => void;
-}
-
-function weightStr(weight: number): string {
-  const dices = Math.max(1, weight);
-  let str = "🎲".repeat(dices);
-
-  if (weight - Math.floor(weight) > 0) {
-    str += ` [${weight}]`;
-  }
-
-  return str;
 }
 
 export default function NodeLink({ link, index, deletable, updateLink, deleteLink, nodeEditing, onEditStarted, onEditFinished }: Props) {
@@ -103,11 +94,11 @@ export default function NodeLink({ link, index, deletable, updateLink, deleteLin
               </div>
               {!!weight &&
                 <div>
-                  {weightStr(weight)}
+                  <WeightDices weight={weight} />
                 </div>
               }
             </div>
-            <div className="space-x-2">
+            <div className="flex gap-2">
               <Button
                 onClick={commitEdit}
                 disabled={weight <= weights.min || weight > weights.max}
@@ -122,10 +113,10 @@ export default function NodeLink({ link, index, deletable, updateLink, deleteLin
         }
         {/* view */}
         {!editing &&
-          <div>
-            <span className="mr-1">{weightStr(link.weight)}</span>
+          <div className="flex gap-1">
+            <WeightDices weight={link.weight} />
             {link.condition && (
-              <span className="mr-1">
+              <span>
                 <span className="italic">if:</span> {link.condition}
               </span>
             )}
@@ -141,10 +132,14 @@ export default function NodeLink({ link, index, deletable, updateLink, deleteLin
       </div>
       {/* view */}
       {!editing && !nodeEditing &&
-        <div className="absolute right-2 top-[3px] space-x-1 hidden group-hover:block">
-          <Button size="sm" onClick={startEdit}>🖊</Button>
+        <div className="absolute right-2 top-1 hidden group-hover:flex gap-1">
+          <Button size="sm" onClick={startEdit}>
+            <Edit />
+          </Button>
           {deletable &&
-            <Button size="sm" onClick={deleteLink}>❌</Button>
+            <Button size="sm" onClick={deleteLink}>
+              <Delete />
+            </Button>
           }
         </div>
       }

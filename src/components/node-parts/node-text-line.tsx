@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import Button from "../core/button";
 import { autoHeight, focusAndSelect } from "../../lib/ref-operations";
+import { Delete, Edit } from "../core/icons";
 
 interface Props {
   line: string;
@@ -81,7 +82,7 @@ export default function NodeTextLine({ line, index, deletable, readonly, updateL
             placeholder="Text line"
           >
           </textarea>
-          <div className="space-x-2">
+          <div className="flex gap-2">
             <Button onClick={commitEdit} disabled={!editedLine.length}>Save</Button>
             {(deletable || !noText) &&
               <Button onClick={cancelEdit}>Cancel</Button>
@@ -102,16 +103,20 @@ export default function NodeTextLine({ line, index, deletable, readonly, updateL
             >
             </span>
           </p>
-          <div className="absolute right-[3px] top-[3px] space-x-1 hidden group-hover:block">
-            {!readonly &&
-              <>
-                <Button size="sm" onClick={startEdit}>🖊</Button>
+          {!readonly &&
+            <div className="absolute right-1 top-1 space-x-1 hidden group-hover:block">
+              <div className="flex gap-1">
+                <Button size="sm" onClick={startEdit}>
+                  <Edit />
+                </Button>
                 {deletable &&
-                  <Button size="sm" onClick={deleteLine}>❌</Button>
+                  <Button size="sm" onClick={deleteLine}>
+                    <Delete />
+                  </Button>
                 }
-              </>
-            }
-          </div>
+              </div>
+            </div>
+          }
         </div>
       }
     </>

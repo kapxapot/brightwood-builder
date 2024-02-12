@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import Button from "../core/button";
 import { autoHeight, focusAndSelect } from "../../lib/ref-operations";
+import { Edit } from "./icons";
 
 const defaultRowCount = 2;
 
@@ -73,7 +74,7 @@ export default function TextInput({ value, label, rowCount, readonly, onValueCha
             rows={rowCount ?? defaultRowCount}
           >
           </textarea>
-          <div className="pt-1 space-x-2">
+          <div className="pt-1 flex gap-2">
             <Button onClick={commitEdit}>Save</Button>
             <Button onClick={cancelEdit}>Cancel</Button>
           </div>
@@ -96,12 +97,14 @@ export default function TextInput({ value, label, rowCount, readonly, onValueCha
               dangerouslySetInnerHTML={{ __html: value || label }}
             >
             </span>
-            <div className="absolute right-[3px] top-[3px] space-x-1 hidden group-hover:block">
-              {!readonly &&
-                <Button size="sm" onClick={startEdit}>🖊</Button>
-              }
+            {!readonly &&
+              <div className="absolute right-1 top-1 hidden group-hover:block">
+                <Button size="sm" onClick={startEdit}>
+                  <Edit />
+                </Button>
+              </div>
+            }
             </div>
-          </div>
         </div>
       }
     </div>

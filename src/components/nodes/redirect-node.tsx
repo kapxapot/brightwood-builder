@@ -10,6 +10,7 @@ import NodeEffect from "../node-parts/node-effect";
 import NodeText from "../node-parts/node-text";
 import { addLink, deleteLink, updateLink } from "../../lib/link-mutations";
 import HandleIn from "../node-parts/handle-in";
+import { PlusIcon } from "@heroicons/react/24/solid";
 
 interface Props {
   data: RedirectStoryNode;
@@ -24,7 +25,7 @@ const RedirectNode = memo(function RedirectNode({ data, selected }: Props) {
       selected={selected}
       color={colors.redirect.tw}
     >
-      <NodeTitle id={data.id} label={data.label ?? "Redirect"} />
+      <NodeTitle id={data.id} label={data.label ?? "Random"} />
 
       <NodeEffect effect={data.effect} />
 
@@ -54,7 +55,7 @@ const RedirectNode = memo(function RedirectNode({ data, selected }: Props) {
           onClick={() => addLink(data)}
           disabled={nodeEditing}
         >
-          Add link 🎲
+          <PlusIcon className="w-4 text-green-600" /> Link
         </Button>
       </div>
 

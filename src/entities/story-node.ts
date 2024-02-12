@@ -62,7 +62,7 @@ export type StoryInfoGraphNode = BaseGraphNode & {
   uuid: string;
   type: "storyInfo";
   position?: number[];
-  title: string;
+  title?: string;
   description?: string;
   startId?: NodeId;
   onChange?: OnChangeHandler;

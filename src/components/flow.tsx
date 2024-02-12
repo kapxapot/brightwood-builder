@@ -1,13 +1,13 @@
 import "reactflow/dist/base.css";
 import { useCallback, useEffect, useRef, useState } from "react";
-import ReactFlow, { MiniMap, Controls, Background, useNodesState, useEdgesState, addEdge, BackgroundVariant, type Connection, type ReactFlowInstance, type Node, type Edge, type OnSelectionChangeParams, useKeyPress } from "reactflow";
+import ReactFlow, { MiniMap, Controls, Background, useNodesState, useEdgesState, addEdge, BackgroundVariant, type Connection, type ReactFlowInstance, type Node, type Edge, type OnSelectionChangeParams, useKeyPress, useViewport, useReactFlow } from "reactflow";
 import Toolbar from "./toolbar";
 import ActionNode from "./nodes/action-node";
 import SkipNode from "./nodes/skip-node";
 import RedirectNode from "./nodes/redirect-node";
 import FinishNode from "./nodes/finish-node";
 import importStory from "../stories/test.json";
-import { defaultViewport } from "../builders/story-graph-builder";
+import { buildNewStoryNode, defaultViewport } from "../builders/story-graph-builder";
 import type { Story } from "../entities/story";
 import { removeConnections, updateConnection } from "../lib/node-operations";
 import { isAllowedConnection, isDeletable } from "../lib/node-checks";
@@ -18,6 +18,9 @@ import { colors } from "../lib/constants";
 import { save, storyKey, updateStoryList } from "../lib/storage";
 import { useToast } from "./ui/use-toast";
 import { useStoryGraph } from "@/hooks/use-story-graph";
+import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle } from "./ui/alert-dialog";
+import { Button } from "./ui/button";
+import { Badge } from "./ui/badge";
 
 const nodeTypes = {
   storyInfo: StoryInfoNode,
@@ -41,8 +44,17 @@ export default function Flow() {
   const reactFlowWrapper = useRef<HTMLDivElement>(null);
   const [reactFlowInstance, setReactFlowInstance] = useState<ReactFlowInstance | null>(null);
 
+  const { setViewport } = useReactFlow();
+
   const [selectedNodes, setSelectedNodes] = useState([] as Node[]);
   const [selectedEdges, setSelectedEdges] = useState([] as Edge[]);
+
+  const [newStoryAlertDialogOpen, setNewStoryAlertDialogOpen] = useState(false);
+
+  const getStoryInfo = useCallback((): StoryInfoGraphNode | undefined => {
+    const node = nodes.find(n => n.data.type === "storyInfo");
+    return node?.data as StoryInfoGraphNode;
+  }, [nodes]);
 
   const onConnect = useCallback(
     (conn: Connection) => {
@@ -226,13 +238,13 @@ export default function Flow() {
   }, [deletePressed]);
 
   const saveStory = useCallback(() => {
-    const storyInfoNode = nodes.find(n => n.data.type === "storyInfo");
+    const storyInfo = getStoryInfo();
 
-    if (!storyInfoNode || !reactFlowInstance) {
+    if (!storyInfo || !reactFlowInstance) {
       return;
     }
 
-    const { uuid: storyId, title } = storyInfoNode.data as StoryInfoGraphNode;
+    const { uuid: storyId, title } = storyInfo;
 
     save(
       storyKey(storyId),
@@ -242,45 +254,93 @@ export default function Flow() {
     updateStoryList(storyId, title);
 
     toast({ description: `✔ Story was successfully saved.` });
-  }, [reactFlowInstance, nodes, toast]);
+  }, [reactFlowInstance, getStoryInfo, toast]);
 
-  function loadStory() {
+  const loadStory = useCallback(() => {
+    // open load modal
+  }, []);
 
+  const newStoryAlertDialog = () => setNewStoryAlertDialogOpen(true);
+
+  function newStory() {
+    const newStoryNode = buildNewStoryNode(onNodeDataChange);
+    setNodes([newStoryNode]);
+    setEdges([]);
+    setViewport(defaultViewport);
+  }
+
+  function newStoryWithSave() {
+    saveStory();
+    newStory();
+  }
+
+  function NewStoryAlertDialog() {
+    const storyInfo = getStoryInfo();
+
+    return (
+      <AlertDialog open={newStoryAlertDialogOpen} onOpenChange={setNewStoryAlertDialogOpen}>
+        <AlertDialogContent>
+          <AlertDialogHeader>
+            <AlertDialogTitle>Save the current story?</AlertDialogTitle>
+            <AlertDialogDescription>
+              When a new story is created, all changes to the current story { storyInfo?.title ? <Badge variant="secondary">{storyInfo.title}</Badge> : "" } will be lost.
+            </AlertDialogDescription>
+          </AlertDialogHeader>
+          <AlertDialogFooter>
+            <AlertDialogCancel>Cancel</AlertDialogCancel>
+            <AlertDialogAction asChild>
+              <Button onClick={newStoryWithSave}>
+                Save
+              </Button>
+            </AlertDialogAction>
+            <AlertDialogAction asChild>
+              <Button variant="destructive" onClick={newStory}>
+                Don't save
+              </Button>
+            </AlertDialogAction>
+          </AlertDialogFooter>
+        </AlertDialogContent>
+      </AlertDialog>
+    );
   }
 
   return (
-    <div className="w-screen h-screen flex flex-row flex-grow">
-      <Toolbar
-        onSave={saveStory}
-        onLoad={loadStory}
-      />
-      <div className="flex-grow w-full" ref={reactFlowWrapper}>
-        <ReactFlow
-          nodes={nodes}
-          edges={edges}
-          onSelectionChange={selectionChangeHandler}
-          onNodesChange={onNodesChange}
-          onEdgesChange={onEdgesChange}
-          onConnect={onConnect}
-          onInit={setReactFlowInstance}
-          onDrop={onDrop}
-          onDragOver={onDragOver}
-          nodeDragThreshold={1}
-          onEdgesDelete={onEdgesDelete} // doesn't work currently
-          deleteKeyCode={[]}
-          className="bg-gray-100"
-          nodeTypes={nodeTypes}
-          defaultViewport={storyGraph.viewport ?? defaultViewport}
-        >
-          <Controls />
-          <MiniMap
-            zoomable
-            pannable
-            nodeColor={n => n.type ? colors[n.type as StoryNodeType].rgb : "gray"}
-          />
-          <Background variant={BackgroundVariant.Dots} gap={12} size={1} />
-        </ReactFlow>
+    <>
+      <NewStoryAlertDialog />
+      <div className="w-screen h-screen flex flex-row flex-grow">
+        <Toolbar
+          onNew={newStoryAlertDialog}
+          onSave={saveStory}
+          onLoad={loadStory}
+        />
+        <div className="flex-grow w-full" ref={reactFlowWrapper}>
+          <ReactFlow
+            nodes={nodes}
+            edges={edges}
+            onSelectionChange={selectionChangeHandler}
+            onNodesChange={onNodesChange}
+            onEdgesChange={onEdgesChange}
+            onConnect={onConnect}
+            onInit={setReactFlowInstance}
+            onDrop={onDrop}
+            onDragOver={onDragOver}
+            nodeDragThreshold={1}
+            onEdgesDelete={onEdgesDelete} // doesn't work currently
+            deleteKeyCode={[]}
+            className="bg-gray-100"
+            nodeTypes={nodeTypes}
+            defaultViewport={storyGraph.viewport ?? defaultViewport}
+          >
+            <Controls />
+            <MiniMap
+              zoomable
+              pannable
+              nodeColor={n => n.type ? colors[n.type as StoryNodeType].rgb : "gray"}
+            />
+            <Background variant={BackgroundVariant.Dots} gap={12} size={1} />
+          </ReactFlow>
+        </div>
       </div>
-    </div>
+    </>
   );
 }

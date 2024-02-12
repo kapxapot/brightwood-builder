@@ -1,3 +1,4 @@
+import { PlusIcon } from "@heroicons/react/24/solid";
 import type { StoryNode } from "../../entities/story-node";
 import { toArray } from "../../lib/common";
 import { addTextLine, deleteTextLine, updateTextLine } from "../../lib/node-data-mutations";
@@ -33,7 +34,7 @@ export default function NodeText({ data, allowEmpty, readonly, onEditStarted, on
       )}
 
       <Button onClick={() => addTextLine(data)} disabled={readonly}>
-        Add text 🖊
+        <PlusIcon className="w-4 text-green-600" /> Text
       </Button>
     </>
   );

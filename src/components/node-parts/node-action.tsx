@@ -4,6 +4,7 @@ import Button from "../core/button";
 import { useEffect, useRef, useState } from "react";
 import { autoHeight, focusAndSelect } from "../../lib/ref-operations";
 import HandleOut from "./handle-out";
+import { Bolt, Delete, Edit } from "../core/icons";
 
 interface Props {
   action: Action;
@@ -84,7 +85,7 @@ export default function NodeAction({ action, index, deletable, updateAction, del
                 placeholder="Action label"
               />
             </div>
-            <div className="space-x-2">
+            <div className="flex gap-2">
               <Button onClick={commitEdit} disabled={!label.length}>Save</Button>
               <Button onClick={cancelEdit}>Cancel</Button>
             </div>
@@ -92,9 +93,11 @@ export default function NodeAction({ action, index, deletable, updateAction, del
         }
         {/* view */}
         {!editing &&
-          <div className="break-words">
-            ⚡ <span className={`mr-1 ${noLabel && "opacity-30"}`}>{initialLabel || `Action ${index + 1}`}</span>
-            <NodeRef id={action.id} />
+          <div className="break-words flex gap-1">
+            <Bolt />
+            <span>
+              {initialLabel} <NodeRef id={action.id} />
+            </span>
           </div>
         }
         {!noLabel &&
@@ -106,10 +109,14 @@ export default function NodeAction({ action, index, deletable, updateAction, del
       </div>
       {/* view */}
       {!editing && !nodeEditing &&
-        <div className="absolute right-2 top-[3px] space-x-1 hidden group-hover:block">
-          <Button size="sm" onClick={startEdit}>🖊</Button>
+        <div className="absolute right-2 top-1 hidden group-hover:flex gap-1">
+          <Button size="sm" onClick={startEdit}>
+            <Edit />
+          </Button>
           {deletable &&
-            <Button size="sm" onClick={deleteAction}>❌</Button>
+            <Button size="sm" onClick={deleteAction}>
+              <Delete />
+            </Button>
           }
         </div>
       }

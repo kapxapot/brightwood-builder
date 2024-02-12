@@ -10,6 +10,8 @@ import NodeEffect from "../node-parts/node-effect";
 import NodeText from "../node-parts/node-text";
 import HandleIn from "../node-parts/handle-in";
 import { addAction, deleteAction, updateAction } from "../../lib/action-mutations";
+import { Bolt } from "../core/icons";
+import { PlusIcon } from "@heroicons/react/24/solid";
 
 interface Props {
   data: ActionStoryNode;
@@ -24,7 +26,7 @@ const ActionNode = memo(function ActionNode({ data, selected }: Props) {
       selected={selected}
       color={colors.action.tw}
     >
-      <NodeTitle id={data.id} label={data.label ?? "Action"} />
+      <NodeTitle id={data.id} label={data.label ?? "Choice"} />
 
       <NodeEffect effect={data.effect} />
 
@@ -54,7 +56,7 @@ const ActionNode = memo(function ActionNode({ data, selected }: Props) {
           onClick={() => addAction(data)}
           disabled={nodeEditing}
         >
-          Add action ⚡
+          <PlusIcon className="w-4 text-green-600" /> Action
         </Button>
       </div>
 

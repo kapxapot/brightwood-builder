@@ -2,6 +2,7 @@ import { Viewport } from "reactflow";
 import type { Story } from "../entities/story";
 import type { GraphNode, GraphNodeType, OnChangeHandler, StoryInfoGraphNode, StoryNode } from "../entities/story-node";
 import { storyInfoNodeId } from "../lib/constants";
+import { v4 as uuid } from "uuid";
 
 type BuilderPosition = {
   x: number;
@@ -135,4 +136,23 @@ export function buildStoryGraph(story: Story, changeHandler: OnChangeHandler): S
   }
 
   return { nodes, edges };
+}
+
+export function buildNewStoryNode(changeHandler: OnChangeHandler): BuilderNode {
+  const data: StoryInfoGraphNode = {
+    id: storyInfoNodeId,
+    uuid: uuid(),
+    type: "storyInfo",
+    onChange: changeHandler,
+  };
+
+  const node = {
+    id: String(data.id),
+    type: data.type,
+    dragHandle: '.custom-drag-handle',
+    position: { x: 30, y: 30 },
+    data
+  };
+
+  return node;
 }

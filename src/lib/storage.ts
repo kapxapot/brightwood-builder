@@ -16,10 +16,10 @@ const storiesKey = "stories";
 
 type StoryShortcut = {
   id: string;
-  title: string;
+  title?: string;
 };
 
-export function updateStoryList(storyId: string, storyTitle: string) {
+export function updateStoryList(storyId: string, storyTitle?: string) {
   let stories = (load(storiesKey) ?? []) as StoryShortcut[];
 
   const oldStory = stories.find(s => s.id === storyId);

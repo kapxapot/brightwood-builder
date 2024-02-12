@@ -9,6 +9,7 @@ import NodeTitle from "../node-parts/node-title";
 import NodeEffect from "../node-parts/node-effect";
 import NodeText from "../node-parts/node-text";
 import HandleOut from "../node-parts/handle-out";
+import { Skip } from "../core/icons";
 
 interface Props {
   data: SkipStoryNode;
@@ -35,7 +36,12 @@ const SkipNode = memo(function SkipNode({ data, selected }: Props) {
       />
 
       <div className="text-sm bg-gradient-to-r from-transparent to-cyan-300 p-1 relative -mr-2">
-        <div>🚀 Skips to <NodeRef id={data.nextId} /></div>
+        <div className="flex gap-1">
+          <Skip />
+          <span>
+            Skips to <NodeRef id={data.nextId} />
+          </span>
+        </div>
         <HandleOut connected={!!data.nextId} />
       </div>
 
