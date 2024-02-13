@@ -106,11 +106,11 @@ export default function NodeTextLine({ line, index, deletable, readonly, updateL
           {!readonly &&
             <div className="absolute right-1 top-1 space-x-1 hidden group-hover:block">
               <div className="flex gap-1">
-                <Button size="sm" onClick={startEdit}>
+                <Button size="small" onClick={startEdit}>
                   <Edit />
                 </Button>
                 {deletable &&
-                  <Button size="sm" onClick={deleteLine}>
+                  <Button size="small" onClick={deleteLine}>
                     <Delete />
                   </Button>
                 }

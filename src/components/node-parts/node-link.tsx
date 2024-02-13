@@ -133,11 +133,11 @@ export default function NodeLink({ link, index, deletable, updateLink, deleteLin
       {/* view */}
       {!editing && !nodeEditing &&
         <div className="absolute right-2 top-1 hidden group-hover:flex gap-1">
-          <Button size="sm" onClick={startEdit}>
+          <Button size="small" onClick={startEdit}>
             <Edit />
           </Button>
           {deletable &&
-            <Button size="sm" onClick={deleteLink}>
+            <Button size="small" onClick={deleteLink}>
               <Delete />
             </Button>
           }

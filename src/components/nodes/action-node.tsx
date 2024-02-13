@@ -10,7 +10,6 @@ import NodeEffect from "../node-parts/node-effect";
 import NodeText from "../node-parts/node-text";
 import HandleIn from "../node-parts/handle-in";
 import { addAction, deleteAction, updateAction } from "../../lib/action-mutations";
-import { PlusIcon } from "@heroicons/react/24/solid";
 
 interface Props {
   data: ActionStoryNode;
@@ -55,7 +54,7 @@ const ActionNode = memo(function ActionNode({ data, selected }: Props) {
           onClick={() => addAction(data)}
           disabled={nodeEditing}
         >
-          <PlusIcon className="w-4 text-green-600" /> Action
+          Add action
         </Button>
       </div>
 

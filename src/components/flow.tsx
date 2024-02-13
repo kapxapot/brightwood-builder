@@ -283,19 +283,19 @@ export default function Flow() {
           <AlertDialogHeader>
             <AlertDialogTitle>Save the current story?</AlertDialogTitle>
             <AlertDialogDescription>
-              When a new story is created, all changes to the current story { storyInfo?.title ? <Badge variant="secondary">{storyInfo.title}</Badge> : "" } will be lost.
+              Otherwise, all changes to the current story { storyInfo?.title ? <Badge variant="secondary">{storyInfo.title}</Badge> : "" } will be lost.
             </AlertDialogDescription>
           </AlertDialogHeader>
           <AlertDialogFooter>
             <AlertDialogCancel>Cancel</AlertDialogCancel>
             <AlertDialogAction asChild>
-              <Button onClick={newStoryWithSave}>
-                Save
+              <Button variant="destructive" onClick={newStory}>
+                Don't save
               </Button>
             </AlertDialogAction>
             <AlertDialogAction asChild>
-              <Button variant="destructive" onClick={newStory}>
-                Don't save
+              <Button onClick={newStoryWithSave}>
+                Save
               </Button>
             </AlertDialogAction>
           </AlertDialogFooter>

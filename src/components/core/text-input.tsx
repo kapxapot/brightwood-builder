@@ -99,7 +99,7 @@ export default function TextInput({ value, label, rowCount, readonly, onValueCha
             </span>
             {!readonly &&
               <div className="absolute right-1 top-1 hidden group-hover:block">
-                <Button size="sm" onClick={startEdit}>
+                <Button size="small" onClick={startEdit}>
                   <Edit />
                 </Button>
               </div>

@@ -110,11 +110,11 @@ export default function NodeAction({ action, index, deletable, updateAction, del
       {/* view */}
       {!editing && !nodeEditing &&
         <div className="absolute right-2 top-1 hidden group-hover:flex gap-1">
-          <Button size="sm" onClick={startEdit}>
+          <Button size="small" onClick={startEdit}>
             <Edit />
           </Button>
           {deletable &&
-            <Button size="sm" onClick={deleteAction}>
+            <Button size="small" onClick={deleteAction}>
               <Delete />
             </Button>
           }

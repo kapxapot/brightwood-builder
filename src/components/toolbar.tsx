@@ -1,9 +1,8 @@
-import { CloudArrowUpIcon, FolderOpenIcon, PlusIcon } from "@heroicons/react/24/solid";
 import Button from "./core/button";
 import ToolbarBlock from "./toolbar-block";
 import { ArrowLongRightIcon, ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/24/outline";
 import { useState } from "react";
-import { Bolt, Cube, Skip, Stop } from "./core/icons";
+import { Bolt, Cube, LoadStory, NewStory, SaveStory, Skip, Stop } from "./core/icons";
 import ConditionalTooltip from "./core/conditional-tooltip";
 import Tooltip from "./core/tooltip";
 import { load, save } from "@/lib/storage";
@@ -15,7 +14,7 @@ interface Props {
 }
 
 export default function Toolbar({ onNew, onSave, onLoad }: Props) {
-  const initialExpanded = load<boolean>("toolbarExpanded", false);
+  const initialExpanded = load<boolean>("toolbarExpanded", true);
   const [expanded, setExpanded] = useState(initialExpanded);
 
   const toggleExpanded = () => {
@@ -85,8 +84,8 @@ export default function Toolbar({ onNew, onSave, onLoad }: Props) {
 
       <div className={`flex flex-col items-center ${expanded ? "space-y-3" : "space-y-2"}`}>
         <Tooltip tooltip="New story" side="right">
-          <Button size={expanded ? "lg" : "toolbar"} onClick={onNew}>
-            <PlusIcon className="w-5 text-green-600" />
+          <Button size={expanded ? "large" : "toolbar"} onClick={onNew}>
+            <NewStory />
             {expanded && "New"}
           </Button>
         </Tooltip>
@@ -95,8 +94,8 @@ export default function Toolbar({ onNew, onSave, onLoad }: Props) {
           tooltip="Save story"
           side="right"
         >
-          <Button size={expanded ? "lg" : "toolbar"} onClick={onSave}>
-            <CloudArrowUpIcon className="w-5 text-blue-600" />
+          <Button size={expanded ? "large" : "toolbar"} onClick={onSave}>
+            <SaveStory />
             {expanded && "Save"}
           </Button>
         </Tooltip>
@@ -105,8 +104,8 @@ export default function Toolbar({ onNew, onSave, onLoad }: Props) {
           tooltip="Load story"
           side="right"
         >
-          <Button size={expanded ? "lg" : "toolbar"} onClick={onLoad} disabled={true}>
-            <FolderOpenIcon className="w-5 text-yellow-600" />
+          <Button size={expanded ? "large" : "toolbar"} onClick={onLoad} disabled={true}>
+            <LoadStory />
             {expanded && "Load"}
           </Button>
         </Tooltip>

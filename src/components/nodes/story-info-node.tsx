@@ -7,7 +7,7 @@ import NodeRef from "../node-parts/node-ref";
 import TextInput from "../core/text-input";
 import HandleOut from "../node-parts/handle-out";
 import NodeShell from "../node-parts/node-shell";
-import { FlagIcon } from "@heroicons/react/24/solid";
+import { Flag } from "../core/icons";
 
 interface Props {
   data: StoryInfoGraphNode;
@@ -53,7 +53,7 @@ const StoryInfoNode = memo(function StoryInfoNode({ data, selected }: Props) {
 
       <div className="mt-2 text-sm bg-gradient-to-r from-transparent to-purple-300 p-1 relative -mr-2">
         <div className="flex gap-1">
-          <FlagIcon className="w-5 text-purple-600" />
+          <Flag />
           <span>
             It starts with <NodeRef id={data.startId} />
           </span>
