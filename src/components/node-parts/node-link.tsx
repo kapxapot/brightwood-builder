@@ -114,7 +114,7 @@ export default function NodeLink({ link, index, deletable, updateLink, deleteLin
         }
         {/* view */}
         {!editing &&
-          <div className="flex gap-1">
+          <div className="flex gap-1 max-h-5">
             <WeightDices weight={link.weight} />
             {link.condition && (
               <span>
