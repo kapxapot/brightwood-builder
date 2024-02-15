@@ -5,13 +5,18 @@ interface Props {
 }
 
 export function WeightDices({ weight }: Props) {
-  const diceCount = Math.max(1, weight);
-  const float = weight > Math.floor(weight);
+  const floor = Math.floor(weight);
+  const diceCount = Math.max(1, floor);
+  const float = weight > floor;
 
   return (
     <span className="flex">
       {Array(diceCount).fill(0).map((_, index) => <Cube key={index} />)}
-      {float ?? ` [${weight}]`}
+      {float &&
+        <span className="ml-1">
+          [{weight}]
+        </span>
+      }
     </span>
   );
 }
