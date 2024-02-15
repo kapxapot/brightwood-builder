@@ -102,6 +102,7 @@ export default function NodeLink({ link, index, deletable, updateLink, deleteLin
               <Button
                 onClick={commitEdit}
                 disabled={weight <= weights.min || weight > weights.max}
+                variant="primary"
               >
                 Save
               </Button>

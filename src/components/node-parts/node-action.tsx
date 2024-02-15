@@ -86,7 +86,13 @@ export default function NodeAction({ action, index, deletable, updateAction, del
               />
             </div>
             <div className="flex gap-2">
-              <Button onClick={commitEdit} disabled={!label.length}>Save</Button>
+              <Button
+                onClick={commitEdit}
+                disabled={!label.length}
+                variant="primary"
+              >
+                Save
+              </Button>
               <Button onClick={cancelEdit}>Cancel</Button>
             </div>
           </div>

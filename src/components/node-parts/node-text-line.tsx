@@ -83,7 +83,13 @@ export default function NodeTextLine({ line, index, deletable, readonly, updateL
           >
           </textarea>
           <div className="flex gap-2">
-            <Button onClick={commitEdit} disabled={!editedLine.length}>Save</Button>
+            <Button
+              onClick={commitEdit}
+              disabled={!editedLine.length}
+              variant="primary"
+            >
+              Save
+            </Button>
             {(deletable || !noText) &&
               <Button onClick={cancelEdit}>Cancel</Button>
             }

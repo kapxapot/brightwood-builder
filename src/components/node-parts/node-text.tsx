@@ -32,7 +32,10 @@ export default function NodeText({ data, allowEmpty, readonly, onEditStarted, on
         />
       )}
 
-      <Button onClick={() => addTextLine(data)} disabled={readonly}>
+      <Button
+        onClick={() => addTextLine(data)}
+        disabled={readonly}
+      >
         Add text
       </Button>
     </>
