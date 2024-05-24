@@ -253,7 +253,7 @@ export default function Flow() {
 
     updateStoryList(storyId, title);
 
-    toast({ description: `✔ Story was successfully saved.` });
+    toast({ description: `✅ Story was successfully saved.` });
   }, [reactFlowInstance, getStoryInfo, toast]);
 
   const loadStory = useCallback(() => {

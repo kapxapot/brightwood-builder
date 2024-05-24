@@ -6,6 +6,7 @@ import { Bolt, Cube, LoadStory, NewStory, SaveStory, Skip, Stop } from "./core/i
 import ConditionalTooltip from "./core/conditional-tooltip";
 import Tooltip from "./core/tooltip";
 import { load, save } from "@/lib/storage";
+import { nodeLabels } from "@/lib/constants";
 
 interface Props {
   onNew: () => void;
@@ -38,46 +39,46 @@ export default function Toolbar({ onNew, onSave, onLoad }: Props) {
         </ConditionalTooltip>
 
         <ConditionalTooltip
-          tooltip="Choice"
+          tooltip={nodeLabels.action}
           show={!expanded}
           side="right"
         >
           <ToolbarBlock type="action">
             <Bolt />
-            {expanded && "Choice"}
+            {expanded && nodeLabels.action}
           </ToolbarBlock>
         </ConditionalTooltip>
 
         <ConditionalTooltip
-          tooltip="Random"
+          tooltip={nodeLabels.redirect}
           show={!expanded}
           side="right"
         >
           <ToolbarBlock type="redirect">
             <Cube />
-            {expanded && "Random"}
+            {expanded && nodeLabels.redirect}
           </ToolbarBlock>
         </ConditionalTooltip>
 
         <ConditionalTooltip
-          tooltip="Skip"
+          tooltip={nodeLabels.skip}
           show={!expanded}
           side="right"
         >
           <ToolbarBlock type="skip">
             <Skip />
-            {expanded && "Skip"}
+            {expanded && nodeLabels.skip}
           </ToolbarBlock>
         </ConditionalTooltip>
 
         <ConditionalTooltip
-          tooltip="Finish"
+          tooltip={nodeLabels.finish}
           show={!expanded}
           side="right"
         >
           <ToolbarBlock type="finish">
             <Stop />
-            {expanded && "Finish"}
+            {expanded && nodeLabels.finish}
           </ToolbarBlock>
         </ConditionalTooltip>
       </div>

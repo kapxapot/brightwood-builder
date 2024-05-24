@@ -41,3 +41,11 @@ export const weights = {
 } as const;
 
 export const storyInfoNodeId = 0;
+
+export const nodeLabels: Record<GraphNodeType, string> = {
+  storyInfo: "📚 Story",
+  action: "Action",
+  redirect: "Redirect",
+  skip: "Skip",
+  finish: "Finish"
+};

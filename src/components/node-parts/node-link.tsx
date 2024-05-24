@@ -7,6 +7,7 @@ import { weights } from "../../lib/constants";
 import HandleOut from "./handle-out";
 import { WeightDices } from "./weight-dices";
 import { Delete, Edit } from "../core/icons";
+import Tooltip from "../core/tooltip";
 
 interface Props {
   link: Link;
@@ -115,7 +116,9 @@ export default function NodeLink({ link, index, deletable, updateLink, deleteLin
         {/* view */}
         {!editing &&
           <div className="flex gap-1 max-h-5">
-            <WeightDices weight={link.weight} />
+            <Tooltip tooltip={`Probability: ${link.weight}`} side="top">
+              <WeightDices weight={link.weight} />
+            </Tooltip>
             {link.condition && (
               <span>
                 <span className="italic">if:</span> {link.condition}

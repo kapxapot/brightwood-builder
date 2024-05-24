@@ -1,6 +1,6 @@
 import { memo } from "react";
 import type { SkipStoryNode } from "../../entities/story-node";
-import { colors } from "../../lib/constants";
+import { colors, nodeLabels } from "../../lib/constants";
 import NodeShell from "../node-parts/node-shell";
 import NodeRef from "../node-parts/node-ref";
 import { useNodeEditing } from "../../hooks/use-node-editing";
@@ -24,7 +24,7 @@ const SkipNode = memo(function SkipNode({ data, selected }: Props) {
       selected={selected}
       color={colors.skip.tw}
     >
-      <NodeTitle id={data.id} label={data.label ?? "Skip"} />
+      <NodeTitle id={data.id} label={data.label ?? nodeLabels.skip} />
 
       <NodeEffect effect={data.effect} />
 

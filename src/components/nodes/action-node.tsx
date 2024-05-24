@@ -1,6 +1,6 @@
 import { memo } from "react";
 import type { ActionStoryNode } from "../../entities/story-node";
-import { colors } from "../../lib/constants";
+import { colors, nodeLabels } from "../../lib/constants";
 import NodeShell from "../node-parts/node-shell";
 import Button from "../core/button";
 import NodeAction from "../node-parts/node-action";
@@ -24,7 +24,7 @@ const ActionNode = memo(function ActionNode({ data, selected }: Props) {
       selected={selected}
       color={colors.action.tw}
     >
-      <NodeTitle id={data.id} label={data.label ?? "Choice"} />
+      <NodeTitle id={data.id} label={data.label ?? nodeLabels.action} />
 
       <NodeEffect effect={data.effect} />
 

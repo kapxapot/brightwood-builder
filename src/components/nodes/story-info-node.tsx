@@ -2,7 +2,7 @@ import { memo } from "react";
 import { useNodeEditing } from "../../hooks/use-node-editing";
 import NodeTitle from "../node-parts/node-title";
 import type { StoryInfoGraphNode } from "../../entities/story-node";
-import { colors } from "../../lib/constants";
+import { colors, nodeLabels } from "../../lib/constants";
 import NodeRef from "../node-parts/node-ref";
 import TextInput from "../core/text-input";
 import HandleOut from "../node-parts/handle-out";
@@ -31,7 +31,7 @@ const StoryInfoNode = memo(function StoryInfoNode({ data, selected }: Props) {
       color={colors.storyInfo.tw}
       spaceY="none"
     >
-      <NodeTitle id={data.id} label="📚 Story" />
+      <NodeTitle id={data.id} label={nodeLabels.storyInfo} />
 
       <TextInput
         value={data.title}
