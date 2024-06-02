@@ -89,7 +89,6 @@ export default function NodeAction({ action, index, deletable, updateAction, del
               <Button
                 onClick={commitEdit}
                 disabled={!label.length}
-                variant="primary"
               >
                 Save
               </Button>

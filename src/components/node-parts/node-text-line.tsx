@@ -86,7 +86,6 @@ export default function NodeTextLine({ line, index, deletable, readonly, updateL
             <Button
               onClick={commitEdit}
               disabled={!editedLine.length}
-              variant="primary"
             >
               Save
             </Button>
