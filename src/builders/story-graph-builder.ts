@@ -143,7 +143,7 @@ export function buildNewStoryNode(changeHandler: OnChangeHandler): BuilderNode {
     id: storyInfoNodeId,
     uuid: uuid(),
     type: "storyInfo",
-    onChange: changeHandler,
+    onChange: changeHandler
   };
 
   const node = {

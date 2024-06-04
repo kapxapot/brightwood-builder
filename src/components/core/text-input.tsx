@@ -20,7 +20,7 @@ export default function TextInput({ value, label, rowCount, readonly, onValueCha
   const noValue = !initialValue.length;
 
   const [editedValue, setEditedValue] = useState(initialValue);
-  const [editing, setEditing] = useState(noValue);
+  const [editing, setEditing] = useState(false);
 
   const inputRef = useRef<HTMLTextAreaElement>(null);
 
@@ -59,7 +59,7 @@ export default function TextInput({ value, label, rowCount, readonly, onValueCha
   }, [editedValue]);
 
   return (
-    <div className={`${noValue ? "mt-2" : "mt-1"}`}>
+    <div className={`${editing ? "mt-2" : "mt-1"}`}>
       {/* edit */}
       {editing &&
         <div className="border border-black border-opacity-20 rounded-lg border-dashed bg-white p-1 mt-3 text-sm">

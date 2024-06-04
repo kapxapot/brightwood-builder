@@ -289,13 +289,13 @@ export default function Flow() {
           <AlertDialogFooter>
             <AlertDialogCancel>Cancel</AlertDialogCancel>
             <AlertDialogAction asChild>
-              <Button variant="destructive" onClick={newStory}>
-                Don't save
+              <Button onClick={newStoryWithSave}>
+                Save
               </Button>
             </AlertDialogAction>
             <AlertDialogAction asChild>
-              <Button onClick={newStoryWithSave}>
-                Save
+              <Button variant="destructive" onClick={newStory}>
+                Don't save
               </Button>
             </AlertDialogAction>
           </AlertDialogFooter>
