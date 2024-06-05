@@ -1,4 +1,4 @@
-import { ArrowDownTrayIcon, BoltIcon, CubeIcon, FlagIcon, FolderOpenIcon, ForwardIcon, NoSymbolIcon, PlusIcon } from "@heroicons/react/24/outline";
+import { ArrowDownTrayIcon, BoltIcon, CheckIcon, CubeIcon, FlagIcon, FolderOpenIcon, ForwardIcon, NoSymbolIcon, PlusIcon } from "@heroicons/react/24/outline";
 import { PencilIcon, TrashIcon } from "@heroicons/react/24/solid";
 import Tooltip from "./tooltip";
 import { colors } from "@/lib/constants";
@@ -12,6 +12,8 @@ export const Flag = () => <FlagIcon className="w-5 text-purple-600" />;
 export const NewStory = () => <PlusIcon className="w-5 text-green-600" />;
 export const SaveStory = () => <ArrowDownTrayIcon className="w-5 text-blue-600" />;
 export const LoadStory = () => <FolderOpenIcon className="w-5 text-yellow-600" />;
+
+export const Check = () => <CheckIcon className="w-5 text-green-600" />;
 
 export const Edit = () => (
   <Tooltip tooltip="Edit" side="top">

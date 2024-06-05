@@ -21,6 +21,7 @@ import { useStoryGraph } from "@/hooks/use-story-graph";
 import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle } from "./ui/alert-dialog";
 import { Button } from "./ui/button";
 import { Badge } from "./ui/badge";
+import { Check } from "./core/icons";
 
 const nodeTypes = {
   storyInfo: StoryInfoNode,
@@ -253,7 +254,14 @@ export default function Flow() {
 
     updateStoryList(storyId, title);
 
-    toast({ description: `✅ Story was successfully saved.` });
+    toast({
+      description: (
+        <div className="flex gap-1">
+          <Check />
+          <span>Story was successfully saved.</span>
+        </div>
+      )
+    });
   }, [reactFlowInstance, getStoryInfo, toast]);
 
   const loadStory = useCallback(() => {
