@@ -17,7 +17,7 @@ interface Props {
 }
 
 const RedirectNode = memo(function RedirectNode({ data, selected }: Props) {
-  const [nodeEditing, startEdit, finishEdit] = useNodeEditing();
+  const { nodeEditing, startEdit, finishEdit } = useNodeEditing();
 
   return (
     <NodeShell

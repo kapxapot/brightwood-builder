@@ -17,7 +17,7 @@ interface Props {
 }
 
 const SkipNode = memo(function SkipNode({ data, selected }: Props) {
-  const [nodeEditing, startEdit, finishEdit] = useNodeEditing();
+  const { nodeEditing, startEdit, finishEdit } = useNodeEditing();
 
   return (
     <NodeShell

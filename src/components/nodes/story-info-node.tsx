@@ -15,7 +15,7 @@ interface Props {
 }
 
 const StoryInfoNode = memo(function StoryInfoNode({ data, selected }: Props) {
-  const [nodeEditing, startEdit, finishEdit] = useNodeEditing();
+  const { nodeEditing, startEdit, finishEdit } = useNodeEditing();
 
   const updateTitle = (title: string) => {
     data.onChange?.({ ...data, title });

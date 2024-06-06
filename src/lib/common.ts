@@ -5,3 +5,7 @@ export function toArray<T>(value: T | T[] | undefined | null): T[] {
 
   return Array.isArray(value) ? value : [value];
 }
+
+export function isEmpty<T>(array: T[]): boolean {
+  return array.length === 0;
+}

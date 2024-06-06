@@ -14,7 +14,7 @@ interface Props {
 }
 
 const FinishNode = memo(function FinishNode({ data, selected }: Props) {
-  const [nodeEditing, startEdit, finishEdit] = useNodeEditing();
+  const { nodeEditing, startEdit, finishEdit } = useNodeEditing();
 
   return (
     <NodeShell

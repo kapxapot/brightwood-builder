@@ -15,7 +15,7 @@ interface Props {
 }
 
 export default function Toolbar({ onNew, onSave, onLoad }: Props) {
-  const initialExpanded = load<boolean>("toolbarExpanded", true);
+  const initialExpanded = load<boolean>("toolbarExpanded") ?? true;
   const [expanded, setExpanded] = useState(initialExpanded);
 
   const toggleExpanded = () => {
@@ -105,7 +105,7 @@ export default function Toolbar({ onNew, onSave, onLoad }: Props) {
           tooltip="Load story"
           side="right"
         >
-          <Button size={expanded ? "large" : "toolbar"} onClick={onLoad} disabled={true}>
+          <Button size={expanded ? "large" : "toolbar"} onClick={onLoad}>
             <LoadStory />
             {expanded && "Load"}
           </Button>

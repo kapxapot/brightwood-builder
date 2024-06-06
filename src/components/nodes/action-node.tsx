@@ -17,7 +17,7 @@ interface Props {
 }
 
 const ActionNode = memo(function ActionNode({ data, selected }: Props) {
-  const [nodeEditing, startEdit, finishEdit] = useNodeEditing();
+  const { nodeEditing, startEdit, finishEdit } = useNodeEditing();
 
   return (
     <NodeShell

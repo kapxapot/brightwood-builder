@@ -99,6 +99,7 @@ export function removeConnections(node: NodeType, edges: Edge[]): NodeType {
       break;
 
     case "skip":
+      // eslint-disable-next-line no-case-declarations
       const newSkipData = { ...data };
       delete newSkipData.nextId;
 
@@ -106,6 +107,7 @@ export function removeConnections(node: NodeType, edges: Edge[]): NodeType {
       break;
 
     case "storyInfo":
+      // eslint-disable-next-line no-case-declarations
       const newStoryInfoData = { ...data };
       delete newStoryInfoData.startId;
 

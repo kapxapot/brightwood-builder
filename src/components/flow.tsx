@@ -6,22 +6,24 @@ import ActionNode from "./nodes/action-node";
 import SkipNode from "./nodes/skip-node";
 import RedirectNode from "./nodes/redirect-node";
 import FinishNode from "./nodes/finish-node";
-import importStory from "../stories/test.json";
-import { buildNewStoryNode, defaultViewport } from "../builders/story-graph-builder";
-import type { Story } from "../entities/story";
+import { StoryGraph, defaultViewport } from "../builders/story-graph-builder";
 import { removeConnections, updateConnection } from "../lib/node-operations";
 import { isAllowedConnection, isDeletable } from "../lib/node-checks";
 import type { GraphNode, NodeEvent, OnChangeHandler, StoryInfoGraphNode, StoryNode, StoryNodeType } from "../entities/story-node";
 import StoryInfoNode from "./nodes/story-info-node";
 import { buildNodeData } from "../builders/node-builder";
 import { colors } from "../lib/constants";
-import { save, storyKey, updateStoryList } from "../lib/storage";
 import { useToast } from "./ui/use-toast";
-import { useStoryGraph } from "@/hooks/use-story-graph";
 import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle } from "./ui/alert-dialog";
 import { Button } from "./ui/button";
 import { Badge } from "./ui/badge";
-import { Check } from "./core/icons";
+import { Check, Error } from "./core/icons";
+import { Dialog, DialogClose, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle } from "./ui/dialog";
+import { loadStories, loadStoryGraph, saveCurrentStoryId, saveStoryGraph } from "@/lib/storage";
+import { isEmpty } from "@/lib/common";
+import { ArrowUpTrayIcon, TrashIcon } from "@heroicons/react/24/outline";
+import Tooltip from "./core/tooltip";
+import { initStoryGraph, newStoryGraph } from "@/lib/story-graph";
 
 const nodeTypes = {
   storyInfo: StoryInfoNode,
@@ -34,8 +36,7 @@ const nodeTypes = {
 export default function Flow() {
   const { toast } = useToast();
 
-  const storyGraph = useStoryGraph(
-    importStory as Story,
+  const storyGraph = initStoryGraph(
     (data, event) => onNodeDataChange(data, event)
   );
 
@@ -51,10 +52,11 @@ export default function Flow() {
   const [selectedEdges, setSelectedEdges] = useState([] as Edge[]);
 
   const [newStoryAlertDialogOpen, setNewStoryAlertDialogOpen] = useState(false);
+  const [loadStoryDialogOpen, setLoadStoryDialogOpen] = useState(false);
 
-  const getStoryInfo = useCallback((): StoryInfoGraphNode | undefined => {
+  const getStoryInfo = useCallback((): StoryInfoGraphNode | null => {
     const node = nodes.find(n => n.data.type === "storyInfo");
-    return node?.data as StoryInfoGraphNode;
+    return node?.data as StoryInfoGraphNode ?? null;
   }, [nodes]);
 
   const onConnect = useCallback(
@@ -212,7 +214,7 @@ export default function Flow() {
 
         return curEdges.filter(e => !edgesToDelete.includes(e));
       });
-     },
+    },
     [setEdges, onEdgesDelete]
   );
 
@@ -238,43 +240,55 @@ export default function Flow() {
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [deletePressed]);
 
+  const showToast = useCallback(
+    (message: string, status: "success" | "error" | "none") => {
+      toast({
+        description: (
+          <div className="flex gap-1">
+            {status === "success" && <Check />}
+            {status === "error" && <Error />}
+            <span>{message}</span>
+          </div>
+        )
+      });
+    },
+    [toast]
+  );
+
   const saveStory = useCallback(() => {
     const storyInfo = getStoryInfo();
 
     if (!storyInfo || !reactFlowInstance) {
+      showToast("The current story or the reactFlow instance not found.", "error");
       return;
     }
 
     const { uuid: storyId, title } = storyInfo;
 
-    save(
-      storyKey(storyId),
-      reactFlowInstance.toObject()
+    saveStoryGraph(
+      {
+        id: storyId,
+        title
+      },
+      reactFlowInstance.toObject() as StoryGraph
     );
 
-    updateStoryList(storyId, title);
-
-    toast({
-      description: (
-        <div className="flex gap-1">
-          <Check />
-          <span>Story was successfully saved.</span>
-        </div>
-      )
-    });
-  }, [reactFlowInstance, getStoryInfo, toast]);
-
-  const loadStory = useCallback(() => {
-    // open load modal
-  }, []);
+    showToast("Story successfully saved.", "success");
+  }, [reactFlowInstance, getStoryInfo, showToast]);
 
   const newStoryAlertDialog = () => setNewStoryAlertDialogOpen(true);
+  const loadStoryDialog = () => setLoadStoryDialogOpen(true);
+
+  function setStoryGraph(storyGraph: StoryGraph) {
+    setNodes(storyGraph.nodes);
+    setEdges(storyGraph.edges);
+    setViewport(storyGraph.viewport ?? defaultViewport);
+  }
 
   function newStory() {
-    const newStoryNode = buildNewStoryNode(onNodeDataChange);
-    setNodes([newStoryNode]);
-    setEdges([]);
-    setViewport(defaultViewport);
+    setStoryGraph(
+      newStoryGraph(onNodeDataChange)
+    );
   }
 
   function newStoryWithSave() {
@@ -312,14 +326,85 @@ export default function Flow() {
     );
   }
 
+  function LoadStoryDialog() {
+    const stories = loadStories();
+
+    function loadStory(id: string) {
+      const storyGraph = loadStoryGraph(id);
+
+      if (!storyGraph) {
+        showToast("Failed to load story.", "error");
+      } else {
+        setLoadStoryDialogOpen(false);
+        setStoryGraph(storyGraph);
+        saveCurrentStoryId(id);
+      }
+    }
+
+    return (
+      <Dialog open={loadStoryDialogOpen} onOpenChange={setLoadStoryDialogOpen}>
+        <DialogContent className="sm:max-w-[425px]">
+          <DialogHeader>
+            <DialogTitle>Load story</DialogTitle>
+            <DialogDescription>
+              Choose a story to load. You can also delete stories here.
+            </DialogDescription>
+          </DialogHeader>
+          {isEmpty(stories) && (
+            <div className="text-center">
+              There no saved stories yet.
+            </div>
+          )}
+          {!isEmpty(stories) && (
+            <div className="flex flex-col gap-1">
+              {stories.map(story => (
+                <div
+                  className="flex items-center gap-3 hover:bg-gray-100 p-2 rounded"
+                  key={story.id}
+                >
+                  <div className="flex-grow">
+                    {story.title && (
+                      <div>{story.title}</div>
+                    )}
+                    <div className="text-xs text-gray-400">{story.id}</div>
+                  </div>
+                  <div className="flex">
+                    <Button variant="outlineHighlight" size="icon" onClick={() => loadStory(story.id)}>
+                      <Tooltip tooltip="Load story" side="top">
+                        <ArrowUpTrayIcon className="w-5" />
+                      </Tooltip>
+                    </Button>
+                    <Button variant="ghost" size="icon" disabled={true}>
+                      <Tooltip tooltip="Delete story" side="top">
+                        <TrashIcon className="w-5 text-red-600" />
+                      </Tooltip>
+                    </Button>
+                  </div>
+                </div>
+              ))}
+            </div>
+          )}
+          <DialogFooter>
+            <DialogClose asChild>
+              <Button type="button" variant="secondary">
+                Close
+              </Button>
+            </DialogClose>
+          </DialogFooter>
+        </DialogContent>
+      </Dialog>
+    );
+  }
+
   return (
     <>
       <NewStoryAlertDialog />
+      <LoadStoryDialog />
       <div className="w-screen h-screen flex flex-row flex-grow">
         <Toolbar
           onNew={newStoryAlertDialog}
           onSave={saveStory}
-          onLoad={loadStory}
+          onLoad={loadStoryDialog}
         />
         <div className="flex-grow w-full" ref={reactFlowWrapper}>
           <ReactFlow
