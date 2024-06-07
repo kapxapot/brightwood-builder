@@ -14,16 +14,11 @@ import StoryInfoNode from "./nodes/story-info-node";
 import { buildNodeData } from "../builders/node-builder";
 import { colors } from "../lib/constants";
 import { useToast } from "./ui/use-toast";
-import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle } from "./ui/alert-dialog";
-import { Button } from "./ui/button";
-import { Badge } from "./ui/badge";
 import { Check, Error } from "./core/icons";
-import { Dialog, DialogClose, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle } from "./ui/dialog";
-import { loadStories, loadStoryGraph, saveCurrentStoryId, saveStoryGraph } from "@/lib/storage";
-import { isEmpty } from "@/lib/common";
-import { ArrowUpTrayIcon, TrashIcon } from "@heroicons/react/24/outline";
-import Tooltip from "./core/tooltip";
+import { loadStoryGraph, saveCurrentStoryId, saveStoryGraph } from "@/lib/storage";
 import { initStoryGraph, newStoryGraph } from "@/lib/story-graph";
+import { NewStoryAlertDialog } from "./dialogs/new-story-alert-dialog";
+import { LoadStoryDialog } from "./dialogs/load-story-dialog";
 
 const nodeTypes = {
   storyInfo: StoryInfoNode,
@@ -58,6 +53,8 @@ export default function Flow() {
     const node = nodes.find(n => n.data.type === "storyInfo");
     return node?.data as StoryInfoGraphNode ?? null;
   }, [nodes]);
+
+  const storyInfo = getStoryInfo();
 
   const onConnect = useCallback(
     (conn: Connection) => {
@@ -296,110 +293,38 @@ export default function Flow() {
     newStory();
   }
 
-  function NewStoryAlertDialog() {
-    const storyInfo = getStoryInfo();
+  function loadStory(id: string) {
+    const storyGraph = loadStoryGraph(id);
 
-    return (
-      <AlertDialog open={newStoryAlertDialogOpen} onOpenChange={setNewStoryAlertDialogOpen}>
-        <AlertDialogContent>
-          <AlertDialogHeader>
-            <AlertDialogTitle>Save the current story?</AlertDialogTitle>
-            <AlertDialogDescription>
-              Otherwise, all changes to the current story { storyInfo?.title ? <Badge variant="secondary">{storyInfo.title}</Badge> : "" } will be lost.
-            </AlertDialogDescription>
-          </AlertDialogHeader>
-          <AlertDialogFooter>
-            <AlertDialogCancel>Cancel</AlertDialogCancel>
-            <AlertDialogAction asChild>
-              <Button onClick={newStoryWithSave}>
-                Save
-              </Button>
-            </AlertDialogAction>
-            <AlertDialogAction asChild>
-              <Button variant="destructive" onClick={newStory}>
-                Don't save
-              </Button>
-            </AlertDialogAction>
-          </AlertDialogFooter>
-        </AlertDialogContent>
-      </AlertDialog>
-    );
-  }
-
-  function LoadStoryDialog() {
-    const stories = loadStories();
-
-    function loadStory(id: string) {
-      const storyGraph = loadStoryGraph(id);
-
-      if (!storyGraph) {
-        showToast("Failed to load story.", "error");
-      } else {
-        setLoadStoryDialogOpen(false);
-        setStoryGraph(storyGraph);
-        saveCurrentStoryId(id);
-      }
+    if (!storyGraph) {
+      showToast("Failed to load story.", "error");
+      return;
     }
 
-    return (
-      <Dialog open={loadStoryDialogOpen} onOpenChange={setLoadStoryDialogOpen}>
-        <DialogContent className="sm:max-w-[425px]">
-          <DialogHeader>
-            <DialogTitle>Load story</DialogTitle>
-            <DialogDescription>
-              Choose a story to load. You can also delete stories here.
-            </DialogDescription>
-          </DialogHeader>
-          {isEmpty(stories) && (
-            <div className="text-center">
-              There no saved stories yet.
-            </div>
-          )}
-          {!isEmpty(stories) && (
-            <div className="flex flex-col gap-1">
-              {stories.map(story => (
-                <div
-                  className="flex items-center gap-3 hover:bg-gray-100 p-2 rounded"
-                  key={story.id}
-                >
-                  <div className="flex-grow">
-                    {story.title && (
-                      <div>{story.title}</div>
-                    )}
-                    <div className="text-xs text-gray-400">{story.id}</div>
-                  </div>
-                  <div className="flex">
-                    <Button variant="outlineHighlight" size="icon" onClick={() => loadStory(story.id)}>
-                      <Tooltip tooltip="Load story" side="top">
-                        <ArrowUpTrayIcon className="w-5" />
-                      </Tooltip>
-                    </Button>
-                    <Button variant="ghost" size="icon" disabled={true}>
-                      <Tooltip tooltip="Delete story" side="top">
-                        <TrashIcon className="w-5 text-red-600" />
-                      </Tooltip>
-                    </Button>
-                  </div>
-                </div>
-              ))}
-            </div>
-          )}
-          <DialogFooter>
-            <DialogClose asChild>
-              <Button type="button" variant="secondary">
-                Close
-              </Button>
-            </DialogClose>
-          </DialogFooter>
-        </DialogContent>
-      </Dialog>
-    );
+    setLoadStoryDialogOpen(false);
+    setStoryGraph(storyGraph);
+    saveCurrentStoryId(id);
+  }
+
+  function deleteStory(id: string) {
+    console.log(`I'm gonna delete story ${id}`);
   }
 
   return (
     <>
-      <NewStoryAlertDialog />
-      <LoadStoryDialog />
+      <NewStoryAlertDialog
+        storyInfo={storyInfo}
+        open={newStoryAlertDialogOpen}
+        onOpenChange={setNewStoryAlertDialogOpen}
+        onSave={newStoryWithSave}
+        onDontSave={newStory}
+      />
+      <LoadStoryDialog
+        open={loadStoryDialogOpen}
+        onOpenChange={setLoadStoryDialogOpen}
+        onLoadStory={loadStory}
+        onDeleteStory={deleteStory}
+      />
       <div className="w-screen h-screen flex flex-row flex-grow">
         <Toolbar
           onNew={newStoryAlertDialog}
