@@ -1,12 +1,8 @@
 import { StoryGraph } from "@/builders/story-graph-builder";
+import { StoryShortcut } from "@/entities/story";
 
 const storiesKey = "stories";
 const currentStoryIdKey = "currentStoryId";
-
-export type StoryShortcut = {
-  id: string;
-  title?: string;
-};
 
 export function save(key: string, data: unknown) {
   localStorage.setItem(key, JSON.stringify(data));
@@ -18,6 +14,10 @@ export function load<T>(key: string): T | null {
   return rawData
     ? JSON.parse(rawData) as T
     : null;
+}
+
+export function remove(key: string) {
+  localStorage.removeItem(key);
 }
 
 export const storyKey = (storyId: string) => `story-${storyId}`;
@@ -56,4 +56,17 @@ export function loadCurrentStoryId(): string | null {
 
 export function saveCurrentStoryId(id: string) {
   save(currentStoryIdKey, id);
+}
+
+export function deleteStoryGraph(id: string) {
+  remove(storyKey(id));
+
+  save(
+    storiesKey,
+    loadStories().filter(s => s.id !== id)
+  );
+}
+
+export function deleteCurrentStoryId() {
+  remove(currentStoryIdKey);
 }

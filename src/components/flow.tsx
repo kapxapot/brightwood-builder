@@ -15,10 +15,11 @@ import { buildNodeData } from "../builders/node-builder";
 import { colors } from "../lib/constants";
 import { useToast } from "./ui/use-toast";
 import { Check, Error } from "./core/icons";
-import { loadStoryGraph, saveCurrentStoryId, saveStoryGraph } from "@/lib/storage";
+import { deleteCurrentStoryId, deleteStoryGraph, loadStoryGraph, saveCurrentStoryId, saveStoryGraph } from "@/lib/storage";
 import { initStoryGraph, newStoryGraph } from "@/lib/story-graph";
 import { NewStoryAlertDialog } from "./dialogs/new-story-alert-dialog";
 import { LoadStoryDialog } from "./dialogs/load-story-dialog";
+import { useStories } from "@/hooks/use-stories";
 
 const nodeTypes = {
   storyInfo: StoryInfoNode,
@@ -30,6 +31,8 @@ const nodeTypes = {
 
 export default function Flow() {
   const { toast } = useToast();
+
+  const { stories, reloadStories } = useStories();
 
   const storyGraph = initStoryGraph(
     (data, event) => onNodeDataChange(data, event)
@@ -49,12 +52,12 @@ export default function Flow() {
   const [newStoryAlertDialogOpen, setNewStoryAlertDialogOpen] = useState(false);
   const [loadStoryDialogOpen, setLoadStoryDialogOpen] = useState(false);
 
-  const getStoryInfo = useCallback((): StoryInfoGraphNode | null => {
+  const getCurrentStoryData = useCallback((): StoryInfoGraphNode | undefined => {
     const node = nodes.find(n => n.data.type === "storyInfo");
-    return node?.data as StoryInfoGraphNode ?? null;
+    return node?.data as StoryInfoGraphNode;
   }, [nodes]);
 
-  const storyInfo = getStoryInfo();
+  const currentStoryData = getCurrentStoryData();
 
   const onConnect = useCallback(
     (conn: Connection) => {
@@ -253,14 +256,14 @@ export default function Flow() {
   );
 
   const saveStory = useCallback(() => {
-    const storyInfo = getStoryInfo();
+    const currentStoryData = getCurrentStoryData();
 
-    if (!storyInfo || !reactFlowInstance) {
+    if (!currentStoryData || !reactFlowInstance) {
       showToast("The current story or the reactFlow instance not found.", "error");
       return;
     }
 
-    const { uuid: storyId, title } = storyInfo;
+    const { uuid: storyId, title } = currentStoryData;
 
     saveStoryGraph(
       {
@@ -270,8 +273,10 @@ export default function Flow() {
       reactFlowInstance.toObject() as StoryGraph
     );
 
+    reloadStories();
+
     showToast("Story successfully saved.", "success");
-  }, [reactFlowInstance, getStoryInfo, showToast]);
+  }, [reactFlowInstance, getCurrentStoryData, reloadStories, showToast]);
 
   const newStoryAlertDialog = () => setNewStoryAlertDialogOpen(true);
   const loadStoryDialog = () => setLoadStoryDialogOpen(true);
@@ -286,6 +291,8 @@ export default function Flow() {
     setStoryGraph(
       newStoryGraph(onNodeDataChange)
     );
+
+    deleteCurrentStoryId();
   }
 
   function newStoryWithSave() {
@@ -307,19 +314,22 @@ export default function Flow() {
   }
 
   function deleteStory(id: string) {
-    console.log(`I'm gonna delete story ${id}`);
+    deleteStoryGraph(id);
+    showToast("Story successfully deleted.", "success");
+    reloadStories();
   }
 
   return (
     <>
       <NewStoryAlertDialog
-        storyInfo={storyInfo}
+        currentStoryTitle={currentStoryData?.title}
         open={newStoryAlertDialogOpen}
         onOpenChange={setNewStoryAlertDialogOpen}
         onSave={newStoryWithSave}
         onDontSave={newStory}
       />
       <LoadStoryDialog
+        stories={stories}
         open={loadStoryDialogOpen}
         onOpenChange={setLoadStoryDialogOpen}
         onLoadStory={loadStory}

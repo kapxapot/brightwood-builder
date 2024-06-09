@@ -1,10 +1,6 @@
-import importStory from "../stories/test.json";
-import { StoryGraph, buildNewStoryNode, buildStoryGraph, defaultViewport } from "@/builders/story-graph-builder";
-import { Story } from "@/entities/story";
+import { StoryGraph, buildNewStoryNode, defaultViewport } from "@/builders/story-graph-builder";
 import { OnChangeHandler } from "@/entities/story-node";
 import { loadCurrentStoryId, loadStoryGraph } from "@/lib/storage";
-
-const defaultStory = importStory as Story;
 
 export function initStoryGraph(changeHandler: OnChangeHandler): StoryGraph {
   const currentStoryId = loadCurrentStoryId();
@@ -14,7 +10,8 @@ export function initStoryGraph(changeHandler: OnChangeHandler): StoryGraph {
     : null;
 
   if (!storyGraph) {
-    return buildStoryGraph(defaultStory, changeHandler);
+    // return buildStoryGraph(defaultStory, changeHandler);
+    return newStoryGraph(changeHandler);
   }
 
   return {
