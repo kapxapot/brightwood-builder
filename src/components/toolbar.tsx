@@ -1,28 +1,65 @@
 import Button from "./core/button";
 import ToolbarBlock from "./toolbar-block";
 import { ArrowLongRightIcon, ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/24/outline";
-import { useState } from "react";
-import { Bolt, Cube, LoadStory, NewStory, SaveStory, Skip, Stop } from "./core/icons";
+import { ReactNode } from "react";
+import { Bolt, Cube, ExportStory, ImportStory, LoadStory, NewStory, SaveStory, Skip, Stop } from "./core/icons";
 import ConditionalTooltip from "./core/conditional-tooltip";
 import Tooltip from "./core/tooltip";
-import { load, save } from "@/lib/storage";
 import { nodeLabels } from "@/lib/constants";
+import { useExpanded } from "@/hooks/use-expanded";
+
+type Handler = () => void;
+
+type StoryButton = {
+  label: string;
+  tooltip: string;
+  icon: ReactNode;
+  handler: Handler;
+};
 
 interface Props {
-  onNew: () => void;
-  onSave: () => void;
-  onLoad: () => void;
+  onNew: Handler;
+  onSave: Handler;
+  onLoad: Handler;
+  onImport: Handler;
+  onExport: Handler;
 }
 
-export default function Toolbar({ onNew, onSave, onLoad }: Props) {
-  const initialExpanded = load<boolean>("toolbarExpanded") ?? true;
-  const [expanded, setExpanded] = useState(initialExpanded);
+export default function Toolbar({ onNew, onSave, onLoad, onImport, onExport }: Props) {
+  const { expanded, toggleExpanded } = useExpanded("toolbarExpanded", true);
 
-  const toggleExpanded = () => {
-    const newExpanded = !expanded;
-    save("toolbarExpanded", newExpanded);
-    setExpanded(newExpanded);
-  }
+  const storyButtons: StoryButton[] = [
+    {
+      label: "New",
+      tooltip: "New story",
+      icon: <NewStory />,
+      handler: onNew
+    },
+    {
+      label: "Save",
+      tooltip: "Save story",
+      icon: <SaveStory />,
+      handler: onSave
+    },
+    {
+      label: "Load",
+      tooltip: "Load story",
+      icon: <LoadStory />,
+      handler: onLoad
+    },
+    {
+      label: "Import",
+      tooltip: "Import story",
+      icon: <ImportStory />,
+      handler: onImport
+    },
+    {
+      label: "Export",
+      tooltip: "Export story",
+      icon: <ExportStory />,
+      handler: onExport
+    }
+  ];
 
   return (
     <aside className={`flex flex-col justify-between ${expanded ? "w-36 p-2" : "w-14 p-1.5"} bg-gray-300 text-center`}>
@@ -84,32 +121,18 @@ export default function Toolbar({ onNew, onSave, onLoad }: Props) {
       </div>
 
       <div className={`flex flex-col items-center ${expanded ? "space-y-3" : "space-y-2"}`}>
-        <Tooltip tooltip="New story" side="right">
-          <Button size={expanded ? "large" : "toolbar"} onClick={onNew}>
-            <NewStory />
-            {expanded && "New"}
-          </Button>
-        </Tooltip>
-
-        <Tooltip
-          tooltip="Save story"
-          side="right"
-        >
-          <Button size={expanded ? "large" : "toolbar"} onClick={onSave}>
-            <SaveStory />
-            {expanded && "Save"}
-          </Button>
-        </Tooltip>
-
-        <Tooltip
-          tooltip="Load story"
-          side="right"
-        >
-          <Button size={expanded ? "large" : "toolbar"} onClick={onLoad}>
-            <LoadStory />
-            {expanded && "Load"}
-          </Button>
-        </Tooltip>
+        {storyButtons.map(({ label, tooltip, icon, handler }) => (
+          <Tooltip
+            tooltip={tooltip}
+            side="right"
+            key={label}
+          >
+            <Button size={expanded ? "large" : "toolbar"} onClick={handler}>
+              {icon}
+              {expanded && label}
+            </Button>
+          </Tooltip>
+        ))}
       </div>
 
       <div className="text-right mr-1">

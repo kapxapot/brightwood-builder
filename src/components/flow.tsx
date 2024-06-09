@@ -319,6 +319,14 @@ export default function Flow() {
     reloadStories();
   }
 
+  function importStory() {
+    console.log("Gonna import!");
+  }
+
+  function exportStory() {
+    console.log("Gonna export!");
+  }
+
   return (
     <>
       <NewStoryAlertDialog
@@ -340,6 +348,8 @@ export default function Flow() {
           onNew={newStoryAlertDialog}
           onSave={saveStory}
           onLoad={loadStoryDialog}
+          onImport={importStory}
+          onExport={exportStory}
         />
         <div className="flex-grow w-full" ref={reactFlowWrapper}>
           <ReactFlow
