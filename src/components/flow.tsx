@@ -282,6 +282,8 @@ export default function Flow() {
 
   const newStoryAlertDialog = () => setNewStoryAlertDialogOpen(true);
   const loadStoryDialog = () => setLoadStoryDialogOpen(true);
+  const importStoryDialog = () => setImportStoryDialogOpen(true);
+  const exportStoryDialog = () => console.log("Gonna export!");
 
   function setStoryGraph(storyGraph: StoryGraph) {
     setNodes(storyGraph.nodes);
@@ -321,12 +323,8 @@ export default function Flow() {
     reloadStories();
   }
 
-  function importStory() {
-    setImportStoryDialogOpen(true);
-  }
-
-  function exportStory() {
-    console.log("Gonna export!");
+  function importStory(file: string) {
+    console.log(`Gonna import ${file}`);
   }
 
   return (
@@ -348,14 +346,15 @@ export default function Flow() {
       <ImportStoryDialog
         open={importStoryDialogOpen}
         onOpenChange={setImportStoryDialogOpen}
+        onImport={importStory}
       />
       <div className="w-screen h-screen flex flex-row flex-grow">
         <Toolbar
           onNew={newStoryAlertDialog}
           onSave={saveStory}
           onLoad={loadStoryDialog}
-          onImport={importStory}
-          onExport={exportStory}
+          onImport={importStoryDialog}
+          onExport={exportStoryDialog}
         />
         <div className="flex-grow w-full" ref={reactFlowWrapper}>
           <ReactFlow
