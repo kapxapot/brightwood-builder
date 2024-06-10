@@ -20,6 +20,7 @@ import { initStoryGraph, newStoryGraph } from "@/lib/story-graph";
 import { NewStoryAlertDialog } from "./dialogs/new-story-alert-dialog";
 import { LoadStoryDialog } from "./dialogs/load-story-dialog";
 import { useStories } from "@/hooks/use-stories";
+import { ImportStoryDialog } from "./dialogs/import-story-dialog";
 
 const nodeTypes = {
   storyInfo: StoryInfoNode,
@@ -51,6 +52,7 @@ export default function Flow() {
 
   const [newStoryAlertDialogOpen, setNewStoryAlertDialogOpen] = useState(false);
   const [loadStoryDialogOpen, setLoadStoryDialogOpen] = useState(false);
+  const [importStoryDialogOpen, setImportStoryDialogOpen] = useState(false);
 
   const getCurrentStoryData = useCallback((): StoryInfoGraphNode | undefined => {
     const node = nodes.find(n => n.data.type === "storyInfo");
@@ -320,7 +322,7 @@ export default function Flow() {
   }
 
   function importStory() {
-    console.log("Gonna import!");
+    setImportStoryDialogOpen(true);
   }
 
   function exportStory() {
@@ -342,6 +344,10 @@ export default function Flow() {
         onOpenChange={setLoadStoryDialogOpen}
         onLoadStory={loadStory}
         onDeleteStory={deleteStory}
+      />
+      <ImportStoryDialog
+        open={importStoryDialogOpen}
+        onOpenChange={setImportStoryDialogOpen}
       />
       <div className="w-screen h-screen flex flex-row flex-grow">
         <Toolbar
