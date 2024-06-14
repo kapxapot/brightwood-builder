@@ -10,7 +10,7 @@ Brightwood Stories Telegram bot: [@BrightwoodBot](https://t.me/BrightwoodBot) �
 
 You can import a couple of test stories in **JSON** format:
 
-- [Test story](https://github.com/kapxapot/brightwood-builder/blob/master/public/stories/test.json) 🇷🇺
-- [Mystery Story](https://github.com/kapxapot/brightwood-builder/blob/master/public/stories/mystery.json) 🇷🇺
+- [Test story](https://github.com/kapxapot/brightwood-builder/blob/a89906042af7def387a835c62f09dc3bd406bfa1/public/stories/test.json) 🇷🇺
+- [Mystery Story](https://github.com/kapxapot/brightwood-builder/blob/a89906042af7def387a835c62f09dc3bd406bfa1/public/stories/mystery.json) 🇷🇺
 
 First download a file, then import it into Brightwood Builder.
