@@ -1,10 +1,10 @@
-import { loadStories } from "@/lib/storage";
+import { fetchStories } from "@/lib/storage";
 import { useState } from "react";
 
 export function useStories() {
-  const [stories, setStories] = useState(loadStories());
+  const [stories, setStories] = useState(fetchStories());
 
-  const reloadStories = () => setStories(loadStories());
+  const reloadStories = () => setStories(fetchStories());
 
   return { stories, reloadStories } as const;
 }

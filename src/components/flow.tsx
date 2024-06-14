@@ -14,13 +14,13 @@ import StoryInfoNode from "./nodes/story-info-node";
 import { buildNodeData } from "../builders/node-builder";
 import { colors } from "../lib/constants";
 import { useToast } from "./ui/use-toast";
-import { Check, Error } from "./core/icons";
-import { deleteCurrentStoryId, deleteStoryGraph, loadStoryGraph, saveCurrentStoryId, saveStoryGraph } from "@/lib/storage";
-import { initStoryGraph, newStoryGraph } from "@/lib/story-graph";
+import { removeCurrentStoryId, removeStory, storeCurrentStoryId, storeStory } from "@/lib/storage";
+import { initStoryGraph, loadStoryGraph, newStoryGraph, parseStoryGraph } from "@/lib/story-graph";
 import { NewStoryAlertDialog } from "./dialogs/new-story-alert-dialog";
 import { LoadStoryDialog } from "./dialogs/load-story-dialog";
 import { useStories } from "@/hooks/use-stories";
 import { ImportStoryDialog } from "./dialogs/import-story-dialog";
+import { CheckCircleIcon, XCircleIcon } from "@heroicons/react/24/solid";
 
 const nodeTypes = {
   storyInfo: StoryInfoNode,
@@ -246,9 +246,13 @@ export default function Flow() {
     (message: string, status: "success" | "error" | "none") => {
       toast({
         description: (
-          <div className="flex gap-1">
-            {status === "success" && <Check />}
-            {status === "error" && <Error />}
+          <div className="flex gap-2 items-center">
+            {status === "success" && (
+              <CheckCircleIcon className="w-9 text-green-600" />
+            )}
+            {status === "error" && (
+              <XCircleIcon className="w-9 text-red-600" />
+            )}
             <span>{message}</span>
           </div>
         )
@@ -267,7 +271,7 @@ export default function Flow() {
 
     const { uuid: storyId, title } = currentStoryData;
 
-    saveStoryGraph(
+    storeStory(
       {
         id: storyId,
         title
@@ -296,7 +300,7 @@ export default function Flow() {
       newStoryGraph(onNodeDataChange)
     );
 
-    deleteCurrentStoryId();
+    removeCurrentStoryId();
   }
 
   function newStoryWithSave() {
@@ -305,7 +309,7 @@ export default function Flow() {
   }
 
   function loadStory(id: string) {
-    const storyGraph = loadStoryGraph(id);
+    const storyGraph = loadStoryGraph(id, onNodeDataChange);
 
     if (!storyGraph) {
       showToast("Failed to load story.", "error");
@@ -314,17 +318,49 @@ export default function Flow() {
 
     setLoadStoryDialogOpen(false);
     setStoryGraph(storyGraph);
-    saveCurrentStoryId(id);
+    storeCurrentStoryId(id);
   }
 
   function deleteStory(id: string) {
-    deleteStoryGraph(id);
+    removeStory(id);
     showToast("Story successfully deleted.", "success");
     reloadStories();
   }
 
-  function importStory(file: string) {
-    console.log(`Gonna import ${file}`);
+  function importStory(file: File) {
+    const reader = new FileReader();
+
+    reader.onload = () => {
+      if (!reader.result) {
+        showToast("Failed to read the file.", "error");
+        return;
+      }
+
+      try {
+        const storyGraph = parseStoryGraph(
+          reader.result as string,
+          onNodeDataChange
+        );
+
+        setStoryGraph(storyGraph);
+        removeCurrentStoryId();
+
+        showToast("Story successfully imported.", "success");
+      } catch (error) {
+        console.log(error);
+        const message = error instanceof SyntaxError
+          ? error.message
+          : null;
+
+        showToast(`Failed to parse JSON${message ? `: ${message}` : ""}`, "error");
+      }
+    };
+
+    reader.onerror = () => {
+      showToast("Failed to read the file.", "error");
+    };
+
+    reader.readAsText(file);
   }
 
   return (
@@ -343,11 +379,13 @@ export default function Flow() {
         onLoadStory={loadStory}
         onDeleteStory={deleteStory}
       />
-      <ImportStoryDialog
-        open={importStoryDialogOpen}
-        onOpenChange={setImportStoryDialogOpen}
-        onImport={importStory}
-      />
+      {importStoryDialogOpen && (
+        <ImportStoryDialog
+          open={importStoryDialogOpen}
+          onOpenChange={setImportStoryDialogOpen}
+          onImport={importStory}
+        />
+      )}
       <div className="w-screen h-screen flex flex-row flex-grow">
         <Toolbar
           onNew={newStoryAlertDialog}

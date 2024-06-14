@@ -4,11 +4,11 @@ import { StoryShortcut } from "@/entities/story";
 const storiesKey = "stories";
 const currentStoryIdKey = "currentStoryId";
 
-export function save(key: string, data: unknown) {
+export function localStore(key: string, data: unknown) {
   localStorage.setItem(key, JSON.stringify(data));
 }
 
-export function load<T>(key: string): T | null {
+export function localFetch<T>(key: string): T | null {
   const rawData = localStorage.getItem(key);
 
   return rawData
@@ -16,21 +16,29 @@ export function load<T>(key: string): T | null {
     : null;
 }
 
-export function remove(key: string) {
+export function localRemove(key: string) {
   localStorage.removeItem(key);
 }
 
 export const storyKey = (storyId: string) => `story-${storyId}`;
 
-export function saveStoryGraph(story: StoryShortcut, storyGraph: StoryGraph) {
-  save(
+export function fetchStories(): StoryShortcut[] {
+  return localFetch<StoryShortcut[]>(storiesKey) ?? [];
+}
+
+export function fetchStory(id: string): StoryGraph | null {
+  return localFetch<StoryGraph>(storyKey(id));
+}
+
+export function storeStory(story: StoryShortcut, storyGraph: StoryGraph) {
+  localStore(
     storyKey(story.id),
     storyGraph
   );
 
-  save(currentStoryIdKey, story.id);
+  localStore(currentStoryIdKey, story.id);
 
-  let stories = loadStories();
+  let stories = fetchStories();
   const oldStory = stories.find(s => s.id === story.id);
 
   if (!oldStory) {
@@ -39,34 +47,26 @@ export function saveStoryGraph(story: StoryShortcut, storyGraph: StoryGraph) {
     stories = stories.map(s => s.id === story.id ? story : s);
   }
 
-  save(storiesKey, stories);
+  localStore(storiesKey, stories);
 }
 
-export function loadStories(): StoryShortcut[] {
-  return load<StoryShortcut[]>(storiesKey) ?? [];
-}
+export function removeStory(id: string) {
+  localRemove(storyKey(id));
 
-export function loadStoryGraph(id: string): StoryGraph | null {
-  return load<StoryGraph>(storyKey(id));
-}
-
-export function loadCurrentStoryId(): string | null {
-  return load<string>(currentStoryIdKey);
-}
-
-export function saveCurrentStoryId(id: string) {
-  save(currentStoryIdKey, id);
-}
-
-export function deleteStoryGraph(id: string) {
-  remove(storyKey(id));
-
-  save(
+  localStore(
     storiesKey,
-    loadStories().filter(s => s.id !== id)
+    fetchStories().filter(s => s.id !== id)
   );
 }
 
-export function deleteCurrentStoryId() {
-  remove(currentStoryIdKey);
+export function fetchCurrentStoryId(): string | null {
+  return localFetch<string>(currentStoryIdKey);
+}
+
+export function storeCurrentStoryId(id: string) {
+  localStore(currentStoryIdKey, id);
+}
+
+export function removeCurrentStoryId() {
+  localRemove(currentStoryIdKey);
 }

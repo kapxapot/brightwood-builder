@@ -1,11 +1,11 @@
 import { Dialog, DialogClose, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle } from "../ui/dialog";
-import { isEmpty } from "@/lib/common";
+import { isEmpty, truncateId } from "@/lib/common";
 import { Button } from "../ui/button";
 import Tooltip from "../core/tooltip";
 import { ArrowUpTrayIcon, NoSymbolIcon, TrashIcon } from "@heroicons/react/24/outline";
 import { StoryShortcut } from "@/entities/story";
 import { ConfirmDeleteStoryAlertDialog } from "./confirm-delete-story-alert-dialog";
-import { loadCurrentStoryId } from "@/lib/storage";
+import { fetchCurrentStoryId } from "@/lib/storage";
 
 interface Props {
   stories: StoryShortcut[];
@@ -16,7 +16,8 @@ interface Props {
 }
 
 export function LoadStoryDialog({ stories, open, onOpenChange, onLoadStory, onDeleteStory }: Props) {
-  const currentStoryId = loadCurrentStoryId();
+  const currentStoryId = fetchCurrentStoryId();
+  const isCurrent = (story: StoryShortcut) => story.id === currentStoryId;
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
@@ -46,15 +47,22 @@ export function LoadStoryDialog({ stories, open, onOpenChange, onLoadStory, onDe
                   )}
                   <div className="text-xs text-gray-400">{story.id}</div>
                 </div>
-                <div className="flex gap-2 w-20">
+                <div className="flex gap-2">
                   <Button variant="outlineHighlight" size="icon" onClick={() => onLoadStory(story.id)}>
                     <Tooltip tooltip="Load story" side="top">
                       <ArrowUpTrayIcon className="w-5" />
                     </Tooltip>
                   </Button>
-                  {story.id !== currentStoryId && (
+                  {isCurrent(story) && (
+                    <div className="h-9 w-9 inline-flex items-center justify-center">
+                      <Tooltip tooltip="Can't delete the current story" side="top">
+                        <TrashIcon className="w-5 text-gray-400 cursor-not-allowed" />
+                      </Tooltip>
+                    </div>
+                  )}
+                  {!isCurrent(story) && (
                     <ConfirmDeleteStoryAlertDialog
-                      storyName={story.title ?? story.id}
+                      storyName={story.title ?? truncateId(story.id)}
                       trigger={(
                         <Button variant="ghost" size="icon">
                           <Tooltip tooltip="Delete story" side="top">
