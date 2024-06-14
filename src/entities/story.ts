@@ -7,7 +7,6 @@ export type StoryShortcut = {
 };
 
 export type Story = StoryShortcut & {
-  title: string;
   description?: string;
   startId: number;
   prefix?: string;

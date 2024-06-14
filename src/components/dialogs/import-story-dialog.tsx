@@ -9,8 +9,8 @@ import { BaseSyntheticEvent } from "react";
 
 const formSchema = z.object({
   file: z.string().trim()
-    .min(1, { message: "File must be selected." })
-    .endsWith(".json", { message: "Only .json files are allowed." })
+    .min(1, { message: "File must be selected" })
+    .endsWith(".json", { message: "Only .json files are allowed" })
 });
 
 interface Props {
@@ -56,7 +56,7 @@ export function ImportStoryDialog({ open, onOpenChange, onImport }: Props) {
                     />
                   </FormControl>
                   <FormDescription>
-                    Choose a <span className="font-bold">.json</span> story file to import.
+                    Choose a <span className="font-bold">.json</span> story file to import
                   </FormDescription>
                   <FormMessage />
                 </FormItem>

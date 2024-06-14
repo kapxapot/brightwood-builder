@@ -16,8 +16,7 @@ export function ConfirmDeleteStoryAlertDialog({ storyName, trigger, onDelete }: 
       title="Delete the story?"
       description={(
         <>
-          Are you sure you want to delete the story <Badge variant="secondary">{storyName}</Badge>?<br />
-          All story data will be lost.
+          Are you sure you want to delete the story <Badge variant="secondary">{storyName}</Badge>? All story data will be lost.
         </>
       )}
       trigger={trigger}
