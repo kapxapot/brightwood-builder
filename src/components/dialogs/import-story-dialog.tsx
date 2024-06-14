@@ -27,7 +27,7 @@ export function ImportStoryDialog({ open, onOpenChange, onImport }: Props) {
     }
   });
  
-  function onSubmit(values: z.infer<typeof formSchema>, e?: BaseSyntheticEvent) {
+  function onSubmit(_values: z.infer<typeof formSchema>, e?: BaseSyntheticEvent) {
     if (e) {
       onOpenChange(false);
       onImport(e.target.file.files[0] as File);
