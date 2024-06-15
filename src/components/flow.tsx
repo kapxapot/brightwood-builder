@@ -21,6 +21,7 @@ import { LoadStoryDialog } from "./dialogs/load-story-dialog";
 import { useStories } from "@/hooks/use-stories";
 import { ImportStoryDialog } from "./dialogs/import-story-dialog";
 import { CheckCircleIcon, XCircleIcon } from "@heroicons/react/24/solid";
+import { ZodError } from "zod";
 
 const nodeTypes = {
   storyInfo: StoryInfoNode,
@@ -327,6 +328,31 @@ export default function Flow() {
     reloadStories();
   }
 
+  function getImportErrorMessage(error: unknown): string {
+    console.log(error);
+
+    if (error instanceof ZodError) {
+      const issues = error.issues;
+      const showPaths = 3;
+
+      const paths = issues.slice(0, showPaths)
+        .map(issue => issue.path)
+        .map(path => JSON.stringify(path));
+
+      const total = (issues.length > showPaths)
+        ? ` (${issues.length} in total)`
+        : "";
+
+      return `Malformed story file. Incorrect values: ${paths.join(", ")}${total}.`;
+    }
+
+    const message = (error instanceof SyntaxError)
+      ? error.message
+      : null;
+
+    return `Failed to parse JSON${message ? `: ${message}` : ""}.`;
+  }
+
   function importStory(file: File) {
     const reader = new FileReader();
 
@@ -347,12 +373,8 @@ export default function Flow() {
 
         showToast("Story successfully imported.", "success");
       } catch (error) {
-        console.log(error);
-        const message = error instanceof SyntaxError
-          ? error.message
-          : null;
-
-        showToast(`Failed to parse JSON${message ? `: ${message}` : ""}`, "error");
+        const message = getImportErrorMessage(error);
+        showToast(message, "error");
       }
     };
 

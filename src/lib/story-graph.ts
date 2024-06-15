@@ -2,6 +2,7 @@ import { StoryGraph, buildNewStoryNode, buildStoryGraph, defaultViewport } from 
 import { Story } from "@/entities/story";
 import { OnChangeHandler } from "@/entities/story-node";
 import { fetchCurrentStoryId, fetchStory } from "@/lib/storage";
+import { storySchema } from "@/schemas/story-schema";
 
 export function initStoryGraph(changeHandler: OnChangeHandler): StoryGraph {
   const currentStoryId = fetchCurrentStoryId();
@@ -26,7 +27,8 @@ export function loadStoryGraph(storyId: string, changeHandler: OnChangeHandler):
 export function parseStoryGraph(text: string, changeHandler: OnChangeHandler): StoryGraph {
   const story = JSON.parse(text);
 
-  // check if the story is a valid Story
+  // validate the story
+  storySchema.parse(story);
 
   return buildStoryGraph(story as Story, changeHandler);
 }
