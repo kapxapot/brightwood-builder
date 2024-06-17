@@ -1,8 +1,10 @@
+import { toArray } from "@/lib/common";
 import type { ConditionName, EffectInvocation } from "./story-data";
 
-type NodeId = number;
-
+export type NodeId = number;
 export type Text = string | string[];
+
+export const isEmptyText = (text: Text) => toArray(text).join().length === 0;
 
 export type Action = {
   id?: NodeId;

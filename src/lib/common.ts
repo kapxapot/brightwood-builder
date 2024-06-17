@@ -6,11 +6,12 @@ export function toArray<T>(value: T | T[] | undefined | null): T[] {
   return Array.isArray(value) ? value : [value];
 }
 
-export function isEmpty<T>(array: T[]): boolean {
-  return array.length === 0;
-}
+export const isEmpty = <T>(array: T[]) => array.length === 0;
 
 export function truncateId(id: string): string {
   const chunks = id.split("-");
-  return `${chunks[0]}...`;
+
+  return (chunks.length > 1)
+    ? `${chunks[0]}...`
+    : chunks[0];
 }

@@ -22,6 +22,9 @@ import { useStories } from "@/hooks/use-stories";
 import { ImportStoryDialog } from "./dialogs/import-story-dialog";
 import { CheckCircleIcon, XCircleIcon } from "@heroicons/react/24/solid";
 import { ZodError } from "zod";
+import { ValidationMessage, validateNodes } from "@/lib/validation";
+import { isEmpty } from "@/lib/common";
+import { ValidationMessages } from "./validation-messages";
 
 const nodeTypes = {
   storyInfo: StoryInfoNode,
@@ -33,7 +36,6 @@ const nodeTypes = {
 
 export default function Flow() {
   const { toast } = useToast();
-
   const { stories, reloadStories } = useStories();
 
   const storyGraph = initStoryGraph(
@@ -48,8 +50,10 @@ export default function Flow() {
 
   const { setViewport } = useReactFlow();
 
-  const [selectedNodes, setSelectedNodes] = useState([] as Node[]);
-  const [selectedEdges, setSelectedEdges] = useState([] as Edge[]);
+  const [selectedNodes, setSelectedNodes] = useState<Node[]>([]);
+  const [selectedEdges, setSelectedEdges] = useState<Edge[]>([]);
+
+  const [validationMessages, setValidationMessages] = useState<ValidationMessage[]>([]);
 
   const [newStoryAlertDialogOpen, setNewStoryAlertDialogOpen] = useState(false);
   const [loadStoryDialogOpen, setLoadStoryDialogOpen] = useState(false);
@@ -61,6 +65,11 @@ export default function Flow() {
   }, [nodes]);
 
   const currentStoryData = getCurrentStoryData();
+
+  useEffect(() => {
+    const messages = validateNodes(nodes);
+    setValidationMessages(messages);
+  }, [nodes, edges]);
 
   const onConnect = useCallback(
     (conn: Connection) => {
@@ -288,7 +297,14 @@ export default function Flow() {
   const newStoryAlertDialog = () => setNewStoryAlertDialogOpen(true);
   const loadStoryDialog = () => setLoadStoryDialogOpen(true);
   const importStoryDialog = () => setImportStoryDialogOpen(true);
-  const exportStoryDialog = () => console.log("Gonna export!");
+
+  const exportStoryDialog = () => {
+    if (!isEmpty(validationMessages)) {
+      console.log("No export");
+    } else {
+      console.log("Export");
+    }
+  }
 
   function setStoryGraph(storyGraph: StoryGraph) {
     setNodes(storyGraph.nodes);
@@ -440,6 +456,11 @@ export default function Flow() {
               pannable
               nodeColor={n => n.type ? colors[n.type as StoryNodeType].rgb : "gray"}
             />
+            {!isEmpty(validationMessages) && (
+              <ValidationMessages
+                messages={validationMessages}
+              />
+            )}
             <Background variant={BackgroundVariant.Dots} gap={12} size={1} />
           </ReactFlow>
         </div>
