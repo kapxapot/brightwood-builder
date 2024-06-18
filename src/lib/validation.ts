@@ -72,7 +72,7 @@ function actionNodeIfMessages(node: ActionStoryNode): IfMessage[] {
     ],
     ...node.actions.map((action, index) => [
       !action.id,
-      `Add a destination node for action [${index}] ${action.label}.`
+      `Add a destination node for action "[${index}]${action.label ? ` ${action.label}` : ""}".`
     ] as IfMessage)
   ];
 }
@@ -89,7 +89,7 @@ function redirectNodeIfMessages(node: RedirectStoryNode): IfMessage[] {
     ],
     ...node.links.map((link, index) => [
       !link.id,
-      `Add a destination node for link [${index}].`
+      `Add a destination node for link "[${index}]".`
     ] as IfMessage)
   ];
 }

@@ -5,6 +5,10 @@ interface Props {
 }
 
 export function WeightDices({ weight }: Props) {
+  if (weight <= 0) {
+    return null;
+  }
+
   const floor = Math.floor(weight);
   const diceCount = Math.max(1, floor);
   const float = weight > floor;
