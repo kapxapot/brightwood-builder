@@ -51,7 +51,8 @@ export default function TextInput({ value, label, rowCount, readonly, onValueCha
   }
 
   function updateEditedValue(event: React.ChangeEvent<HTMLTextAreaElement>) {
-    setEditedValue(event.currentTarget.value);
+    const value = event.currentTarget.value;
+    setEditedValue(value.trim());
   }
 
   useEffect(function correctHeightOnEdit() {
