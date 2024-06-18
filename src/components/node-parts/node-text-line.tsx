@@ -54,7 +54,8 @@ export default function NodeTextLine({ line, index, deletable, readonly, updateL
   }
 
   function updateEditedLine(event: React.ChangeEvent<HTMLTextAreaElement>) {
-    setEditedLine(event.currentTarget.value);
+    const value = event.currentTarget.value;
+    setEditedLine(value.trim());
   }
 
   useEffect(function autoEditEmptyLine() {

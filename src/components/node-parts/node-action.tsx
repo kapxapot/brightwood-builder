@@ -57,7 +57,8 @@ export default function NodeAction({ action, index, deletable, updateAction, del
   }
 
   function updateLabel(event: React.ChangeEvent<HTMLInputElement>) {
-    setLabel(event.currentTarget.value);
+    const value = event.currentTarget.value;
+    setLabel(value.trim());
   }
 
   useEffect(() => {
