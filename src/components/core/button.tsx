@@ -4,7 +4,7 @@ type Size = "small" | "default" | "large" | "toolbar";
 type Variant = "default" | "primary";
 
 interface Props {
-  onClick: React.MouseEventHandler<HTMLButtonElement>;
+  onClick?: React.MouseEventHandler<HTMLButtonElement>;
   size?: Size;
   variant?: Variant;
   disabled?: boolean;

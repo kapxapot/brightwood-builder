@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import Button from "../core/button";
 import { autoHeight, focusAndSelect } from "../../lib/ref-operations";
 import { Edit } from "./icons";
+import { TextInputLabel } from "./text-input-label";
 
 const defaultRowCount = 2;
 
@@ -64,9 +65,9 @@ export default function TextInput({ value, label, rowCount, readonly, onValueCha
       {/* edit */}
       {editing &&
         <div className="border border-black border-opacity-20 rounded-lg border-dashed bg-white p-1 mt-3 text-sm">
-          <span className="text-xs opacity-50 font-bold">
+          <TextInputLabel>
             {label}
-          </span>
+          </TextInputLabel>
           <textarea
             defaultValue={editedValue}
             onChange={updateEditedValue}

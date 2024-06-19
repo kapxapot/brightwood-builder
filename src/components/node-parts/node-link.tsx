@@ -8,6 +8,7 @@ import HandleOut from "./handle-out";
 import { WeightDices } from "./weight-dices";
 import { Delete, Edit } from "../core/icons";
 import Tooltip from "../core/tooltip";
+import { TextInputLabel } from "../core/text-input-label";
 
 interface Props {
   link: Link;
@@ -74,35 +75,35 @@ export default function NodeLink({ link, index, deletable, updateLink, deleteLin
 
   useEffect(() => autoHeight(inputRef), [weight]);
 
+  const isValidWeight = (weight: number) => weight <= weights.min || weight > weights.max;
+
   return (
     <div className="relative group text-sm bg-gradient-to-r from-transparent to-yellow-300 py-1 -mr-2" key={index}>
       <div>
         {/* edit */}
         {editing &&
-          <div className="border border-black border-opacity-20 rounded-lg border-dashed bg-white p-1 space-y-2 mr-2 my-1">
-            <div className="space-y-1">
-              <div>
-                <input
-                  type="number"
-                  defaultValue={weight}
-                  onChange={updateWeight}
-                  className="w-full py-1 px-1.5 border border-slate-400 rounded-md"
-                  ref={inputRef}
-                  placeholder="Link weight"
-                  min={weights.min}
-                  max={weights.max}
-                />
+          <div className="border border-black border-opacity-20 rounded-lg border-dashed bg-white p-1 mr-2 my-1">
+            <TextInputLabel>
+              Link weight
+            </TextInputLabel>
+            <input
+              type="number"
+              defaultValue={weight}
+              onChange={updateWeight}
+              className="w-full py-1 px-1.5 border border-slate-400 rounded-md"
+              ref={inputRef}
+              min={weights.min}
+              max={weights.max}
+            />
+            {!!weight && (
+              <div className="mt-1">
+                <WeightDices weight={weight} />
               </div>
-              {!!weight &&
-                <div>
-                  <WeightDices weight={weight} />
-                </div>
-              }
-            </div>
-            <div className="flex gap-2">
+            )}
+            <div className="flex gap-2 mt-2">
               <Button
                 onClick={commitEdit}
-                disabled={weight <= weights.min || weight > weights.max}
+                disabled={isValidWeight(weight)}
               >
                 Save
               </Button>
@@ -115,7 +116,7 @@ export default function NodeLink({ link, index, deletable, updateLink, deleteLin
         {/* view */}
         {!editing &&
           <div className="flex gap-1 max-h-5">
-            <Tooltip tooltip={`Probability: ${link.weight}`} side="top">
+            <Tooltip tooltip={`Link weight: ${link.weight}`} side="top">
               <WeightDices weight={link.weight} />
             </Tooltip>
             {link.condition && (

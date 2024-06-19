@@ -14,13 +14,13 @@ export function WeightDices({ weight }: Props) {
   const float = weight > floor;
 
   return (
-    <span className="flex">
+    <div className="flex">
       {Array(diceCount).fill(0).map((_, index) => <Cube key={index} />)}
       {float &&
         <span className="ml-1">
           [{weight}]
         </span>
       }
-    </span>
+    </div>
   );
 }

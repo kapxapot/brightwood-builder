@@ -15,6 +15,8 @@ type StoryButton = {
   tooltip: string;
   icon: ReactNode;
   handler: Handler;
+  disabled?: boolean;
+  disabledTooltip?: string;
 };
 
 interface Props {
@@ -23,9 +25,10 @@ interface Props {
   onLoad: Handler;
   onImport: Handler;
   onExport: Handler;
+  exportEnabled: boolean;
 }
 
-export default function Toolbar({ onNew, onSave, onLoad, onImport, onExport }: Props) {
+export default function Toolbar({ onNew, onSave, onLoad, onImport, onExport, exportEnabled }: Props) {
   const { expanded, toggleExpanded } = useExpanded("toolbarExpanded", true);
 
   const storyButtons: StoryButton[] = [
@@ -57,7 +60,9 @@ export default function Toolbar({ onNew, onSave, onLoad, onImport, onExport }: P
       label: "Export",
       tooltip: "Export story",
       icon: <ExportStory />,
-      handler: onExport
+      handler: onExport,
+      disabled: !exportEnabled,
+      disabledTooltip: "Can't export with validation issues"
     }
   ];
 
@@ -121,13 +126,17 @@ export default function Toolbar({ onNew, onSave, onLoad, onImport, onExport }: P
       </div>
 
       <div className={`flex flex-col items-center ${expanded ? "space-y-3" : "space-y-2"}`}>
-        {storyButtons.map(({ label, tooltip, icon, handler }) => (
+        {storyButtons.map(({ label, tooltip, icon, handler, disabled, disabledTooltip }) => (
           <Tooltip
-            tooltip={tooltip}
+            tooltip={disabled ? disabledTooltip ?? tooltip : tooltip}
             side="right"
             key={label}
           >
-            <Button size={expanded ? "large" : "toolbar"} onClick={handler}>
+            <Button
+              size={expanded ? "large" : "toolbar"}
+              onClick={disabled ? undefined : handler}
+              disabled={disabled}
+            >
               {icon}
               {expanded && label}
             </Button>

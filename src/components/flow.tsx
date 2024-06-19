@@ -431,6 +431,7 @@ export default function Flow() {
           onLoad={loadStoryDialog}
           onImport={importStoryDialog}
           onExport={exportStoryDialog}
+          exportEnabled={isEmpty(validationMessages)}
         />
         <div className="flex-grow w-full" ref={reactFlowWrapper}>
           <ReactFlow

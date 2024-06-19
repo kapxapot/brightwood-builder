@@ -5,6 +5,7 @@ import { useEffect, useRef, useState } from "react";
 import { autoHeight, focusAndSelect } from "../../lib/ref-operations";
 import HandleOut from "./handle-out";
 import { Bolt, Delete, Edit } from "../core/icons";
+import { TextInputLabel } from "../core/text-input-label";
 
 interface Props {
   action: Action;
@@ -75,17 +76,17 @@ export default function NodeAction({ action, index, deletable, updateAction, del
       <div>
         {/* edit */}
         {editing &&
-          <div className="border border-black border-opacity-20 rounded-lg border-dashed bg-white p-1 space-y-2 mr-2 my-1">
-            <div>
-              <input
-                type="text"
-                defaultValue={label}
-                onChange={updateLabel}
-                className="w-full py-1 px-1.5 border border-slate-400 rounded-md"
-                ref={inputRef}
-                placeholder="Action label"
-              />
-            </div>
+          <div className="border border-black border-opacity-20 rounded-lg border-dashed bg-white p-1 mr-2 my-1">
+            <TextInputLabel>
+              Action label
+            </TextInputLabel>
+            <input
+              type="text"
+              defaultValue={label}
+              onChange={updateLabel}
+              className="w-full py-1 px-1.5 mb-2 border border-slate-400 rounded-md"
+              ref={inputRef}
+            />
             <div className="flex gap-2">
               <Button
                 onClick={commitEdit}

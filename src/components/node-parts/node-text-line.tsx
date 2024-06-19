@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import Button from "../core/button";
 import { autoHeight, focusAndSelect } from "../../lib/ref-operations";
 import { Delete, Edit } from "../core/icons";
+import { TextInputLabel } from "../core/text-input-label";
 
 interface Props {
   line: string;
@@ -73,14 +74,16 @@ export default function NodeTextLine({ line, index, deletable, readonly, updateL
     <>
       {/* edit */}
       {editing &&
-        <div className="border border-black border-opacity-20 rounded-lg border-dashed bg-white p-1 space-y-1 mt-3 text-sm">
+        <div className="border border-black border-opacity-20 rounded-lg border-dashed bg-white p-1 mt-3 text-sm">
+          <TextInputLabel>
+            Text line
+          </TextInputLabel>
           <textarea
             defaultValue={editedLine}
             onChange={updateEditedLine}
-            className="w-full py-1 px-1.5 border border-slate-400 rounded-md"
+            className="w-full py-1 px-1.5 mb-1 border border-slate-400 rounded-md"
             ref={inputRef}
             rows={3}
-            placeholder="Text line"
           >
           </textarea>
           <div className="flex gap-2">
