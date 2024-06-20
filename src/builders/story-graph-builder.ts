@@ -63,6 +63,8 @@ export function buildStoryGraph(story: Story, changeHandler: OnChangeHandler): S
     title: story.title,
     description: story.description,
     startId: story.startId,
+    prefix: story.prefix,
+    data: story.data,
     onChange: changeHandler,
   };
 
@@ -135,7 +137,9 @@ export function buildStoryGraph(story: Story, changeHandler: OnChangeHandler): S
     }
   }
 
-  return { nodes, edges };
+  const viewport = story.viewport ?? defaultViewport;
+
+  return { nodes, edges, viewport };
 }
 
 export function buildNewStoryNode(changeHandler: OnChangeHandler): BuilderNode {

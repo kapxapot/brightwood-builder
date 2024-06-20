@@ -1,3 +1,4 @@
+import { Viewport } from "reactflow";
 import type { StoryData } from "./story-data";
 import type { StoryNode } from "./story-node";
 
@@ -7,10 +8,12 @@ export type StoryShortcut = {
 };
 
 export type Story = StoryShortcut & {
+  title: string;
   description?: string;
   startId: number;
   prefix?: string;
   data?: StoryData;
   position?: number[];
   nodes: StoryNode[];
+  viewport?: Viewport;
 };

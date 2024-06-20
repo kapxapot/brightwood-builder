@@ -1,5 +1,5 @@
 import { toArray } from "@/lib/common";
-import type { ConditionName, EffectInvocation } from "./story-data";
+import type { ConditionName, EffectInvocation, StoryData } from "./story-data";
 
 export type NodeId = number;
 export type Text = string | string[];
@@ -67,6 +67,8 @@ export type StoryInfoGraphNode = BaseGraphNode & {
   title?: string;
   description?: string;
   startId?: NodeId;
+  prefix?: string;
+  data?: StoryData;
   onChange?: OnChangeHandler;
 };
 

@@ -25,6 +25,8 @@ import { ZodError } from "zod";
 import { ValidationMessage, validateNodes } from "@/lib/validation";
 import { isEmpty } from "@/lib/common";
 import { ValidationMessages } from "./validation-messages";
+import { buildStory, getStoryInfoGraphNode } from "@/builders/story-builder";
+import { exportToJsonFile } from "@/lib/export";
 
 const nodeTypes = {
   storyInfo: StoryInfoNode,
@@ -38,12 +40,14 @@ export default function Flow() {
   const { toast } = useToast();
   const { stories, reloadStories } = useStories();
 
-  const storyGraph = initStoryGraph(
+  const initialStoryGraph = initStoryGraph(
     (data, event) => onNodeDataChange(data, event)
   );
 
-  const [nodes, setNodes, onNodesChange] = useNodesState(storyGraph.nodes);
-  const [edges, setEdges, onEdgesChange] = useEdgesState(storyGraph.edges);
+  const initialViewport = initialStoryGraph.viewport ?? defaultViewport;
+
+  const [nodes, setNodes, onNodesChange] = useNodesState(initialStoryGraph.nodes);
+  const [edges, setEdges, onEdgesChange] = useEdgesState(initialStoryGraph.edges);
 
   const reactFlowWrapper = useRef<HTMLDivElement>(null);
   const [reactFlowInstance, setReactFlowInstance] = useState<ReactFlowInstance | null>(null);
@@ -59,12 +63,19 @@ export default function Flow() {
   const [loadStoryDialogOpen, setLoadStoryDialogOpen] = useState(false);
   const [importStoryDialogOpen, setImportStoryDialogOpen] = useState(false);
 
-  const getCurrentStoryData = useCallback((): StoryInfoGraphNode | undefined => {
-    const node = nodes.find(n => n.data.type === "storyInfo");
-    return node?.data as StoryInfoGraphNode;
-  }, [nodes]);
+  const getCurrentStoryData = useCallback(
+    (): StoryInfoGraphNode | undefined => getStoryInfoGraphNode(nodes),
+    [nodes]
+  );
 
   const currentStoryData = getCurrentStoryData();
+
+  const getCurrentStoryGraph = useCallback(
+    (): StoryGraph | null => reactFlowInstance
+      ? reactFlowInstance.toObject() as StoryGraph
+      : null,
+    [reactFlowInstance]
+  );
 
   useEffect(() => {
     const messages = validateNodes(nodes);
@@ -273,9 +284,10 @@ export default function Flow() {
 
   const saveStory = useCallback(() => {
     const currentStoryData = getCurrentStoryData();
+    const storyGraph = getCurrentStoryGraph();
 
-    if (!currentStoryData || !reactFlowInstance) {
-      showToast("The current story or the reactFlow instance not found.", "error");
+    if (!currentStoryData || !storyGraph) {
+      showToast("The current story or the current story graph not found.", "error");
       return;
     }
 
@@ -286,25 +298,17 @@ export default function Flow() {
         id: storyId,
         title
       },
-      reactFlowInstance.toObject() as StoryGraph
+      storyGraph
     );
 
     reloadStories();
 
     showToast("Story successfully saved.", "success");
-  }, [reactFlowInstance, getCurrentStoryData, reloadStories, showToast]);
+  }, [getCurrentStoryData, getCurrentStoryGraph, reloadStories, showToast]);
 
   const newStoryAlertDialog = () => setNewStoryAlertDialogOpen(true);
   const loadStoryDialog = () => setLoadStoryDialogOpen(true);
   const importStoryDialog = () => setImportStoryDialogOpen(true);
-
-  const exportStoryDialog = () => {
-    if (!isEmpty(validationMessages)) {
-      console.log("No export");
-    } else {
-      console.log("Export");
-    }
-  }
 
   function setStoryGraph(storyGraph: StoryGraph) {
     setNodes(storyGraph.nodes);
@@ -345,8 +349,6 @@ export default function Flow() {
   }
 
   function getImportErrorMessage(error: unknown): string {
-    console.log(error);
-
     if (error instanceof ZodError) {
       const issues = error.issues;
       const showPaths = 3;
@@ -401,6 +403,25 @@ export default function Flow() {
     reader.readAsText(file);
   }
 
+  function exportStory() {
+    if (!isEmpty(validationMessages)) {
+      return;
+    }
+
+    // convert current story graph to story (external format)
+    const storyGraph = getCurrentStoryGraph();
+
+    if (!storyGraph) {
+      showToast("Failed to get the current story graph.", "error");
+      return;
+    }
+
+    const story = buildStory(storyGraph);
+
+    // download it
+    exportToJsonFile(story, story.id);
+  }
+
   return (
     <>
       <NewStoryAlertDialog
@@ -430,7 +451,7 @@ export default function Flow() {
           onSave={saveStory}
           onLoad={loadStoryDialog}
           onImport={importStoryDialog}
-          onExport={exportStoryDialog}
+          onExport={exportStory}
           exportEnabled={isEmpty(validationMessages)}
         />
         <div className="flex-grow w-full" ref={reactFlowWrapper}>
@@ -449,7 +470,7 @@ export default function Flow() {
             deleteKeyCode={[]}
             className="bg-gray-100"
             nodeTypes={nodeTypes}
-            defaultViewport={storyGraph.viewport ?? defaultViewport}
+            defaultViewport={initialViewport}
           >
             <Controls />
             <MiniMap
