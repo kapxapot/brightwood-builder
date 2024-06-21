@@ -20,3 +20,5 @@ First download a file, then import it into Brightwood Builder.
 Watch Brightwood Builder in action:
 
 [![Brightwood Builder Demo](https://img.youtube.com/vi/ufNY-NnoYZw/0.jpg)](https://www.youtube.com/watch?v=ufNY-NnoYZw)
+
+https://www.youtube.com/watch?v=ufNY-NnoYZw
