@@ -65,6 +65,7 @@ export function buildStoryGraph(story: Story, changeHandler: OnChangeHandler): S
     startId: story.startId,
     prefix: story.prefix,
     data: story.data,
+    position: story.position,
     onChange: changeHandler,
   };
 

@@ -1,45 +1,40 @@
 import { Story } from "@/entities/story";
-import { StoryInfoGraphNode, StoryNode } from "@/entities/story-node";
-import { NodeType } from "@/lib/types";
 import { StoryGraph } from "./story-graph-builder";
+import { StoryInfoGraphNode, StoryNode } from "@/entities/story-node";
 
 export function buildStory(storyGraph: StoryGraph): Story {
   const nodes = storyGraph.nodes;
-  const storyNode = getStoryInfoGraphNode(nodes);
-  const otherNodes = getOtherGraphNodes(nodes);
+  const storyNode = nodes.find(n => n.data.type === "storyInfo");
+  const otherNodes = nodes.filter(n => n.data.type !== "storyInfo");
 
   if (!storyNode) {
     throw new Error("Story info node not found.");
   }
 
-  if (!storyNode.title) {
+  const storyData = storyNode.data as StoryInfoGraphNode;
+
+  if (!storyData.title) {
     throw new Error("Story title must be defined.");
   }
 
-  if (!storyNode.startId) {
+  if (!storyData.startId) {
     throw new Error("Story start node must be defined.");
   }
 
   return {
-    id: storyNode.uuid,
-    title: storyNode.title,
-    description: storyNode.description,
-    startId: storyNode.startId,
-    prefix: storyNode.prefix,
-    data: storyNode.data,
-    position: storyNode.position,
-    nodes: otherNodes,
+    id: storyData.uuid,
+    title: storyData.title,
+    description: storyData.description,
+    startId: storyData.startId,
+    prefix: storyData.prefix,
+    data: storyData.data,
+    position: [storyNode.position.x, storyNode.position.y],
+    nodes: otherNodes.map(node => {
+      return {
+        ...node.data,
+        position: [node.position.x, node.position.y]
+      } as StoryNode;
+    }),
     viewport: storyGraph.viewport
   };
-}
-
-export function getStoryInfoGraphNode(nodes: NodeType[]): StoryInfoGraphNode | undefined {
-  const node = nodes.find(n => n.data.type === "storyInfo");
-  return node?.data as StoryInfoGraphNode;
-}
-
-function getOtherGraphNodes(nodes: NodeType[]): StoryNode[] {
-  return nodes
-    .map(n => n.data)
-    .filter(d => d.type !== "storyInfo") as StoryNode[];
 }

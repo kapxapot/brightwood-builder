@@ -25,7 +25,7 @@ import { ZodError } from "zod";
 import { ValidationMessage, validateNodes } from "@/lib/validation";
 import { isEmpty } from "@/lib/common";
 import { ValidationMessages } from "./validation-messages";
-import { buildStory, getStoryInfoGraphNode } from "@/builders/story-builder";
+import { buildStory } from "@/builders/story-builder";
 import { exportToJsonFile } from "@/lib/export";
 
 const nodeTypes = {
@@ -64,7 +64,10 @@ export default function Flow() {
   const [importStoryDialogOpen, setImportStoryDialogOpen] = useState(false);
 
   const getCurrentStoryData = useCallback(
-    (): StoryInfoGraphNode | undefined => getStoryInfoGraphNode(nodes),
+    (): StoryInfoGraphNode | undefined => {
+      const node = nodes.find(n => n.data.type === "storyInfo");
+      return node?.data as StoryInfoGraphNode;
+    },
     [nodes]
   );
 

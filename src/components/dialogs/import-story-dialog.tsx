@@ -52,6 +52,7 @@ export function ImportStoryDialog({ open, onOpenChange, onImport }: Props) {
                     <Input
                       type="file"
                       accept=".json"
+                      className="cursor-pointer"
                       {...field}
                     />
                   </FormControl>
