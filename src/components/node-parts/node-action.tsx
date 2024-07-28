@@ -6,19 +6,21 @@ import { autoHeight, focusAndSelect } from "../../lib/ref-operations";
 import HandleOut from "./handle-out";
 import { Bolt, Delete, Edit } from "../core/icons";
 import { TextInputLabel } from "../core/text-input-label";
+import { useCharLimit } from "@/hooks/use-char-limit";
 
 interface Props {
   action: Action;
   index: number;
   deletable: boolean;
+  nodeEditing: boolean;
+  charLimit?: number;
   updateAction: (updatedAction: Action) => void;
   deleteAction: () => void;
-  nodeEditing: boolean;
   onEditStarted: () => void;
   onEditFinished: () => void;
 }
 
-export default function NodeAction({ action, index, deletable, updateAction, deleteAction, nodeEditing, onEditStarted, onEditFinished }: Props) {
+export default function NodeAction({ action, index, deletable, nodeEditing, charLimit = 0, updateAction, deleteAction, onEditStarted, onEditFinished }: Props) {
   const initialLabel = action.label;
   const noLabel = !initialLabel.length;
 
@@ -26,6 +28,8 @@ export default function NodeAction({ action, index, deletable, updateAction, del
   const [editing, setEditing] = useState(noLabel);
 
   const inputRef = useRef<HTMLInputElement>(null);
+
+  const { showCharLimit, valueTooLong} = useCharLimit(label, charLimit);
 
   function startEdit() {
     setLabel(initialLabel);
@@ -84,13 +88,18 @@ export default function NodeAction({ action, index, deletable, updateAction, del
               type="text"
               defaultValue={label}
               onChange={updateLabel}
-              className="w-full py-1 px-1.5 mb-2 border border-slate-400 rounded-md"
+              className="w-full py-1 px-1.5 mb-1 border border-slate-400 rounded-md"
               ref={inputRef}
             />
-            <div className="flex gap-2">
+            {showCharLimit &&
+              <div className={`text-xs ${valueTooLong ? 'text-red-500' : 'opacity-50'}`}>
+                {label.length} / {charLimit}
+              </div>
+            }
+            <div className="flex gap-2 mt-1">
               <Button
+                disabled={!label.length || valueTooLong}
                 onClick={commitEdit}
-                disabled={!label.length}
               >
                 Save
               </Button>

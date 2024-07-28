@@ -3,25 +3,29 @@ import Button from "../core/button";
 import { autoHeight, focusAndSelect } from "../../lib/ref-operations";
 import { Delete, Edit } from "../core/icons";
 import { TextInputLabel } from "../core/text-input-label";
+import { useCharLimit } from "@/hooks/use-char-limit";
 
 interface Props {
   line: string;
   index: number;
   deletable: boolean;
   readonly?: boolean;
+  charLimit?: number;
   updateLine: (updatedLine: string) => void;
   deleteLine: () => void;
   onEditStarted?: () => void;
   onEditFinished?: () => void;
 }
 
-export default function NodeTextLine({ line, index, deletable, readonly, updateLine, deleteLine, onEditStarted, onEditFinished }: Props) {
+export default function NodeTextLine({ line, index, deletable, readonly, charLimit = 0, updateLine, deleteLine, onEditStarted, onEditFinished }: Props) {
   const noText = !line.length;
 
   const [editedLine, setEditedLine] = useState(line);
   const [editing, setEditing] = useState(noText);
 
   const inputRef = useRef<HTMLTextAreaElement>(null);
+
+  const { showCharLimit, valueTooLong} = useCharLimit(editedLine, charLimit);
 
   function startEdit() {
     if (readonly) {
@@ -55,8 +59,8 @@ export default function NodeTextLine({ line, index, deletable, readonly, updateL
   }
 
   function updateEditedLine(event: React.ChangeEvent<HTMLTextAreaElement>) {
-    const value = event.currentTarget.value;
-    setEditedLine(value.trim());
+    const value = event.currentTarget.value.trim();
+    setEditedLine(value);
   }
 
   useEffect(function autoEditEmptyLine() {
@@ -81,15 +85,20 @@ export default function NodeTextLine({ line, index, deletable, readonly, updateL
           <textarea
             defaultValue={editedLine}
             onChange={updateEditedLine}
-            className="w-full py-1 px-1.5 mb-1 border border-slate-400 rounded-md"
+            className="w-full py-1 px-1.5 border border-slate-400 rounded-md"
             ref={inputRef}
             rows={3}
           >
           </textarea>
-          <div className="flex gap-2">
+          {showCharLimit &&
+            <div className={`text-xs ${valueTooLong ? 'text-red-500' : 'opacity-50'}`}>
+              {editedLine.length} / {charLimit}
+            </div>
+          }
+          <div className="flex gap-2 mt-1">
             <Button
+              disabled={!editedLine.length || valueTooLong}
               onClick={commitEdit}
-              disabled={!editedLine.length}
             >
               Save
             </Button>

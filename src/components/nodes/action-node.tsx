@@ -41,9 +41,10 @@ const ActionNode = memo(function ActionNode({ data, selected }: Props) {
           index={index}
           action={action}
           deletable={true}
+          nodeEditing={nodeEditing}
+          charLimit={100}
           updateAction={updatedAction => updateAction(data, index, updatedAction)}
           deleteAction={() => deleteAction(data, index)}
-          nodeEditing={nodeEditing}
           onEditStarted={startEdit}
           onEditFinished={finishEdit}
         />

@@ -12,9 +12,11 @@ export function focusAndSelect<T extends EditableInput>(ref: Ref<T>) {
   }
 }
 
-export function autoHeight<T extends AutoHeightableInput>(ref: Ref<T>) {
+export function autoHeight<T extends AutoHeightableInput>(ref: Ref<T>, maxHeight: number = 200) {
   if (ref.current) {
     ref.current.style.height = "auto";
-    ref.current.style.height = `${ref.current.scrollHeight}px`;
+
+    const height = Math.min(ref.current.scrollHeight, maxHeight);
+    ref.current.style.height = `${height}px`;
   }
 }

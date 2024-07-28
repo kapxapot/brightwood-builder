@@ -3,6 +3,7 @@ import Button from "../core/button";
 import { autoHeight, focusAndSelect } from "../../lib/ref-operations";
 import { Edit } from "./icons";
 import { TextInputLabel } from "./text-input-label";
+import { useCharLimit } from "@/hooks/use-char-limit";
 
 const defaultRowCount = 2;
 
@@ -11,12 +12,13 @@ interface Props {
   label: string;
   rowCount?: number;
   readonly?: boolean;
+  charLimit?: number;
   onValueChanged?: (value: string) => void;
   onEditStarted?: () => void;
   onEditFinished?: () => void;
 }
 
-export default function TextInput({ value, label, rowCount, readonly, onValueChanged, onEditStarted, onEditFinished }: Props) {
+export default function TextInput({ value, label, rowCount, readonly, charLimit = 0, onValueChanged, onEditStarted, onEditFinished }: Props) {
   const initialValue = value || "";
   const noValue = !initialValue.length;
 
@@ -24,6 +26,8 @@ export default function TextInput({ value, label, rowCount, readonly, onValueCha
   const [editing, setEditing] = useState(false);
 
   const inputRef = useRef<HTMLTextAreaElement>(null);
+
+  const { showCharLimit, valueTooLong} = useCharLimit(editedValue, charLimit);
 
   function startEdit() {
     if (readonly) {
@@ -52,8 +56,8 @@ export default function TextInput({ value, label, rowCount, readonly, onValueCha
   }
 
   function updateEditedValue(event: React.ChangeEvent<HTMLTextAreaElement>) {
-    const value = event.currentTarget.value;
-    setEditedValue(value.trim());
+    const value = event.currentTarget.value.trim();
+    setEditedValue(value);
   }
 
   useEffect(function correctHeightOnEdit() {
@@ -76,8 +80,18 @@ export default function TextInput({ value, label, rowCount, readonly, onValueCha
             rows={rowCount ?? defaultRowCount}
           >
           </textarea>
+          {showCharLimit &&
+            <div className={`text-xs ${valueTooLong ? 'text-red-500' : 'opacity-50'}`}>
+              {editedValue.length} / {charLimit}
+            </div>
+          }
           <div className="pt-1 flex gap-2">
-            <Button onClick={commitEdit}>Save</Button>
+            <Button
+              disabled={valueTooLong}
+              onClick={commitEdit}
+            >
+              Save
+            </Button>
             <Button onClick={cancelEdit}>Cancel</Button>
           </div>
         </div>

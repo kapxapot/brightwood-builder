@@ -25,6 +25,7 @@ export default function NodeText({ data, allowEmpty, readonly, onEditStarted, on
           line={line}
           deletable={allowEmpty || lines.length > 1}
           readonly={readonly}
+          charLimit={1000}
           updateLine={updatedLine => updateTextLine(data, index, updatedLine)}
           deleteLine={() => deleteTextLine(data, index)}
           onEditStarted={onEditStarted}

@@ -3,7 +3,7 @@ import { PencilIcon, TrashIcon } from "@heroicons/react/24/solid";
 import Tooltip from "./tooltip";
 import { colors } from "@/lib/constants";
 
-export const Bolt = () => <BoltIcon className={`w-5 ${colors.action.twIcon}`} />;
+export const Bolt = () => <BoltIcon className={`w-5 shrink-0 ${colors.action.twIcon}`} />;
 export const Cube = () => <CubeIcon className={`w-5 ${colors.redirect.twIcon}`} />;
 export const Skip = () => <ForwardIcon className={`w-5 ${colors.skip.twIcon}`} />;
 export const Stop = () => <NoSymbolIcon className={`w-5 ${colors.finish.twIcon}`} />;
