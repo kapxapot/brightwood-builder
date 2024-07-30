@@ -27,6 +27,7 @@ import { isEmpty } from "@/lib/common";
 import { ValidationMessages } from "./validation-messages";
 import { buildStory } from "@/builders/story-builder";
 import { exportToJsonFile } from "@/lib/export";
+import { ConfirmOverwriteStoryAlertDialog } from "./dialogs/confirm-overwrite-story-alert-dialog";
 
 const nodeTypes = {
   storyInfo: StoryInfoNode,
@@ -36,13 +37,17 @@ const nodeTypes = {
   finish: FinishNode
 };
 
+const noStoryDataError = "Failed to get the current story data.";
+
 export default function Flow() {
   const { toast } = useToast();
   const { stories, reloadStories } = useStories();
 
-  const initialStoryGraph = initStoryGraph(
+  const { initialStoryGraph, isNewStory } = initStoryGraph(
     (data, event) => onNodeDataChange(data, event)
   );
+
+  const [isEtherealStory, setIsEtherealStory] = useState(isNewStory);
 
   const initialViewport = initialStoryGraph.viewport ?? defaultViewport;
 
@@ -60,13 +65,14 @@ export default function Flow() {
   const [validationMessages, setValidationMessages] = useState<ValidationMessage[]>([]);
 
   const [newStoryAlertDialogOpen, setNewStoryAlertDialogOpen] = useState(false);
+  const [confirmOverwriteStoryAlertDialogOpen, setConfirmOverwriteStoryAlertDialogOpen] = useState(false);
   const [loadStoryDialogOpen, setLoadStoryDialogOpen] = useState(false);
   const [importStoryDialogOpen, setImportStoryDialogOpen] = useState(false);
 
   const getCurrentStoryData = useCallback(
-    (): StoryInfoGraphNode | undefined => {
+    (): StoryInfoGraphNode | null => {
       const node = nodes.find(n => n.data.type === "storyInfo");
-      return node?.data as StoryInfoGraphNode;
+      return (node?.data as StoryInfoGraphNode) ?? null;
     },
     [nodes]
   );
@@ -290,28 +296,54 @@ export default function Flow() {
     const storyGraph = getCurrentStoryGraph();
 
     if (!currentStoryData || !storyGraph) {
-      showToast("The current story or the current story graph not found.", "error");
+      showToast(noStoryDataError, "error");
       return;
     }
 
-    const { uuid: storyId, title } = currentStoryData;
+    const { uuid, title } = currentStoryData;
 
     storeStory(
-      {
-        id: storyId,
-        title
-      },
+      { id: uuid, title },
       storyGraph
     );
 
     reloadStories();
+    setIsEtherealStory(false);
 
     showToast("Story successfully saved.", "success");
   }, [getCurrentStoryData, getCurrentStoryGraph, reloadStories, showToast]);
 
+  const checkThenSaveStory = useCallback(() => {
+    const currentStoryData = getCurrentStoryData();
+
+    if (!currentStoryData) {
+      showToast(noStoryDataError, "error");
+      return;
+    }
+
+    // check if the current story is ethereal and a story with the same id
+    // already exists, ask to overwrite
+    reloadStories();
+    const storyExists = stories.some(s => s.id === currentStoryData.uuid);
+
+    if (!isEtherealStory || !storyExists) {
+      console.log("Saving story");
+      saveStory();
+      return;
+    }
+
+    confirmOverwriteStoryAlertDialog();
+  }, [getCurrentStoryData, isEtherealStory, reloadStories, saveStory, showToast, stories]);
+
   const newStoryAlertDialog = () => setNewStoryAlertDialogOpen(true);
+  const confirmOverwriteStoryAlertDialog = () => setConfirmOverwriteStoryAlertDialogOpen(true);
   const loadStoryDialog = () => setLoadStoryDialogOpen(true);
   const importStoryDialog = () => setImportStoryDialogOpen(true);
+
+  function switchToEtherealStory() {
+    removeCurrentStoryId();
+    setIsEtherealStory(true);
+  }
 
   function setStoryGraph(storyGraph: StoryGraph) {
     setNodes(storyGraph.nodes);
@@ -324,11 +356,11 @@ export default function Flow() {
       newStoryGraph(onNodeDataChange)
     );
 
-    removeCurrentStoryId();
+    switchToEtherealStory();
   }
 
-  function newStoryWithSave() {
-    saveStory();
+  function saveThenNewStory() {
+    checkThenSaveStory();
     newStory();
   }
 
@@ -342,7 +374,9 @@ export default function Flow() {
 
     setLoadStoryDialogOpen(false);
     setStoryGraph(storyGraph);
+
     storeCurrentStoryId(id);
+    setIsEtherealStory(false);
   }
 
   function deleteStory(id: string) {
@@ -390,7 +424,7 @@ export default function Flow() {
         );
 
         setStoryGraph(storyGraph);
-        removeCurrentStoryId();
+        switchToEtherealStory();
 
         showToast("Story successfully imported.", "success");
       } catch (error) {
@@ -427,31 +461,43 @@ export default function Flow() {
 
   return (
     <>
-      <NewStoryAlertDialog
-        currentStoryTitle={currentStoryData?.title}
-        open={newStoryAlertDialogOpen}
-        onOpenChange={setNewStoryAlertDialogOpen}
-        onSave={newStoryWithSave}
-        onDontSave={newStory}
-      />
-      <LoadStoryDialog
-        stories={stories}
-        open={loadStoryDialogOpen}
-        onOpenChange={setLoadStoryDialogOpen}
-        onLoadStory={loadStory}
-        onDeleteStory={deleteStory}
-      />
-      {importStoryDialogOpen && (
+      {newStoryAlertDialogOpen &&
+        <NewStoryAlertDialog
+          currentStoryTitle={currentStoryData?.title}
+          open={newStoryAlertDialogOpen}
+          onOpenChange={setNewStoryAlertDialogOpen}
+          onSave={saveThenNewStory}
+          onDontSave={newStory}
+        />
+      }
+      {loadStoryDialogOpen &&
+        <LoadStoryDialog
+          stories={stories}
+          open={loadStoryDialogOpen}
+          onOpenChange={setLoadStoryDialogOpen}
+          onLoadStory={loadStory}
+          onDeleteStory={deleteStory}
+        />
+      }
+      {importStoryDialogOpen &&
         <ImportStoryDialog
           open={importStoryDialogOpen}
           onOpenChange={setImportStoryDialogOpen}
           onImport={importStory}
         />
-      )}
+      }
+      {confirmOverwriteStoryAlertDialogOpen &&
+        <ConfirmOverwriteStoryAlertDialog
+        open={confirmOverwriteStoryAlertDialogOpen}
+        onOpenChange={setConfirmOverwriteStoryAlertDialogOpen}
+        onConfirm={saveStory}
+          storyId={currentStoryData?.uuid}
+        />
+      }
       <div className="w-screen h-screen flex flex-row flex-grow">
         <Toolbar
           onNew={newStoryAlertDialog}
-          onSave={saveStory}
+          onSave={checkThenSaveStory}
           onLoad={loadStoryDialog}
           onImport={importStoryDialog}
           onExport={exportStory}

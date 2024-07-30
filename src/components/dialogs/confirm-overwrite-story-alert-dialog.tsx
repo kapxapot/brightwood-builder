@@ -2,29 +2,32 @@ import { Badge } from "../ui/badge";
 import { Button } from "../ui/button";
 import { AlertDialog } from "../core/alert-dialog";
 import { AlertDialogAction, AlertDialogCancel } from "../ui/alert-dialog";
-import { ReactNode } from "react";
+import { truncateId } from "@/lib/common";
 
 interface Props {
-  storyName: string;
-  trigger: ReactNode;
+  storyId?: string;
+  open: boolean;
+  onOpenChange: (open: boolean) => void;
   onConfirm: () => void;
 }
 
-export function ConfirmDeleteStoryAlertDialog({ storyName, trigger, onConfirm }: Props) {
+export function ConfirmOverwriteStoryAlertDialog({ storyId, open, onOpenChange, onConfirm }: Props) {
   return (
     <AlertDialog
-      title="Delete the story?"
+      open={open}
+      onOpenChange={onOpenChange}
+      title="Overwrite the existing story?"
       description={(
         <>
-          Are you sure you want to delete the story <Badge variant="secondary">{storyName}</Badge>? All story data will be lost.
+          A story with the same id {storyId && <Badge variant="secondary">{truncateId(storyId)}</Badge>} already exists.<br />
+          Are you sure you intend to overwrite it?
         </>
       )}
-      trigger={trigger}
     >
       <AlertDialogCancel>Cancel</AlertDialogCancel>
       <AlertDialogAction asChild>
         <Button variant="destructive" onClick={onConfirm}>
-          Delete
+          Overwrite
         </Button>
       </AlertDialogAction>
     </AlertDialog>

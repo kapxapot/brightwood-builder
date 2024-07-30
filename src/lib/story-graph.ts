@@ -4,14 +4,22 @@ import { OnChangeHandler } from "@/entities/story-node";
 import { fetchCurrentStoryId, fetchStory } from "@/lib/storage";
 import { storySchema } from "@/schemas/story-schema";
 
-export function initStoryGraph(changeHandler: OnChangeHandler): StoryGraph {
+type StoryGraphResult = {
+  initialStoryGraph: StoryGraph;
+  isNewStory: boolean;
+};
+
+export function initStoryGraph(changeHandler: OnChangeHandler): StoryGraphResult {
   const currentStoryId = fetchCurrentStoryId();
 
   const storyGraph = currentStoryId
     ? loadStoryGraph(currentStoryId, changeHandler)
     : null;
 
-  return storyGraph ?? newStoryGraph(changeHandler);
+  return {
+    initialStoryGraph: storyGraph ?? newStoryGraph(changeHandler),
+    isNewStory: storyGraph === null
+  };
 }
 
 export function loadStoryGraph(storyId: string, changeHandler: OnChangeHandler): StoryGraph | null {
