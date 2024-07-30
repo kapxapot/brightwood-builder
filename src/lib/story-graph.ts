@@ -1,25 +1,36 @@
 import { StoryGraph, buildNewStoryNode, buildStoryGraph, defaultViewport } from "@/builders/story-graph-builder";
 import { Story } from "@/entities/story";
 import { OnChangeHandler } from "@/entities/story-node";
-import { fetchCurrentStoryId, fetchStory } from "@/lib/storage";
+import { SearchParams } from "@/hooks/use-search-params";
+import { fetchCurrentStoryId, fetchStory, removeCurrentStoryId } from "@/lib/storage";
 import { storySchema } from "@/schemas/story-schema";
 
 type StoryGraphResult = {
   initialStoryGraph: StoryGraph;
   isNewStory: boolean;
+  errorMessage?: string;
 };
 
-export function initStoryGraph(changeHandler: OnChangeHandler): StoryGraphResult {
+export function initStoryGraph(searchParams: SearchParams, changeHandler: OnChangeHandler): StoryGraphResult {
+  if (searchParams.new) {
+    removeCurrentStoryId();
+    return newStoryGraphResult(changeHandler);
+  }
+
   const currentStoryId = fetchCurrentStoryId();
 
   const storyGraph = currentStoryId
     ? loadStoryGraph(currentStoryId, changeHandler)
     : null;
 
-  return {
-    initialStoryGraph: storyGraph ?? newStoryGraph(changeHandler),
-    isNewStory: storyGraph === null
-  };
+  if (storyGraph) {
+    return {
+      initialStoryGraph: storyGraph,
+      isNewStory: false
+    };
+  }
+
+  return newStoryGraphResult(changeHandler);
 }
 
 export function loadStoryGraph(storyId: string, changeHandler: OnChangeHandler): StoryGraph | null {
@@ -60,3 +71,8 @@ function applyChangeHandler(storyGraph: StoryGraph, changeHandler: OnChangeHandl
     })
   };
 }
+
+const newStoryGraphResult = (changeHandler: OnChangeHandler): StoryGraphResult => ({
+  initialStoryGraph: newStoryGraph(changeHandler),
+  isNewStory: true
+});

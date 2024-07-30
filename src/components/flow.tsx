@@ -28,6 +28,7 @@ import { ValidationMessages } from "./validation-messages";
 import { buildStory } from "@/builders/story-builder";
 import { exportToJsonFile } from "@/lib/export";
 import { ConfirmOverwriteStoryAlertDialog } from "./dialogs/confirm-overwrite-story-alert-dialog";
+import { useSearchParams } from "@/hooks/use-search-params";
 
 const nodeTypes = {
   storyInfo: StoryInfoNode,
@@ -40,10 +41,12 @@ const nodeTypes = {
 const noStoryDataError = "Failed to get the current story data.";
 
 export default function Flow() {
+  const searchParams = useSearchParams();
   const { toast } = useToast();
   const { stories, reloadStories } = useStories();
 
   const { initialStoryGraph, isNewStory } = initStoryGraph(
+    searchParams,
     (data, event) => onNodeDataChange(data, event)
   );
 
