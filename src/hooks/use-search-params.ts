@@ -1,3 +1,5 @@
+import { useEffect } from "react";
+
 export type SearchParams = {
   new: boolean;
   edit: string | null;
@@ -11,7 +13,11 @@ export function useSearchParams(): SearchParams {
     edit: params.get("edit")
   } as const;
 
-  history.pushState({}, document.title, location.pathname);
+  useEffect(() => {
+    if (location.search) {
+      history.pushState({}, document.title, location.pathname);
+    }
+  }, []);
 
   return resultParams;
 }
