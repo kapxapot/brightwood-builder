@@ -13,22 +13,20 @@ import type { GraphNode, NodeEvent, OnChangeHandler, StoryInfoGraphNode, StoryNo
 import StoryInfoNode from "./nodes/story-info-node";
 import { buildNodeData } from "../builders/node-builder";
 import { colors } from "../lib/constants";
-import { useToast } from "./ui/use-toast";
 import { removeCurrentStoryId, removeStory, storeCurrentStoryId, storeStory } from "@/lib/storage";
-import { initStoryGraph, loadStoryGraph, newStoryGraph, parseStoryGraph } from "@/lib/story-graph";
+import { getParseErrorMessage, initStoryGraph, loadStoryGraph, newStoryGraph, parseStoryGraph } from "@/lib/story-graph";
 import { NewStoryAlertDialog } from "./dialogs/new-story-alert-dialog";
 import { LoadStoryDialog } from "./dialogs/load-story-dialog";
 import { useStories } from "@/hooks/use-stories";
 import { ImportStoryDialog } from "./dialogs/import-story-dialog";
-import { CheckCircleIcon, XCircleIcon } from "@heroicons/react/24/solid";
-import { ZodError } from "zod";
 import { ValidationMessage, validateNodes } from "@/lib/validation";
 import { isEmpty } from "@/lib/common";
 import { ValidationMessages } from "./validation-messages";
 import { buildStory } from "@/builders/story-builder";
 import { exportToJsonFile } from "@/lib/export";
 import { ConfirmOverwriteStoryAlertDialog } from "./dialogs/confirm-overwrite-story-alert-dialog";
-import { useSearchParams } from "@/hooks/use-search-params";
+import { useToastMessages } from "@/hooks/use-toast-messages";
+import { clearSearchParams, getSearchParams } from "@/lib/search";
 
 const nodeTypes = {
   storyInfo: StoryInfoNode,
@@ -41,21 +39,67 @@ const nodeTypes = {
 const noStoryDataError = "Failed to get the current story data.";
 
 export default function Flow() {
-  const searchParams = useSearchParams();
-  const { toast } = useToast();
+  const { showSuccess, showError } = useToastMessages();
   const { stories, reloadStories } = useStories();
 
-  const { initialStoryGraph, isNewStory } = initStoryGraph(
-    searchParams,
-    (data, event) => onNodeDataChange(data, event)
-  );
+  const [isEtherealStory, setIsEtherealStory] = useState(true);
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const [isStoryFetching, setIsStoryFetching] = useState(false);
 
-  const [isEtherealStory, setIsEtherealStory] = useState(isNewStory);
+  useEffect(() => {
+    const [isNewStory, editStoryUrl] = getSearchParams("new", "edit");
 
-  const initialViewport = initialStoryGraph.viewport ?? defaultViewport;
+    if (isNewStory !== null) {
+      newStory();
+    } else if (editStoryUrl) {
+      fetchStoryData(editStoryUrl);
+    } else {
+      initAndSetStoryGraph();
+    }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
-  const [nodes, setNodes, onNodesChange] = useNodesState(initialStoryGraph.nodes);
-  const [edges, setEdges, onEdgesChange] = useEdgesState(initialStoryGraph.edges);
+  function initAndSetStoryGraph() {
+    const { storyGraph, isNewStory } = initStoryGraph(onNodeDataChange);
+
+    setStoryGraph(storyGraph);
+    setIsEtherealStory(isNewStory);
+  }
+
+  const fetchStoryData = async (url: string) => {
+    setIsStoryFetching(true);
+
+    try {
+      if (!URL.canParse(url)) {
+        throw new Error("Invalid story url");
+      }
+  
+      const response = await fetch(url);
+
+      if (!response.ok) {
+        throw new Error(`HTTP error: Status ${response.status}`);
+      }
+
+      const storyData = await response.text();
+      parseAndLoadStory(storyData);
+    } catch (error) {
+      const message = (error instanceof Error)
+        ? `: ${error.message}`
+        : "";
+
+      showError(`Failed to fetch a story${message}.`);
+
+      // fallback to default strategy
+      initAndSetStoryGraph();
+    } finally {
+      setIsStoryFetching(false);
+    }
+  };
+
+  const initialViewport = defaultViewport;
+
+  const [nodes, setNodes, onNodesChange] = useNodesState([]);
+  const [edges, setEdges, onEdgesChange] = useEdgesState([]);
 
   const reactFlowWrapper = useRef<HTMLDivElement>(null);
   const [reactFlowInstance, setReactFlowInstance] = useState<ReactFlowInstance | null>(null);
@@ -275,52 +319,33 @@ export default function Flow() {
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [deletePressed]);
 
-  const showToast = useCallback(
-    (message: string, status: "success" | "error" | "none") => {
-      toast({
-        description: (
-          <div className="flex gap-2 items-center">
-            {status === "success" && (
-              <CheckCircleIcon className="w-9 text-green-600" />
-            )}
-            {status === "error" && (
-              <XCircleIcon className="w-9 text-red-600" />
-            )}
-            <span>{message}</span>
-          </div>
-        )
-      });
-    },
-    [toast]
-  );
-
   const saveStory = useCallback(() => {
     const currentStoryData = getCurrentStoryData();
     const storyGraph = getCurrentStoryGraph();
 
     if (!currentStoryData || !storyGraph) {
-      showToast(noStoryDataError, "error");
+      showError(noStoryDataError);
       return;
     }
 
-    const { uuid, title } = currentStoryData;
+    const { uuid: id, title } = currentStoryData;
 
     storeStory(
-      { id: uuid, title },
+      { id, title },
       storyGraph
     );
 
+    switchToStory(id);
     reloadStories();
-    setIsEtherealStory(false);
 
-    showToast("Story successfully saved.", "success");
-  }, [getCurrentStoryData, getCurrentStoryGraph, reloadStories, showToast]);
+    showSuccess("Story successfully saved.");
+  }, [getCurrentStoryData, getCurrentStoryGraph, reloadStories, showError, showSuccess]);
 
   const checkThenSaveStory = useCallback(() => {
     const currentStoryData = getCurrentStoryData();
 
     if (!currentStoryData) {
-      showToast(noStoryDataError, "error");
+      showError(noStoryDataError);
       return;
     }
 
@@ -330,13 +355,12 @@ export default function Flow() {
     const storyExists = stories.some(s => s.id === currentStoryData.uuid);
 
     if (!isEtherealStory || !storyExists) {
-      console.log("Saving story");
       saveStory();
       return;
     }
 
     confirmOverwriteStoryAlertDialog();
-  }, [getCurrentStoryData, isEtherealStory, reloadStories, saveStory, showToast, stories]);
+  }, [getCurrentStoryData, isEtherealStory, reloadStories, saveStory, showError, stories]);
 
   const newStoryAlertDialog = () => setNewStoryAlertDialogOpen(true);
   const confirmOverwriteStoryAlertDialog = () => setConfirmOverwriteStoryAlertDialogOpen(true);
@@ -346,6 +370,12 @@ export default function Flow() {
   function switchToEtherealStory() {
     removeCurrentStoryId();
     setIsEtherealStory(true);
+  }
+
+  function switchToStory(id: string) {
+    storeCurrentStoryId(id);
+    setIsEtherealStory(false);
+    clearSearchParams();
   }
 
   function setStoryGraph(storyGraph: StoryGraph) {
@@ -371,44 +401,20 @@ export default function Flow() {
     const storyGraph = loadStoryGraph(id, onNodeDataChange);
 
     if (!storyGraph) {
-      showToast("Failed to load story.", "error");
+      showError("Failed to load story.");
       return;
     }
 
     setLoadStoryDialogOpen(false);
     setStoryGraph(storyGraph);
 
-    storeCurrentStoryId(id);
-    setIsEtherealStory(false);
+    switchToStory(id);
   }
 
   function deleteStory(id: string) {
     removeStory(id);
-    showToast("Story successfully deleted.", "success");
+    showSuccess("Story successfully deleted.");
     reloadStories();
-  }
-
-  function getImportErrorMessage(error: unknown): string {
-    if (error instanceof ZodError) {
-      const issues = error.issues;
-      const showPaths = 3;
-
-      const paths = issues.slice(0, showPaths)
-        .map(issue => issue.path)
-        .map(path => JSON.stringify(path));
-
-      const total = (issues.length > showPaths)
-        ? ` (${issues.length} in total)`
-        : "";
-
-      return `Malformed story file. Incorrect values: ${paths.join(", ")}${total}.`;
-    }
-
-    const message = (error instanceof SyntaxError)
-      ? error.message
-      : null;
-
-    return `Failed to parse JSON${message ? `: ${message}` : ""}.`;
   }
 
   function importStory(file: File) {
@@ -416,32 +422,38 @@ export default function Flow() {
 
     reader.onload = () => {
       if (!reader.result) {
-        showToast("Failed to read the file.", "error");
+        showError("Failed to read the file.");
         return;
       }
 
-      try {
-        const storyGraph = parseStoryGraph(
-          reader.result as string,
-          onNodeDataChange
-        );
-
-        setStoryGraph(storyGraph);
-        switchToEtherealStory();
-
-        showToast("Story successfully imported.", "success");
-      } catch (error) {
-        const message = getImportErrorMessage(error);
-        showToast(message, "error");
-      }
+      parseAndLoadStory(
+        reader.result as string,
+        "Story successfully imported."
+      );
     };
 
     reader.onerror = () => {
-      showToast("Failed to read the file.", "error");
+      showError("Failed to read the file.");
     };
 
     reader.readAsText(file);
   }
+
+  function parseAndLoadStory(storyData: string, customMessage?: string) {
+    try {
+      const storyGraph = parseStoryGraph(storyData, onNodeDataChange);
+
+      setStoryGraph(storyGraph);
+      switchToEtherealStory();
+
+      showSuccess(
+        customMessage ?? "Story successfully loaded."
+      );
+    } catch (error) {
+      const message = getParseErrorMessage(error);
+      showError(message);
+    }
+}
 
   function exportStory() {
     if (!isEmpty(validationMessages)) {
@@ -452,7 +464,7 @@ export default function Flow() {
     const storyGraph = getCurrentStoryGraph();
 
     if (!storyGraph) {
-      showToast("Failed to get the current story graph.", "error");
+      showError("Failed to get the current story graph.");
       return;
     }
 

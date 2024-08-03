@@ -36,8 +36,6 @@ export function storeStory(story: StoryShortcut, storyGraph: StoryGraph) {
     storyGraph
   );
 
-  localStore(currentStoryIdKey, story.id);
-
   let stories = fetchStories();
   const oldStory = stories.find(s => s.id === story.id);
 
