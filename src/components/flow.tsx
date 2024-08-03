@@ -43,8 +43,7 @@ export default function Flow() {
   const { stories, reloadStories } = useStories();
 
   const [isEtherealStory, setIsEtherealStory] = useState(true);
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const [isStoryFetching, setIsStoryFetching] = useState(false);
+  const [, setIsStoryFetching] = useState(false);
 
   useEffect(() => {
     const [isNewStory, editStoryUrl] = getSearchParams("new", "edit");
