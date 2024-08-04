@@ -1,9 +1,9 @@
-import { PropsWithChildren } from "react";
+import { PropsWithChildren, ReactNode } from "react";
 import { Side } from "@/lib/types";
 import ConditionalTooltip from "./conditional-tooltip";
 
 interface Props {
-  tooltip: string;
+  tooltip: ReactNode;
   side?: Side;
   duration?: number;
 }

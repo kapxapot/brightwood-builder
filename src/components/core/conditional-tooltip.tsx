@@ -1,9 +1,9 @@
-import { PropsWithChildren } from "react";
+import { PropsWithChildren, ReactNode } from "react";
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "../ui/tooltip";
 import { Side } from "@/lib/types";
 
 interface Props {
-  tooltip: string;
+  tooltip: ReactNode;
   show?: boolean;
   side?: Side;
   duration?: number;

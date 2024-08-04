@@ -13,6 +13,7 @@ import { TextInputLabel } from "../core/text-input-label";
 interface Props {
   link: Link;
   index: number;
+  totalWeight: number;
   deletable: boolean;
   updateLink: (updatedLink: Link) => void;
   deleteLink: () => void;
@@ -21,7 +22,7 @@ interface Props {
   onEditFinished: () => void;
 }
 
-export default function NodeLink({ link, index, deletable, updateLink, deleteLink, nodeEditing, onEditStarted, onEditFinished }: Props) {
+export default function NodeLink({ link, index, totalWeight, deletable, updateLink, deleteLink, nodeEditing, onEditStarted, onEditFinished }: Props) {
   const initialWeight = link.weight || weights.default;
   const noWeight = !link.weight;
 
@@ -29,6 +30,8 @@ export default function NodeLink({ link, index, deletable, updateLink, deleteLin
   const [editing, setEditing] = useState(noWeight);
 
   const inputRef = useRef<HTMLInputElement>(null);
+
+  const weightPercent = Math.round(link.weight / totalWeight * 100);
 
   function startEdit() {
     setWeight(initialWeight);
@@ -116,7 +119,15 @@ export default function NodeLink({ link, index, deletable, updateLink, deleteLin
         {/* view */}
         {!editing &&
           <div className="flex gap-1 max-h-5">
-            <Tooltip tooltip={`Link weight: ${link.weight}`} side="top">
+            <Tooltip
+              tooltip={
+                <div className="flex flex-col">
+                  <span>Link weight: {link.weight}</span>
+                  <span>Probability: {weightPercent}%</span>
+                </div>
+              }
+              side="top"
+            >
               <WeightDices weight={link.weight} />
             </Tooltip>
             {link.condition && (

@@ -19,6 +19,11 @@ interface Props {
 const RedirectNode = memo(function RedirectNode({ data, selected }: Props) {
   const { nodeEditing, startEdit, finishEdit } = useNodeEditing();
 
+  const totalWeight = data.links.reduce(
+    (sum, link) => sum + link.weight,
+    0
+  );
+
   return (
     <NodeShell
       selected={selected}
@@ -40,6 +45,7 @@ const RedirectNode = memo(function RedirectNode({ data, selected }: Props) {
           key={index}
           index={index}
           link={link}
+          totalWeight={totalWeight}
           deletable={true}
           updateLink={updatedLink => updateLink(data, index, updatedLink)}
           deleteLink={() => deleteLink(data, index)}

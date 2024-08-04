@@ -43,7 +43,7 @@ export default function Flow() {
   const { stories, reloadStories } = useStories();
 
   const [isEtherealStory, setIsEtherealStory] = useState(true);
-  const [, setIsStoryFetching] = useState(false);
+  const [, setIsStoryFetching] = useState(false); // todo: show loading state
 
   useEffect(() => {
     const [isNewStory, editStoryUrl] = getSearchParams("new", "edit");
