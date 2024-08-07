@@ -20,7 +20,7 @@ import { LoadStoryDialog } from "./dialogs/load-story-dialog";
 import { useStories } from "@/hooks/use-stories";
 import { ImportStoryDialog } from "./dialogs/import-story-dialog";
 import { ValidationMessage, validateNodes } from "@/lib/validation";
-import { isEmpty } from "@/lib/common";
+import { isEmpty, truncateId } from "@/lib/common";
 import { ValidationMessages } from "./validation-messages";
 import { buildStory } from "@/builders/story-builder";
 import { exportToJsonFile } from "@/lib/export";
@@ -470,7 +470,9 @@ export default function Flow() {
     const story = buildStory(storyGraph);
 
     // download it
-    exportToJsonFile(story, story.id);
+    const filename = `${story.title} - ${truncateId(story.id)}`;
+
+    exportToJsonFile(story, filename);
   }
 
   return (

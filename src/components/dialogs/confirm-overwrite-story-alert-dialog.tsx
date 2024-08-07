@@ -19,7 +19,7 @@ export function ConfirmOverwriteStoryAlertDialog({ storyId, open, onOpenChange, 
       title="Overwrite the existing story?"
       description={(
         <>
-          A story with the same id {storyId && <Badge variant="secondary">{truncateId(storyId)}</Badge>} already exists.<br />
+          A story with the same id {storyId && <Badge variant="secondary">{truncateId(storyId)}...</Badge>} already exists.<br />
           Are you sure you intend to overwrite it?
         </>
       )}

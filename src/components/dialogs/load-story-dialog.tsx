@@ -63,7 +63,7 @@ export function LoadStoryDialog({ stories, open, onOpenChange, onLoadStory, onDe
                   {!isCurrent(story) && (
                     <ConfirmDeleteStoryAlertDialog
                       onConfirm={() => onDeleteStory(story.id)}
-                      storyName={story.title ?? truncateId(story.id)}
+                      storyName={story.title ?? `${truncateId(story.id)}...`}
                       trigger={(
                         <Button variant="ghost" size="icon">
                           <Tooltip tooltip="Delete story" side="top">

@@ -1,6 +1,6 @@
 import { memo } from "react";
 import type { FinishStoryNode } from "../../entities/story-node";
-import { colors } from "../../lib/constants";
+import { colors, nodeLabels } from "../../lib/constants";
 import NodeShell from "../node-parts/node-shell";
 import { useNodeEditing } from "../../hooks/use-node-editing";
 import HandleIn from "../node-parts/handle-in";
@@ -21,13 +21,12 @@ const FinishNode = memo(function FinishNode({ data, selected }: Props) {
       selected={selected}
       color={colors.finish.tw}
     >
-      <NodeTitle id={data.id} label={data.label ?? "Finish"} />
+      <NodeTitle id={data.id} label={data.label ?? nodeLabels.finish} />
 
       <NodeEffect effect={data.effect} />
 
       <NodeText
         data={data}
-        allowEmpty={true}
         readonly={nodeEditing}
         onEditStarted={startEdit}
         onEditFinished={finishEdit}

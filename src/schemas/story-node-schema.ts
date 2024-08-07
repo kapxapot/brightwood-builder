@@ -24,31 +24,26 @@ const baseGraphNodeSchema = z.object({
 const baseStoryNodeSchema = baseGraphNodeSchema.and(
   z.object({
     label: z.union([z.string(), nodeIdSchema]).optional(),
+    text: textSchema,
     effect: effectInvocationSchema.optional(),
   }),
 );
 
-const textStoryNodeSchema = baseStoryNodeSchema.and(
-  z.object({
-    text: textSchema,
-  }),
-);
-
-const actionStoryNodeSchema = textStoryNodeSchema.and(
+const actionStoryNodeSchema = baseStoryNodeSchema.and(
   z.object({
     type: z.literal("action"),
     actions: z.array(actionSchema),
   }),
 );
 
-const skipStoryNodeSchema = textStoryNodeSchema.and(
+const skipStoryNodeSchema = baseStoryNodeSchema.and(
   z.object({
     type: z.literal("skip"),
     nextId: nodeIdSchema.optional(),
   }),
 );
 
-const redirectStoryNodeSchema = textStoryNodeSchema.and(
+const redirectStoryNodeSchema = baseStoryNodeSchema.and(
   z.object({
     type: z.literal("redirect"),
     links: z.array(linkSchema),
@@ -58,7 +53,6 @@ const redirectStoryNodeSchema = textStoryNodeSchema.and(
 const finishStoryNodeSchema = baseStoryNodeSchema.and(
   z.object({
     type: z.literal("finish"),
-    text: textSchema.optional(),
   }),
 );
 

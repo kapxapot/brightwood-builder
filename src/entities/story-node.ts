@@ -32,31 +32,27 @@ type BaseGraphNode = {
 
 type BaseStoryNode = BaseGraphNode & {
   label?: string | NodeId;
+  text: Text;
   effect?: EffectInvocation;
 };
 
-type TextStoryNode = BaseStoryNode & {
-  text: Text;
-};
-
-export type ActionStoryNode = TextStoryNode & {
+export type ActionStoryNode = BaseStoryNode & {
   type: "action";
   actions: Action[];
 };
 
-export type SkipStoryNode = TextStoryNode & {
+export type SkipStoryNode = BaseStoryNode & {
   type: "skip";
   nextId?: NodeId;
 };
 
-export type RedirectStoryNode = TextStoryNode & {
+export type RedirectStoryNode = BaseStoryNode & {
   type: "redirect";
   links: Link[];
 };
 
 export type FinishStoryNode = BaseStoryNode & {
   type: "finish";
-  text?: Text;
 };
 
 export type StoryInfoGraphNode = BaseGraphNode & {

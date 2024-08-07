@@ -36,6 +36,7 @@ export const buildNodeData = (
       return {
         id,
         type,
+        text: "",
         onChange: changeHandler
       };
   }

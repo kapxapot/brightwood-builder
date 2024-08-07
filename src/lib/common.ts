@@ -9,9 +9,5 @@ export function toArray<T>(value: T | T[] | undefined | null): T[] {
 export const isEmpty = <T>(array: T[]) => array.length === 0;
 
 export function truncateId(id: string): string {
-  const chunks = id.split("-");
-
-  return (chunks.length > 1)
-    ? `${chunks[0]}...`
-    : chunks[0];
+  return id.split("-")[0];
 }

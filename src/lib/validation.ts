@@ -107,7 +107,11 @@ function skipNodeIfMessages(node: SkipStoryNode): IfMessage[] {
   ];
 }
 
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-function finishNodeIfMessages(_node: FinishStoryNode): IfMessage[] {
-  return [];
+function finishNodeIfMessages(node: FinishStoryNode): IfMessage[] {
+  return [
+    [
+      isEmptyText(node.text),
+      "Add at least one text line."
+    ]
+  ];
 }
