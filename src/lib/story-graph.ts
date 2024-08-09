@@ -18,15 +18,11 @@ export function initStoryGraph(changeHandler: OnChangeHandler): StoryGraphResult
     : null;
 
   if (storyGraph) {
-    console.log("Returning loaded story data");
-
     return {
       storyGraph,
       isNewStory: false
     };
   }
-
-  console.log("Returning default new story data");
 
   return {
     storyGraph: newStoryGraph(changeHandler),
