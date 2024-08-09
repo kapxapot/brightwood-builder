@@ -378,9 +378,6 @@ export default function Flow() {
   function setStoryGraph(storyGraph: StoryGraph) {
     setNodes(storyGraph.nodes);
     setEdges(storyGraph.edges);
-
-    console.log(storyGraph.viewport);
-
     setViewport(storyGraph.viewport ?? defaultViewport);
   }
 
