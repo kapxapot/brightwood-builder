@@ -39,7 +39,7 @@ export default function TextInput({ value, label, rowCount, readonly, charLimit 
     setEditing(true);
     onEditStarted?.();
 
-    setTimeout(() => focusAndSelect(inputRef));
+    setTimeout(() => focusAndSelect(inputRef, false));
   }
 
   function cancelEdit() {
@@ -62,7 +62,7 @@ export default function TextInput({ value, label, rowCount, readonly, charLimit 
 
   useEffect(function correctHeightOnEdit() {
     autoHeight(inputRef);
-  }, [editedValue]);
+  }, [editing, editedValue]);
 
   return (
     <div className={`${editing ? "mt-2" : "mt-1"}`}>

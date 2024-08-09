@@ -37,7 +37,7 @@ export default function NodeTextLine({ line, index, deletable, readonly, charLim
     setEditing(true);
     onEditStarted?.();
 
-    setTimeout(() => focusAndSelect(inputRef));
+    setTimeout(() => focusAndSelect(inputRef, false));
   }
 
   function cancelEdit() {
@@ -72,7 +72,7 @@ export default function NodeTextLine({ line, index, deletable, readonly, charLim
 
   useEffect(function correctHeightOnEdit() {
     autoHeight(inputRef);
-  }, [editedLine]);
+  }, [editing, editedLine]);
 
   return (
     <>
