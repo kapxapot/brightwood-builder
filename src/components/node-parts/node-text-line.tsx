@@ -78,7 +78,7 @@ export default function NodeTextLine({ line, index, deletable, readonly, charLim
     <>
       {/* edit */}
       {editing &&
-        <div className="border border-black border-opacity-20 rounded-lg border-dashed bg-white p-1 mt-3 text-sm">
+        <div className="border border-black border-opacity-20 rounded-lg border-dashed bg-white p-1 mt-3 text-sm nowheel">
           <TextInputLabel>
             Text line
           </TextInputLabel>

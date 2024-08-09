@@ -68,7 +68,7 @@ export default function TextInput({ value, label, rowCount, readonly, charLimit 
     <div className={`${editing ? "mt-2" : "mt-1"}`}>
       {/* edit */}
       {editing &&
-        <div className="border border-black border-opacity-20 rounded-lg border-dashed bg-white p-1 mt-3 text-sm">
+        <div className="border border-black border-opacity-20 rounded-lg border-dashed bg-white p-1 mt-3 text-sm nowheel">
           <TextInputLabel>
             {label}
           </TextInputLabel>
