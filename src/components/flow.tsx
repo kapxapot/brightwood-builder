@@ -45,6 +45,8 @@ export default function Flow() {
   const [isEtherealStory, setIsEtherealStory] = useState(true);
   const [, setIsStoryFetching] = useState(false); // todo: show loading state
 
+  const { setViewport } = useReactFlow();
+
   useEffect(() => {
     const [isNewStory, editStoryUrl] = getSearchParams("new", "edit");
 
@@ -56,7 +58,7 @@ export default function Flow() {
       initAndSetStoryGraph();
     }
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [setViewport]);
 
   function initAndSetStoryGraph() {
     const { storyGraph, isNewStory } = initStoryGraph(onNodeDataChange);
@@ -83,10 +85,10 @@ export default function Flow() {
       parseAndLoadStory(storyData);
     } catch (error) {
       const message = (error instanceof Error)
-        ? `: ${error.message}`
-        : "";
+        ? error.message
+        : "Failed to fetch a story.";
 
-      showError(`Failed to fetch a story${message}.`);
+      showError(message);
 
       // fallback to default strategy
       initAndSetStoryGraph();
@@ -95,15 +97,11 @@ export default function Flow() {
     }
   };
 
-  const initialViewport = defaultViewport;
-
   const [nodes, setNodes, onNodesChange] = useNodesState([]);
   const [edges, setEdges, onEdgesChange] = useEdgesState([]);
 
   const reactFlowWrapper = useRef<HTMLDivElement>(null);
   const [reactFlowInstance, setReactFlowInstance] = useState<ReactFlowInstance | null>(null);
-
-  const { setViewport } = useReactFlow();
 
   const [selectedNodes, setSelectedNodes] = useState<Node[]>([]);
   const [selectedEdges, setSelectedEdges] = useState<Edge[]>([]);
@@ -114,6 +112,13 @@ export default function Flow() {
   const [confirmOverwriteStoryAlertDialogOpen, setConfirmOverwriteStoryAlertDialogOpen] = useState(false);
   const [loadStoryDialogOpen, setLoadStoryDialogOpen] = useState(false);
   const [importStoryDialogOpen, setImportStoryDialogOpen] = useState(false);
+
+  const newStoryAlertDialog = () => setNewStoryAlertDialogOpen(true);
+  const confirmOverwriteStoryAlertDialog = () => setConfirmOverwriteStoryAlertDialogOpen(true);
+  const loadStoryDialog = () => setLoadStoryDialogOpen(true);
+  const importStoryDialog = () => setImportStoryDialogOpen(true);
+
+  const deletePressed = useKeyPress(["Delete", "Backspace"]);
 
   const getCurrentStoryData = useCallback(
     (): StoryInfoGraphNode | null => {
@@ -296,8 +301,6 @@ export default function Flow() {
     [setEdges, onEdgesDelete]
   );
 
-  const deletePressed = useKeyPress(["Delete", "Backspace"]);
-
   useEffect(function handleDelete() {
     // if storyInfo node is selected, do not allow deleting it
     // also do not allow deleting storyInfo edges if their targets are not deleted too
@@ -361,11 +364,6 @@ export default function Flow() {
     confirmOverwriteStoryAlertDialog();
   }, [getCurrentStoryData, isEtherealStory, reloadStories, saveStory, showError, stories]);
 
-  const newStoryAlertDialog = () => setNewStoryAlertDialogOpen(true);
-  const confirmOverwriteStoryAlertDialog = () => setConfirmOverwriteStoryAlertDialogOpen(true);
-  const loadStoryDialog = () => setLoadStoryDialogOpen(true);
-  const importStoryDialog = () => setImportStoryDialogOpen(true);
-
   function switchToEtherealStory() {
     removeCurrentStoryId();
     setIsEtherealStory(true);
@@ -380,6 +378,9 @@ export default function Flow() {
   function setStoryGraph(storyGraph: StoryGraph) {
     setNodes(storyGraph.nodes);
     setEdges(storyGraph.edges);
+
+    console.log(storyGraph.viewport);
+
     setViewport(storyGraph.viewport ?? defaultViewport);
   }
 
@@ -535,7 +536,6 @@ export default function Flow() {
             deleteKeyCode={[]}
             className="bg-gray-100"
             nodeTypes={nodeTypes}
-            defaultViewport={initialViewport}
           >
             <Controls />
             <MiniMap
