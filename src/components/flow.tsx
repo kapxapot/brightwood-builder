@@ -301,7 +301,7 @@ export default function Flow() {
     [setEdges, onEdgesDelete]
   );
 
-  useEffect(function handleDelete() {
+  useEffect(() => {
     // if storyInfo node is selected, do not allow deleting it
     // also do not allow deleting storyInfo edges if their targets are not deleted too
     const isNodeSelected = (node: Node) => selectedNodes.some(n => n.id === node.id);

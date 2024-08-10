@@ -7,6 +7,7 @@ import ConditionalTooltip from "./core/conditional-tooltip";
 import Tooltip from "./core/tooltip";
 import { nodeLabels } from "@/lib/constants";
 import { useExpanded } from "@/hooks/use-expanded";
+import GitHubIcon from "./github-icon";
 
 type Handler = () => void;
 
@@ -67,7 +68,7 @@ export default function Toolbar({ onNew, onSave, onLoad, onImport, onExport, exp
   ];
 
   return (
-    <aside className={`flex flex-col justify-between ${expanded ? "w-36 p-2" : "w-14 p-1.5"} bg-gray-300 text-center`}>
+    <aside className={`flex flex-col gap-3 justify-between ${expanded ? "w-36 p-2" : "w-14 p-1.5"} bg-gray-300 text-center`}>
       <div className={`flex flex-col bg-gray-100 ${expanded ? "p-2 space-y-3" : "p-1.5 space-y-2"} rounded-md`}>
         <ConditionalTooltip
           tooltip="Drag"
@@ -144,18 +145,38 @@ export default function Toolbar({ onNew, onSave, onLoad, onImport, onExport, exp
         ))}
       </div>
 
-      <div className="text-right mr-1">
-        <Tooltip
-          tooltip={expanded ? "Collapse" : "Expand"}
-          side="right"
-        >
-          <button className="hover:bg-gray-200 rounded-full p-1 transition ease-in-out duration-300" onClick={toggleExpanded}>
-            {expanded
-              ? <ChevronLeftIcon className="w-6" />
-              : <ChevronRightIcon className="w-6" />
-            }
-          </button>
-        </Tooltip>
+      <div className="space-y-5">
+        <div className={`flex ${!expanded && "flex-col"} items-center justify-center gap-3`}>
+          <Tooltip
+            tooltip="Brightwood Bot (Telegram)"
+            side="right"
+          >
+            <a href="https://t.me/BrightwoodBot" target="_blank" className="text-xl">🤖</a>
+          </Tooltip>
+
+          <Tooltip
+            tooltip="GitHub Repository"
+            side="right"
+          >
+            <a href="https://github.com/kapxapot/brightwood-builder" target="_blank">
+              <GitHubIcon className="fill-gray-600 hover:fill-purple-800 w-7 h-7 transition-colors" />
+            </a>
+          </Tooltip>
+        </div>
+
+        <div className="text-right mr-1">
+          <Tooltip
+            tooltip={expanded ? "Collapse" : "Expand"}
+            side="right"
+          >
+            <button className="hover:bg-gray-200 rounded-full p-1 transition ease-in-out duration-300" onClick={toggleExpanded}>
+              {expanded
+                ? <ChevronLeftIcon className="w-6" />
+                : <ChevronRightIcon className="w-6" />
+              }
+            </button>
+          </Tooltip>
+        </div>
       </div>
     </aside>
   );
