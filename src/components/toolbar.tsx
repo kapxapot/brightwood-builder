@@ -151,7 +151,9 @@ export default function Toolbar({ onNew, onSave, onLoad, onImport, onExport, exp
             tooltip="Brightwood Bot (Telegram)"
             side="right"
           >
-            <a href="https://t.me/BrightwoodBot" target="_blank" className="text-xl">🤖</a>
+            <a href="https://t.me/BrightwoodBot" target="_blank" className="opacity-75 hover:opacity-100 transition-opacity">
+              <img src="/images/tree.png" className="w-8 h-8 rounded-full" />
+            </a>
           </Tooltip>
 
           <Tooltip
@@ -159,7 +161,7 @@ export default function Toolbar({ onNew, onSave, onLoad, onImport, onExport, exp
             side="right"
           >
             <a href="https://github.com/kapxapot/brightwood-builder" target="_blank">
-              <GitHubIcon className="fill-gray-600 hover:fill-purple-800 w-7 h-7 transition-colors" />
+              <GitHubIcon className="fill-gray-600 hover:fill-purple-800 w-8 h-8 transition-colors" />
             </a>
           </Tooltip>
         </div>
