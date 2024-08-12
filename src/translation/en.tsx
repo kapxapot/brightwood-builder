@@ -1,3 +1,5 @@
 export const en = {
-  "loadStoryTitle": "Load story"
+  "loadStoryTitle": "Load story",
+  "importStoryTitle": "Import story",
+  "importVerb": "Import"
 };

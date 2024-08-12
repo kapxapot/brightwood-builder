@@ -40,14 +40,26 @@ export const ru = {
   "Delete the story?": "Удалить историю?",
   "Save the current story?": "Сохранить текущую историю?",
   "Don't save": "Не сохранять",
-  "alerts": {
+  "dialogs": {
     "deleteStory": "Вы уверены, что хотите удалить историю <0>{{storyName}}</0>? Все данные истории пропадут.",
-    "newStory": "Иначе все изменения текущей истории <0>{{currentStoryTitle}}</0> пропадут."
+    "newStory": "Иначе все изменения текущей истории <0>{{currentStoryTitle}}</0> пропадут.",
+    "overwriteStory": "История с таким же id <0>{{storyId}}...</0> уже существует.",
+    "chooseFileToImport": "Выберите <0>.json</0> файл истории для импорта"
   },
   "loadStoryTitle": "Загрузка истории",
   "Choose a story to load. You can also delete stories here.": "Выберите историю для загрузки. Вы также можете здесь удалять истории.",
   "There are no saved stories yet.": "Пока еще нет сохраненных историй.",
   "Can't delete the current story": "Нельзя удалить текущую историю",
   "Delete story": "Удалить историю",
-  "Close": "Закрыть"
+  "Close": "Закрыть",
+  "Overwrite the existing story?": "Перезаписать существующую историю?",
+  "Are you sure you intend to overwrite it?": "Вы уверены, что хотите перезаписать ее?",
+  "Overwrite": "Перезаписать",
+  "File must be selected": "Нужно выбрать файл",
+  "Only .json files are allowed": "Разрешены только .json файлы",
+  "importStoryTitle": "Импорт истории",
+  "File": "Файл",
+  "importVerb": "Импортировать",
+  "Action label": "Текст действия",
+  "effect": "эффект"
 };

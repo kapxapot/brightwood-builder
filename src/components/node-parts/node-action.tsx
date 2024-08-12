@@ -7,6 +7,7 @@ import HandleOut from "./handle-out";
 import { Bolt, Delete, Edit } from "../core/icons";
 import { TextInputLabel } from "../core/text-input-label";
 import { useCharLimit } from "@/hooks/use-char-limit";
+import { useTranslation } from "react-i18next";
 
 interface Props {
   action: Action;
@@ -21,6 +22,8 @@ interface Props {
 }
 
 export default function NodeAction({ action, index, deletable, nodeEditing, charLimit = 0, updateAction, deleteAction, onEditStarted, onEditFinished }: Props) {
+  const { t } = useTranslation();
+
   const initialLabel = action.label;
   const noLabel = !initialLabel.length;
 
@@ -37,7 +40,7 @@ export default function NodeAction({ action, index, deletable, nodeEditing, char
     setEditing(true);
     onEditStarted();
 
-    setTimeout(() => focusAndSelect(inputRef));
+    setTimeout(() => focusAndSelect(inputRef, false));
   }
 
   function cancelEdit() {
@@ -82,7 +85,7 @@ export default function NodeAction({ action, index, deletable, nodeEditing, char
         {editing &&
           <div className="border border-black border-opacity-20 rounded-lg border-dashed bg-white p-1 mr-2 my-1">
             <TextInputLabel>
-              Action label
+              {t("Action label")}
             </TextInputLabel>
             <input
               type="text"
@@ -101,9 +104,11 @@ export default function NodeAction({ action, index, deletable, nodeEditing, char
                 disabled={!label.length || valueTooLong}
                 onClick={commitEdit}
               >
-                Save
+                {t("Save")}
               </Button>
-              <Button onClick={cancelEdit}>Cancel</Button>
+              <Button onClick={cancelEdit}>
+                {t("Cancel")}
+              </Button>
             </div>
           </div>
         }

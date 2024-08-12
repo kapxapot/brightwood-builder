@@ -1,3 +1,4 @@
+import { useTranslation } from "react-i18next";
 import type { EffectInvocation } from "../../entities/story-data";
 
 interface Props {
@@ -5,13 +6,15 @@ interface Props {
 }
 
 export default function NodeEffect({ effect }: Props) {
+  const { t } = useTranslation();
+
   if (!effect) {
     return null;
   }
 
   return (
     <div className="text-sm">
-      <span className="italic">effect:</span> {effect.name}()
+      <span className="italic">{t("effect")}:</span> {effect.name}()
     </div>
   );
 }

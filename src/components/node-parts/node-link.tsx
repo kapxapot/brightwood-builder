@@ -39,7 +39,7 @@ export default function NodeLink({ link, index, totalWeight, deletable, updateLi
     setEditing(true);
     onEditStarted();
 
-    setTimeout(() => focusAndSelect(inputRef));
+    setTimeout(() => focusAndSelect(inputRef, false));
   }
 
   function cancelEdit() {

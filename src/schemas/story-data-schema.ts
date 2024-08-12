@@ -30,5 +30,5 @@ export const storyDataSchema = z.object({
 
 export const effectInvocationSchema = z.object({
   name: effectNameSchema,
-  args: z.array(valueSchema),
+  args: z.array(valueSchema).optional(),
 });

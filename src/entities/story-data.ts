@@ -22,5 +22,5 @@ export type StoryData = {
 
 export type EffectInvocation = {
   name: EffectName;
-  args: Value[];
+  args?: Value[];
 }

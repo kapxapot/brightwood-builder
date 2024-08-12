@@ -6,12 +6,7 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from "../ui/form";
 import { BaseSyntheticEvent } from "react";
-
-const formSchema = z.object({
-  file: z.string().trim()
-    .min(1, { message: "File must be selected" })
-    .endsWith(".json", { message: "Only .json files are allowed" })
-});
+import { Trans, useTranslation } from "react-i18next";
 
 interface Props {
   open: boolean;
@@ -20,6 +15,14 @@ interface Props {
 }
 
 export function ImportStoryDialog({ open, onOpenChange, onImport }: Props) {
+  const { t } = useTranslation();
+
+  const formSchema = z.object({
+    file: z.string().trim()
+      .min(1, { message: t("File must be selected") })
+      .endsWith(".json", { message: t("Only .json files are allowed") })
+  });
+
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -38,7 +41,9 @@ export function ImportStoryDialog({ open, onOpenChange, onImport }: Props) {
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent className="sm:max-w-[425px]">
         <DialogHeader>
-          <DialogTitle>Import story</DialogTitle>
+          <DialogTitle>
+            {t("importStoryTitle")}
+          </DialogTitle>
         </DialogHeader>
         <Form {...form}>
           <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
@@ -47,7 +52,9 @@ export function ImportStoryDialog({ open, onOpenChange, onImport }: Props) {
               name="file"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>File</FormLabel>
+                  <FormLabel>
+                    {t("File")}
+                  </FormLabel>
                   <FormControl>
                     <Input
                       type="file"
@@ -57,7 +64,12 @@ export function ImportStoryDialog({ open, onOpenChange, onImport }: Props) {
                     />
                   </FormControl>
                   <FormDescription>
-                    Choose a <span className="font-bold">.json</span> story file to import
+                    <Trans
+                      i18nKey="dialogs.chooseFileToImport"
+                      components={[ <span className="font-bold" /> ]}
+                    >
+                      Choose a <span className="font-bold">.json</span> story file to import
+                    </Trans>
                   </FormDescription>
                   <FormMessage />
                 </FormItem>
@@ -66,10 +78,12 @@ export function ImportStoryDialog({ open, onOpenChange, onImport }: Props) {
             <DialogFooter>
               <DialogClose asChild>
                 <Button variant="outline">
-                  Cancel
+                  {t("Cancel")}
                 </Button>
               </DialogClose>
-              <Button type="submit">Import</Button>
+              <Button type="submit">
+                {t("Import")}
+              </Button>
             </DialogFooter>
           </form>
         </Form>

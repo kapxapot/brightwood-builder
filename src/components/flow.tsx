@@ -510,12 +510,12 @@ export default function Flow() {
           onImport={importStory}
         />
       }
-      {confirmOverwriteStoryAlertDialogOpen &&
+      {confirmOverwriteStoryAlertDialogOpen && currentStoryData &&
         <ConfirmOverwriteStoryAlertDialog
-        open={confirmOverwriteStoryAlertDialogOpen}
-        onOpenChange={setConfirmOverwriteStoryAlertDialogOpen}
-        onConfirm={saveStory}
-          storyId={currentStoryData?.uuid}
+          open={confirmOverwriteStoryAlertDialogOpen}
+          onOpenChange={setConfirmOverwriteStoryAlertDialogOpen}
+          onConfirm={saveStory}
+          storyId={currentStoryData.uuid}
         />
       }
       <div className="w-screen h-screen flex flex-row flex-grow">

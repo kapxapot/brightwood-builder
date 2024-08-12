@@ -20,7 +20,7 @@ export function NewStoryAlertDialog({ currentStoryTitle, open, onOpenChange, onS
       title={t("Save the current story?")}
       description={(
         <Trans
-          i18nKey="alerts.newStory"
+          i18nKey="dialogs.newStory"
           values={{ currentStoryTitle }}
           components={[ <Badge variant="secondary" /> ]}
         >

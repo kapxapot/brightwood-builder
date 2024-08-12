@@ -19,7 +19,7 @@ export function ConfirmDeleteStoryAlertDialog({ storyName, trigger, onConfirm }:
       title={t("Delete the story?")}
       description={(
         <Trans
-          i18nKey="alerts.deleteStory"
+          i18nKey="dialogs.deleteStory"
           values={{ storyName }}
           components={[ <Badge variant="secondary" /> ]}
         >
