@@ -71,61 +71,80 @@ export default function Toolbar({ onNew, onSave, onLoad, onImport, onExport, exp
 
   return (
     <aside className={`flex flex-col gap-3 justify-between ${expanded ? "w-36 p-2" : "w-14 p-1.5"} bg-gray-300 text-center`}>
-      <div className={`flex flex-col bg-gray-100 ${expanded ? "p-2 space-y-3" : "p-1.5 space-y-2"} rounded-md`}>
-        <ConditionalTooltip
-          tooltip={t("Drag")}
-          show={!expanded}
-          side="right"
-        >
-          <div className="flex gap-1 justify-center">
-            {expanded && t("Drag")}
-            <ArrowLongRightIcon className="w-5 mt-1" />
+      <div className="space-y-3 mt-1">
+        <div className="flex items-center justify-center">
+          <Tooltip
+            tooltip="Brightwood Builder"
+            side="right"
+          >
+          <div className="flex items-center gap-2">
+            <img src="/images/leaves.png" className="w-8 h-8 rounded-full" />
+            {expanded && (
+              <div className="text-left leading-[1.1]">
+                Brightwood<br />
+                Builder
+              </div>
+            )}
           </div>
-        </ConditionalTooltip>
+          </Tooltip>
+        </div>
 
-        <ConditionalTooltip
-          tooltip={t(nodeLabels.action)}
-          show={!expanded}
-          side="right"
-        >
-          <ToolbarBlock type="action">
-            <Bolt />
-            {expanded && t(nodeLabels.action)}
-          </ToolbarBlock>
-        </ConditionalTooltip>
+        <div className={`flex flex-col bg-gray-100 ${expanded ? "p-2 space-y-3" : "p-1.5 space-y-2"} rounded-md`}>
+          <ConditionalTooltip
+            tooltip={t("Drag")}
+            show={!expanded}
+            side="right"
+          >
+            <div className="flex gap-1 justify-center">
+              {expanded && t("Drag")}
+              <ArrowLongRightIcon className="w-5 mt-1" />
+            </div>
+          </ConditionalTooltip>
 
-        <ConditionalTooltip
-          tooltip={t(nodeLabels.redirect)}
-          show={!expanded}
-          side="right"
-        >
-          <ToolbarBlock type="redirect">
-            <Cube />
-            {expanded && t(nodeLabels.redirect)}
-          </ToolbarBlock>
-        </ConditionalTooltip>
+          <ConditionalTooltip
+            tooltip={t(nodeLabels.action)}
+            show={!expanded}
+            side="right"
+          >
+            <ToolbarBlock type="action">
+              <Bolt />
+              {expanded && t(nodeLabels.action)}
+            </ToolbarBlock>
+          </ConditionalTooltip>
 
-        <ConditionalTooltip
-          tooltip={t(nodeLabels.skip)}
-          show={!expanded}
-          side="right"
-        >
-          <ToolbarBlock type="skip">
-            <Skip />
-            {expanded && t(nodeLabels.skip)}
-          </ToolbarBlock>
-        </ConditionalTooltip>
+          <ConditionalTooltip
+            tooltip={t(nodeLabels.redirect)}
+            show={!expanded}
+            side="right"
+          >
+            <ToolbarBlock type="redirect">
+              <Cube />
+              {expanded && t(nodeLabels.redirect)}
+            </ToolbarBlock>
+          </ConditionalTooltip>
 
-        <ConditionalTooltip
-          tooltip={t(nodeLabels.finish)}
-          show={!expanded}
-          side="right"
-        >
-          <ToolbarBlock type="finish">
-            <Stop />
-            {expanded && t(nodeLabels.finish)}
-          </ToolbarBlock>
-        </ConditionalTooltip>
+          <ConditionalTooltip
+            tooltip={t(nodeLabels.skip)}
+            show={!expanded}
+            side="right"
+          >
+            <ToolbarBlock type="skip">
+              <Skip />
+              {expanded && t(nodeLabels.skip)}
+            </ToolbarBlock>
+          </ConditionalTooltip>
+
+          <ConditionalTooltip
+            tooltip={t(nodeLabels.finish)}
+            show={!expanded}
+            side="right"
+          >
+            <ToolbarBlock type="finish">
+              <Stop />
+              {expanded && t(nodeLabels.finish)}
+            </ToolbarBlock>
+          </ConditionalTooltip>
+        </div>
       </div>
 
       <div className={`flex flex-col items-center ${expanded ? "space-y-3" : "space-y-2"}`}>
@@ -170,7 +189,7 @@ export default function Toolbar({ onNew, onSave, onLoad, onImport, onExport, exp
 
         <div className="text-right mr-1">
           <Tooltip
-            tooltip={expanded ? t("Collapse") : t("Expand")}
+            tooltip={t(expanded ? "Collapse" : "Expand")}
             side="right"
           >
             <button className="hover:bg-gray-200 rounded-full p-1 transition ease-in-out duration-300" onClick={toggleExpanded}>
