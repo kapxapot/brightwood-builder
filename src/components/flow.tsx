@@ -27,6 +27,7 @@ import { exportToJsonFile } from "@/lib/export";
 import { ConfirmOverwriteStoryAlertDialog } from "./dialogs/confirm-overwrite-story-alert-dialog";
 import { useToastMessages } from "@/hooks/use-toast-messages";
 import { clearSearchParams, getSearchParams } from "@/lib/search";
+import { useTranslation } from "react-i18next";
 
 const nodeTypes = {
   storyInfo: StoryInfoNode,
@@ -37,8 +38,11 @@ const nodeTypes = {
 };
 
 const noStoryDataError = "Failed to get the current story data.";
+const failedToReadFileError = "Failed to read the file.";
 
 export default function Flow() {
+  const { t } = useTranslation();
+
   const { showSuccess, showError } = useToastMessages();
   const { stories, reloadStories } = useStories();
 
@@ -72,13 +76,13 @@ export default function Flow() {
 
     try {
       if (!URL.canParse(url)) {
-        throw new Error("Invalid story url");
+        throw new Error("Invalid story url.");
       }
-  
+
       const response = await fetch(url);
 
       if (!response.ok) {
-        throw new Error(`HTTP error: Status ${response.status}`);
+        throw new Error(t("HTTP error: Status {{status}}.", { status: response.status }));
       }
 
       const storyData = await response.text();
@@ -88,7 +92,7 @@ export default function Flow() {
         ? error.message
         : "Failed to fetch a story.";
 
-      showError(message);
+      showError(t(message));
 
       // fallback to default strategy
       initAndSetStoryGraph();
@@ -238,10 +242,10 @@ export default function Flow() {
         return;
       }
 
-      const type = event.dataTransfer.getData('application/reactflow');
+      const type = event.dataTransfer.getData("application/reactflow");
 
       // check if the dropped element is valid
-      if (typeof type === 'undefined' || !type) {
+      if (typeof type === "undefined" || !type) {
         return;
       }
 
@@ -255,7 +259,7 @@ export default function Flow() {
       const newNode: Node<StoryNode> = {
         id: String(nodeId),
         type,
-        dragHandle: '.custom-drag-handle',
+        dragHandle: ".custom-drag-handle",
         position,
         data: buildNodeData(nodeId, type as StoryNodeType, onNodeDataChange)
       };
@@ -326,7 +330,7 @@ export default function Flow() {
     const storyGraph = getCurrentStoryGraph();
 
     if (!currentStoryData || !storyGraph) {
-      showError(noStoryDataError);
+      showError(t(noStoryDataError));
       return;
     }
 
@@ -340,14 +344,14 @@ export default function Flow() {
     switchToStory(id);
     reloadStories();
 
-    showSuccess("Story successfully saved.");
-  }, [getCurrentStoryData, getCurrentStoryGraph, reloadStories, showError, showSuccess]);
+    showSuccess(t("Story successfully saved."));
+  }, [t, getCurrentStoryData, getCurrentStoryGraph, reloadStories, showError, showSuccess]);
 
   const checkThenSaveStory = useCallback(() => {
     const currentStoryData = getCurrentStoryData();
 
     if (!currentStoryData) {
-      showError(noStoryDataError);
+      showError(t(noStoryDataError));
       return;
     }
 
@@ -362,7 +366,7 @@ export default function Flow() {
     }
 
     confirmOverwriteStoryAlertDialog();
-  }, [getCurrentStoryData, isEtherealStory, reloadStories, saveStory, showError, stories]);
+  }, [t, getCurrentStoryData, isEtherealStory, reloadStories, saveStory, showError, stories]);
 
   function switchToEtherealStory() {
     removeCurrentStoryId();
@@ -398,7 +402,7 @@ export default function Flow() {
     const storyGraph = loadStoryGraph(id, onNodeDataChange);
 
     if (!storyGraph) {
-      showError("Failed to load story.");
+      showError(t("Failed to load story."));
       return;
     }
 
@@ -410,7 +414,7 @@ export default function Flow() {
 
   function deleteStory(id: string) {
     removeStory(id);
-    showSuccess("Story successfully deleted.");
+    showSuccess(t("Story successfully deleted."));
     reloadStories();
   }
 
@@ -419,7 +423,7 @@ export default function Flow() {
 
     reader.onload = () => {
       if (!reader.result) {
-        showError("Failed to read the file.");
+        showError(t(failedToReadFileError));
         return;
       }
 
@@ -430,7 +434,7 @@ export default function Flow() {
     };
 
     reader.onerror = () => {
-      showError("Failed to read the file.");
+      showError(t(failedToReadFileError));
     };
 
     reader.readAsText(file);
@@ -444,11 +448,11 @@ export default function Flow() {
       switchToEtherealStory();
 
       showSuccess(
-        customMessage ?? "Story successfully loaded."
+        t(customMessage ?? "Story successfully loaded.")
       );
     } catch (error) {
       const message = getParseErrorMessage(error);
-      showError(message);
+      showError(t(message));
     }
 }
 
@@ -461,16 +465,22 @@ export default function Flow() {
     const storyGraph = getCurrentStoryGraph();
 
     if (!storyGraph) {
-      showError("Failed to get the current story graph.");
+      showError(t("Failed to get the current story graph."));
       return;
     }
 
-    const story = buildStory(storyGraph);
+    try {
+      const story = buildStory(storyGraph);
 
-    // download it
-    const filename = `${story.title} - ${truncateId(story.id)}`;
+      // download it
+      const filename = `${story.title} - ${truncateId(story.id)}`;
 
-    exportToJsonFile(story, filename);
+      exportToJsonFile(story, filename);
+    } catch (error) {
+      if (error instanceof Error) {
+        showError(t(error.message));
+      }
+    }
   }
 
   return (

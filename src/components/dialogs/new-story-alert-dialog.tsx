@@ -2,6 +2,7 @@ import { Badge } from "../ui/badge";
 import { Button } from "../ui/button";
 import { AlertDialog } from "../core/alert-dialog";
 import { AlertDialogAction, AlertDialogCancel } from "../ui/alert-dialog";
+import { Trans, useTranslation } from "react-i18next";
 
 interface Props {
   currentStoryTitle?: string;
@@ -12,26 +13,34 @@ interface Props {
 }
 
 export function NewStoryAlertDialog({ currentStoryTitle, open, onOpenChange, onSave, onDontSave }: Props) {
+  const { t } = useTranslation();
+
   return (
     <AlertDialog
-      title="Save the current story?"
+      title={t("Save the current story?")}
       description={(
-        <>
-          Otherwise, all changes to the current story {currentStoryTitle && <Badge variant="secondary">{currentStoryTitle}</Badge>} will be lost.
-        </>
+        <Trans
+          i18nKey="alerts.newStory"
+          values={{ currentStoryTitle }}
+          components={[ <Badge variant="secondary" /> ]}
+        >
+          Otherwise, all changes to the current story {<Badge variant="secondary">{currentStoryTitle}</Badge>} will be lost.
+        </Trans>
       )}
       open={open}
       onOpenChange={onOpenChange}
     >
-      <AlertDialogCancel>Cancel</AlertDialogCancel>
+      <AlertDialogCancel>
+        {t("Cancel")}
+      </AlertDialogCancel>
       <AlertDialogAction asChild>
         <Button onClick={onSave}>
-          Save
+          {t("Save")}
         </Button>
       </AlertDialogAction>
       <AlertDialogAction asChild>
         <Button variant="destructive" onClick={onDontSave}>
-          Don't save
+          {t("Don't save")}
         </Button>
       </AlertDialogAction>
     </AlertDialog>

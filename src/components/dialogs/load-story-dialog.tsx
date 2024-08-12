@@ -6,6 +6,7 @@ import { ArrowUpTrayIcon, NoSymbolIcon, TrashIcon } from "@heroicons/react/24/ou
 import { StoryShortcut } from "@/entities/story";
 import { ConfirmDeleteStoryAlertDialog } from "./confirm-delete-story-alert-dialog";
 import { fetchCurrentStoryId } from "@/lib/storage";
+import { useTranslation } from "react-i18next";
 
 interface Props {
   stories: StoryShortcut[];
@@ -16,6 +17,8 @@ interface Props {
 }
 
 export function LoadStoryDialog({ stories, open, onOpenChange, onLoadStory, onDeleteStory }: Props) {
+  const { t } = useTranslation();
+
   const currentStoryId = fetchCurrentStoryId();
   const isCurrent = (story: StoryShortcut) => story.id === currentStoryId;
 
@@ -23,15 +26,15 @@ export function LoadStoryDialog({ stories, open, onOpenChange, onLoadStory, onDe
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent className="sm:max-w-[425px]">
         <DialogHeader>
-          <DialogTitle>Load story</DialogTitle>
+          <DialogTitle>{t("loadStoryTitle")}</DialogTitle>
           <DialogDescription>
-            Choose a story to load. You can also delete stories here.
+            {t("Choose a story to load. You can also delete stories here.")}
           </DialogDescription>
         </DialogHeader>
         {isEmpty(stories) && (
           <div className="flex justify-center items-center gap-1">
             <NoSymbolIcon className="w-6 text-red-600" />
-            <span>There are no saved stories yet.</span>
+            <span>{t("There are no saved stories yet.")}</span>
           </div>
         )}
         {!isEmpty(stories) && (
@@ -49,13 +52,13 @@ export function LoadStoryDialog({ stories, open, onOpenChange, onLoadStory, onDe
                 </div>
                 <div className="flex gap-2">
                   <Button variant="outlineHighlight" size="icon" onClick={() => onLoadStory(story.id)}>
-                    <Tooltip tooltip="Load story" side="top">
+                    <Tooltip tooltip={t("Load story")} side="top">
                       <ArrowUpTrayIcon className="w-5" />
                     </Tooltip>
                   </Button>
                   {isCurrent(story) && (
                     <div className="h-9 w-9 inline-flex items-center justify-center">
-                      <Tooltip tooltip="Can't delete the current story" side="top">
+                      <Tooltip tooltip={t("Can't delete the current story")} side="top">
                         <TrashIcon className="w-5 text-gray-400 cursor-not-allowed" />
                       </Tooltip>
                     </div>
@@ -66,7 +69,7 @@ export function LoadStoryDialog({ stories, open, onOpenChange, onLoadStory, onDe
                       storyName={story.title ?? `${truncateId(story.id)}...`}
                       trigger={(
                         <Button variant="ghost" size="icon">
-                          <Tooltip tooltip="Delete story" side="top">
+                          <Tooltip tooltip={t("Delete story")} side="top">
                             <TrashIcon className="w-5 text-red-600" />
                           </Tooltip>
                         </Button>
@@ -81,7 +84,7 @@ export function LoadStoryDialog({ stories, open, onOpenChange, onLoadStory, onDe
         <DialogFooter>
           <DialogClose asChild>
             <Button variant="outline">
-              Close
+              {t("Close")}
             </Button>
           </DialogClose>
         </DialogFooter>

@@ -8,6 +8,7 @@ import Tooltip from "./core/tooltip";
 import { nodeLabels } from "@/lib/constants";
 import { useExpanded } from "@/hooks/use-expanded";
 import GitHubIcon from "./github-icon";
+import { useTranslation } from "react-i18next";
 
 type Handler = () => void;
 
@@ -30,40 +31,41 @@ interface Props {
 }
 
 export default function Toolbar({ onNew, onSave, onLoad, onImport, onExport, exportEnabled }: Props) {
+  const { t } = useTranslation();
   const { expanded, toggleExpanded } = useExpanded("toolbarExpanded", true);
 
   const storyButtons: StoryButton[] = [
     {
-      label: "New",
-      tooltip: "New story",
+      label: t("New"),
+      tooltip: t("New story"),
       icon: <NewStory />,
       handler: onNew
     },
     {
-      label: "Save",
-      tooltip: "Save story",
+      label: t("Save"),
+      tooltip: t("Save story"),
       icon: <SaveStory />,
       handler: onSave
     },
     {
-      label: "Load",
-      tooltip: "Load story",
+      label: t("Load"),
+      tooltip: t("Load story"),
       icon: <LoadStory />,
       handler: onLoad
     },
     {
-      label: "Import",
-      tooltip: "Import story",
+      label: t("Import"),
+      tooltip: t("Import story"),
       icon: <ImportStory />,
       handler: onImport
     },
     {
-      label: "Export",
-      tooltip: "Export story",
+      label: t("Export"),
+      tooltip: t("Export story"),
       icon: <ExportStory />,
       handler: onExport,
       disabled: !exportEnabled,
-      disabledTooltip: "Can't export with validation issues"
+      disabledTooltip: t("Can't export with validation issues")
     }
   ];
 
@@ -71,57 +73,57 @@ export default function Toolbar({ onNew, onSave, onLoad, onImport, onExport, exp
     <aside className={`flex flex-col gap-3 justify-between ${expanded ? "w-36 p-2" : "w-14 p-1.5"} bg-gray-300 text-center`}>
       <div className={`flex flex-col bg-gray-100 ${expanded ? "p-2 space-y-3" : "p-1.5 space-y-2"} rounded-md`}>
         <ConditionalTooltip
-          tooltip="Drag"
+          tooltip={t("Drag")}
           show={!expanded}
           side="right"
         >
           <div className="flex gap-1 justify-center">
-            {expanded && "Drag"}
+            {expanded && t("Drag")}
             <ArrowLongRightIcon className="w-5 mt-1" />
           </div>
         </ConditionalTooltip>
 
         <ConditionalTooltip
-          tooltip={nodeLabels.action}
+          tooltip={t(nodeLabels.action)}
           show={!expanded}
           side="right"
         >
           <ToolbarBlock type="action">
             <Bolt />
-            {expanded && nodeLabels.action}
+            {expanded && t(nodeLabels.action)}
           </ToolbarBlock>
         </ConditionalTooltip>
 
         <ConditionalTooltip
-          tooltip={nodeLabels.redirect}
+          tooltip={t(nodeLabels.redirect)}
           show={!expanded}
           side="right"
         >
           <ToolbarBlock type="redirect">
             <Cube />
-            {expanded && nodeLabels.redirect}
+            {expanded && t(nodeLabels.redirect)}
           </ToolbarBlock>
         </ConditionalTooltip>
 
         <ConditionalTooltip
-          tooltip={nodeLabels.skip}
+          tooltip={t(nodeLabels.skip)}
           show={!expanded}
           side="right"
         >
           <ToolbarBlock type="skip">
             <Skip />
-            {expanded && nodeLabels.skip}
+            {expanded && t(nodeLabels.skip)}
           </ToolbarBlock>
         </ConditionalTooltip>
 
         <ConditionalTooltip
-          tooltip={nodeLabels.finish}
+          tooltip={t(nodeLabels.finish)}
           show={!expanded}
           side="right"
         >
           <ToolbarBlock type="finish">
             <Stop />
-            {expanded && nodeLabels.finish}
+            {expanded && t(nodeLabels.finish)}
           </ToolbarBlock>
         </ConditionalTooltip>
       </div>
@@ -148,7 +150,7 @@ export default function Toolbar({ onNew, onSave, onLoad, onImport, onExport, exp
       <div className="space-y-5">
         <div className={`flex ${!expanded && "flex-col"} items-center justify-center gap-3`}>
           <Tooltip
-            tooltip="Brightwood Bot (Telegram)"
+            tooltip={t("Brightwood Bot (Telegram)")}
             side="right"
           >
             <a href="https://t.me/BrightwoodBot" target="_blank" className="opacity-75 hover:opacity-100 transition-opacity">
@@ -157,7 +159,7 @@ export default function Toolbar({ onNew, onSave, onLoad, onImport, onExport, exp
           </Tooltip>
 
           <Tooltip
-            tooltip="GitHub Repository"
+            tooltip={t("GitHub Repository")}
             side="right"
           >
             <a href="https://github.com/kapxapot/brightwood-builder" target="_blank">
@@ -168,7 +170,7 @@ export default function Toolbar({ onNew, onSave, onLoad, onImport, onExport, exp
 
         <div className="text-right mr-1">
           <Tooltip
-            tooltip={expanded ? "Collapse" : "Expand"}
+            tooltip={expanded ? t("Collapse") : t("Expand")}
             side="right"
           >
             <button className="hover:bg-gray-200 rounded-full p-1 transition ease-in-out duration-300" onClick={toggleExpanded}>

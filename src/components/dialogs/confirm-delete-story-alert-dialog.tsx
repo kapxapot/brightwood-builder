@@ -3,6 +3,7 @@ import { Button } from "../ui/button";
 import { AlertDialog } from "../core/alert-dialog";
 import { AlertDialogAction, AlertDialogCancel } from "../ui/alert-dialog";
 import { ReactNode } from "react";
+import { Trans, useTranslation } from "react-i18next";
 
 interface Props {
   storyName: string;
@@ -11,20 +12,28 @@ interface Props {
 }
 
 export function ConfirmDeleteStoryAlertDialog({ storyName, trigger, onConfirm }: Props) {
+  const { t } = useTranslation();
+
   return (
     <AlertDialog
-      title="Delete the story?"
+      title={t("Delete the story?")}
       description={(
-        <>
+        <Trans
+          i18nKey="alerts.deleteStory"
+          values={{ storyName }}
+          components={[ <Badge variant="secondary" /> ]}
+        >
           Are you sure you want to delete the story <Badge variant="secondary">{storyName}</Badge>? All story data will be lost.
-        </>
+        </Trans>
       )}
       trigger={trigger}
     >
-      <AlertDialogCancel>Cancel</AlertDialogCancel>
+      <AlertDialogCancel>
+        {t("Cancel")}
+      </AlertDialogCancel>
       <AlertDialogAction asChild>
         <Button variant="destructive" onClick={onConfirm}>
-          Delete
+          {t("Delete")}
         </Button>
       </AlertDialogAction>
     </AlertDialog>

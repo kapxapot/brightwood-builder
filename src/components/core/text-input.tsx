@@ -4,6 +4,7 @@ import { autoHeight, focusAndSelect } from "../../lib/ref-operations";
 import { Edit } from "./icons";
 import { TextInputLabel } from "./text-input-label";
 import { useCharLimit } from "@/hooks/use-char-limit";
+import { useTranslation } from "react-i18next";
 
 const defaultRowCount = 2;
 
@@ -19,6 +20,8 @@ interface Props {
 }
 
 export default function TextInput({ value, label, rowCount, readonly, charLimit = 0, onValueChanged, onEditStarted, onEditFinished }: Props) {
+  const { t } = useTranslation();
+
   const initialValue = value || "";
   const noValue = !initialValue.length;
 
@@ -81,7 +84,7 @@ export default function TextInput({ value, label, rowCount, readonly, charLimit 
           >
           </textarea>
           {showCharLimit &&
-            <div className={`text-xs ${valueTooLong ? 'text-red-500' : 'opacity-50'}`}>
+            <div className={`text-xs ${valueTooLong ? "text-red-500" : "opacity-50"}`}>
               {editedValue.length} / {charLimit}
             </div>
           }
@@ -90,9 +93,11 @@ export default function TextInput({ value, label, rowCount, readonly, charLimit 
               disabled={valueTooLong}
               onClick={commitEdit}
             >
-              Save
+              {t("Save")}
             </Button>
-            <Button onClick={cancelEdit}>Cancel</Button>
+            <Button onClick={cancelEdit}>
+              {t("Cancel")}
+            </Button>
           </div>
         </div>
       }
