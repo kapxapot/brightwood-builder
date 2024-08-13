@@ -4,6 +4,7 @@ import { OnChangeHandler } from "@/entities/story-node";
 import { fetchCurrentStoryId, fetchStory } from "@/lib/storage";
 import { storySchema } from "@/schemas/story-schema";
 import { ZodError } from "zod";
+import { Translator } from "./types";
 
 type StoryGraphResult = {
   storyGraph: StoryGraph;
@@ -59,7 +60,7 @@ export function newStoryGraph(changeHandler: OnChangeHandler): StoryGraph {
   });
 }
 
-export function getParseErrorMessage(error: unknown): string {
+export function getParseErrorMessage(t: Translator, error: unknown): string {
   if (error instanceof ZodError) {
     const issues = error.issues;
     const showPaths = 3;
@@ -68,18 +69,20 @@ export function getParseErrorMessage(error: unknown): string {
       .map(issue => issue.path)
       .map(path => JSON.stringify(path));
 
+    const formatTotal = (count: number) => t("{{count}} in total", { count });
+
     const total = (issues.length > showPaths)
-      ? ` (${issues.length} in total)`
+      ? ` (${formatTotal(issues.length)})`
       : "";
 
-    return `Malformed story JSON. Incorrect values: ${paths.join(", ")}${total}.`;
+    return `${t("Malformed story JSON.")} ${t("Incorrect values")}): ${paths.join(", ")}${total}.`;
   }
 
   const message = (error instanceof SyntaxError)
     ? error.message
     : null;
 
-  return `Failed to parse JSON${message ? `: ${message}` : ""}.`;
+  return `${t("Failed to parse JSON")}${message ? `: ${message}` : ""}.`;
 }
 
 function applyChangeHandler(storyGraph: StoryGraph, changeHandler: OnChangeHandler): StoryGraph {

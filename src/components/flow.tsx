@@ -76,7 +76,7 @@ export default function Flow() {
 
     try {
       if (!URL.canParse(url)) {
-        throw new Error("Invalid story url.");
+        throw new Error(t("Invalid story url."));
       }
 
       const response = await fetch(url);
@@ -90,9 +90,9 @@ export default function Flow() {
     } catch (error) {
       const message = (error instanceof Error)
         ? error.message
-        : "Failed to fetch a story.";
+        : t("Failed to fetch a story.");
 
-      showError(t(message));
+      showError(message);
 
       // fallback to default strategy
       initAndSetStoryGraph();
@@ -429,7 +429,7 @@ export default function Flow() {
 
       parseAndLoadStory(
         reader.result as string,
-        "Story successfully imported."
+        t("Story successfully imported.")
       );
     };
 
@@ -448,11 +448,11 @@ export default function Flow() {
       switchToEtherealStory();
 
       showSuccess(
-        t(customMessage ?? "Story successfully loaded.")
+        customMessage ?? t("Story successfully loaded.")
       );
     } catch (error) {
-      const message = getParseErrorMessage(error);
-      showError(t(message));
+      const message = getParseErrorMessage(t, error);
+      showError(message);
     }
 }
 
@@ -470,7 +470,7 @@ export default function Flow() {
     }
 
     try {
-      const story = buildStory(storyGraph);
+      const story = buildStory(t, storyGraph);
 
       // download it
       const filename = `${story.title} - ${truncateId(story.id)}`;
@@ -478,7 +478,7 @@ export default function Flow() {
       exportToJsonFile(story, filename);
     } catch (error) {
       if (error instanceof Error) {
-        showError(t(error.message));
+        showError(error.message);
       }
     }
   }

@@ -61,5 +61,9 @@ export const ru = {
   "File": "Файл",
   "importVerb": "Импортировать",
   "Action label": "Текст действия",
-  "effect": "эффект"
+  "effect": "эффект",
+  "{{count}} in total": "{{count}} всего",
+  "Malformed story JSON.": "Некорректный JSON-формат истории.",
+  "Incorrect values": "Неверный значения",
+  "Failed to parse JSON": "Не удалось распарсить JSON"
 };
