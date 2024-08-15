@@ -166,7 +166,8 @@ export default function Toolbar({ onNew, onSave, onLoad, onImport, onExport, exp
               onClick={disabled ? undefined : handler}
               disabled={disabled}
               whileHover={
-                expanded ? { x: 3 } : { scale: 1.2 }}
+                expanded ? { x: 3 } : { scale: 1.2 }
+              }
             >
               {icon}
               {expanded &&
@@ -181,18 +182,28 @@ export default function Toolbar({ onNew, onSave, onLoad, onImport, onExport, exp
         <div className={`flex ${!expanded && "flex-col"} items-center justify-center gap-3`}>
           <Tooltip
             tooltip={t("Brightwood Bot (Telegram)")}
-            side="right"
+            side={expanded ? "top" : "right"}
           >
-            <a href="https://t.me/BrightwoodBot" target="_blank" className="opacity-75 hover:opacity-100 transition-opacity">
-              <img src="/images/tree.png" className="w-8 h-8 rounded-full" />
+            <a
+              href="https://t.me/BrightwoodBot"
+              target="_blank"
+              className="opacity-75 hover:opacity-100 transition-opacity"
+            >
+              <img
+                src="/images/tree.png"
+                className="w-8 h-8 rounded-full"
+              />
             </a>
           </Tooltip>
 
           <Tooltip
             tooltip={t("GitHub Repository")}
-            side="right"
+            side={expanded ? "top" : "right"}
           >
-            <a href="https://github.com/kapxapot/brightwood-builder" target="_blank">
+            <a
+              href="https://github.com/kapxapot/brightwood-builder"
+              target="_blank"
+            >
               <GitHubIcon className="fill-gray-600 hover:fill-purple-800 w-8 h-8 transition-colors" />
             </a>
           </Tooltip>
@@ -201,7 +212,7 @@ export default function Toolbar({ onNew, onSave, onLoad, onImport, onExport, exp
         <div className="text-right mr-1">
           <Tooltip
             tooltip={t(expanded ? "Collapse" : "Expand")}
-            side="right"
+            side={expanded ? "left" : "right"}
           >
             <button className="hover:bg-gray-200 rounded-full p-1 transition ease-in-out duration-300" onClick={toggleExpanded}>
               {expanded
