@@ -8,6 +8,8 @@ import { nodeLabels } from "@/lib/constants";
 import { useExpanded } from "@/hooks/use-expanded";
 import GitHubIcon from "./github-icon";
 import { useTranslation } from "react-i18next";
+import { Bounce } from "./motion/bounce";
+import { motion } from "framer-motion";
 
 type Handler = () => void;
 
@@ -95,8 +97,14 @@ export default function Toolbar({ onNew, onSave, onLoad, onImport, onExport, exp
             side="right"
           >
             <div className="flex gap-1 justify-center">
-              {expanded && t("Drag")}
-              <ArrowLongRightIcon className="w-5 mt-1" />
+              <Bounce
+                className="flex gap-1"
+                xOffset={expanded ? 6 : 3}
+                duration={expanded ? 0.8 : 0.4}
+              >
+                {expanded && t("Drag")}
+                <ArrowLongRightIcon className="w-5 mt-1" />
+              </Bounce>
             </div>
           </ConditionalTooltip>
 
@@ -105,7 +113,7 @@ export default function Toolbar({ onNew, onSave, onLoad, onImport, onExport, exp
             show={!expanded}
             side="right"
           >
-            <ToolbarBlock type="action">
+            <ToolbarBlock type="action" expanded={expanded}>
               <Bolt />
               {expanded && t(nodeLabels.action)}
             </ToolbarBlock>
@@ -116,7 +124,7 @@ export default function Toolbar({ onNew, onSave, onLoad, onImport, onExport, exp
             show={!expanded}
             side="right"
           >
-            <ToolbarBlock type="redirect">
+            <ToolbarBlock type="redirect" expanded={expanded}>
               <Cube />
               {expanded && t(nodeLabels.redirect)}
             </ToolbarBlock>
@@ -127,7 +135,7 @@ export default function Toolbar({ onNew, onSave, onLoad, onImport, onExport, exp
             show={!expanded}
             side="right"
           >
-            <ToolbarBlock type="skip">
+            <ToolbarBlock type="skip" expanded={expanded}>
               <Skip />
               {expanded && t(nodeLabels.skip)}
             </ToolbarBlock>
@@ -138,7 +146,7 @@ export default function Toolbar({ onNew, onSave, onLoad, onImport, onExport, exp
             show={!expanded}
             side="right"
           >
-            <ToolbarBlock type="finish">
+            <ToolbarBlock type="finish" expanded={expanded}>
               <Stop />
               {expanded && t(nodeLabels.finish)}
             </ToolbarBlock>
@@ -153,16 +161,18 @@ export default function Toolbar({ onNew, onSave, onLoad, onImport, onExport, exp
             side="right"
             key={label}
           >
-            <button
+            <motion.button
               className={`flex gap-1.5 ${expanded ? "pl-1" : "px-1"} py-1 items-center w-full rounded-md transition-colors hover:bg-gray-200 disabled:opacity-50 disabled:cursor-not-allowed`}
               onClick={disabled ? undefined : handler}
               disabled={disabled}
+              whileHover={
+                expanded ? { x: 3 } : { scale: 1.2 }}
             >
               {icon}
               {expanded &&
                 <span>{label}</span>
               }
-            </button>
+            </motion.button>
           </Tooltip>
         ))}
       </div>
