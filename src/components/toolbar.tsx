@@ -10,6 +10,7 @@ import GitHubIcon from "./github-icon";
 import { useTranslation } from "react-i18next";
 import { Bounce } from "./motion/bounce";
 import { motion } from "framer-motion";
+import { GlobalLanguageSelector } from "./global-language-selector";
 
 type Handler = () => void;
 
@@ -179,6 +180,8 @@ export default function Toolbar({ onNew, onSave, onLoad, onImport, onExport, exp
       </div>
 
       <div className="space-y-5">
+        <GlobalLanguageSelector />
+
         <div className={`flex ${!expanded && "flex-col"} items-center justify-center gap-3`}>
           <Tooltip
             tooltip={t("Brightwood Bot (Telegram)")}

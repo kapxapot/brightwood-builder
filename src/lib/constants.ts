@@ -48,4 +48,9 @@ export const nodeLabels: Record<GraphNodeType, string> = {
   redirect: "Redirect",
   skip: "Skip",
   finish: "Finish"
-};
+} as const;
+
+export const languages: Record<string, string> = {
+  en: "English",
+  ru: "Русский"
+} as const;
