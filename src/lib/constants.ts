@@ -1,4 +1,5 @@
 import type { GraphNodeType } from "../entities/story-node";
+import { LanguageInfo } from "./types";
 
 type ColorInfo = {
   tw: string;
@@ -50,7 +51,15 @@ export const nodeLabels: Record<GraphNodeType, string> = {
   finish: "Finish"
 } as const;
 
-export const languages: Record<string, string> = {
-  en: "English",
-  ru: "Русский"
-} as const;
+export const languages: LanguageInfo[] = [
+  {
+    code: "en",
+    name: "English",
+    flagCode: "gb"
+  },
+  {
+    code: "ru",
+    name: "Русский",
+    flagCode: "ru"
+  }
+] as const;

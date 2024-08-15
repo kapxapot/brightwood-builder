@@ -7,3 +7,9 @@ export type NodeType = Node<GraphNode, string | undefined>;
 export type Side = "right" | "left" | "top" | "bottom";
 
 export type Translator = TFunction<"translation", undefined>;
+
+export type LanguageInfo = {
+  code: string;
+  name: string;
+  flagCode: string;
+}
