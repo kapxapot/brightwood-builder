@@ -4,6 +4,7 @@ import { autoHeight, focusAndSelect } from "../../lib/ref-operations";
 import { Delete, Edit } from "../core/icons";
 import { TextInputLabel } from "../core/text-input-label";
 import { useCharLimit } from "@/hooks/use-char-limit";
+import { useTranslation } from "react-i18next";
 
 interface Props {
   line: string;
@@ -18,6 +19,8 @@ interface Props {
 }
 
 export default function NodeTextLine({ line, index, deletable, readonly, charLimit = 0, updateLine, deleteLine, onEditStarted, onEditFinished }: Props) {
+  const { t } = useTranslation();
+
   const noText = !line.length;
 
   const [editedLine, setEditedLine] = useState(line);
@@ -80,7 +83,7 @@ export default function NodeTextLine({ line, index, deletable, readonly, charLim
       {editing &&
         <div className="border border-black border-opacity-20 rounded-lg border-dashed bg-white p-1 mt-3 text-sm nowheel">
           <TextInputLabel>
-            Text line
+            {t("Text line")}
           </TextInputLabel>
           <textarea
             defaultValue={editedLine}
@@ -100,10 +103,12 @@ export default function NodeTextLine({ line, index, deletable, readonly, charLim
               disabled={!editedLine.length || valueTooLong}
               onClick={commitEdit}
             >
-              Save
+              {t("Save")}
             </Button>
             {(deletable || !noText) &&
-              <Button onClick={cancelEdit}>Cancel</Button>
+              <Button onClick={cancelEdit}>
+                {t("Cancel")}
+              </Button>
             }
           </div>
         </div>
@@ -117,7 +122,7 @@ export default function NodeTextLine({ line, index, deletable, readonly, charLim
           >
             <span
               className={`whitespace-pre-line ${noText && "opacity-30"}`}
-              dangerouslySetInnerHTML={{ __html: line || `Text line ${index + 1}` }}
+              dangerouslySetInnerHTML={{ __html: line || `${t("Text line")} ${index + 1}` }}
             >
             </span>
           </p>

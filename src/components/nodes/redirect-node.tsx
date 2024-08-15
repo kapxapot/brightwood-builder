@@ -10,6 +10,7 @@ import NodeEffect from "../node-parts/node-effect";
 import NodeText from "../node-parts/node-text";
 import { addLink, deleteLink, updateLink } from "../../lib/link-mutations";
 import HandleIn from "../node-parts/handle-in";
+import { useTranslation } from "react-i18next";
 
 interface Props {
   data: RedirectStoryNode;
@@ -17,6 +18,8 @@ interface Props {
 }
 
 const RedirectNode = memo(function RedirectNode({ data, selected }: Props) {
+  const { t } = useTranslation();
+
   const { nodeEditing, startEdit, finishEdit } = useNodeEditing();
 
   const totalWeight = data.links.reduce(
@@ -29,7 +32,7 @@ const RedirectNode = memo(function RedirectNode({ data, selected }: Props) {
       selected={selected}
       color={colors.redirect.tw}
     >
-      <NodeTitle id={data.id} label={data.label ?? nodeLabels.redirect} />
+      <NodeTitle id={data.id} label={data.label ?? t(nodeLabels.redirect)} />
 
       <NodeEffect effect={data.effect} />
 
@@ -60,7 +63,7 @@ const RedirectNode = memo(function RedirectNode({ data, selected }: Props) {
           onClick={() => addLink(data)}
           disabled={nodeEditing}
         >
-          Add link
+          {t("Add link")}
         </Button>
       </div>
 

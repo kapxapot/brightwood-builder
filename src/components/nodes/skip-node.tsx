@@ -10,6 +10,7 @@ import NodeEffect from "../node-parts/node-effect";
 import NodeText from "../node-parts/node-text";
 import HandleOut from "../node-parts/handle-out";
 import { Skip } from "../core/icons";
+import { Trans, useTranslation } from "react-i18next";
 
 interface Props {
   data: SkipStoryNode;
@@ -17,6 +18,8 @@ interface Props {
 }
 
 const SkipNode = memo(function SkipNode({ data, selected }: Props) {
+  const { t } = useTranslation();
+
   const { nodeEditing, startEdit, finishEdit } = useNodeEditing();
 
   return (
@@ -24,7 +27,7 @@ const SkipNode = memo(function SkipNode({ data, selected }: Props) {
       selected={selected}
       color={colors.skip.tw}
     >
-      <NodeTitle id={data.id} label={data.label ?? nodeLabels.skip} />
+      <NodeTitle id={data.id} label={data.label ?? t(nodeLabels.skip)} />
 
       <NodeEffect effect={data.effect} />
 
@@ -39,7 +42,12 @@ const SkipNode = memo(function SkipNode({ data, selected }: Props) {
         <div className="flex gap-1">
           <Skip />
           <span>
-            Skips to <NodeRef id={data.nextId} />
+            <Trans
+              i18nKey="skipsToNode"
+              components={[ <NodeRef id={data.nextId} /> ]}
+            >
+              Skips to <NodeRef id={data.nextId} />
+            </Trans>
           </span>
         </div>
         <HandleOut connected={!!data.nextId} />

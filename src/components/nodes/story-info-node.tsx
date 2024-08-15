@@ -8,6 +8,7 @@ import TextInput from "../core/text-input";
 import HandleOut from "../node-parts/handle-out";
 import NodeShell from "../node-parts/node-shell";
 import { Flag } from "../core/icons";
+import { Trans, useTranslation } from "react-i18next";
 
 interface Props {
   data: StoryInfoGraphNode;
@@ -15,6 +16,8 @@ interface Props {
 }
 
 const StoryInfoNode = memo(function StoryInfoNode({ data, selected }: Props) {
+  const { t } = useTranslation();
+
   const { nodeEditing, startEdit, finishEdit } = useNodeEditing();
 
   const updateTitle = (title: string) => {
@@ -31,11 +34,11 @@ const StoryInfoNode = memo(function StoryInfoNode({ data, selected }: Props) {
       color={colors.storyInfo.tw}
       spaceY="none"
     >
-      <NodeTitle id={data.id} label={nodeLabels.storyInfo} />
+      <NodeTitle id={data.id} label={t(nodeLabels.storyInfo)} />
 
       <TextInput
         value={data.title}
-        label="Title"
+        label={t("Title")}
         readonly={nodeEditing}
         charLimit={250}
         onValueChanged={updateTitle}
@@ -45,7 +48,7 @@ const StoryInfoNode = memo(function StoryInfoNode({ data, selected }: Props) {
 
       <TextInput
         value={data.description}
-        label="Description"
+        label={t("Description")}
         readonly={nodeEditing}
         charLimit={1000}
         onValueChanged={updateDescription}
@@ -57,7 +60,12 @@ const StoryInfoNode = memo(function StoryInfoNode({ data, selected }: Props) {
         <div className="flex gap-1">
           <Flag />
           <span>
-            It starts with <NodeRef id={data.startId} />
+            <Trans
+              i18nKey="itStartsWithNode"
+              components={[ <NodeRef id={data.startId} /> ]}
+            >
+              It starts with <NodeRef id={data.startId} />
+            </Trans>
           </span>
         </div>
         <HandleOut id="0" connected={!!data.startId} />

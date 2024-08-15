@@ -7,6 +7,7 @@ import HandleIn from "../node-parts/handle-in";
 import NodeTitle from "../node-parts/node-title";
 import NodeEffect from "../node-parts/node-effect";
 import NodeText from "../node-parts/node-text";
+import { useTranslation } from "react-i18next";
 
 interface Props {
   data: FinishStoryNode;
@@ -14,6 +15,8 @@ interface Props {
 }
 
 const FinishNode = memo(function FinishNode({ data, selected }: Props) {
+  const { t } = useTranslation();
+
   const { nodeEditing, startEdit, finishEdit } = useNodeEditing();
 
   return (
@@ -21,7 +24,7 @@ const FinishNode = memo(function FinishNode({ data, selected }: Props) {
       selected={selected}
       color={colors.finish.tw}
     >
-      <NodeTitle id={data.id} label={data.label ?? nodeLabels.finish} />
+      <NodeTitle id={data.id} label={data.label ?? t(nodeLabels.finish)} />
 
       <NodeEffect effect={data.effect} />
 

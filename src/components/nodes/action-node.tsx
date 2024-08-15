@@ -2,7 +2,6 @@ import { memo } from "react";
 import type { ActionStoryNode } from "../../entities/story-node";
 import { colors, nodeLabels } from "../../lib/constants";
 import NodeShell from "../node-parts/node-shell";
-import Button from "../core/button";
 import NodeAction from "../node-parts/node-action";
 import { useNodeEditing } from "../../hooks/use-node-editing";
 import NodeTitle from "../node-parts/node-title";
@@ -10,6 +9,8 @@ import NodeEffect from "../node-parts/node-effect";
 import NodeText from "../node-parts/node-text";
 import HandleIn from "../node-parts/handle-in";
 import { addAction, deleteAction, updateAction } from "../../lib/action-mutations";
+import { useTranslation } from "react-i18next";
+import Button from "../core/button";
 
 interface Props {
   data: ActionStoryNode;
@@ -17,6 +18,8 @@ interface Props {
 }
 
 const ActionNode = memo(function ActionNode({ data, selected }: Props) {
+  const { t } = useTranslation();
+
   const { nodeEditing, startEdit, finishEdit } = useNodeEditing();
 
   return (
@@ -24,7 +27,7 @@ const ActionNode = memo(function ActionNode({ data, selected }: Props) {
       selected={selected}
       color={colors.action.tw}
     >
-      <NodeTitle id={data.id} label={data.label ?? nodeLabels.action} />
+      <NodeTitle id={data.id} label={data.label ?? t(nodeLabels.action)} />
 
       <NodeEffect effect={data.effect} />
 
@@ -55,7 +58,7 @@ const ActionNode = memo(function ActionNode({ data, selected }: Props) {
           onClick={() => addAction(data)}
           disabled={nodeEditing}
         >
-          Add action
+          {t("Add action")}
         </Button>
       </div>
 

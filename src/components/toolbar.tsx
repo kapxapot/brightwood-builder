@@ -71,7 +71,7 @@ export default function Toolbar({ onNew, onSave, onLoad, onImport, onExport, exp
 
   return (
     <aside className={`flex flex-col gap-3 justify-between ${expanded ? "w-36 p-2" : "w-14 p-1.5"} bg-gray-300 text-center`}>
-      <div className="space-y-3 mt-1">
+      <div className="space-y-4 mt-1">
         <div className="flex items-center justify-center">
           <Tooltip
             tooltip="Brightwood Builder"

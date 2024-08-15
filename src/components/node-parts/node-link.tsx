@@ -9,6 +9,7 @@ import { WeightDices } from "./weight-dices";
 import { Delete, Edit } from "../core/icons";
 import Tooltip from "../core/tooltip";
 import { TextInputLabel } from "../core/text-input-label";
+import { useTranslation } from "react-i18next";
 
 interface Props {
   link: Link;
@@ -23,6 +24,8 @@ interface Props {
 }
 
 export default function NodeLink({ link, index, totalWeight, deletable, updateLink, deleteLink, nodeEditing, onEditStarted, onEditFinished }: Props) {
+  const { t } = useTranslation();
+
   const initialWeight = link.weight || weights.default;
   const noWeight = !link.weight;
 
@@ -87,7 +90,7 @@ export default function NodeLink({ link, index, totalWeight, deletable, updateLi
         {editing &&
           <div className="border border-black border-opacity-20 rounded-lg border-dashed bg-white p-1 mr-2 my-1">
             <TextInputLabel>
-              Link weight
+              {t("Link weight")}
             </TextInputLabel>
             <input
               type="number"
@@ -108,10 +111,10 @@ export default function NodeLink({ link, index, totalWeight, deletable, updateLi
                 onClick={commitEdit}
                 disabled={isValidWeight(weight)}
               >
-                Save
+                {t("Save")}
               </Button>
               <Button onClick={cancelEdit}>
-                Cancel
+                {t("Cancel")}
               </Button>
             </div>
           </div>
@@ -122,8 +125,8 @@ export default function NodeLink({ link, index, totalWeight, deletable, updateLi
             <Tooltip
               tooltip={
                 <div className="flex flex-col">
-                  <span>Link weight: {link.weight}</span>
-                  <span>Probability: {weightPercent}%</span>
+                  <span>{t("Link weight")}: {link.weight}</span>
+                  <span>{t("Probability")}: {weightPercent}%</span>
                 </div>
               }
               side="top"
@@ -132,7 +135,7 @@ export default function NodeLink({ link, index, totalWeight, deletable, updateLi
             </Tooltip>
             {link.condition && (
               <span>
-                <span className="italic">if:</span> {link.condition}
+                <span className="italic">{t("if")}:</span> {link.condition}
               </span>
             )}
             <NodeRef id={link.id} />

@@ -142,9 +142,9 @@ export default function Flow() {
   );
 
   useEffect(() => {
-    const messages = validateNodes(nodes);
+    const messages = validateNodes(t, nodes);
     setValidationMessages(messages);
-  }, [nodes, edges]);
+  }, [t, nodes, edges]);
 
   const onConnect = useCallback(
     (conn: Connection) => {

@@ -1,3 +1,4 @@
+import { useTranslation } from "react-i18next";
 import type { StoryNode } from "../../entities/story-node";
 import { toArray } from "../../lib/common";
 import { addTextLine, deleteTextLine, updateTextLine } from "../../lib/node-data-mutations";
@@ -13,6 +14,8 @@ interface Props {
 }
 
 export default function NodeText({ data, allowEmpty, readonly, onEditStarted, onEditFinished }: Props) {
+  const { t } = useTranslation();
+
   const text = data.text;
   const lines = toArray(text);
 
@@ -37,7 +40,7 @@ export default function NodeText({ data, allowEmpty, readonly, onEditStarted, on
         onClick={() => addTextLine(data)}
         disabled={readonly}
       >
-        Add text
+        {t("Add text")}
       </Button>
     </>
   );

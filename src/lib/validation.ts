@@ -1,6 +1,8 @@
 import { ActionStoryNode, FinishStoryNode, GraphNode, NodeId, RedirectStoryNode, SkipStoryNode, StoryInfoGraphNode, isEmptyText } from "@/entities/story-node";
-import { NodeType } from "./types";
+import { NodeType, Translator } from "./types";
 import { isEmpty } from "./common";
+
+const addTextLine = "Add at least one text line.";
 
 export type ValidationMessage = {
   nodeId: NodeId;
@@ -9,16 +11,16 @@ export type ValidationMessage = {
 
 type IfMessage = [condition: boolean, message: string];
 
-export function validateNodes(nodes: NodeType[]): ValidationMessage[] {
+export function validateNodes(t: Translator, nodes: NodeType[]): ValidationMessage[] {
   return nodes.reduce(
-    (prevMessages, node) => [...prevMessages, ...validateNode(node)],
+    (prevMessages, node) => [...prevMessages, ...validateNode(t, node)],
     [] as ValidationMessage[]
   );
 }
 
-function validateNode(node: NodeType): ValidationMessage[] {
+function validateNode(t: Translator, node: NodeType): ValidationMessage[] {
   const graphNode = node.data;
-  const ifMessages = getNodeIfMessages(graphNode);
+  const ifMessages = getNodeIfMessages(t, graphNode);
 
   return ifMessages
     .filter(ifMessage => ifMessage[0])
@@ -28,90 +30,99 @@ function validateNode(node: NodeType): ValidationMessage[] {
     }));
 }
 
-function getNodeIfMessages(node: GraphNode): IfMessage[] {
+function getNodeIfMessages(t: Translator, node: GraphNode): IfMessage[] {
   switch (node.type) {
     case "storyInfo":
-      return storyInfoNodeIfMessages(node);
+      return storyInfoNodeIfMessages(t, node);
 
     case "action":
-      return actionNodeIfMessages(node);
+      return actionNodeIfMessages(t, node);
 
     case "redirect":
-      return redirectNodeIfMessages(node);
+      return redirectNodeIfMessages(t, node);
 
     case "skip":
-      return skipNodeIfMessages(node);
+      return skipNodeIfMessages(t, node);
 
     case "finish":
-      return finishNodeIfMessages(node);
+      return finishNodeIfMessages(t, node);
   }
 }
 
-function storyInfoNodeIfMessages(node: StoryInfoGraphNode): IfMessage[] {
+function storyInfoNodeIfMessages(t: Translator, node: StoryInfoGraphNode): IfMessage[] {
   return [
     [
       !node.title || node.title.trim().length === 0,
-      "Add the story title."
+      t("Add the story title.")
     ],
     [
       !node.startId,
-      "Add a starting node."
+      t("Add a starting node.")
     ]
   ];
 }
 
-function actionNodeIfMessages(node: ActionStoryNode): IfMessage[] {
+function actionNodeIfMessages(t: Translator, node: ActionStoryNode): IfMessage[] {
   return [
     [
       isEmptyText(node.text),
-      "Add at least one text line."
+      t(addTextLine)
     ],
     [
       isEmpty(node.actions),
-      "Add at least one action."
+      t("Add at least one action.")
     ],
     ...node.actions.map((action, index) => [
       !action.id,
-      `Add a destination node for action "[${index + 1}]${action.label ? ` ${action.label}` : ""}".`
+      t(
+        "Add a destination node for action \"[{{index}}]{{label}}\".",
+        {
+          index: index + 1,
+          label: action.label ? ` ${action.label}` : ""
+        }
+      )
     ] as IfMessage)
   ];
 }
 
-function redirectNodeIfMessages(node: RedirectStoryNode): IfMessage[] {
+function redirectNodeIfMessages(t: Translator, node: RedirectStoryNode): IfMessage[] {
   return [
     [
       isEmptyText(node.text),
-      "Add at least one text line."
+      t(addTextLine)
     ],
     [
       isEmpty(node.links),
-      "Add at least one link."
+      t("Add at least one link.")
     ],
     ...node.links.map((link, index) => [
       !link.id,
-      `Add a destination node for link "[${index + 1}]".`
+      t(
+        "Add a destination node for link \"[{{index}}]\".",
+        { index: index + 1 }
+      )
     ] as IfMessage)
   ];
 }
 
-function skipNodeIfMessages(node: SkipStoryNode): IfMessage[] {
+function skipNodeIfMessages(t: Translator, node: SkipStoryNode): IfMessage[] {
   return [
     [
       isEmptyText(node.text),
-      "Add at least one text line."
+      t(addTextLine)
     ],
     [
       !node.nextId,
-      `Add a destination node.`
+      t("Add a destination node.")
     ]
   ];
 }
 
-function finishNodeIfMessages(node: FinishStoryNode): IfMessage[] {
+function finishNodeIfMessages(t: Translator, node: FinishStoryNode): IfMessage[] {
   return [
     [
       isEmptyText(node.text),
-      "Add at least one text line."
+      t(addTextLine)
     ]
   ];
 }
