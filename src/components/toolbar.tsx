@@ -1,4 +1,3 @@
-import Button from "./core/button";
 import ToolbarBlock from "./toolbar-block";
 import { ArrowLongRightIcon, ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/24/outline";
 import { ReactNode } from "react";
@@ -70,7 +69,7 @@ export default function Toolbar({ onNew, onSave, onLoad, onImport, onExport, exp
   ];
 
   return (
-    <aside className={`flex flex-col gap-3 justify-between ${expanded ? "w-36 p-2" : "w-14 p-1.5"} bg-gray-300 text-center`}>
+    <aside className={`flex flex-col gap-3 justify-between ${expanded ? "w-44 p-2" : "w-14 p-1.5"} bg-gray-300 text-center`}>
       <div className="space-y-4 mt-1">
         <div className="flex items-center justify-center">
           <Tooltip
@@ -147,21 +146,23 @@ export default function Toolbar({ onNew, onSave, onLoad, onImport, onExport, exp
         </div>
       </div>
 
-      <div className={`flex flex-col items-center ${expanded ? "space-y-3" : "space-y-2"}`}>
+      <div className={`flex flex-col ${expanded ? "gap-1" : "gap-2 items-center"}`}>
         {storyButtons.map(({ label, tooltip, icon, handler, disabled, disabledTooltip }) => (
           <Tooltip
-            tooltip={disabled ? disabledTooltip ?? tooltip : tooltip}
+            tooltip={disabled ? (disabledTooltip ?? tooltip) : tooltip}
             side="right"
             key={label}
           >
-            <Button
-              size={expanded ? "large" : "toolbar"}
+            <button
+              className={`flex gap-1.5 ${expanded ? "pl-1" : "px-1"} py-1 items-center w-full rounded-md transition-colors hover:bg-gray-200 disabled:opacity-50 disabled:cursor-not-allowed`}
               onClick={disabled ? undefined : handler}
               disabled={disabled}
             >
               {icon}
-              {expanded && label}
-            </Button>
+              {expanded &&
+                <span>{label}</span>
+              }
+            </button>
           </Tooltip>
         ))}
       </div>
