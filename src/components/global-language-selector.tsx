@@ -1,6 +1,8 @@
 import { languages } from "@/lib/constants";
 import { LanguageInfo } from "@/lib/types";
 import { useTranslation } from "react-i18next";
+import { Select, SelectContent, SelectGroup, SelectItem, SelectTrigger, SelectValue } from "./ui/select";
+import { Language } from "./language";
 
 interface Props {
   expanded: boolean;
@@ -9,22 +11,45 @@ interface Props {
 export function GlobalLanguageSelector({ expanded }: Props) {
   const { i18n } = useTranslation();
 
-  const isCurrent = (lng: LanguageInfo) => i18n.resolvedLanguage === lng.code;
+  const currentLanguageCode = i18n.resolvedLanguage;
+  const currentLanguage = languages.find(lng => lng.code === currentLanguageCode);
+
+  const isCurrent = (lng: LanguageInfo) => currentLanguageCode === lng.code;
+  const setLanguage = (code: string) => i18n.changeLanguage(code);
+
+  const otherLanguages = languages.filter(lng => !isCurrent(lng));
 
   return (
-    <div className="flex flex-col items-center gap-2">
-      {languages.map(lng => (
-        <button
-          key={lng.code}
-          className={`flex gap-1 items-center ${isCurrent(lng) ? "font-bold" : ""} ${isCurrent(lng) && !expanded ? "border-solid border-2 border-blue-400" : ""}`}
-          onClick={() => i18n.changeLanguage(lng.code)}
+    <div className="flex flex-col gap-2 items-center">
+      <Select
+        onValueChange={value => setLanguage(value)}
+        defaultValue={currentLanguageCode}
+      >
+        <SelectTrigger
+          className={`px-0 pl-1 border-0 shadow-none ${expanded ? "w-24" : "w-full"}`}
         >
-          <span className={`fi fi-${lng.flagCode}`} />
-          {expanded &&
-            <span>{lng.name}</span>
-          }
-        </button>
-      ))}
+          <SelectValue aria-label={currentLanguage?.name}>
+            {currentLanguage &&
+              <Language
+                brief={!expanded}
+                language={currentLanguage}
+              />
+            }
+          </SelectValue>
+        </SelectTrigger>
+        <SelectContent position="popper">
+          <SelectGroup>
+            {otherLanguages.map(language => (
+              <SelectItem
+                key={language.code}
+                value={language.code}
+              >
+                <Language language={language} />
+              </SelectItem>
+            ))}
+          </SelectGroup>
+        </SelectContent>
+      </Select>
     </div>
   );
 }

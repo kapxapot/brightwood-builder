@@ -86,5 +86,6 @@ export const ru = {
   "Add the story title.": "Добавьте заголовок истории.",
   "Add a starting node.": "Добавьте начальный узел.",
   "Story": "История",
-  "Node": "Узел"
+  "Node": "Узел",
+  "Switch interface language": "Переключить язык интерфейса"
 };

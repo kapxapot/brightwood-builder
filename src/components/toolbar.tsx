@@ -180,7 +180,12 @@ export default function Toolbar({ onNew, onSave, onLoad, onImport, onExport, exp
       </div>
 
       <div className="space-y-5">
-        <GlobalLanguageSelector expanded={expanded} />
+        <Tooltip
+          tooltip={t("Switch interface language")}
+          side="right"
+        >
+          <GlobalLanguageSelector expanded={expanded} />
+        </Tooltip>
 
         <div className={`flex ${!expanded && "flex-col"} items-center justify-center gap-3`}>
           <Tooltip
