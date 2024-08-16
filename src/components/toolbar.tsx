@@ -36,6 +36,24 @@ export default function Toolbar({ onNew, onSave, onLoad, onImport, onExport, exp
   const { t } = useTranslation();
   const { expanded, toggleExpanded } = useExpanded("toolbarExpanded", true);
 
+  const scale = {
+    initial: {
+      scale: 1
+    },
+    animate: {
+      scale: expanded ? 1 : 1.2
+    }
+  };
+
+  const slide = {
+    initial: {
+      x: 0
+    },
+    animate: {
+      x: expanded ? 4 : 0
+    }
+  };
+
   const storyButtons: StoryButton[] = [
     {
       label: t("New"),
@@ -72,23 +90,16 @@ export default function Toolbar({ onNew, onSave, onLoad, onImport, onExport, exp
   ];
 
   return (
-    <aside className={`flex flex-col gap-3 justify-between ${expanded ? "w-44 p-2" : "w-14 p-1.5"} bg-gray-300 text-center`}>
-      <div className="space-y-4 mt-1">
-        <div className="flex items-center justify-center">
-          <Tooltip
-            tooltip="Brightwood Builder"
-            side="right"
-          >
-          <div className="flex items-center gap-2">
-            <img src="/images/leaves.png" className="w-8 h-8 rounded-full" />
-            {expanded && (
-              <div className="text-left leading-[1.1]">
-                Brightwood<br />
-                Builder
-              </div>
-            )}
-          </div>
-          </Tooltip>
+    <aside className={`flex flex-col gap-3 justify-between ${expanded ? "min-w-36" : "min-w-14"} bg-gray-300`}>
+      <div className={`space-y-4 mt-1 ${expanded ? "p-2" : "p-1.5"}`}>
+        <div className="flex items-center justify-center gap-2">
+          <img src="/images/leaves.png" className="w-8 h-8 rounded-full" />
+          {expanded && (
+            <div className="text-left leading-[1.1]">
+              Brightwood<br />
+              Builder
+            </div>
+          )}
         </div>
 
         <div className={`flex flex-col bg-gray-100 ${expanded ? "p-2 space-y-3" : "p-1.5 space-y-2"} rounded-md`}>
@@ -163,30 +174,38 @@ export default function Toolbar({ onNew, onSave, onLoad, onImport, onExport, exp
             key={label}
           >
             <motion.button
-              className={`flex gap-1.5 ${expanded ? "pl-1" : "px-1"} py-1 items-center w-full rounded-md transition-colors hover:bg-gray-200 disabled:opacity-50 disabled:cursor-not-allowed`}
+              className={`flex gap-1.5 ${expanded ? "pl-3" : "px-1 rounded-md"} py-1 items-center w-full transition-colors hover:bg-gray-200 disabled:opacity-50 disabled:cursor-not-allowed`}
               onClick={disabled ? undefined : handler}
               disabled={disabled}
-              whileHover={
-                expanded ? { x: 3 } : { scale: 1.2 }
-              }
+              initial="initial"
+              animate="initial"
+              whileHover="animate"
+              variants={scale}
             >
-              {icon}
-              {expanded &&
-                <span>{label}</span>
-              }
+              <motion.span
+                className="flex gap-1"
+                variants={slide}
+              >
+                {icon}
+                {expanded &&
+                  <span>{label}</span>
+                }
+              </motion.span>
             </motion.button>
           </Tooltip>
         ))}
       </div>
 
-      <div className="space-y-5">
+      <div className={expanded ? "p-2" : "p-1.5"}>
         <Tooltip
           tooltip={t("Switch interface language")}
           side="right"
         >
           <GlobalLanguageSelector expanded={expanded} />
         </Tooltip>
+      </div>
 
+      <div className={`space-y-3 ${expanded ? "p-2" : "p-1.5"}`}>
         <div className={`flex ${!expanded && "flex-col"} items-center justify-center gap-3`}>
           <Tooltip
             tooltip={t("Brightwood Bot (Telegram)")}
@@ -217,7 +236,7 @@ export default function Toolbar({ onNew, onSave, onLoad, onImport, onExport, exp
           </Tooltip>
         </div>
 
-        <div className="text-right mr-1">
+        <div className={expanded ? "text-right mr-1" : "text-center"}>
           <Tooltip
             tooltip={t(expanded ? "Collapse" : "Expand")}
             side={expanded ? "left" : "right"}
