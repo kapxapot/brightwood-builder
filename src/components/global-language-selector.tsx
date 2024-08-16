@@ -26,7 +26,7 @@ export function GlobalLanguageSelector({ expanded }: Props) {
         defaultValue={currentLanguageCode}
       >
         <SelectTrigger
-          className={`hover:bg-gray-200 px-1 pl-2 h-auto py-1 border-0 shadow-none ${expanded ? "w-24" : "w-full"}`}
+          className={`hover:bg-gray-200 px-1 pl-2 h-auto py-1.5 border-0 shadow-none ${expanded ? "w-24" : "w-full"}`}
         >
           <SelectValue aria-label={currentLanguage?.name}>
             {currentLanguage &&
@@ -37,11 +37,13 @@ export function GlobalLanguageSelector({ expanded }: Props) {
             }
           </SelectValue>
         </SelectTrigger>
-        <SelectContent>
+        <SelectContent
+          className="min-w-min"
+        >
           <SelectGroup>
             {otherLanguages.map(language => (
               <SelectItem
-                className="cursor-pointer"
+                className="py-1 pr-2 cursor-pointer"
                 key={language.code}
                 value={language.code}
               >
