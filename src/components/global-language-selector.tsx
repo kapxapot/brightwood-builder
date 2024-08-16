@@ -20,7 +20,7 @@ export function GlobalLanguageSelector({ expanded }: Props) {
   const otherLanguages = languages.filter(lng => !isCurrent(lng));
 
   return (
-    <div className="flex flex-col gap-2 items-center">
+    <div className="flex justify-center hover:bg-gray-200 rounded-md w-auto">
       <Select
         onValueChange={value => setLanguage(value)}
         defaultValue={currentLanguageCode}
