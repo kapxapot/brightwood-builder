@@ -90,9 +90,9 @@ export default function Toolbar({ onNew, onSave, onLoad, onImport, onExport, exp
   ];
 
   return (
-    <aside className={`flex flex-col gap-3 justify-between ${expanded ? "min-w-36" : "min-w-14"} bg-gray-300`}>
-      <div className={`space-y-4 mt-1 ${expanded ? "p-2" : "p-1.5"}`}>
-        <div className="flex items-center justify-center gap-2">
+    <aside className={`flex flex-col gap-3 justify-between ${expanded ? "min-w-[8.5rem]" : "min-w-14"} bg-gray-300`}>
+      <div>
+        <div className={`my-1 flex items-center justify-center gap-2 ${expanded ? "p-2" : "p-1.5"}`}>
           <img src="/images/leaves.png" className="w-8 h-8 rounded-full" />
           {expanded && (
             <div className="text-left leading-[1.1]">
@@ -102,7 +102,7 @@ export default function Toolbar({ onNew, onSave, onLoad, onImport, onExport, exp
           )}
         </div>
 
-        <div className={`flex flex-col bg-gray-100 ${expanded ? "p-2 space-y-3" : "p-1.5 space-y-2"} rounded-md`}>
+        <div className={`flex flex-col bg-gray-200 ${expanded ? "p-2 space-y-3" : "p-1.5 space-y-2"}`}>
           <ConditionalTooltip
             tooltip={t("Drag")}
             show={!expanded}
