@@ -150,7 +150,7 @@ export default function NodeLink({ link, index, totalWeight, deletable, updateLi
       </div>
       {/* view */}
       {!editing && !nodeEditing &&
-        <div className="absolute right-2 top-1 hidden group-hover:flex gap-1">
+        <div className="absolute right-3 top-1 hidden group-hover:flex gap-1">
           <Button size="small" onClick={startEdit}>
             <Edit />
           </Button>
