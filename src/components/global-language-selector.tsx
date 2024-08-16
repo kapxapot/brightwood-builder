@@ -20,13 +20,13 @@ export function GlobalLanguageSelector({ expanded }: Props) {
   const otherLanguages = languages.filter(lng => !isCurrent(lng));
 
   return (
-    <div className="flex justify-center hover:bg-gray-200 rounded-md w-auto">
+    <div className="flex justify-center rounded-md w-auto">
       <Select
         onValueChange={value => setLanguage(value)}
         defaultValue={currentLanguageCode}
       >
         <SelectTrigger
-          className={`px-0 pl-1 border-0 shadow-none ${expanded ? "w-24" : "w-full"}`}
+          className={`hover:bg-gray-200 px-0 pl-1 border-0 shadow-none ${expanded ? "w-24" : "w-full"}`}
         >
           <SelectValue aria-label={currentLanguage?.name}>
             {currentLanguage &&
