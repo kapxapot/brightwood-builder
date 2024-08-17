@@ -42,7 +42,6 @@ const positionOrDefault = (dataPosition?: number[]): BuilderPosition => ({
 
 export function buildStoryGraph(
   story: Story,
-  languageCode: string,
   changeHandler: OnChangeHandler
 ): StoryGraph {
   const nodes: BuilderNode[] = [];
@@ -66,7 +65,7 @@ export function buildStoryGraph(
     type: "storyInfo",
     title: story.title,
     description: story.description,
-    language: story.language ?? languageCode,
+    language: story.language,
     startId: story.startId,
     prefix: story.prefix,
     data: story.data,

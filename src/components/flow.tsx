@@ -401,7 +401,7 @@ export default function Flow() {
   }
 
   function loadStory(id: string) {
-    const storyGraph = loadStoryGraph(id, languageCode, onNodeDataChange);
+    const storyGraph = loadStoryGraph(id, onNodeDataChange);
 
     if (!storyGraph) {
       showError(t("Failed to load story."));
@@ -444,7 +444,7 @@ export default function Flow() {
 
   function parseAndLoadStory(storyData: string, customMessage?: string) {
     try {
-      const storyGraph = parseStoryGraph(storyData, languageCode, onNodeDataChange);
+      const storyGraph = parseStoryGraph(storyData, onNodeDataChange);
 
       setStoryGraph(storyGraph);
       switchToEtherealStory();

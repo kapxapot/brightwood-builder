@@ -18,7 +18,7 @@ export function initStoryGraph(
   const currentStoryId = fetchCurrentStoryId();
 
   const storyGraph = currentStoryId
-    ? loadStoryGraph(currentStoryId, languageCode, changeHandler)
+    ? loadStoryGraph(currentStoryId, changeHandler)
     : null;
 
   if (storyGraph) {
@@ -36,7 +36,6 @@ export function initStoryGraph(
 
 export function loadStoryGraph(
   storyId: string,
-  languageCode: string,
   changeHandler: OnChangeHandler
 ): StoryGraph | null {
   const storyGraph = fetchStory(storyId);
@@ -45,12 +44,11 @@ export function loadStoryGraph(
     return null;
   }
 
-  return applyContext(storyGraph, languageCode, changeHandler);
+  return applyContext(storyGraph, changeHandler);
 }
 
 export function parseStoryGraph(
   text: string,
-  languageCode: string,
   changeHandler: OnChangeHandler
 ): StoryGraph {
   const story = JSON.parse(text);
@@ -58,7 +56,7 @@ export function parseStoryGraph(
   // validate the story
   storySchema.parse(story);
 
-  return buildStoryGraph(story as Story, languageCode, changeHandler);
+  return buildStoryGraph(story as Story, changeHandler);
 }
 
 export function newStoryGraph(languageCode: string, changeHandler: OnChangeHandler): StoryGraph {
@@ -98,18 +96,12 @@ export function getParseErrorMessage(t: Translator, error: unknown): string {
 
 function applyContext(
   storyGraph: StoryGraph,
-  languageCode: string,
   changeHandler: OnChangeHandler
 ): StoryGraph {
   return {
     ...storyGraph,
     nodes: storyGraph.nodes.map(node => {
       node.data.onChange = changeHandler;
-
-      if (node.data.type === "storyInfo") {
-        node.data.language ??= languageCode;
-      }
-
       return node;
     })
   };
