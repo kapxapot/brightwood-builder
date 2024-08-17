@@ -28,6 +28,7 @@ import { ConfirmOverwriteStoryAlertDialog } from "./dialogs/confirm-overwrite-st
 import { useToastMessages } from "@/hooks/use-toast-messages";
 import { clearSearchParams, getSearchParams } from "@/lib/search";
 import { useTranslation } from "react-i18next";
+import { useLanguage } from "@/hooks/use-language";
 
 const nodeTypes = {
   storyInfo: StoryInfoNode,
@@ -42,6 +43,7 @@ const failedToReadFileError = "Failed to read the file.";
 
 export default function Flow() {
   const { t } = useTranslation();
+  const { languageCode } = useLanguage();
 
   const { showSuccess, showError } = useToastMessages();
   const { stories, reloadStories } = useStories();
@@ -65,7 +67,7 @@ export default function Flow() {
   }, [setViewport]);
 
   function initAndSetStoryGraph() {
-    const { storyGraph, isNewStory } = initStoryGraph(onNodeDataChange);
+    const { storyGraph, isNewStory } = initStoryGraph(languageCode, onNodeDataChange);
 
     setStoryGraph(storyGraph);
     setIsEtherealStory(isNewStory);
@@ -387,7 +389,7 @@ export default function Flow() {
 
   function newStory() {
     setStoryGraph(
-      newStoryGraph(onNodeDataChange)
+      newStoryGraph(languageCode, onNodeDataChange)
     );
 
     switchToEtherealStory();
@@ -399,7 +401,7 @@ export default function Flow() {
   }
 
   function loadStory(id: string) {
-    const storyGraph = loadStoryGraph(id, onNodeDataChange);
+    const storyGraph = loadStoryGraph(id, languageCode, onNodeDataChange);
 
     if (!storyGraph) {
       showError(t("Failed to load story."));
@@ -442,7 +444,7 @@ export default function Flow() {
 
   function parseAndLoadStory(storyData: string, customMessage?: string) {
     try {
-      const storyGraph = parseStoryGraph(storyData, onNodeDataChange);
+      const storyGraph = parseStoryGraph(storyData, languageCode, onNodeDataChange);
 
       setStoryGraph(storyGraph);
       switchToEtherealStory();

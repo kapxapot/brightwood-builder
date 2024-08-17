@@ -40,7 +40,11 @@ const positionOrDefault = (dataPosition?: number[]): BuilderPosition => ({
   y: dataPosition ? dataPosition[1] : 0
 });
 
-export function buildStoryGraph(story: Story, changeHandler: OnChangeHandler): StoryGraph {
+export function buildStoryGraph(
+  story: Story,
+  languageCode: string,
+  changeHandler: OnChangeHandler
+): StoryGraph {
   const nodes: BuilderNode[] = [];
   const edges: BuilderEdge[] = [];
 
@@ -62,6 +66,7 @@ export function buildStoryGraph(story: Story, changeHandler: OnChangeHandler): S
     type: "storyInfo",
     title: story.title,
     description: story.description,
+    language: story.language ?? languageCode,
     startId: story.startId,
     prefix: story.prefix,
     data: story.data,
@@ -143,11 +148,15 @@ export function buildStoryGraph(story: Story, changeHandler: OnChangeHandler): S
   return { nodes, edges, viewport };
 }
 
-export function buildNewStoryNode(changeHandler: OnChangeHandler): BuilderNode {
+export function buildNewStoryNode(
+  languageCode: string,
+  changeHandler: OnChangeHandler
+): BuilderNode {
   const data: StoryInfoGraphNode = {
     id: storyInfoNodeId,
     uuid: uuid(),
     type: "storyInfo",
+    language: languageCode,
     onChange: changeHandler
   };
 

@@ -10,7 +10,7 @@ import GitHubIcon from "./github-icon";
 import { useTranslation } from "react-i18next";
 import { Bounce } from "./motion/bounce";
 import { motion } from "framer-motion";
-import { LanguageSelector } from "./language-selector";
+import { UiLanguageSelector } from "./ui-language-selector";
 
 type Handler = () => void;
 
@@ -109,67 +109,69 @@ export default function Toolbar({ onNew, onSave, onLoad, onImport, onExport, exp
           )}
         </div>
 
-        <div className={`flex flex-col bg-gray-200 ${expanded ? "p-2 space-y-3" : "p-1.5 space-y-2"}`}>
+        <div className={`flex flex-col bg-gray-200 ${expanded ? "gap-2 p-2" : "gap-1 p-1.5"}`}>
           <ConditionalTooltip
             tooltip={t("Drag")}
             show={!expanded}
             side="right"
           >
-            <div className="flex gap-1 justify-center">
+            <div className="flex justify-center">
               <Bounce
                 className="flex gap-1"
                 xOffset={expanded ? 6 : 3}
                 duration={expanded ? 0.8 : 0.4}
               >
                 {expanded && t("Drag")}
-                <ArrowLongRightIcon className="w-5 mt-1" />
+                <ArrowLongRightIcon className={`w-5 ${expanded && "mt-1"}`} />
               </Bounce>
             </div>
           </ConditionalTooltip>
 
-          <ConditionalTooltip
-            tooltip={t(nodeLabels.action)}
-            show={!expanded}
-            side="right"
-          >
-            <ToolbarBlock type="action" expanded={expanded}>
-              <Bolt />
-              {expanded && t(nodeLabels.action)}
-            </ToolbarBlock>
-          </ConditionalTooltip>
+          <div className={`flex flex-col ${expanded ? "gap-3" : "gap-2"}`}>
+            <ConditionalTooltip
+              tooltip={t(nodeLabels.action)}
+              show={!expanded}
+              side="right"
+            >
+              <ToolbarBlock type="action" expanded={expanded}>
+                <Bolt />
+                {expanded && t(nodeLabels.action)}
+              </ToolbarBlock>
+            </ConditionalTooltip>
 
-          <ConditionalTooltip
-            tooltip={t(nodeLabels.redirect)}
-            show={!expanded}
-            side="right"
-          >
-            <ToolbarBlock type="redirect" expanded={expanded}>
-              <Cube />
-              {expanded && t(nodeLabels.redirect)}
-            </ToolbarBlock>
-          </ConditionalTooltip>
+            <ConditionalTooltip
+              tooltip={t(nodeLabels.redirect)}
+              show={!expanded}
+              side="right"
+            >
+              <ToolbarBlock type="redirect" expanded={expanded}>
+                <Cube />
+                {expanded && t(nodeLabels.redirect)}
+              </ToolbarBlock>
+            </ConditionalTooltip>
 
-          <ConditionalTooltip
-            tooltip={t(nodeLabels.skip)}
-            show={!expanded}
-            side="right"
-          >
-            <ToolbarBlock type="skip" expanded={expanded}>
-              <Skip />
-              {expanded && t(nodeLabels.skip)}
-            </ToolbarBlock>
-          </ConditionalTooltip>
+            <ConditionalTooltip
+              tooltip={t(nodeLabels.skip)}
+              show={!expanded}
+              side="right"
+            >
+              <ToolbarBlock type="skip" expanded={expanded}>
+                <Skip />
+                {expanded && t(nodeLabels.skip)}
+              </ToolbarBlock>
+            </ConditionalTooltip>
 
-          <ConditionalTooltip
-            tooltip={t(nodeLabels.finish)}
-            show={!expanded}
-            side="right"
-          >
-            <ToolbarBlock type="finish" expanded={expanded}>
-              <Stop />
-              {expanded && t(nodeLabels.finish)}
-            </ToolbarBlock>
-          </ConditionalTooltip>
+            <ConditionalTooltip
+              tooltip={t(nodeLabels.finish)}
+              show={!expanded}
+              side="right"
+            >
+              <ToolbarBlock type="finish" expanded={expanded}>
+                <Stop />
+                {expanded && t(nodeLabels.finish)}
+              </ToolbarBlock>
+            </ConditionalTooltip>
+          </div>
         </div>
       </div>
 
@@ -203,15 +205,12 @@ export default function Toolbar({ onNew, onSave, onLoad, onImport, onExport, exp
         ))}
       </div>
 
-      <div className={expanded ? "p-2" : "p-1.5"}>
+      <div className={`flex justify-center ${expanded ? "p-2" : "p-1.5"}`}>
         <Tooltip
           tooltip={t("Switch interface language")}
           side="right"
         >
-          <LanguageSelector
-            expanded={expanded}
-            hideIcon={!expanded}
-          />
+          <UiLanguageSelector brief={!expanded} />
         </Tooltip>
       </div>
 

@@ -53,13 +53,72 @@ export const nodeLabels: Record<GraphNodeType, string> = {
 
 export const languages: LanguageInfo[] = [
   {
+    code: "be",
+    name: "Беларуская",
+    flagCode: "by"
+  },
+  {
+    code: "de",
+    name: "Deutsch",
+    flagCode: "de"
+  },
+  {
     code: "en",
     name: "English",
     flagCode: "gb"
   },
   {
+    code: "es",
+    name: "Español",
+    flagCode: "es"
+  },
+  {
+    code: "fr",
+    name: "Français",
+    flagCode: "fr"
+  },
+  {
+    code: "hy",
+    name: "Հայերեն",
+    flagCode: "am"
+  },
+  {
+    code: "it",
+    name: "Italiano",
+    flagCode: "it"
+  },
+  {
+    code: "ja",
+    name: "日本語",
+    flagCode: "jp"
+  },
+  {
+    code: "ka",
+    name: "ქართული",
+    flagCode: "ge"
+  },
+  {
+    code: "ko",
+    name: "한국어",
+    flagCode: "kr"
+  },
+  {
     code: "ru",
     name: "Русский",
     flagCode: "ru"
+  },
+  {
+    code: "uk",
+    name: "Українська",
+    flagCode: "ua"
+  },
+  {
+    code: "zh",
+    name: "中文",
+    flagCode: "cn"
   }
 ] as const;
+
+const uiLanguageCodes = ["en", "ru"];
+
+export const uiLanguages = languages.filter(lng => uiLanguageCodes.includes(lng.code));

@@ -1,60 +1,60 @@
-import { languages } from "@/lib/constants";
 import { LanguageInfo } from "@/lib/types";
-import { useTranslation } from "react-i18next";
 import { Select, SelectContent, SelectGroup, SelectItem, SelectTrigger, SelectValue } from "./ui/select";
 import { Language } from "./language";
 
 interface Props {
-  expanded?: boolean;
-  hideIcon?: boolean;
+  brief?: boolean;
+  className?: string;
+  currentLanguageCode: string;
+  disabled?: boolean;
+  languages: LanguageInfo[];
+  onSelect?: (code: string) => void;
 }
 
-export function LanguageSelector({ expanded = false, hideIcon = false }: Props) {
-  const { i18n } = useTranslation();
-
-  const currentLanguageCode = i18n.resolvedLanguage;
+export function LanguageSelector({ brief = false, className, currentLanguageCode, disabled = false, languages, onSelect }: Props) {
   const currentLanguage = languages.find(lng => lng.code === currentLanguageCode);
 
   const isCurrent = (lng: LanguageInfo) => currentLanguageCode === lng.code;
-  const setLanguage = (code: string) => i18n.changeLanguage(code);
 
   const otherLanguages = languages.filter(lng => !isCurrent(lng));
 
   return (
-    <div className="flex justify-center rounded-md w-auto">
-      <Select
-        onValueChange={value => setLanguage(value)}
-        defaultValue={currentLanguageCode}
+    <Select
+      onValueChange={value => onSelect?.(value)}
+      defaultValue={currentLanguageCode}
+      disabled={disabled}
+    >
+      <SelectTrigger
+        className={`hover:bg-gray-200 ${brief ? "px-1.5 py-1.5 justify-center" : "pr-1 pl-2 py-1" } h-auto border-0 shadow-none ${brief ? "" : "w-auto"} rounded-lg ${className}`}
+        hideIcon={brief}
       >
-        <SelectTrigger
-          className={`hover:bg-gray-200 py-1.5 ${expanded ? "pr-1 pl-2" : "px-0 justify-center"} h-auto border-0 shadow-none ${expanded ? "w-24" : "w-full"}`}
-          hideIcon={hideIcon}
-        >
-          <SelectValue aria-label={currentLanguage?.name}>
-            {currentLanguage &&
+        <SelectValue aria-label={currentLanguage?.name}>
+          {currentLanguage &&
+            <Language
+              brief={brief}
+              language={currentLanguage}
+            />
+          }
+        </SelectValue>
+      </SelectTrigger>
+      <SelectContent
+        className="min-w-min"
+      >
+        <SelectGroup>
+          {otherLanguages.map(language => (
+            <SelectItem
+              className="py-1 pr-2 cursor-pointer"
+              key={language.code}
+              value={language.code}
+            >
               <Language
-                brief={!expanded}
-                language={currentLanguage}
+                className="shadow shadow-gray-400"
+                language={language}
               />
-            }
-          </SelectValue>
-        </SelectTrigger>
-        <SelectContent
-          className="min-w-min"
-        >
-          <SelectGroup>
-            {otherLanguages.map(language => (
-              <SelectItem
-                className="py-1 pr-2 cursor-pointer"
-                key={language.code}
-                value={language.code}
-              >
-                <Language language={language} />
-              </SelectItem>
-            ))}
-          </SelectGroup>
-        </SelectContent>
-      </Select>
-    </div>
+            </SelectItem>
+          ))}
+        </SelectGroup>
+      </SelectContent>
+    </Select>
   );
 }

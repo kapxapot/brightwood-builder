@@ -87,5 +87,6 @@ export const ru = {
   "Add a starting node.": "Добавьте начальный узел.",
   "Story": "История",
   "Node": "Узел",
-  "Switch interface language": "Переключить язык интерфейса"
+  "Switch interface language": "Переключить язык интерфейса",
+  "Language": "Язык"
 };

@@ -2,7 +2,7 @@ import { memo } from "react";
 import { useNodeEditing } from "../../hooks/use-node-editing";
 import NodeTitle from "../node-parts/node-title";
 import type { StoryInfoGraphNode } from "../../entities/story-node";
-import { colors, nodeLabels } from "../../lib/constants";
+import { colors, languages, nodeLabels } from "../../lib/constants";
 import NodeRef from "../node-parts/node-ref";
 import TextInput from "../core/text-input";
 import HandleOut from "../node-parts/handle-out";
@@ -27,6 +27,10 @@ const StoryInfoNode = memo(function StoryInfoNode({ data, selected }: Props) {
 
   const updateDescription = (description: string) => {
     data.onChange?.({ ...data, description });
+  };
+
+  const updateLanguage = (language: string) => {
+    data.onChange?.({ ...data, language });
   };
 
   return (
@@ -57,7 +61,18 @@ const StoryInfoNode = memo(function StoryInfoNode({ data, selected }: Props) {
         onEditFinished={finishEdit}
       />
 
-      <LanguageSelector expanded={true} />
+      <div>
+        <span className="text-xs opacity-50 font-bold ml-0.5">
+          {t("Language")}
+        </span>
+        <LanguageSelector
+          className="border border-black border-opacity-20 border-dashed bg-white bg-opacity-50 hover:bg-white hover:bg-opacity-50"
+          currentLanguageCode={data.language}
+          disabled={nodeEditing}
+          languages={languages}
+          onSelect={updateLanguage}
+        />
+      </div>
 
       <div className="mt-2 text-sm bg-gradient-to-r from-transparent to-purple-300 p-1 relative -mr-2">
         <div className="flex gap-1">

@@ -2,13 +2,14 @@ import { LanguageInfo } from "@/lib/types";
 
 interface Props {
   brief?: boolean;
+  className?: string;
   language: LanguageInfo;
 }
 
-export function Language({ brief, language }: Props) {
+export function Language({ brief = false, className, language }: Props) {
   return (
-    <div className="flex gap-1 items-center">
-      <span className={`fi fi-${language.flagCode}`} />
+    <div className="flex gap-1.5 items-center">
+      <span className={`fi fi-${language.flagCode} ${className}`} />
       {!brief &&
         <span>{language.name}</span>
       }

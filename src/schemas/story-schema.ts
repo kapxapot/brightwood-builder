@@ -6,6 +6,7 @@ export const storySchema = z.object({
   id: z.string(),
   title: z.string(),
   description: z.string().optional(),
+  language: z.string().optional(),
   startId: z.number(),
   prefix: z.string().optional(),
   data: storyDataSchema.optional(),
