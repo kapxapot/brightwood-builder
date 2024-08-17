@@ -5,7 +5,7 @@ import { Language } from "./language";
 interface Props {
   brief?: boolean;
   className?: string;
-  currentLanguageCode: string;
+  currentLanguageCode?: string;
   disabled?: boolean;
   languages: LanguageInfo[];
   onSelect?: (code: string) => void;
