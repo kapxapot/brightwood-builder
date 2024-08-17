@@ -9,6 +9,7 @@ import HandleOut from "../node-parts/handle-out";
 import NodeShell from "../node-parts/node-shell";
 import { Flag } from "../core/icons";
 import { Trans, useTranslation } from "react-i18next";
+import { LanguageSelector } from "../language-selector";
 
 interface Props {
   data: StoryInfoGraphNode;
@@ -55,6 +56,8 @@ const StoryInfoNode = memo(function StoryInfoNode({ data, selected }: Props) {
         onEditStarted={startEdit}
         onEditFinished={finishEdit}
       />
+
+      <LanguageSelector expanded={true} />
 
       <div className="mt-2 text-sm bg-gradient-to-r from-transparent to-purple-300 p-1 relative -mr-2">
         <div className="flex gap-1">

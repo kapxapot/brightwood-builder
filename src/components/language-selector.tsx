@@ -5,10 +5,11 @@ import { Select, SelectContent, SelectGroup, SelectItem, SelectTrigger, SelectVa
 import { Language } from "./language";
 
 interface Props {
-  expanded: boolean;
+  expanded?: boolean;
+  hideIcon?: boolean;
 }
 
-export function GlobalLanguageSelector({ expanded }: Props) {
+export function LanguageSelector({ expanded = false, hideIcon = false }: Props) {
   const { i18n } = useTranslation();
 
   const currentLanguageCode = i18n.resolvedLanguage;
@@ -26,7 +27,8 @@ export function GlobalLanguageSelector({ expanded }: Props) {
         defaultValue={currentLanguageCode}
       >
         <SelectTrigger
-          className={`hover:bg-gray-200 px-1 pl-2 h-auto py-1.5 border-0 shadow-none ${expanded ? "w-24" : "w-full"}`}
+          className={`hover:bg-gray-200 py-1.5 ${expanded ? "pr-1 pl-2" : "px-0 justify-center"} h-auto border-0 shadow-none ${expanded ? "w-24" : "w-full"}`}
+          hideIcon={hideIcon}
         >
           <SelectValue aria-label={currentLanguage?.name}>
             {currentLanguage &&

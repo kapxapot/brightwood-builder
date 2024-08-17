@@ -10,7 +10,7 @@ import GitHubIcon from "./github-icon";
 import { useTranslation } from "react-i18next";
 import { Bounce } from "./motion/bounce";
 import { motion } from "framer-motion";
-import { GlobalLanguageSelector } from "./global-language-selector";
+import { LanguageSelector } from "./language-selector";
 
 type Handler = () => void;
 
@@ -90,10 +90,17 @@ export default function Toolbar({ onNew, onSave, onLoad, onImport, onExport, exp
   ];
 
   return (
-    <aside className={`flex flex-col gap-3 justify-between ${expanded ? "min-w-[8.5rem]" : "min-w-14"} bg-gray-300`}>
+    <aside className={`flex flex-col gap-3 justify-between ${expanded ? "min-w-[8.5rem]" : "w-12"} bg-gray-300`}>
       <div>
         <div className={`my-1 flex items-center justify-center gap-2 ${expanded ? "p-2" : "p-1.5"}`}>
-          <img src="/images/leaves.png" className="w-8 h-8 rounded-full" />
+          <ConditionalTooltip
+            tooltip="Brightwood Builder"
+            show={!expanded}
+            side="right"
+          >
+            <img src="/images/leaves.png" className="w-8 h-8 rounded-full" />
+          </ConditionalTooltip>
+
           {expanded && (
             <div className="text-left leading-[1.1]">
               Brightwood<br />
@@ -201,7 +208,10 @@ export default function Toolbar({ onNew, onSave, onLoad, onImport, onExport, exp
           tooltip={t("Switch interface language")}
           side="right"
         >
-          <GlobalLanguageSelector expanded={expanded} />
+          <LanguageSelector
+            expanded={expanded}
+            hideIcon={!expanded}
+          />
         </Tooltip>
       </div>
 
