@@ -89,5 +89,5 @@ export const ru = {
   "Node": "Узел",
   "Switch interface language": "Переключить язык интерфейса",
   "Language": "Язык",
-  "Select the story language": "Выберите язык истории"
+  "Select the story language.": "Выберите язык истории."
 };
