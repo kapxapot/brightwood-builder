@@ -530,8 +530,9 @@ export default function Flow() {
           exportEnabled={isEmpty(validationMessages)}
         />
         <div className="flex-grow w-full" ref={reactFlowWrapper}>
+          {/* {currentStoryData?.uuid} */}
           <ReactFlow
-            key={currentStoryData?.uuid}
+            // key={currentStoryData?.uuid}
             nodes={nodes}
             edges={edges}
             onSelectionChange={selectionChangeHandler}
