@@ -1,4 +1,4 @@
-export const ru = {
+{
   "New": "Новая",
   "New story": "Новая история",
   "Save": "Сохранить",
@@ -90,4 +90,4 @@ export const ru = {
   "Switch interface language": "Переключить язык интерфейса",
   "Language": "Язык",
   "Select the story language.": "Выберите язык истории."
-};
+}
