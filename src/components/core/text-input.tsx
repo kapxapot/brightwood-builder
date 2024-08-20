@@ -5,6 +5,8 @@ import { Edit } from "./icons";
 import { TextInputLabel } from "./text-input-label";
 import { useCharLimit } from "@/hooks/use-char-limit";
 import { useTranslation } from "react-i18next";
+import { motion } from "framer-motion";
+import { popupButtonVariants } from "@/lib/motion";
 
 const defaultRowCount = 2;
 
@@ -31,6 +33,8 @@ export default function TextInput({ value, label, rowCount, readonly, charLimit 
   const inputRef = useRef<HTMLTextAreaElement>(null);
 
   const { showCharLimit, valueTooLong} = useCharLimit(editedValue, charLimit);
+
+  const MotionButton = motion(Button);
 
   function startEdit() {
     if (readonly) {
@@ -103,7 +107,12 @@ export default function TextInput({ value, label, rowCount, readonly, charLimit 
       }
       {/* view */}
       {!editing &&
-        <div className={`group ${!readonly && "cursor-text"} text-sm`}>
+        <motion.div
+          className={`${!readonly && "cursor-text"} text-sm`}
+          initial="hidden"
+          animate="hidden"
+          whileHover="visible"
+        >
           {!noValue &&
             <span className="text-xs opacity-50 font-bold ml-0.5">
               {label}
@@ -119,14 +128,19 @@ export default function TextInput({ value, label, rowCount, readonly, charLimit 
             >
             </span>
             {!readonly &&
-              <div className="absolute right-1 top-1 hidden group-hover:block">
-                <Button size="small" onClick={startEdit}>
+              <div className="absolute right-1 top-1">
+                <MotionButton
+                  size="small"
+                  onClick={startEdit}
+                  variants={popupButtonVariants}
+                  custom={1}
+                >
                   <Edit />
-                </Button>
+                </MotionButton>
               </div>
             }
             </div>
-        </div>
+        </motion.div>
       }
     </div>
   );

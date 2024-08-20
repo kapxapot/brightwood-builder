@@ -531,6 +531,7 @@ export default function Flow() {
         />
         <div className="flex-grow w-full" ref={reactFlowWrapper}>
           <ReactFlow
+            key={currentStoryData?.uuid}
             nodes={nodes}
             edges={edges}
             onSelectionChange={selectionChangeHandler}

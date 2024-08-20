@@ -5,6 +5,8 @@ import { Delete, Edit } from "../core/icons";
 import { TextInputLabel } from "../core/text-input-label";
 import { useCharLimit } from "@/hooks/use-char-limit";
 import { useTranslation } from "react-i18next";
+import { motion } from "framer-motion";
+import { popupButtonVariants } from "@/lib/motion";
 
 type Props = {
   line: string;
@@ -29,6 +31,8 @@ export default function NodeTextLine({ line, index, deletable, readonly, charLim
   const inputRef = useRef<HTMLTextAreaElement>(null);
 
   const { showCharLimit, valueTooLong} = useCharLimit(editedLine, charLimit);
+
+  const MotionButton = motion(Button);
 
   function startEdit() {
     if (readonly) {
@@ -115,7 +119,12 @@ export default function NodeTextLine({ line, index, deletable, readonly, charLim
       }
       {/* view */}
       {!editing &&
-        <div className={`relative group ${!readonly && "cursor-text"} text-sm`}>
+        <motion.div
+          className={`relative ${!readonly && "cursor-text"} text-sm`}
+          initial="hidden"
+          animate="hidden"
+          whileHover="visible"
+        >
           <p
             className="border border-black border-opacity-20 rounded-lg border-dashed bg-white bg-opacity-50 px-2 py-1 break-words"
             onClick={startEdit}
@@ -127,20 +136,28 @@ export default function NodeTextLine({ line, index, deletable, readonly, charLim
             </span>
           </p>
           {!readonly &&
-            <div className="absolute right-1 top-1 space-x-1 hidden group-hover:block">
-              <div className="flex gap-1">
-                <Button size="small" onClick={startEdit}>
-                  <Edit />
-                </Button>
-                {deletable &&
-                  <Button size="small" onClick={deleteLine}>
-                    <Delete />
-                  </Button>
-                }
-              </div>
+            <div className="absolute right-1 top-1 flex gap-1">
+              <MotionButton
+                size="small"
+                onClick={startEdit}
+                variants={popupButtonVariants}
+                custom={deletable ? 2 : 1}
+              >
+                <Edit />
+              </MotionButton>
+              {deletable &&
+                <MotionButton
+                  size="small"
+                  onClick={deleteLine}
+                  variants={popupButtonVariants}
+                  custom={1}
+                >
+                  <Delete />
+                </MotionButton>
+              }
             </div>
           }
-        </div>
+        </motion.div>
       }
     </>
   );

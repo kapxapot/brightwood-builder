@@ -10,6 +10,8 @@ import { Delete, Edit } from "../core/icons";
 import Tooltip from "../core/tooltip";
 import { TextInputLabel } from "../core/text-input-label";
 import { useTranslation } from "react-i18next";
+import { motion } from "framer-motion";
+import { popupButtonVariants } from "@/lib/motion";
 
 type Props = {
   link: Link;
@@ -35,6 +37,8 @@ export default function NodeLink({ link, index, totalWeight, deletable, updateLi
   const inputRef = useRef<HTMLInputElement>(null);
 
   const weightPercent = Math.round(link.weight / totalWeight * 100);
+
+  const MotionButton = motion(Button);
 
   function startEdit() {
     setWeight(initialWeight);
@@ -84,7 +88,13 @@ export default function NodeLink({ link, index, totalWeight, deletable, updateLi
   const isValidWeight = (weight: number) => weight <= weights.min || weight > weights.max;
 
   return (
-    <div className="relative group text-sm bg-gradient-to-r from-transparent to-yellow-300 py-1 -mr-2" key={index}>
+    <motion.div
+      className="relative text-sm bg-gradient-to-r from-transparent to-yellow-300 py-1 -mr-2"
+      key={index}
+      initial="hidden"
+      animate="hidden"
+      whileHover="visible"
+    >
       <div>
         {/* edit */}
         {editing &&
@@ -150,17 +160,27 @@ export default function NodeLink({ link, index, totalWeight, deletable, updateLi
       </div>
       {/* view */}
       {!editing && !nodeEditing &&
-        <div className="absolute right-3 top-1 hidden group-hover:flex gap-1">
-          <Button size="small" onClick={startEdit}>
+        <div className="absolute right-3 top-1 flex gap-1">
+          <MotionButton
+            size="small"
+            onClick={startEdit}
+            variants={popupButtonVariants}
+            custom={deletable ? 2 : 1}
+          >
             <Edit />
-          </Button>
+          </MotionButton>
           {deletable &&
-            <Button size="small" onClick={deleteLink}>
+            <MotionButton
+              size="small"
+              onClick={deleteLink}
+              variants={popupButtonVariants}
+              custom={1}
+            >
               <Delete />
-            </Button>
+            </MotionButton>
           }
         </div>
       }
-    </div>
+    </motion.div>
   );
 }

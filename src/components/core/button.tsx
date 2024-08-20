@@ -1,4 +1,4 @@
-import type { PropsWithChildren } from "react";
+import { forwardRef, Ref, type PropsWithChildren } from "react";
 
 type Size = "small" | "default" | "large" | "toolbar";
 type Variant = "default" | "primary";
@@ -10,7 +10,10 @@ type Props = {
   disabled?: boolean;
 }
 
-export default function Button({ onClick, size = "default", variant = "default", disabled, children }: PropsWithChildren<Props>) {
+const Button = forwardRef(
+  ({ onClick, size = "default", variant = "default", disabled, children }: PropsWithChildren<Props>,
+  ref: Ref<HTMLButtonElement>
+) => {
   const sizeStyle: Record<Size, string> = {
     "small": "text-sm px-1 py-0.5 rounded-md",
     "default": "text-sm px-2 pb-1 pt-0.5 rounded-lg",
@@ -25,6 +28,7 @@ export default function Button({ onClick, size = "default", variant = "default",
 
   return (
     <button
+      ref={ref}
       onClick={onClick}
       className={`border border-slate-400 ${sizeStyle[size]} ${variantStyle[variant]} disabled:opacity-50 disabled:cursor-not-allowed flex gap-1 items-center`}
       disabled={disabled}
@@ -32,4 +36,6 @@ export default function Button({ onClick, size = "default", variant = "default",
       {children}
     </button>
   );
-}
+});
+
+export default Button;

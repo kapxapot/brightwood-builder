@@ -8,6 +8,8 @@ import { Bolt, Delete, Edit } from "../core/icons";
 import { TextInputLabel } from "../core/text-input-label";
 import { useCharLimit } from "@/hooks/use-char-limit";
 import { useTranslation } from "react-i18next";
+import { motion } from "framer-motion";
+import { popupButtonVariants } from "@/lib/motion";
 
 type Props = {
   action: Action;
@@ -33,6 +35,8 @@ export default function NodeAction({ action, index, deletable, nodeEditing, char
   const inputRef = useRef<HTMLInputElement>(null);
 
   const { showCharLimit, valueTooLong} = useCharLimit(label, charLimit);
+
+  const MotionButton = motion(Button);
 
   function startEdit() {
     setLabel(initialLabel);
@@ -79,7 +83,12 @@ export default function NodeAction({ action, index, deletable, nodeEditing, char
   useEffect(() => autoHeight(inputRef), [label]);
 
   return (
-    <div className="relative group text-sm bg-gradient-to-r from-transparent to-green-300 py-1 -mr-2">
+    <motion.div
+      className="relative text-sm bg-gradient-to-r from-transparent to-green-300 py-1 -mr-2"
+      initial="hidden"
+      animate="hidden"
+      whileHover="visible"
+    >
       <div>
         {/* edit */}
         {editing &&
@@ -130,17 +139,27 @@ export default function NodeAction({ action, index, deletable, nodeEditing, char
       </div>
       {/* view */}
       {!editing && !nodeEditing &&
-        <div className="absolute right-3 top-1 hidden group-hover:flex gap-1">
-          <Button size="small" onClick={startEdit}>
+        <div className="absolute right-3 top-1 flex gap-1">
+          <MotionButton
+            size="small"
+            onClick={startEdit}
+            variants={popupButtonVariants}
+            custom={deletable ? 2 : 1}
+          >
             <Edit />
-          </Button>
+          </MotionButton>
           {deletable &&
-            <Button size="small" onClick={deleteAction}>
+            <MotionButton
+              size="small"
+              onClick={deleteAction}
+              variants={popupButtonVariants}
+              custom={1}
+            >
               <Delete />
-            </Button>
+            </MotionButton>
           }
         </div>
       }
-    </div>
+    </motion.div>
   );
 }
