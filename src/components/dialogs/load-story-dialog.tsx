@@ -7,6 +7,7 @@ import { StoryShortcut } from "@/entities/story";
 import { ConfirmDeleteStoryAlertDialog } from "./confirm-delete-story-alert-dialog";
 import { fetchCurrentStoryId } from "@/lib/storage";
 import { useTranslation } from "react-i18next";
+import { motion } from "framer-motion";
 
 type Props = {
   stories: StoryShortcut[];
@@ -15,6 +16,8 @@ type Props = {
   onLoadStory: (id: string) => void;
   onDeleteStory: (id: string) => void;
 }
+
+const MotionButton = motion(Button);
 
 export function LoadStoryDialog({ stories, open, onOpenChange, onLoadStory, onDeleteStory }: Props) {
   const { t } = useTranslation();
@@ -51,28 +54,52 @@ export function LoadStoryDialog({ stories, open, onOpenChange, onLoadStory, onDe
                   <div className="text-xs text-gray-400">{story.id}</div>
                 </div>
                 <div className="flex gap-2">
-                  <Button variant="outlineHighlight" size="icon" onClick={() => onLoadStory(story.id)}>
-                    <Tooltip tooltip={t("Load story")} side="top">
+                  <Tooltip tooltip={t("Load story")} side="top">
+                    <MotionButton
+                      variant="outlineHighlight"
+                      size="icon"
+                      onClick={() => onLoadStory(story.id)}
+                      initial={{ scale: 1 }}
+                      animate={{ scale: 1 }}
+                      whileHover={{
+                        scale: 1.2
+                      }}
+                    >
                       <ArrowUpTrayIcon className="w-5" />
-                    </Tooltip>
-                  </Button>
+                    </MotionButton>
+                  </Tooltip>
                   {isCurrent(story) && (
-                    <div className="h-9 w-9 inline-flex items-center justify-center">
-                      <Tooltip tooltip={t("Can't delete the current story")} side="top">
+                    <Tooltip tooltip={t("Can't delete the current story")} side="top">
+                      <motion.div
+                        className="h-9 w-9 inline-flex items-center justify-center"
+                        initial={{ scale: 1 }}
+                        animate={{ scale: 1 }}
+                        whileHover={{
+                          scale: 1.2
+                        }}
+                      >
                         <TrashIcon className="w-5 text-gray-400 cursor-not-allowed" />
-                      </Tooltip>
-                    </div>
+                      </motion.div>
+                    </Tooltip>
                   )}
                   {!isCurrent(story) && (
                     <ConfirmDeleteStoryAlertDialog
                       onConfirm={() => onDeleteStory(story.id)}
                       storyName={story.title ?? `${truncateId(story.id)}...`}
                       trigger={(
-                        <Button variant="ghost" size="icon">
-                          <Tooltip tooltip={t("Delete story")} side="top">
+                        <Tooltip tooltip={t("Delete story")} side="top">
+                          <MotionButton
+                            variant="ghost"
+                            size="icon"
+                            initial={{ scale: 1 }}
+                            animate={{ scale: 1 }}
+                            whileHover={{
+                              scale: 1.2
+                            }}
+                          >
                             <TrashIcon className="w-5 text-red-600" />
-                          </Tooltip>
-                        </Button>
+                          </MotionButton>
+                        </Tooltip>
                       )}
                     />
                   )}
