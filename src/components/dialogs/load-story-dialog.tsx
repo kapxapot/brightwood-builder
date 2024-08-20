@@ -8,6 +8,7 @@ import { ConfirmDeleteStoryAlertDialog } from "./confirm-delete-story-alert-dial
 import { fetchCurrentStoryId } from "@/lib/storage";
 import { useTranslation } from "react-i18next";
 import { motion } from "framer-motion";
+import { useEffect, useRef } from "react";
 
 type Props = {
   stories: StoryShortcut[];
@@ -24,6 +25,14 @@ export function LoadStoryDialog({ stories, open, onOpenChange, onLoadStory, onDe
 
   const currentStoryId = fetchCurrentStoryId();
   const isCurrent = (story: StoryShortcut) => story.id === currentStoryId;
+
+  const closeRef = useRef<HTMLButtonElement>(null);
+
+  useEffect(() => {
+    if (closeRef.current) {
+      closeRef.current.focus();
+    }
+  }, []);
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
@@ -110,7 +119,7 @@ export function LoadStoryDialog({ stories, open, onOpenChange, onLoadStory, onDe
         )}
         <DialogFooter>
           <DialogClose asChild>
-            <Button variant="outline">
+            <Button ref={closeRef} variant="outline">
               {t("Close")}
             </Button>
           </DialogClose>
