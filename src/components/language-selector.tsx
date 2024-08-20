@@ -1,6 +1,7 @@
 import { LanguageInfo } from "@/lib/types";
 import { Select, SelectContent, SelectGroup, SelectItem, SelectTrigger, SelectValue } from "./ui/select";
 import { Language } from "./language";
+import { useTranslation } from "react-i18next";
 
 interface Props {
   brief?: boolean;
@@ -12,6 +13,8 @@ interface Props {
 }
 
 export function LanguageSelector({ brief = false, className, currentLanguageCode, disabled = false, languages, onSelect }: Props) {
+  const { t } = useTranslation();
+
   const currentLanguage = languages.find(lng => lng.code === currentLanguageCode);
 
   const isCurrent = (lng: LanguageInfo) => currentLanguageCode === lng.code;
@@ -21,21 +24,27 @@ export function LanguageSelector({ brief = false, className, currentLanguageCode
   return (
     <Select
       onValueChange={value => onSelect?.(value)}
-      defaultValue={currentLanguageCode}
+      defaultValue={currentLanguageCode ?? ""}
+      value={currentLanguageCode ?? ""}
       disabled={disabled}
     >
       <SelectTrigger
         className={`hover:bg-gray-200 ${brief ? "px-1.5 py-1.5 justify-center" : "pr-1 pl-2 py-1" } h-auto border-0 shadow-none ${brief ? "" : "w-auto"} rounded-lg ${className}`}
         hideIcon={brief}
       >
-        <SelectValue aria-label={currentLanguage?.name}>
-          {currentLanguage &&
+        {currentLanguage && (
+          <SelectValue aria-label={currentLanguage.name}>
             <Language
               brief={brief}
               language={currentLanguage}
             />
-          }
-        </SelectValue>
+          </SelectValue>
+        )}
+        {!currentLanguage &&
+          <span className="opacity-50">
+            {t("Language")}
+          </span>
+        }
       </SelectTrigger>
       <SelectContent
         className="min-w-min"

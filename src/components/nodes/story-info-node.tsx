@@ -21,6 +21,8 @@ const StoryInfoNode = memo(function StoryInfoNode({ data, selected }: Props) {
 
   const { nodeEditing, startEdit, finishEdit } = useNodeEditing();
 
+  const hasLanguage = !!data.language;
+
   const updateTitle = (title: string) => {
     data.onChange?.({ ...data, title });
   };
@@ -62,11 +64,13 @@ const StoryInfoNode = memo(function StoryInfoNode({ data, selected }: Props) {
       />
 
       <div>
-        <span className="text-xs opacity-50 font-bold ml-0.5">
-          {t("Language")}
-        </span>
+        {hasLanguage &&
+          <span className="text-xs opacity-50 font-bold ml-0.5">
+            {t("Language")}
+          </span>
+        }
         <LanguageSelector
-          className="border border-black border-opacity-20 border-dashed bg-white bg-opacity-50 hover:bg-white hover:bg-opacity-50"
+          className={`border border-black border-opacity-20 border-dashed bg-white bg-opacity-50 hover:bg-white hover:bg-opacity-50 ${!hasLanguage && "mt-1"}`}
           currentLanguageCode={data.language}
           disabled={nodeEditing}
           languages={languages}
