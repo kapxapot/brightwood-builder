@@ -8,7 +8,7 @@ import { ConfirmDeleteStoryAlertDialog } from "./confirm-delete-story-alert-dial
 import { fetchCurrentStoryId } from "@/lib/storage";
 import { useTranslation } from "react-i18next";
 
-interface Props {
+type Props = {
   stories: StoryShortcut[];
   open: boolean;
   onOpenChange: (open: boolean) => void;

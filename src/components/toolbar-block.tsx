@@ -3,7 +3,7 @@ import type { StoryNodeType } from "../entities/story-node";
 import { colors } from "../lib/constants";
 import { Bounce } from "./motion/bounce";
 
-interface Props {
+type Props = {
   type: StoryNodeType;
   expanded: boolean;
   className?: string;

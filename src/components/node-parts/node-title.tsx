@@ -1,4 +1,4 @@
-interface Props {
+type Props = {
   id: number;
   label: string | number;
 }

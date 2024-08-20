@@ -12,7 +12,7 @@ import { addLink, deleteLink, updateLink } from "../../lib/link-mutations";
 import HandleIn from "../node-parts/handle-in";
 import { useTranslation } from "react-i18next";
 
-interface Props {
+type Props = {
   data: RedirectStoryNode;
   selected: boolean;
 }

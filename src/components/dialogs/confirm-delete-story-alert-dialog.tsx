@@ -5,7 +5,7 @@ import { AlertDialogAction, AlertDialogCancel } from "../ui/alert-dialog";
 import { ReactNode } from "react";
 import { Trans, useTranslation } from "react-i18next";
 
-interface Props {
+type Props = {
   storyName: string;
   trigger: ReactNode;
   onConfirm: () => void;

@@ -1,6 +1,6 @@
 import { type PropsWithChildren } from "react";
 
-interface Props {
+type Props = {
   selected: boolean;
   color?: string;
   spaceY?: "normal" | "none";

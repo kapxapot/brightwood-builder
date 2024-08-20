@@ -2,7 +2,7 @@ import { PropsWithChildren, ReactNode } from "react";
 import { Side } from "@/lib/types";
 import ConditionalTooltip from "./conditional-tooltip";
 
-interface Props {
+type Props = {
   tooltip: ReactNode;
   side?: Side;
   duration?: number;

@@ -9,7 +9,7 @@ import { TextInputLabel } from "../core/text-input-label";
 import { useCharLimit } from "@/hooks/use-char-limit";
 import { useTranslation } from "react-i18next";
 
-interface Props {
+type Props = {
   action: Action;
   index: number;
   deletable: boolean;

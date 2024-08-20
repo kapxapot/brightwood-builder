@@ -8,7 +8,7 @@ import { useTranslation } from "react-i18next";
 
 const defaultRowCount = 2;
 
-interface Props {
+type Props = {
   value?: string;
   label: string;
   rowCount?: number;

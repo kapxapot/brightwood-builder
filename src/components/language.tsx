@@ -1,6 +1,6 @@
 import { LanguageInfo } from "@/lib/types";
 
-interface Props {
+type Props = {
   brief?: boolean;
   className?: string;
   language: LanguageInfo;

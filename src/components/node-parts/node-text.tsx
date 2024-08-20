@@ -5,7 +5,7 @@ import { addTextLine, deleteTextLine, updateTextLine } from "../../lib/node-data
 import Button from "../core/button";
 import NodeTextLine from "./node-text-line";
 
-interface Props {
+type Props = {
   data: StoryNode;
   allowEmpty?: boolean;
   readonly: boolean;

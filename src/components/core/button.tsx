@@ -3,7 +3,7 @@ import type { PropsWithChildren } from "react";
 type Size = "small" | "default" | "large" | "toolbar";
 type Variant = "default" | "primary";
 
-interface Props {
+type Props = {
   onClick?: React.MouseEventHandler<HTMLButtonElement>;
   size?: Size;
   variant?: Variant;

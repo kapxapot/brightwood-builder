@@ -11,7 +11,7 @@ import { Flag } from "../core/icons";
 import { Trans, useTranslation } from "react-i18next";
 import { LanguageSelector } from "../language-selector";
 
-interface Props {
+type Props = {
   data: StoryInfoGraphNode;
   selected: boolean;
 }

@@ -9,7 +9,7 @@ import NodeEffect from "../node-parts/node-effect";
 import NodeText from "../node-parts/node-text";
 import { useTranslation } from "react-i18next";
 
-interface Props {
+type Props = {
   data: FinishStoryNode;
   selected: boolean;
 }

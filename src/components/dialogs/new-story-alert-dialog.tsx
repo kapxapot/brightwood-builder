@@ -4,7 +4,7 @@ import { AlertDialog } from "../core/alert-dialog";
 import { AlertDialogAction, AlertDialogCancel } from "../ui/alert-dialog";
 import { Trans, useTranslation } from "react-i18next";
 
-interface Props {
+type Props = {
   currentStoryTitle?: string;
   open: boolean;
   onOpenChange: (open: boolean) => void;

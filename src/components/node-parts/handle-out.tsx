@@ -1,6 +1,6 @@
 import { Handle, Position } from "reactflow";
 
-interface Props {
+type Props = {
   id?: string;
   connected: boolean;
 }

@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { PropsWithChildren } from "react";
 
-interface Props {
+type Props = {
   className?: string;
   xOffset: number;
   duration: number;

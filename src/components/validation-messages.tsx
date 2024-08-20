@@ -3,7 +3,7 @@ import { ValidationMessage } from "@/lib/validation";
 import { LightBulbIcon } from "@heroicons/react/24/solid";
 import { useTranslation } from "react-i18next";
 
-interface Props {
+type Props = {
   messages: ValidationMessage[];
 }
 

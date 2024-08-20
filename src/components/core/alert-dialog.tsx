@@ -1,7 +1,7 @@
 import { PropsWithChildren, ReactNode } from "react";
 import { AlertDialog as ShadAlertDialog, AlertDialogContent, AlertDialogHeader, AlertDialogTitle, AlertDialogDescription, AlertDialogFooter, AlertDialogTrigger } from "../ui/alert-dialog";
 
-interface Props {
+type Props = {
   title: string;
   description?: ReactNode;
   trigger?: ReactNode;

@@ -12,7 +12,7 @@ import { addAction, deleteAction, updateAction } from "../../lib/action-mutation
 import { useTranslation } from "react-i18next";
 import Button from "../core/button";
 
-interface Props {
+type Props = {
   data: ActionStoryNode;
   selected: boolean;
 }

@@ -12,7 +12,7 @@ import HandleOut from "../node-parts/handle-out";
 import { Skip } from "../core/icons";
 import { Trans, useTranslation } from "react-i18next";
 
-interface Props {
+type Props = {
   data: SkipStoryNode;
   selected: boolean;
 }

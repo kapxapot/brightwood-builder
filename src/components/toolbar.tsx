@@ -23,7 +23,7 @@ type StoryButton = {
   disabledTooltip?: string;
 };
 
-interface Props {
+type Props = {
   onNew: Handler;
   onSave: Handler;
   onLoad: Handler;

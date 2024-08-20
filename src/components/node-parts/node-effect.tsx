@@ -1,7 +1,7 @@
 import { useTranslation } from "react-i18next";
 import type { EffectInvocation } from "../../entities/story-data";
 
-interface Props {
+type Props = {
   effect?: EffectInvocation;
 }
 

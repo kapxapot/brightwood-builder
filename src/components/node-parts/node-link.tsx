@@ -11,7 +11,7 @@ import Tooltip from "../core/tooltip";
 import { TextInputLabel } from "../core/text-input-label";
 import { useTranslation } from "react-i18next";
 
-interface Props {
+type Props = {
   link: Link;
   index: number;
   totalWeight: number;

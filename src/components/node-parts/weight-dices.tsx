@@ -1,6 +1,6 @@
 import { Cube } from "../core/icons";
 
-interface Props {
+type Props = {
   weight: number;
 }
 

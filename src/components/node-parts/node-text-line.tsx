@@ -6,7 +6,7 @@ import { TextInputLabel } from "../core/text-input-label";
 import { useCharLimit } from "@/hooks/use-char-limit";
 import { useTranslation } from "react-i18next";
 
-interface Props {
+type Props = {
   line: string;
   index: number;
   deletable: boolean;

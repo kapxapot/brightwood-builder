@@ -8,7 +8,7 @@ import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel, For
 import { BaseSyntheticEvent } from "react";
 import { Trans, useTranslation } from "react-i18next";
 
-interface Props {
+type Props = {
   open: boolean;
   onOpenChange: (open: boolean) => void;
   onImport: (file: File) => void;

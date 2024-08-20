@@ -2,7 +2,7 @@ import { LanguageSelector } from "./language-selector";
 import { uiLanguages } from "@/lib/constants";
 import { useLanguage } from "@/hooks/use-language";
 
-interface Props {
+type Props = {
   brief?: boolean;
 }
 

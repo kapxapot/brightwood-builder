@@ -5,7 +5,7 @@ import { AlertDialogAction, AlertDialogCancel } from "../ui/alert-dialog";
 import { truncateId } from "@/lib/common";
 import { Trans, useTranslation } from "react-i18next";
 
-interface Props {
+type Props = {
   storyId: string;
   open: boolean;
   onOpenChange: (open: boolean) => void;

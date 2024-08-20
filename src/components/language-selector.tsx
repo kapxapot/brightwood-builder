@@ -3,7 +3,7 @@ import { Select, SelectContent, SelectGroup, SelectItem, SelectTrigger, SelectVa
 import { Language } from "./language";
 import { useTranslation } from "react-i18next";
 
-interface Props {
+type Props = {
   brief?: boolean;
   className?: string;
   currentLanguageCode?: string;
