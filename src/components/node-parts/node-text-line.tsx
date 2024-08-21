@@ -23,11 +23,11 @@ type Props = {
 export default function NodeTextLine({ line, index, deletable, readonly, charLimit = 0, updateLine, deleteLine, onEditStarted, onEditFinished }: Props) {
   const { t } = useTranslation();
 
-  const hasText = line.length;
+  const virgin = !line.length;
   const inputRef = useRef<HTMLTextAreaElement>(null);
 
   const [editedLine, setEditedLine] = useState(line);
-  const [editing, setEditing] = useState(!hasText);
+  const [editing, setEditing] = useState(virgin);
   const { showCharLimit, valueTooLong} = useCharLimit(editedLine, charLimit);
 
   const MotionButton = motion(Button);
@@ -48,7 +48,7 @@ export default function NodeTextLine({ line, index, deletable, readonly, charLim
     setEditing(false);
     onEditFinished();
 
-    if (hasText) {
+    if (!virgin) {
       setEditedLine(line);
     } else if (deletable) {
       deleteLine();
@@ -68,7 +68,7 @@ export default function NodeTextLine({ line, index, deletable, readonly, charLim
   }
 
   useEffect(() => {
-    if (!hasText) {
+    if (virgin) {
       startEdit();
     }
   // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -106,7 +106,7 @@ export default function NodeTextLine({ line, index, deletable, readonly, charLim
             >
               {t("Save")}
             </Button>
-            {(deletable || hasText) &&
+            {(deletable || !virgin) &&
               <Button onClick={cancelEdit}>
                 {t("Cancel")}
               </Button>
@@ -127,7 +127,7 @@ export default function NodeTextLine({ line, index, deletable, readonly, charLim
             onClick={startEdit}
           >
             <span
-              className={`whitespace-pre-line ${!hasText && "opacity-30"}`}
+              className={`whitespace-pre-line ${virgin && "opacity-30"}`}
               dangerouslySetInnerHTML={{ __html: line || `${t("Text line")} ${index + 1}` }}
             >
             </span>
@@ -142,7 +142,7 @@ export default function NodeTextLine({ line, index, deletable, readonly, charLim
               >
                 <Edit />
               </MotionButton>
-              {deletable &&
+              {deletable && (
                 <MotionButton
                   size="small"
                   onClick={deleteLine}
@@ -151,7 +151,7 @@ export default function NodeTextLine({ line, index, deletable, readonly, charLim
                 >
                   <Delete />
                 </MotionButton>
-              }
+              )}
             </div>
           )}
         </motion.div>
