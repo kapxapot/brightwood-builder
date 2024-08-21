@@ -1,4 +1,4 @@
-import { PropsWithChildren, ReactNode } from "react";
+import { forwardRef, PropsWithChildren, ReactNode, Ref } from "react";
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "../ui/tooltip";
 import { Side } from "@/lib/types";
 
@@ -9,13 +9,13 @@ type Props = {
   duration?: number;
 }
 
-export default function ConditionalTooltip({ tooltip, show, side, duration = 300, children }: PropsWithChildren<Props>) {
+const ConditionalTooltip = forwardRef(({ tooltip, show, side, duration = 300, children }: PropsWithChildren<Props>, ref: Ref<HTMLDivElement>) => {
   if (!tooltip || !show) {
     return children;
   }
 
   return (
-    <div>
+    <div ref={ref}>
       <TooltipProvider>
         <Tooltip delayDuration={duration}>
           <TooltipTrigger asChild>
@@ -30,4 +30,6 @@ export default function ConditionalTooltip({ tooltip, show, side, duration = 300
       </TooltipProvider>
     </div>
   );
-}
+});
+
+export default ConditionalTooltip;

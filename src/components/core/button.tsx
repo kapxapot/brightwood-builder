@@ -10,10 +10,7 @@ type Props = {
   disabled?: boolean;
 }
 
-const Button = forwardRef(
-  ({ onClick, size = "default", variant = "default", disabled, children }: PropsWithChildren<Props>,
-  ref: Ref<HTMLButtonElement>
-) => {
+const Button = forwardRef(({ onClick, size = "default", variant = "default", disabled, children }: PropsWithChildren<Props>, ref: Ref<HTMLButtonElement>) => {
   const sizeStyle: Record<Size, string> = {
     "small": "text-sm px-1 py-0.5 rounded-md",
     "default": "text-sm px-2 pb-1 pt-0.5 rounded-lg",

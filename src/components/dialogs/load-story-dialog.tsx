@@ -89,11 +89,11 @@ export function LoadStoryDialog({ stories, open, onOpenChange, onLoadStory, onDe
                     </Tooltip>
                   )}
                   {!isCurrent(story) && (
-                    <ConfirmDeleteStoryAlertDialog
-                      onConfirm={() => onDeleteStory(story.id)}
-                      storyName={story.title ?? `${truncateId(story.id)}...`}
-                      trigger={(
-                        <Tooltip tooltip={t("Delete story")} side="top">
+                    <Tooltip tooltip={t("Delete story")} side="top">
+                      <ConfirmDeleteStoryAlertDialog
+                        onConfirm={() => onDeleteStory(story.id)}
+                        storyName={story.title ?? `${truncateId(story.id)}...`}
+                        trigger={(
                           <MotionButton
                             variant="ghost"
                             size="icon"
@@ -105,9 +105,9 @@ export function LoadStoryDialog({ stories, open, onOpenChange, onLoadStory, onDe
                           >
                             <TrashIcon className="w-5 text-red-600" />
                           </MotionButton>
-                        </Tooltip>
-                      )}
-                    />
+                        )}
+                      />
+                    </Tooltip>
                   )}
                 </div>
               </div>

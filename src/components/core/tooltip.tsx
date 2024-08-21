@@ -1,4 +1,4 @@
-import { PropsWithChildren, ReactNode } from "react";
+import { forwardRef, PropsWithChildren, ReactNode, Ref } from "react";
 import { Side } from "@/lib/types";
 import ConditionalTooltip from "./conditional-tooltip";
 
@@ -8,10 +8,12 @@ type Props = {
   duration?: number;
 }
 
-export default function Tooltip({ children, ...props }: PropsWithChildren<Props>) {
+const Tooltip = forwardRef(({ children, ...props }: PropsWithChildren<Props>, ref: Ref<HTMLDivElement>) => {
   return (
-    <ConditionalTooltip {...props} show={true}>
+    <ConditionalTooltip ref={ref} {...props} show={true}>
       {children}
     </ConditionalTooltip>
   );
-}
+});
+
+export default Tooltip;
