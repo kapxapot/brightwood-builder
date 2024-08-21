@@ -24,7 +24,7 @@ export function NewStoryAlertDialog({ currentStoryTitle, open, onOpenChange, onS
           values={{ currentStoryTitle }}
           components={[ <Badge variant="secondary" /> ]}
         >
-          Otherwise, all changes to the current story {<Badge variant="secondary">{currentStoryTitle}</Badge>} will be lost.
+          Otherwise, all changes to the current story <Badge variant="secondary">{currentStoryTitle}</Badge> will be lost.
         </Trans>
       )}
       open={open}
