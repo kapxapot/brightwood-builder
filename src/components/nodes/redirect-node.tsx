@@ -20,7 +20,7 @@ type Props = {
 const RedirectNode = memo(function RedirectNode({ data, selected }: Props) {
   const { t } = useTranslation();
 
-  const { nodeEditing, startEdit, finishEdit } = useNodeEditing();
+  const { nodeEditing, startEdit, finishEdit } = useNodeEditing(data);
 
   const totalWeight = data.links.reduce(
     (sum, link) => sum + link.weight,

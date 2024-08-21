@@ -19,7 +19,7 @@ type Props = {
 const StoryInfoNode = memo(function StoryInfoNode({ data, selected }: Props) {
   const { t } = useTranslation();
 
-  const { nodeEditing, startEdit, finishEdit } = useNodeEditing();
+  const { nodeEditing, startEdit, finishEdit } = useNodeEditing(data);
 
   const hasLanguage = !!data.language;
 

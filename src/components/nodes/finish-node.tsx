@@ -17,7 +17,7 @@ type Props = {
 const FinishNode = memo(function FinishNode({ data, selected }: Props) {
   const { t } = useTranslation();
 
-  const { nodeEditing, startEdit, finishEdit } = useNodeEditing();
+  const { nodeEditing, startEdit, finishEdit } = useNodeEditing(data);
 
   return (
     <NodeShell

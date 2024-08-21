@@ -20,7 +20,7 @@ type Props = {
 const SkipNode = memo(function SkipNode({ data, selected }: Props) {
   const { t } = useTranslation();
 
-  const { nodeEditing, startEdit, finishEdit } = useNodeEditing();
+  const { nodeEditing, startEdit, finishEdit } = useNodeEditing(data);
 
   return (
     <NodeShell
