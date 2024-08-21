@@ -2,6 +2,7 @@ import { OnChangeHandler, StoryNode, StoryNodeType } from "../entities/story-nod
 
 export const buildNodeData = (
   id: number,
+  key: string,
   type: StoryNodeType,
   changeHandler: OnChangeHandler
 ): StoryNode => {
@@ -9,6 +10,7 @@ export const buildNodeData = (
     case "action":
       return {
         id,
+        key,
         type,
         text: "",
         actions: [],
@@ -18,6 +20,7 @@ export const buildNodeData = (
     case "skip":
       return {
         id,
+        key,
         type,
         text: "",
         onChange: changeHandler
@@ -26,6 +29,7 @@ export const buildNodeData = (
     case "redirect":
       return {
         id,
+        key,
         type,
         text: "",
         links: [],
@@ -35,6 +39,7 @@ export const buildNodeData = (
     case "finish":
       return {
         id,
+        key,
         type,
         text: "",
         onChange: changeHandler

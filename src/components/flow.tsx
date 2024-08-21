@@ -6,7 +6,7 @@ import ActionNode from "./nodes/action-node";
 import SkipNode from "./nodes/skip-node";
 import RedirectNode from "./nodes/redirect-node";
 import FinishNode from "./nodes/finish-node";
-import { StoryGraph, defaultViewport } from "../builders/story-graph-builder";
+import { StoryGraph, defaultViewport, nodeKey } from "../builders/story-graph-builder";
 import { removeConnections, updateConnection } from "../lib/node-operations";
 import { isAllowedConnection, isDeletable } from "../lib/node-checks";
 import type { GraphNode, NodeEvent, OnChangeHandler, StoryInfoGraphNode, StoryNode, StoryNodeType } from "../entities/story-node";
@@ -257,17 +257,19 @@ export default function Flow() {
       });
 
       const nodeId = Math.max(...nodes.map(n => n.data.id)) + 1;
+      const key = nodeKey(currentStoryData!.storyKey, nodeId);
 
       const newNode: Node<StoryNode> = {
         id: String(nodeId),
         type,
         dragHandle: ".custom-drag-handle",
         position,
-        data: buildNodeData(nodeId, type as StoryNodeType, onNodeDataChange)
+        data: buildNodeData(nodeId, key, type as StoryNodeType, onNodeDataChange)
       };
 
       setNodes(curNodes => curNodes.concat(newNode));
     },
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     [reactFlowInstance, nodes, setNodes, onNodeDataChange]
   );
 
@@ -530,9 +532,7 @@ export default function Flow() {
           exportEnabled={isEmpty(validationMessages)}
         />
         <div className="flex-grow w-full" ref={reactFlowWrapper}>
-          {/* {currentStoryData?.uuid} */}
           <ReactFlow
-            // key={currentStoryData?.uuid}
             nodes={nodes}
             edges={edges}
             onSelectionChange={selectionChangeHandler}

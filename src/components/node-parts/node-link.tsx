@@ -2,7 +2,7 @@ import { type Link } from "../../entities/story-node";
 import NodeRef from "./node-ref";
 import Button from "../core/button";
 import { useEffect, useRef, useState } from "react";
-import { autoHeight, focusAndSelect } from "../../lib/ref-operations";
+import { autoHeight, focus } from "../../lib/ref-operations";
 import { weights } from "../../lib/constants";
 import HandleOut from "./handle-out";
 import { WeightDices } from "./weight-dices";
@@ -18,9 +18,9 @@ type Props = {
   index: number;
   totalWeight: number;
   deletable: boolean;
+  nodeEditing?: boolean;
   updateLink: (updatedLink: Link) => void;
   deleteLink: () => void;
-  nodeEditing: boolean;
   onEditStarted: () => void;
   onEditFinished: () => void;
 }
@@ -46,7 +46,7 @@ export default function NodeLink({ link, index, totalWeight, deletable, updateLi
     setEditing(true);
     onEditStarted();
 
-    setTimeout(() => focusAndSelect(inputRef, false));
+    focus(inputRef);
   }
 
   function cancelEdit() {

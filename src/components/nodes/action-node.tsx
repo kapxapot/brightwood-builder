@@ -20,10 +20,11 @@ type Props = {
 const ActionNode = memo(function ActionNode({ data, selected }: Props) {
   const { t } = useTranslation();
 
-  const { nodeEditing, startEdit, finishEdit } = useNodeEditing();
+  const { nodeEditing, startEdit, finishEdit } = useNodeEditing(data);
 
   return (
     <NodeShell
+      key={data.key}
       selected={selected}
       color={colors.action.tw}
     >

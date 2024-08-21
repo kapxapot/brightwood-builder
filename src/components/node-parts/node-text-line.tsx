@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import Button from "../core/button";
-import { autoHeight, focusAndSelect } from "../../lib/ref-operations";
+import { autoHeight, focus } from "../../lib/ref-operations";
 import { Delete, Edit } from "../core/icons";
 import { TextInputLabel } from "../core/text-input-label";
 import { useCharLimit } from "@/hooks/use-char-limit";
@@ -16,20 +16,18 @@ type Props = {
   charLimit?: number;
   updateLine: (updatedLine: string) => void;
   deleteLine: () => void;
-  onEditStarted?: () => void;
-  onEditFinished?: () => void;
-}
+  onEditStarted: () => void;
+  onEditFinished: () => void;
+};
 
 export default function NodeTextLine({ line, index, deletable, readonly, charLimit = 0, updateLine, deleteLine, onEditStarted, onEditFinished }: Props) {
   const { t } = useTranslation();
 
-  const noText = !line.length;
-
-  const [editedLine, setEditedLine] = useState(line);
-  const [editing, setEditing] = useState(noText);
-
+  const hasText = line.length;
   const inputRef = useRef<HTMLTextAreaElement>(null);
 
+  const [editedLine, setEditedLine] = useState(line);
+  const [editing, setEditing] = useState(!hasText);
   const { showCharLimit, valueTooLong} = useCharLimit(editedLine, charLimit);
 
   const MotionButton = motion(Button);
@@ -40,27 +38,26 @@ export default function NodeTextLine({ line, index, deletable, readonly, charLim
     }
 
     setEditedLine(line);
-
     setEditing(true);
-    onEditStarted?.();
+    onEditStarted();
 
-    setTimeout(() => focusAndSelect(inputRef, false));
+    focus(inputRef);
   }
 
   function cancelEdit() {
     setEditing(false);
-    onEditFinished?.();
+    onEditFinished();
 
-    if (line.length) {
+    if (hasText) {
       setEditedLine(line);
-    } else {
+    } else if (deletable) {
       deleteLine();
     }
   }
 
   function commitEdit() {
     setEditing(false);
-    onEditFinished?.();
+    onEditFinished();
 
     updateLine(editedLine);
   }
@@ -70,21 +67,21 @@ export default function NodeTextLine({ line, index, deletable, readonly, charLim
     setEditedLine(value);
   }
 
-  useEffect(function autoEditEmptyLine() {
-    if (noText) {
+  useEffect(() => {
+    if (!hasText) {
       startEdit();
     }
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  useEffect(function correctHeightOnEdit() {
+  useEffect(() => {
     autoHeight(inputRef);
   }, [editing, editedLine]);
 
   return (
     <>
       {/* edit */}
-      {editing &&
+      {editing && (
         <div className="border border-black border-opacity-20 rounded-lg border-dashed bg-white p-1 mt-3 text-sm nowheel">
           <TextInputLabel>
             {t("Text line")}
@@ -109,16 +106,16 @@ export default function NodeTextLine({ line, index, deletable, readonly, charLim
             >
               {t("Save")}
             </Button>
-            {(deletable || !noText) &&
+            {(deletable || hasText) &&
               <Button onClick={cancelEdit}>
                 {t("Cancel")}
               </Button>
             }
           </div>
         </div>
-      }
+      )}
       {/* view */}
-      {!editing &&
+      {!editing && (
         <motion.div
           className={`relative ${!readonly && "cursor-text"} text-sm`}
           initial="hidden"
@@ -130,12 +127,12 @@ export default function NodeTextLine({ line, index, deletable, readonly, charLim
             onClick={startEdit}
           >
             <span
-              className={`whitespace-pre-line ${noText && "opacity-30"}`}
+              className={`whitespace-pre-line ${!hasText && "opacity-30"}`}
               dangerouslySetInnerHTML={{ __html: line || `${t("Text line")} ${index + 1}` }}
             >
             </span>
           </p>
-          {!readonly &&
+          {!readonly && (
             <div className="absolute right-1 top-1 flex gap-1">
               <MotionButton
                 size="small"
@@ -156,9 +153,9 @@ export default function NodeTextLine({ line, index, deletable, readonly, charLim
                 </MotionButton>
               }
             </div>
-          }
+          )}
         </motion.div>
-      }
+      )}
     </>
   );
 }

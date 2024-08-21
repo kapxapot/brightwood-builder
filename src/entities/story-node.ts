@@ -26,6 +26,7 @@ export type OnChangeHandler = (data: GraphNode, event?: NodeEvent) => void;
 
 type BaseGraphNode = {
   id: NodeId;
+  key: string;
   position?: number[];
   onChange?: OnChangeHandler;
 };
@@ -65,6 +66,7 @@ export type StoryInfoGraphNode = BaseGraphNode & {
   startId?: NodeId;
   prefix?: string;
   data?: StoryData;
+  storyKey: string;
   onChange?: OnChangeHandler;
 };
 

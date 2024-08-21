@@ -29,6 +29,7 @@ const RedirectNode = memo(function RedirectNode({ data, selected }: Props) {
 
   return (
     <NodeShell
+      key={data.key}
       selected={selected}
       color={colors.redirect.tw}
     >

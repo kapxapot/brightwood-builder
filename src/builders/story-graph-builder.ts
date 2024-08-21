@@ -58,9 +58,12 @@ export function buildStoryGraph(
     edges.push(edge);
   };
 
+  const storyKey = uuid();
+
   // add story info node
   const storyInfoData: StoryInfoGraphNode = {
     id: storyInfoNodeId,
+    key: nodeKey(storyKey, storyInfoNodeId),
     uuid: story.id,
     type: "storyInfo",
     title: story.title,
@@ -69,6 +72,7 @@ export function buildStoryGraph(
     startId: story.startId,
     prefix: story.prefix,
     data: story.data,
+    storyKey,
     position: story.position,
     onChange: changeHandler,
   };
@@ -90,6 +94,7 @@ export function buildStoryGraph(
   for (const data of story.nodes) {
     const nodeData: StoryNode = {
       ...data,
+      key: nodeKey(storyKey, data.id),
       onChange: changeHandler
     };
 
@@ -151,11 +156,15 @@ export function buildNewStoryNode(
   languageCode: string,
   changeHandler: OnChangeHandler
 ): BuilderNode {
+  const id = uuid();
+
   const data: StoryInfoGraphNode = {
     id: storyInfoNodeId,
-    uuid: uuid(),
+    key: nodeKey(id, storyInfoNodeId),
+    uuid: id,
     type: "storyInfo",
     language: languageCode,
+    storyKey: id,
     onChange: changeHandler
   };
 
@@ -169,3 +178,5 @@ export function buildNewStoryNode(
 
   return node;
 }
+
+export const nodeKey = (uuid: string, nodeId: number) => `${uuid}_${nodeId}`;

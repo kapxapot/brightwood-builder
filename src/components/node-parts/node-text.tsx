@@ -8,10 +8,10 @@ import NodeTextLine from "./node-text-line";
 type Props = {
   data: StoryNode;
   allowEmpty?: boolean;
-  readonly: boolean;
+  readonly?: boolean;
   onEditStarted: () => void;
   onEditFinished: () => void;
-}
+};
 
 export default function NodeText({ data, allowEmpty, readonly, onEditStarted, onEditFinished }: Props) {
   const { t } = useTranslation();

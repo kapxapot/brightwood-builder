@@ -9,6 +9,7 @@ import { fetchCurrentStoryId } from "@/lib/storage";
 import { useTranslation } from "react-i18next";
 import { motion } from "framer-motion";
 import { useEffect, useRef } from "react";
+import { focus } from "@/lib/ref-operations";
 
 type Props = {
   stories: StoryShortcut[];
@@ -28,11 +29,7 @@ export function LoadStoryDialog({ stories, open, onOpenChange, onLoadStory, onDe
 
   const closeRef = useRef<HTMLButtonElement>(null);
 
-  useEffect(() => {
-    if (closeRef.current) {
-      closeRef.current.focus();
-    }
-  }, []);
+  useEffect(() => focus(closeRef), []);
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>

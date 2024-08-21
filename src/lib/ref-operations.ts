@@ -5,14 +5,29 @@ type AutoHeightableInput = Element & ElementCSSInlineStyle;
 
 type Ref<T> = React.RefObject<T>;
 
-export function focusAndSelect<T extends EditableInput>(ref: Ref<T>, select: boolean = true) {
-  if (ref.current) {
-    ref.current.focus();
+export function focus<T extends HTMLOrSVGElement>(ref: Ref<T>) {
+  setTimeout(() => {
+    const cur = ref.current;
 
-    if (select) {
-      ref.current.select();
+    if (!cur) {
+      return;
     }
-  }
+
+    cur.focus();
+  });
+}
+
+export function focusAndSelect<T extends EditableInput>(ref: Ref<T>) {
+  setTimeout(() => {
+    const cur = ref.current;
+
+    if (!cur) {
+      return;
+    }
+
+    cur.focus();
+    cur.select();
+  });
 }
 
 export function autoHeight<T extends AutoHeightableInput>(ref: Ref<T>, maxHeight: number = 200) {

@@ -24,6 +24,7 @@ const SkipNode = memo(function SkipNode({ data, selected }: Props) {
 
   return (
     <NodeShell
+      key={data.key}
       selected={selected}
       color={colors.skip.tw}
     >

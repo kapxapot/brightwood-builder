@@ -2,7 +2,7 @@ import { type Action } from "../../entities/story-node";
 import NodeRef from "./node-ref";
 import Button from "../core/button";
 import { useEffect, useRef, useState } from "react";
-import { autoHeight, focusAndSelect } from "../../lib/ref-operations";
+import { autoHeight, focus } from "../../lib/ref-operations";
 import HandleOut from "./handle-out";
 import { Bolt, Delete, Edit } from "../core/icons";
 import { TextInputLabel } from "../core/text-input-label";
@@ -15,7 +15,7 @@ type Props = {
   action: Action;
   index: number;
   deletable: boolean;
-  nodeEditing: boolean;
+  nodeEditing?: boolean;
   charLimit?: number;
   updateAction: (updatedAction: Action) => void;
   deleteAction: () => void;
@@ -44,7 +44,7 @@ export default function NodeAction({ action, index, deletable, nodeEditing, char
     setEditing(true);
     onEditStarted();
 
-    setTimeout(() => focusAndSelect(inputRef, false));
+    focus(inputRef);
   }
 
   function cancelEdit() {

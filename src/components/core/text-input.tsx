@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import Button from "../core/button";
-import { autoHeight, focusAndSelect } from "../../lib/ref-operations";
+import { autoHeight, focus } from "../../lib/ref-operations";
 import { Edit } from "./icons";
 import { TextInputLabel } from "./text-input-label";
 import { useCharLimit } from "@/hooks/use-char-limit";
@@ -46,7 +46,7 @@ export default function TextInput({ value, label, rowCount, readonly, charLimit 
     setEditing(true);
     onEditStarted?.();
 
-    setTimeout(() => focusAndSelect(inputRef, false));
+    focus(inputRef);
   }
 
   function cancelEdit() {

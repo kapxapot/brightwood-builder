@@ -37,6 +37,7 @@ const StoryInfoNode = memo(function StoryInfoNode({ data, selected }: Props) {
 
   return (
     <NodeShell
+      key={data.key}
       selected={selected}
       color={colors.storyInfo.tw}
       spaceY="none"
