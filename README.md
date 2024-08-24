@@ -4,6 +4,14 @@ A web app for building **Brightwood Stories**.
 
 Live: https://brightwood-builder.onrender.com
 
+UI languages:
+
+- English 🇬🇧
+- Español 🇪🇸
+- Italiano 🇮🇹
+- 日本語 🇯🇵
+- Русский 🇷🇺
+
 Brightwood Stories Telegram bot: [@BrightwoodBot](https://t.me/BrightwoodBot) 🇷🇺
 
 ## Import
