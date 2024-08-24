@@ -119,6 +119,6 @@ export const languages: LanguageInfo[] = [
   }
 ] as const;
 
-const uiLanguageCodes = ["en", "it", "ru"];
+const uiLanguageCodes = ["en", "es", "it", "ja", "ru"];
 
 export const uiLanguages = languages.filter(lng => uiLanguageCodes.includes(lng.code));
