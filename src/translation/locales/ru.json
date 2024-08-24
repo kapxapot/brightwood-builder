@@ -64,7 +64,7 @@
   "effect": "эффект",
   "{{count}} in total": "{{count}} всего",
   "Malformed story JSON.": "Некорректный JSON-формат истории.",
-  "Incorrect values": "Неверный значения",
+  "Incorrect values": "Неверные значения",
   "Failed to parse JSON": "Не удалось распарсить JSON",
   "Link weight": "Вес ссылки",
   "Probability": "Вероятность",
