@@ -66,7 +66,7 @@ export function ImportStoryDialog({ open, onOpenChange, onImport }: Props) {
                   <FormDescription>
                     <Trans
                       i18nKey="dialogs.chooseFileToImport"
-                      components={[ <span className="font-bold" /> ]}
+                      components={[<span className="font-bold" />]}
                     >
                       Choose a <span className="font-bold">.json</span> story file to import
                     </Trans>

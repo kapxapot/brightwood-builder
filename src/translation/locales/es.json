@@ -42,7 +42,7 @@
   "Don't save": "No guardar",
   "dialogs": {
     "deleteStory": "¿Estás seguro de que quieres eliminar <0>{{storyName}}</0>? Se perderán todos los datos de la historia.",
-    "newStory": "De lo contrario, se perderán todos los datos de la historia <0>{{currentStoryTitle}}</0>.",
+    "newStory": "De lo contrario, se perderán todos los datos de la historia <0>{{storyName}}</0>.",
     "overwriteStory": "Ya existe una historia con el mismo id <0>{{storyId}}...</0>.",
     "chooseFileToImport": "Elije el archivo <0>.json</0> de historia para importar"
   },
@@ -73,10 +73,10 @@
   "Add text": "Añadir texto",
   "Add action": "Añadir acción",
   "Add link": "Añadir enlace",
-  "skipsToNode": "Conduce a nodo <0 />",
+  "Skips to": "Conduce a",
   "Title": "Título",
   "Description": "Descripción",
-  "itStartsWithNode": "Empieza con <0 />",
+  "It starts with": "Empieza con",
   "Add at least one text line.": "Agrega al menos una línea de texto.",
   "Add a destination node.": "Agrega un nodo de destino.",
   "Add at least one link.": "Agrega al menos un enlace.",

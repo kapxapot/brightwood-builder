@@ -42,7 +42,7 @@
   "Don't save": "Не сохранять",
   "dialogs": {
     "deleteStory": "Вы уверены, что хотите удалить историю <0>{{storyName}}</0>? Все данные истории пропадут.",
-    "newStory": "Иначе все изменения текущей истории <0>{{currentStoryTitle}}</0> пропадут.",
+    "newStory": "Иначе все изменения текущей истории <0>{{storyName}}</0> пропадут.",
     "overwriteStory": "История с таким же id <0>{{storyId}}...</0> уже существует.",
     "chooseFileToImport": "Выберите <0>.json</0> файл истории для импорта"
   },
@@ -73,10 +73,10 @@
   "Add text": "Добавить текст",
   "Add action": "Добавить действие",
   "Add link": "Добавить ссылку",
-  "skipsToNode": "Ведет к <0 />",
+  "Skips to": "Ведет к",
   "Title": "Заголовок",
   "Description": "Описание",
-  "itStartsWithNode": "Мы начинаем с <0 />",
+  "It starts with": "Мы начинаем с",
   "Add at least one text line.": "Добавьте как минимум одну текстовую строку.",
   "Add a destination node.": "Добавьте целевой узел.",
   "Add at least one link.": "Добавьте как минимум одну ссылку.",

@@ -8,7 +8,7 @@ import TextInput from "../core/text-input";
 import HandleOut from "../node-parts/handle-out";
 import NodeShell from "../node-parts/node-shell";
 import { Flag } from "../core/icons";
-import { Trans, useTranslation } from "react-i18next";
+import { useTranslation } from "react-i18next";
 import { LanguageSelector } from "../language-selector";
 
 type Props = {
@@ -83,13 +83,9 @@ const StoryInfoNode = memo(function StoryInfoNode({ data, selected }: Props) {
         <div className="flex gap-1">
           <Flag />
           <span>
-            <Trans
-              i18nKey="itStartsWithNode"
-              components={[ <NodeRef id={data.startId} /> ]}
-            >
-              It starts with <NodeRef id={data.startId} />
-            </Trans>
+            {t("It starts with")}
           </span>
+          <NodeRef id={data.startId} />
         </div>
         <HandleOut id="0" connected={!!data.startId} />
       </div>

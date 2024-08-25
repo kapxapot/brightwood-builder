@@ -20,7 +20,7 @@ import { LoadStoryDialog } from "./dialogs/load-story-dialog";
 import { useStories } from "@/hooks/use-stories";
 import { ImportStoryDialog } from "./dialogs/import-story-dialog";
 import { ValidationMessage, validateNodes } from "@/lib/validation";
-import { isEmpty, truncateId } from "@/lib/common";
+import { isEmpty, titleOrTruncatedId, truncateId } from "@/lib/common";
 import { ValidationMessages } from "./validation-messages";
 import { buildStory } from "@/builders/story-builder";
 import { exportToJsonFile } from "@/lib/export";
@@ -489,9 +489,9 @@ export default function Flow() {
 
   return (
     <>
-      {newStoryAlertDialogOpen &&
+      {newStoryAlertDialogOpen && currentStoryData &&
         <NewStoryAlertDialog
-          currentStoryTitle={currentStoryData?.title}
+          storyName={titleOrTruncatedId(currentStoryData.title, currentStoryData.uuid)}
           open={newStoryAlertDialogOpen}
           onOpenChange={setNewStoryAlertDialogOpen}
           onSave={saveThenNewStory}

@@ -42,7 +42,7 @@
   "Don't save": "セーブしません",
   "dialogs": {
     "deleteStory": "<0>{{storyName}}</0>ストーリーを削除してもよろしいですか。ストーリーデータはすべて失われます。",
-    "newStory": "そうしないと、現在の<0>{{currentStoryTitle}}</0>ストーリーへのすべての変更が失われます。",
+    "newStory": "そうしないと、現在の<0>{{storyName}}</0>ストーリーへのすべての変更が失われます。",
     "overwriteStory": "同じIDのストーリー<0>{{storyId}}...</0>がすでに存在します。",
     "chooseFileToImport": "インポートする<0>.json</0>ストーリーファイルを選択してください。"
   },
@@ -73,10 +73,10 @@
   "Add text": "テキストを追加する",
   "Add action": "行いを追加する",
   "Add link": "リンクを追加する",
-  "skipsToNode": "<0 />ノードへスキップする",
+  "Skips to": "ノードへスキップする",
   "Title": "タイトル",
   "Description": "説明",
-  "itStartsWithNode": "<0 />ノードから始まります",
+  "It starts with": "ノードから始まります",
   "Add at least one text line.": "少なくとも 1 行のテキスト行を追加してください。",
   "Add a destination node.": "宛先ノードを追加してください。",
   "Add at least one link.": "少なくとも 1 つのリンクを追加してください",

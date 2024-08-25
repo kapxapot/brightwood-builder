@@ -5,14 +5,14 @@ import { AlertDialogAction, AlertDialogCancel } from "../ui/alert-dialog";
 import { Trans, useTranslation } from "react-i18next";
 
 type Props = {
-  currentStoryTitle?: string;
+  storyName: string;
   open: boolean;
   onOpenChange: (open: boolean) => void;
   onSave: () => void;
   onDontSave: () => void;
 }
 
-export function NewStoryAlertDialog({ currentStoryTitle, open, onOpenChange, onSave, onDontSave }: Props) {
+export function NewStoryAlertDialog({ storyName, open, onOpenChange, onSave, onDontSave }: Props) {
   const { t } = useTranslation();
 
   return (
@@ -21,10 +21,10 @@ export function NewStoryAlertDialog({ currentStoryTitle, open, onOpenChange, onS
       description={(
         <Trans
           i18nKey="dialogs.newStory"
-          values={{ currentStoryTitle }}
-          components={[ <Badge variant="secondary" /> ]}
+          values={{ storyName }}
+          components={[<Badge variant="secondary" />]}
         >
-          Otherwise, all changes to the current story <Badge variant="secondary">{currentStoryTitle}</Badge> will be lost.
+          Otherwise, all changes to the current story <Badge variant="secondary">{storyName}</Badge> will be lost.
         </Trans>
       )}
       open={open}

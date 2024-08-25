@@ -27,7 +27,7 @@ export function ConfirmOverwriteStoryAlertDialog({ storyId, open, onOpenChange, 
             values={{
               storyId: truncateId(storyId)
             }}
-            components={[ <Badge variant="secondary" /> ]}
+            components={[<Badge variant="secondary" />]}
           >
             A story with the same id <Badge variant="secondary">{truncateId(storyId)}...</Badge> already exists.
           </Trans>

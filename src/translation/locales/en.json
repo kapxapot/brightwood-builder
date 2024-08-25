@@ -1,13 +1,11 @@
 {
   "dialogs": {
     "deleteStory": "Are you sure you want to delete the story <0>{{storyName}}</0>? All story data will be lost.",
-    "newStory": "Otherwise, all changes to the current story <0>{{currentStoryTitle}}</0> will be lost.",
+    "newStory": "Otherwise, all changes to the current story <0>{{storyName}}</0> will be lost.",
     "overwriteStory": "A story with the same id <0>{{storyId}}...</0> already exists.",
     "chooseFileToImport": "Choose a <0>.json</0> story file to import"
   },
   "loadStoryTitle": "Load story",
   "importStoryTitle": "Import story",
-  "importVerb": "Import",
-  "skipsToNode": "Skips to <0 />",
-  "itStartsWithNode": "It starts with <0 />"
+  "importVerb": "Import"
 }

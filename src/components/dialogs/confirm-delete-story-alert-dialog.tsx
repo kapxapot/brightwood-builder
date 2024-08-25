@@ -21,7 +21,7 @@ export function ConfirmDeleteStoryAlertDialog({ storyName, trigger, onConfirm }:
         <Trans
           i18nKey="dialogs.deleteStory"
           values={{ storyName }}
-          components={[ <Badge variant="secondary" /> ]}
+          components={[<Badge variant="secondary" />]}
         >
           Are you sure you want to delete the story <Badge variant="secondary">{storyName}</Badge>? All story data will be lost.
         </Trans>

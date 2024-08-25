@@ -1,5 +1,5 @@
 import { Dialog, DialogClose, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle } from "../ui/dialog";
-import { isEmpty, truncateId } from "@/lib/common";
+import { isEmpty, titleOrTruncatedId } from "@/lib/common";
 import { Button } from "../ui/button";
 import Tooltip from "../core/tooltip";
 import { ArrowUpTrayIcon, NoSymbolIcon, TrashIcon } from "@heroicons/react/24/outline";
@@ -92,7 +92,7 @@ export function LoadStoryDialog({ stories, open, onOpenChange, onLoadStory, onDe
                     <Tooltip tooltip={t("Delete story")} side="top">
                       <ConfirmDeleteStoryAlertDialog
                         onConfirm={() => onDeleteStory(story.id)}
-                        storyName={story.title ?? `${truncateId(story.id)}...`}
+                        storyName={titleOrTruncatedId(story.title, story.id)}
                         trigger={(
                           <MotionButton
                             variant="ghost"

@@ -8,6 +8,8 @@ export function toArray<T>(value: T | T[] | undefined | null): T[] {
 
 export const isEmpty = <T>(array: T[]) => array.length === 0;
 
-export function truncateId(id: string): string {
-  return id.split("-")[0];
+export const truncateId = (id: string) => id.split("-")[0];
+
+export function titleOrTruncatedId(title: string | undefined, id: string) {
+  return title ?? `${truncateId(id)}...`;
 }
