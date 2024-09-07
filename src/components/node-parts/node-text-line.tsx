@@ -134,21 +134,21 @@ export default function NodeTextLine({ line, index, deletable, readonly, charLim
           animate="hidden"
           whileHover="visible"
         >
+          {isImageUrl &&
+            <img src={line} alt="" className="w-full h-auto rounded-lg" />
+          }
+          {!isImageUrl &&
           <p
-            className={`border border-black border-opacity-20 rounded-lg border-dashed bg-white bg-opacity-50 ${isImageUrl ? "p-0.5" : "px-2 py-1 break-words"}`}
+            className="border border-black border-opacity-20 rounded-lg border-dashed bg-white bg-opacity-50 px-2 py-1 break-words"
             onClick={startEdit}
           >
-            {isImageUrl &&
-              <img src={line} alt="" className="w-full h-auto rounded-md" />
-            }
-            {!isImageUrl &&
-              <span
-                className={`whitespace-pre-line ${virgin && "opacity-30"}`}
-                dangerouslySetInnerHTML={{ __html: line || `${t("Text line")} ${index + 1}` }}
-              >
-              </span>
-            }
+            <span
+              className={`whitespace-pre-line ${virgin && "opacity-30"}`}
+              dangerouslySetInnerHTML={{ __html: line || `${t("Text line")} ${index + 1}` }}
+            >
+            </span>
           </p>
+          }
           {!readonly && (
             <div className="absolute right-1 top-1 flex gap-1">
               <MotionButton
