@@ -78,6 +78,11 @@ export default function NodeTextLine({ line, index, deletable, readonly, charLim
     autoHeight(inputRef);
   }, [editing, editedLine]);
 
+  function isImageUrl(line: string) {
+    return (line.startsWith("http://") || line.startsWith("https://"))
+      && (line.endsWith(".png") || line.endsWith(".jpg") || line.endsWith(".jpeg") || line.endsWith(".gif") || line.endsWith(".webp"));
+  }
+
   return (
     <>
       {/* edit */}
@@ -123,14 +128,19 @@ export default function NodeTextLine({ line, index, deletable, readonly, charLim
           whileHover="visible"
         >
           <p
-            className="border border-black border-opacity-20 rounded-lg border-dashed bg-white bg-opacity-50 px-2 py-1 break-words"
+            className="border border-black border-opacity-20 rounded-lg border-dashed bg-white bg-opacity-50"
             onClick={startEdit}
           >
-            <span
-              className={`whitespace-pre-line ${virgin && "opacity-30"}`}
-              dangerouslySetInnerHTML={{ __html: line || `${t("Text line")} ${index + 1}` }}
-            >
-            </span>
+            {isImageUrl(line) &&
+              <img src={line} alt="" className="w-full h-auto rounded-lg p-0.5" />
+            }
+            {!isImageUrl(line) &&
+              <span
+                className={`px-2 py-1 break-words whitespace-pre-line ${virgin && "opacity-30"}`}
+                dangerouslySetInnerHTML={{ __html: line || `${t("Text line")} ${index + 1}` }}
+              >
+              </span>
+            }
           </p>
           {!readonly && (
             <div className="absolute right-1 top-1 flex gap-1">
