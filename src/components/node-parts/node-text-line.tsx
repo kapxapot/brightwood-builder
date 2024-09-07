@@ -143,7 +143,7 @@ export default function NodeTextLine({ line, index, deletable, readonly, charLim
             onClick={startEdit}
           >
             <span
-              className={`whitespace-pre-line ${virgin && "opacity-30"}`}
+              className={`whitespace-pre-wrap [&>pre]:whitespace-pre-wrap ${virgin && "opacity-30"}`}
               dangerouslySetInnerHTML={{ __html: line || `${t("Text line")} ${index + 1}` }}
             >
             </span>
