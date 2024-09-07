@@ -139,7 +139,7 @@ export default function NodeTextLine({ line, index, deletable, readonly, charLim
             onClick={startEdit}
           >
             {isImageUrl &&
-              <img src={line} alt="" className="w-full h-auto rounded-lg" />
+              <img src={line} alt="" className="w-full h-auto rounded-md" />
             }
             {!isImageUrl &&
               <span
