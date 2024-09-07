@@ -78,10 +78,17 @@ export default function NodeTextLine({ line, index, deletable, readonly, charLim
     autoHeight(inputRef);
   }, [editing, editedLine]);
 
-  function isImageUrl(line: string) {
-    return (line.startsWith("http://") || line.startsWith("https://"))
-      && (line.endsWith(".png") || line.endsWith(".jpg") || line.endsWith(".jpeg") || line.endsWith(".gif") || line.endsWith(".webp"));
-  }
+  const isImageUrl =
+    (
+      editedLine.startsWith("http://")
+      || editedLine.startsWith("https://")
+    ) && (
+      editedLine.endsWith(".png")
+      || editedLine.endsWith(".jpg")
+      || editedLine.endsWith(".jpeg")
+      || editedLine.endsWith(".gif")
+      || editedLine.endsWith(".webp")
+    );
 
   return (
     <>
@@ -128,15 +135,15 @@ export default function NodeTextLine({ line, index, deletable, readonly, charLim
           whileHover="visible"
         >
           <p
-            className="border border-black border-opacity-20 rounded-lg border-dashed bg-white bg-opacity-50"
+            className={`border border-black border-opacity-20 rounded-lg border-dashed bg-white bg-opacity-50 ${isImageUrl ? "p-0.5" : "px-2 py-1 break-words"}`}
             onClick={startEdit}
           >
-            {isImageUrl(line) &&
-              <img src={line} alt="" className="w-full h-auto rounded-lg p-0.5" />
+            {isImageUrl &&
+              <img src={line} alt="" className="w-full h-auto rounded-lg" />
             }
-            {!isImageUrl(line) &&
+            {!isImageUrl &&
               <span
-                className={`px-2 py-1 break-words whitespace-pre-line ${virgin && "opacity-30"}`}
+                className={`whitespace-pre-line ${virgin && "opacity-30"}`}
                 dangerouslySetInnerHTML={{ __html: line || `${t("Text line")} ${index + 1}` }}
               >
               </span>
