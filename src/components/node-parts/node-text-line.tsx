@@ -78,17 +78,7 @@ export default function NodeTextLine({ line, index, deletable, readonly, charLim
     autoHeight(inputRef);
   }, [editing, editedLine]);
 
-  const isImageUrl =
-    (
-      editedLine.startsWith("http://")
-      || editedLine.startsWith("https://")
-    ) && (
-      editedLine.endsWith(".png")
-      || editedLine.endsWith(".jpg")
-      || editedLine.endsWith(".jpeg")
-      || editedLine.endsWith(".gif")
-      || editedLine.endsWith(".webp")
-    );
+  const isImageUrl = /^https?:\/\/.*\.(png|jpe?g|gif|webp)$/i.test(editedLine);
 
   return (
     <>
