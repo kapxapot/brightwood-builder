@@ -62,6 +62,7 @@ export type StoryInfoGraphNode = BaseGraphNode & {
   position?: number[];
   title?: string;
   description?: string;
+  cover?: string;
   language?: string;
   startId?: NodeId;
   prefix?: string;

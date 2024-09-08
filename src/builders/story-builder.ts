@@ -26,6 +26,7 @@ export function buildStory(t: Translator, storyGraph: StoryGraph): Story {
     id: storyData.uuid,
     title: storyData.title,
     description: storyData.description,
+    cover: storyData.cover,
     language: storyData.language,
     startId: storyData.startId,
     prefix: storyData.prefix,

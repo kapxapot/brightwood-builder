@@ -31,6 +31,10 @@ const StoryInfoNode = memo(function StoryInfoNode({ data, selected }: Props) {
     data.onChange?.({ ...data, description });
   };
 
+  const updateCover = (cover: string) => {
+    data.onChange?.({ ...data, cover });
+  };
+
   const updateLanguage = (language: string) => {
     data.onChange?.({ ...data, language });
   };
@@ -60,6 +64,17 @@ const StoryInfoNode = memo(function StoryInfoNode({ data, selected }: Props) {
         readonly={nodeEditing}
         charLimit={1000}
         onValueChanged={updateDescription}
+        onEditStarted={startEdit}
+        onEditFinished={finishEdit}
+      />
+
+      <TextInput
+        value={data.cover}
+        label={t("Cover")}
+        readonly={nodeEditing}
+        charLimit={500}
+        renderAsImage={true}
+        onValueChanged={updateCover}
         onEditStarted={startEdit}
         onEditFinished={finishEdit}
       />

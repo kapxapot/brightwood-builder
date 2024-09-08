@@ -7,6 +7,7 @@ import { useCharLimit } from "@/hooks/use-char-limit";
 import { useTranslation } from "react-i18next";
 import { motion } from "framer-motion";
 import { popupButtonVariants } from "@/lib/motion";
+import { isImageUrl } from "@/lib/url";
 
 type Props = {
   line: string;
@@ -78,7 +79,7 @@ export default function NodeTextLine({ line, index, deletable, readonly, charLim
     autoHeight(inputRef);
   }, [editing, editedLine]);
 
-  const isImageUrl = /^https?:\/\/.*\.(png|jpe?g|gif|webp)$/i.test(editedLine);
+  const isImage = isImageUrl(editedLine);
 
   return (
     <>
@@ -124,20 +125,20 @@ export default function NodeTextLine({ line, index, deletable, readonly, charLim
           animate="hidden"
           whileHover="visible"
         >
-          {isImageUrl &&
+          {isImage &&
             <img src={line} alt="" className="w-full h-auto rounded-lg" />
           }
-          {!isImageUrl &&
-          <p
-            className="border border-black border-opacity-20 rounded-lg border-dashed bg-white bg-opacity-50 px-2 py-1 break-words"
-            onClick={startEdit}
-          >
-            <span
-              className={`whitespace-pre-wrap [&>pre]:whitespace-pre-wrap ${virgin && "opacity-30"}`}
-              dangerouslySetInnerHTML={{ __html: line || `${t("Text line")} ${index + 1}` }}
+          {!isImage &&
+            <p
+              className="border border-black border-opacity-20 rounded-lg border-dashed bg-white bg-opacity-50 px-2 py-1 break-words"
+              onClick={startEdit}
             >
-            </span>
-          </p>
+              <span
+                className={`whitespace-pre-wrap [&>pre]:whitespace-pre-wrap ${virgin && "opacity-30"}`}
+                dangerouslySetInnerHTML={{ __html: line || `${t("Text line")} ${index + 1}` }}
+              >
+              </span>
+            </p>
           }
           {!readonly && (
             <div className="absolute right-1 top-1 flex gap-1">

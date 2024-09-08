@@ -68,6 +68,7 @@ export function buildStoryGraph(
     type: "storyInfo",
     title: story.title,
     description: story.description,
+    cover: story.cover,
     language: story.language,
     startId: story.startId,
     prefix: story.prefix,

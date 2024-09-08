@@ -7,6 +7,7 @@ import { useCharLimit } from "@/hooks/use-char-limit";
 import { useTranslation } from "react-i18next";
 import { motion } from "framer-motion";
 import { popupButtonVariants } from "@/lib/motion";
+import { isImageUrl } from "@/lib/url";
 
 const defaultRowCount = 2;
 
@@ -16,12 +17,13 @@ type Props = {
   rowCount?: number;
   readonly?: boolean;
   charLimit?: number;
+  renderAsImage?: boolean;
   onValueChanged?: (value: string) => void;
   onEditStarted?: () => void;
   onEditFinished?: () => void;
 }
 
-export default function TextInput({ value, label, rowCount, readonly, charLimit = 0, onValueChanged, onEditStarted, onEditFinished }: Props) {
+export default function TextInput({ value, label, rowCount, readonly = false, charLimit = 0, renderAsImage = false, onValueChanged, onEditStarted, onEditFinished }: Props) {
   const { t } = useTranslation();
 
   const initialValue = value || "";
@@ -71,6 +73,8 @@ export default function TextInput({ value, label, rowCount, readonly, charLimit 
     autoHeight(inputRef);
   }, [editing, editedValue]);
 
+  const isImage = renderAsImage && isImageUrl(editedValue);
+
   return (
     <div className={`${editing ? "mt-2" : "mt-1"}`}>
       {/* edit */}
@@ -108,7 +112,7 @@ export default function TextInput({ value, label, rowCount, readonly, charLimit 
       {/* view */}
       {!editing &&
         <motion.div
-          className={`${!readonly && "cursor-text"} text-sm`}
+          className={`relative ${!readonly && "cursor-text"} text-sm`}
           initial="hidden"
           animate="hidden"
           whileHover="visible"
@@ -118,28 +122,33 @@ export default function TextInput({ value, label, rowCount, readonly, charLimit 
               {label}
             </span>
           }
-          <div
-            className="relative border border-black border-opacity-20 rounded-lg border-dashed bg-white bg-opacity-50 px-2 py-1"
-            onClick={startEdit}
-          >
-            <span
-              className={`whitespace-pre-line break-words ${noValue && "opacity-30"}`}
-              dangerouslySetInnerHTML={{ __html: value || label }}
+          {isImage &&
+            <img src={value} alt="" className="w-full h-auto rounded-lg" />
+          }
+          {!isImage &&
+            <div
+              className="border border-black border-opacity-20 rounded-lg border-dashed bg-white bg-opacity-50 px-2 py-1"
+              onClick={startEdit}
             >
-            </span>
-            {!readonly &&
-              <div className="absolute right-1 top-1">
-                <MotionButton
-                  size="small"
-                  onClick={startEdit}
-                  variants={popupButtonVariants}
-                  custom={1}
-                >
-                  <Edit />
-                </MotionButton>
-              </div>
-            }
+              <span
+                className={`whitespace-pre-line break-words ${noValue && "opacity-30"}`}
+                dangerouslySetInnerHTML={{ __html: value || label }}
+              >
+              </span>
             </div>
+          }
+          {!readonly &&
+            <div className="absolute right-1 top-6">
+              <MotionButton
+                size="small"
+                onClick={startEdit}
+                variants={popupButtonVariants}
+                custom={1}
+              >
+                <Edit />
+              </MotionButton>
+            </div>
+          }
         </motion.div>
       }
     </div>
