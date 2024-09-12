@@ -90,5 +90,7 @@
   "Switch interface language": "Переключить язык интерфейса",
   "Language": "Язык",
   "Select the story language.": "Выберите язык истории.",
-  "Cover": "Обложка"
+  "Cover": "Обложка",
+  "Move up": "Передвинуть вверх",
+  "Move down": "Передвинуть вниз"
 }
