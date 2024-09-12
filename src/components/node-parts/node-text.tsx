@@ -1,7 +1,7 @@
 import { useTranslation } from "react-i18next";
 import type { StoryNode } from "../../entities/story-node";
 import { toArray } from "../../lib/common";
-import { addTextLine, deleteTextLine, updateTextLine } from "../../lib/node-data-mutations";
+import { addTextLine, deleteTextLine, moveTextLineDown, moveTextLineUp, updateTextLine } from "../../lib/node-data-mutations";
 import Button from "../core/button";
 import NodeTextLine from "./node-text-line";
 
@@ -23,14 +23,18 @@ export default function NodeText({ data, allowEmpty, readonly, onEditStarted, on
     <>
       {lines.map((line, index) =>
         <NodeTextLine
-          key={index}
+          key={`${line}-${index}`}
           index={index}
           line={line}
           deletable={allowEmpty || lines.length > 1}
           readonly={readonly}
           charLimit={1000}
+          isFirst={index === 0}
+          isLast={index === lines.length - 1}
           updateLine={updatedLine => updateTextLine(data, index, updatedLine)}
           deleteLine={() => deleteTextLine(data, index)}
+          moveLineUp={() => moveTextLineUp(data, index)}
+          moveLineDown={() => moveTextLineDown(data, index)}
           onEditStarted={onEditStarted}
           onEditFinished={onEditFinished}
         />

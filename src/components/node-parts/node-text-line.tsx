@@ -1,12 +1,10 @@
 import { useEffect, useRef, useState } from "react";
 import Button from "../core/button";
 import { autoHeight, focus } from "../../lib/ref-operations";
-import { Delete, Edit } from "../core/icons";
+import { Delete, Edit, MoveDown, MoveUp } from "../core/icons";
 import { TextInputLabel } from "../core/text-input-label";
 import { useCharLimit } from "@/hooks/use-char-limit";
 import { useTranslation } from "react-i18next";
-import { motion } from "framer-motion";
-import { popupButtonVariants } from "@/lib/motion";
 import { isImageUrl } from "@/lib/url";
 
 type Props = {
@@ -15,13 +13,17 @@ type Props = {
   deletable: boolean;
   readonly?: boolean;
   charLimit?: number;
+  isFirst: boolean;
+  isLast: boolean;
   updateLine: (updatedLine: string) => void;
   deleteLine: () => void;
+  moveLineUp: () => void;
+  moveLineDown: () => void;
   onEditStarted: () => void;
   onEditFinished: () => void;
 };
 
-export default function NodeTextLine({ line, index, deletable, readonly, charLimit = 0, updateLine, deleteLine, onEditStarted, onEditFinished }: Props) {
+export default function NodeTextLine({ line, index, deletable, readonly, charLimit = 0, isFirst, isLast, updateLine, deleteLine, moveLineUp, moveLineDown, onEditStarted, onEditFinished }: Props) {
   const { t } = useTranslation();
 
   const virgin = !line.length;
@@ -30,8 +32,6 @@ export default function NodeTextLine({ line, index, deletable, readonly, charLim
   const [editedLine, setEditedLine] = useState(line);
   const [editing, setEditing] = useState(virgin);
   const { showCharLimit, valueTooLong} = useCharLimit(editedLine, charLimit);
-
-  const MotionButton = motion(Button);
 
   function startEdit() {
     if (readonly) {
@@ -119,11 +119,8 @@ export default function NodeTextLine({ line, index, deletable, readonly, charLim
       )}
       {/* view */}
       {!editing && (
-        <motion.div
-          className={`relative ${!readonly && "cursor-text"} text-sm`}
-          initial="hidden"
-          animate="hidden"
-          whileHover="visible"
+        <div
+          className={`relative group ${!readonly && !isImage && "cursor-text"} text-sm`}
         >
           {isImage &&
             <img src={line} alt="" className="w-full h-auto rounded-lg" />
@@ -141,28 +138,45 @@ export default function NodeTextLine({ line, index, deletable, readonly, charLim
             </p>
           }
           {!readonly && (
-            <div className="absolute right-1 top-1 flex gap-1">
-              <MotionButton
-                size="small"
-                onClick={startEdit}
-                variants={popupButtonVariants}
-                custom={deletable ? 2 : 1}
-              >
-                <Edit />
-              </MotionButton>
-              {deletable && (
-                <MotionButton
+            <div className="absolute right-1 top-1 hidden group-hover:block">
+              <div className="flex gap-1">
+                {!isFirst && (
+                  <Button
+                    size="small"
+                    onClick={moveLineUp}
+                  >
+                    <MoveUp />
+                  </Button>
+                )}
+
+                {!isLast && (
+                  <Button
+                    size="small"
+                    onClick={moveLineDown}
+                  >
+                    <MoveDown />
+                  </Button>
+                )}
+
+                <Button
                   size="small"
-                  onClick={deleteLine}
-                  variants={popupButtonVariants}
-                  custom={1}
+                  onClick={startEdit}
                 >
-                  <Delete />
-                </MotionButton>
-              )}
+                  <Edit />
+                </Button>
+
+                {deletable && (
+                  <Button
+                    size="small"
+                    onClick={deleteLine}
+                  >
+                    <Delete />
+                  </Button>
+                )}
+              </div>
             </div>
           )}
-        </motion.div>
+        </div>
       )}
     </>
   );

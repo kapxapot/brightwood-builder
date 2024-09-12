@@ -9,7 +9,7 @@ import FinishNode from "./nodes/finish-node";
 import { StoryGraph, defaultViewport, nodeKey } from "../builders/story-graph-builder";
 import { removeConnections, updateConnection } from "../lib/node-operations";
 import { isAllowedConnection, isDeletable } from "../lib/node-checks";
-import type { GraphNode, NodeEvent, OnChangeHandler, StoryInfoGraphNode, StoryNode, StoryNodeType } from "../entities/story-node";
+import type { ActionStoryNode, GraphNode, NodeEvent, OnChangeHandler, RedirectStoryNode, StoryInfoGraphNode, StoryNode, StoryNodeType } from "../entities/story-node";
 import StoryInfoNode from "./nodes/story-info-node";
 import { buildNodeData } from "../builders/node-builder";
 import { colors } from "../lib/constants";
@@ -189,40 +189,113 @@ export default function Flow() {
   }, []);
 
   const nodeEventHandler = useCallback(
-    (nodeId: string, event: NodeEvent) => {
+    (data: GraphNode, event: NodeEvent) => {
+      const nodeId = String(data.id);
+
       switch (event.type) {
         case "handleRemoved":
           // if the node's handle was removed, remove the corresponding edges
           setEdges(curEdges => {
-              // remove the edge with the handler
-              const filteredEdges = curEdges.filter(
-                edge => edge.source !== nodeId || edge.sourceHandle !== event.handle
-              );
+            // remove the edge with the handler
+            const filteredEdges = curEdges.filter(
+              edge => edge.source !== nodeId || edge.sourceHandle !== event.handle
+            );
 
-              // update handlers for next edges (make them -1)
-              return filteredEdges.map(edge => {
-                const numHandle = Number(edge.sourceHandle);
+            // update handlers for next edges (make them -1)
+            return filteredEdges.map(edge => {
+              const numHandle = Number(edge.sourceHandle);
 
-                return (edge.source !== nodeId || numHandle < Number(event.handle))
-                  ? edge
-                  : {
-                    ...edge,
-                    sourceHandle: String(numHandle - 1)
-                  }
-              });
-            }
-          );
+              return (edge.source !== nodeId || numHandle < Number(event.handle))
+                ? edge
+                : {
+                  ...edge,
+                  sourceHandle: String(numHandle - 1)
+                }
+            });
+          });
 
           break;
-      }
+
+        case "actionsReordered":
+          // remove all node's edges and re-add them again
+          setEdges(curEdges => {
+            const actionData = data as ActionStoryNode;
+
+            if (!actionData) {
+              return curEdges;
+            }
+
+            // cut the node's edges
+            let newEdges = curEdges.filter(
+              edge => edge.source !== nodeId
+            );
+
+            // recreate node's edges
+            for (let index = 0; index < actionData.actions.length; index++) {
+              const action = actionData.actions[index];
+
+              if (action.id) {
+                newEdges = addEdge(
+                  {
+                    id: `e${nodeId}-${action.id}`,
+                    source: nodeId,
+                    sourceHandle: String(index || 0),
+                    target: String(action.id)
+                  },
+                  newEdges
+                );
+              }
+            }
+
+            return newEdges;
+          });
+
+          break;
+
+        case "linksReordered":
+          // remove all node's edges and re-add them again
+          setEdges(curEdges => {
+            const redirectData = data as RedirectStoryNode;
+
+            if (!redirectData) {
+              return curEdges;
+            }
+
+            // cut the node's edges
+            let newEdges = curEdges.filter(
+              edge => edge.source !== nodeId
+            );
+
+            // recreate node's edges
+            for (let index = 0; index < redirectData.links.length; index++) {
+              const link = redirectData.links[index];
+
+              if (link.id) {
+                newEdges = addEdge(
+                  {
+                    id: `e${nodeId}-${link.id}`,
+                    source: nodeId,
+                    sourceHandle: String(index || 0),
+                    target: String(link.id)
+                  },
+                  newEdges
+                );
+              }
+            }
+
+            return newEdges;
+          });
+
+          break;
+        }
     },
-    [setEdges]
+    [setEdges, nodes]
   );
 
   const onNodeDataChange: OnChangeHandler = useCallback(
     (data: GraphNode, event?: NodeEvent) => {
       if (event) {
-        nodeEventHandler(String(data.id), event);
+        nodeEventHandler(data, event);
       }
 
       setNodes(curNodes => curNodes.map(node => {
@@ -547,6 +620,7 @@ export default function Flow() {
             deleteKeyCode={[]}
             className="bg-gray-100"
             nodeTypes={nodeTypes}
+            disableKeyboardA11y={true}
           >
             <Controls />
             <MiniMap

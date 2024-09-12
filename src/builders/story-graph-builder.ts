@@ -47,17 +47,6 @@ export function buildStoryGraph(
   const nodes: BuilderNode[] = [];
   const edges: BuilderEdge[] = [];
 
-  const addEdge = (source: string, target: number, sourceHandle?: number) => {
-    const edge = {
-      id: `e${source}-${target}`,
-      source,
-      sourceHandle: String(sourceHandle || 0),
-      target: String(target)
-    };
-
-    edges.push(edge);
-  };
-
   const storyKey = uuid();
 
   // add story info node
@@ -89,7 +78,7 @@ export function buildStoryGraph(
   nodes.push(storyInfoNode);
 
   if (storyInfoNode.data.startId) {
-    addEdge(storyInfoNode.id, storyInfoNode.data.startId);
+    addEdge(edges, storyInfoNode.id, storyInfoNode.data.startId);
   }
 
   for (const data of story.nodes) {
@@ -122,7 +111,7 @@ export function buildStoryGraph(
           const action = data.actions[index];
 
           if (action.id) {
-            addEdge(node.id, action.id, index);
+            addEdge(edges, node.id, action.id, index);
           }
         }
 
@@ -133,7 +122,7 @@ export function buildStoryGraph(
           const link = data.links[index];
 
           if (link.id) {
-            addEdge(node.id, link.id, index);
+            addEdge(edges, node.id, link.id, index);
           }
         }
 
@@ -141,7 +130,7 @@ export function buildStoryGraph(
 
       case "skip":
         if (data.nextId) {
-          addEdge(node.id, data.nextId);
+          addEdge(edges, node.id, data.nextId);
         }
 
         break;
@@ -181,3 +170,14 @@ export function buildNewStoryNode(
 }
 
 export const nodeKey = (uuid: string, nodeId: number) => `${uuid}_${nodeId}`;
+
+const addEdge = (edges: BuilderEdge[], source: string, target: number, sourceHandle?: number) => {
+  const edge = {
+    id: `e${source}-${target}`,
+    source,
+    sourceHandle: String(sourceHandle || 0),
+    target: String(target)
+  };
+
+  edges.push(edge);
+};

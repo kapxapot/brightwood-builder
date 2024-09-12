@@ -6,12 +6,10 @@ import { autoHeight, focus } from "../../lib/ref-operations";
 import { weights } from "../../lib/constants";
 import HandleOut from "./handle-out";
 import { WeightDices } from "./weight-dices";
-import { Delete, Edit } from "../core/icons";
+import { Delete, Edit, MoveDown, MoveUp } from "../core/icons";
 import Tooltip from "../core/tooltip";
 import { TextInputLabel } from "../core/text-input-label";
 import { useTranslation } from "react-i18next";
-import { motion } from "framer-motion";
-import { popupButtonVariants } from "@/lib/motion";
 
 type Props = {
   link: Link;
@@ -19,13 +17,17 @@ type Props = {
   totalWeight: number;
   deletable: boolean;
   nodeEditing?: boolean;
+  isFirst: boolean;
+  isLast: boolean;
   updateLink: (updatedLink: Link) => void;
   deleteLink: () => void;
+  moveLinkDown: () => void;
+  moveLinkUp: () => void;
   onEditStarted: () => void;
   onEditFinished: () => void;
 }
 
-export default function NodeLink({ link, index, totalWeight, deletable, updateLink, deleteLink, nodeEditing, onEditStarted, onEditFinished }: Props) {
+export default function NodeLink({ link, index, totalWeight, deletable, isFirst, isLast, updateLink, deleteLink, moveLinkDown, moveLinkUp, nodeEditing, onEditStarted, onEditFinished }: Props) {
   const { t } = useTranslation();
 
   const initialWeight = link.weight || weights.default;
@@ -37,8 +39,6 @@ export default function NodeLink({ link, index, totalWeight, deletable, updateLi
   const inputRef = useRef<HTMLInputElement>(null);
 
   const weightPercent = Math.round(link.weight / totalWeight * 100);
-
-  const MotionButton = motion(Button);
 
   function startEdit() {
     setWeight(initialWeight);
@@ -88,12 +88,8 @@ export default function NodeLink({ link, index, totalWeight, deletable, updateLi
   const isValidWeight = (weight: number) => weight <= weights.min || weight > weights.max;
 
   return (
-    <motion.div
-      className="relative text-sm bg-gradient-to-r from-transparent to-yellow-300 py-1 -mr-2"
-      key={index}
-      initial="hidden"
-      animate="hidden"
-      whileHover="visible"
+    <div
+      className="relative group text-sm bg-gradient-to-r from-transparent to-yellow-300 py-1 -mr-2"
     >
       <div>
         {/* edit */}
@@ -160,27 +156,44 @@ export default function NodeLink({ link, index, totalWeight, deletable, updateLi
       </div>
       {/* view */}
       {!editing && !nodeEditing &&
-        <div className="absolute right-3 top-1 flex gap-1">
-          <MotionButton
-            size="small"
-            onClick={startEdit}
-            variants={popupButtonVariants}
-            custom={deletable ? 2 : 1}
-          >
-            <Edit />
-          </MotionButton>
-          {deletable &&
-            <MotionButton
+        <div className="absolute right-3 top-1 hidden group-hover:block">
+          <div className="flex gap-1">
+            {!isFirst && (
+              <Button
+                size="small"
+                onClick={moveLinkUp}
+              >
+                <MoveUp />
+              </Button>
+            )}
+
+            {!isLast && (
+              <Button
+                size="small"
+                onClick={moveLinkDown}
+              >
+                <MoveDown />
+              </Button>
+            )}
+
+            <Button
               size="small"
-              onClick={deleteLink}
-              variants={popupButtonVariants}
-              custom={1}
+              onClick={startEdit}
             >
-              <Delete />
-            </MotionButton>
-          }
+              <Edit />
+            </Button>
+
+            {deletable &&
+              <Button
+                size="small"
+                onClick={deleteLink}
+              >
+                <Delete />
+              </Button>
+            }
+          </div>
         </div>
       }
-    </motion.div>
+    </div>
   );
 }

@@ -18,8 +18,8 @@ export type Link = {
 };
 
 export type NodeEvent = {
-  type: "handleRemoved",
-  handle: string
+  type: "handleRemoved" | "actionsReordered" | "linksReordered",
+  handle?: string
 };
 
 export type OnChangeHandler = (data: GraphNode, event?: NodeEvent) => void;

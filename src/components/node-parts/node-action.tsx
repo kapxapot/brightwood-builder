@@ -4,12 +4,10 @@ import Button from "../core/button";
 import { useEffect, useRef, useState } from "react";
 import { autoHeight, focus } from "../../lib/ref-operations";
 import HandleOut from "./handle-out";
-import { Bolt, Delete, Edit } from "../core/icons";
+import { Bolt, Delete, Edit, MoveDown, MoveUp } from "../core/icons";
 import { TextInputLabel } from "../core/text-input-label";
 import { useCharLimit } from "@/hooks/use-char-limit";
 import { useTranslation } from "react-i18next";
-import { motion } from "framer-motion";
-import { popupButtonVariants } from "@/lib/motion";
 
 type Props = {
   action: Action;
@@ -17,13 +15,17 @@ type Props = {
   deletable: boolean;
   nodeEditing?: boolean;
   charLimit?: number;
+  isFirst: boolean;
+  isLast: boolean;
   updateAction: (updatedAction: Action) => void;
   deleteAction: () => void;
+  moveActionDown: () => void;
+  moveActionUp: () => void;
   onEditStarted: () => void;
   onEditFinished: () => void;
 }
 
-export default function NodeAction({ action, index, deletable, nodeEditing, charLimit = 0, updateAction, deleteAction, onEditStarted, onEditFinished }: Props) {
+export default function NodeAction({ action, index, deletable, nodeEditing, charLimit = 0, isFirst, isLast, updateAction, deleteAction, moveActionDown, moveActionUp, onEditStarted, onEditFinished }: Props) {
   const { t } = useTranslation();
 
   const initialLabel = action.label;
@@ -35,8 +37,6 @@ export default function NodeAction({ action, index, deletable, nodeEditing, char
   const inputRef = useRef<HTMLInputElement>(null);
 
   const { showCharLimit, valueTooLong} = useCharLimit(label, charLimit);
-
-  const MotionButton = motion(Button);
 
   function startEdit() {
     setLabel(initialLabel);
@@ -83,11 +83,8 @@ export default function NodeAction({ action, index, deletable, nodeEditing, char
   useEffect(() => autoHeight(inputRef), [label]);
 
   return (
-    <motion.div
-      className="relative text-sm bg-gradient-to-r from-transparent to-green-300 py-1 -mr-2"
-      initial="hidden"
-      animate="hidden"
-      whileHover="visible"
+    <div
+      className="relative group text-sm bg-gradient-to-r from-transparent to-green-300 py-1 -mr-2"
     >
       <div>
         {/* edit */}
@@ -139,27 +136,44 @@ export default function NodeAction({ action, index, deletable, nodeEditing, char
       </div>
       {/* view */}
       {!editing && !nodeEditing &&
-        <div className="absolute right-3 top-1 flex gap-1">
-          <MotionButton
-            size="small"
-            onClick={startEdit}
-            variants={popupButtonVariants}
-            custom={deletable ? 2 : 1}
-          >
-            <Edit />
-          </MotionButton>
-          {deletable &&
-            <MotionButton
+        <div className="absolute right-3 top-1 hidden group-hover:block">
+          <div className="flex gap-1">
+            {!isFirst && (
+              <Button
+                size="small"
+                onClick={moveActionUp}
+              >
+                <MoveUp />
+              </Button>
+            )}
+
+            {!isLast && (
+              <Button
+                size="small"
+                onClick={moveActionDown}
+              >
+                <MoveDown />
+              </Button>
+            )}
+
+            <Button
               size="small"
-              onClick={deleteAction}
-              variants={popupButtonVariants}
-              custom={1}
+              onClick={startEdit}
             >
-              <Delete />
-            </MotionButton>
-          }
+              <Edit />
+            </Button>
+
+            {deletable &&
+              <Button
+                size="small"
+                onClick={deleteAction}
+              >
+                <Delete />
+              </Button>
+            }
+          </div>
         </div>
       }
-    </motion.div>
+    </div>
   );
 }

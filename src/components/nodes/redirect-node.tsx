@@ -8,7 +8,7 @@ import { useNodeEditing } from "../../hooks/use-node-editing";
 import NodeTitle from "../node-parts/node-title";
 import NodeEffect from "../node-parts/node-effect";
 import NodeText from "../node-parts/node-text";
-import { addLink, deleteLink, updateLink } from "../../lib/link-mutations";
+import { addLink, deleteLink, moveLinkDown, moveLinkUp, updateLink } from "../../lib/link-mutations";
 import HandleIn from "../node-parts/handle-in";
 import { useTranslation } from "react-i18next";
 
@@ -51,9 +51,13 @@ const RedirectNode = memo(function RedirectNode({ data, selected }: Props) {
           link={link}
           totalWeight={totalWeight}
           deletable={true}
+          nodeEditing={nodeEditing}
+          isFirst={index === 0}
+          isLast={index === data.links.length - 1}
           updateLink={updatedLink => updateLink(data, index, updatedLink)}
           deleteLink={() => deleteLink(data, index)}
-          nodeEditing={nodeEditing}
+          moveLinkDown={() => moveLinkDown(data, index)}
+          moveLinkUp={() => moveLinkUp(data, index)}
           onEditStarted={startEdit}
           onEditFinished={finishEdit}
         />

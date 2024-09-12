@@ -8,7 +8,7 @@ import NodeTitle from "../node-parts/node-title";
 import NodeEffect from "../node-parts/node-effect";
 import NodeText from "../node-parts/node-text";
 import HandleIn from "../node-parts/handle-in";
-import { addAction, deleteAction, updateAction } from "../../lib/action-mutations";
+import { addAction, deleteAction, moveActionDown, moveActionUp, updateAction } from "../../lib/action-mutations";
 import { useTranslation } from "react-i18next";
 import Button from "../core/button";
 
@@ -47,8 +47,12 @@ const ActionNode = memo(function ActionNode({ data, selected }: Props) {
           deletable={true}
           nodeEditing={nodeEditing}
           charLimit={100}
+          isFirst={index === 0}
+          isLast={index === data.actions.length - 1}
           updateAction={updatedAction => updateAction(data, index, updatedAction)}
           deleteAction={() => deleteAction(data, index)}
+          moveActionDown={() => moveActionDown(data, index)}
+          moveActionUp={() => moveActionUp(data, index)}
           onEditStarted={startEdit}
           onEditFinished={finishEdit}
         />
