@@ -89,5 +89,8 @@
   "Node": "Nodo",
   "Switch interface language": "Cambia lingua dell'interfaccia",
   "Language": "Lingua",
-  "Select the story language.": "Seleziona la lingua della storia."
+  "Select the story language.": "Seleziona la lingua della storia.",
+  "Cover": "Copertina",
+  "Move up": "Spostare su",
+  "Move down": "Spostare giù"
 }

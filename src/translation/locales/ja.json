@@ -89,5 +89,8 @@
   "Node": "ノード",
   "Switch interface language": "インターフェイス言語を切り替え",
   "Language": "言語",
-  "Select the story language.": "ストーリー言語を選択してください。"
+  "Select the story language.": "ストーリー言語を選択してください。",
+  "Cover": "表紙",
+  "Move up": "繰り上げる",
+  "Move down": "繰り下げる"
 }
