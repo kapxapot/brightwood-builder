@@ -131,7 +131,7 @@ export default function TextInput({ value, label, rowCount, readonly = false, ch
             </div>
           }
           {!readonly &&
-            <div className="absolute right-1 top-6 hidden group-hover:block">
+            <div className={`absolute right-1 ${noValue ? "top-1" : "top-6"} hidden group-hover:block`}>
               <Button
                 size="small"
                 onClick={startEdit}
