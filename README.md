@@ -14,20 +14,20 @@ UI languages:
 
 Brightwood Stories Telegram bot: [@BrightwoodBot](https://t.me/BrightwoodBot) 🇷🇺
 
-## Import
+## Examples
 
-You can import a couple of test stories in **JSON** format:
+You can view and edit several test stories:
 
-- [Test](https://raw.githubusercontent.com/kapxapot/brightwood-builder/master/public/stories/test.json) 🇷🇺
-- [Mystery](https://raw.githubusercontent.com/kapxapot/brightwood-builder/master/public/stories/mystery.json) 🇷🇺
-- [Kolobok](https://raw.githubusercontent.com/kapxapot/brightwood-builder/master/public/stories/kolobok.json) 🇬🇧
-
-First download a file, then import it into Brightwood Builder.
+- [Test](https://brightwood-builder.onrender.com?edit=https://raw.githubusercontent.com/kapxapot/brightwood-builder/master/public/stories/test.json&lng=ru) 🇷🇺
+- [Mystery](https://brightwood-builder.onrender.com?edit=https://raw.githubusercontent.com/kapxapot/brightwood-builder/master/public/stories/mystery.json&lng=ru) 🇷🇺
+- [Kolobok](https://brightwood-builder.onrender.com?edit=https://raw.githubusercontent.com/kapxapot/brightwood-builder/master/public/stories/kolobok.json&lng=en) 🇬🇧
 
 ## Demos
 
-Watch Brightwood Builder in action (🇬🇧):
+Watch Brightwood Builder in action (🇬🇧).
 
-[![Brightwood Builder Demo](https://img.youtube.com/vi/ufNY-NnoYZw/0.jpg)](https://www.youtube.com/watch?v=ufNY-NnoYZw)
+### Building Kolobok story, Part 1
 
 https://www.youtube.com/watch?v=ufNY-NnoYZw
+
+[![Building Kolobok story, Part 1](https://img.youtube.com/vi/ufNY-NnoYZw/0.jpg)](https://www.youtube.com/watch?v=ufNY-NnoYZw)
