@@ -78,6 +78,11 @@ export const languages: LanguageInfo[] = [
     flagCode: "fr"
   },
   {
+    code: "hi",
+    name: "हिन्दी",
+    flagCode: "in"
+  },
+  {
     code: "hy",
     name: "Հայերեն",
     flagCode: "am"
@@ -101,6 +106,11 @@ export const languages: LanguageInfo[] = [
     code: "ko",
     name: "한국어",
     flagCode: "kr"
+  },
+  {
+    code: "pt",
+    name: "Português",
+    flagCode: "pt"
   },
   {
     code: "ru",
