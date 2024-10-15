@@ -5,7 +5,9 @@ import { Delete, Edit, MoveDown, MoveUp } from "../core/icons";
 import { TextInputLabel } from "../core/text-input-label";
 import { useCharLimit } from "@/hooks/use-char-limit";
 import { useTranslation } from "react-i18next";
-import { isImageUrl } from "@/lib/url";
+import TextDisplay from "../core/text-display";
+import { extractImageUrl } from "@/lib/url";
+import { ImageDisplay } from "../core/image-display";
 
 type Props = {
   line: string;
@@ -79,7 +81,8 @@ export default function NodeTextLine({ line, index, deletable, readonly, charLim
     autoHeight(inputRef);
   }, [editing, editedLine]);
 
-  const isImage = isImageUrl(editedLine);
+  const imageUrl = extractImageUrl(editedLine);
+  const isImage = !!imageUrl;
 
   return (
     <>
@@ -123,18 +126,17 @@ export default function NodeTextLine({ line, index, deletable, readonly, charLim
           className={`relative group ${!readonly && !isImage && "cursor-text"} text-sm`}
         >
           {isImage &&
-            <img src={line} alt="" className="w-full h-auto rounded-lg" />
+            <ImageDisplay url={imageUrl} />
           }
           {!isImage &&
             <p
               className="border border-black border-opacity-20 rounded-lg border-dashed bg-white bg-opacity-50 px-2 py-1 break-words"
               onClick={startEdit}
             >
-              <span
+              <TextDisplay
                 className={`whitespace-pre-wrap [&>pre]:whitespace-pre-wrap ${virgin && "opacity-30"}`}
-                dangerouslySetInnerHTML={{ __html: line || `${t("Text line")} ${index + 1}` }}
-              >
-              </span>
+                text={line || `${t("Text line")} ${index + 1}`}
+              />
             </p>
           }
           {!readonly && (

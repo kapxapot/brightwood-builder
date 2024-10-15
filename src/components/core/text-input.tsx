@@ -5,7 +5,9 @@ import { Edit } from "./icons";
 import { TextInputLabel } from "./text-input-label";
 import { useCharLimit } from "@/hooks/use-char-limit";
 import { useTranslation } from "react-i18next";
-import { isImageUrl } from "@/lib/url";
+import TextDisplay from "./text-display";
+import { extractImageUrl } from "@/lib/url";
+import { ImageDisplay } from "./image-display";
 
 const defaultRowCount = 2;
 
@@ -69,7 +71,8 @@ export default function TextInput({ value, label, rowCount, readonly = false, ch
     autoHeight(inputRef);
   }, [editing, editedValue]);
 
-  const isImage = renderAsImage && isImageUrl(editedValue);
+  const imageUrl = extractImageUrl(editedValue);
+  const isImage = renderAsImage && !!imageUrl;
 
   return (
     <div className={`${editing ? "mt-2" : "mt-1"}`}>
@@ -116,18 +119,17 @@ export default function TextInput({ value, label, rowCount, readonly = false, ch
             </span>
           }
           {isImage &&
-            <img src={value} alt="" className="w-full h-auto rounded-lg" />
+            <ImageDisplay url={imageUrl} />
           }
           {!isImage &&
             <div
               className="border border-black border-opacity-20 rounded-lg border-dashed bg-white bg-opacity-50 px-2 py-1"
               onClick={startEdit}
             >
-              <span
+              <TextDisplay
                 className={`whitespace-pre-line break-words ${noValue && "opacity-30"}`}
-                dangerouslySetInnerHTML={{ __html: value || label }}
-              >
-              </span>
+                text={value || label }
+              />
             </div>
           }
           {!readonly &&
