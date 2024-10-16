@@ -31,3 +31,9 @@ Watch Brightwood Builder in action (🇬🇧).
 https://www.youtube.com/watch?v=ufNY-NnoYZw
 
 [![Building Kolobok story, Part 1](https://img.youtube.com/vi/ufNY-NnoYZw/0.jpg)](https://www.youtube.com/watch?v=ufNY-NnoYZw)
+
+### Building Kolobok story, Part 2
+
+https://www.youtube.com/watch?v=ftAjJ5hoa5M
+
+[![Building Kolobok story, Part 2](https://img.youtube.com/vi/ftAjJ5hoa5M/0.jpg)](https://www.youtube.com/watch?v=ftAjJ5hoa5M)
