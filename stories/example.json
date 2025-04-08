@@ -1,0 +1,565 @@
+{
+  "id": "359e097f-5620-477b-930d-48496393f747",
+  "title": "😯 I, Kolobok",
+  "description": "An interactive story about Kolobok",
+  "cover": "https://i.imgur.com/rs5Xvs5.jpeg",
+  "language": "en",
+  "startId": 1,
+  "position": [
+    30,
+    30
+  ],
+  "nodes": [
+    {
+      "id": 1,
+      "type": "skip",
+      "text": [
+        "You are 😀 <b>Kolobok</b>. The 🧓 <b>Grandma</b> has just baked you.",
+        "You sit on the <b>table</b>."
+      ],
+      "nextId": 2,
+      "key": "cfe8fe70-4d12-4d1e-a70a-95467c3c8637_1",
+      "position": [
+        386.0749969482422,
+        121
+      ]
+    },
+    {
+      "id": 2,
+      "type": "action",
+      "text": [
+        "What are you gonna do next?"
+      ],
+      "actions": [
+        {
+          "label": "Stay on the table",
+          "id": 3
+        },
+        {
+          "label": "Jump onto the window",
+          "id": 4
+        }
+      ],
+      "key": "cfe8fe70-4d12-4d1e-a70a-95467c3c8637_2",
+      "position": [
+        703.0749969482422,
+        207
+      ]
+    },
+    {
+      "id": 3,
+      "type": "finish",
+      "text": [
+        "The 🧓 <b>Grandma</b> and 👴 <b>Grandpa</b> come and eat you.",
+        "The end. ☠"
+      ],
+      "key": "cfe8fe70-4d12-4d1e-a70a-95467c3c8637_3",
+      "position": [
+        1173.0749969482422,
+        119
+      ]
+    },
+    {
+      "id": 4,
+      "type": "action",
+      "text": [
+        "You sit on the <b>window</b>. It's open. Wanna go out?"
+      ],
+      "actions": [
+        {
+          "label": "Jump out",
+          "id": 5
+        },
+        {
+          "label": "Sit on the window",
+          "id": 3
+        }
+      ],
+      "key": "cfe8fe70-4d12-4d1e-a70a-95467c3c8637_4",
+      "position": [
+        1114.0749969482422,
+        394
+      ]
+    },
+    {
+      "id": 5,
+      "type": "action",
+      "text": [
+        "https://i.imgur.com/WhSvNix.jpeg",
+        "You are 😙 <b>Kolobok</b>. You roll happily on the road.",
+        "Here comes a 🐰 <b>Hare</b>. He wants to eat you."
+      ],
+      "actions": [
+        {
+          "label": "Stand still",
+          "id": 6
+        },
+        {
+          "label": "Try to roll away",
+          "id": 7
+        },
+        {
+          "label": "Sing a song",
+          "id": 10
+        }
+      ],
+      "key": "cfe8fe70-4d12-4d1e-a70a-95467c3c8637_5",
+      "position": [
+        1504.0749969482422,
+        347
+      ]
+    },
+    {
+      "id": 6,
+      "type": "finish",
+      "text": [
+        "The 🐰 <b>Hare</b> rips you apart.",
+        "This is the end, my friend. ☠"
+      ],
+      "key": "cfe8fe70-4d12-4d1e-a70a-95467c3c8637_6",
+      "position": [
+        2285.074996948242,
+        157
+      ]
+    },
+    {
+      "id": 7,
+      "type": "redirect",
+      "text": [
+        "You try to roll away. You roll and roll and roll."
+      ],
+      "links": [
+        {
+          "weight": 4,
+          "id": 8
+        },
+        {
+          "weight": 1,
+          "id": 9
+        }
+      ],
+      "key": "cfe8fe70-4d12-4d1e-a70a-95467c3c8637_7",
+      "position": [
+        1934.0749969482422,
+        469
+      ]
+    },
+    {
+      "id": 8,
+      "type": "skip",
+      "text": [
+        "The 🐰 <b>Hare</b> is faster than you.",
+        "Unfortunately."
+      ],
+      "nextId": 6,
+      "key": "cfe8fe70-4d12-4d1e-a70a-95467c3c8637_8",
+      "position": [
+        2251.074996948242,
+        366
+      ]
+    },
+    {
+      "id": 9,
+      "type": "skip",
+      "text": [
+        "You manage to get away from the 🐰 <b>Hare</b>.",
+        "You lucky bastard!"
+      ],
+      "key": "cfe8fe70-4d12-4d1e-a70a-95467c3c8637_9",
+      "nextId": 14,
+      "position": [
+        2346.074996948242,
+        612
+      ]
+    },
+    {
+      "id": 10,
+      "type": "redirect",
+      "text": [
+        "You sing a song. The 🐰 <b>Hare</b> seems to be distracted."
+      ],
+      "links": [
+        {
+          "weight": 4,
+          "id": 13
+        },
+        {
+          "weight": 1,
+          "id": 12
+        }
+      ],
+      "key": "cfe8fe70-4d12-4d1e-a70a-95467c3c8637_10",
+      "position": [
+        1910.0749969482422,
+        744
+      ]
+    },
+    {
+      "id": 11,
+      "type": "finish",
+      "text": [
+        "It's unbelievable, but the 🦊 <b>Fox</b> liked your singing. Or she was not hungry. Or just playful.",
+        "Anyway. Now you are the real lucky bastard!",
+        "🎉 Congratulations!"
+      ],
+      "key": "cfe8fe70-4d12-4d1e-a70a-95467c3c8637_11",
+      "position": [
+        5903.074996948241,
+        2958.9999999999986
+      ]
+    },
+    {
+      "id": 12,
+      "type": "skip",
+      "text": [
+        "You are not a good singer. The 🐰 <b>Hare</b> is not satisfied."
+      ],
+      "nextId": 6,
+      "key": "cfe8fe70-4d12-4d1e-a70a-95467c3c8637_12",
+      "position": [
+        2212.074996948242,
+        1048
+      ]
+    },
+    {
+      "id": 13,
+      "key": "cfe8fe70-4d12-4d1e-a70a-95467c3c8637_13",
+      "type": "skip",
+      "text": [
+        "You manage to get away from the 🐰 <b>Hare</b>."
+      ],
+      "nextId": 14,
+      "position": [
+        2339.4901460336932,
+        845.198899555366
+      ]
+    },
+    {
+      "id": 14,
+      "key": "cfe8fe70-4d12-4d1e-a70a-95467c3c8637_14",
+      "type": "action",
+      "text": [
+        "https://i.imgur.com/BqklYkh.jpeg",
+        "You are 😀 <b>Kolobok</b>. You have escaped from the 🐰 <b>Hare</b>. You continue to roll happily.",
+        "Here comes a 🐺 <b>Wolf</b>. The <b>Wolf</b> is scary! He wants to eat you!"
+      ],
+      "actions": [
+        {
+          "label": "Stand still",
+          "id": 16
+        },
+        {
+          "label": "Try to roll away",
+          "id": 17
+        },
+        {
+          "label": "Sing a song",
+          "id": 15
+        }
+      ],
+      "position": [
+        2784.490146033693,
+        778.198899555366
+      ]
+    },
+    {
+      "id": 15,
+      "key": "cfe8fe70-4d12-4d1e-a70a-95467c3c8637_15",
+      "type": "redirect",
+      "text": [
+        "The 🐺 <b>Wolf</b> is listening but doesn't seem to be very distracted."
+      ],
+      "links": [
+        {
+          "weight": 1,
+          "id": 21
+        },
+        {
+          "weight": 1,
+          "id": 23
+        }
+      ],
+      "position": [
+        3103.490146033693,
+        1504.1988995553659
+      ]
+    },
+    {
+      "id": 16,
+      "key": "cfe8fe70-4d12-4d1e-a70a-95467c3c8637_16",
+      "type": "finish",
+      "text": [
+        "You pretend to be a stone. But the 🐺 <b>Wolf</b> is not tricked by that. He rips you apart and eats you!",
+        "The end of story. ☠"
+      ],
+      "position": [
+        3266.490146033693,
+        916.1988995553659
+      ]
+    },
+    {
+      "id": 17,
+      "key": "cfe8fe70-4d12-4d1e-a70a-95467c3c8637_17",
+      "type": "redirect",
+      "text": [
+        "You try to roll away. How swift is the 🐺 <b>Wolf</b>?"
+      ],
+      "links": [
+        {
+          "weight": 1,
+          "id": 18
+        },
+        {
+          "weight": 1,
+          "id": 20
+        }
+      ],
+      "position": [
+        3199.490146033693,
+        1221.1988995553659
+      ]
+    },
+    {
+      "id": 18,
+      "key": "cfe8fe70-4d12-4d1e-a70a-95467c3c8637_18",
+      "type": "skip",
+      "text": [
+        "The 🐺 <b>Wolf</b> is not so fast as the 🐰 <b>Hare</b>, but he's faster than you."
+      ],
+      "nextId": 19,
+      "position": [
+        3543.490146033693,
+        1145.1988995553659
+      ]
+    },
+    {
+      "id": 19,
+      "key": "cfe8fe70-4d12-4d1e-a70a-95467c3c8637_19",
+      "type": "finish",
+      "text": [
+        "The 🐺 <b>Wolf</b> chases you and rips you apart. You are eaten. Very sorry.",
+        "The end of story. ☠",
+        "Once again?"
+      ],
+      "position": [
+        3841.4901460336923,
+        1032.1988995553659
+      ]
+    },
+    {
+      "id": 20,
+      "key": "cfe8fe70-4d12-4d1e-a70a-95467c3c8637_20",
+      "type": "skip",
+      "text": [
+        "You are lucky again! The 🐺 <b>Wolf</b> must be very old so you roll away with ease."
+      ],
+      "nextId": 24,
+      "position": [
+        3538.490146033693,
+        1384.1988995553656
+      ]
+    },
+    {
+      "id": 21,
+      "key": "cfe8fe70-4d12-4d1e-a70a-95467c3c8637_21",
+      "type": "skip",
+      "text": [
+        "You manage to get away from the 🐺 <b>Wolf</b>. The score is 2:0!"
+      ],
+      "nextId": 24,
+      "position": [
+        3518.490146033693,
+        1692.1988995553656
+      ]
+    },
+    {
+      "id": 23,
+      "key": "cfe8fe70-4d12-4d1e-a70a-95467c3c8637_23",
+      "type": "finish",
+      "text": [
+        "The 🐺 <b>Wolf</b> must be deaf and your song doesn't have any effect.",
+        "He rips you apart and eats you.",
+        "This is the end. ☠"
+      ],
+      "position": [
+        3467.4901460336923,
+        1984.1988995553654
+      ]
+    },
+    {
+      "id": 24,
+      "key": "cfe8fe70-4d12-4d1e-a70a-95467c3c8637_24",
+      "type": "action",
+      "text": [
+        "https://i.imgur.com/qkdtdOx.jpeg",
+        "You are 😀 <b>Kolobok</b>. You continue your risky journey down the road.",
+        "The next creature you encounter is a 🐻 <b>Bear</b>!",
+        "The 🐻 <b>Bear</b> is very big and hungry. He also wants to eat you.",
+        "Why does everyone want to eat you today? Are they on a new Kolobok diet or what? 🤨"
+      ],
+      "actions": [
+        {
+          "label": "Stand still",
+          "id": 25
+        },
+        {
+          "label": "Roll away",
+          "id": 26
+        },
+        {
+          "label": "Sing a song",
+          "id": 27
+        }
+      ],
+      "position": [
+        3914.4901460336923,
+        1603.1988995553656
+      ]
+    },
+    {
+      "id": 25,
+      "key": "cfe8fe70-4d12-4d1e-a70a-95467c3c8637_25",
+      "type": "action",
+      "text": [
+        "https://i.imgur.com/qkdtdOx.jpeg",
+        "You stand still. The 🐻 <b>Bear</b> also stands still.",
+        "You both stand still.",
+        "What's next?"
+      ],
+      "actions": [
+        {
+          "label": "Stand still (really?)",
+          "id": 25
+        },
+        {
+          "label": "Roll away",
+          "id": 26
+        },
+        {
+          "label": "Sing a song",
+          "id": 27
+        }
+      ],
+      "position": [
+        4297.490146033692,
+        1961.1988995553656
+      ]
+    },
+    {
+      "id": 26,
+      "key": "cfe8fe70-4d12-4d1e-a70a-95467c3c8637_26",
+      "type": "skip",
+      "text": [
+        "The 🐻 <b>Bear</b> is veeeery slow. So you roll away effortlessly.",
+        "The 🐻 <b>Bear</b> still stands where he was. He doesn't seem to notice that you've gone away. Lol."
+      ],
+      "nextId": 28,
+      "position": [
+        4682.490146033692,
+        1972.7988995553656
+      ]
+    },
+    {
+      "id": 27,
+      "key": "cfe8fe70-4d12-4d1e-a70a-95467c3c8637_27",
+      "type": "finish",
+      "text": [
+        "The 🐻 <b>Bear</b> is enraged! He seems to not like your singing. Oops!",
+        "He instantly (how is that possible?!) rips you apart and eats you.",
+        "Never sing for a 🐻 <b>Bear</b>...",
+        "It's the end. Don't make the same mistake next time! ☠"
+      ],
+      "position": [
+        4662.490146033692,
+        2362.7988995553656
+      ]
+    },
+    {
+      "id": 28,
+      "key": "cfe8fe70-4d12-4d1e-a70a-95467c3c8637_28",
+      "type": "action",
+      "text": [
+        "https://i.imgur.com/v6jWu1i.jpeg",
+        "Congrats! You've escaped the 🐻 <b>Bear</b> too. Who's next?",
+        "The final boss, the 🦊 <b>Fox</b> is next. Are you ready?",
+        "As all the others, the 🦊 <b>Fox</b> wants to eat you. Are you surprised?",
+        "What are you going to do? Think twice!"
+      ],
+      "actions": [
+        {
+          "label": "Stand still",
+          "id": 29
+        },
+        {
+          "label": "Try to roll away",
+          "id": 29
+        },
+        {
+          "label": "Sing a song",
+          "id": 30
+        }
+      ],
+      "position": [
+        5048.490146033692,
+        2046.7988995553656
+      ]
+    },
+    {
+      "id": 29,
+      "key": "cfe8fe70-4d12-4d1e-a70a-95467c3c8637_29",
+      "type": "finish",
+      "text": [
+        "Really? The 🦊 <b>Fox</b> is the real final boss! This won't work!",
+        "You are ripped apart and eaten very fast.",
+        "The end... ☠"
+      ],
+      "position": [
+        5462.490146033691,
+        2104.7988995553656
+      ]
+    },
+    {
+      "id": 30,
+      "key": "cfe8fe70-4d12-4d1e-a70a-95467c3c8637_30",
+      "type": "redirect",
+      "text": [
+        "https://i.imgur.com/nOpNiKU.jpeg",
+        "You sing a song. This is the very best of your singing skills.",
+        "You sing 🎸 <b>Fly Away</b> by <b>Lenny Kravitz</b>."
+      ],
+      "links": [
+        {
+          "weight": 3,
+          "id": 31
+        },
+        {
+          "weight": 1,
+          "id": 11
+        }
+      ],
+      "position": [
+        5424.490146033691,
+        2605.798899555365
+      ]
+    },
+    {
+      "id": 31,
+      "key": "cfe8fe70-4d12-4d1e-a70a-95467c3c8637_31",
+      "type": "finish",
+      "text": [
+        "That didn't work unfortunately. You must have sung it wrongly. Try better next time!",
+        "The 🦊 <b>Fox</b> seems to be distracted a bit but then furiously rips you apart and eats you.",
+        "Bad luck! The end. ☠"
+      ],
+      "position": [
+        5904.490146033691,
+        2607.798899555365
+      ]
+    }
+  ],
+  "viewport": {
+    "x": -0.29777144878335093,
+    "y": 0.10802349980667714,
+    "zoom": 0.5000000000000001
+  }
+}
