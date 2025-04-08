@@ -1,0 +1,381 @@
+{
+  "id": "8f7e6d5c-4b3a-2a1b-9c8d-7e6f5d4c3b2a",
+  "title": "✨ The Magic Forest",
+  "description": "An enchanting adventure in a mystical forest realm",
+  "cover": "https://i.imgur.com/leaves.png",
+  "language": "en",
+  "startId": 1,
+  "position": [30, 30],
+  "nodes": [
+    {
+      "id": 1,
+      "type": "skip",
+      "text": [
+        "As you walk in your backyard one evening, a strange glimmer catches your eye.",
+        "There, nestled in the grass, lies a crystal pulsing with an ethereal light. 💎"
+      ],
+      "nextId": 2,
+      "key": "magic-forest-1",
+      "position": [200, 100]
+    },
+    {
+      "id": 2,
+      "type": "action",
+      "text": [
+        "The crystal seems to be calling to you. What do you do?"
+      ],
+      "actions": [
+        {
+          "label": "Pick up the crystal",
+          "id": 3
+        },
+        {
+          "label": "Leave it alone",
+          "id": 4
+        }
+      ],
+      "key": "magic-forest-2",
+      "position": [400, 100]
+    },
+    {
+      "id": 3,
+      "type": "skip",
+      "text": [
+        "As your fingers touch the crystal, the world begins to shimmer and fade.",
+        "The air grows thick with magic, and when your vision clears...",
+        "You find yourself standing at the edge of a mystical forest! 🌳✨"
+      ],
+      "nextId": 5,
+      "key": "magic-forest-3",
+      "position": [600, 50]
+    },
+    {
+      "id": 4,
+      "type": "finish",
+      "text": [
+        "You decide it's best not to mess with strange glowing objects.",
+        "As you walk away, the crystal's light fades, and with it, your chance for adventure.",
+        "Sometimes the greatest adventures are the ones we choose not to take. 🌙"
+      ],
+      "key": "magic-forest-4",
+      "position": [600, 150]
+    },
+    {
+      "id": 5,
+      "type": "action",
+      "text": [
+        "The forest before you pulses with magical energy. Ancient trees tower overhead, their leaves glowing with a soft blue light.",
+        "Suddenly, a gentle voice whispers on the wind: \"Welcome, Seeker...\"",
+        "A translucent figure materializes - the Guardian Spirit of the Forest 👻"
+      ],
+      "actions": [
+        {
+          "label": "Ask about the forest",
+          "id": 6
+        },
+        {
+          "label": "Ask how to get home",
+          "id": 7
+        },
+        {
+          "label": "Stay silent",
+          "id": 8
+        }
+      ],
+      "key": "magic-forest-5",
+      "position": [800, 50]
+    },
+    {
+      "id": 6,
+      "type": "skip",
+      "text": [
+        "\"This is the Realm of the Eternal Forest,\" the Spirit explains.",
+        "\"A place of ancient magic, now threatened by a growing darkness.\"",
+        "\"We have been waiting for someone like you...\""
+      ],
+      "nextId": 9,
+      "key": "magic-forest-6",
+      "position": [1000, 0]
+    },
+    {
+      "id": 7,
+      "type": "redirect",
+      "text": [
+        "\"The way home?\" The Spirit's form flickers sadly.",
+        "\"That path will reveal itself in time, but first...\""
+      ],
+      "links": [
+        {
+          "weight": 1,
+          "id": 9
+        }
+      ],
+      "key": "magic-forest-7",
+      "position": [1000, 100]
+    },
+    {
+      "id": 8,
+      "type": "skip",
+      "text": [
+        "Your silence speaks volumes. The Spirit nods understanding.",
+        "\"Sometimes the wisest words are those left unspoken...\""
+      ],
+      "nextId": 9,
+      "key": "magic-forest-8",
+      "position": [1000, 200]
+    },
+    {
+      "id": 9,
+      "type": "action",
+      "text": [
+        "\"The forest needs your help,\" the Spirit continues.",
+        "\"A shadow spreads through our realm, corrupting all it touches.\"",
+        "Suddenly, two urgent calls for help echo through the trees..."
+      ],
+      "actions": [
+        {
+          "label": "Follow the unicorn's cry",
+          "id": 10
+        },
+        {
+          "label": "Follow the dragon's roar",
+          "id": 15
+        }
+      ],
+      "key": "magic-forest-9",
+      "position": [1200, 100]
+    },
+    {
+      "id": 10,
+      "type": "action",
+      "text": [
+        "You find an injured unicorn 🦄, its silvery coat stained with shadow.",
+        "Its horn flickers weakly, fighting against the darkness spreading up its leg."
+      ],
+      "actions": [
+        {
+          "label": "Use the crystal to heal it",
+          "id": 11
+        },
+        {
+          "label": "Search for healing herbs",
+          "id": 12
+        }
+      ],
+      "key": "magic-forest-10",
+      "position": [1400, 50]
+    },
+    {
+      "id": 11,
+      "type": "redirect",
+      "text": [
+        "The crystal in your hand pulses brightly, resonating with the unicorn's horn.",
+        "Pure light washes over the creature, pushing back the shadows."
+      ],
+      "links": [
+        {
+          "weight": 3,
+          "id": 13
+        },
+        {
+          "weight": 1,
+          "id": 14
+        }
+      ],
+      "key": "magic-forest-11",
+      "position": [1600, 0]
+    },
+    {
+      "id": 12,
+      "type": "redirect",
+      "text": [
+        "You search frantically for the glowing mushrooms the Spirit mentioned.",
+        "But time is running out..."
+      ],
+      "links": [
+        {
+          "weight": 1,
+          "id": 13
+        },
+        {
+          "weight": 3,
+          "id": 14
+        }
+      ],
+      "key": "magic-forest-12",
+      "position": [1600, 100]
+    },
+    {
+      "id": 13,
+      "type": "skip",
+      "text": [
+        "Success! The unicorn stands, shaking off the last traces of shadow.",
+        "It touches its horn to your crystal, sharing its ancient magic.",
+        "You've gained the Power of Light! ✨"
+      ],
+      "nextId": 20,
+      "key": "magic-forest-13",
+      "position": [1800, 50]
+    },
+    {
+      "id": 14,
+      "type": "skip",
+      "text": [
+        "Despite your efforts, the shadow overtakes the unicorn.",
+        "It rises, its once-silver coat now dark as night, its eyes glowing with malevolent purpose.",
+        "You've lost a potential ally... and gained a powerful enemy. 🌑"
+      ],
+      "nextId": 20,
+      "key": "magic-forest-14",
+      "position": [1800, 150]
+    },
+    {
+      "id": 15,
+      "type": "action",
+      "text": [
+        "You find a baby dragon 🐉, separated from its family.",
+        "Shadow creatures circle overhead, drawing ever closer."
+      ],
+      "actions": [
+        {
+          "label": "Create a light barrier",
+          "id": 16
+        },
+        {
+          "label": "Help it fly away",
+          "id": 17
+        }
+      ],
+      "key": "magic-forest-15",
+      "position": [1400, 150]
+    },
+    {
+      "id": 16,
+      "type": "redirect",
+      "text": [
+        "You raise the crystal, creating a dome of protective light.",
+        "The shadow creatures screech and circle, testing your defenses."
+      ],
+      "links": [
+        {
+          "weight": 3,
+          "id": 18
+        },
+        {
+          "weight": 1,
+          "id": 19
+        }
+      ],
+      "key": "magic-forest-16",
+      "position": [1600, 200]
+    },
+    {
+      "id": 17,
+      "type": "redirect",
+      "text": [
+        "You encourage the dragon to fly, running alongside it.",
+        "The shadow creatures dive, their claws extended..."
+      ],
+      "links": [
+        {
+          "weight": 1,
+          "id": 18
+        },
+        {
+          "weight": 3,
+          "id": 19
+        }
+      ],
+      "key": "magic-forest-17",
+      "position": [1600, 300]
+    },
+    {
+      "id": 18,
+      "type": "skip",
+      "text": [
+        "The baby dragon is saved! It breathes a tiny flame of gratitude,",
+        "imbuing your crystal with the Power of Fire! 🔥"
+      ],
+      "nextId": 20,
+      "key": "magic-forest-18",
+      "position": [1800, 250]
+    },
+    {
+      "id": 19,
+      "type": "skip",
+      "text": [
+        "The shadow creatures overwhelm you both.",
+        "The dragon falls to darkness, its flames turning cold and black.",
+        "You've lost a potential ally... and gained a powerful enemy. 🌑"
+      ],
+      "nextId": 20,
+      "key": "magic-forest-19",
+      "position": [1800, 350]
+    },
+    {
+      "id": 20,
+      "type": "action",
+      "text": [
+        "The forest grows darker. You feel a malevolent presence approaching.",
+        "The Shadow Entity reveals itself - a writhing mass of darkness.",
+        "\"Join me,\" it whispers, \"and know true power...\""
+      ],
+      "actions": [
+        {
+          "label": "Stand and fight",
+          "id": 21
+        },
+        {
+          "label": "Try to reason with it",
+          "id": 22
+        },
+        {
+          "label": "Accept its offer",
+          "id": 23
+        }
+      ],
+      "key": "magic-forest-20",
+      "position": [2000, 200]
+    },
+    {
+      "id": 21,
+      "type": "finish",
+      "text": [
+        "You raise your crystal, now bright with borrowed power.",
+        "Light explodes outward, driving back the darkness!",
+        "The forest is saved, and you are named its eternal protector. ⭐",
+        "Congratulations! You've achieved the Hero's Victory!"
+      ],
+      "key": "magic-forest-21",
+      "position": [2200, 150]
+    },
+    {
+      "id": 22,
+      "type": "finish",
+      "text": [
+        "You sense a deep pain within the Shadow Entity.",
+        "Through dialogue, you help it find peace with the light.",
+        "Balance is restored to the forest. 🌓",
+        "Congratulations! You've achieved the Peaceful Resolution!"
+      ],
+      "key": "magic-forest-22",
+      "position": [2200, 250]
+    },
+    {
+      "id": 23,
+      "type": "finish",
+      "text": [
+        "You embrace the darkness, feeling its power flow through you.",
+        "The forest transforms, becoming a realm of eternal twilight.",
+        "You've chosen the Dark Path... 🌑"
+      ],
+      "key": "magic-forest-23",
+      "position": [2200, 350]
+    }
+  ],
+  "viewport": {
+    "x": 0,
+    "y": 0,
+    "zoom": 0.5
+  }
+}
