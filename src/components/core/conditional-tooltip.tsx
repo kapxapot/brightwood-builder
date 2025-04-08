@@ -19,9 +19,7 @@ const ConditionalTooltip = forwardRef(({ tooltip, show, side, duration = 300, ch
       <TooltipProvider>
         <Tooltip delayDuration={duration}>
           <TooltipTrigger asChild>
-            <div>
-              {children}
-            </div>
+            {children}
           </TooltipTrigger>
           <TooltipContent side={side}>
             {tooltip}
