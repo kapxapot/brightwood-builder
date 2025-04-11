@@ -1,11 +1,10 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
   "type": "object",
-  "required": ["id", "title", "language", "startId", "position", "nodes"],
+  "required": ["id", "title", "language", "startId", "nodes"],
   "properties": {
     "id": {
-      "type": "string",
-      "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$"
+      "type": "string"
     },
     "title": {
       "type": "string"
@@ -44,6 +43,9 @@
           "type": {
             "type": "string",
             "enum": ["skip", "action", "finish", "redirect"]
+          },
+          "label": {
+            "type": "string"
           },
           "text": {
             "type": "array",

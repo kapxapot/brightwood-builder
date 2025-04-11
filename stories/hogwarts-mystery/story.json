@@ -1,0 +1,4042 @@
+{
+  "id": "7b9a4e2d-6c5f-4d3a-8b1e-9f2a3c1d0b8e",
+  "title": "⚡ Hogwarts Mystery: The Cursed Artifacts",
+  "description": "Uncover the truth behind mysterious cursed artifacts appearing at Hogwarts",
+  "language": "en",
+  "startId": 1,
+  "position": [30, 30],
+  "nodes": [
+    {
+      "id": 1,
+      "type": "skip",
+      "text": [
+        "It's an unusually cold autumn evening at Hogwarts School of Witchcraft and Wizardry.",
+        "As a fifth-year prefect, you're doing your evening rounds when suddenly...",
+        "A first-year Hufflepuff comes running, tears streaming down their face."
+      ],
+      "nextId": 2,
+      "position": [200, 100]
+    },
+    {
+      "id": 2,
+      "type": "action",
+      "text": [
+        "\"P-prefect! There's something wrong in the Clock Tower! My friend... the mirror... she's trapped!\"",
+        "What do you do?"
+      ],
+      "actions": [
+        {
+          "label": "Run to the Clock Tower immediately",
+          "id": 3
+        },
+        {
+          "label": "Send for a professor first",
+          "id": 4
+        },
+        {
+          "label": "Question the student further",
+          "id": 5
+        }
+      ],
+      "position": [400, 100]
+    },
+    {
+      "id": 3,
+      "type": "skip",
+      "text": [
+        "You sprint to the Clock Tower, your wand at the ready.",
+        "As you climb the stairs, the air grows inexplicably colder...",
+        "The portraits on the walls seem to be moving in slow motion."
+      ],
+      "nextId": 6,
+      "position": [600, 0]
+    },
+    {
+      "id": 4,
+      "type": "skip",
+      "text": [
+        "\"Stay here,\" you tell the first-year, sending your Patronus to alert Professor McGonagall.",
+        "But as you wait, the castle's bells begin to toll at an impossible hour..."
+      ],
+      "nextId": 7,
+      "position": [600, 100]
+    },
+    {
+      "id": 5,
+      "type": "action",
+      "text": [
+        "The student explains between sobs: \"We found this old mirror in an alcove... Emily touched it and... she's inside it now!\"",
+        "\"The mirror's surface... it's like water, but frozen! Please hurry!\""
+      ],
+      "actions": [
+        {
+          "label": "Run to the Clock Tower now",
+          "id": 3
+        },
+        {
+          "label": "Send for help first",
+          "id": 4
+        }
+      ],
+      "position": [600, 200]
+    },
+    {
+      "id": 6,
+      "type": "action",
+      "text": [
+        "In the Clock Tower, you find an ornate mirror floating in mid-air.",
+        "Inside its surface, you can see a girl in Hufflepuff robes, seemingly frozen in time.",
+        "The mirror's frame bears an inscription: 'Tempus Reversum'"
+      ],
+      "actions": [
+        {
+          "label": "Try to pull her out with magic",
+          "id": 8
+        },
+        {
+          "label": "Attempt to decipher the inscription",
+          "id": 9
+        },
+        {
+          "label": "Touch the mirror's surface",
+          "id": 10
+        }
+      ],
+      "position": [800, 0]
+    },
+    {
+      "id": 7,
+      "type": "skip",
+      "text": [
+        "Professor McGonagall arrives swiftly, her face grave.",
+        "\"A cursed artifact? In Hogwarts? Follow me, quickly!\""
+      ],
+      "nextId": 11,
+      "position": [800, 100]
+    },
+    {
+      "id": 8,
+      "type": "redirect",
+      "text": [
+        "You cast 'Accio' to try pulling the girl out, but the spell rebounds unexpectedly!"
+      ],
+      "links": [
+        {
+          "weight": 2,
+          "id": 12
+        },
+        {
+          "weight": 1,
+          "id": 13
+        }
+      ],
+      "position": [1000, -100]
+    },
+    {
+      "id": 9,
+      "type": "skip",
+      "text": [
+        "You recognize 'Tempus Reversum' as a reference to time magic.",
+        "Your studies in Ancient Runes help you notice additional symbols around the frame..."
+      ],
+      "nextId": 14,
+      "position": [1000, 0]
+    },
+    {
+      "id": 10,
+      "type": "redirect",
+      "text": [
+        "You cautiously touch the mirror's surface. It feels like ice, but warm...",
+        "Suddenly, the world begins to spin!"
+      ],
+      "links": [
+        {
+          "weight": 1,
+          "id": 15
+        },
+        {
+          "weight": 2,
+          "id": 16
+        }
+      ],
+      "position": [1000, 100]
+    },
+    {
+      "id": 11,
+      "type": "action",
+      "text": [
+        "You reach the Clock Tower with Professor McGonagall.",
+        "She examines the mirror with concern, casting detection spells.",
+        "\"This is powerful magic... and not of this time.\""
+      ],
+      "actions": [
+        {
+          "label": "Ask about similar artifacts",
+          "id": 17
+        },
+        {
+          "label": "Suggest breaking the mirror",
+          "id": 18
+        },
+        {
+          "label": "Look for more clues",
+          "id": 19
+        }
+      ],
+      "position": [1000, 200]
+    },
+    {
+      "id": 12,
+      "type": "skip",
+      "text": [
+        "The spell bounces off the mirror's surface, hitting a nearby clock.",
+        "The clock's hands begin spinning wildly backward!"
+      ],
+      "nextId": 20,
+      "position": [1200, -150]
+    },
+    {
+      "id": 13,
+      "type": "finish",
+      "text": [
+        "The rebounding spell hits you directly!",
+        "You find yourself de-aged into a first-year student.",
+        "At least you'll have time to study for your O.W.L.s again... ⌛"
+      ],
+      "position": [1200, -50]
+    },
+    {
+      "id": 14,
+      "type": "action",
+      "text": [
+        "The runes tell of a powerful temporal artifact, one of five cursed objects.",
+        "They're connected to something called 'The Founder's Timepiece'..."
+      ],
+      "actions": [
+        {
+          "label": "Research in the library",
+          "id": 21
+        },
+        {
+          "label": "Try a counter-curse",
+          "id": 22
+        }
+      ],
+      "position": [1200, 50]
+    },
+    {
+      "id": 15,
+      "type": "skip",
+      "text": [
+        "You're pulled into the mirror! But instead of being trapped...",
+        "You find yourself in the same tower - except it looks newer, and different..."
+      ],
+      "nextId": 23,
+      "position": [1200, 150]
+    },
+    {
+      "id": 16,
+      "type": "finish",
+      "text": [
+        "The mirror's magic overwhelms you!",
+        "You're frozen in time along with the Hufflepuff student.",
+        "At least you have company while waiting for rescue... ❄️"
+      ],
+      "position": [1200, 250]
+    },
+    {
+      "id": 17,
+      "type": "skip",
+      "text": [
+        "\"There have been rumors,\" McGonagall says, \"of other strange occurrences.",
+        "The house elves reported a mysterious quill in the library...\""
+      ],
+      "nextId": 24,
+      "position": [1200, 350]
+    },
+    {
+      "id": 18,
+      "type": "finish",
+      "text": [
+        "\"No!\" McGonagall stops you, but too late - your spell hits the mirror.",
+        "It shatters, trapping the student in a time loop forever.",
+        "Some mistakes can't be undone... ⌛"
+      ],
+      "position": [1200, 450]
+    },
+    {
+      "id": 19,
+      "type": "skip",
+      "text": [
+        "You notice a small symbol etched into the tower's wall - a timepiece surrounded by the four house animals.",
+        "McGonagall gasps, \"The Founder's Timepiece? After all these years?\""
+      ],
+      "nextId": 25,
+      "position": [1200, 550]
+    },
+    {
+      "id": 20,
+      "type": "action",
+      "text": [
+        "The clock's wild spinning creates a temporary time distortion.",
+        "Through its warped face, you glimpse scenes from Hogwarts' past..."
+      ],
+      "actions": [
+        {
+          "label": "Study the visions",
+          "id": 26
+        },
+        {
+          "label": "Stop the clock",
+          "id": 27
+        }
+      ],
+      "position": [1400, -150]
+    },
+    {
+      "id": 21,
+      "type": "skip",
+      "text": [
+        "You hurry to the library, hoping Madam Pince hasn't locked up yet.",
+        "To your surprise, she's waiting, as if expecting you.",
+        "\"I wondered when someone would come asking about the Timepiece...\""
+      ],
+      "nextId": 28,
+      "position": [1400, 50]
+    },
+    {
+      "id": 22,
+      "type": "redirect",
+      "text": [
+        "You attempt a temporal counter-curse you learned in Advanced Charms.",
+        "The mirror's surface ripples violently!"
+      ],
+      "links": [
+        {
+          "weight": 1,
+          "id": 29
+        },
+        {
+          "weight": 2,
+          "id": 30
+        }
+      ],
+      "position": [1400, 150]
+    },
+    {
+      "id": 23,
+      "type": "action",
+      "text": [
+        "You're in the Clock Tower, but it's clearly decades ago.",
+        "A group of students in old-fashioned robes are huddled around something...",
+        "One holds what appears to be an ornate pocket watch."
+      ],
+      "actions": [
+        {
+          "label": "Try to interact with them",
+          "id": 31
+        },
+        {
+          "label": "Observe quietly",
+          "id": 32
+        },
+        {
+          "label": "Look for a way back",
+          "id": 33
+        }
+      ],
+      "position": [1400, 250]
+    },
+    {
+      "id": 24,
+      "type": "action",
+      "text": [
+        "\"A quill that writes by itself?\" you ask.",
+        "McGonagall nods grimly. \"And a locket in the dungeons that shows impossible visions.\""
+      ],
+      "actions": [
+        {
+          "label": "Check the library first",
+          "id": 21
+        },
+        {
+          "label": "Investigate the dungeons",
+          "id": 34
+        }
+      ],
+      "position": [1400, 350]
+    },
+    {
+      "id": 25,
+      "type": "skip",
+      "text": [
+        "McGonagall explains: \"The Founder's Timepiece was a powerful artifact created by all four Hogwarts founders.",
+        "It was split into five pieces to prevent its misuse...\""
+      ],
+      "nextId": 35,
+      "position": [1400, 550]
+    },
+    {
+      "id": 26,
+      "type": "action",
+      "text": [
+        "The visions show four students hiding different objects throughout the castle.",
+        "You recognize the mirror... and other artifacts you haven't seen yet."
+      ],
+      "actions": [
+        {
+          "label": "Try to memorize locations",
+          "id": 36
+        },
+        {
+          "label": "Focus on the students",
+          "id": 37
+        }
+      ],
+      "position": [1600, -200]
+    },
+    {
+      "id": 27,
+      "type": "redirect",
+      "text": [
+        "You attempt to stop the clock's spinning with a Freezing Charm.",
+        "Time magic meets your spell in an explosive reaction!"
+      ],
+      "links": [
+        {
+          "weight": 1,
+          "id": 38
+        },
+        {
+          "weight": 2,
+          "id": 39
+        }
+      ],
+      "position": [1600, -100]
+    },
+    {
+      "id": 28,
+      "type": "action",
+      "text": [
+        "Madam Pince retrieves an ancient tome titled 'Hogwarts: The Forgotten Relics'.",
+        "\"The Founder's Timepiece was more than just a clock,\" she whispers.",
+        "\"It was meant to protect the school... until something went wrong.\""
+      ],
+      "actions": [
+        {
+          "label": "Ask about protection",
+          "id": 40
+        },
+        {
+          "label": "Ask what went wrong",
+          "id": 41
+        },
+        {
+          "label": "Research the pieces",
+          "id": 42
+        }
+      ],
+      "position": [1600, 50]
+    },
+    {
+      "id": 29,
+      "type": "skip",
+      "text": [
+        "Success! The trapped student begins to materialize out of the mirror.",
+        "But something else is coming through too..."
+      ],
+      "nextId": 43,
+      "position": [1600, 150]
+    },
+    {
+      "id": 30,
+      "type": "skip",
+      "text": [
+        "The counter-curse reveals hidden writing on the mirror's frame:",
+        "'Five must become one, when time itself bends'\""
+      ],
+      "nextId": 44,
+      "position": [1600, 250]
+    },
+    {
+      "id": 31,
+      "type": "skip",
+      "text": [
+        "You try to speak, but they can't hear you.",
+        "Yet one student looks directly at you, smiling mysteriously..."
+      ],
+      "nextId": 45,
+      "position": [1600, 350]
+    },
+    {
+      "id": 32,
+      "type": "action",
+      "text": [
+        "You watch as the students argue about the pocket watch.",
+        "\"It's too dangerous to keep assembled,\" one says.",
+        "\"We must hide the pieces throughout the castle.\""
+      ],
+      "actions": [
+        {
+          "label": "Follow the first student",
+          "id": 46
+        },
+        {
+          "label": "Track the watch",
+          "id": 47
+        }
+      ],
+      "position": [1600, 450]
+    },
+    {
+      "id": 33,
+      "type": "redirect",
+      "text": [
+        "You search for the mirror's counterpart in this time.",
+        "There it is! But reaching for it..."
+      ],
+      "links": [
+        {
+          "weight": 2,
+          "id": 48
+        },
+        {
+          "weight": 1,
+          "id": 49
+        }
+      ],
+      "position": [1600, 550]
+    },
+    {
+      "id": 34,
+      "type": "action",
+      "text": [
+        "In the dungeons, you find the locket floating near the Potions classroom.",
+        "Through its crystal face, you see impossible things: Hogwarts in different times, different realities..."
+      ],
+      "actions": [
+        {
+          "label": "Grab the locket",
+          "id": 50
+        },
+        {
+          "label": "Study the visions",
+          "id": 51
+        },
+        {
+          "label": "Cast protection spells",
+          "id": 52
+        }
+      ],
+      "position": [1600, 650]
+    },
+    {
+      "id": 35,
+      "type": "action",
+      "text": [
+        "\"But why are the pieces appearing now?\" you ask.",
+        "McGonagall looks troubled. \"Perhaps because the castle senses danger...\"",
+        "A scream echoes from somewhere above!"
+      ],
+      "actions": [
+        {
+          "label": "Run to investigate",
+          "id": 53
+        },
+        {
+          "label": "Ask about the danger",
+          "id": 54
+        }
+      ],
+      "position": [1800, 550]
+    },
+    {
+      "id": 36,
+      "type": "skip",
+      "text": [
+        "You see the mirror being hidden in the Clock Tower...",
+        "The quill in a secret library alcove...",
+        "The locket in the deepest dungeon...",
+        "And something else in the Astronomy Tower..."
+      ],
+      "nextId": 55,
+      "position": [1800, -200]
+    },
+    {
+      "id": 37,
+      "type": "action",
+      "text": [
+        "The students wear badges you've never seen before.",
+        "Their leader has a Head Boy pin and a familiar-looking timepiece..."
+      ],
+      "actions": [
+        {
+          "label": "Study the timepiece",
+          "id": 56
+        },
+        {
+          "label": "Follow the Head Boy",
+          "id": 57
+        }
+      ],
+      "position": [1800, -100]
+    },
+    {
+      "id": 38,
+      "type": "skip",
+      "text": [
+        "The explosion throws you backward, but time magic swirls around you...",
+        "You see glimpses of Hogwarts through the centuries!"
+      ],
+      "nextId": 58,
+      "position": [1800, 0]
+    },
+    {
+      "id": 39,
+      "type": "finish",
+      "text": [
+        "The magical backlash is too strong!",
+        "You're scattered across multiple timestreams, becoming a living ghost in Hogwarts' halls.",
+        "Future students will tell stories about the Prefect who exists in all times... ⌛"
+      ],
+      "position": [1800, 100]
+    },
+    {
+      "id": 40,
+      "type": "skip",
+      "text": [
+        "\"The Timepiece was created to guard against temporal threats,\" Madam Pince explains.",
+        "\"It could stabilize the castle's own time magic, preventing paradoxes...\""
+      ],
+      "nextId": 59,
+      "position": [1800, 200]
+    },
+    {
+      "id": 41,
+      "type": "skip",
+      "text": [
+        "\"A student tried to use it to prevent a tragedy,\" she says sadly.",
+        "\"Instead, they created a temporal fracture that threatened the whole school.\""
+      ],
+      "nextId": 60,
+      "position": [1800, 300]
+    },
+    {
+      "id": 42,
+      "type": "action",
+      "text": [
+        "You find a detailed description of the five pieces:",
+        "Mirror of Moments, Chronicler's Quill, Locket of Lives,",
+        "Hourglass of Horizons, and the Master Clock itself."
+      ],
+      "actions": [
+        {
+          "label": "Research the Mirror",
+          "id": 61
+        },
+        {
+          "label": "Search for the Quill",
+          "id": 62
+        },
+        {
+          "label": "Find the Hourglass",
+          "id": 63
+        }
+      ],
+      "position": [1800, 400]
+    },
+    {
+      "id": 43,
+      "type": "action",
+      "text": [
+        "The Hufflepuff student materializes, but a dark figure follows!",
+        "It looks like a shadow given form, reaching with misty tendrils..."
+      ],
+      "actions": [
+        {
+          "label": "Shield the student",
+          "id": 64
+        },
+        {
+          "label": "Attack the shadow",
+          "id": 65
+        },
+        {
+          "label": "Close the portal",
+          "id": 66
+        }
+      ],
+      "position": [1800, 500]
+    },
+    {
+      "id": 44,
+      "type": "action",
+      "text": [
+        "The inscription glows with an inner light.",
+        "Suddenly, your prefect badge grows warm...",
+        "It's revealing a hidden map of Hogwarts!"
+      ],
+      "actions": [
+        {
+          "label": "Study the map",
+          "id": 67
+        },
+        {
+          "label": "Follow its first marker",
+          "id": 68
+        }
+      ],
+      "position": [1800, 600]
+    },
+    {
+      "id": 45,
+      "type": "skip",
+      "text": [
+        "The student mouths words you can barely make out:",
+        "\"Find us... when the stars align...\"",
+        "Your surroundings begin to fade..."
+      ],
+      "nextId": 69,
+      "position": [1800, 700]
+    },
+    {
+      "id": 46,
+      "type": "skip",
+      "text": [
+        "You follow the first student up winding staircases,",
+        "Through the Astronomy Tower's secret passages..."
+      ],
+      "nextId": 161,
+      "position": [2000, -250]
+    },
+    {
+      "id": 47,
+      "type": "action",
+      "text": [
+        "Watching the watch's disassembly, you notice each piece glows",
+        "With a different magical signature: starlight, shadows, time itself..."
+      ],
+      "actions": [
+        {
+          "label": "Study starlight",
+          "id": 162
+        },
+        {
+          "label": "Track shadows",
+          "id": 163
+        }
+      ],
+      "position": [2000, -150]
+    },
+    {
+      "id": 48,
+      "type": "skip",
+      "text": [
+        "The past mirror pulses with temporal energy,",
+        "Creating a stable pathway through time..."
+      ],
+      "nextId": 164,
+      "position": [2000, -50]
+    },
+    {
+      "id": 49,
+      "type": "action",
+      "text": [
+        "The temporal energies begin to collapse!",
+        "You have moments to choose your path..."
+      ],
+      "actions": [
+        {
+          "label": "Return to present",
+          "id": 165
+        },
+        {
+          "label": "Stay and learn",
+          "id": 166
+        }
+      ],
+      "position": [2000, 50]
+    },
+    {
+      "id": 50,
+      "type": "redirect",
+      "text": [
+        "You grasp the locket, and visions flood your mind:",
+        "Countless possible futures for Hogwarts..."
+      ],
+      "links": [
+        {
+          "weight": 2,
+          "id": 167
+        },
+        {
+          "weight": 1,
+          "id": 168
+        }
+      ],
+      "position": [2000, 150]
+    },
+    {
+      "id": 51,
+      "type": "action",
+      "text": [
+        "The locket shows three distinct timelines:",
+        "A ruined castle, a floating citadel, and a world of eternal twilight..."
+      ],
+      "actions": [
+        {
+          "label": "Study ruins",
+          "id": 169
+        },
+        {
+          "label": "Watch citadel",
+          "id": 170
+        },
+        {
+          "label": "Explore twilight",
+          "id": 171
+        }
+      ],
+      "position": [2000, 250]
+    },
+    {
+      "id": 52,
+      "type": "redirect",
+      "text": [
+        "Your protection spells interact with the locket's magic,",
+        "Creating unexpected temporal effects..."
+      ],
+      "links": [
+        {
+          "weight": 2,
+          "id": 172
+        },
+        {
+          "weight": 1,
+          "id": 173
+        }
+      ],
+      "position": [2000, 350]
+    },
+    {
+      "id": 53,
+      "type": "skip",
+      "text": [
+        "Racing up the tower steps, you hear more screams.",
+        "The portraits whisper warnings as you pass..."
+      ],
+      "nextId": 174,
+      "position": [2000, 450]
+    },
+    {
+      "id": 54,
+      "type": "action",
+      "text": [
+        "\"The danger...\" McGonagall hesitates,",
+        "\"Comes from within time itself. The barriers weaken...\""
+      ],
+      "actions": [
+        {
+          "label": "Ask about barriers",
+          "id": 175
+        },
+        {
+          "label": "Investigate danger",
+          "id": 176
+        }
+      ],
+      "position": [2000, 550]
+    },
+    {
+      "id": 55,
+      "type": "action",
+      "text": [
+        "You've seen four locations, but something nags at your memory...",
+        "A fifth point, hidden from normal sight..."
+      ],
+      "actions": [
+        {
+          "label": "Search archives",
+          "id": 177
+        },
+        {
+          "label": "Use detection",
+          "id": 178
+        }
+      ],
+      "position": [2000, 650]
+    },
+    {
+      "id": 56,
+      "type": "skip",
+      "text": [
+        "The timepiece bears all four house symbols.",
+        "Its hands move strangely, marking more than just hours..."
+      ],
+      "nextId": 125,
+      "position": [2000, -150]
+    },
+    {
+      "id": 57,
+      "type": "redirect",
+      "text": [
+        "You follow the Head Boy through twisting corridors.",
+        "He seems to know you're there..."
+      ],
+      "links": [
+        {
+          "weight": 2,
+          "id": 126
+        },
+        {
+          "weight": 1,
+          "id": 127
+        }
+      ],
+      "position": [2000, -50]
+    },
+    {
+      "id": 58,
+      "type": "action",
+      "text": [
+        "Through the time vortex, you see crucial moments:",
+        "The founders creating the Timepiece,",
+        "Students hiding its pieces,",
+        "Shadow guardians emerging..."
+      ],
+      "actions": [
+        {
+          "label": "Watch the founders",
+          "id": 128
+        },
+        {
+          "label": "Study the guardians",
+          "id": 129
+        }
+      ],
+      "position": [2000, 50]
+    },
+    {
+      "id": 59,
+      "type": "action",
+      "text": [
+        "\"But the castle's temporal defenses are failing,\" Pince continues.",
+        "\"That's why we're seeing these anomalies...\""
+      ],
+      "actions": [
+        {
+          "label": "Ask about fixing them",
+          "id": 130
+        },
+        {
+          "label": "Research anomalies",
+          "id": 131
+        }
+      ],
+      "position": [2000, 150]
+    },
+    {
+      "id": 60,
+      "type": "skip",
+      "text": [
+        "\"The student's name was Artemis Black,\" Pince whispers.",
+        "\"He wanted to prevent a terrible accident...\""
+      ],
+      "nextId": 132,
+      "position": [2000, 250]
+    },
+    {
+      "id": 61,
+      "type": "action",
+      "text": [
+        "The Mirror of Moments can create temporal windows,",
+        "Allowing glimpses of past and future...",
+        "But using it risks attracting the attention of the shadow guardians."
+      ],
+      "actions": [
+        {
+          "label": "Risk using it",
+          "id": 133
+        },
+        {
+          "label": "Study safely",
+          "id": 134
+        }
+      ],
+      "position": [2000, 350]
+    },
+    {
+      "id": 62,
+      "type": "skip",
+      "text": [
+        "You sense the Quill's presence in the library...",
+        "It's writing something in an ancient ledger!"
+      ],
+      "nextId": 135,
+      "position": [2000, 450]
+    },
+    {
+      "id": 63,
+      "type": "action",
+      "text": [
+        "The Hourglass of Horizons must be in the Astronomy Tower.",
+        "Its power grows stronger as the stars align..."
+      ],
+      "actions": [
+        {
+          "label": "Climb the tower",
+          "id": 136
+        },
+        {
+          "label": "Check star charts",
+          "id": 137
+        }
+      ],
+      "position": [2000, 550]
+    },
+    {
+      "id": 64,
+      "type": "redirect",
+      "text": [
+        "You cast Protego Maxima around the student!",
+        "The shadow creature collides with your shield..."
+      ],
+      "links": [
+        {
+          "weight": 2,
+          "id": 138
+        },
+        {
+          "weight": 1,
+          "id": 139
+        }
+      ],
+      "position": [2000, 650]
+    },
+    {
+      "id": 65,
+      "type": "skip",
+      "text": [
+        "Your spell passes through the shadow harmlessly,",
+        "But it reacts to the magical energy itself..."
+      ],
+      "nextId": 140,
+      "position": [2000, 750]
+    },
+    {
+      "id": 66,
+      "type": "action",
+      "text": [
+        "You attempt to seal the temporal portal,",
+        "But the shadow seems to be protecting something..."
+      ],
+      "actions": [
+        {
+          "label": "Force it closed",
+          "id": 141
+        },
+        {
+          "label": "Listen to shadow",
+          "id": 142
+        }
+      ],
+      "position": [2000, 850]
+    },
+    {
+      "id": 67,
+      "type": "skip",
+      "text": [
+        "The map shows five pulsing points of light,",
+        "Connected by lines of temporal energy..."
+      ],
+      "nextId": 143,
+      "position": [2000, 950]
+    },
+    {
+      "id": 68,
+      "type": "action",
+      "text": [
+        "The first marker leads to the library's Restricted Section.",
+        "Something is writing in an ancient book..."
+      ],
+      "actions": [
+        {
+          "label": "Approach quietly",
+          "id": 144
+        },
+        {
+          "label": "Cast Lumos",
+          "id": 145
+        }
+      ],
+      "position": [2000, 1050]
+    },
+    {
+      "id": 69,
+      "type": "skip",
+      "text": [
+        "As the vision fades, you catch a glimpse of stars",
+        "Moving into a familiar pattern..."
+      ],
+      "nextId": 146,
+      "position": [2000, 1150]
+    },
+    {
+      "id": 70,
+      "type": "action",
+      "text": [
+        "In the Astronomy Tower, the student places the hourglass in a special mount.",
+        "Starlight streams through it, creating a pattern on the floor..."
+      ],
+      "actions": [
+        {
+          "label": "Study the pattern",
+          "id": 85
+        },
+        {
+          "label": "Watch the student",
+          "id": 86
+        }
+      ],
+      "position": [2200, -200]
+    },
+    {
+      "id": 71,
+      "type": "action",
+      "text": [
+        "Each piece seems drawn to a different part of the castle:",
+        "Mirror to the Clock Tower, Quill to the Library,",
+        "Locket to the Dungeons, Hourglass to the stars..."
+      ],
+      "actions": [
+        {
+          "label": "Track the Mirror",
+          "id": 87
+        },
+        {
+          "label": "Follow the Hourglass",
+          "id": 88
+        }
+      ],
+      "position": [2200, -100]
+    },
+    {
+      "id": 72,
+      "type": "action",
+      "text": [
+        "Through the time bridge, you can step between past and present!",
+        "But shadows are starting to seep through as well..."
+      ],
+      "actions": [
+        {
+          "label": "Close the bridge",
+          "id": 89
+        },
+        {
+          "label": "Study the shadows",
+          "id": 90
+        },
+        {
+          "label": "Use the bridge",
+          "id": 91
+        }
+      ],
+      "position": [2200, 0]
+    },
+    {
+      "id": 73,
+      "type": "skip",
+      "text": [
+        "You see a clear vision: the artifacts must be united during the celestial alignment,",
+        "Or the temporal barriers protecting Hogwarts will fail completely!"
+      ],
+      "nextId": 92,
+      "position": [2200, 100]
+    },
+    {
+      "id": 74,
+      "type": "finish",
+      "text": [
+        "The locket overwhelms your mind with infinite possibilities!",
+        "You become unstuck in time, forever glimpsing all potential futures.",
+        "The price of forbidden knowledge is steep... ⌛"
+      ],
+      "position": [2200, 200]
+    },
+    {
+      "id": 75,
+      "type": "skip",
+      "text": [
+        "The ruined Hogwarts shows signs of a temporal disaster.",
+        "Shadow creatures roam freely, and time itself seems broken..."
+      ],
+      "nextId": 93,
+      "position": [2200, 300]
+    },
+    {
+      "id": 76,
+      "type": "skip",
+      "text": [
+        "The floating castle seems to exist outside of time itself.",
+        "Is this what happens if the Timepiece is fully assembled?"
+      ],
+      "nextId": 94,
+      "position": [2200, 400]
+    },
+    {
+      "id": 77,
+      "type": "action",
+      "text": [
+        "In the backwards-flowing time, you see students reassembling the Timepiece,",
+        "But something dark is watching them..."
+      ],
+      "actions": [
+        {
+          "label": "Focus on the students",
+          "id": 95
+        },
+        {
+          "label": "Watch the darkness",
+          "id": 96
+        }
+      ],
+      "position": [2200, 500]
+    },
+    {
+      "id": 78,
+      "type": "skip",
+      "text": [
+        "Your protection spells stabilize the locket's magic!",
+        "It shows you a clear path forward..."
+      ],
+      "nextId": 97,
+      "position": [2200, 600]
+    },
+    {
+      "id": 79,
+      "type": "finish",
+      "text": [
+        "The protection spells and temporal magic create a paradox!",
+        "You're trapped in an endless loop of casting the same spell.",
+        "Time can be quite unforgiving... ⌛"
+      ],
+      "position": [2200, 700]
+    },
+    {
+      "id": 80,
+      "type": "action",
+      "text": [
+        "In the Astronomy Tower, you find students pointing at the sky in horror.",
+        "The stars are moving into an impossible alignment,",
+        "And dark shapes are beginning to appear between them..."
+      ],
+      "actions": [
+        {
+          "label": "Evacuate the students",
+          "id": 98
+        },
+        {
+          "label": "Study the alignment",
+          "id": 99
+        },
+        {
+          "label": "Cast protective spells",
+          "id": 100
+        }
+      ],
+      "position": [2200, 800]
+    },
+    {
+      "id": 81,
+      "type": "action",
+      "text": [
+        "McGonagall's expression darkens. \"The temporal defenses...",
+        "They've been weakening for years. But now...\""
+      ],
+      "actions": [
+        {
+          "label": "Ask about defenses",
+          "id": 91
+        },
+        {
+          "label": "Check barriers",
+          "id": 92
+        }
+      ],
+      "position": [2200, -150]
+    },
+    {
+      "id": 82,
+      "type": "skip",
+      "text": [
+        "You cast detection spells around the castle walls.",
+        "The magic reveals flickering temporal barriers..."
+      ],
+      "nextId": 93,
+      "position": [2200, -50]
+    },
+    {
+      "id": 83,
+      "type": "action",
+      "text": [
+        "A ripple in time reveals glimpses through the barriers:",
+        "Past students, future dangers, and shadow guardians..."
+      ],
+      "actions": [
+        {
+          "label": "Watch past",
+          "id": 94
+        },
+        {
+          "label": "Study future",
+          "id": 95
+        }
+      ],
+      "position": [2200, 50]
+    },
+    {
+      "id": 84,
+      "type": "skip",
+      "text": [
+        "In the castle's past, you see students hiding artifacts,",
+        "Working together to protect Hogwarts' timeline..."
+      ],
+      "nextId": 96,
+      "position": [2200, 150]
+    },
+    {
+      "id": 85,
+      "type": "action",
+      "text": [
+        "The temporal pattern reminds you of something...",
+        "The artifacts form a pentagram around the castle!"
+      ],
+      "actions": [
+        {
+          "label": "Study pattern",
+          "id": 97
+        },
+        {
+          "label": "Visit points",
+          "id": 98
+        }
+      ],
+      "position": [2200, 250]
+    },
+    {
+      "id": 86,
+      "type": "skip",
+      "text": [
+        "Each point of the pentagram pulses with power:",
+        "Clock Tower, Library, Dungeons, Astronomy Tower..."
+      ],
+      "nextId": 99,
+      "position": [2200, 350]
+    },
+    {
+      "id": 87,
+      "type": "action",
+      "text": [
+        "But where's the fifth point?",
+        "The map becomes unclear, as if hidden by powerful magic..."
+      ],
+      "actions": [
+        {
+          "label": "Research pattern",
+          "id": 100
+        },
+        {
+          "label": "Follow energy",
+          "id": 101
+        }
+      ],
+      "position": [2200, 450]
+    },
+    {
+      "id": 88,
+      "type": "redirect",
+      "text": [
+        "The temporal energies lead you deeper into the castle,",
+        "Towards a hidden chamber..."
+      ],
+      "links": [
+        {
+          "weight": 2,
+          "id": 102
+        },
+        {
+          "weight": 1,
+          "id": 103
+        }
+      ],
+      "position": [2200, 550]
+    },
+    {
+      "id": 89,
+      "type": "action",
+      "text": [
+        "In the ancient books, you find references to the Timepiece,",
+        "And its connection to Hogwarts' very foundations..."
+      ],
+      "actions": [
+        {
+          "label": "Study connection",
+          "id": 104
+        },
+        {
+          "label": "Search more",
+          "id": 105
+        }
+      ],
+      "position": [2200, 650]
+    },
+    {
+      "id": 90,
+      "type": "skip",
+      "text": [
+        "The Timepiece was created to anchor the castle in time,",
+        "Preventing temporal chaos from unraveling its magic..."
+      ],
+      "nextId": 106,
+      "position": [2200, 750]
+    },
+    {
+      "id": 91,
+      "type": "action",
+      "text": [
+        "\"The defenses were created by the founders themselves,\"",
+        "McGonagall explains. \"But they require maintenance...\""
+      ],
+      "actions": [
+        {
+          "label": "Learn more",
+          "id": 107
+        },
+        {
+          "label": "Offer help",
+          "id": 108
+        }
+      ],
+      "position": [2200, 850]
+    },
+    {
+      "id": 92,
+      "type": "skip",
+      "text": [
+        "Your inspection reveals weakening points in time,",
+        "Places where past and future bleed together..."
+      ],
+      "nextId": 109,
+      "position": [2200, 950]
+    },
+    {
+      "id": 93,
+      "type": "action",
+      "text": [
+        "Through these temporal breaches, you glimpse",
+        "Different versions of Hogwarts, some peaceful, some dark..."
+      ],
+      "actions": [
+        {
+          "label": "Study versions",
+          "id": 110
+        },
+        {
+          "label": "Seal breaches",
+          "id": 111
+        }
+      ],
+      "position": [2200, 1050]
+    },
+    {
+      "id": 94,
+      "type": "skip",
+      "text": [
+        "You watch the past unfold: Artemis Black's sister,",
+        "Her sacrifice, and his desperate attempt to change time..."
+      ],
+      "nextId": 112,
+      "position": [2400, -150]
+    },
+    {
+      "id": 95,
+      "type": "action",
+      "text": [
+        "The future shows multiple paths:",
+        "Some lead to safety, others to temporal collapse..."
+      ],
+      "actions": [
+        {
+          "label": "Choose safety",
+          "id": 113
+        },
+        {
+          "label": "Risk change",
+          "id": 114
+        }
+      ],
+      "position": [2400, -50]
+    },
+    {
+      "id": 96,
+      "type": "skip",
+      "text": [
+        "The student guardians of the past worked in secret,",
+        "Protecting time itself from those who would change it..."
+      ],
+      "nextId": 115,
+      "position": [2400, 50]
+    },
+    {
+      "id": 97,
+      "type": "action",
+      "text": [
+        "The pentagram pattern matches ancient runes",
+        "About temporal stability and protection..."
+      ],
+      "actions": [
+        {
+          "label": "Decode runes",
+          "id": 116
+        },
+        {
+          "label": "Map energy",
+          "id": 117
+        }
+      ],
+      "position": [2400, 150]
+    },
+    {
+      "id": 98,
+      "type": "redirect",
+      "text": [
+        "As you visit each point, the artifacts respond,",
+        "Their powers growing stronger..."
+      ],
+      "links": [
+        {
+          "weight": 2,
+          "id": 118
+        },
+        {
+          "weight": 1,
+          "id": 119
+        }
+      ],
+      "position": [2400, 250]
+    },
+    {
+      "id": 99,
+      "type": "action",
+      "text": [
+        "The fourth point pulses with starlight,",
+        "But something feels missing from the pattern..."
+      ],
+      "actions": [
+        {
+          "label": "Search castle",
+          "id": 120
+        },
+        {
+          "label": "Study stars",
+          "id": 121
+        }
+      ],
+      "position": [2400, 350]
+    },
+    {
+      "id": 100,
+      "type": "skip",
+      "text": [
+        "Ancient texts speak of a fifth point,",
+        "Hidden where 'time flows backwards'..."
+      ],
+      "nextId": 122,
+      "position": [2400, 450]
+    },
+    {
+      "id": 101,
+      "type": "action",
+      "text": [
+        "The temporal energy forms a trail,",
+        "Leading deep beneath the castle..."
+      ],
+      "actions": [
+        {
+          "label": "Follow trail",
+          "id": 123
+        },
+        {
+          "label": "Mark location",
+          "id": 124
+        }
+      ],
+      "position": [2400, 550]
+    },
+    {
+      "id": 102,
+      "type": "skip",
+      "text": [
+        "The hidden chamber reveals ancient markings,",
+        "Showing the original creation of the Timepiece..."
+      ],
+      "nextId": 125,
+      "position": [2400, 650]
+    },
+    {
+      "id": 103,
+      "type": "action",
+      "text": [
+        "The chamber entrance is sealed with temporal magic,",
+        "Requiring precise timing to enter..."
+      ],
+      "actions": [
+        {
+          "label": "Wait for alignment",
+          "id": 126
+        },
+        {
+          "label": "Force entry",
+          "id": 127
+        }
+      ],
+      "position": [2400, 750]
+    },
+    {
+      "id": 104,
+      "type": "skip",
+      "text": [
+        "The Timepiece's connection to Hogwarts runs deep,",
+        "Its magic woven into the very stones..."
+      ],
+      "nextId": 128,
+      "position": [2400, 850]
+    },
+    {
+      "id": 105,
+      "type": "action",
+      "text": [
+        "Further research reveals mentions of temporal anchors,",
+        "Points of power that maintain Hogwarts' place in time..."
+      ],
+      "actions": [
+        {
+          "label": "Find anchors",
+          "id": 129
+        },
+        {
+          "label": "Study effects",
+          "id": 130
+        }
+      ],
+      "position": [2400, 950]
+    },
+    {
+      "id": 106,
+      "type": "action",
+      "text": [
+        "Without the Timepiece's stabilizing influence,",
+        "Different time periods begin to overlap dangerously..."
+      ],
+      "actions": [
+        {
+          "label": "Stabilize time",
+          "id": 131
+        },
+        {
+          "label": "Study overlap",
+          "id": 132
+        }
+      ],
+      "position": [2400, 1050]
+    },
+    {
+      "id": 107,
+      "type": "skip",
+      "text": [
+        "McGonagall explains the founders' original plan:",
+        "A network of temporal wards, powered by the Timepiece..."
+      ],
+      "nextId": 133,
+      "position": [2400, 1150]
+    },
+    {
+      "id": 108,
+      "type": "action",
+      "text": [
+        "\"We could use help,\" McGonagall admits.",
+        "\"The barriers need strengthening before the alignment.\""
+      ],
+      "actions": [
+        {
+          "label": "Begin preparations",
+          "id": 134
+        },
+        {
+          "label": "Ask about risks",
+          "id": 135
+        }
+      ],
+      "position": [2400, 1250]
+    },
+    {
+      "id": 109,
+      "type": "action",
+      "text": [
+        "The temporal breaches show scenes from different eras,",
+        "Including the moment the Timepiece was first split..."
+      ],
+      "actions": [
+        {
+          "label": "Watch splitting",
+          "id": 136
+        },
+        {
+          "label": "Seal breach",
+          "id": 137
+        }
+      ],
+      "position": [2600, -150]
+    },
+    {
+      "id": 110,
+      "type": "skip",
+      "text": [
+        "Each version of Hogwarts shows a different path:",
+        "Some where the Timepiece was united, others where it remained split..."
+      ],
+      "nextId": 138,
+      "position": [2600, -50]
+    },
+    {
+      "id": 111,
+      "type": "redirect",
+      "text": [
+        "Your attempts to seal the breaches reveal something unexpected:",
+        "They're not random - they form a pattern..."
+      ],
+      "links": [
+        {
+          "weight": 2,
+          "id": 139
+        },
+        {
+          "weight": 1,
+          "id": 140
+        }
+      ],
+      "position": [2600, 50]
+    },
+    {
+      "id": 112,
+      "type": "action",
+      "text": [
+        "You witness Artemis's sister's final moments,",
+        "Her sacrifice creating a powerful temporal shield..."
+      ],
+      "actions": [
+        {
+          "label": "Study shield",
+          "id": 141
+        },
+        {
+          "label": "Honor memory",
+          "id": 142
+        }
+      ],
+      "position": [2600, 150]
+    },
+    {
+      "id": 113,
+      "type": "skip",
+      "text": [
+        "The safe path requires maintaining the temporal barriers,",
+        "Working with the shadow guardians rather than against them..."
+      ],
+      "nextId": 143,
+      "position": [2600, 250]
+    },
+    {
+      "id": 114,
+      "type": "redirect",
+      "text": [
+        "Attempting to change time's flow creates ripples,",
+        "The consequences spreading outward..."
+      ],
+      "links": [
+        {
+          "weight": 2,
+          "id": 144
+        },
+        {
+          "weight": 1,
+          "id": 145
+        }
+      ],
+      "position": [2600, 350]
+    },
+    {
+      "id": 115,
+      "type": "action",
+      "text": [
+        "These student guardians had a secret society,",
+        "Dedicated to protecting Hogwarts' timeline..."
+      ],
+      "actions": [
+        {
+          "label": "Join society",
+          "id": 146
+        },
+        {
+          "label": "Learn secrets",
+          "id": 147
+        }
+      ],
+      "position": [2600, 450]
+    },
+    {
+      "id": 116,
+      "type": "skip",
+      "text": [
+        "The runes speak of 'temporal anchor points',",
+        "Places where time's flow is particularly strong..."
+      ],
+      "nextId": 148,
+      "position": [2600, 550]
+    },
+    {
+      "id": 117,
+      "type": "action",
+      "text": [
+        "Mapping the energy reveals a complex network,",
+        "With the five artifacts serving as key nodes..."
+      ],
+      "actions": [
+        {
+          "label": "Study nodes",
+          "id": 149
+        },
+        {
+          "label": "Track energy",
+          "id": 150
+        }
+      ],
+      "position": [2600, 650]
+    },
+    {
+      "id": 118,
+      "type": "skip",
+      "text": [
+        "The artifacts begin to resonate with each other,",
+        "Their combined power growing stronger..."
+      ],
+      "nextId": 151,
+      "position": [2600, 750]
+    },
+    {
+      "id": 119,
+      "type": "action",
+      "text": [
+        "One artifact seems to resist the others,",
+        "As if protecting a secret..."
+      ],
+      "actions": [
+        {
+          "label": "Investigate",
+          "id": 152
+        },
+        {
+          "label": "Force unity",
+          "id": 153
+        }
+      ],
+      "position": [2600, 850]
+    },
+    {
+      "id": 120,
+      "type": "skip",
+      "text": [
+        "Your search through the castle reveals hidden temporal signatures,",
+        "Leading to unexpected places..."
+      ],
+      "nextId": 154,
+      "position": [2600, 950]
+    },
+    {
+      "id": 121,
+      "type": "action",
+      "text": [
+        "The stars' alignment matches an ancient prophecy",
+        "About the Timepiece's true purpose..."
+      ],
+      "actions": [
+        {
+          "label": "Read prophecy",
+          "id": 155
+        },
+        {
+          "label": "Watch stars",
+          "id": 156
+        }
+      ],
+      "position": [2600, 1050]
+    },
+    {
+      "id": 122,
+      "type": "skip",
+      "text": [
+        "The backwards-flowing time leads to a hidden room,",
+        "Where past and future seem to meet..."
+      ],
+      "nextId": 157,
+      "position": [2600, 1150]
+    },
+    {
+      "id": 123,
+      "type": "action",
+      "text": [
+        "Following the temporal trail reveals ancient magic,",
+        "Woven into Hogwarts' very foundations..."
+      ],
+      "actions": [
+        {
+          "label": "Study magic",
+          "id": 158
+        },
+        {
+          "label": "Mark path",
+          "id": 159
+        }
+      ],
+      "position": [2600, 1250]
+    },
+    {
+      "id": 124,
+      "type": "skip",
+      "text": [
+        "You carefully mark the location on your map,",
+        "Noting how it connects to the other temporal points..."
+      ],
+      "nextId": 160,
+      "position": [2600, 1350]
+    },
+    {
+      "id": 125,
+      "type": "action",
+      "text": [
+        "The timepiece's hands point to different eras of Hogwarts history.",
+        "One hand trembles, pointing to a moment of great danger..."
+      ],
+      "actions": [
+        {
+          "label": "Study that moment",
+          "id": 147
+        },
+        {
+          "label": "Check other times",
+          "id": 148
+        }
+      ],
+      "position": [2600, -150]
+    },
+    {
+      "id": 126,
+      "type": "skip",
+      "text": [
+        "The Head Boy leads you to a hidden chamber.",
+        "\"We've been waiting for someone like you,\" he says, turning to face your direction."
+      ],
+      "nextId": 149,
+      "position": [2600, -50]
+    },
+    {
+      "id": 127,
+      "type": "finish",
+      "text": [
+        "You lose track of the Head Boy in Hogwarts' shifting corridors.",
+        "The temporal magic fades, leaving you back in your own time.",
+        "Some secrets of the past remain hidden... 🕰️"
+      ],
+      "position": [2600, 50]
+    },
+    {
+      "id": 128,
+      "type": "action",
+      "text": [
+        "You witness the founders forging the Timepiece.",
+        "Ravenclaw enchants it for wisdom,",
+        "Hufflepuff for protection,",
+        "Slytherin for power,",
+        "And Gryffindor for courage..."
+      ],
+      "actions": [
+        {
+          "label": "Study enchantments",
+          "id": 150
+        },
+        {
+          "label": "Watch completion",
+          "id": 151
+        }
+      ],
+      "position": [2600, 150]
+    },
+    {
+      "id": 129,
+      "type": "skip",
+      "text": [
+        "The shadow guardians were created from the founders' own magical essence,",
+        "Meant to protect the timeline itself..."
+      ],
+      "nextId": 152,
+      "position": [2600, 250]
+    },
+    {
+      "id": 130,
+      "type": "action",
+      "text": [
+        "\"To fix the defenses,\" Pince explains,",
+        "\"All five pieces must be united during the celestial alignment.",
+        "But the risks are enormous...\""
+      ],
+      "actions": [
+        {
+          "label": "Accept the risk",
+          "id": 153
+        },
+        {
+          "label": "Find another way",
+          "id": 154
+        }
+      ],
+      "position": [2600, 350]
+    },
+    {
+      "id": 131,
+      "type": "skip",
+      "text": [
+        "Your research reveals that temporal anomalies are increasing.",
+        "Different time periods are beginning to bleed together..."
+      ],
+      "nextId": 155,
+      "position": [2600, 450]
+    },
+    {
+      "id": 132,
+      "type": "action",
+      "text": [
+        "\"Artemis tried to save his sister,\" Pince continues.",
+        "\"But changing time always comes at a cost...\""
+      ],
+      "actions": [
+        {
+          "label": "Ask about sister",
+          "id": 156
+        },
+        {
+          "label": "Learn about cost",
+          "id": 157
+        }
+      ],
+      "position": [2600, 550]
+    },
+    {
+      "id": 133,
+      "type": "redirect",
+      "text": [
+        "You activate the Mirror's power.",
+        "Multiple timelines swirl in its surface..."
+      ],
+      "links": [
+        {
+          "weight": 2,
+          "id": 158
+        },
+        {
+          "weight": 1,
+          "id": 159
+        }
+      ],
+      "position": [2600, 650]
+    },
+    {
+      "id": 134,
+      "type": "skip",
+      "text": [
+        "Your cautious study reveals that the Mirror responds to emotions.",
+        "It shows reflections of moments that matter most to the viewer..."
+      ],
+      "nextId": 160,
+      "position": [2600, 750]
+    },
+    {
+      "id": 135,
+      "type": "action",
+      "text": [
+        "The Quill writes frantically in the ledger:",
+        "\"Time fractures grow. Shadows guard. Stars align. Unite the five.\""
+      ],
+      "actions": [
+        {
+          "label": "Take the Quill",
+          "id": 161
+        },
+        {
+          "label": "Read more",
+          "id": 162
+        }
+      ],
+      "position": [2600, 850]
+    },
+    {
+      "id": 136,
+      "type": "skip",
+      "text": [
+        "At the top of the Astronomy Tower,",
+        "You find an hourglass filled with what looks like starlight..."
+      ],
+      "nextId": 163,
+      "position": [2600, 950]
+    },
+    {
+      "id": 137,
+      "type": "action",
+      "text": [
+        "The star charts show a rare alignment approaching.",
+        "All the celestial bodies will mirror the founders' original configuration!"
+      ],
+      "actions": [
+        {
+          "label": "Calculate time",
+          "id": 164
+        },
+        {
+          "label": "Study effects",
+          "id": 165
+        }
+      ],
+      "position": [2600, 1050]
+    },
+    {
+      "id": 138,
+      "type": "skip",
+      "text": [
+        "The shadow hits your shield with surprising gentleness.",
+        "It seems to be testing your magical ability..."
+      ],
+      "nextId": 202,
+      "position": [3600, 0]
+    },
+    {
+      "id": 139,
+      "type": "finish",
+      "text": [
+        "Your shield spell interacts badly with the temporal magic!",
+        "Both you and the student become trapped in a time loop.",
+        "At least you have eternity to perfect your spellwork... ⌛"
+      ],
+      "position": [3600, 100]
+    },
+    {
+      "id": 140,
+      "type": "action",
+      "text": [
+        "The shadow absorbs your spell's energy,",
+        "Then forms into a more distinct shape..."
+      ],
+      "actions": [
+        {
+          "label": "Communicate",
+          "id": 203
+        },
+        {
+          "label": "Defend",
+          "id": 204
+        }
+      ],
+      "position": [3600, 200]
+    },
+    {
+      "id": 141,
+      "type": "finish",
+      "text": [
+        "Forcing the portal closed creates a temporal backlash!",
+        "The shadow guardians are scattered through time.",
+        "Now Hogwarts' timeline is more vulnerable than ever... 🌑"
+      ],
+      "position": [3600, 300]
+    },
+    {
+      "id": 142,
+      "type": "skip",
+      "text": [
+        "The shadow's presence forms words in your mind:",
+        "\"We guard time itself. Will you aid us?\""
+      ],
+      "nextId": 205,
+      "position": [3600, 400]
+    },
+    {
+      "id": 143,
+      "type": "action",
+      "text": [
+        "Following the energy lines reveals a pattern:",
+        "The artifacts form a pentagram around Hogwarts castle!"
+      ],
+      "actions": [
+        {
+          "label": "Study pattern",
+          "id": 206
+        },
+        {
+          "label": "Visit points",
+          "id": 207
+        }
+      ],
+      "position": [3600, 500]
+    },
+    {
+      "id": 144,
+      "type": "skip",
+      "text": [
+        "You approach silently. The Chronicler's Quill writes frantically,",
+        "Recording both past and potential futures..."
+      ],
+      "nextId": 208,
+      "position": [3600, 600]
+    },
+    {
+      "id": 145,
+      "type": "redirect",
+      "text": [
+        "Your Lumos spell illuminates the library,",
+        "But the magical light has an unexpected effect..."
+      ],
+      "links": [
+        {
+          "weight": 2,
+          "id": 209
+        },
+        {
+          "weight": 1,
+          "id": 210
+        }
+      ],
+      "position": [3600, 700]
+    },
+    {
+      "id": 146,
+      "type": "action",
+      "text": [
+        "The stars are forming the same pattern as the artifacts.",
+        "Tomorrow night, they'll perfectly align..."
+      ],
+      "actions": [
+        {
+          "label": "Prepare ritual",
+          "id": 211
+        },
+        {
+          "label": "Research alignment",
+          "id": 212
+        }
+      ],
+      "position": [3600, 800]
+    },
+    {
+      "id": 147,
+      "type": "action",
+      "text": [
+        "The Head Boy reveals secret passages known only to the Guard,",
+        "And ancient spells for manipulating time itself..."
+      ],
+      "actions": [
+        {
+          "label": "Learn spells",
+          "id": 179
+        },
+        {
+          "label": "Map passages",
+          "id": 180
+        }
+      ],
+      "position": [2800, -100]
+    },
+    {
+      "id": 148,
+      "type": "skip",
+      "text": [
+        "Each anchor point strengthens the barriers between timelines,",
+        "Preventing dangerous temporal overlap..."
+      ],
+      "nextId": 181,
+      "position": [2800, 0]
+    },
+    {
+      "id": 149,
+      "type": "action",
+      "text": [
+        "The nodes pulse with different types of temporal energy:",
+        "Past, Present, Future, Possibility, and Void..."
+      ],
+      "actions": [
+        {
+          "label": "Study Past",
+          "id": 182
+        },
+        {
+          "label": "Explore Void",
+          "id": 183
+        }
+      ],
+      "position": [2800, 100]
+    },
+    {
+      "id": 150,
+      "type": "skip",
+      "text": [
+        "Following the energy streams reveals how they interconnect,",
+        "Creating a complex web of temporal stability..."
+      ],
+      "nextId": 184,
+      "position": [2800, 200]
+    },
+    {
+      "id": 151,
+      "type": "action",
+      "text": [
+        "As the artifacts resonate, their true nature becomes clear:",
+        "They're not just tools, but keys to time itself..."
+      ],
+      "actions": [
+        {
+          "label": "Unite keys",
+          "id": 185
+        },
+        {
+          "label": "Study more",
+          "id": 186
+        }
+      ],
+      "position": [2800, 300]
+    },
+    {
+      "id": 152,
+      "type": "skip",
+      "text": [
+        "The resistant artifact holds memories of Artemis's sister,",
+        "Her sacrifice still echoing through time..."
+      ],
+      "nextId": 187,
+      "position": [2800, 400]
+    },
+    {
+      "id": 153,
+      "type": "redirect",
+      "text": [
+        "Attempting to force the artifacts together",
+        "Creates an unexpected temporal reaction..."
+      ],
+      "links": [
+        {
+          "weight": 2,
+          "id": 188
+        },
+        {
+          "weight": 1,
+          "id": 189
+        }
+      ],
+      "position": [2800, 500]
+    },
+    {
+      "id": 154,
+      "type": "action",
+      "text": [
+        "The temporal signatures lead to hidden rooms,",
+        "Each preserving a crucial moment in Hogwarts' history..."
+      ],
+      "actions": [
+        {
+          "label": "Explore rooms",
+          "id": 190
+        },
+        {
+          "label": "Study moments",
+          "id": 191
+        }
+      ],
+      "position": [2800, 600]
+    },
+    {
+      "id": 155,
+      "type": "skip",
+      "text": [
+        "The prophecy speaks of a moment when stars align,",
+        "When past and future hang in perfect balance..."
+      ],
+      "nextId": 192,
+      "position": [2800, 700]
+    },
+    {
+      "id": 156,
+      "type": "action",
+      "text": [
+        "The stars form patterns matching the founders' symbols,",
+        "Their alignment growing closer by the minute..."
+      ],
+      "actions": [
+        {
+          "label": "Study symbols",
+          "id": 193
+        },
+        {
+          "label": "Track alignment",
+          "id": 194
+        }
+      ],
+      "position": [2800, 800]
+    },
+    {
+      "id": 157,
+      "type": "skip",
+      "text": [
+        "In this unique room, you can see multiple timelines at once,",
+        "Each showing a different possible fate for Hogwarts..."
+      ],
+      "nextId": 195,
+      "position": [2800, 900]
+    },
+    {
+      "id": 158,
+      "type": "action",
+      "text": [
+        "The ancient magic reveals itself as the founders' final gift:",
+        "A way to protect the school across all of time..."
+      ],
+      "actions": [
+        {
+          "label": "Accept gift",
+          "id": 196
+        },
+        {
+          "label": "Study more",
+          "id": 197
+        }
+      ],
+      "position": [2800, 1000]
+    },
+    {
+      "id": 159,
+      "type": "skip",
+      "text": [
+        "Your markings on the map begin to glow,",
+        "Revealing hidden connections between temporal points..."
+      ],
+      "nextId": 198,
+      "position": [2800, 1100]
+    },
+    {
+      "id": 160,
+      "type": "action",
+      "text": [
+        "The completed map shows a perfect pentagram,",
+        "With the castle's heart at its center..."
+      ],
+      "actions": [
+        {
+          "label": "Visit center",
+          "id": 199
+        },
+        {
+          "label": "Study pattern",
+          "id": 200
+        }
+      ],
+      "position": [2800, 1200]
+    },
+    {
+      "id": 161,
+      "type": "action",
+      "text": [
+        "At the tower's peak, the student removes an hourglass",
+        "Filled with what looks like captured starlight..."
+      ],
+      "actions": [
+        {
+          "label": "Watch ritual",
+          "id": 201
+        },
+        {
+          "label": "Examine hourglass",
+          "id": 202
+        }
+      ],
+      "position": [3000, -200]
+    },
+    {
+      "id": 162,
+      "type": "skip",
+      "text": [
+        "The starlight component seems to control temporal flow,",
+        "Allowing precise navigation through different times..."
+      ],
+      "nextId": 203,
+      "position": [3000, -100]
+    },
+    {
+      "id": 163,
+      "type": "action",
+      "text": [
+        "The shadow element appears to be alive,",
+        "Moving with purpose and intelligence..."
+      ],
+      "actions": [
+        {
+          "label": "Communicate",
+          "id": 204
+        },
+        {
+          "label": "Observe more",
+          "id": 205
+        }
+      ],
+      "position": [3000, 0]
+    },
+    {
+      "id": 164,
+      "type": "skip",
+      "text": [
+        "Through the time pathway, you can see",
+        "The original moment when the Timepiece was created..."
+      ],
+      "nextId": 206,
+      "position": [3000, 100]
+    },
+    {
+      "id": 165,
+      "type": "action",
+      "text": [
+        "Racing back to the present, you carry crucial knowledge",
+        "About the artifacts' true purpose..."
+      ],
+      "actions": [
+        {
+          "label": "Share knowledge",
+          "id": 207
+        },
+        {
+          "label": "Keep secret",
+          "id": 208
+        }
+      ],
+      "position": [3000, 200]
+    },
+    {
+      "id": 166,
+      "type": "skip",
+      "text": [
+        "Remaining in the past, you witness the founders",
+        "Creating the temporal protection system..."
+      ],
+      "nextId": 209,
+      "position": [3000, 300]
+    },
+    {
+      "id": 167,
+      "type": "action",
+      "text": [
+        "A clear vision shows the path forward:",
+        "The artifacts must be united during the alignment..."
+      ],
+      "actions": [
+        {
+          "label": "Begin preparations",
+          "id": 210
+        },
+        {
+          "label": "Seek guidance",
+          "id": 211
+        }
+      ],
+      "position": [3000, 400]
+    },
+    {
+      "id": 168,
+      "type": "finish",
+      "text": [
+        "The infinite possibilities overwhelm your mind!",
+        "You become lost in the endless branches of time.",
+        "Some knowledge is too vast for mortal minds... ⌛"
+      ],
+      "position": [3000, 500]
+    },
+    {
+      "id": 169,
+      "type": "skip",
+      "text": [
+        "The ruined timeline shows the cost of failure:",
+        "A Hogwarts where time itself has shattered..."
+      ],
+      "nextId": 212,
+      "position": [3000, 600]
+    },
+    {
+      "id": 170,
+      "type": "action",
+      "text": [
+        "The floating citadel represents perfect harmony:",
+        "Hogwarts existing in all times at once..."
+      ],
+      "actions": [
+        {
+          "label": "Seek harmony",
+          "id": 213
+        },
+        {
+          "label": "Study magic",
+          "id": 214
+        }
+      ],
+      "position": [3000, 700]
+    },
+    {
+      "id": 171,
+      "type": "skip",
+      "text": [
+        "The eternal twilight shows a strange balance:",
+        "Time neither flowing nor frozen, but something in between..."
+      ],
+      "nextId": 215,
+      "position": [3000, 800]
+    },
+    {
+      "id": 172,
+      "type": "action",
+      "text": [
+        "Your spells stabilize the temporal energies,",
+        "Creating a safe way to view possible futures..."
+      ],
+      "actions": [
+        {
+          "label": "View futures",
+          "id": 216
+        },
+        {
+          "label": "Strengthen spells",
+          "id": 217
+        }
+      ],
+      "position": [3000, 900]
+    },
+    {
+      "id": 173,
+      "type": "finish",
+      "text": [
+        "The protection spells and temporal magic create a paradox!",
+        "You're caught in an endless loop of casting the same spell.",
+        "Time can be quite unforgiving... 🌑"
+      ],
+      "position": [3000, 1000]
+    },
+    {
+      "id": 174,
+      "type": "action",
+      "text": [
+        "The portraits' warnings become clearer:",
+        "\"Beware the moment when stars align...\""
+      ],
+      "actions": [
+        {
+          "label": "Study stars",
+          "id": 218
+        },
+        {
+          "label": "Ask portraits",
+          "id": 219
+        }
+      ],
+      "position": [3000, 1100]
+    },
+    {
+      "id": 175,
+      "type": "skip",
+      "text": [
+        "McGonagall explains how the barriers protect Hogwarts,",
+        "Preventing dangerous temporal anomalies..."
+      ],
+      "nextId": 220,
+      "position": [3000, 1200]
+    },
+    {
+      "id": 176,
+      "type": "action",
+      "text": [
+        "Your investigation reveals tears in the fabric of time,",
+        "Growing larger as the alignment approaches..."
+      ],
+      "actions": [
+        {
+          "label": "Seal tears",
+          "id": 221
+        },
+        {
+          "label": "Study growth",
+          "id": 222
+        }
+      ],
+      "position": [3000, 1300]
+    },
+    {
+      "id": 177,
+      "type": "skip",
+      "text": [
+        "The archives contain an old map marked with five points,",
+        "One hidden beneath an enchantment of forgetting..."
+      ],
+      "nextId": 223,
+      "position": [3200, -200]
+    },
+    {
+      "id": 178,
+      "type": "action",
+      "text": [
+        "Your detection spells reveal a hidden chamber,",
+        "Its entrance shifting between different times..."
+      ],
+      "actions": [
+        {
+          "label": "Time entry",
+          "id": 224
+        },
+        {
+          "label": "Force door",
+          "id": 225
+        }
+      ],
+      "position": [3200, -100]
+    },
+    {
+      "id": 179,
+      "type": "skip",
+      "text": [
+        "The temporal spells are complex but powerful,",
+        "Allowing careful manipulation of time's flow..."
+      ],
+      "nextId": 226,
+      "position": [3200, 0]
+    },
+    {
+      "id": 180,
+      "type": "action",
+      "text": [
+        "The secret passages form a network throughout Hogwarts,",
+        "Each one resonating with temporal energy..."
+      ],
+      "actions": [
+        {
+          "label": "Map network",
+          "id": 227
+        },
+        {
+          "label": "Study energy",
+          "id": 228
+        }
+      ],
+      "position": [3200, 100]
+    },
+    {
+      "id": 181,
+      "type": "skip",
+      "text": [
+        "Without all anchors active, timelines begin to blur,",
+        "Creating dangerous temporal anomalies..."
+      ],
+      "nextId": 229,
+      "position": [3200, 200]
+    },
+    {
+      "id": 182,
+      "type": "action",
+      "text": [
+        "The Past node shows crucial moments in Hogwarts' history,",
+        "Times that must be preserved at all costs..."
+      ],
+      "actions": [
+        {
+          "label": "Watch moments",
+          "id": 230
+        },
+        {
+          "label": "Study preservation",
+          "id": 231
+        }
+      ],
+      "position": [3200, 300]
+    },
+    {
+      "id": 183,
+      "type": "finish",
+      "text": [
+        "The Void node pulls you in, showing infinite possibilities!",
+        "Your consciousness expands across all potential timelines.",
+        "Some knowledge is too vast for mortal minds... ⌛"
+      ],
+      "position": [3200, 400]
+    },
+    {
+      "id": 184,
+      "type": "action",
+      "text": [
+        "The temporal web reveals its true purpose:",
+        "Not just protection, but preservation of magic itself..."
+      ],
+      "actions": [
+        {
+          "label": "Strengthen web",
+          "id": 232
+        },
+        {
+          "label": "Study purpose",
+          "id": 233
+        }
+      ],
+      "position": [3200, 500]
+    },
+    {
+      "id": 185,
+      "type": "skip",
+      "text": [
+        "As you bring the keys together, they begin to merge,",
+        "Their combined power growing exponentially..."
+      ],
+      "nextId": 234,
+      "position": [3200, 600]
+    },
+    {
+      "id": 186,
+      "type": "action",
+      "text": [
+        "Further study reveals each artifact's unique role:",
+        "Mirror shows, Quill records, Locket preserves..."
+      ],
+      "actions": [
+        {
+          "label": "Learn roles",
+          "id": 235
+        },
+        {
+          "label": "Test powers",
+          "id": 236
+        }
+      ],
+      "position": [3200, 700]
+    },
+    {
+      "id": 187,
+      "type": "skip",
+      "text": [
+        "Her sacrifice created a powerful temporal anchor,",
+        "One that still protects Hogwarts to this day..."
+      ],
+      "nextId": 237,
+      "position": [3200, 800]
+    },
+    {
+      "id": 188,
+      "type": "action",
+      "text": [
+        "The forced union creates unexpected harmony,",
+        "As if the artifacts were waiting for this moment..."
+      ],
+      "actions": [
+        {
+          "label": "Complete union",
+          "id": 238
+        },
+        {
+          "label": "Study effect",
+          "id": 239
+        }
+      ],
+      "position": [3200, 900]
+    },
+    {
+      "id": 189,
+      "type": "finish",
+      "text": [
+        "The forced combination backfires catastrophically!",
+        "The artifacts scatter across different timestreams.",
+        "Some things cannot be rushed... ⌛"
+      ],
+      "position": [3200, 1000]
+    },
+    {
+      "id": 190,
+      "type": "skip",
+      "text": [
+        "Each hidden room preserves a crucial memory:",
+        "The founders' creation, the first splitting, the great sacrifice..."
+      ],
+      "nextId": 240,
+      "position": [3200, 1100]
+    },
+    {
+      "id": 191,
+      "type": "action",
+      "text": [
+        "These preserved moments form the backbone of Hogwarts' timeline,",
+        "Each one crucial to the school's existence..."
+      ],
+      "actions": [
+        {
+          "label": "Protect moments",
+          "id": 241
+        },
+        {
+          "label": "Study magic",
+          "id": 242
+        }
+      ],
+      "position": [3200, 1200]
+    },
+    {
+      "id": 192,
+      "type": "skip",
+      "text": [
+        "The prophecy continues: \"When five become one,",
+        "Time's flow shall be mastered or undone...\""
+      ],
+      "nextId": 243,
+      "position": [3200, 1300]
+    },
+    {
+      "id": 193,
+      "type": "action",
+      "text": [
+        "Each founder's symbol contains part of the ritual,",
+        "Their combined magic necessary for success..."
+      ],
+      "actions": [
+        {
+          "label": "Study ritual",
+          "id": 244
+        },
+        {
+          "label": "Combine magic",
+          "id": 245
+        }
+      ],
+      "position": [3400, -200]
+    },
+    {
+      "id": 194,
+      "type": "skip",
+      "text": [
+        "The alignment grows closer, stars moving into position,",
+        "Creating the perfect moment for the ritual..."
+      ],
+      "nextId": 246,
+      "position": [3400, -100]
+    },
+    {
+      "id": 195,
+      "type": "action",
+      "text": [
+        "Some timelines show triumph, others disaster,",
+        "All depending on choices yet to be made..."
+      ],
+      "actions": [
+        {
+          "label": "Choose path",
+          "id": 247
+        },
+        {
+          "label": "Study more",
+          "id": 248
+        }
+      ],
+      "position": [3400, 0]
+    },
+    {
+      "id": 196,
+      "type": "skip",
+      "text": [
+        "Accepting the founders' gift fills you with temporal knowledge,",
+        "Understanding flowing into your mind..."
+      ],
+      "nextId": 249,
+      "position": [3400, 100]
+    },
+    {
+      "id": 197,
+      "type": "action",
+      "text": [
+        "Further study reveals the complexity of the protection:",
+        "Layers of spells woven through time itself..."
+      ],
+      "actions": [
+        {
+          "label": "Learn spells",
+          "id": 250
+        },
+        {
+          "label": "Map layers",
+          "id": 251
+        }
+      ],
+      "position": [3400, 200]
+    },
+    {
+      "id": 198,
+      "type": "skip",
+      "text": [
+        "The connections form a complex temporal web,",
+        "Each strand vital to Hogwarts' stability..."
+      ],
+      "nextId": 252,
+      "position": [3400, 300]
+    },
+    {
+      "id": 199,
+      "type": "action",
+      "text": [
+        "At the castle's heart, you find an ancient chamber,",
+        "Where all temporal lines converge..."
+      ],
+      "actions": [
+        {
+          "label": "Enter chamber",
+          "id": 253
+        },
+        {
+          "label": "Study convergence",
+          "id": 254
+        }
+      ],
+      "position": [3400, 400]
+    },
+    {
+      "id": 200,
+      "type": "skip",
+      "text": [
+        "The pentagram pattern matches the founders' original design,",
+        "A perfect balance of temporal forces..."
+      ],
+      "nextId": 255,
+      "position": [3400, 500]
+    },
+    {
+      "id": 201,
+      "type": "action",
+      "text": [
+        "The student begins an intricate ritual,",
+        "Starlight streaming through the hourglass in patterns..."
+      ],
+      "actions": [
+        {
+          "label": "Watch ritual",
+          "id": 256
+        },
+        {
+          "label": "Study patterns",
+          "id": 257
+        }
+      ],
+      "position": [3400, 600]
+    },
+    {
+      "id": 202,
+      "type": "action",
+      "text": [
+        "The shadow guardian recognizes your protective instinct.",
+        "It offers you a glimpse of its true purpose..."
+      ],
+      "actions": [
+        {
+          "label": "Accept vision",
+          "id": 213
+        },
+        {
+          "label": "Remain cautious",
+          "id": 214
+        }
+      ],
+      "position": [3800, 0]
+    },
+    {
+      "id": 203,
+      "type": "skip",
+      "text": [
+        "The shadow takes the form of a founder,",
+        "Showing you memories of the Timepiece's creation..."
+      ],
+      "nextId": 215,
+      "position": [3800, 200]
+    },
+    {
+      "id": 204,
+      "type": "finish",
+      "text": [
+        "Your defensive stance makes the shadow retreat.",
+        "It fades away, taking crucial knowledge with it.",
+        "Sometimes the greatest wisdom comes from trust... 🌙"
+      ],
+      "position": [3800, 300]
+    },
+    {
+      "id": 205,
+      "type": "action",
+      "text": [
+        "The shadow guardian offers to show you the truth",
+        "About the Timepiece and Hogwarts' temporal defenses..."
+      ],
+      "actions": [
+        {
+          "label": "Accept knowledge",
+          "id": 216
+        },
+        {
+          "label": "Reject offer",
+          "id": 217
+        }
+      ],
+      "position": [3800, 400]
+    },
+    {
+      "id": 206,
+      "type": "skip",
+      "text": [
+        "The pentagram pattern matches ancient runes about time magic.",
+        "Each point strengthens Hogwarts' temporal barriers..."
+      ],
+      "nextId": 218,
+      "position": [3800, 500]
+    },
+    {
+      "id": 207,
+      "type": "action",
+      "text": [
+        "You begin visiting each point of power.",
+        "At each location, temporal energy grows stronger..."
+      ],
+      "actions": [
+        {
+          "label": "Gather energy",
+          "id": 219
+        },
+        {
+          "label": "Map points",
+          "id": 220
+        }
+      ],
+      "position": [3800, 600]
+    },
+    {
+      "id": 208,
+      "type": "action",
+      "text": [
+        "The Quill writes of both triumph and tragedy,",
+        "Of choices that will shape Hogwarts' destiny..."
+      ],
+      "actions": [
+        {
+          "label": "Read futures",
+          "id": 221
+        },
+        {
+          "label": "Take Quill",
+          "id": 222
+        }
+      ],
+      "position": [3800, 700]
+    },
+    {
+      "id": 209,
+      "type": "skip",
+      "text": [
+        "Your light reveals hidden text in the ancient books,",
+        "Showing the true purpose of the Timepiece..."
+      ],
+      "nextId": 223,
+      "position": [3800, 800]
+    },
+    {
+      "id": 210,
+      "type": "finish",
+      "text": [
+        "The magical light reacts with temporal energy in the library!",
+        "All the books begin showing their past and future contents.",
+        "Too much knowledge can be dangerous... 📚"
+      ],
+      "position": [3800, 900]
+    },
+    {
+      "id": 211,
+      "type": "action",
+      "text": [
+        "You begin preparing for the celestial alignment.",
+        "The artifacts must be placed precisely..."
+      ],
+      "actions": [
+        {
+          "label": "Follow pattern",
+          "id": 224
+        },
+        {
+          "label": "Improvise",
+          "id": 225
+        }
+      ],
+      "position": [3800, 1000]
+    },
+    {
+      "id": 212,
+      "type": "skip",
+      "text": [
+        "Your research reveals this alignment hasn't occurred since",
+        "The founders first created the Timepiece..."
+      ],
+      "nextId": 226,
+      "position": [3800, 1100]
+    },
+    {
+      "id": 213,
+      "type": "skip",
+      "text": [
+        "The shadow shares its vision: the guardians were created",
+        "To protect time itself from those who would misuse it..."
+      ],
+      "nextId": 227,
+      "position": [4000, 0]
+    },
+    {
+      "id": 214,
+      "type": "finish",
+      "text": [
+        "Your caution prevents you from learning the truth.",
+        "The shadow guardian retreats, leaving you to face the crisis alone.",
+        "Sometimes trust must be given to be earned... 🌑"
+      ],
+      "position": [4000, 100]
+    },
+    {
+      "id": 215,
+      "type": "action",
+      "text": [
+        "The founder's memory shows the creation of the guardians,",
+        "Born from the very essence of time magic..."
+      ],
+      "actions": [
+        {
+          "label": "Join guardians",
+          "id": 228
+        },
+        {
+          "label": "Learn magic",
+          "id": 229
+        }
+      ],
+      "position": [4000, 200]
+    },
+    {
+      "id": 216,
+      "type": "skip",
+      "text": [
+        "The shadow's knowledge flows into your mind:",
+        "Images of the founders, the first temporal crisis,",
+        "And the true purpose of the artifacts..."
+      ],
+      "nextId": 230,
+      "position": [4000, 300]
+    },
+    {
+      "id": 217,
+      "type": "finish",
+      "text": [
+        "You reject the shadow's offer, choosing your own path.",
+        "The temporal crisis must be solved without their ancient knowledge.",
+        "Independence comes at a price... 🌙"
+      ],
+      "position": [4000, 400]
+    },
+    {
+      "id": 218,
+      "type": "action",
+      "text": [
+        "The barriers can be strengthened by channeling power",
+        "Through all five artifacts simultaneously..."
+      ],
+      "actions": [
+        {
+          "label": "Begin ritual",
+          "id": 231
+        },
+        {
+          "label": "Seek help",
+          "id": 232
+        }
+      ],
+      "position": [4000, 500]
+    },
+    {
+      "id": 219,
+      "type": "finish",
+      "text": [
+        "You successfully gather temporal energy from all five points.",
+        "The barriers strengthen, and Hogwarts' timeline stabilizes.",
+        "Balance is restored through careful action... ✨"
+      ],
+      "position": [4000, 600]
+    },
+    {
+      "id": 220,
+      "type": "finish",
+      "text": [
+        "Your detailed mapping of the power points reveals a fatal flaw.",
+        "The temporal energies are too unstable to control!",
+        "Knowledge doesn't always lead to victory... ⌛"
+      ],
+      "position": [4000, 700]
+    },
+    {
+      "id": 221,
+      "type": "action",
+      "text": [
+        "The Quill shows you multiple possible futures:",
+        "Victory through sacrifice, power through wisdom,",
+        "Or failure through fear..."
+      ],
+      "actions": [
+        {
+          "label": "Choose sacrifice",
+          "id": 233
+        },
+        {
+          "label": "Seek wisdom",
+          "id": 234
+        }
+      ],
+      "position": [4000, 800]
+    },
+    {
+      "id": 222,
+      "type": "finish",
+      "text": [
+        "The Quill bonds with you, sharing its vast knowledge.",
+        "You become Hogwarts' new Chronicler, recording time itself.",
+        "Every story must have its keeper... 📚"
+      ],
+      "position": [4000, 900]
+    },
+    {
+      "id": 223,
+      "type": "action",
+      "text": [
+        "The Timepiece was created not just to protect,",
+        "But to ensure certain crucial events would always occur..."
+      ],
+      "actions": [
+        {
+          "label": "Protect events",
+          "id": 235
+        },
+        {
+          "label": "Change destiny",
+          "id": 236
+        }
+      ],
+      "position": [4000, 1000]
+    },
+    {
+      "id": 224,
+      "type": "finish",
+      "text": [
+        "Following the founders' pattern perfectly,",
+        "You successfully unite the artifacts and save Hogwarts.",
+        "Some paths are meant to be followed... ⭐"
+      ],
+      "position": [4000, 1100]
+    },
+    {
+      "id": 225,
+      "type": "finish",
+      "text": [
+        "Your improvised placement of the artifacts goes wrong.",
+        "The temporal energies cascade out of control.",
+        "Sometimes tradition exists for a reason... ⌛"
+      ],
+      "position": [4000, 1200]
+    },
+    {
+      "id": 226,
+      "type": "action",
+      "text": [
+        "This alignment will create a moment of perfect balance,",
+        "When past, present, and future briefly touch..."
+      ],
+      "actions": [
+        {
+          "label": "Prepare carefully",
+          "id": 237
+        },
+        {
+          "label": "Seize moment",
+          "id": 238
+        }
+      ],
+      "position": [4000, 1300]
+    },
+    {
+      "id": 227,
+      "type": "action",
+      "text": [
+        "The guardians offer you a choice:",
+        "Join them in their eternal vigil,",
+        "Or find your own way to protect time..."
+      ],
+      "actions": [
+        {
+          "label": "Accept duty",
+          "id": 239
+        },
+        {
+          "label": "Choose freedom",
+          "id": 240
+        }
+      ],
+      "position": [4200, 0]
+    },
+    {
+      "id": 228,
+      "type": "finish",
+      "text": [
+        "You join the ranks of the shadow guardians.",
+        "Your essence merges with time itself, protecting Hogwarts eternally.",
+        "Some destinies are worth embracing... ✨"
+      ],
+      "position": [4200, 100]
+    },
+    {
+      "id": 229,
+      "type": "finish",
+      "text": [
+        "You master the founders' time magic, becoming its new guardian.",
+        "The shadows accept you as an ally rather than one of their own.",
+        "There are many ways to serve time... 🌟"
+      ],
+      "position": [4200, 200]
+    },
+    {
+      "id": 230,
+      "type": "finish",
+      "text": [
+        "Armed with the shadow's knowledge, you unite the artifacts properly.",
+        "Hogwarts' temporal barriers are restored to full strength.",
+        "Understanding leads to true victory... ⭐"
+      ],
+      "position": [4200, 300]
+    },
+    {
+      "id": 231,
+      "type": "finish",
+      "text": [
+        "Your ritual succeeds! The temporal barriers are stronger than ever.",
+        "The shadow guardians acknowledge you as a true protector of time.",
+        "Power properly used brings peace... 💫"
+      ],
+      "position": [4200, 400]
+    },
+    {
+      "id": 232,
+      "type": "finish",
+      "text": [
+        "Working with the Temporal Guard, you strengthen the barriers safely.",
+        "The artifacts remain separate but connected, protecting Hogwarts.",
+        "Unity brings strength... 🌟"
+      ],
+      "position": [4200, 500]
+    },
+    {
+      "id": 233,
+      "type": "finish",
+      "text": [
+        "Your willing sacrifice empowers the temporal barriers.",
+        "You become one with Hogwarts' timeline, a eternal guardian.",
+        "The noblest path requires the greatest courage... ✨"
+      ],
+      "position": [4200, 600]
+    },
+    {
+      "id": 234,
+      "type": "finish",
+      "text": [
+        "Through wisdom, you find a way to protect time without sacrifice.",
+        "The Quill records your solution for future generations.",
+        "Knowledge conquers all... 📚"
+      ],
+      "position": [4200, 700]
+    },
+    {
+      "id": 235,
+      "type": "finish",
+      "text": [
+        "You ensure the crucial moments in Hogwarts' timeline remain intact.",
+        "The school's destiny is preserved for future generations.",
+        "Some things are meant to be... ⭐"
+      ],
+      "position": [4200, 800]
+    },
+    {
+      "id": 236,
+      "type": "finish",
+      "text": [
+        "Your attempt to change destiny fractures time itself.",
+        "Hogwarts becomes lost in a maze of possible futures.",
+        "Fate cannot be easily undone... ⌛"
+      ],
+      "position": [4200, 900]
+    },
+    {
+      "id": 237,
+      "type": "finish",
+      "text": [
+        "Your careful preparation pays off. The alignment is perfect.",
+        "The artifacts unite, and Hogwarts' timeline is secured.",
+        "Patience brings perfection... 💫"
+      ],
+      "position": [4200, 1000]
+    },
+    {
+      "id": 238,
+      "type": "finish",
+      "text": [
+        "Your hasty action during the alignment causes temporal chaos.",
+        "The moment of balance is lost, perhaps forever.",
+        "Some opportunities require perfect timing... 🌑"
+      ],
+      "position": [4200, 1100]
+    },
+    {
+      "id": 239,
+      "type": "finish",
+      "text": [
+        "You accept your role as a guardian of time.",
+        "The shadows welcome you into their eternal vigil.",
+        "True purpose found at last... ✨"
+      ],
+      "position": [4200, 1200]
+    },
+    {
+      "id": 240,
+      "type": "finish",
+      "text": [
+        "You choose your own path, protecting time in your own way.",
+        "The guardians respect your choice, remaining allies rather than masters.",
+        "Freedom brings its own strength... 🌟"
+      ],
+      "position": [4200, 1300]
+    },
+    {
+      "id": 241,
+      "type": "skip",
+      "text": [
+        "You strengthen the protective spells around each moment,",
+        "Ensuring they remain stable through the coming changes..."
+      ],
+      "nextId": 258,
+      "position": [3600, -200]
+    },
+    {
+      "id": 242,
+      "type": "action",
+      "text": [
+        "The preservation magic reveals its complexity:",
+        "Each moment must be anchored in multiple timelines..."
+      ],
+      "actions": [
+        {
+          "label": "Create anchors",
+          "id": 259
+        },
+        {
+          "label": "Study magic",
+          "id": 260
+        }
+      ],
+      "position": [3600, -100]
+    },
+    {
+      "id": 243,
+      "type": "skip",
+      "text": [
+        "The final line echoes ominously:",
+        "\"Choose wisely, for all paths lead to transformation...\""
+      ],
+      "nextId": 261,
+      "position": [3600, 0]
+    },
+    {
+      "id": 244,
+      "type": "action",
+      "text": [
+        "The ritual requires precise timing and placement,",
+        "Each symbol activating in a specific sequence..."
+      ],
+      "actions": [
+        {
+          "label": "Time sequence",
+          "id": 262
+        },
+        {
+          "label": "Study placement",
+          "id": 263
+        }
+      ],
+      "position": [3600, 100]
+    },
+    {
+      "id": 245,
+      "type": "skip",
+      "text": [
+        "The founders' magic begins to merge,",
+        "Creating a powerful temporal resonance..."
+      ],
+      "nextId": 264,
+      "position": [3600, 200]
+    },
+    {
+      "id": 246,
+      "type": "action",
+      "text": [
+        "The perfect moment approaches rapidly,",
+        "Time itself seeming to hold its breath..."
+      ],
+      "actions": [
+        {
+          "label": "Prepare ritual",
+          "id": 265
+        },
+        {
+          "label": "Wait longer",
+          "id": 266
+        }
+      ],
+      "position": [3600, 300]
+    },
+    {
+      "id": 247,
+      "type": "skip",
+      "text": [
+        "Your choice resonates through the timelines,",
+        "Setting events in motion that cannot be undone..."
+      ],
+      "nextId": 267,
+      "position": [3600, 400]
+    },
+    {
+      "id": 248,
+      "type": "action",
+      "text": [
+        "Further study reveals subtle differences:",
+        "Small choices that lead to vastly different outcomes..."
+      ],
+      "actions": [
+        {
+          "label": "Analyze choices",
+          "id": 268
+        },
+        {
+          "label": "Make decision",
+          "id": 269
+        }
+      ],
+      "position": [3600, 500]
+    },
+    {
+      "id": 249,
+      "type": "skip",
+      "text": [
+        "The knowledge settles into your mind,",
+        "Revealing the true nature of time at Hogwarts..."
+      ],
+      "nextId": 270,
+      "position": [3600, 600]
+    },
+    {
+      "id": 250,
+      "type": "action",
+      "text": [
+        "The protection spells are intricate and layered,",
+        "Each one supporting and strengthening the others..."
+      ],
+      "actions": [
+        {
+          "label": "Learn layers",
+          "id": 271
+        },
+        {
+          "label": "Study support",
+          "id": 272
+        }
+      ],
+      "position": [3600, 700]
+    },
+    {
+      "id": 251,
+      "type": "skip",
+      "text": [
+        "Your map reveals the complexity of the protection,",
+        "Showing how each layer interacts with time itself..."
+      ],
+      "nextId": 273,
+      "position": [3600, 800]
+    },
+    {
+      "id": 252,
+      "type": "action",
+      "text": [
+        "The temporal web pulses with energy,",
+        "Each strand carrying memories of different times..."
+      ],
+      "actions": [
+        {
+          "label": "Study pulses",
+          "id": 274
+        },
+        {
+          "label": "Track memories",
+          "id": 275
+        }
+      ],
+      "position": [3600, 900]
+    },
+    {
+      "id": 253,
+      "type": "skip",
+      "text": [
+        "The ancient chamber holds powerful magic,",
+        "Its walls inscribed with temporal formulas..."
+      ],
+      "nextId": 276,
+      "position": [3600, 1000]
+    },
+    {
+      "id": 254,
+      "type": "action",
+      "text": [
+        "The convergence point shows all times at once,",
+        "Past, present, and future flowing together..."
+      ],
+      "actions": [
+        {
+          "label": "Study flow",
+          "id": 277
+        },
+        {
+          "label": "Stabilize point",
+          "id": 278
+        }
+      ],
+      "position": [3600, 1100]
+    },
+    {
+      "id": 255,
+      "type": "skip",
+      "text": [
+        "The perfect balance maintains Hogwarts' stability,",
+        "Keeping it anchored across all times..."
+      ],
+      "nextId": 279,
+      "position": [3600, 1200]
+    },
+    {
+      "id": 256,
+      "type": "action",
+      "text": [
+        "The ritual's patterns grow more complex,",
+        "Starlight weaving intricate temporal designs..."
+      ],
+      "actions": [
+        {
+          "label": "Study designs",
+          "id": 280
+        },
+        {
+          "label": "Join ritual",
+          "id": 281
+        }
+      ],
+      "position": [3600, 1300]
+    },
+    {
+      "id": 257,
+      "type": "skip",
+      "text": [
+        "The starlight patterns reveal ancient secrets,",
+        "Each one a key to understanding time itself..."
+      ],
+      "nextId": 282,
+      "position": [3800, -200]
+    },
+    {
+      "id": 258,
+      "type": "action",
+      "text": [
+        "The protected moments shine with renewed strength,",
+        "Each one a vital part of Hogwarts' timeline..."
+      ],
+      "actions": [
+        {
+          "label": "Complete protection",
+          "id": 259
+        },
+        {
+          "label": "Study more",
+          "id": 260
+        }
+      ],
+      "position": [3800, -100]
+    },
+    {
+      "id": 259,
+      "type": "finish",
+      "text": [
+        "The moments are secured, their magic reinforced.",
+        "Future generations will remember these crucial times.",
+        "History preserved becomes wisdom... 📚"
+      ],
+      "position": [4000, -200]
+    },
+    {
+      "id": 260,
+      "type": "finish",
+      "text": [
+        "Your continued study reveals too many temporal secrets!",
+        "The knowledge overwhelms your mind, scattering your consciousness.",
+        "Some mysteries are best left unexplored... ⌛"
+      ],
+      "position": [4000, -100]
+    },
+    {
+      "id": 261,
+      "type": "finish",
+      "text": [
+        "Understanding the prophecy's warning, you choose balance.",
+        "The temporal energies stabilize, and Hogwarts endures.",
+        "Wisdom lies in accepting change... ✨"
+      ],
+      "position": [4000, 0]
+    },
+    {
+      "id": 262,
+      "type": "finish",
+      "text": [
+        "Your precise timing activates the founders' symbols perfectly.",
+        "The ritual completes, strengthening Hogwarts' temporal shields.",
+        "Precision brings perfection... 🌟"
+      ],
+      "position": [4000, 100]
+    },
+    {
+      "id": 263,
+      "type": "finish",
+      "text": [
+        "A slight misalignment in the symbol placement disrupts the ritual.",
+        "The temporal energies scatter, weakening the barriers.",
+        "Details matter in delicate work... ⌛"
+      ],
+      "position": [4000, 200]
+    },
+    {
+      "id": 264,
+      "type": "finish",
+      "text": [
+        "The combined magic of the founders flows through you.",
+        "Hogwarts recognizes you as its temporal guardian.",
+        "Legacy preserved through unity... ⭐"
+      ],
+      "position": [4000, 300]
+    },
+    {
+      "id": 265,
+      "type": "finish",
+      "text": [
+        "Your preparations pay off as the moment arrives.",
+        "The ritual succeeds, securing Hogwarts' timeline.",
+        "Readiness meets opportunity... 💫"
+      ],
+      "position": [4000, 400]
+    },
+    {
+      "id": 266,
+      "type": "finish",
+      "text": [
+        "You wait too long, and the perfect moment passes.",
+        "The temporal alignments shift, requiring another century to realign.",
+        "Timing is everything... 🌑"
+      ],
+      "position": [4000, 500]
+    },
+    {
+      "id": 267,
+      "type": "finish",
+      "text": [
+        "Your choices ripple through time, strengthening the right moments.",
+        "Hogwarts' future is secured through your wisdom.",
+        "Choose well, choose once... ⭐"
+      ],
+      "position": [4000, 600]
+    },
+    {
+      "id": 268,
+      "type": "finish",
+      "text": [
+        "Your analysis reveals the perfect path forward.",
+        "Small choices combine to protect Hogwarts' timeline.",
+        "Understanding brings clarity... 📚"
+      ],
+      "position": [4000, 700]
+    },
+    {
+      "id": 269,
+      "type": "finish",
+      "text": [
+        "You make your choice without full understanding.",
+        "The timeline fractures in unexpected ways.",
+        "Knowledge before action... ⌛"
+      ],
+      "position": [4000, 800]
+    },
+    {
+      "id": 270,
+      "type": "finish",
+      "text": [
+        "The founders' knowledge guides you to success.",
+        "Hogwarts' temporal magic is renewed and strengthened.",
+        "Ancient wisdom lights the way... ✨"
+      ],
+      "position": [4000, 900]
+    },
+    {
+      "id": 271,
+      "type": "finish",
+      "text": [
+        "You master each layer of protection spells.",
+        "The temporal barriers become stronger than ever.",
+        "Mastery through patience... 🌟"
+      ],
+      "position": [4000, 1000]
+    },
+    {
+      "id": 272,
+      "type": "finish",
+      "text": [
+        "The supporting spells prove too complex to control.",
+        "The protection wavers, requiring immediate intervention.",
+        "Complexity breeds chaos... ⌛"
+      ],
+      "position": [4000, 1100]
+    },
+    {
+      "id": 273,
+      "type": "finish",
+      "text": [
+        "Your completed map becomes a guide for future guardians.",
+        "The temporal protections will endure through the ages.",
+        "Knowledge preserved is power maintained... 📚"
+      ],
+      "position": [4000, 1200]
+    },
+    {
+      "id": 274,
+      "type": "finish",
+      "text": [
+        "The temporal pulses align under your guidance.",
+        "Hogwarts' timeline stabilizes completely.",
+        "Harmony through understanding... ⭐"
+      ],
+      "position": [4000, 1300]
+    },
+    {
+      "id": 275,
+      "type": "finish",
+      "text": [
+        "The memories overwhelm you with their intensity.",
+        "Past, present, and future blur together dangerously.",
+        "Some memories are too powerful... 🌑"
+      ],
+      "position": [4200, -200]
+    },
+    {
+      "id": 276,
+      "type": "finish",
+      "text": [
+        "The chamber's magic accepts you as its new guardian.",
+        "You become part of Hogwarts' temporal protection.",
+        "Destiny embraced... ✨"
+      ],
+      "position": [4200, -100]
+    },
+    {
+      "id": 277,
+      "type": "finish",
+      "text": [
+        "Your study of the time flow reveals crucial patterns.",
+        "The temporal convergence is stabilized forever.",
+        "Understanding brings control... 💫"
+      ],
+      "position": [4200, 0]
+    },
+    {
+      "id": 278,
+      "type": "finish",
+      "text": [
+        "Your attempts to stabilize the convergence point fail.",
+        "The temporal energies scatter across multiple timelines.",
+        "Some points must remain fluid... ⌛"
+      ],
+      "position": [4200, 100]
+    },
+    {
+      "id": 279,
+      "type": "finish",
+      "text": [
+        "The perfect balance is achieved and maintained.",
+        "Hogwarts stands eternal, anchored across all time.",
+        "Balance brings eternity... ⭐"
+      ],
+      "position": [4200, 200]
+    },
+    {
+      "id": 280,
+      "type": "finish",
+      "text": [
+        "The temporal designs reveal their deepest secrets.",
+        "You become a master of time magic at Hogwarts.",
+        "Knowledge illuminates the path... 📚"
+      ],
+      "position": [4200, 300]
+    },
+    {
+      "id": 281,
+      "type": "finish",
+      "text": [
+        "Your participation completes the ancient ritual.",
+        "The starlight weaves time itself into protection.",
+        "Unity brings strength... ✨"
+      ],
+      "position": [4200, 400]
+    },
+    {
+      "id": 282,
+      "type": "finish",
+      "text": [
+        "The secrets of time unfold before you.",
+        "Your understanding of Hogwarts' temporal magic is complete.",
+        "All mysteries revealed at last... 🌟"
+      ],
+      "position": [4200, 500]
+    }
+  ]
+}

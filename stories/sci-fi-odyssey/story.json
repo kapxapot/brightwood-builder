@@ -1,0 +1,125 @@
+{
+  "id": "d3b2f8fc-3f0f-44c7-b2a4-4b3c7d2e90ad",
+  "title": "Sci-Fi Odyssey",
+  "description": "A thrilling journey across planet Aegon-7",
+  "cover": "https://example.com/sci-fi-cover.png",
+  "language": "en",
+  "startId": 1,
+  "position": [30, 30],
+  "nodes": [
+    {
+      "id": 1,
+      "type": "skip",
+      "text": [
+        "Your ship lands on the arid surface of Aegon-7. Dust storms swirl around you."
+      ],
+      "nextId": 2,
+      "key": "sci-fi-1",
+      "position": [200, 100]
+    },
+    {
+      "id": 2,
+      "type": "action",
+      "text": [
+        "The airlock hisses open. A strange beacon signal flickers on your scanner."
+      ],
+      "actions": [
+        { "label": "Investigate the signal", "id": 3 },
+        { "label": "Secure the ship", "id": 4 }
+      ],
+      "key": "sci-fi-2",
+      "position": [400, 100]
+    },
+    {
+      "id": 3,
+      "type": "skip",
+      "text": [
+        "You trek across scorching sands toward an alien tower."
+      ],
+      "nextId": 5,
+      "key": "sci-fi-3",
+      "position": [600, 50]
+    },
+    {
+      "id": 4,
+      "type": "finish",
+      "text": [
+        "You decide it's safer to stay put.",
+        "As night falls, hostile alien forces overrun the colony. Game over."
+      ],
+      "key": "sci-fi-4",
+      "position": [600, 150]
+    },
+    {
+      "id": 5,
+      "type": "action",
+      "text": [
+        "A partial distress call echoes from within the tower."
+      ],
+      "actions": [
+        { "label": "Enter stealthily", "id": 6 },
+        { "label": "March in boldly", "id": 7 }
+      ],
+      "key": "sci-fi-5",
+      "position": [800, 50]
+    },
+    {
+      "id": 6,
+      "type": "skip",
+      "text": [
+        "You slip through a shattered doorway, glimpsing alien machinery."
+      ],
+      "nextId": 8,
+      "key": "sci-fi-6",
+      "position": [1000, 0]
+    },
+    {
+      "id": 7,
+      "type": "skip",
+      "text": [
+        "You barge in, alerting the creatures inside. Alarms blare."
+      ],
+      "nextId": 9,
+      "key": "sci-fi-7",
+      "position": [1000, 100]
+    },
+    {
+      "id": 8,
+      "type": "action",
+      "text": [
+        "A wounded researcher motions you closer, whispering about a hidden alien power."
+      ],
+      "actions": [
+        { "label": "Try to save them", "id": 10 },
+        { "label": "Focus on the artifact", "id": 9 }
+      ],
+      "key": "sci-fi-8",
+      "position": [1200, 0]
+    },
+    {
+      "id": 9,
+      "type": "finish",
+      "text": [
+        "You find the artifact, but the tower defenses activate!",
+        "You fight bravely but are overwhelmed. Mission ends in tragedy."
+      ],
+      "key": "sci-fi-9",
+      "position": [1200, 100]
+    },
+    {
+      "id": 10,
+      "type": "finish",
+      "text": [
+        "You stabilize the researcher, learning how to deactivate the tower's defenses.",
+        "With their help, you harness alien tech to save Aegon-7. Triumph!"
+      ],
+      "key": "sci-fi-10",
+      "position": [1400, 0]
+    }
+  ],
+  "viewport": {
+    "x": 0,
+    "y": 0,
+    "zoom": 0.5
+  }
+}

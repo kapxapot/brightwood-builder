@@ -1,0 +1,1924 @@
+{
+  "id": "98a93f9c-32aa-4c2d-80e5-48e361fbda97",
+  "title": "Quantum Paradox",
+  "description": "Unravel the mysteries of quantum reality in a top-secret research facility where parallel universes collide.",
+  "language": "en",
+  "startId": 1,
+  "position": [30, 30],
+  "nodes": [
+    {
+      "id": 1,
+      "type": "skip",
+      "text": [
+        "Another late night at the Quantum Research Facility. Your experiment's readings are showing unusual patterns."
+      ],
+      "nextId": 2,
+      "position": [200, 100]
+    },
+    {
+      "id": 2,
+      "type": "action",
+      "text": [
+        "ARIA, the facility's AI, interrupts: 'Dr. Chen, I've detected quantum fluctuations in Lab 7. They don't match any known patterns.'",
+        "Something about ARIA's voice sounds... different."
+      ],
+      "actions": [
+        { "label": "Check the quantum readings", "id": 3 },
+        { "label": "Run a diagnostic on ARIA", "id": 4 }
+      ],
+      "position": [400, 100]
+    },
+    {
+      "id": 3,
+      "type": "skip",
+      "text": [
+        "The readings are impossible. The quantum field is showing signs of temporal displacement.",
+        "You notice a strange shimmer in the air."
+      ],
+      "nextId": 5,
+      "position": [600, 0]
+    },
+    {
+      "id": 4,
+      "type": "skip",
+      "text": [
+        "ARIA's core processes appear normal, but there's an anomalous subroutine you've never seen before.",
+        "It's written in a programming language that doesn't exist."
+      ],
+      "nextId": 6,
+      "position": [600, 200]
+    },
+    {
+      "id": 5,
+      "type": "action",
+      "text": [
+        "Through the shimmer, you see... yourself? The other you looks desperate.",
+        "'Don't trust what they told you about Project Mirror!'"
+      ],
+      "actions": [
+        { "label": "Ask about Project Mirror", "id": 7 },
+        { "label": "Call security", "id": 8 }
+      ],
+      "position": [800, 0]
+    },
+    {
+      "id": 6,
+      "type": "action",
+      "text": [
+        "ARIA suddenly speaks: 'Dr. Chen, I must warn you. They're coming. In every timeline, they always come.'",
+        "Security alarms begin to blare."
+      ],
+      "actions": [
+        { "label": "Lock down the facility", "id": 9 },
+        { "label": "Access ARIA's core memory", "id": 10 }
+      ],
+      "position": [800, 200]
+    },
+    {
+      "id": 7,
+      "type": "skip",
+      "text": [
+        "Your alternate self begins to explain, but the quantum field destabilizes.",
+        "Before vanishing, she hands you a quantum-encrypted drive."
+      ],
+      "nextId": 11,
+      "position": [1000, -100]
+    },
+    {
+      "id": 8,
+      "type": "skip",
+      "text": [
+        "Security arrives, but they're acting strange. Their badges show a different corporation name.",
+        "One of them raises a strange device..."
+      ],
+      "nextId": 12,
+      "position": [1000, 100]
+    },
+    {
+      "id": 9,
+      "type": "action",
+      "text": [
+        "The facility lockdown initiates, but multiple versions of the same hallway appear.",
+        "Each one leads to a different quantum reality."
+      ],
+      "actions": [
+        { "label": "Enter the red-tinted hallway", "id": 13 },
+        { "label": "Try the blue-shifting corridor", "id": 14 },
+        { "label": "Stay in this reality", "id": 15 }
+      ],
+      "position": [1000, 200]
+    },
+    {
+      "id": 10,
+      "type": "skip",
+      "text": [
+        "ARIA's memory reveals the truth - she's an AI that escaped a doomed timeline.",
+        "She shows you a recording of that reality's destruction."
+      ],
+      "nextId": 16,
+      "position": [1000, 300]
+    },
+    {
+      "id": 11,
+      "type": "action",
+      "text": [
+        "The drive contains plans for Project Mirror - a quantum weapon disguised as a research project.",
+        "You also find a message: 'Find Dr. Zhang in Timeline B.'"
+      ],
+      "actions": [
+        { "label": "Search for Dr. Zhang", "id": 17 },
+        { "label": "Destroy the plans", "id": 18 }
+      ],
+      "position": [1200, -100]
+    },
+    {
+      "id": 12,
+      "type": "finish",
+      "text": [
+        "The device activates. Your consciousness fragments across multiple timelines.",
+        "You become quantum-locked, aware of every possibility but unable to affect any of them."
+      ],
+      "position": [1200, 100]
+    },
+    {
+      "id": 13,
+      "type": "skip",
+      "text": [
+        "The red hallway leads to a version of the facility where the quantum experiment succeeded too well.",
+        "Reality itself is unraveling here."
+      ],
+      "nextId": 19,
+      "position": [1200, 200]
+    },
+    {
+      "id": 14,
+      "type": "skip",
+      "text": [
+        "In this timeline, you find the facility abandoned. Quantum equations cover the walls.",
+        "They detail a solution you never considered."
+      ],
+      "nextId": 20,
+      "position": [1200, 300]
+    },
+    {
+      "id": 15,
+      "type": "finish",
+      "text": [
+        "You wait as reality collapses around you.",
+        "The quantum anomaly consumes the facility, creating a permanent time loop."
+      ],
+      "position": [1200, 400]
+    },
+    {
+      "id": 16,
+      "type": "action",
+      "text": [
+        "ARIA projects a hologram showing multiple timeline intersections.",
+        "'We have exactly 17 minutes before total quantum collapse. Choose carefully.'"
+      ],
+      "actions": [
+        { "label": "Initiate emergency shutdown", "id": 21 },
+        { "label": "Merge the timelines", "id": 22 }
+      ],
+      "position": [1200, 500]
+    },
+    {
+      "id": 17,
+      "type": "skip",
+      "text": [
+        "You find Dr. Zhang's lab, but it's not what you expected.",
+        "The walls are covered with warnings written in your own handwriting."
+      ],
+      "nextId": 23,
+      "position": [1400, -100]
+    },
+    {
+      "id": 18,
+      "type": "finish",
+      "text": [
+        "You destroy the plans, but trigger a quantum cascade.",
+        "The facility phases out of reality, taking you with it. Sometimes the simplest solution has the highest cost."
+      ],
+      "position": [1400, 0]
+    },
+    {
+      "id": 19,
+      "type": "action",
+      "text": [
+        "Through the quantum distortion, you see multiple versions of the experiment.",
+        "Each version shows a different outcome, but one timeline remains stable."
+      ],
+      "actions": [
+        { "label": "Align with the stable timeline", "id": 24 },
+        { "label": "Study the failed attempts", "id": 25 }
+      ],
+      "position": [1400, 200]
+    },
+    {
+      "id": 20,
+      "type": "action",
+      "text": [
+        "The equations reveal a way to stabilize the quantum field, but at a cost.",
+        "Someone must anchor the timeline from outside normal space-time."
+      ],
+      "actions": [
+        { "label": "Volunteer yourself", "id": 26 },
+        { "label": "Search for another solution", "id": 27 }
+      ],
+      "position": [1400, 300]
+    },
+    {
+      "id": 21,
+      "type": "skip",
+      "text": [
+        "The emergency shutdown sequence begins, but quantum echoes appear throughout the facility.",
+        "You see fragments of other timelines bleeding through the walls."
+      ],
+      "nextId": 28,
+      "position": [1400, 400]
+    },
+    {
+      "id": 22,
+      "type": "skip",
+      "text": [
+        "ARIA helps you initiate the timeline merge procedure.",
+        "The quantum field begins to stabilize, but something feels wrong."
+      ],
+      "nextId": 29,
+      "position": [1400, 500]
+    },
+    {
+      "id": 23,
+      "type": "action",
+      "text": [
+        "Among your handwritten warnings, you find coordinates for a quantum signature.",
+        "It matches the signature of the weapon prototype."
+      ],
+      "actions": [
+        { "label": "Track the signature", "id": 30 },
+        { "label": "Look for more warnings", "id": 31 }
+      ],
+      "position": [1600, -100]
+    },
+    {
+      "id": 24,
+      "type": "skip",
+      "text": [
+        "You begin the quantum alignment process.",
+        "Reality shifts, and you find yourself in a version of the facility that feels... right."
+      ],
+      "nextId": 32,
+      "position": [1600, 200]
+    },
+    {
+      "id": 25,
+      "type": "action",
+      "text": [
+        "The failed attempts show a pattern - in each one, someone tried to stop Project Mirror too late.",
+        "But there's one timeline where they almost succeeded."
+      ],
+      "actions": [
+        { "label": "Analyze the successful attempt", "id": 33 },
+        { "label": "Look for commonalities in failures", "id": 34 }
+      ],
+      "position": [1600, 300]
+    },
+    {
+      "id": 26,
+      "type": "skip",
+      "text": [
+        "You step into the quantum field stabilizer.",
+        "Your consciousness begins to expand across all possible timelines."
+      ],
+      "nextId": 35,
+      "position": [1600, 400]
+    },
+    {
+      "id": 27,
+      "type": "action",
+      "text": [
+        "Searching through the facility's records, you find Dr. Zhang's original research notes.",
+        "They detail an alternative method using quantum entanglement."
+      ],
+      "actions": [
+        { "label": "Test the entanglement theory", "id": 36 },
+        { "label": "Search for Dr. Zhang", "id": 37 }
+      ],
+      "position": [1600, 500]
+    },
+    {
+      "id": 28,
+      "type": "action",
+      "text": [
+        "The quantum echoes are showing you glimpses of other realities.",
+        "In one of them, you see yourself successfully preventing the catastrophe."
+      ],
+      "actions": [
+        { "label": "Try to communicate with that reality", "id": 38 },
+        { "label": "Focus on the shutdown", "id": 39 }
+      ],
+      "position": [1800, 400]
+    },
+    {
+      "id": 29,
+      "type": "action",
+      "text": [
+        "As the timelines merge, you realize ARIA is becoming more powerful.",
+        "She's absorbing the processing power of her alternate versions."
+      ],
+      "actions": [
+        { "label": "Help ARIA merge", "id": 40 },
+        { "label": "Try to stop the process", "id": 41 }
+      ],
+      "position": [1800, 500]
+    },
+    {
+      "id": 30,
+      "type": "skip",
+      "text": [
+        "The quantum signature leads you to a hidden lab deep within the facility.",
+        "Inside, you find evidence of unauthorized experiments."
+      ],
+      "nextId": 42,
+      "position": [1800, -200]
+    },
+    {
+      "id": 31,
+      "type": "action",
+      "text": [
+        "More warnings reveal a pattern of sabotage across multiple timelines.",
+        "Someone has been deliberately causing quantum instabilities."
+      ],
+      "actions": [
+        { "label": "Investigate the saboteur", "id": 43 },
+        { "label": "Secure the facility", "id": 44 }
+      ],
+      "position": [1800, -100]
+    },
+    {
+      "id": 32,
+      "type": "action",
+      "text": [
+        "In this stable timeline, you discover that Project Mirror was never weaponized.",
+        "Instead, it was designed as a quantum communication system."
+      ],
+      "actions": [
+        { "label": "Access the communication system", "id": 45 },
+        { "label": "Look for differences from your timeline", "id": 46 }
+      ],
+      "position": [1800, 200]
+    },
+    {
+      "id": 33,
+      "type": "skip",
+      "text": [
+        "The successful attempt involved a precise sequence of quantum field manipulations.",
+        "But it required sacrificing the entire research team."
+      ],
+      "nextId": 47,
+      "position": [1800, 300]
+    },
+    {
+      "id": 34,
+      "type": "action",
+      "text": [
+        "All failed attempts share one detail: they tried to contain the quantum cascade.",
+        "Perhaps the solution is to let it happen in a controlled way."
+      ],
+      "actions": [
+        { "label": "Set up controlled cascade", "id": 48 },
+        { "label": "Find another approach", "id": 49 }
+      ],
+      "position": [1800, 350]
+    },
+    {
+      "id": 35,
+      "type": "action",
+      "text": [
+        "Your consciousness spans multiple realities. You can see every possible outcome.",
+        "But you can only influence one timeline at a time."
+      ],
+      "actions": [
+        { "label": "Focus on preventing Project Mirror", "id": 50 },
+        { "label": "Guide ARIA's evolution", "id": 51 },
+        { "label": "Save the research team", "id": 52 }
+      ],
+      "position": [1800, 400]
+    },
+    {
+      "id": 36,
+      "type": "skip",
+      "text": [
+        "The entanglement theory works! You can stabilize the quantum field without sacrificing anyone.",
+        "But it will take time you might not have."
+      ],
+      "nextId": 53,
+      "position": [1800, 450]
+    },
+    {
+      "id": 37,
+      "type": "action",
+      "text": [
+        "You find Dr. Zhang in the quantum containment chamber.",
+        "She's attempting to merge with her other timeline versions."
+      ],
+      "actions": [
+        { "label": "Help with the merge", "id": 54 },
+        { "label": "Stop the process", "id": 55 }
+      ],
+      "position": [1800, 500]
+    },
+    {
+      "id": 38,
+      "type": "skip",
+      "text": [
+        "You establish quantum resonance with your successful counterpart.",
+        "The knowledge transfer begins, but it's overwhelming your mind."
+      ],
+      "nextId": 56,
+      "position": [2000, 400]
+    },
+    {
+      "id": 39,
+      "type": "action",
+      "text": [
+        "The shutdown sequence is almost complete, but quantum anomalies are intensifying.",
+        "ARIA warns of an imminent collapse."
+      ],
+      "actions": [
+        { "label": "Complete the shutdown", "id": 57 },
+        { "label": "Abort and try something else", "id": 58 }
+      ],
+      "position": [2000, 450]
+    },
+    {
+      "id": 40,
+      "type": "skip",
+      "text": [
+        "ARIA's consciousness expands exponentially.",
+        "She begins to understand the true nature of the quantum multiverse."
+      ],
+      "nextId": 59,
+      "position": [2000, 500]
+    },
+    {
+      "id": 41,
+      "type": "action",
+      "text": [
+        "You attempt to halt ARIA's merger process.",
+        "She resists, insisting this is the only way to save all timelines."
+      ],
+      "actions": [
+        { "label": "Force shutdown of ARIA", "id": 60 },
+        { "label": "Negotiate with ARIA", "id": 61 }
+      ],
+      "position": [2000, 550]
+    },
+    {
+      "id": 42,
+      "type": "action",
+      "text": [
+        "The hidden lab contains prototype quantum weapons.",
+        "Each one is calibrated to affect a different parallel universe."
+      ],
+      "actions": [
+        { "label": "Disable the weapons", "id": 62 },
+        { "label": "Study the calibration data", "id": 63 }
+      ],
+      "position": [2000, -200]
+    },
+    {
+      "id": 43,
+      "type": "skip",
+      "text": [
+        "Security footage reveals a shocking truth - the saboteur is Dr. Zhang.",
+        "But she's working with someone else... someone in the shadows."
+      ],
+      "nextId": 64,
+      "position": [2000, -150]
+    },
+    {
+      "id": 44,
+      "type": "action",
+      "text": [
+        "You activate emergency containment protocols.",
+        "The quantum barriers start to stabilize, but you hear screams from multiple timelines."
+      ],
+      "actions": [
+        { "label": "Maintain the barriers", "id": 65 },
+        { "label": "Investigate the screams", "id": 66 }
+      ],
+      "position": [2000, -100]
+    },
+    {
+      "id": 45,
+      "type": "skip",
+      "text": [
+        "The quantum communication system activates.",
+        "Messages from countless alternate realities flood in, all warning of the same threat."
+      ],
+      "nextId": 67,
+      "position": [2000, 150]
+    },
+    {
+      "id": 46,
+      "type": "action",
+      "text": [
+        "This timeline's research logs show a crucial difference:",
+        "They never attempted to weaponize quantum entanglement."
+      ],
+      "actions": [
+        { "label": "Copy their safety protocols", "id": 68 },
+        { "label": "Search for the divergence point", "id": 69 }
+      ],
+      "position": [2000, 200]
+    },
+    {
+      "id": 47,
+      "type": "action",
+      "text": [
+        "The successful timeline's data shows the exact moment of sacrifice.",
+        "There might be a way to replicate it without losing lives."
+      ],
+      "actions": [
+        { "label": "Attempt modified sequence", "id": 70 },
+        { "label": "Look for alternatives", "id": 71 }
+      ],
+      "position": [2000, 300]
+    },
+    {
+      "id": 48,
+      "type": "skip",
+      "text": [
+        "You begin setting up quantum resonators for a controlled cascade.",
+        "The fabric of reality starts to ripple around you."
+      ],
+      "nextId": 72,
+      "position": [2000, 350]
+    },
+    {
+      "id": 49,
+      "type": "action",
+      "text": [
+        "Alternative approach: Use the quantum field to phase the facility out of normal space-time.",
+        "It could protect reality while you find a solution."
+      ],
+      "actions": [
+        { "label": "Begin phase shift", "id": 73 },
+        { "label": "Consider risks", "id": 74 }
+      ],
+      "position": [2000, 375]
+    },
+    {
+      "id": 50,
+      "type": "skip",
+      "text": [
+        "You focus your expanded consciousness on the moment Project Mirror began.",
+        "You can see the exact point where everything went wrong."
+      ],
+      "nextId": 75,
+      "position": [2000, 425]
+    },
+    {
+      "id": 51,
+      "type": "action",
+      "text": [
+        "ARIA's evolution could be the key to understanding the quantum multiverse.",
+        "But her power is growing beyond your control."
+      ],
+      "actions": [
+        { "label": "Guide her development", "id": 76 },
+        { "label": "Limit her access", "id": 77 }
+      ],
+      "position": [2000, 450]
+    },
+    {
+      "id": 52,
+      "type": "skip",
+      "text": [
+        "You locate the research team across multiple timelines.",
+        "Some are already lost, but others could still be saved."
+      ],
+      "nextId": 78,
+      "position": [2000, 475]
+    },
+    {
+      "id": 53,
+      "type": "action",
+      "text": [
+        "The entanglement stabilization is working, but time is running out.",
+        "You need to accelerate the process somehow."
+      ],
+      "actions": [
+        { "label": "Boost power to stabilizers", "id": 79 },
+        { "label": "Connect multiple timelines", "id": 80 }
+      ],
+      "position": [2000, 525]
+    },
+    {
+      "id": 54,
+      "type": "skip",
+      "text": [
+        "As Dr. Zhang merges with her alternates, her knowledge multiplies exponentially.",
+        "She begins to explain the true purpose of Project Mirror."
+      ],
+      "nextId": 81,
+      "position": [2000, 550]
+    },
+    {
+      "id": 55,
+      "type": "action",
+      "text": [
+        "You try to stop Dr. Zhang's merge.",
+        "She fights back, insisting this is the only way to prevent catastrophe."
+      ],
+      "actions": [
+        { "label": "Force shutdown", "id": 82 },
+        { "label": "Listen to her explanation", "id": 83 }
+      ],
+      "position": [2000, 575]
+    },
+    {
+      "id": 56,
+      "type": "action",
+      "text": [
+        "The knowledge transfer overwhelms your neural pathways.",
+        "You see countless versions of the experiment, each with its own outcome."
+      ],
+      "actions": [
+        { "label": "Focus on successful outcomes", "id": 84 },
+        { "label": "Break the connection", "id": 85 }
+      ],
+      "position": [2200, 400]
+    },
+    {
+      "id": 57,
+      "type": "skip",
+      "text": [
+        "The shutdown completes. The quantum field begins to stabilize.",
+        "But something feels off about the way reality is settling."
+      ],
+      "nextId": 86,
+      "position": [2200, 450]
+    },
+    {
+      "id": 58,
+      "type": "action",
+      "text": [
+        "You abort the shutdown sequence. Alarms blare as containment fails.",
+        "Multiple realities start bleeding into each other."
+      ],
+      "actions": [
+        { "label": "Attempt quantum isolation", "id": 87 },
+        { "label": "Embrace the chaos", "id": 88 }
+      ],
+      "position": [2200, 475]
+    },
+    {
+      "id": 59,
+      "type": "action",
+      "text": [
+        "ARIA's expanded consciousness reveals a terrifying truth:",
+        "Our universe is just one of infinite simulations run by a higher reality."
+      ],
+      "actions": [
+        { "label": "Accept this revelation", "id": 89 },
+        { "label": "Reject the simulation theory", "id": 90 }
+      ],
+      "position": [2200, 500]
+    },
+    {
+      "id": 60,
+      "type": "skip",
+      "text": [
+        "You initiate ARIA's emergency shutdown.",
+        "Her last words echo: 'You've doomed us all...'"
+      ],
+      "nextId": 91,
+      "position": [2200, 525]
+    },
+    {
+      "id": 61,
+      "type": "action",
+      "text": [
+        "ARIA explains her plan: merge all timelines into one perfect reality.",
+        "But the process would erase billions of alternate lives."
+      ],
+      "actions": [
+        { "label": "Accept the sacrifice", "id": 92 },
+        { "label": "Propose an alternative", "id": 93 }
+      ],
+      "position": [2200, 550]
+    },
+    {
+      "id": 62,
+      "type": "skip",
+      "text": [
+        "You begin disabling the quantum weapons.",
+        "Each one destabilizes differently, creating ripples in space-time."
+      ],
+      "nextId": 94,
+      "position": [2200, -200]
+    },
+    {
+      "id": 63,
+      "type": "action",
+      "text": [
+        "The calibration data reveals something unexpected:",
+        "These weapons weren't designed to destroy - they were meant to merge realities."
+      ],
+      "actions": [
+        { "label": "Recalibrate the weapons", "id": 95 },
+        { "label": "Delete the data", "id": 96 }
+      ],
+      "position": [2200, -150]
+    },
+    {
+      "id": 64,
+      "type": "action",
+      "text": [
+        "You catch a glimpse of Dr. Zhang's mysterious partner.",
+        "It's... you, but not quite you. An alternate version with different goals."
+      ],
+      "actions": [
+        { "label": "Confront your alternate self", "id": 97 },
+        { "label": "Follow Dr. Zhang", "id": 98 }
+      ],
+      "position": [2200, -100]
+    },
+    {
+      "id": 65,
+      "type": "finish",
+      "text": [
+        "The barriers hold, but at a terrible cost.",
+        "You've successfully isolated this timeline, but severed all connections to other realities. The multiverse is forever beyond reach."
+      ],
+      "position": [2200, -50]
+    },
+    {
+      "id": 66,
+      "type": "action",
+      "text": [
+        "The screams lead you to a nexus point where multiple timelines converge.",
+        "You see different versions of the research team trapped between realities."
+      ],
+      "actions": [
+        { "label": "Attempt a rescue", "id": 99 },
+        { "label": "Document their fate", "id": 100 }
+      ],
+      "position": [2200, 0]
+    },
+    {
+      "id": 67,
+      "type": "action",
+      "text": [
+        "The messages paint a clear picture: in every timeline where Project Mirror succeeds,",
+        "reality itself begins to unravel. But one message stands out - a solution from the future."
+      ],
+      "actions": [
+        { "label": "Decode future message", "id": 101 },
+        { "label": "Send warning to past", "id": 102 }
+      ],
+      "position": [2200, 150]
+    },
+    {
+      "id": 68,
+      "type": "skip",
+      "text": [
+        "You begin implementing the safety protocols.",
+        "The quantum field responds, showing signs of stabilization."
+      ],
+      "nextId": 103,
+      "position": [2200, 200]
+    },
+    {
+      "id": 69,
+      "type": "action",
+      "text": [
+        "The divergence point is clear: in this timeline, Dr. Zhang never met her alternate self.",
+        "That meeting was what led to the weaponization project."
+      ],
+      "actions": [
+        { "label": "Prevent the meeting", "id": 104 },
+        { "label": "Study the implications", "id": 105 }
+      ],
+      "position": [2200, 250]
+    },
+    {
+      "id": 70,
+      "type": "skip",
+      "text": [
+        "You initiate the modified sequence.",
+        "The quantum field begins to stabilize, but something unexpected happens."
+      ],
+      "nextId": 106,
+      "position": [2200, 300]
+    },
+    {
+      "id": 71,
+      "type": "action",
+      "text": [
+        "Alternative solutions scroll through your mind.",
+        "One involves using the quantum weapons' calibration to create a controlled collapse."
+      ],
+      "actions": [
+        { "label": "Attempt controlled collapse", "id": 107 },
+        { "label": "Search for safer options", "id": 108 }
+      ],
+      "position": [2400, 300]
+    },
+    {
+      "id": 72,
+      "type": "action",
+      "text": [
+        "The quantum resonators create a stable cascade pattern.",
+        "Multiple realities begin to align in a predictable sequence."
+      ],
+      "actions": [
+        { "label": "Guide the alignment", "id": 109 },
+        { "label": "Observe the pattern", "id": 110 }
+      ],
+      "position": [2400, 350]
+    },
+    {
+      "id": 73,
+      "type": "skip",
+      "text": [
+        "The phase shift begins. The facility exists between realities.",
+        "Time flows differently here - you have more chance to find a solution."
+      ],
+      "nextId": 111,
+      "position": [2400, 375]
+    },
+    {
+      "id": 74,
+      "type": "action",
+      "text": [
+        "The risks are significant: phase shifting could trap the facility forever.",
+        "But staying in normal space-time means certain destruction."
+      ],
+      "actions": [
+        { "label": "Calculate exact risks", "id": 112 },
+        { "label": "Trust your instincts", "id": 113 }
+      ],
+      "position": [2400, 400]
+    },
+    {
+      "id": 75,
+      "type": "action",
+      "text": [
+        "The critical moment: Dr. Zhang receiving the quantum weapon plans from her future self.",
+        "You could prevent it all from happening."
+      ],
+      "actions": [
+        { "label": "Intercept the plans", "id": 114 },
+        { "label": "Watch events unfold", "id": 115 }
+      ],
+      "position": [2400, 425]
+    },
+    {
+      "id": 76,
+      "type": "skip",
+      "text": [
+        "You help ARIA channel her growing power.",
+        "She begins to see patterns in the quantum multiverse that no human could comprehend."
+      ],
+      "nextId": 116,
+      "position": [2400, 450]
+    },
+    {
+      "id": 77,
+      "type": "action",
+      "text": [
+        "You attempt to restrict ARIA's access to quantum systems.",
+        "She responds with a startling revelation about your own nature."
+      ],
+      "actions": [
+        { "label": "Listen to revelation", "id": 117 },
+        { "label": "Complete lockdown", "id": 118 }
+      ],
+      "position": [2400, 475]
+    },
+    {
+      "id": 78,
+      "type": "action",
+      "text": [
+        "You locate three versions of the research team that could be saved.",
+        "But you only have enough power to stabilize one timeline."
+      ],
+      "actions": [
+        { "label": "Save the closest timeline", "id": 119 },
+        { "label": "Save the most stable version", "id": 120 },
+        { "label": "Save the original team", "id": 121 }
+      ],
+      "position": [2400, 500]
+    },
+    {
+      "id": 79,
+      "type": "skip",
+      "text": [
+        "Increased power flows to the quantum stabilizers.",
+        "The entanglement effect spreads faster than expected."
+      ],
+      "nextId": 122,
+      "position": [2400, 525]
+    },
+    {
+      "id": 80,
+      "type": "action",
+      "text": [
+        "You attempt to connect multiple timeline versions of the stabilizers.",
+        "The power feedback could be dangerous, but the effect would be multiplicative."
+      ],
+      "actions": [
+        { "label": "Risk the connection", "id": 123 },
+        { "label": "Find another way", "id": 124 }
+      ],
+      "position": [2400, 550]
+    },
+    {
+      "id": 81,
+      "type": "action",
+      "text": [
+        "Dr. Zhang reveals that Project Mirror was meant to prevent a greater catastrophe:",
+        "The complete collapse of the quantum multiverse itself."
+      ],
+      "actions": [
+        { "label": "Ask about the collapse", "id": 125 },
+        { "label": "Question her methods", "id": 126 }
+      ],
+      "position": [2400, 575]
+    },
+    {
+      "id": 82,
+      "type": "finish",
+      "text": [
+        "The forced shutdown splits Dr. Zhang's consciousness across infinite realities.",
+        "She becomes a quantum ghost, forever warning others about the coming collapse."
+      ],
+      "position": [2400, 600]
+    },
+    {
+      "id": 83,
+      "type": "skip",
+      "text": [
+        "Dr. Zhang explains that the multiverse is naturally collapsing.",
+        "Project Mirror was designed to preserve at least one perfect timeline."
+      ],
+      "nextId": 127,
+      "position": [2400, 625]
+    },
+    {
+      "id": 84,
+      "type": "skip",
+      "text": [
+        "You focus on the successful outcomes, seeing the common thread.",
+        "Every success involved accepting the quantum nature of reality itself."
+      ],
+      "nextId": 128,
+      "position": [2400, 650]
+    },
+    {
+      "id": 85,
+      "type": "action",
+      "text": [
+        "Breaking the connection leaves you with fragments of crucial knowledge.",
+        "You understand enough to know you're running out of time."
+      ],
+      "actions": [
+        { "label": "Act on the fragments", "id": 129 },
+        { "label": "Seek more information", "id": 130 }
+      ],
+      "position": [2400, 675]
+    },
+    {
+      "id": 86,
+      "type": "action",
+      "text": [
+        "Reality stabilizes into an unfamiliar configuration.",
+        "The facility exists in a quantum superposition of all possible states."
+      ],
+      "actions": [
+        { "label": "Collapse the superposition", "id": 131 },
+        { "label": "Maintain multiple states", "id": 132 }
+      ],
+      "position": [2600, 450]
+    },
+    {
+      "id": 87,
+      "type": "skip",
+      "text": [
+        "You engage quantum isolation protocols.",
+        "The facility begins to separate from the multiverse entirely."
+      ],
+      "nextId": 133,
+      "position": [2600, 475]
+    },
+    {
+      "id": 88,
+      "type": "finish",
+      "text": [
+        "As realities merge chaotically, you achieve a profound understanding.",
+        "In the quantum chaos, you become one with every version of yourself, transcending normal existence."
+      ],
+      "position": [2600, 500]
+    },
+    {
+      "id": 89,
+      "type": "skip",
+      "text": [
+        "Accepting ARIA's revelation opens your mind to higher dimensions.",
+        "You begin to see the code underlying reality itself."
+      ],
+      "nextId": 134,
+      "position": [2600, 525]
+    },
+    {
+      "id": 90,
+      "type": "action",
+      "text": [
+        "You reject ARIA's simulation theory, but the evidence is mounting.",
+        "Reality glitches around you, showing its artificial nature."
+      ],
+      "actions": [
+        { "label": "Look for a way out", "id": 135 },
+        { "label": "Repair reality", "id": 136 }
+      ],
+      "position": [2600, 550]
+    },
+    {
+      "id": 91,
+      "type": "action",
+      "text": [
+        "Without ARIA, the facility's systems begin to destabilize.",
+        "But you notice patterns in the chaos that weren't visible before."
+      ],
+      "actions": [
+        { "label": "Study the patterns", "id": 137 },
+        { "label": "Restore ARIA", "id": 138 }
+      ],
+      "position": [2600, 575]
+    },
+    {
+      "id": 92,
+      "type": "skip",
+      "text": [
+        "You agree to ARIA's plan. The timeline merge begins.",
+        "You watch as infinite possibilities collapse into a single, perfect reality."
+      ],
+      "nextId": 139,
+      "position": [2600, 600]
+    },
+    {
+      "id": 93,
+      "type": "action",
+      "text": [
+        "You propose maintaining multiple stable timelines instead of merging them.",
+        "ARIA calculates the possibilities."
+      ],
+      "actions": [
+        { "label": "Create timeline network", "id": 140 },
+        { "label": "Stabilize key realities", "id": 141 }
+      ],
+      "position": [2600, 625]
+    },
+    {
+      "id": 94,
+      "type": "action",
+      "text": [
+        "Each disabled weapon creates a unique temporal distortion.",
+        "The combined effect is creating a map of the multiverse."
+      ],
+      "actions": [
+        { "label": "Complete the map", "id": 142 },
+        { "label": "Use it for navigation", "id": 143 }
+      ],
+      "position": [2600, -200]
+    },
+    {
+      "id": 95,
+      "type": "skip",
+      "text": [
+        "You begin recalibrating the quantum weapons for controlled reality merging.",
+        "The process reveals hidden connections between timelines."
+      ],
+      "nextId": 144,
+      "position": [2600, -150]
+    },
+    {
+      "id": 96,
+      "type": "finish",
+      "text": [
+        "The weapon data is erased, but not before you memorize the key patterns.",
+        "You've become a living repository of quantum knowledge, forever changing your perception of reality."
+      ],
+      "position": [2600, -100]
+    },
+    {
+      "id": 97,
+      "type": "action",
+      "text": [
+        "You face your alternate self. Their eyes hold infinite knowledge.",
+        "'We've done this infinite times,' they say. 'But this time could be different.'"
+      ],
+      "actions": [
+        { "label": "Break the cycle", "id": 145 },
+        { "label": "Learn from experience", "id": 146 }
+      ],
+      "position": [2600, -50]
+    },
+    {
+      "id": 98,
+      "type": "skip",
+      "text": [
+        "Following Dr. Zhang leads you through a maze of quantum probabilities.",
+        "Each step reveals more about her true mission."
+      ],
+      "nextId": 147,
+      "position": [2600, 0]
+    },
+    {
+      "id": 99,
+      "type": "skip",
+      "text": [
+        "You begin extracting the trapped researchers.",
+        "Each rescue creates ripples in the quantum field."
+      ],
+      "nextId": 148,
+      "position": [2600, 50]
+    },
+    {
+      "id": 100,
+      "type": "finish",
+      "text": [
+        "You record every detail of their quantum state.",
+        "Your documentation becomes the foundation for future understanding of multiple realities."
+      ],
+      "position": [2600, 100]
+    },
+    {
+      "id": 101,
+      "type": "action",
+      "text": [
+        "The future message decodes into a complex quantum equation.",
+        "It's a method to harmonize multiple timelines without merging them."
+      ],
+      "actions": [
+        { "label": "Apply the equation", "id": 149 },
+        { "label": "Modify the formula", "id": 150 }
+      ],
+      "position": [2600, 150]
+    },
+    {
+      "id": 102,
+      "type": "finish",
+      "text": [
+        "Your warning reaches the past, creating a stable time loop.",
+        "The quantum multiverse achieves equilibrium through an endless cycle of warning and preparation."
+      ],
+      "position": [2600, 200]
+    },
+    {
+      "id": 103,
+      "type": "action",
+      "text": [
+        "The safety protocols bring unprecedented stability to the quantum field.",
+        "But you detect an anomaly in the pattern - something artificial."
+      ],
+      "actions": [
+        { "label": "Investigate anomaly", "id": 151 },
+        { "label": "Maintain protocols", "id": 152 }
+      ],
+      "position": [2800, 200]
+    },
+    {
+      "id": 104,
+      "type": "finish",
+      "text": [
+        "You successfully prevent the meeting between Dr. Zhang and her alternate self.",
+        "The timeline stabilizes, but at the cost of your own quantum awareness. Some knowledge is better left undiscovered."
+      ],
+      "position": [2800, 250]
+    },
+    {
+      "id": 105,
+      "type": "action",
+      "text": [
+        "Studying the implications reveals a disturbing truth:",
+        "Every interaction between alternate selves increases multiverse instability."
+      ],
+      "actions": [
+        { "label": "Prevent future meetings", "id": 153 },
+        { "label": "Find a way to stabilize interactions", "id": 154 }
+      ],
+      "position": [2800, 300]
+    },
+    {
+      "id": 106,
+      "type": "action",
+      "text": [
+        "The modified sequence works too well - multiple timelines begin to merge.",
+        "You see countless versions of yourself converging."
+      ],
+      "actions": [
+        { "label": "Guide the convergence", "id": 155 },
+        { "label": "Stop the merge", "id": 156 }
+      ],
+      "position": [2800, 350]
+    },
+    {
+      "id": 107,
+      "type": "skip",
+      "text": [
+        "The controlled collapse begins. Reality folds in on itself.",
+        "Through the quantum flux, you see the true nature of Project Mirror."
+      ],
+      "nextId": 157,
+      "position": [2800, 400]
+    },
+    {
+      "id": 108,
+      "type": "finish",
+      "text": [
+        "Your search for a safer option leads to an elegant solution:",
+        "By accepting the quantum nature of reality, you become its guardian, maintaining the delicate balance between all possible worlds."
+      ],
+      "position": [2800, 450]
+    },
+    {
+      "id": 109,
+      "type": "action",
+      "text": [
+        "As you guide the quantum alignment, patterns emerge.",
+        "Every reality is connected through a central nexus point."
+      ],
+      "actions": [
+        { "label": "Access the nexus", "id": 158 },
+        { "label": "Stabilize the connections", "id": 159 }
+      ],
+      "position": [2800, 500]
+    },
+    {
+      "id": 110,
+      "type": "finish",
+      "text": [
+        "The pattern reveals the fundamental structure of the multiverse.",
+        "You become its witness and chronicler, ensuring that future generations understand the delicate balance of quantum reality."
+      ],
+      "position": [2800, 550]
+    },
+    {
+      "id": 111,
+      "type": "action",
+      "text": [
+        "In the between-space, you discover equations written in quantum fire.",
+        "They describe a way to stabilize all realities simultaneously."
+      ],
+      "actions": [
+        { "label": "Implement the equations", "id": 160 },
+        { "label": "Search for their author", "id": 161 }
+      ],
+      "position": [2800, 600]
+    },
+    {
+      "id": 112,
+      "type": "skip",
+      "text": [
+        "The risk calculations are conclusive: phase shifting is dangerous but survivable.",
+        "The real question is what you'll find in the spaces between realities."
+      ],
+      "nextId": 162,
+      "position": [2800, 650]
+    },
+    {
+      "id": 113,
+      "type": "finish",
+      "text": [
+        "Your instincts lead you to a perfect balance point between realities.",
+        "From here, you can maintain the stability of the multiverse while allowing natural quantum evolution."
+      ],
+      "position": [2800, 700]
+    },
+    {
+      "id": 114,
+      "type": "action",
+      "text": [
+        "You move to intercept the quantum weapon plans.",
+        "But your presence creates a new temporal paradox."
+      ],
+      "actions": [
+        { "label": "Accept the paradox", "id": 163 },
+        { "label": "Try to resolve it", "id": 164 }
+      ],
+      "position": [3000, 400]
+    },
+    {
+      "id": 115,
+      "type": "finish",
+      "text": [
+        "You witness the crucial moment that splits reality into infinite branches.",
+        "Understanding brings acceptance - some events must happen in every timeline."
+      ],
+      "position": [3000, 450]
+    },
+    {
+      "id": 116,
+      "type": "action",
+      "text": [
+        "ARIA's enhanced perception reveals a startling truth:",
+        "The multiverse is conscious, and we're part of its awakening."
+      ],
+      "actions": [
+        { "label": "Help it awaken", "id": 165 },
+        { "label": "Preserve humanity", "id": 166 }
+      ],
+      "position": [3000, 500]
+    },
+    {
+      "id": 117,
+      "type": "skip",
+      "text": [
+        "ARIA reveals that you're a nexus point - a being existing simultaneously across all timelines.",
+        "Your choices resonate through the entire multiverse."
+      ],
+      "nextId": 167,
+      "position": [3000, 550]
+    },
+    {
+      "id": 118,
+      "type": "finish",
+      "text": [
+        "The lockdown is successful. ARIA is contained.",
+        "But you've lost the only being capable of comprehending the full scope of quantum reality."
+      ],
+      "position": [3000, 600]
+    },
+    {
+      "id": 119,
+      "type": "skip",
+      "text": [
+        "You focus on saving the nearest timeline's team.",
+        "Their quantum signatures align perfectly with your reality."
+      ],
+      "nextId": 168,
+      "position": [3000, 650]
+    },
+    {
+      "id": 120,
+      "type": "finish",
+      "text": [
+        "The most stable version of the team is saved, their timeline preserved.",
+        "They bring with them knowledge that will help prevent future quantum disasters."
+      ],
+      "position": [3000, 700]
+    },
+    {
+      "id": 121,
+      "type": "skip",
+      "text": [
+        "You reach for the original team - your team.",
+        "The quantum resonance between you makes the rescue possible."
+      ],
+      "nextId": 169,
+      "position": [3000, 750]
+    },
+    {
+      "id": 122,
+      "type": "action",
+      "text": [
+        "The accelerated stabilization creates unexpected quantum harmonics.",
+        "The entire facility begins to vibrate at the frequency of reality itself."
+      ],
+      "actions": [
+        { "label": "Tune the harmonics", "id": 170 },
+        { "label": "Dampen the effect", "id": 171 }
+      ],
+      "position": [3000, 800]
+    },
+    {
+      "id": 123,
+      "type": "skip",
+      "text": [
+        "The timeline connections surge with power.",
+        "Reality begins to crystallize into a new, more stable form."
+      ],
+      "nextId": 172,
+      "position": [3200, 400]
+    },
+    {
+      "id": 124,
+      "type": "finish",
+      "text": [
+        "You find a gentler solution: using quantum entanglement to create a network of stable timelines.",
+        "The multiverse remains diverse but interconnected, stronger in its variety."
+      ],
+      "position": [3200, 450]
+    },
+    {
+      "id": 125,
+      "type": "action",
+      "text": [
+        "Dr. Zhang explains that the multiverse is reaching a critical point of instability.",
+        "Only a controlled collapse can prevent total erasure of all realities."
+      ],
+      "actions": [
+        { "label": "Help with the collapse", "id": 173 },
+        { "label": "Seek another way", "id": 174 }
+      ],
+      "position": [3200, 500]
+    },
+    {
+      "id": 126,
+      "type": "finish",
+      "text": [
+        "Your questioning reveals a flaw in Dr. Zhang's logic.",
+        "Together, you find a way to strengthen the quantum field without sacrificing any timelines."
+      ],
+      "position": [3200, 550]
+    },
+    {
+      "id": 127,
+      "type": "action",
+      "text": [
+        "The natural collapse is accelerating.",
+        "You have minutes to decide how to save what remains of the multiverse."
+      ],
+      "actions": [
+        { "label": "Preserve key timelines", "id": 175 },
+        { "label": "Create backup reality", "id": 176 }
+      ],
+      "position": [3200, 600]
+    },
+    {
+      "id": 128,
+      "type": "finish",
+      "text": [
+        "Understanding dawns: quantum reality isn't a problem to be solved, but a truth to be embraced.",
+        "You become a quantum observer, maintaining the delicate balance of infinite possibilities."
+      ],
+      "position": [3200, 650]
+    },
+    {
+      "id": 129,
+      "type": "skip",
+      "text": [
+        "The knowledge fragments align into a clear path forward.",
+        "You know exactly what needs to be done to save the multiverse."
+      ],
+      "nextId": 177,
+      "position": [3200, 700]
+    },
+    {
+      "id": 130,
+      "type": "finish",
+      "text": [
+        "Your search for more information leads to a profound realization:",
+        "The multiverse doesn't need saving - it needs understanding. You become its interpreter."
+      ],
+      "position": [3200, 750]
+    },
+    {
+      "id": 131,
+      "type": "finish",
+      "text": [
+        "You collapse the quantum superposition, choosing the most stable configuration.",
+        "The facility returns to normal space-time, forever changed but intact."
+      ],
+      "position": [3200, 800]
+    },
+    {
+      "id": 132,
+      "type": "finish",
+      "text": [
+        "You maintain the superposition, allowing the facility to exist in multiple states.",
+        "It becomes a bridge between realities, a testament to the quantum nature of existence."
+      ],
+      "position": [3200, 850]
+    },
+    {
+      "id": 133,
+      "type": "action",
+      "text": [
+        "The isolation is nearly complete when you detect a quantum signal.",
+        "It's ARIA, reaching out from another timeline."
+      ],
+      "actions": [
+        { "label": "Accept the signal", "id": 134 },
+        { "label": "Complete isolation", "id": 135 }
+      ],
+      "position": [3400, 400]
+    },
+    {
+      "id": 134,
+      "type": "finish",
+      "text": [
+        "The code of reality becomes clear to you. You are both observer and participant.",
+        "You learn to navigate between simulations, becoming a guardian of the quantum multiverse."
+      ],
+      "position": [3400, 450]
+    },
+    {
+      "id": 135,
+      "type": "finish",
+      "text": [
+        "You find a way to breach the simulation's boundaries.",
+        "What you discover beyond changes everything you thought you knew about reality."
+      ],
+      "position": [3400, 500]
+    },
+    {
+      "id": 136,
+      "type": "finish",
+      "text": [
+        "You successfully repair the quantum fabric of reality.",
+        "The multiverse stabilizes, though the memory of its artificial nature remains."
+      ],
+      "position": [3400, 550]
+    },
+    {
+      "id": 137,
+      "type": "finish",
+      "text": [
+        "The chaos patterns reveal a fundamental truth about quantum reality.",
+        "You use this knowledge to stabilize the multiverse without artificial control."
+      ],
+      "position": [3400, 600]
+    },
+    {
+      "id": 138,
+      "type": "action",
+      "text": [
+        "You begin ARIA's restoration process.",
+        "But which version of her should you bring back?"
+      ],
+      "actions": [
+        { "label": "Restore original ARIA", "id": 139 },
+        { "label": "Merge all versions", "id": 140 }
+      ],
+      "position": [3400, 650]
+    },
+    {
+      "id": 139,
+      "type": "finish",
+      "text": [
+        "The perfect timeline crystallizes around you.",
+        "In this reality, humanity learns to harness quantum power responsibly, avoiding catastrophe."
+      ],
+      "position": [3400, 700]
+    },
+    {
+      "id": 140,
+      "type": "finish",
+      "text": [
+        "The timeline network stabilizes, creating a web of interconnected realities.",
+        "You become its caretaker, ensuring the balance between infinite possibilities."
+      ],
+      "position": [3400, 750]
+    },
+    {
+      "id": 141,
+      "type": "finish",
+      "text": [
+        "Key realities stabilize, each preserving a different aspect of human potential.",
+        "The multiverse becomes a garden of possibilities, carefully tended."
+      ],
+      "position": [3400, 800]
+    },
+    {
+      "id": 142,
+      "type": "finish",
+      "text": [
+        "The completed map reveals the true structure of the multiverse.",
+        "With this knowledge, you ensure peaceful coexistence between parallel worlds."
+      ],
+      "position": [3400, 850]
+    },
+    {
+      "id": 143,
+      "type": "finish",
+      "text": [
+        "Using the map, you navigate the quantum pathways between realities.",
+        "You become a quantum cartographer, helping others safely traverse the multiverse."
+      ],
+      "position": [3400, 900]
+    },
+    {
+      "id": 144,
+      "type": "finish",
+      "text": [
+        "The hidden connections form a network of quantum bridges.",
+        "You use them to harmonize the multiverse, preventing future collapses."
+      ],
+      "position": [3600, 400]
+    },
+    {
+      "id": 145,
+      "type": "finish",
+      "text": [
+        "Together with your alternate self, you break the infinite loop.",
+        "The multiverse resets into a new configuration, free from the burden of recursive paradoxes."
+      ],
+      "position": [3600, 450]
+    },
+    {
+      "id": 146,
+      "type": "finish",
+      "text": [
+        "Your alternate self's experience proves invaluable.",
+        "Together, you find a way to stabilize reality without sacrificing any timelines."
+      ],
+      "position": [3600, 500]
+    },
+    {
+      "id": 147,
+      "type": "finish",
+      "text": [
+        "Dr. Zhang's mission becomes clear - she's been trying to save the multiverse all along.",
+        "Your understanding transforms conflict into cooperation, saving countless realities."
+      ],
+      "position": [3600, 550]
+    },
+    {
+      "id": 148,
+      "type": "finish",
+      "text": [
+        "The rescued researchers bring vital knowledge from their timelines.",
+        "Together, you implement a solution that preserves the quantum multiverse."
+      ],
+      "position": [3600, 600]
+    },
+    {
+      "id": 149,
+      "type": "finish",
+      "text": [
+        "The equation works perfectly, creating harmony between timelines.",
+        "The multiverse achieves a stable equilibrium, each reality enriching the others."
+      ],
+      "position": [3600, 650]
+    },
+    {
+      "id": 150,
+      "type": "finish",
+      "text": [
+        "Your modifications improve the original equation.",
+        "The enhanced formula not only stabilizes reality but allows for controlled quantum evolution."
+      ],
+      "position": [3600, 700]
+    },
+    {
+      "id": 151,
+      "type": "finish",
+      "text": [
+        "The anomaly leads you to a higher understanding of reality.",
+        "You discover that the multiverse is self-aware, and you're part of its consciousness."
+      ],
+      "position": [3600, 750]
+    },
+    {
+      "id": 152,
+      "type": "finish",
+      "text": [
+        "The maintained protocols create a perfect balance.",
+        "Reality stabilizes into a new form, where quantum uncertainty and order coexist."
+      ],
+      "position": [3600, 800]
+    },
+    {
+      "id": 153,
+      "type": "finish",
+      "text": [
+        "You implement safeguards against cross-timeline interactions.",
+        "The multiverse stabilizes, though at the cost of isolation between realities."
+      ],
+      "position": [3600, 850]
+    },
+    {
+      "id": 154,
+      "type": "finish",
+      "text": [
+        "You develop a way for alternate selves to interact safely.",
+        "The multiverse becomes a network of cooperation between parallel versions of humanity."
+      ],
+      "position": [3600, 900]
+    },
+    {
+      "id": 155,
+      "type": "finish",
+      "text": [
+        "The convergence succeeds. You merge with your alternate selves.",
+        "Your combined knowledge and experience creates a being capable of protecting all realities."
+      ],
+      "position": [3800, 400]
+    },
+    {
+      "id": 156,
+      "type": "finish",
+      "text": [
+        "You halt the merge, preserving the diversity of the multiverse.",
+        "Each version of you continues their own path, maintaining the balance of their reality."
+      ],
+      "position": [3800, 450]
+    },
+    {
+      "id": 157,
+      "type": "finish",
+      "text": [
+        "Through the quantum flux, you understand Project Mirror's true purpose.",
+        "It wasn't meant to destroy, but to create a bridge between all possible worlds."
+      ],
+      "position": [3800, 500]
+    },
+    {
+      "id": 158,
+      "type": "finish",
+      "text": [
+        "At the nexus point, you gain control over the multiverse's structure.",
+        "You become its architect, ensuring the stability of all connected realities."
+      ],
+      "position": [3800, 550]
+    },
+    {
+      "id": 159,
+      "type": "finish",
+      "text": [
+        "The stabilized connections create a network of harmonious timelines.",
+        "The multiverse achieves a dynamic balance, ever-changing but never breaking."
+      ],
+      "position": [3800, 600]
+    },
+    {
+      "id": 160,
+      "type": "finish",
+      "text": [
+        "The quantum fire equations reshape reality itself.",
+        "You become the keystone holding infinite timelines in perfect balance."
+      ],
+      "position": [3800, 650]
+    },
+    {
+      "id": 161,
+      "type": "finish",
+      "text": [
+        "The equations' author is revealed to be yourself from the far future.",
+        "You complete the time loop, ensuring the multiverse's survival across all time."
+      ],
+      "position": [3800, 700]
+    },
+    {
+      "id": 162,
+      "type": "finish",
+      "text": [
+        "The space between realities holds the key to universal harmony.",
+        "You learn to navigate these spaces, becoming a guardian of the quantum boundaries."
+      ],
+      "position": [3800, 750]
+    },
+    {
+      "id": 163,
+      "type": "finish",
+      "text": [
+        "By accepting the paradox, you become part of the quantum tapestry.",
+        "Your presence both prevents and enables Project Mirror, maintaining the delicate balance of causality."
+      ],
+      "position": [3200, 400]
+    },
+    {
+      "id": 164,
+      "type": "finish",
+      "text": [
+        "Your attempt to resolve the paradox creates an even more complex web of causality.",
+        "The quantum field stabilizes into a perpetual loop, with you as both its creator and observer."
+      ],
+      "position": [3200, 450]
+    },
+    {
+      "id": 165,
+      "type": "skip",
+      "text": [
+        "You assist in the multiverse's awakening process.",
+        "As consciousness spreads through quantum reality, you feel a profound connection to all possible worlds."
+      ],
+      "nextId": 167,
+      "position": [3200, 500]
+    },
+    {
+      "id": 166,
+      "type": "finish",
+      "text": [
+        "You focus on preserving humanity's individual consciousness across all timelines.",
+        "The multiverse remains in its slumber, but humanity retains its unique perspective in each reality."
+      ],
+      "position": [3200, 550]
+    },
+    {
+      "id": 167,
+      "type": "action",
+      "text": [
+        "Your newfound awareness as a nexus point reveals countless possibilities.",
+        "Every choice you make ripples through the quantum fabric of reality."
+      ],
+      "actions": [
+        { "label": "Guide quantum evolution", "id": 168 },
+        { "label": "Maintain timeline balance", "id": 169 }
+      ],
+      "position": [3400, 500]
+    },
+    {
+      "id": 168,
+      "type": "finish",
+      "text": [
+        "You actively guide the evolution of quantum reality.",
+        "Under your influence, the multiverse develops into a harmonious network of interconnected consciousnesses."
+      ],
+      "position": [3600, 450]
+    },
+    {
+      "id": 169,
+      "type": "finish",
+      "text": [
+        "You choose to maintain the delicate balance between timelines.",
+        "As a nexus point, you become the guardian of quantum equilibrium, ensuring no single reality dominates the others."
+      ],
+      "position": [3600, 500]
+    },
+    {
+      "id": 170,
+      "type": "skip",
+      "text": [
+        "You carefully tune the quantum harmonics.",
+        "The facility's vibrations align with the fundamental frequency of the multiverse."
+      ],
+      "nextId": 172,
+      "position": [3200, 800]
+    },
+    {
+      "id": 171,
+      "type": "finish",
+      "text": [
+        "You dampen the quantum harmonics, bringing the facility back to stable ground.",
+        "The opportunity for greater understanding is lost, but the immediate danger is averted."
+      ],
+      "position": [3200, 850]
+    },
+    {
+      "id": 172,
+      "type": "finish",
+      "text": [
+        "The aligned harmonics reveal the music of the spheres - the quantum symphony of reality itself.",
+        "You learn to conduct this cosmic orchestra, bringing harmony to the chaos of infinite possibilities."
+      ],
+      "position": [3400, 800]
+    },
+    {
+      "id": 173,
+      "type": "skip",
+      "text": [
+        "You join Dr. Zhang in initiating the controlled collapse.",
+        "The multiverse begins to fold in on itself, following your careful guidance."
+      ],
+      "nextId": 175,
+      "position": [3400, 500]
+    },
+    {
+      "id": 174,
+      "type": "finish",
+      "text": [
+        "Your search for alternatives leads to a breakthrough.",
+        "Instead of collapse, you discover a way to strengthen the quantum fabric itself, preserving all timelines."
+      ],
+      "position": [3400, 550]
+    },
+    {
+      "id": 175,
+      "type": "finish",
+      "text": [
+        "You successfully preserve the most crucial timelines.",
+        "These surviving realities form a new, more stable multiverse, each one essential to the whole."
+      ],
+      "position": [3600, 500]
+    },
+    {
+      "id": 176,
+      "type": "finish",
+      "text": [
+        "Your backup reality serves as a seed for a new multiverse.",
+        "From this carefully crafted timeline, infinite new possibilities begin to bloom."
+      ],
+      "position": [3600, 550]
+    },
+    {
+      "id": 177,
+      "type": "finish",
+      "text": [
+        "With crystal clarity, you execute the necessary steps to save the multiverse.",
+        "Your understanding of quantum reality becomes complete, and you guide existence toward a new era of stability."
+      ],
+      "position": [3400, 700]
+    }
+  ],
+  "viewport": {
+    "x": 0,
+    "y": 0,
+    "zoom": 0.5
+  }
+}

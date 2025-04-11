@@ -1,0 +1,867 @@
+{
+  "id": "7e9d8f3a-2b1c-4c5d-9e6f-1a8b7c6d5e4f",
+  "title": "Heart Strings",
+  "description": "A tale of modern love, choices, and serendipity in the city",
+  "language": "en",
+  "startId": 1,
+  "position": [30, 30],
+  "nodes": [
+    {
+      "id": 1,
+      "type": "skip",
+      "text": [
+        "It's a crisp autumn morning in the city. You've just moved here for a fresh start,",
+        "ready to write the next chapter of your life. The aroma of coffee fills the air as you walk down the street."
+      ],
+      "nextId": 2,
+      "position": [200, 100]
+    },
+    {
+      "id": 2,
+      "type": "action",
+      "text": [
+        "The Cornerstone Café catches your eye. Through the window, you see the barista creating intricate latte art.",
+        "At the same time, your phone buzzes with an email about a networking event starting soon at the nearby gallery."
+      ],
+      "actions": [
+        {
+          "label": "Enter the café",
+          "id": 3
+        },
+        {
+          "label": "Head to the networking event",
+          "id": 4
+        },
+        {
+          "label": "Take a walk in the park instead",
+          "id": 5
+        }
+      ],
+      "position": [400, 100]
+    },
+    {
+      "id": 3,
+      "type": "action",
+      "text": [
+        "The café's warmth welcomes you. Behind the counter, a barista with kind eyes and an artistic flair introduces themselves as Alex.",
+        "\"First time here? Let me make you something special,\" they offer with a genuine smile."
+      ],
+      "actions": [
+        {
+          "label": "Accept the special drink",
+          "id": 6
+        },
+        {
+          "label": "Order your usual drink",
+          "id": 7
+        }
+      ],
+      "position": [600, 0]
+    },
+    {
+      "id": 4,
+      "type": "action",
+      "text": [
+        "The gallery is already buzzing with people. As you admire a striking photograph,",
+        "you bump into Sam, a corporate executive who seems equally out of place at an art event."
+      ],
+      "actions": [
+        {
+          "label": "Discuss the photograph",
+          "id": 8
+        },
+        {
+          "label": "Ask about their work",
+          "id": 9
+        }
+      ],
+      "position": [600, 100]
+    },
+    {
+      "id": 5,
+      "type": "action",
+      "text": [
+        "The park offers a peaceful escape. As you find a quiet bench,",
+        "someone nearby is capturing the morning light with their camera. They introduce themselves as Jordan."
+      ],
+      "actions": [
+        {
+          "label": "Ask about their photography",
+          "id": 10
+        },
+        {
+          "label": "Share your own creative interests",
+          "id": 11
+        }
+      ],
+      "position": [600, 200]
+    },
+    {
+      "id": 6,
+      "type": "skip",
+      "text": [
+        "Alex crafts a beautiful drink with a heart design in the foam.",
+        "\"I've been experimenting with new patterns,\" they say, clearly passionate about their craft.",
+        "There's something captivating about their dedication to making each drink special."
+      ],
+      "nextId": 12,
+      "position": [800, -50]
+    },
+    {
+      "id": 7,
+      "type": "skip",
+      "text": [
+        "\"Sometimes the classics are the best,\" Alex says approvingly.",
+        "While making your drink, they share stories about the café and their dreams of expanding it into an art space."
+      ],
+      "nextId": 12,
+      "position": [800, 50]
+    },
+    {
+      "id": 8,
+      "type": "skip",
+      "text": [
+        "Sam reveals a surprising knowledge of art. \"It's my secret passion,\" they confess.",
+        "\"Sometimes I wish I'd pursued it instead of the corporate path.\""
+      ],
+      "nextId": 13,
+      "position": [800, 150]
+    },
+    {
+      "id": 9,
+      "type": "skip",
+      "text": [
+        "Sam lights up talking about their work in sustainable business practices.",
+        "\"It's not just about profits - we can make a real difference,\" they say with conviction."
+      ],
+      "nextId": 13,
+      "position": [800, 250]
+    },
+    {
+      "id": 10,
+      "type": "skip",
+      "text": [
+        "Jordan shows you their portfolio on their camera. Each photo tells a story,",
+        "capturing moments of life in the city with stunning clarity."
+      ],
+      "nextId": 14,
+      "position": [800, 350]
+    },
+    {
+      "id": 11,
+      "type": "skip",
+      "text": [
+        "Your shared interest in creativity sparks an animated conversation.",
+        "Jordan's eyes light up as you discuss the intersection of different art forms."
+      ],
+      "nextId": 14,
+      "position": [800, 450]
+    },
+    {
+      "id": 12,
+      "type": "action",
+      "text": [
+        "As you enjoy your drink, Alex mentions they host small art shows in the café on weekends.",
+        "\"You should come by - it's a great way to meet people in the city,\" they suggest."
+      ],
+      "actions": [
+        {
+          "label": "Express interest in the art shows",
+          "id": 15
+        },
+        {
+          "label": "Ask about their own art",
+          "id": 16
+        }
+      ],
+      "position": [1000, 0]
+    },
+    {
+      "id": 13,
+      "type": "action",
+      "text": [
+        "The conversation with Sam flows naturally. They mention a rooftop garden at their office building.",
+        "\"It's my favorite place to escape the corporate hustle. Would you like to see it sometime?\""
+      ],
+      "actions": [
+        {
+          "label": "Accept the invitation",
+          "id": 17
+        },
+        {
+          "label": "Suggest coffee first",
+          "id": 18
+        }
+      ],
+      "position": [1000, 200]
+    },
+    {
+      "id": 14,
+      "type": "action",
+      "text": [
+        "Jordan mentions they're working on a project about human connections in the city.",
+        "\"I'd love to get your perspective - maybe over coffee?\""
+      ],
+      "actions": [
+        {
+          "label": "Agree enthusiastically",
+          "id": 19
+        },
+        {
+          "label": "Suggest a photo walk instead",
+          "id": 20
+        }
+      ],
+      "position": [1000, 400]
+    },
+    {
+      "id": 15,
+      "type": "action",
+      "text": [
+        "Alex's face lights up at your interest. \"Actually, we're having one tonight. Local artists, live music...",
+        "I'd love to show you around - when I'm not making coffee, I help curate the shows.\""
+      ],
+      "actions": [
+        {
+          "label": "Promise to come tonight",
+          "id": 21
+        },
+        {
+          "label": "Ask to help set up",
+          "id": 22
+        }
+      ],
+      "position": [1200, -50]
+    },
+    {
+      "id": 16,
+      "type": "skip",
+      "text": [
+        "Alex shyly shares their own charcoal sketches, hidden behind the counter.",
+        "Their art captures the quiet moments of café life - people lost in conversation, hands wrapped around warm mugs."
+      ],
+      "nextId": 23,
+      "position": [1200, 50]
+    },
+    {
+      "id": 17,
+      "type": "skip",
+      "text": [
+        "The rooftop garden is a hidden oasis above the city. Sam's usually confident demeanor softens here.",
+        "\"This is where I come to remember what really matters,\" they say, looking out at the skyline."
+      ],
+      "nextId": 24,
+      "position": [1200, 150]
+    },
+    {
+      "id": 18,
+      "type": "skip",
+      "text": [
+        "\"Coffee sounds perfect,\" Sam says warmly. \"I know just the place - unless you're tired of cafés?\"",
+        "Their playful smile suggests they've noticed your earlier interest in the Cornerstone."
+      ],
+      "nextId": 25,
+      "position": [1200, 250]
+    },
+    {
+      "id": 19,
+      "type": "skip",
+      "text": [
+        "Jordan's whole face brightens at your enthusiasm. \"Great! I know this amazing little café...",
+        "The light there in the morning is perfect for photos - and their coffee's not bad either.\""
+      ],
+      "nextId": 26,
+      "position": [1200, 350]
+    },
+    {
+      "id": 20,
+      "type": "skip",
+      "text": [
+        "\"Even better!\" Jordan exclaims, already adjusting their camera settings.",
+        "\"The city tells different stories through a lens. I'd love to show you how I see it.\""
+      ],
+      "nextId": 27,
+      "position": [1200, 450]
+    },
+    {
+      "id": 21,
+      "type": "action",
+      "text": [
+        "The evening transforms the café into an intimate gallery space. Alex greets you warmly,",
+        "looking different in their non-work clothes, more relaxed and artistic."
+      ],
+      "actions": [
+        {
+          "label": "Ask about their favorite piece",
+          "id": 28
+        },
+        {
+          "label": "Share your impressions",
+          "id": 29
+        }
+      ],
+      "position": [1400, -50]
+    },
+    {
+      "id": 22,
+      "type": "action",
+      "text": [
+        "You spend the afternoon helping Alex arrange artwork and set up lighting.",
+        "In the quiet moments between tasks, you learn about their journey from art student to café owner."
+      ],
+      "actions": [
+        {
+          "label": "Share your own dreams",
+          "id": 30
+        },
+        {
+          "label": "Focus on their story",
+          "id": 31
+        }
+      ],
+      "position": [1400, 50]
+    },
+    {
+      "id": 23,
+      "type": "action",
+      "text": [
+        "\"Most people just see me as the coffee guy,\" Alex admits, putting away their sketches.",
+        "\"It's nice to share this side with someone who understands.\""
+      ],
+      "actions": [
+        {
+          "label": "Encourage their art",
+          "id": 32
+        },
+        {
+          "label": "Suggest collaborating",
+          "id": 33
+        }
+      ],
+      "position": [1400, 150]
+    },
+    {
+      "id": 24,
+      "type": "action",
+      "text": [
+        "Sam points out their favorite plants, explaining how they started this garden project.",
+        "\"Sometimes the best way to change things is from the inside,\" they say thoughtfully."
+      ],
+      "actions": [
+        {
+          "label": "Discuss making change",
+          "id": 34
+        },
+        {
+          "label": "Share personal goals",
+          "id": 35
+        }
+      ],
+      "position": [1400, 250]
+    },
+    {
+      "id": 25,
+      "type": "action",
+      "text": [
+        "Over coffee, Sam reveals more about their journey from art student to executive.",
+        "\"Life rarely goes as planned, but sometimes that's for the better,\" they reflect."
+      ],
+      "actions": [
+        {
+          "label": "Ask about their art",
+          "id": 36
+        },
+        {
+          "label": "Discuss balance",
+          "id": 37
+        }
+      ],
+      "position": [1400, 350]
+    },
+    {
+      "id": 26,
+      "type": "action",
+      "text": [
+        "Jordan's favorite café turns out to be the Cornerstone. They capture candid shots while you talk,",
+        "their enthusiasm for both photography and conversation equally infectious."
+      ],
+      "actions": [
+        {
+          "label": "Ask to see the photos",
+          "id": 38
+        },
+        {
+          "label": "Share your perspective",
+          "id": 39
+        }
+      ],
+      "position": [1400, 450]
+    },
+    {
+      "id": 27,
+      "type": "action",
+      "text": [
+        "The photo walk becomes an adventure. Jordan shows you hidden street art, secret gardens,",
+        "and moments of beauty you'd never noticed before."
+      ],
+      "actions": [
+        {
+          "label": "Take your own photo",
+          "id": 40
+        },
+        {
+          "label": "Express appreciation",
+          "id": 41
+        }
+      ],
+      "position": [1400, 550]
+    },
+    {
+      "id": 28,
+      "type": "skip",
+      "text": [
+        "Alex leads you to a series of charcoal sketches. \"These remind me of our first meeting,\"",
+        "they say softly. \"Sometimes the smallest moments inspire the best art.\""
+      ],
+      "nextId": 42,
+      "position": [1600, -50]
+    },
+    {
+      "id": 29,
+      "type": "skip",
+      "text": [
+        "Your observations about the artwork make Alex smile. \"You see things others miss,\"",
+        "they say. \"That's rare. Most people just pass through without really looking.\""
+      ],
+      "nextId": 42,
+      "position": [1600, 50]
+    },
+    {
+      "id": 30,
+      "type": "skip",
+      "text": [
+        "Alex listens intently as you share your aspirations. The afternoon light catches their smile,",
+        "and you realize how comfortable you feel in their presence."
+      ],
+      "nextId": 43,
+      "position": [1600, 150]
+    },
+    {
+      "id": 31,
+      "type": "skip",
+      "text": [
+        "Alex's story unfolds like a painting - full of unexpected turns, small victories,",
+        "and the courage to pursue a dream even when it seemed impossible."
+      ],
+      "nextId": 43,
+      "position": [1600, 250]
+    },
+    {
+      "id": 32,
+      "type": "skip",
+      "text": [
+        "Your encouragement touches Alex deeply. \"Maybe it's time to be more than just the coffee guy,\"",
+        "they say, a new confidence in their voice."
+      ],
+      "nextId": 44,
+      "position": [1600, 350]
+    },
+    {
+      "id": 33,
+      "type": "skip",
+      "text": [
+        "The idea of collaboration sparks excitement in Alex's eyes. \"We could create something beautiful together,\"",
+        "they say, already sketching ideas on a napkin."
+      ],
+      "nextId": 44,
+      "position": [1600, 450]
+    },
+    {
+      "id": 34,
+      "type": "skip",
+      "text": [
+        "Sam's passion for positive change is contagious. You discuss ways to merge creativity with impact,",
+        "losing track of time as the sun begins to set over the city."
+      ],
+      "nextId": 45,
+      "position": [1600, 550]
+    },
+    {
+      "id": 35,
+      "type": "skip",
+      "text": [
+        "Your shared dreams and ambitions create a moment of connection. Sam's professional facade melts away,",
+        "revealing someone who understands the balance between passion and practicality."
+      ],
+      "nextId": 45,
+      "position": [1600, 650]
+    },
+    {
+      "id": 36,
+      "type": "skip",
+      "text": [
+        "Sam shows you photos of their paintings on their phone, a hidden talent kept alive in private moments.",
+        "\"You're the first person from work who knows about this,\" they admit."
+      ],
+      "nextId": 46,
+      "position": [1800, -50]
+    },
+    {
+      "id": 37,
+      "type": "skip",
+      "text": [
+        "The conversation about work-life balance leads to deeper waters.",
+        "Sam confesses their struggle to reconcile their artistic soul with corporate success."
+      ],
+      "nextId": 46,
+      "position": [1800, 50]
+    },
+    {
+      "id": 38,
+      "type": "skip",
+      "text": [
+        "Jordan's photos capture more than just moments - they reveal the heart of the city,",
+        "and somehow, they've caught something special in the way you interact with your surroundings."
+      ],
+      "nextId": 47,
+      "position": [1800, 150]
+    },
+    {
+      "id": 39,
+      "type": "skip",
+      "text": [
+        "Your perspective fascinates Jordan. \"You see the world differently too,\" they say,",
+        "snapping a candid shot of you mid-conversation. \"These are the moments I live for.\""
+      ],
+      "nextId": 47,
+      "position": [1800, 250]
+    },
+    {
+      "id": 40,
+      "type": "skip",
+      "text": [
+        "Jordan teaches you about composition and light. Your attempt at photography",
+        "makes them laugh warmly - not at you, but with pure joy at sharing their passion."
+      ],
+      "nextId": 48,
+      "position": [1800, 350]
+    },
+    {
+      "id": 41,
+      "type": "skip",
+      "text": [
+        "Your genuine appreciation touches Jordan. \"Not many people understand what I'm trying to do,\"",
+        "they say, looking at you with newfound interest."
+      ],
+      "nextId": 48,
+      "position": [1800, 450]
+    },
+    {
+      "id": 42,
+      "type": "action",
+      "text": [
+        "As the art show winds down, Alex asks if you'd like to help plan the next one.",
+        "\"We could make it something really special,\" they say, hope in their voice."
+      ],
+      "actions": [
+        {
+          "label": "Accept enthusiastically",
+          "id": 49
+        },
+        {
+          "label": "Express uncertainty",
+          "id": 50
+        }
+      ],
+      "position": [2000, 0]
+    },
+    {
+      "id": 43,
+      "type": "action",
+      "text": [
+        "The café is closing, but neither of you wants the day to end.",
+        "Alex hesitates, then asks if you'd like to get dinner sometime."
+      ],
+      "actions": [
+        {
+          "label": "Say yes",
+          "id": 51
+        },
+        {
+          "label": "Keep it professional",
+          "id": 52
+        }
+      ],
+      "position": [2000, 200]
+    },
+    {
+      "id": 44,
+      "type": "action",
+      "text": [
+        "A week later, Alex has news. They're planning to expand the café's art space,",
+        "but it would mean taking a risk, investing more time and resources."
+      ],
+      "actions": [
+        {
+          "label": "Offer to help",
+          "id": 53
+        },
+        {
+          "label": "Advise caution",
+          "id": 54
+        }
+      ],
+      "position": [2000, 400]
+    },
+    {
+      "id": 45,
+      "type": "action",
+      "text": [
+        "A month passes, and your friendship with Sam grows. Then they drop a bombshell:",
+        "\"I've been offered a position leading a new creative initiative in our Tokyo office.\""
+      ],
+      "actions": [
+        {
+          "label": "Encourage them to go",
+          "id": 55
+        },
+        {
+          "label": "Ask them to stay",
+          "id": 56
+        }
+      ],
+      "position": [2200, 100]
+    },
+    {
+      "id": 46,
+      "type": "action",
+      "text": [
+        "Sam invites you to a corporate gala where they're unveiling their sustainable business initiative.",
+        "\"I want you there - you've helped me find the courage to make this happen.\""
+      ],
+      "actions": [
+        {
+          "label": "Attend proudly",
+          "id": 57
+        },
+        {
+          "label": "Suggest a private celebration",
+          "id": 58
+        }
+      ],
+      "position": [2200, 200]
+    },
+    {
+      "id": 47,
+      "type": "action",
+      "text": [
+        "Jordan's photography project is selected for a major gallery exhibition.",
+        "\"Some of my favorite shots are the ones with you in them. Would you mind if I included them?\""
+      ],
+      "actions": [
+        {
+          "label": "Say yes excitedly",
+          "id": 59
+        },
+        {
+          "label": "Feel uncomfortable",
+          "id": 60
+        }
+      ],
+      "position": [2200, 300]
+    },
+    {
+      "id": 48,
+      "type": "action",
+      "text": [
+        "Jordan receives an opportunity to travel the world for a documentary project.",
+        "\"It's my dream job, but... I don't want to leave what we're building here.\""
+      ],
+      "actions": [
+        {
+          "label": "Support their dreams",
+          "id": 61
+        },
+        {
+          "label": "Ask about us",
+          "id": 62
+        }
+      ],
+      "position": [2200, 400]
+    },
+    {
+      "id": 49,
+      "type": "action",
+      "text": [
+        "Working with Alex on the art shows becomes a regular part of your life.",
+        "You realize you're falling for them, just as they get an offer to open a second café across town."
+      ],
+      "actions": [
+        {
+          "label": "Confess your feelings",
+          "id": 63
+        },
+        {
+          "label": "Focus on the business",
+          "id": 64
+        }
+      ],
+      "position": [2200, 500]
+    },
+    {
+      "id": 50,
+      "type": "skip",
+      "text": [
+        "Your hesitation leads to a heart-to-heart conversation about dreams and fears.",
+        "Alex opens up about their own uncertainties, creating a deeper understanding between you."
+      ],
+      "nextId": 49,
+      "position": [2200, 600]
+    },
+    {
+      "id": 51,
+      "type": "skip",
+      "text": [
+        "Dinner turns into regular evening walks through the city,",
+        "discovering hidden gems and sharing stories under starlit skies."
+      ],
+      "nextId": 49,
+      "position": [2200, 700]
+    },
+    {
+      "id": 52,
+      "type": "finish",
+      "text": [
+        "You maintain a warm friendship with Alex, becoming a regular at the café.",
+        "Sometimes the best relationships aren't romantic - they're the ones that help us grow.",
+        "You've found a true friend in the city. 🌟"
+      ],
+      "position": [2200, 800]
+    },
+    {
+      "id": 53,
+      "type": "skip",
+      "text": [
+        "Your support means everything to Alex. Together, you start planning the expansion,",
+        "turning the café into a true hub for art and community."
+      ],
+      "nextId": 49,
+      "position": [2200, 900]
+    },
+    {
+      "id": 54,
+      "type": "skip",
+      "text": [
+        "Alex appreciates your practical perspective, deciding to start smaller.",
+        "Your honest advice strengthens their trust in you."
+      ],
+      "nextId": 49,
+      "position": [2200, 1000]
+    },
+    {
+      "id": 55,
+      "type": "finish",
+      "text": [
+        "Sam takes the position, but your connection remains strong across the distance.",
+        "You visit Tokyo, and they show you a city where art and business dance together beautifully.",
+        "Sometimes love means supporting each other's growth, even when paths diverge. ✈️"
+      ],
+      "position": [2400, 100]
+    },
+    {
+      "id": 56,
+      "type": "finish",
+      "text": [
+        "Sam stays, merging their creative vision with their corporate role.",
+        "Together, you build something unique - a partnership that proves dreams don't have to be sacrificed.",
+        "You've found your perfect balance. 💫"
+      ],
+      "position": [2400, 200]
+    },
+    {
+      "id": 57,
+      "type": "finish",
+      "text": [
+        "The gala becomes a celebration of possibilities. Sam's speech moves everyone,",
+        "and afterward, you dance under crystal chandeliers, two worlds perfectly merged.",
+        "You've found love that inspires growth. 🌃"
+      ],
+      "position": [2400, 300]
+    },
+    {
+      "id": 58,
+      "type": "finish",
+      "text": [
+        "You celebrate quietly in the rooftop garden where it all began.",
+        "Under the stars, Sam shares their dreams, and you realize you're part of all of them.",
+        "Some love stories are written in private moments. 🌹"
+      ],
+      "position": [2400, 400]
+    },
+    {
+      "id": 59,
+      "type": "finish",
+      "text": [
+        "The exhibition becomes a celebration of your shared journey.",
+        "Jordan's photos tell the story of two people falling in love through a lens.",
+        "You've become part of each other's art. 📸"
+      ],
+      "position": [2400, 500]
+    },
+    {
+      "id": 60,
+      "type": "finish",
+      "text": [
+        "Your honest response leads to a deeper conversation about boundaries and comfort.",
+        "Jordan appreciates your authenticity, and your relationship grows stronger for it.",
+        "True connection is built on understanding. 🤝"
+      ],
+      "position": [2400, 600]
+    },
+    {
+      "id": 61,
+      "type": "finish",
+      "text": [
+        "Jordan embarks on their journey, but with a promise - to share every adventure with you.",
+        "Your love becomes a story told through photographs from around the world.",
+        "Distance becomes another way to frame your love. 🌍"
+      ],
+      "position": [2400, 700]
+    },
+    {
+      "id": 62,
+      "type": "finish",
+      "text": [
+        "Jordan finds a way to balance their wanderlust with your connection,",
+        "taking shorter trips and building a home base with you in the city.",
+        "You've created your own perfect picture. 🏠"
+      ],
+      "position": [2400, 800]
+    },
+    {
+      "id": 63,
+      "type": "finish",
+      "text": [
+        "Your confession turns the café into more than just a space for art -",
+        "it becomes the beginning of your love story. Together, you create a place where dreams and love bloom.",
+        "Sometimes the best love stories start with coffee. ☕️"
+      ],
+      "position": [2400, 900]
+    },
+    {
+      "id": 64,
+      "type": "finish",
+      "text": [
+        "You help Alex build their dream, and in the process, your feelings grow naturally.",
+        "The café's success becomes intertwined with your blossoming relationship.",
+        "You've built something beautiful together. 🎨"
+      ],
+      "position": [2400, 1000]
+    }
+  ],
+  "viewport": {
+    "x": 0,
+    "y": 0,
+    "zoom": 0.5
+  }
+}
