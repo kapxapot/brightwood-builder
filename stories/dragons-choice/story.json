@@ -1,0 +1,629 @@
+{
+  "id": "a7c6e8d9-5b4f-4d2a-9e8c-7f6d5e4c3b2a",
+  "title": "🐲 The Dragon's Choice",
+  "description": "A young dragon rider's journey to save the ancient pact between dragons and humans",
+  "language": "en",
+  "startId": 1,
+  "position": [30, 30],
+  "nodes": [
+    {
+      "id": 1,
+      "type": "skip",
+      "text": [
+        "Dawn breaks over the Cloudspire Mountains, painting the dragon sanctuary in hues of gold. Today is your initiation as a dragon rider, a sacred tradition that has endured for centuries. Master Eldrin, the wise keeper of dragons, awaits you in the Sacred Grove. 🌅"
+      ],
+      "nextId": 2,
+      "position": [200, 100]
+    },
+    {
+      "id": 2,
+      "type": "action",
+      "text": [
+        "\"Welcome, young apprentice,\" Master Eldrin says, his eyes twinkling with ancient wisdom. \"Three dragon eggs lie before you, each carrying a different destiny. Choose wisely, for your companion will shape your path.\" ✨",
+        "Three eggs shimmer in the morning light: a storm-blue egg crackling with energy, a deep crimson egg radiating warmth, and a crystal-white egg that seems to pulse with mystical power."
+      ],
+      "actions": [
+        {
+          "label": "⚡ Storm-blue egg",
+          "id": 3
+        },
+        {
+          "label": "🔥 Crimson egg",
+          "id": 4
+        },
+        {
+          "label": "✨ Crystal-white egg",
+          "id": 5
+        }
+      ],
+      "position": [400, 100]
+    },
+    {
+      "id": 3,
+      "type": "skip",
+      "text": [
+        "The storm-blue egg trembles at your touch. Thunder rumbles in the distance as cracks appear across its surface. In a flash of lightning, a swift and agile dragon emerges, scales shimmering like storm clouds. 🌩️",
+        "\"Ah, Zephyr has chosen you,\" Master Eldrin nods approvingly. \"A tempest dragon, known for their wisdom and diplomatic nature.\""
+      ],
+      "nextId": 6,
+      "position": [600, 0]
+    },
+    {
+      "id": 4,
+      "type": "skip",
+      "text": [
+        "The crimson egg pulses with inner fire as you approach. It cracks open in a burst of warmth, revealing a powerful dragon with scales like burnished copper. 🔥",
+        "\"Ember has awakened for you,\" Master Eldrin smiles. \"A flame dragon, fierce protectors with warrior hearts.\""
+      ],
+      "nextId": 6,
+      "position": [600, 100]
+    },
+    {
+      "id": 5,
+      "type": "skip",
+      "text": [
+        "The crystal-white egg glows with ethereal light at your touch. It opens like a blooming flower, revealing a graceful dragon with scales that shimmer with magical energy. ✨",
+        "\"Luna has blessed you with her choice,\" Master Eldrin whispers. \"A mystic dragon, attuned to the ancient magics.\""
+      ],
+      "nextId": 6,
+      "position": [600, 200]
+    },
+    {
+      "id": 6,
+      "type": "action",
+      "text": [
+        "As you bond with your new companion, a commotion erupts from the sanctuary's main hall. Kira, another apprentice, rushes in with alarming news.",
+        "\"The ancient crystals! They're fading!\" she exclaims. The crystals that maintain the protective barrier around the sanctuary have maintained the peace between dragons and humans for centuries. 💎"
+      ],
+      "actions": [
+        {
+          "label": "📚 Study crystals",
+          "id": 7
+        },
+        {
+          "label": "🗣️ Question Eldrin",
+          "id": 8
+        },
+        {
+          "label": "🔍 Investigate",
+          "id": 9
+        }
+      ],
+      "position": [800, 100]
+    },
+    {
+      "id": 7,
+      "type": "skip",
+      "text": [
+        "You rush to the crystal chamber with your dragon. The massive gems that once pulsed with vibrant energy now flicker weakly. Ancient runes carved into their surface seem to be fading. 💎",
+        "Your dragon reacts strongly to the crystals, sensing something in their fading light."
+      ],
+      "nextId": 10,
+      "position": [1000, 0]
+    },
+    {
+      "id": 8,
+      "type": "skip",
+      "text": [
+        "Master Eldrin's face grows grave as you question him. \"The crystals are bound to an ancient pact,\" he explains. \"Their fading can only mean one thing - the trust between dragons and humans is breaking.\" 📜",
+        "He shares a worried look with your dragon, who seems to understand the gravity of the situation."
+      ],
+      "nextId": 10,
+      "position": [1000, 100]
+    },
+    {
+      "id": 9,
+      "type": "skip",
+      "text": [
+        "With your dragon's keen senses, you discover strange magical disturbances around the sanctuary. The protective barriers are weakening, and dark energy seeps through the cracks. ⚠️",
+        "In the distance, storm clouds gather ominously over the human settlement."
+      ],
+      "nextId": 10,
+      "position": [1000, 200]
+    },
+    {
+      "id": 10,
+      "type": "action",
+      "text": [
+        "A urgent horn blast echoes across the sanctuary. Lord Blackthorn, the human settlement's leader, approaches with a delegation. Their expressions are tense, distrustful.",
+        "\"We've come for answers,\" he announces. \"Our seers speak of growing darkness. The dragons must be responsible!\" 👥"
+      ],
+      "actions": [
+        {
+          "label": "🤝 Seek peace",
+          "id": 11
+        },
+        {
+          "label": "⚔️ Stand firm",
+          "id": 12
+        },
+        {
+          "label": "🔮 Consult dragon",
+          "id": 13
+        }
+      ],
+      "position": [1200, 100]
+    },
+    {
+      "id": 11,
+      "type": "skip",
+      "text": [
+        "You step forward, your dragon projecting a calming presence. \"The sanctuary has protected both our peoples for generations,\" you say. \"Let us work together to understand what's happening.\" 🤝",
+        "Lord Blackthorn's expression softens slightly, though suspicion lingers in his eyes."
+      ],
+      "nextId": 14,
+      "position": [1400, 0]
+    },
+    {
+      "id": 12,
+      "type": "skip",
+      "text": [
+        "Your dragon growls softly as you stand your ground. \"The dragons are guardians, not destroyers,\" you declare. \"They've protected these lands since before your grandfather's time.\" ⚔️",
+        "The delegation's hands move to their weapons, tension filling the air."
+      ],
+      "nextId": 15,
+      "position": [1400, 100]
+    },
+    {
+      "id": 13,
+      "type": "skip",
+      "text": [
+        "You close your eyes, reaching out to your dragon's consciousness. Ancient memories flood your mind - the original pact, the crystal's creation, and a dark force that once threatened both species. ✨",
+        "When you open your eyes, you understand more about the true threat."
+      ],
+      "nextId": 16,
+      "position": [1400, 200]
+    },
+    {
+      "id": 14,
+      "type": "action",
+      "text": [
+        "\"Perhaps...\" Lord Blackthorn considers, \"we could review the ancient archives together. Both human and dragon records.\"",
+        "Kira appears with urgent news: strange energies have been sighted in both the Crystal Caverns and the Ancient Temple. Time is short. 📚"
+      ],
+      "actions": [
+        {
+          "label": "📜 Study archives",
+          "id": 17
+        },
+        {
+          "label": "🏛️ Visit temple",
+          "id": 18
+        },
+        {
+          "label": "💎 Check caverns",
+          "id": 19
+        }
+      ],
+      "position": [1600, 0]
+    },
+    {
+      "id": 15,
+      "type": "action",
+      "text": [
+        "The standoff is interrupted by a sudden tremor. The sanctuary's barriers flicker violently, sending waves of unstable magic through the air. 🌋",
+        "\"See? The dragons bring chaos!\" someone shouts. You must act quickly to prevent conflict."
+      ],
+      "actions": [
+        {
+          "label": "🛡️ Prove loyalty",
+          "id": 20
+        },
+        {
+          "label": "🐲 Show power",
+          "id": 21
+        }
+      ],
+      "position": [1600, 100]
+    },
+    {
+      "id": 16,
+      "type": "action",
+      "text": [
+        "Through your dragon's ancient memories, you see a shadow that once nearly destroyed both species. The crystals were created to seal it away. Now that seal is weakening. 🌑",
+        "This knowledge could change everything - but who would believe you?"
+      ],
+      "actions": [
+        {
+          "label": "🔮 Share vision",
+          "id": 22
+        },
+        {
+          "label": "🗺️ Seek proof",
+          "id": 23
+        }
+      ],
+      "position": [1600, 200]
+    },
+    {
+      "id": 17,
+      "type": "skip",
+      "text": [
+        "In the sanctuary's library, you and Lord Blackthorn discover something disturbing. The original pact wasn't just for peace - it was to unite against an ancient darkness. 📚",
+        "The crystals' power was meant to be renewed every century through a joint ritual of dragons and humans."
+      ],
+      "nextId": 24,
+      "position": [1800, -100]
+    },
+    {
+      "id": 18,
+      "type": "skip",
+      "text": [
+        "The Ancient Temple holds secrets in its weathered stones. As you and the delegation enter, ancient runes begin to glow. Your dragon's presence seems to awaken something long dormant. 🏛️",
+        "A spectral image appears - the first dragon riders and their human allies, fighting together against a shadow that devoured both magic and life itself."
+      ],
+      "nextId": 25,
+      "position": [1800, 0]
+    },
+    {
+      "id": 19,
+      "type": "redirect",
+      "text": [
+        "The Crystal Caverns pulse with unstable energy. As you explore with a mixed group of humans and dragons, the ground suddenly gives way! 💎"
+      ],
+      "links": [
+        {
+          "weight": 2,
+          "id": 26
+        },
+        {
+          "weight": 1,
+          "id": 27
+        }
+      ],
+      "position": [1800, 100]
+    },
+    {
+      "id": 20,
+      "type": "skip",
+      "text": [
+        "You and your dragon rush to protect the human delegation from the unstable magic. Your selfless act doesn't go unnoticed - Lord Blackthorn's expression changes from suspicion to thoughtful consideration. 🛡️",
+        "\"Perhaps... we judged too hastily,\" he admits."
+      ],
+      "nextId": 28,
+      "position": [1800, 200]
+    },
+    {
+      "id": 21,
+      "type": "redirect",
+      "text": [
+        "Your dragon roars, demonstrating its raw power. The humans step back in awe and fear as your companion creates a magnificent display of its elemental magic. ⚡"
+      ],
+      "links": [
+        {
+          "weight": 1,
+          "id": 29
+        },
+        {
+          "weight": 2,
+          "id": 30
+        }
+      ],
+      "position": [1800, 300]
+    },
+    {
+      "id": 22,
+      "type": "skip",
+      "text": [
+        "You channel your dragon's memories, sharing the vision with both Lord Blackthorn and Master Eldrin. They witness the ancient shadow and the united stand against it. 🔮",
+        "\"The old stories were true,\" Master Eldrin whispers. \"We face the return of the Void.\""
+      ],
+      "nextId": 31,
+      "position": [1800, 400]
+    },
+    {
+      "id": 23,
+      "type": "skip",
+      "text": [
+        "You lead an expedition to the deepest part of the sanctuary, where ancient records are kept. There, carved into the walls, is proof of the shadow's existence and the true purpose of the pact. 🗺️",
+        "\"This changes everything,\" Lord Blackthorn says gravely."
+      ],
+      "nextId": 31,
+      "position": [1800, 500]
+    },
+    {
+      "id": 24,
+      "type": "action",
+      "text": [
+        "The century renewal ritual was missed during the last great war between humans and dragons. Now the seals weaken, and ancient evil stirs. 📜",
+        "\"We must perform the ritual,\" Lord Blackthorn declares, \"but we've lost the knowledge of how.\""
+      ],
+      "actions": [
+        {
+          "label": "🔍 Find instructions",
+          "id": 32
+        },
+        {
+          "label": "🐲 Ask dragons",
+          "id": 33
+        }
+      ],
+      "position": [2000, -100]
+    },
+    {
+      "id": 25,
+      "type": "action",
+      "text": [
+        "The spectral scene shows more - the ritual that bound the shadow required both human determination and dragon magic. But it also required a terrible sacrifice. 👻",
+        "\"History repeats,\" Master Eldrin says softly. \"The choice comes again.\""
+      ],
+      "actions": [
+        {
+          "label": "💫 Accept destiny",
+          "id": 34
+        },
+        {
+          "label": "🔍 Seek alternative",
+          "id": 35
+        }
+      ],
+      "position": [2000, 0]
+    },
+    {
+      "id": 26,
+      "type": "skip",
+      "text": [
+        "You fall into an ancient chamber deep beneath the caverns. Your dragon's quick reflexes save both humans and dragons from harm. In the darkness, crystalline writings glow with ancient power. 💎",
+        "You've discovered the original ritual chamber where the pact was first sealed!"
+      ],
+      "nextId": 36,
+      "position": [2000, 100]
+    },
+    {
+      "id": 27,
+      "type": "finish",
+      "text": [
+        "The cavern collapse separates you from the others. Despite your dragon's best efforts, the unstable magic triggers a chain reaction. 💔",
+        "The sanctuary is evacuated, and the ancient crystals are lost forever. Sometimes destiny slips through our grasp...",
+        "You've reached the Separated Paths ending."
+      ],
+      "position": [2000, 200]
+    },
+    {
+      "id": 28,
+      "type": "skip",
+      "text": [
+        "With trust beginning to rebuild, Lord Blackthorn and Master Eldrin agree to combine their knowledge. The humans share their prophecies while the dragons reveal their ancient memories. 🤝",
+        "Together, you begin to understand the true nature of the threat."
+      ],
+      "nextId": 31,
+      "position": [2200, 0]
+    },
+    {
+      "id": 29,
+      "type": "finish",
+      "text": [
+        "Your display of power backfires - the humans retreat in fear, breaking the last threads of trust. Without unity, the shadow's return cannot be stopped. 💔",
+        "The sanctuary falls, and dragons retreat to distant lands. Perhaps, in time, trust can be rebuilt...",
+        "You've reached the Broken Trust ending."
+      ],
+      "position": [2200, 100]
+    },
+    {
+      "id": 30,
+      "type": "skip",
+      "text": [
+        "Your dragon's display, while fearsome, somehow resonates with ancient magic in the humans' artifacts. Lord Blackthorn's sword glows in response, revealing an old connection between your peoples. ⚔️",
+        "\"Our ancestors fought together,\" he realizes."
+      ],
+      "nextId": 31,
+      "position": [2200, 200]
+    },
+    {
+      "id": 31,
+      "type": "action",
+      "text": [
+        "With the truth of the shadow's threat revealed, you must decide how to proceed. The renewal ritual requires both human and dragon participation, but it carries great risk. 🌓",
+        "Master Eldrin warns that someone must channel the combined power - a dangerous role."
+      ],
+      "actions": [
+        {
+          "label": "🦸 Volunteer yourself",
+          "id": 37
+        },
+        {
+          "label": "👥 Share the burden",
+          "id": 38
+        },
+        {
+          "label": "🔍 Find another way",
+          "id": 39
+        }
+      ],
+      "position": [2200, 300]
+    },
+    {
+      "id": 32,
+      "type": "skip",
+      "text": [
+        "Deep in the archives, you find detailed instructions for the ritual. It requires a circle of human mages and dragon elders, channeling their power through a chosen vessel. ✨",
+        "The vessel must have both human will and dragon spirit - a dragon rider."
+      ],
+      "nextId": 31,
+      "position": [2200, 400]
+    },
+    {
+      "id": 33,
+      "type": "skip",
+      "text": [
+        "The eldest dragons share their memories through your companion. You see the ritual as it was first performed, understanding both its power and its price. 🐲",
+        "The chosen vessel must bear the full force of both human and dragon magic."
+      ],
+      "nextId": 31,
+      "position": [2200, 500]
+    },
+    {
+      "id": 34,
+      "type": "skip",
+      "text": [
+        "You step forward, accepting the responsibility that destiny has placed before you. Your dragon's presence strengthens your resolve. 💫",
+        "\"We shall face this together,\" you declare, as both humans and dragons gather for the ritual."
+      ],
+      "nextId": 40,
+      "position": [2400, 0]
+    },
+    {
+      "id": 35,
+      "type": "skip",
+      "text": [
+        "You propose using the combined magical knowledge of both species to find a way to strengthen the seals without sacrifice. 📚",
+        "It's a race against time as the shadow grows stronger, but perhaps there's hope in unity."
+      ],
+      "nextId": 41,
+      "position": [2400, 100]
+    },
+    {
+      "id": 36,
+      "type": "action",
+      "text": [
+        "The ritual chamber holds the key to renewal, but the original crystals are nearly dead. Your dragon senses that new ones must be created, imbued with fresh power. 💎",
+        "\"We must act now,\" Lord Blackthorn urges, \"before the shadow breaks free.\""
+      ],
+      "actions": [
+        {
+          "label": "✨ Create crystals",
+          "id": 42
+        },
+        {
+          "label": "🛡️ Strengthen old",
+          "id": 43
+        }
+      ],
+      "position": [2400, 200]
+    },
+    {
+      "id": 37,
+      "type": "skip",
+      "text": [
+        "You step into the ritual circle, your dragon by your side. As human and dragon magic flows into you, you feel both power and pain beyond imagination. ✨",
+        "In this moment, you understand the true meaning of unity."
+      ],
+      "nextId": 44,
+      "position": [2400, 300]
+    },
+    {
+      "id": 38,
+      "type": "skip",
+      "text": [
+        "You propose that everyone - humans and dragons alike - take a small part of the burden. It's never been done before, but your bond with your dragon shows it's possible. 🤝",
+        "The ritual circle expands to include all willing participants."
+      ],
+      "nextId": 45,
+      "position": [2400, 400]
+    },
+    {
+      "id": 39,
+      "type": "redirect",
+      "text": [
+        "Your search for alternatives leads to an ancient text speaking of a third path - neither sacrifice nor conventional magic, but something more profound. 📜"
+      ],
+      "links": [
+        {
+          "weight": 2,
+          "id": 46
+        },
+        {
+          "weight": 1,
+          "id": 47
+        }
+      ],
+      "position": [2400, 500]
+    },
+    {
+      "id": 40,
+      "type": "finish",
+      "text": [
+        "The ritual reaches its peak. Through your sacrifice, the shadow is bound anew, the crystals restored to full power. Though the price is high, you survive, forever changed. ⭐",
+        "You become the living heart of the pact, a bridge between humans and dragons.",
+        "You've reached the Dragon Guardian ending."
+      ],
+      "position": [2600, 0]
+    },
+    {
+      "id": 41,
+      "type": "finish",
+      "text": [
+        "Working together, humans and dragons discover that their combined magic can permanently seal the shadow. The barrier between species fades as new understanding blooms. 🌟",
+        "A new age of cooperation begins, with you as its first ambassador.",
+        "You've reached the Harmony Restored ending."
+      ],
+      "position": [2600, 100]
+    },
+    {
+      "id": 42,
+      "type": "finish",
+      "text": [
+        "You forge new crystals from the combined essence of human spirit and dragon magic. The process transforms you, binding you eternally to both worlds. 💎",
+        "The shadow is sealed away, and you become the keeper of ancient secrets.",
+        "You've reached the Crystal Guardian ending."
+      ],
+      "position": [2600, 200]
+    },
+    {
+      "id": 43,
+      "type": "finish",
+      "text": [
+        "You channel all your power into the old crystals, sacrificing your human form. Your consciousness merges with your dragon, becoming something entirely new. 🌠",
+        "The sanctuary endures, protected by your eternal vigilance.",
+        "You've reached the Eternal Guardian ending."
+      ],
+      "position": [2600, 300]
+    },
+    {
+      "id": 44,
+      "type": "redirect",
+      "text": [
+        "As the combined power flows through you, time seems to stop. In this moment, you must choose where to direct this incredible force. ✨"
+      ],
+      "links": [
+        {
+          "weight": 2,
+          "id": 40
+        },
+        {
+          "weight": 1,
+          "id": 43
+        }
+      ],
+      "position": [2600, 400]
+    },
+    {
+      "id": 45,
+      "type": "redirect",
+      "text": [
+        "The shared burden creates an unprecedented connection between all participants. The very nature of the pact begins to change... 🌈"
+      ],
+      "links": [
+        {
+          "weight": 2,
+          "id": 41
+        },
+        {
+          "weight": 1,
+          "id": 42
+        }
+      ],
+      "position": [2600, 500]
+    },
+    {
+      "id": 46,
+      "type": "skip",
+      "text": [
+        "The third path reveals itself - not a binding of the shadow, but a transformation of it. Through understanding and acceptance, darkness and light can be balanced. 🌓",
+        "It requires perfect harmony between human wisdom and dragon power."
+      ],
+      "nextId": 41,
+      "position": [2600, 600]
+    },
+    {
+      "id": 47,
+      "type": "finish",
+      "text": [
+        "The third path proves too difficult to master in time. The shadow breaks free, but your efforts create a lasting alliance between humans and dragons. 🌊",
+        "Together, they will face whatever comes next.",
+        "You've reached the New Beginning ending."
+      ],
+      "position": [2600, 700]
+    }
+  ]
+}

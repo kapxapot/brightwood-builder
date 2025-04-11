@@ -35,7 +35,7 @@
       "type": "array",
       "items": {
         "type": "object",
-        "required": ["id", "type", "text"],
+        "required": ["id", "type", "text", "label"],
         "properties": {
           "id": {
             "type": "integer"

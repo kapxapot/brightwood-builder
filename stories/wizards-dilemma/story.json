@@ -1,0 +1,1460 @@
+{
+  "id": "bf80fbdb-e3b4-4cf0-a677-49beebb262f0",
+  "title": "🏰 The Forgotten Chamber",
+  "description": "Uncover ancient secrets beneath Hogwarts in this mysterious adventure",
+  "language": "en",
+  "startId": 1,
+  "position": [30, 30],
+  "nodes": [
+    {
+      "id": 1,
+      "type": "skip",
+      "text": [
+        "It's a quiet evening at Hogwarts School of Witchcraft and Wizardry 🏰",
+        "As a sixth-year student, you're familiar with most of the castle's secrets. Or so you thought...",
+        "Walking past the Room of Requirement, you notice something peculiar: a faint shimmer in the wall that you've never seen before."
+      ],
+      "nextId": 2,
+      "position": [200, 100]
+    },
+    {
+      "id": 2,
+      "type": "action",
+      "text": [
+        "The wall seems to respond to your magical presence. What do you do?"
+      ],
+      "actions": [
+        {
+          "label": "📚 Research first",
+          "id": 3
+        },
+        {
+          "label": "✨ Cast Revelio",
+          "id": 4
+        },
+        {
+          "label": "🚶 Walk away",
+          "id": 5
+        }
+      ],
+      "position": [400, 100]
+    },
+    {
+      "id": 3,
+      "type": "skip",
+      "text": [
+        "You decide to visit the library first. Madam Pince gives you her usual suspicious look as you head to the restricted section.",
+        "After hours of research, you find an ancient text mentioning hidden chambers predating the founders themselves! 📜"
+      ],
+      "nextId": 6,
+      "position": [600, 0]
+    },
+    {
+      "id": 4,
+      "type": "skip",
+      "text": [
+        "\"Revelio!\" 🪄 The spell hits the wall, causing ancient runes to glow briefly.",
+        "A doorway begins to materialize, but you hear footsteps approaching..."
+      ],
+      "nextId": 7,
+      "position": [600, 100]
+    },
+    {
+      "id": 5,
+      "type": "redirect",
+      "text": [
+        "You try to ignore the mysterious wall, but as you turn to leave...",
+        "Peeves appears! 👻 \"Ooooh, what's this? Student ignoring ancient magic? How boring!\""
+      ],
+      "links": [
+        {
+          "weight": 2,
+          "id": 8
+        },
+        {
+          "weight": 1,
+          "id": 9
+        }
+      ],
+      "position": [600, 200]
+    },
+    {
+      "id": 6,
+      "type": "action",
+      "text": [
+        "Armed with knowledge, you return to the wall. The text mentioned a specific incantation.",
+        "\"Tempus Revelius Antiquum\" might work, but there's also a warning about the consequences of disturbing ancient magic."
+      ],
+      "actions": [
+        {
+          "label": "🪄 Try the spell",
+          "id": 10
+        },
+        {
+          "label": "👥 Get help first",
+          "id": 11
+        }
+      ],
+      "position": [800, 0]
+    },
+    {
+      "id": 7,
+      "type": "action",
+      "text": [
+        "The footsteps are getting closer. Through the forming doorway, you catch a glimpse of an ancient chamber.",
+        "Professor McGonagall's voice echoes down the corridor! 👩‍🏫"
+      ],
+      "actions": [
+        {
+          "label": "🏃‍♂️ Enter quickly",
+          "id": 12
+        },
+        {
+          "label": "🗣️ Wait for McGonagall",
+          "id": 13
+        }
+      ],
+      "position": [800, 100]
+    },
+    {
+      "id": 8,
+      "type": "skip",
+      "text": [
+        "Peeves starts throwing chalk at the wall, accidentally revealing more runes!",
+        "\"Look what I found! Or did you find it first? Hehehe!\" 👻"
+      ],
+      "nextId": 14,
+      "position": [800, 200]
+    },
+    {
+      "id": 9,
+      "type": "finish",
+      "text": [
+        "Peeves zooms away, cackling about your lack of adventure.",
+        "The wall returns to normal, its secrets remaining hidden... for now.",
+        "Perhaps some mysteries are best left for braver souls. 🌙"
+      ],
+      "position": [800, 300]
+    },
+    {
+      "id": 10,
+      "type": "action",
+      "text": [
+        "You cast the ancient spell. The wall transforms into an ornate doorway!",
+        "Ancient runes pulse with magical energy, and you feel the weight of centuries of hidden knowledge. ✨"
+      ],
+      "actions": [
+        {
+          "label": "🚪 Enter alone",
+          "id": 15
+        },
+        {
+          "label": "📝 Document first",
+          "id": 16
+        }
+      ],
+      "position": [1000, 0]
+    },
+    {
+      "id": 11,
+      "type": "action",
+      "text": [
+        "You seek out Professor Flitwick in his office. The tiny Charms master listens intently, his eyes widening.",
+        "\"Most fascinating! A pre-founding chamber... We should proceed with utmost caution.\" 🎯"
+      ],
+      "actions": [
+        {
+          "label": "🤝 Work together",
+          "id": 17
+        },
+        {
+          "label": "😔 Accept detention",
+          "id": 18
+        }
+      ],
+      "position": [1000, 100]
+    },
+    {
+      "id": 12,
+      "type": "skip",
+      "text": [
+        "You slip through the doorway just as it fully materializes. Behind you, the entrance seals itself!",
+        "Ancient torches spring to life, revealing a vast circular chamber filled with strange artifacts. ⚡"
+      ],
+      "nextId": 19,
+      "position": [1000, 200]
+    },
+    {
+      "id": 13,
+      "type": "skip",
+      "text": [
+        "\"What in Merlin's name is going on here?\" Professor McGonagall stops short, staring at the glowing doorway.",
+        "Her stern expression softens slightly at your honest explanation. 👩‍🏫"
+      ],
+      "nextId": 20,
+      "position": [1000, 300]
+    },
+    {
+      "id": 14,
+      "type": "action",
+      "text": [
+        "Thanks to Peeves's chaos, you can now see a pattern in the runes.",
+        "They seem to form a riddle: \"Speak of time before time, of magic before founders four.\" 🔮"
+      ],
+      "actions": [
+        {
+          "label": "🗣️ Solve riddle",
+          "id": 21
+        },
+        {
+          "label": "📚 Study runes",
+          "id": 3
+        }
+      ],
+      "position": [1000, 400]
+    },
+    {
+      "id": 15,
+      "type": "skip",
+      "text": [
+        "You step through the doorway into a chamber that takes your breath away.",
+        "Countless magical artifacts float in crystalline cases, and star charts cover the domed ceiling.",
+        "A soft voice echoes: \"Welcome, seeker of ancient wisdom.\" 🌟"
+      ],
+      "nextId": 22,
+      "position": [1200, 0]
+    },
+    {
+      "id": 16,
+      "type": "action",
+      "text": [
+        "You quickly sketch the doorway and runes in your notebook.",
+        "As you draw, you notice that certain symbols seem to change position! 📝"
+      ],
+      "actions": [
+        {
+          "label": "🔍 Study changes",
+          "id": 23
+        },
+        {
+          "label": "🚪 Enter now",
+          "id": 15
+        }
+      ],
+      "position": [1200, 100]
+    },
+    {
+      "id": 17,
+      "type": "skip",
+      "text": [
+        "Professor Flitwick performs complex detection charms on the wall.",
+        "\"Extraordinary! This magic... it's pure, untainted by modern constraints. Shall we?\" 🪄"
+      ],
+      "nextId": 24,
+      "position": [1200, 200]
+    },
+    {
+      "id": 18,
+      "type": "finish",
+      "text": [
+        "Following proper procedures means reporting the discovery.",
+        "The Ministry of Magic sends Unspeakables to investigate, and the chamber is sealed off.",
+        "Sometimes doing the right thing means letting others take the lead. 📜"
+      ],
+      "position": [1200, 300]
+    },
+    {
+      "id": 19,
+      "type": "action",
+      "text": [
+        "In the chamber's center, a pedestal holds a strange device resembling a silver compass.",
+        "Its needle points not north, but towards different magical auras in the room. 🧭"
+      ],
+      "actions": [
+        {
+          "label": "🔮 Take compass",
+          "id": 25
+        },
+        {
+          "label": "🚶‍♂️ Explore more",
+          "id": 26
+        }
+      ],
+      "position": [1200, 400]
+    },
+    {
+      "id": 20,
+      "type": "action",
+      "text": [
+        "\"This requires careful investigation,\" McGonagall declares, casting protective spells.",
+        "\"However... given your involvement in its discovery...\" She gives you a considering look. 🤔"
+      ],
+      "actions": [
+        {
+          "label": "🙏 Ask to help",
+          "id": 27
+        },
+        {
+          "label": "📚 Suggest research",
+          "id": 28
+        }
+      ],
+      "position": [1200, 500]
+    },
+    {
+      "id": 21,
+      "type": "redirect",
+      "text": [
+        "You speak the words that come to your mind: \"Tempus Primordial!\"",
+        "The runes flash brightly! 🌟"
+      ],
+      "links": [
+        {
+          "weight": 2,
+          "id": 10
+        },
+        {
+          "weight": 1,
+          "id": 29
+        }
+      ],
+      "position": [1400, 0]
+    },
+    {
+      "id": 22,
+      "type": "action",
+      "text": [
+        "The chamber seems to pulse with ancient power. Floating orbs of light illuminate various paths.",
+        "A spectral figure materializes - a guardian of the chamber! 👻",
+        "\"Choose wisely, young seeker. Knowledge, power, or protection?\""
+      ],
+      "actions": [
+        {
+          "label": "📚 Knowledge path",
+          "id": 30
+        },
+        {
+          "label": "⚡ Power path",
+          "id": 31
+        },
+        {
+          "label": "🛡️ Protection path",
+          "id": 32
+        }
+      ],
+      "position": [1400, 100]
+    },
+    {
+      "id": 23,
+      "type": "action",
+      "text": [
+        "The shifting runes seem to follow a celestial pattern. As you watch,",
+        "they align like constellations! Professor Sinistra would be fascinated by this. 🌠"
+      ],
+      "actions": [
+        {
+          "label": "🔭 Get Sinistra",
+          "id": 33
+        },
+        {
+          "label": "✨ Cast spell now",
+          "id": 10
+        }
+      ],
+      "position": [1400, 200]
+    },
+    {
+      "id": 24,
+      "type": "action",
+      "text": [
+        "With Professor Flitwick by your side, you enter the chamber.",
+        "\"Remarkable! These artifacts... they're from an age when magic was raw, untamed!\" 🪄",
+        "He spots something concerning in the corner..."
+      ],
+      "actions": [
+        {
+          "label": "🔍 Investigate",
+          "id": 34
+        },
+        {
+          "label": "⚠️ Cast protection",
+          "id": 35
+        }
+      ],
+      "position": [1400, 300]
+    },
+    {
+      "id": 25,
+      "type": "skip",
+      "text": [
+        "As your hand touches the compass, it springs to life!",
+        "Images flood your mind - hidden passages, ancient spells, and... a warning? ⚠️",
+        "The compass needle spins wildly before settling on a specific direction."
+      ],
+      "nextId": 36,
+      "position": [1400, 400]
+    },
+    {
+      "id": 26,
+      "type": "action",
+      "text": [
+        "The chamber holds many wonders. You notice:",
+        "A shelf of crystalline orbs containing swirling memories 💭",
+        "An arch crackling with temporal energy ⚡",
+        "A pedestal holding an ancient tome 📚"
+      ],
+      "actions": [
+        {
+          "label": "💭 Check memories",
+          "id": 37
+        },
+        {
+          "label": "⚡ Study arch",
+          "id": 38
+        },
+        {
+          "label": "📚 Read tome",
+          "id": 39
+        }
+      ],
+      "position": [1400, 500]
+    },
+    {
+      "id": 27,
+      "type": "skip",
+      "text": [
+        "McGonagall considers your request carefully.",
+        "\"Very well. But you must follow my instructions precisely. This magic is beyond anything in your textbooks.\" 👩‍🏫"
+      ],
+      "nextId": 40,
+      "position": [1400, 600]
+    },
+    {
+      "id": 28,
+      "type": "skip",
+      "text": [
+        "\"A scholarly approach! Five points to your house,\" McGonagall approves.",
+        "\"Professor Sinistra should see these astronomical alignments immediately.\" 🔭"
+      ],
+      "nextId": 41,
+      "position": [1400, 700]
+    },
+    {
+      "id": 29,
+      "type": "finish",
+      "text": [
+        "The runes flare red - wrong answer! The wall seals itself completely.",
+        "A magical backlash sends you stumbling backward. 🌋",
+        "Some secrets require more research before attempting to unlock them..."
+      ],
+      "position": [1600, 0]
+    },
+    {
+      "id": 30,
+      "type": "skip",
+      "text": [
+        "You choose the path of knowledge. The guardian nods approvingly.",
+        "\"Wisdom seeks those who seek wisdom first.\" The air shimmers with ancient memories. 📚"
+      ],
+      "nextId": 42,
+      "position": [1600, 100]
+    },
+    {
+      "id": 31,
+      "type": "skip",
+      "text": [
+        "The path of power beckons. As you step forward, the air crackles with raw magical energy.",
+        "\"Power corrupts, but knowledge of power... that is different,\" the guardian muses. ⚡"
+      ],
+      "nextId": 43,
+      "position": [1600, 200]
+    },
+    {
+      "id": 32,
+      "type": "skip",
+      "text": [
+        "You choose protection. The guardian's form shifts to reveal ancient defensive magic.",
+        "\"The founders themselves sought such wisdom. Now see what they discovered.\" 🛡️"
+      ],
+      "nextId": 44,
+      "position": [1600, 300]
+    },
+    {
+      "id": 33,
+      "type": "action",
+      "text": [
+        "Professor Sinistra arrives quickly, her eyes gleaming at the celestial patterns.",
+        "\"These configurations... they're showing magical alignments I've only theorized about!\" 🌠",
+        "She begins complex calculations in the air with her wand."
+      ],
+      "actions": [
+        {
+          "label": "🔮 Help calculate",
+          "id": 45
+        },
+        {
+          "label": "🚪 Open door now",
+          "id": 46
+        }
+      ],
+      "position": [1600, 400]
+    },
+    {
+      "id": 34,
+      "type": "skip",
+      "text": [
+        "In the corner, you find an ancient containment circle, its runes pulsing with warning.",
+        "\"Something was kept here... or perhaps, is still being kept,\" Flitwick whispers. ⚠️"
+      ],
+      "nextId": 47,
+      "position": [1600, 500]
+    },
+    {
+      "id": 35,
+      "type": "action",
+      "text": [
+        "Professor Flitwick helps you cast protective charms. The magic feels different here...",
+        "Your spells shimmer with unusual potency in the ancient chamber. 🪄"
+      ],
+      "actions": [
+        {
+          "label": "🔍 Examine magic",
+          "id": 48
+        },
+        {
+          "label": "👣 Proceed deeper",
+          "id": 49
+        }
+      ],
+      "position": [1600, 600]
+    },
+    {
+      "id": 36,
+      "type": "action",
+      "text": [
+        "The compass guides you to a section of the chamber wall covered in moving images.",
+        "They show the founders creating protective barriers around Hogwarts! 🏰",
+        "But there's something else... a threat they were protecting against?"
+      ],
+      "actions": [
+        {
+          "label": "🔍 Study images",
+          "id": 50
+        },
+        {
+          "label": "⚔️ Seek threat",
+          "id": 51
+        }
+      ],
+      "position": [1600, 700]
+    },
+    {
+      "id": 37,
+      "type": "skip",
+      "text": [
+        "You approach the crystalline orbs. Each contains memories from different eras of Hogwarts.",
+        "One shows the founders themselves, discussing something urgent... 💭"
+      ],
+      "nextId": 52,
+      "position": [1800, 0]
+    },
+    {
+      "id": 38,
+      "type": "action",
+      "text": [
+        "The temporal arch hums with possibility. Through its shimmer, you glimpse:",
+        "Hogwarts being built ⚡",
+        "The founders casting powerful spells ✨",
+        "A dark force they fought against 🌑"
+      ],
+      "actions": [
+        {
+          "label": "👁️ Watch more",
+          "id": 53
+        },
+        {
+          "label": "🚫 Step back",
+          "id": 54
+        }
+      ],
+      "position": [1800, 100]
+    },
+    {
+      "id": 39,
+      "type": "action",
+      "text": [
+        "The ancient tome opens at your touch. Its pages contain secrets of primal magic,",
+        "but a warning is written in glowing text: \"Knowledge brings responsibility.\" 📚"
+      ],
+      "actions": [
+        {
+          "label": "📖 Read more",
+          "id": 55
+        },
+        {
+          "label": "🤝 Share findings",
+          "id": 56
+        }
+      ],
+      "position": [1800, 200]
+    },
+    {
+      "id": 40,
+      "type": "action",
+      "text": [
+        "With McGonagall's guidance, you begin exploring the chamber methodically.",
+        "\"There are protections here beyond anything in modern magic,\" she observes. 🔮"
+      ],
+      "actions": [
+        {
+          "label": "🛡️ Study wards",
+          "id": 57
+        },
+        {
+          "label": "📝 Document all",
+          "id": 58
+        }
+      ],
+      "position": [1800, 300]
+    },
+    {
+      "id": 41,
+      "type": "action",
+      "text": [
+        "Professor Sinistra and McGonagall work together, their wands weaving complex patterns.",
+        "\"This chamber... it's aligned with ley lines that predate Hogwarts itself!\" 🌟"
+      ],
+      "actions": [
+        {
+          "label": "🔮 Map ley lines",
+          "id": 59
+        },
+        {
+          "label": "📚 Research more",
+          "id": 60
+        }
+      ],
+      "position": [1800, 400]
+    },
+    {
+      "id": 42,
+      "type": "action",
+      "text": [
+        "The knowledge path leads to a vast magical library, its shelves reaching impossibly high.",
+        "Books and scrolls float through the air, organizing themselves by topic. 📚",
+        "\"What knowledge do you seek?\", whispers the guardian."
+      ],
+      "actions": [
+        {
+          "label": "🏰 Hogwarts history",
+          "id": 61
+        },
+        {
+          "label": "🔮 Ancient spells",
+          "id": 62
+        },
+        {
+          "label": "⚔️ Dark threats",
+          "id": 63
+        }
+      ],
+      "position": [1800, 500]
+    },
+    {
+      "id": 43,
+      "type": "action",
+      "text": [
+        "Raw magical energy swirls around you. You feel your own magic growing stronger...",
+        "But with it comes understanding of why such power was sealed away. ⚡",
+        "\"Choose your next step with care.\""
+      ],
+      "actions": [
+        {
+          "label": "🧙‍♂️ Embrace power",
+          "id": 64
+        },
+        {
+          "label": "📜 Learn control",
+          "id": 65
+        }
+      ],
+      "position": [1800, 600]
+    },
+    {
+      "id": 44,
+      "type": "action",
+      "text": [
+        "Ancient protective magic fills the chamber. You see how the founders created Hogwarts' defenses,",
+        "and why some were left dormant. \"The greatest threats often come from within,\" the guardian warns. 🛡️"
+      ],
+      "actions": [
+        {
+          "label": "🏰 Strengthen wards",
+          "id": 66
+        },
+        {
+          "label": "🔍 Study threats",
+          "id": 67
+        }
+      ],
+      "position": [1800, 700]
+    },
+    {
+      "id": 45,
+      "type": "skip",
+      "text": [
+        "Working with Professor Sinistra, you map the celestial alignments.",
+        "The patterns reveal a complex magical network connecting various parts of Hogwarts! 🌠"
+      ],
+      "nextId": 68,
+      "position": [2000, 0]
+    },
+    {
+      "id": 46,
+      "type": "redirect",
+      "text": [
+        "You attempt to open the doorway using the celestial alignments...",
+        "The magic responds unpredictably! ⚡"
+      ],
+      "links": [
+        {
+          "weight": 1,
+          "id": 69
+        },
+        {
+          "weight": 2,
+          "id": 70
+        }
+      ],
+      "position": [2000, 100]
+    },
+    {
+      "id": 47,
+      "type": "action",
+      "text": [
+        "The containment circle pulses with residual magic. Through the ages,",
+        "it held something powerful... something that might still be present. ⚠️"
+      ],
+      "actions": [
+        {
+          "label": "🔍 Investigate",
+          "id": 71
+        },
+        {
+          "label": "🛡️ Reinforce seal",
+          "id": 72
+        }
+      ],
+      "position": [2000, 200]
+    },
+    {
+      "id": 48,
+      "type": "skip",
+      "text": [
+        "Your magic interacts strangely with the chamber's ancient power.",
+        "Professor Flitwick looks concerned. \"This could be dangerous... or revolutionary.\" 🪄"
+      ],
+      "nextId": 73,
+      "position": [2000, 300]
+    },
+    {
+      "id": 49,
+      "type": "action",
+      "text": [
+        "Deeper in the chamber, you find a room filled with floating crystals.",
+        "Each seems to contain a different type of magical energy. ✨",
+        "\"Look, but do not touch,\" Flitwick warns."
+      ],
+      "actions": [
+        {
+          "label": "👀 Observe only",
+          "id": 74
+        },
+        {
+          "label": "🔮 Test magic",
+          "id": 75
+        }
+      ],
+      "position": [2000, 400]
+    },
+    {
+      "id": 50,
+      "type": "skip",
+      "text": [
+        "The moving images tell a story: before Hogwarts, a great magical force threatened the land.",
+        "The founders united not just to build a school, but to protect the world from this power. 🏰"
+      ],
+      "nextId": 76,
+      "position": [2000, 500]
+    },
+    {
+      "id": 51,
+      "type": "action",
+      "text": [
+        "Following the compass's guidance, you discover records of an ancient force,",
+        "A magic so powerful it threatened to tear reality apart. The founders sealed it away... 🌀",
+        "But the seals are weakening."
+      ],
+      "actions": [
+        {
+          "label": "🔒 Reinforce seals",
+          "id": 77
+        },
+        {
+          "label": "📖 Study power",
+          "id": 78
+        }
+      ],
+      "position": [2200, 0]
+    },
+    {
+      "id": 52,
+      "type": "action",
+      "text": [
+        "In the memory, you see the founders arguing intensely.",
+        "Slytherin wants to harness the chamber's power, while the others insist on sealing it. 🏰",
+        "Their debate eerily mirrors your own choices."
+      ],
+      "actions": [
+        {
+          "label": "👥 Side with three",
+          "id": 79
+        },
+        {
+          "label": "💪 Side with Slytherin",
+          "id": 80
+        }
+      ],
+      "position": [2200, 100]
+    },
+    {
+      "id": 53,
+      "type": "skip",
+      "text": [
+        "The arch's visions become more intense. You witness the full history of the chamber,",
+        "Understanding dawns: this place exists in all times at once! ⚡"
+      ],
+      "nextId": 81,
+      "position": [2200, 200]
+    },
+    {
+      "id": 54,
+      "type": "skip",
+      "text": [
+        "You step back from the arch, but its energy has already affected you.",
+        "You now see traces of time magic throughout the chamber. 🕰️"
+      ],
+      "nextId": 82,
+      "position": [2200, 300]
+    },
+    {
+      "id": 55,
+      "type": "action",
+      "text": [
+        "The tome reveals secrets of magic in its purest form.",
+        "With this knowledge, you could revolutionize magical theory... or cause chaos. 📚",
+        "\"Great power requires greater wisdom.\""
+      ],
+      "actions": [
+        {
+          "label": "📖 Keep reading",
+          "id": 83
+        },
+        {
+          "label": "🎓 Share with school",
+          "id": 84
+        }
+      ],
+      "position": [2200, 400]
+    },
+    {
+      "id": 56,
+      "type": "skip",
+      "text": [
+        "You decide to share your findings with the professors.",
+        "McGonagall and Flitwick arrive, followed by other faculty members. 👥"
+      ],
+      "nextId": 85,
+      "position": [2200, 500]
+    },
+    {
+      "id": 57,
+      "type": "skip",
+      "text": [
+        "The ancient wards are incredibly complex, layers upon layers of protection.",
+        "McGonagall helps you understand their purpose: containing raw magical energy. 🛡️"
+      ],
+      "nextId": 86,
+      "position": [2200, 600]
+    },
+    {
+      "id": 58,
+      "type": "action",
+      "text": [
+        "You carefully document everything you find. McGonagall approves of your methodical approach.",
+        "\"This could advance our understanding of magic by centuries,\" she says. 📝"
+      ],
+      "actions": [
+        {
+          "label": "📚 Continue research",
+          "id": 87
+        },
+        {
+          "label": "🌟 Make discovery",
+          "id": 88
+        }
+      ],
+      "position": [2200, 700]
+    },
+    {
+      "id": 59,
+      "type": "skip",
+      "text": [
+        "The ley line map reveals something extraordinary: the chamber is a nexus point,",
+        "channeling magical energy throughout Britain! 🌐"
+      ],
+      "nextId": 89,
+      "position": [2400, 0]
+    },
+    {
+      "id": 60,
+      "type": "action",
+      "text": [
+        "Your research uncovers the chamber's true purpose:",
+        "It's not just a vault, but a magical regulator, maintaining balance in the world. ⚖️"
+      ],
+      "actions": [
+        {
+          "label": "🛡️ Become Guardian",
+          "id": 90
+        },
+        {
+          "label": "📚 Document all",
+          "id": 91
+        }
+      ],
+      "position": [2400, 100]
+    },
+    {
+      "id": 61,
+      "type": "skip",
+      "text": [
+        "The history of Hogwarts unfolds before you, far richer than any book has told.",
+        "You learn of sacrifices made to protect the magical world. 🏰"
+      ],
+      "nextId": 92,
+      "position": [2400, 200]
+    },
+    {
+      "id": 62,
+      "type": "action",
+      "text": [
+        "Ancient spells swirl around you, each more powerful than the last.",
+        "The guardian watches as you absorb knowledge of magic in its purest form. ✨"
+      ],
+      "actions": [
+        {
+          "label": "🎓 Master spells",
+          "id": 93
+        },
+        {
+          "label": "📚 Record only",
+          "id": 94
+        }
+      ],
+      "position": [2400, 300]
+    },
+    {
+      "id": 63,
+      "type": "skip",
+      "text": [
+        "The dark threats section reveals a terrifying truth:",
+        "Ancient forces still seek the chamber's power. You must choose how to protect it. ⚔️"
+      ],
+      "nextId": 95,
+      "position": [2400, 400]
+    },
+    {
+      "id": 64,
+      "type": "finish",
+      "text": [
+        "You embrace the chamber's power fully. Raw magic courses through you!",
+        "But power corrupts... The chamber recognizes your choice.",
+        "You become what the founders feared: a wielder of uncontrolled power. ⚡",
+        "This is the Power Seeker ending..."
+      ],
+      "position": [2400, 500]
+    },
+    {
+      "id": 65,
+      "type": "skip",
+      "text": [
+        "You choose to learn control rather than raw power.",
+        "The guardian approves: \"Wisdom is knowing the limits of power.\" 🎯"
+      ],
+      "nextId": 96,
+      "position": [2400, 600]
+    },
+    {
+      "id": 66,
+      "type": "skip",
+      "text": [
+        "You begin working with the ancient wards, strengthening Hogwarts' protections.",
+        "The castle itself seems to respond, its magic harmonizing with your efforts. 🏰"
+      ],
+      "nextId": 97,
+      "position": [2600, 0]
+    },
+    {
+      "id": 67,
+      "type": "action",
+      "text": [
+        "You study the threats the founders faced. Some still exist, dormant but dangerous.",
+        "The chamber's defenses are crucial for keeping them contained. ⚔️"
+      ],
+      "actions": [
+        {
+          "label": "🛡️ Update defenses",
+          "id": 98
+        },
+        {
+          "label": "📚 Study more",
+          "id": 99
+        }
+      ],
+      "position": [2600, 100]
+    },
+    {
+      "id": 68,
+      "type": "action",
+      "text": [
+        "The magical network you've mapped could be used to enhance Hogwarts' defenses,",
+        "or to tap into ancient power sources. Which path will you choose? 🌟"
+      ],
+      "actions": [
+        {
+          "label": "🛡️ Enhance defenses",
+          "id": 100
+        },
+        {
+          "label": "✨ Channel power",
+          "id": 101
+        }
+      ],
+      "position": [2600, 200]
+    },
+    {
+      "id": 69,
+      "type": "finish",
+      "text": [
+        "The magic backfires catastrophically! The chamber's defenses activate.",
+        "The entrance seals permanently, its secrets lost forever. ⚡",
+        "Sometimes ancient magic is best left undisturbed..."
+      ],
+      "position": [2600, 300]
+    },
+    {
+      "id": 70,
+      "type": "skip",
+      "text": [
+        "The alignments work! The chamber recognizes your careful, scholarly approach.",
+        "A new path opens before you... 🌠"
+      ],
+      "nextId": 102,
+      "position": [2600, 400]
+    },
+    {
+      "id": 71,
+      "type": "finish",
+      "text": [
+        "Your investigation triggers ancient defenses! The chamber begins to collapse.",
+        "Professor Flitwick barely manages to get you out in time. ⚠️",
+        "The chamber seals itself, taking its dangers with it."
+      ],
+      "position": [2600, 500]
+    },
+    {
+      "id": 72,
+      "type": "skip",
+      "text": [
+        "Working with Flitwick, you strengthen the containment seals.",
+        "The chamber's magic flows more smoothly, more safely. 🛡️"
+      ],
+      "nextId": 103,
+      "position": [2600, 600]
+    },
+    {
+      "id": 73,
+      "type": "action",
+      "text": [
+        "You realize you could either stabilize this volatile magic,",
+        "or attempt to harness its revolutionary potential. 🪄"
+      ],
+      "actions": [
+        {
+          "label": "⚖️ Stabilize",
+          "id": 104
+        },
+        {
+          "label": "✨ Harness",
+          "id": 105
+        }
+      ],
+      "position": [2600, 700]
+    },
+    {
+      "id": 74,
+      "type": "finish",
+      "text": [
+        "Your cautious observation reveals the crystals' purpose: they maintain magical balance.",
+        "You become the chamber's guardian, ensuring its power remains in harmony. 🌟",
+        "This is the Guardian of Knowledge ending..."
+      ],
+      "position": [2800, 0]
+    },
+    {
+      "id": 75,
+      "type": "finish",
+      "text": [
+        "Testing the magic proves disastrous! The crystals resonate out of control.",
+        "The chamber's defenses activate, sealing it forever. ⚡",
+        "This is the Destruction ending..."
+      ],
+      "position": [2800, 100]
+    },
+    {
+      "id": 76,
+      "type": "action",
+      "text": [
+        "Understanding dawns: the chamber is both protector and prison,",
+        "keeping dangerous forces in check while powering Hogwarts' defenses. 🏰"
+      ],
+      "actions": [
+        {
+          "label": "🛡️ Maintain balance",
+          "id": 106
+        },
+        {
+          "label": "💫 Seek more",
+          "id": 107
+        }
+      ],
+      "position": [2800, 200]
+    },
+    {
+      "id": 77,
+      "type": "finish",
+      "text": [
+        "You work with the professors to reinforce the ancient seals.",
+        "The chamber accepts you as its new guardian, a protector of its essential balance. 🛡️",
+        "This is the Balance Keeper ending..."
+      ],
+      "position": [2800, 300]
+    },
+    {
+      "id": 78,
+      "type": "finish",
+      "text": [
+        "The power proves too tempting. As you delve deeper, it begins to corrupt.",
+        "You become what the founders feared, a cautionary tale for future generations. ⚡",
+        "This is the Power Seeker ending..."
+      ],
+      "position": [2800, 400]
+    },
+    {
+      "id": 79,
+      "type": "finish",
+      "text": [
+        "You choose wisdom over power. Working with the professors,",
+        "you help document and protect the chamber's knowledge for future generations. 📚",
+        "This is the Academic Glory ending..."
+      ],
+      "position": [2800, 500]
+    },
+    {
+      "id": 80,
+      "type": "finish",
+      "text": [
+        "Following Slytherin's path, you attempt to harness the chamber's power.",
+        "But its ancient magics prove too volatile, sealing themselves away forever. ⚠️",
+        "This is the Destruction ending..."
+      ],
+      "position": [2800, 600]
+    },
+    {
+      "id": 81,
+      "type": "finish",
+      "text": [
+        "The temporal magic overwhelms you! The chamber recognizes the danger,",
+        "sealing itself to prevent catastrophe. Some knowledge is too dangerous. ⚡",
+        "This is the Destruction ending..."
+      ],
+      "position": [2800, 700]
+    },
+    {
+      "id": 82,
+      "type": "finish",
+      "text": [
+        "Your cautious approach pays off. You become a bridge between past and present,",
+        "helping to integrate ancient knowledge with modern magical theory. 🎓",
+        "This is the Academic Glory ending..."
+      ],
+      "position": [3000, 0]
+    },
+    {
+      "id": 83,
+      "type": "finish",
+      "text": [
+        "The tome's knowledge transforms you into a powerful but dangerous force.",
+        "You realize too late why some secrets were meant to stay hidden. ⚡",
+        "This is the Power Seeker ending..."
+      ],
+      "position": [3000, 100]
+    },
+    {
+      "id": 84,
+      "type": "finish",
+      "text": [
+        "Working with Hogwarts' faculty, you carefully document and share the chamber's knowledge.",
+        "Your discoveries revolutionize magical education! 📚",
+        "This is the Academic Glory ending..."
+      ],
+      "position": [3000, 200]
+    },
+    {
+      "id": 85,
+      "type": "finish",
+      "text": [
+        "Together with the professors, you unlock the chamber's secrets safely.",
+        "Hogwarts enters a new era of magical understanding, thanks to your wisdom. 🎓",
+        "This is the Academic Glory ending..."
+      ],
+      "position": [3000, 300]
+    },
+    {
+      "id": 86,
+      "type": "finish",
+      "text": [
+        "You become instrumental in maintaining the chamber's ancient protections,",
+        "ensuring both safety and the preservation of knowledge. 🛡️",
+        "This is the Balance Keeper ending..."
+      ],
+      "position": [3000, 400]
+    },
+    {
+      "id": 87,
+      "type": "finish",
+      "text": [
+        "Your research helps bridge ancient and modern magic,",
+        "earning you recognition in the magical academic world. 📚",
+        "This is the Academic Glory ending..."
+      ],
+      "position": [3000, 500]
+    },
+    {
+      "id": 88,
+      "type": "finish",
+      "text": [
+        "You discover how to safely integrate the chamber's magic with Hogwarts' defenses,",
+        "becoming a guardian of both knowledge and safety. ⚖️",
+        "This is the Balance Keeper ending..."
+      ],
+      "position": [3000, 600]
+    },
+    {
+      "id": 89,
+      "type": "finish",
+      "text": [
+        "You accept the responsibility of maintaining the magical balance.",
+        "The chamber chooses you as its new guardian, protector of ancient power. 🛡️",
+        "This is the Guardian of Knowledge ending..."
+      ],
+      "position": [3000, 700]
+    },
+    {
+      "id": 90,
+      "type": "finish",
+      "text": [
+        "The chamber recognizes your dedication to maintaining magical balance.",
+        "You become its new guardian, watching over both ancient knowledge and power. 🛡️",
+        "This is the Guardian of Knowledge ending..."
+      ],
+      "position": [3200, 0]
+    },
+    {
+      "id": 91,
+      "type": "finish",
+      "text": [
+        "Your thorough documentation helps create a new field of magical study.",
+        "Future generations will benefit from your careful preservation of knowledge. 📚",
+        "This is the Academic Glory ending..."
+      ],
+      "position": [3200, 100]
+    },
+    {
+      "id": 92,
+      "type": "finish",
+      "text": [
+        "Understanding the true history of Hogwarts changes everything.",
+        "You become the keeper of its deepest secrets, ensuring they're never forgotten. 🏰",
+        "This is the Guardian of Knowledge ending..."
+      ],
+      "position": [3200, 200]
+    },
+    {
+      "id": 93,
+      "type": "finish",
+      "text": [
+        "Mastering the ancient spells fills you with incredible power.",
+        "But the power consumes you, just as the guardian warned... ⚡",
+        "This is the Power Seeker ending..."
+      ],
+      "position": [3200, 300]
+    },
+    {
+      "id": 94,
+      "type": "finish",
+      "text": [
+        "You carefully record the ancient spells for future study.",
+        "Your work bridges the gap between ancient and modern magic. 📚",
+        "This is the Academic Glory ending..."
+      ],
+      "position": [3200, 400]
+    },
+    {
+      "id": 95,
+      "type": "finish",
+      "text": [
+        "Understanding the threats, you choose to become the chamber's protector.",
+        "Some secrets must be guarded, not just known. 🛡️",
+        "This is the Guardian of Knowledge ending..."
+      ],
+      "position": [3200, 500]
+    },
+    {
+      "id": 96,
+      "type": "finish",
+      "text": [
+        "You learn to balance power with wisdom, becoming a bridge between old and new magic.",
+        "The chamber's secrets are safe in your careful hands. ⚖️",
+        "This is the Balance Keeper ending..."
+      ],
+      "position": [3200, 600]
+    },
+    {
+      "id": 97,
+      "type": "finish",
+      "text": [
+        "Under your guidance, Hogwarts' ancient defenses are renewed.",
+        "You find your true calling as a protector of magical knowledge. 🏰",
+        "This is the Balance Keeper ending..."
+      ],
+      "position": [3200, 700]
+    },
+    {
+      "id": 98,
+      "type": "finish",
+      "text": [
+        "You successfully update the chamber's defenses while preserving its wisdom.",
+        "Future generations will be protected by your work. 🛡️",
+        "This is the Balance Keeper ending..."
+      ],
+      "position": [3400, 0]
+    },
+    {
+      "id": 99,
+      "type": "finish",
+      "text": [
+        "Your studies reveal too much. Ancient defenses activate!",
+        "The chamber seals itself, its secrets lost to time. ⚠️",
+        "This is the Destruction ending..."
+      ],
+      "position": [3400, 100]
+    },
+    {
+      "id": 100,
+      "type": "finish",
+      "text": [
+        "You strengthen Hogwarts' defenses using the ancient network.",
+        "The castle's magic flows stronger than ever, thanks to your wisdom. 🏰",
+        "This is the Balance Keeper ending..."
+      ],
+      "position": [3400, 200]
+    },
+    {
+      "id": 101,
+      "type": "finish",
+      "text": [
+        "Attempting to channel the ancient power proves disastrous.",
+        "The magical backlash seals the chamber forever. ⚡",
+        "This is the Destruction ending..."
+      ],
+      "position": [3400, 300]
+    },
+    {
+      "id": 102,
+      "type": "finish",
+      "text": [
+        "Your scholarly approach reveals the chamber's true purpose.",
+        "You become its guardian, protecting both its knowledge and power. 📚",
+        "This is the Guardian of Knowledge ending..."
+      ],
+      "position": [3400, 400]
+    },
+    {
+      "id": 103,
+      "type": "finish",
+      "text": [
+        "The chamber recognizes your commitment to safety and knowledge.",
+        "You become its protector, maintaining the balance of ancient magic. ⚖️",
+        "This is the Balance Keeper ending..."
+      ],
+      "position": [3400, 500]
+    },
+    {
+      "id": 104,
+      "type": "finish",
+      "text": [
+        "Your careful work stabilizes the ancient magic.",
+        "The chamber accepts you as its guardian, keeper of its balanced power. 🌟",
+        "This is the Guardian of Knowledge ending..."
+      ],
+      "position": [3400, 600]
+    },
+    {
+      "id": 105,
+      "type": "finish",
+      "text": [
+        "The attempt to harness the magic goes wrong.",
+        "The chamber's defenses activate, sealing away its power forever. ⚠️",
+        "This is the Destruction ending..."
+      ],
+      "position": [3400, 700]
+    },
+    {
+      "id": 106,
+      "type": "finish",
+      "text": [
+        "You dedicate yourself to maintaining the delicate balance of power.",
+        "The chamber accepts you as its new guardian and protector. ⚖️",
+        "This is the Balance Keeper ending..."
+      ],
+      "position": [3600, 0]
+    },
+    {
+      "id": 107,
+      "type": "finish",
+      "text": [
+        "Your desire for more power triggers the chamber's ultimate defense.",
+        "It seals itself away, its secrets lost to protect the magical world. ⚡",
+        "This is the Destruction ending..."
+      ],
+      "position": [3600, 100]
+    }
+  ],
+  "viewport": {
+    "x": 0,
+    "y": 0,
+    "zoom": 0.5
+  }
+}

@@ -42,10 +42,12 @@
 10. You can also put an emoji on a separate text line to emphasize it's effect.
 11. You can use `<b></b>` tags for bold text and `<i></i>` tags for italic, but don't overuse it.
 12. Don't create long action labels, make them 2-3 words max. Use emoji in action labels (it is not necessary but add them where suitable).
-13. Fill node `label` property with a short (2-3 words) title based on it's content.
+13. Fill node `label` property with a short (2-3 words) title based on its content.
+14. Don't make too many branches! Keep story relatively narrow with 4-5 parallel main story branches. If the branches grow, cut them or merge them at once, don't create 20 branches and then abruptly end them at once. I REPEAT AGAIN THERE MUST BE 5-6 VALID TERMINAL `finish` nodes not 20-30!!!
 
 ## Story Validation
 
 1. Check that all referenced nodes are added to the story.
 2. When you fix the story and add missing nodes, don't overexpand the story. Finish the unfinished branches but don't do it abruptly, remember that there shouldn't be too many finish nodes.
 3. Check that all nodes are reachable (other nodes reference them).
+4. Story `id` must be a valid uuid.
