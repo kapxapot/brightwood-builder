@@ -33,7 +33,7 @@ export function LoadStoryDialog({ stories, open, onOpenChange, onLoadStory, onDe
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent className="sm:max-w-[425px]">
+      <DialogContent className="sm:max-w-[425px] max-h-[80vh] flex flex-col">
         <DialogHeader>
           <DialogTitle>{t("loadStoryTitle")}</DialogTitle>
           <DialogDescription>
@@ -47,71 +47,73 @@ export function LoadStoryDialog({ stories, open, onOpenChange, onLoadStory, onDe
           </div>
         )}
         {!isEmpty(stories) && (
-          <div className="flex flex-col gap-1">
-            {stories.map(story => (
-              <div
-                className="flex items-center gap-3 hover:bg-gray-100 p-2 rounded"
-                key={story.id}
-              >
-                <div className="flex-grow">
-                  {story.title && (
-                    <div>{story.title}</div>
-                  )}
-                  <div className="text-xs text-gray-400">{story.id}</div>
-                </div>
-                <div className="flex gap-2">
-                  <Tooltip tooltip={t("Load story")} side="top">
-                    <MotionButton
-                      variant="outlineHighlight"
-                      size="icon"
-                      onClick={() => onLoadStory(story.id)}
-                      initial={{ scale: 1 }}
-                      animate={{ scale: 1 }}
-                      whileHover={{
-                        scale: 1.2
-                      }}
-                    >
-                      <ArrowUpTrayIcon className="w-5" />
-                    </MotionButton>
-                  </Tooltip>
-                  {isCurrent(story) && (
-                    <Tooltip tooltip={t("Can't delete the current story")} side="top">
-                      <motion.div
-                        className="h-9 w-9 inline-flex items-center justify-center"
+          <div className="flex-1 min-h-0 overflow-y-auto">
+            <div className="flex flex-col gap-1">
+              {stories.map(story => (
+                <div
+                  className="flex items-center gap-3 hover:bg-gray-100 p-2 rounded"
+                  key={story.id}
+                >
+                  <div className="flex-grow">
+                    {story.title && (
+                      <div>{story.title}</div>
+                    )}
+                    <div className="text-xs text-gray-400">{story.id}</div>
+                  </div>
+                  <div className="flex gap-2">
+                    <Tooltip tooltip={t("Load story")} side="top">
+                      <MotionButton
+                        variant="outlineHighlight"
+                        size="icon"
+                        onClick={() => onLoadStory(story.id)}
                         initial={{ scale: 1 }}
                         animate={{ scale: 1 }}
                         whileHover={{
                           scale: 1.2
                         }}
                       >
-                        <TrashIcon className="w-5 text-gray-400 cursor-not-allowed" />
-                      </motion.div>
+                        <ArrowUpTrayIcon className="w-5" />
+                      </MotionButton>
                     </Tooltip>
-                  )}
-                  {!isCurrent(story) && (
-                    <Tooltip tooltip={t("Delete story")} side="top">
-                      <ConfirmDeleteStoryAlertDialog
-                        onConfirm={() => onDeleteStory(story.id)}
-                        storyName={titleOrTruncatedId(story.title, story.id)}
-                        trigger={(
-                          <MotionButton
-                            variant="ghost"
-                            size="icon"
-                            initial={{ scale: 1 }}
-                            animate={{ scale: 1 }}
-                            whileHover={{
-                              scale: 1.2
-                            }}
-                          >
-                            <TrashIcon className="w-5 text-red-600" />
-                          </MotionButton>
-                        )}
-                      />
-                    </Tooltip>
-                  )}
+                    {isCurrent(story) && (
+                      <Tooltip tooltip={t("Can't delete the current story")} side="top">
+                        <motion.div
+                          className="h-9 w-9 inline-flex items-center justify-center"
+                          initial={{ scale: 1 }}
+                          animate={{ scale: 1 }}
+                          whileHover={{
+                            scale: 1.2
+                          }}
+                        >
+                          <TrashIcon className="w-5 text-gray-400 cursor-not-allowed" />
+                        </motion.div>
+                      </Tooltip>
+                    )}
+                    {!isCurrent(story) && (
+                      <Tooltip tooltip={t("Delete story")} side="top">
+                        <ConfirmDeleteStoryAlertDialog
+                          onConfirm={() => onDeleteStory(story.id)}
+                          storyName={titleOrTruncatedId(story.title, story.id)}
+                          trigger={(
+                            <MotionButton
+                              variant="ghost"
+                              size="icon"
+                              initial={{ scale: 1 }}
+                              animate={{ scale: 1 }}
+                              whileHover={{
+                                scale: 1.2
+                              }}
+                            >
+                              <TrashIcon className="w-5 text-red-600" />
+                            </MotionButton>
+                          )}
+                        />
+                      </Tooltip>
+                    )}
+                  </div>
                 </div>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
         )}
         <DialogFooter>
