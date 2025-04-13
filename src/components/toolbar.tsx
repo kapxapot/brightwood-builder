@@ -11,6 +11,7 @@ import { useTranslation } from "react-i18next";
 import { Bounce } from "./motion/bounce";
 import { motion } from "framer-motion";
 import UiLanguageSelector from "./ui-language-selector";
+import { cn } from "@/lib/utils";
 
 type Handler = () => void;
 
@@ -90,9 +91,19 @@ export default function Toolbar({ onNew, onSave, onLoad, onImport, onExport, exp
   ];
 
   return (
-    <aside className={`flex flex-col gap-3 justify-between ${expanded ? "min-w-[8.5rem]" : "w-12"} bg-gray-300`}>
+    <aside
+      className={cn(
+        "flex flex-col gap-3 justify-between bg-gray-300",
+        expanded ? "min-w-36" : "w-12"
+      )}
+    >
       <div>
-        <div className={`my-1 flex items-center justify-center gap-2 ${expanded ? "p-2" : "p-1.5"}`}>
+        <div
+          className={cn(
+            "my-1 flex items-center justify-center gap-2",
+            expanded ? "p-2" : "p-1.5"
+          )}
+        >
           <ConditionalTooltip
             tooltip="Brightwood Builder"
             show={!expanded}
