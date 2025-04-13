@@ -1,0 +1,1915 @@
+{
+  "id": "b8d7f9e0-6c5a-4b3d-8e2f-9a5b4c3d2e1f",
+  "title": "🌲 The Wandering Woods",
+  "description": "A mystical journey through an ever-changing forest in search of your missing sibling, where every choice shapes both your path and the forest itself.",
+  "language": "en",
+  "startId": 1,
+  "position": [30, 30],
+  "nodes": [
+    {
+      "id": 1,
+      "type": "skip",
+      "text": [
+        "The morning mist curls around your ankles as you stand at the edge of the Wandering Woods. In your hand, a worn letter from your sibling who disappeared into these mysterious forests exactly one year ago. 📜",
+        "\"If you're reading this,\" the letter says, \"I've found something incredible. The legends about this forest are true - it's alive, conscious, and it called to me. I have to know why.\" 🌲",
+        "The trees before you seem to whisper, their leaves rustling despite the still air. Your sibling's final words echo in your mind: \"If I don't return, don't come looking... but if you do, bring the silver compass from grandmother's chest.\" ⭐"
+      ],
+      "nextId": 2,
+      "position": [200, 100],
+      "label": "The Letter"
+    },
+    {
+      "id": 2,
+      "type": "action",
+      "text": [
+        "Standing at the forest's edge, you check your backpack one last time. The silver compass gleams in your hand, its needle spinning erratically when pointed toward the woods. 🧭",
+        "Multiple paths lead into the forest - a well-worn trail winding through gentle glades, a mysterious archway formed by ancient trees, and a narrow path that seems to shimmer like a mirage."
+      ],
+      "actions": [
+        {
+          "label": "🌿 Take worn trail",
+          "id": 3
+        },
+        {
+          "label": "🌳 Enter archway",
+          "id": 4
+        },
+        {
+          "label": "✨ Follow shimmer",
+          "id": 5
+        }
+      ],
+      "position": [400, 100],
+      "label": "Forest Entrance"
+    },
+    {
+      "id": 3,
+      "type": "skip",
+      "text": [
+        "The worn trail feels deceptively normal at first. Sunlight filters through the canopy, creating dancing patterns on the forest floor. 🌞",
+        "You notice small markers on the trees - some seem recent, others weathered by time. Someone has been using them to navigate, but the symbols are unfamiliar.",
+        "The compass in your hand grows warm, and its erratic spinning slowly steadies, pointing to a symbol that looks freshly carved."
+      ],
+      "nextId": 6,
+      "position": [600, 0],
+      "label": "Trail Markers"
+    },
+    {
+      "id": 4,
+      "type": "skip",
+      "text": [
+        "As you pass under the ancient archway, the air changes. The trees here are impossibly old, their bark inscribed with patterns that seem to shift when you're not looking directly at them. 🌳",
+        "A soft green light pulses between the trees, almost like a heartbeat. The compass needle follows the rhythm, swaying in time with the pulsing light.",
+        "You hear what sounds like humming - or is it the wind through the leaves? The melody seems to carry words just beyond your understanding."
+      ],
+      "nextId": 7,
+      "position": [600, 100],
+      "label": "Ancient Archway"
+    },
+    {
+      "id": 5,
+      "type": "skip",
+      "text": [
+        "The shimmering path feels like walking through a dream. Colors seem more vivid here, and occasional flashes of light dance between the trees like playful spirits. ✨",
+        "Your footprints leave brief glowing marks that fade after a few seconds. The compass spins rapidly, then stops, pointing straight up into the canopy.",
+        "A laugh echoes through the trees - bright and clear like bells, but with an otherworldly quality that makes you shiver."
+      ],
+      "nextId": 8,
+      "position": [600, 200],
+      "label": "Shimmering Path"
+    },
+    {
+      "id": 6,
+      "type": "action",
+      "text": [
+        "Following the trail markers, you come across a small clearing. Three items catch your eye: a tattered journal half-buried in leaves, a broken lantern that still holds a faint glow, and fresh footprints leading away from the path. 📖",
+        "The compass needle darts between all three, as if unsure which holds more significance."
+      ],
+      "actions": [
+        {
+          "label": "📖 Read journal",
+          "id": 9
+        },
+        {
+          "label": "🏮 Examine lantern",
+          "id": 10
+        },
+        {
+          "label": "👣 Track footprints",
+          "id": 11
+        }
+      ],
+      "position": [800, 0],
+      "label": "Forest Clearing"
+    },
+    {
+      "id": 7,
+      "type": "action",
+      "text": [
+        "The humming leads you to a massive oak tree. Its trunk is hollow, forming a natural doorway. Inside, you see the soft glow of bioluminescent mushrooms. 🍄",
+        "Next to the entrance, you find three objects: a crystal that hums in harmony with the forest, a wooden mask carved with changing expressions, and a map drawn in glowing ink."
+      ],
+      "actions": [
+        {
+          "label": "💎 Take crystal",
+          "id": 12
+        },
+        {
+          "label": "🎭 Wear mask",
+          "id": 13
+        },
+        {
+          "label": "🗺️ Study map",
+          "id": 14
+        }
+      ],
+      "position": [800, 100],
+      "label": "Hollow Oak"
+    },
+    {
+      "id": 8,
+      "type": "action",
+      "text": [
+        "The laughter leads you to a circle of white stones. In the center stands an ethereal figure - a woman made of mist and starlight, her form shifting like smoke. 👻",
+        "\"Seeker,\" she says, her voice like wind through chimes, \"your sibling passed this way. Choose how you wish to learn of their path.\""
+      ],
+      "actions": [
+        {
+          "label": "🌟 Ask directly",
+          "id": 15
+        },
+        {
+          "label": "🎭 Share memory",
+          "id": 16
+        },
+        {
+          "label": "🤝 Offer trade",
+          "id": 17
+        }
+      ],
+      "position": [800, 200],
+      "label": "Spirit Circle"
+    },
+    {
+      "id": 9,
+      "type": "skip",
+      "text": [
+        "The journal's pages are weathered but legible. Most entries are observations about the forest's strange behaviors, but one passage catches your eye: 📖",
+        "\"Day 15: Found the Witch's cottage. She says the forest is more than just alive - it's trying to heal something. The compass she gave me reveals paths hidden to normal eyes. But following them... there's a price.\"",
+        "A pressed flower marks the page, its petals still somehow fresh and glowing with a faint blue light. 🌸"
+      ],
+      "nextId": 18,
+      "position": [1000, -100],
+      "label": "Journal Discovery"
+    },
+    {
+      "id": 10,
+      "type": "skip",
+      "text": [
+        "The lantern's glass is cracked, but a strange light still pulses within. As you lift it, shadows around you begin to move, forming shapes and patterns. 🏮",
+        "In these dancing shadows, you see footprints that weren't visible before - they lead deeper into the forest, glowing with the same ethereal light as the lantern.",
+        "A whispered voice seems to come from the lantern itself: \"Follow the unseen path...\""
+      ],
+      "nextId": 19,
+      "position": [1000, 0],
+      "label": "Shadow Lantern"
+    },
+    {
+      "id": 11,
+      "type": "redirect",
+      "text": [
+        "The footprints are unnaturally clear, as if made moments ago. As you follow them, the forest seems to shift around you, the path changing with each step. 👣",
+        "Suddenly, the tracks split into two directions - one set continues forward but begins to fade, while another set veers off into a darker part of the woods, these prints glowing with a subtle light."
+      ],
+      "links": [
+        {
+          "weight": 2,
+          "id": 20
+        },
+        {
+          "weight": 1,
+          "id": 21
+        }
+      ],
+      "position": [1000, 100],
+      "label": "Diverging Tracks"
+    },
+    {
+      "id": 12,
+      "type": "skip",
+      "text": [
+        "The crystal pulses in your hand, its hum synchronizing with your heartbeat. Suddenly, the forest's whispers become clearer - not quite words, but emotions and images. 💎",
+        "You see fleeting visions: a cottage deep in the woods, a circle of ancient stones, and a familiar figure walking a path that seems to defy gravity.",
+        "The crystal grows warm, pulling you toward a path that wasn't there moments ago."
+      ],
+      "nextId": 22,
+      "position": [1000, 200],
+      "label": "Crystal Visions"
+    },
+    {
+      "id": 13,
+      "type": "skip",
+      "text": [
+        "The moment the mask touches your face, the forest transforms. Colors shift, and you can see threads of light connecting everything - trees, stones, even the air itself. 🎭",
+        "Through the mask's eyes, you notice creatures watching from the shadows - neither animal nor spirit, but something in between.",
+        "One of them beckons to you, its form constantly shifting between human and tree."
+      ],
+      "nextId": 23,
+      "position": [1000, 300],
+      "label": "Mask's Revelation"
+    },
+    {
+      "id": 14,
+      "type": "action",
+      "text": [
+        "The map's ink shifts and flows like liquid starlight, revealing different paths as you watch. Three locations pulse with particular brightness: 🗺️",
+        "A spiral marking labeled \"The Witch's Cottage\", a cluster of dots showing \"The Crystal Caves\", and a tree symbol marked \"The Ancient Grove\".",
+        "Your compass needle spins between all three points, as if suggesting each holds a piece of the puzzle."
+      ],
+      "actions": [
+        {
+          "label": "🏚️ Find cottage",
+          "id": 24
+        },
+        {
+          "label": "💎 Explore caves",
+          "id": 25
+        },
+        {
+          "label": "🌳 Visit grove",
+          "id": 26
+        }
+      ],
+      "position": [1000, 400],
+      "label": "Living Map"
+    },
+    {
+      "id": 15,
+      "type": "skip",
+      "text": [
+        "\"Direct questions receive direct answers,\" the spirit says, her form becoming slightly more solid. \"Your sibling sought the heart of the forest, where time flows differently. They still walk these paths, but...\" 👻",
+        "She pauses, her form flickering. \"They are no longer quite as you remember. The forest changes all who stay too long.\"",
+        "The spirit gestures, and three paths materialize in the mist."
+      ],
+      "nextId": 27,
+      "position": [1000, 500],
+      "label": "Spirit's Answer"
+    },
+    {
+      "id": 16,
+      "type": "skip",
+      "text": [
+        "You focus on a memory of your sibling - their laugh, their voice, the last time you saw them. The spirit's form ripples, and suddenly you're seeing through your sibling's eyes: 🎭",
+        "The forest at night, filled with floating lights. A decision at a crystal arch. A cottage that walks on chicken legs. A book of bark and starlight.",
+        "The vision ends, but you now sense echoes of your sibling's presence, leading deeper into the woods."
+      ],
+      "nextId": 28,
+      "position": [1000, 600],
+      "label": "Memory Vision"
+    },
+    {
+      "id": 17,
+      "type": "action",
+      "text": [
+        "\"A trade,\" the spirit muses, her form brightening with interest. \"What would you offer for knowledge of your sibling's path?\" 🤝",
+        "The silver compass in your hand pulses warmly, and the spirit's eyes fix upon it. \"Ah, a compass of the old making. But perhaps... you have something else to trade? A memory? A promise?\""
+      ],
+      "actions": [
+        {
+          "label": "🧭 Offer compass",
+          "id": 29
+        },
+        {
+          "label": "💫 Share memory",
+          "id": 30
+        },
+        {
+          "label": "📜 Make promise",
+          "id": 31
+        }
+      ],
+      "position": [1000, 700],
+      "label": "Spirit's Trade"
+    },
+    {
+      "id": 18,
+      "type": "action",
+      "text": [
+        "The glowing flower seems to react to your touch, its light pulsing stronger. As you hold it, the journal's last entry becomes clearer, revealing hidden text: 🌸",
+        "\"The Witch spoke of a ritual of renewal. The forest is sick, she says, but healing it requires both the ancient crystals and a willing heart. I think I understand what I must do...\"",
+        "Three paths lead away from the clearing, each marked with a different sigil that matches symbols in the journal."
+      ],
+      "actions": [
+        {
+          "label": "🏮 Follow healing",
+          "id": 32
+        },
+        {
+          "label": "💎 Trace crystals",
+          "id": 33
+        },
+        {
+          "label": "❤️ Seek heart",
+          "id": 34
+        }
+      ],
+      "position": [1200, -100],
+      "label": "Hidden Message"
+    },
+    {
+      "id": 19,
+      "type": "action",
+      "text": [
+        "The shadow-revealed footprints lead to a peculiar sight: a grove where the trees grow sideways, their branches creating natural archways. The lantern's light shows three distinct paths through the impossible geometry. 🌳",
+        "Each archway seems to lead to a different time of day - morning mist, afternoon sun, and twilight shadows dance beyond the thresholds."
+      ],
+      "actions": [
+        {
+          "label": "🌅 Morning path",
+          "id": 35
+        },
+        {
+          "label": "☀️ Sunny path",
+          "id": 36
+        },
+        {
+          "label": "🌘 Twilight path",
+          "id": 37
+        }
+      ],
+      "position": [1200, 0],
+      "label": "Time Archways"
+    },
+    {
+      "id": 20,
+      "type": "skip",
+      "text": [
+        "Following the fading tracks, you enter a part of the forest where reality seems more solid, more ordinary. But there's comfort in its normalcy. 👣",
+        "The tracks lead to a small campsite - recently used, with embers still warm. A backpack leans against a tree, and a notebook lies open on a log.",
+        "This must be where another seeker rested, perhaps your sibling, though the signs suggest they left this spot fairly recently."
+      ],
+      "nextId": 38,
+      "position": [1200, 100],
+      "label": "Recent Camp"
+    },
+    {
+      "id": 21,
+      "type": "skip",
+      "text": [
+        "The glowing footprints lead into darker woods, where the trees grow closer together and shadows move with purpose. The air feels charged with potential. ⚡",
+        "You notice small objects tied to the branches - bells, crystals, and mirrors, all arranged in precise patterns. Someone has been marking a path, but not for ordinary eyes."
+      ],
+      "nextId": 39,
+      "position": [1200, 200],
+      "label": "Marked Path"
+    },
+    {
+      "id": 22,
+      "type": "action",
+      "text": [
+        "The crystal's visions become clearer, showing you three distinct moments in time: your sibling discovering something in the Crystal Caves, making a pact with the Witch, and standing before an ancient tree that pulses with power. 💎",
+        "Each vision feels like a thread you could follow, a moment you could reach out and touch."
+      ],
+      "actions": [
+        {
+          "label": "🔮 Cave secret",
+          "id": 40
+        },
+        {
+          "label": "🧙‍♀️ Witch's pact",
+          "id": 41
+        },
+        {
+          "label": "🌳 Ancient tree",
+          "id": 42
+        }
+      ],
+      "position": [1200, 300],
+      "label": "Time Visions"
+    },
+    {
+      "id": 23,
+      "type": "action",
+      "text": [
+        "The forest spirit's form solidifies slightly as it approaches. \"The mask shows truth,\" it says in a voice like rustling leaves. \"Choose what truth you wish to see.\" 🎭",
+        "Through the mask, you can see three distinct auras emanating from different parts of the forest, each promising a different kind of revelation."
+      ],
+      "actions": [
+        {
+          "label": "💫 Past truth",
+          "id": 43
+        },
+        {
+          "label": "🌟 Heart truth",
+          "id": 44
+        },
+        {
+          "label": "✨ Path truth",
+          "id": 45
+        }
+      ],
+      "position": [1200, 400],
+      "label": "Spirit Guide"
+    },
+    {
+      "id": 24,
+      "type": "skip",
+      "text": [
+        "Following the spiral marking leads you to an impossible sight: a cottage that stands on massive chicken legs, currently folded beneath it like a roosting bird. 🏚️",
+        "Smoke curls from the chimney in shapes that look almost like letters. The door bears three marks: a healing hand, a broken chain, and a blooming flower.",
+        "A voice croaks from within: \"Choose your need, seeker, but choose wisely. Not all who enter leave unchanged.\""
+      ],
+      "nextId": 46,
+      "position": [1400, 0],
+      "label": "Witch's Door"
+    },
+    {
+      "id": 25,
+      "type": "skip",
+      "text": [
+        "The Crystal Caves glitter before you, their entrance a jagged mouth in the hillside. The walls pulse with inner light, and your compass needle spins wildly. 💎",
+        "Crystalline formations create natural paths through the cave, each one resonating with a different tone when touched. The air is thick with magic and possibility.",
+        "In the nearest crystal, you catch a fleeting reflection - but it's not your face you see. It's your sibling's, looking back with eyes that hold secrets."
+      ],
+      "nextId": 47,
+      "position": [1400, 100],
+      "label": "Cave Entrance"
+    },
+    {
+      "id": 26,
+      "type": "skip",
+      "text": [
+        "The Ancient Grove rises before you, a cathedral of ancient trees whose branches interweave so tightly they block most of the sky. 🌳",
+        "At the grove's heart stands a tree larger than all others, its trunk carved with spiraling runes that seem to move in the corner of your eye. The air thrums with power.",
+        "Your compass, when pointed at the great tree, begins to chime like a bell."
+      ],
+      "nextId": 48,
+      "position": [1400, 200],
+      "label": "Sacred Grove"
+    },
+    {
+      "id": 27,
+      "type": "action",
+      "text": [
+        "The spirit reveals three misty paths: one shimmers with morning light, another pulses with the forest's heartbeat, and the third seems to fold through space itself. 👻",
+        "\"Your sibling walked all three paths in their search,\" the spirit says. \"Each holds a piece of their journey. Which would you follow first?\""
+      ],
+      "actions": [
+        {
+          "label": "🌅 Dawn path",
+          "id": 49
+        },
+        {
+          "label": "💓 Heart path",
+          "id": 50
+        },
+        {
+          "label": "🌀 Fold path",
+          "id": 51
+        }
+      ],
+      "position": [1400, 300],
+      "label": "Spirit Paths"
+    },
+    {
+      "id": 28,
+      "type": "action",
+      "text": [
+        "The shared memory leaves traces in the air - glowing threads that weave between the trees. Each leads to a different moment from your sibling's journey: 🎭",
+        "One thread glows with determination and purpose, another pulses with discovery and wonder, while the third trembles with what might be fear - or awe."
+      ],
+      "actions": [
+        {
+          "label": "✨ Purpose thread",
+          "id": 52
+        },
+        {
+          "label": "🔮 Wonder thread",
+          "id": 53
+        },
+        {
+          "label": "⚡ Awe thread",
+          "id": 54
+        }
+      ],
+      "position": [1400, 400],
+      "label": "Memory Threads"
+    },
+    {
+      "id": 29,
+      "type": "skip",
+      "text": [
+        "The spirit takes the compass reverently, its form becoming more solid as it holds the ancient instrument. \"Your grandmother's wisdom serves you well,\" it says. 🧭",
+        "The compass begins to glow, and the spirit uses it to draw a map in the air - a map of time as much as space, showing your sibling's journey through the forest.",
+        "\"The compass is yours again,\" the spirit says, returning it, \"but now it remembers the paths your sibling walked.\""
+      ],
+      "nextId": 55,
+      "position": [1400, 500],
+      "label": "Compass Gift"
+    },
+    {
+      "id": 30,
+      "type": "skip",
+      "text": [
+        "You share a precious memory - a moment of laughter, of connection, of love for your sibling. The spirit absorbs it like morning dew, its form glowing brighter. 💫",
+        "\"Ah,\" it sighs, \"such bonds are rare and powerful. Watch now - your memory creates new paths.\"",
+        "The forest around you shifts, revealing hidden trails marked by floating lights that pulse like heartbeats."
+      ],
+      "nextId": 56,
+      "position": [1400, 600],
+      "label": "Memory Exchange"
+    },
+    {
+      "id": 31,
+      "type": "skip",
+      "text": [
+        "\"A promise...\" the spirit's form shimmers with interest. \"Promise to help heal the forest's heart, and I will show you your sibling's path.\" 📜",
+        "The words carry weight beyond their meaning - you can feel the magic of a binding oath waiting to be made.",
+        "As you consider, the silver compass grows warm, as if responding to the potential of the promise."
+      ],
+      "nextId": 57,
+      "position": [1400, 700],
+      "label": "Spirit Promise"
+    },
+    {
+      "id": 32,
+      "type": "skip",
+      "text": [
+        "The healing sigil leads to a grove where the trees weep golden sap. The air is thick with herbal scents and the whispers of leaves. 🌿",
+        "You find signs of recent activity - freshly cut herbs, a mortar and pestle still damp with dew, and intricate patterns drawn in the earth.",
+        "Your sibling's journal mentioned this place - the Healing Grove, where the forest's lifeblood runs closest to the surface."
+      ],
+      "nextId": 58,
+      "position": [1600, -200],
+      "label": "Healing Grove"
+    },
+    {
+      "id": 33,
+      "type": "skip",
+      "text": [
+        "Following the crystal sigil, you discover a network of crystalline veins running through the tree roots. They pulse with an inner light that matches your compass's rhythm. 💎",
+        "These must be the ancient crystals mentioned in the journal - the ones needed for the forest's healing.",
+        "But some of the crystals are dark, their light dimmed by what looks like a creeping shadow within."
+      ],
+      "nextId": 59,
+      "position": [1600, -100],
+      "label": "Crystal Veins"
+    },
+    {
+      "id": 34,
+      "type": "action",
+      "text": [
+        "The heart sigil brings you to a clearing where the forest's magic feels most concentrated. Three distinct manifestations of power are visible: 💓",
+        "A pool of water that reflects impossible skies, a tree with leaves that chime like bells, and a circle of mushrooms that pulse with inner light."
+      ],
+      "actions": [
+        {
+          "label": "🌊 Study pool",
+          "id": 60
+        },
+        {
+          "label": "🎵 Touch tree",
+          "id": 61
+        },
+        {
+          "label": "🍄 Enter circle",
+          "id": 62
+        }
+      ],
+      "position": [1600, 0],
+      "label": "Heart's Power"
+    },
+    {
+      "id": 35,
+      "type": "skip",
+      "text": [
+        "Stepping through the morning arch, you find yourself in a forest eternally caught in dawn's first light. Dew drops hang suspended in the air, each one containing a different memory. 🌅",
+        "You see fragments of the past through these crystalline drops - your sibling walking these same paths, gathering morning flowers that bloom with starlight.",
+        "Their footprints are fresh here, as if they just passed through moments ago, though you know it's been months."
+      ],
+      "nextId": 63,
+      "position": [1600, 100],
+      "label": "Dawn Memories"
+    },
+    {
+      "id": 36,
+      "type": "skip",
+      "text": [
+        "The sun-drenched path reveals the forest in its most vibrant aspect. The trees here are awake and aware, their branches reaching out like friendly hands. ☀️",
+        "You find evidence of your sibling's presence - a small camp, research notes about the forest's consciousness, and a half-finished map marked with locations of power.",
+        "The compass spins excitedly, as if recognizing something in the notes."
+      ],
+      "nextId": 64,
+      "position": [1600, 200],
+      "label": "Sunlit Studies"
+    },
+    {
+      "id": 37,
+      "type": "action",
+      "text": [
+        "In the eternal twilight, shadows take on lives of their own. They dance and twist, forming shapes that tell stories. 🌘",
+        "Three distinct shadow plays unfold before you: one shows a figure discovering a hidden entrance, another depicts a ritual under moonlight, and the third reveals a conversation with the forest itself."
+      ],
+      "actions": [
+        {
+          "label": "🚪 Watch entrance",
+          "id": 65
+        },
+        {
+          "label": "🌙 View ritual",
+          "id": 66
+        },
+        {
+          "label": "🗣️ See dialogue",
+          "id": 67
+        }
+      ],
+      "position": [1600, 300],
+      "label": "Shadow Stories"
+    },
+    {
+      "id": 38,
+      "type": "action",
+      "text": [
+        "At the campsite, you find your sibling's research materials scattered about. Three items stand out: a journal filled with sketches of forest creatures, a collection of crystalline samples, and a map marked with ritual sites. 📚",
+        "Each item seems to tell part of a larger story about the forest's true nature."
+      ],
+      "actions": [
+        {
+          "label": "📖 Study creatures",
+          "id": 68
+        },
+        {
+          "label": "💎 Analyze crystals",
+          "id": 69
+        },
+        {
+          "label": "🗺️ Check ritual sites",
+          "id": 70
+        }
+      ],
+      "position": [1800, 0],
+      "label": "Research Materials"
+    },
+    {
+      "id": 39,
+      "type": "action",
+      "text": [
+        "The marked path leads to a crossroads where the forest's magic manifests visibly. Three phenomena catch your attention: 🌟",
+        "A spiral of floating lights ascending into the canopy, a ring of mushrooms where time seems to flow backwards, and a pool of water that mirrors a different forest entirely."
+      ],
+      "actions": [
+        {
+          "label": "✨ Follow lights",
+          "id": 71
+        },
+        {
+          "label": "🍄 Enter ring",
+          "id": 72
+        },
+        {
+          "label": "🌊 Study pool",
+          "id": 73
+        }
+      ],
+      "position": [1800, 100],
+      "label": "Magical Crossroads"
+    },
+    {
+      "id": 40,
+      "type": "skip",
+      "text": [
+        "The crystal's vision of the caves becomes more detailed. You see your sibling discovering ancient runes that pulse with power, their hands tracing patterns that make the crystals sing. 💎",
+        "They found something here - a truth about the forest's origin, written in light and stone.",
+        "The vision shows them making a crucial choice, but you can't quite make out what it was."
+      ],
+      "nextId": 74,
+      "position": [1800, 200],
+      "label": "Cave Vision"
+    },
+    {
+      "id": 41,
+      "type": "skip",
+      "text": [
+        "In the vision, you watch your sibling meet the Witch. The cottage's chicken legs scratch nervous patterns in the earth as they speak. 🏚️",
+        "\"The forest is more than trees,\" the Witch says in the vision. \"It's a bridge between worlds, but the bridge is failing. Your bloodline carries the key to its healing.\"",
+        "Your sibling nods, understanding something you don't yet grasp."
+      ],
+      "nextId": 75,
+      "position": [1800, 300],
+      "label": "Witch's Vision"
+    },
+    {
+      "id": 42,
+      "type": "action",
+      "text": [
+        "The vision of the ancient tree reveals your sibling standing before its massive trunk, hands pressed against bark that glows with inner light. 🌳",
+        "Three paths diverge from this moment - each showing a different choice they considered. The tree's power responds differently in each scene."
+      ],
+      "actions": [
+        {
+          "label": "💫 Bond path",
+          "id": 76
+        },
+        {
+          "label": "🌟 Power path",
+          "id": 77
+        },
+        {
+          "label": "🤝 Balance path",
+          "id": 78
+        }
+      ],
+      "position": [1800, 400],
+      "label": "Tree Choices"
+    },
+    {
+      "id": 43,
+      "type": "skip",
+      "text": [
+        "The mask reveals layers of time like pages in a book. You see the forest's past - a time when it was a gateway between worlds, maintained by guardians who bore a striking resemblance to your family. 📚",
+        "You witness the moment the connection began to fade, and the forest's desperate attempt to maintain the bridge through its own consciousness.",
+        "Your sibling discovered this truth too - their footprints glow across centuries in the mask's vision."
+      ],
+      "nextId": 79,
+      "position": [1800, 500],
+      "label": "Past Truth"
+    },
+    {
+      "id": 44,
+      "type": "skip",
+      "text": [
+        "Through the mask, you see the forest's heart - not a physical place, but a nexus of energy that flows through every tree, every stone, every breath of air. 💓",
+        "Your sibling stands at its center in the vision, their form shifting between human and something else, something that belongs to the forest.",
+        "They're not lost, you realize. They're transforming."
+      ],
+      "nextId": 80,
+      "position": [1800, 600],
+      "label": "Heart Truth"
+    },
+    {
+      "id": 45,
+      "type": "action",
+      "text": [
+        "The path truth shimmers before you like a river of starlight. Through the mask, you see three distinct trails: ✨",
+        "One path glows with healing energy, another resonates with transformative power, and the third pulses with the rhythm of communion - the path of understanding.",
+        "Each represents a different way of approaching the forest's mystery and your sibling's choice."
+      ],
+      "actions": [
+        {
+          "label": "💚 Healing way",
+          "id": 81
+        },
+        {
+          "label": "✨ Power way",
+          "id": 82
+        },
+        {
+          "label": "🤝 Understanding",
+          "id": 83
+        }
+      ],
+      "position": [2000, 0],
+      "label": "Path Truths"
+    },
+    {
+      "id": 46,
+      "type": "action",
+      "text": [
+        "The Witch's door creaks open of its own accord. Inside, the cottage is larger than it should be, filled with dancing shadows and floating herbs. 🏚️",
+        "\"Your sibling sought knowledge,\" the Witch's voice echoes from everywhere and nowhere. \"But knowledge has its price. What would you offer for the truth?\""
+      ],
+      "actions": [
+        {
+          "label": "💫 Offer service",
+          "id": 84
+        },
+        {
+          "label": "🎭 Share vision",
+          "id": 85
+        },
+        {
+          "label": "💝 Give memory",
+          "id": 86
+        }
+      ],
+      "position": [2000, 100],
+      "label": "Witch's Offer"
+    },
+    {
+      "id": 47,
+      "type": "action",
+      "text": [
+        "Inside the Crystal Caves, three tunnels branch before you. The crystals in each pulse with different colors and energies. 💎",
+        "Blue crystals sing of memories, green ones whisper of growth and change, while purple ones thrum with raw magical power.",
+        "Your sibling's reflection appears in each crystal cluster, showing different aspects of their journey."
+      ],
+      "actions": [
+        {
+          "label": "💙 Memory path",
+          "id": 87
+        },
+        {
+          "label": "💚 Growth path",
+          "id": 88
+        },
+        {
+          "label": "💜 Power path",
+          "id": 89
+        }
+      ],
+      "position": [2000, 200],
+      "label": "Crystal Paths"
+    },
+    {
+      "id": 48,
+      "type": "action",
+      "text": [
+        "The great tree's presence fills your mind with ancient memories. Through its consciousness, you see three possible ways to interact with its power: 🌳",
+        "Touch its bark to commune directly, meditate in its presence to receive guidance, or follow the root-paths that connect it to the forest's heart."
+      ],
+      "actions": [
+        {
+          "label": "🤝 Commune",
+          "id": 90
+        },
+        {
+          "label": "🧘 Meditate",
+          "id": 91
+        },
+        {
+          "label": "🌲 Follow roots",
+          "id": 92
+        }
+      ],
+      "position": [2000, 300],
+      "label": "Tree Communion"
+    },
+    {
+      "id": 49,
+      "type": "skip",
+      "text": [
+        "The dawn path bathes you in perpetual sunrise. Here, you see the forest awakening, its magic renewed with each eternal morning. 🌅",
+        "Your sibling's presence is strong here - they spent time understanding the forest's cycles of renewal and rebirth.",
+        "Through the morning light, you glimpse their gradual transformation, their growing connection to the forest's essence."
+      ],
+      "nextId": 93,
+      "position": [2000, 400],
+      "label": "Dawn Revelation"
+    },
+    {
+      "id": 50,
+      "type": "skip",
+      "text": [
+        "The heart path pulses with the forest's lifeblood. Each step brings you closer to understanding what your sibling discovered - the forest isn't just alive, it's vital to something larger. 💓",
+        "You feel the connection between all things here, the delicate balance that your sibling sought to protect.",
+        "Their presence grows stronger, more resonant with the forest's own consciousness."
+      ],
+      "nextId": 94,
+      "position": [2000, 500],
+      "label": "Heart Journey"
+    },
+    {
+      "id": 51,
+      "type": "action",
+      "text": [
+        "The folded path defies normal space, leading you through impossible geometries. Here, you see how your sibling learned to navigate the forest's deeper reality. 🌀",
+        "Three distinct fold-spaces manifest before you, each offering a different perspective on their journey."
+      ],
+      "actions": [
+        {
+          "label": "🕯️ Light fold",
+          "id": 95
+        },
+        {
+          "label": "🌙 Shadow fold",
+          "id": 96
+        },
+        {
+          "label": "⭐ Star fold",
+          "id": 97
+        }
+      ],
+      "position": [2000, 600],
+      "label": "Reality Folds"
+    },
+    {
+      "id": 52,
+      "type": "skip",
+      "text": [
+        "The purpose thread glows with your sibling's determination. Through it, you experience their growing understanding of the forest's plight - its fading connection to other realms, its desperate need for healing. ✨",
+        "They discovered they had the power to help, but the price would be transformation.",
+        "The thread leads deeper into the forest's mysteries."
+      ],
+      "nextId": 98,
+      "position": [2000, 700],
+      "label": "Purpose Vision"
+    },
+    {
+      "id": 53,
+      "type": "skip",
+      "text": [
+        "The wonder thread sparkles with your sibling's amazement at each new discovery. Through their eyes, you see the forest's magic unfold - the way trees communicate, the dance of spirits between worlds. 🌟",
+        "But the greatest wonder was the realization that your family's connection to the forest was no accident. You see your grandmother's compass in your sibling's hands, leading them to ancient secrets.",
+        "These memories feel like more than just the past - they're a guide to understanding your own path forward."
+      ],
+      "nextId": 99,
+      "position": [2200, 0],
+      "label": "Wonder Path"
+    },
+    {
+      "id": 54,
+      "type": "skip",
+      "text": [
+        "The awe thread trembles with the weight of revelation. You witness the moment your sibling understood the true scope of the forest's existence - a living bridge between realms, sustained by ancient magics. ⚡",
+        "But that bridge is failing, its foundations weakened by centuries of neglect. The forest chose your sibling to help restore it, just as it now calls to you.",
+        "The thread pulses with urgency, drawing you deeper into the mystery."
+      ],
+      "nextId": 100,
+      "position": [2200, 100],
+      "label": "Awe Path"
+    },
+    {
+      "id": 55,
+      "type": "action",
+      "text": [
+        "The compass, now attuned to your sibling's journey, reveals three distinct paths they frequently traveled: 🧭",
+        "One leads to a grove where the barriers between worlds are thinnest, another to a chamber of crystalline memories, and the third to a nexus of pure forest magic.",
+        "Each path holds a different aspect of their transformation."
+      ],
+      "actions": [
+        {
+          "label": "🌌 Barrier grove",
+          "id": 101
+        },
+        {
+          "label": "💎 Memory chamber",
+          "id": 102
+        },
+        {
+          "label": "✨ Magic nexus",
+          "id": 103
+        }
+      ],
+      "position": [2200, 200],
+      "label": "Compass Paths"
+    },
+    {
+      "id": 56,
+      "type": "action",
+      "text": [
+        "The floating lights form a constellation of your shared memories, each one revealing a different facet of the forest's need: 💫",
+        "The fading of old magics, the weakening of the worldbridge, and the possibility of renewal through the bond of your bloodline.",
+        "Each light offers a different way to understand - and perhaps help - both the forest and your sibling."
+      ],
+      "actions": [
+        {
+          "label": "🌟 Study magic",
+          "id": 104
+        },
+        {
+          "label": "🌉 See bridge",
+          "id": 105
+        },
+        {
+          "label": "💞 Feel bond",
+          "id": 106
+        }
+      ],
+      "position": [2200, 300],
+      "label": "Memory Lights"
+    },
+    {
+      "id": 57,
+      "type": "action",
+      "text": [
+        "As you consider the spirit's request, the forest itself seems to hold its breath. Three manifestations of the potential promise appear before you: 📜",
+        "A shimmering oath of protection that would bind you to the forest's defense, a pact of healing that would require sacrifice but offer great power, or a pledge of understanding that would open your mind to the forest's deepest secrets."
+      ],
+      "actions": [
+        {
+          "label": "🛡️ Swear protection",
+          "id": 107
+        },
+        {
+          "label": "💝 Pledge healing",
+          "id": 108
+        },
+        {
+          "label": "🔮 Vow understanding",
+          "id": 109
+        }
+      ],
+      "position": [2200, 400],
+      "label": "Promise Choice"
+    },
+    {
+      "id": 58,
+      "type": "action",
+      "text": [
+        "The Healing Grove vibrates with ancient power. Three fountains flow with golden sap: one sparkles with restoration magic, another hums with binding energy, and the third whispers with transformative power. 🌿",
+        "Your sibling's recent presence lingers here strongly."
+      ],
+      "actions": [
+        {
+          "label": "✨ Restoration",
+          "id": 61
+        },
+        {
+          "label": "🔒 Binding",
+          "id": 62
+        },
+        {
+          "label": "🔮 Transform",
+          "id": 63
+        }
+      ],
+      "position": [2800, -200],
+      "label": "Grove Power"
+    },
+    {
+      "id": 59,
+      "type": "action",
+      "text": [
+        "The crystalline network spreads before you like a glowing web. You notice three distinct types of crystals: some store memories, others channel power, and some seem to bridge different parts of the forest. 💎",
+        "The shadow within some crystals resembles the darkness your sibling mentioned in their letter."
+      ],
+      "actions": [
+        {
+          "label": "💭 Memory crystal",
+          "id": 64
+        },
+        {
+          "label": "⚡ Power crystal",
+          "id": 65
+        },
+        {
+          "label": "🌉 Bridge crystal",
+          "id": 66
+        }
+      ],
+      "position": [2800, -100],
+      "label": "Crystal Choice"
+    },
+    {
+      "id": 60,
+      "type": "skip",
+      "text": [
+        "The pool's surface ripples with impossible reflections. You see your sibling in multiple timelines - some where they became one with the forest, others where they found a way to heal it, and some where they discovered an ancient truth. 🌊",
+        "Each reflection feels equally real, suggesting the forest exists in multiple states simultaneously."
+      ],
+      "nextId": 67,
+      "position": [2800, 0],
+      "label": "Pool Visions"
+    },
+    {
+      "id": 61,
+      "type": "skip",
+      "text": [
+        "The restoration fountain's magic flows into you, showing visions of the forest's original state. You see how the paths between worlds once flowed naturally, maintained by guardians like your sibling. ✨",
+        "The knowledge feels like a key to healing not just the forest, but the barriers between realms."
+      ],
+      "nextId": 68,
+      "position": [3000, -200],
+      "label": "Restoration Magic"
+    },
+    {
+      "id": 62,
+      "type": "skip",
+      "text": [
+        "The binding fountain reveals the intricate web of spells that hold the forest's magic in balance. Your sibling discovered that these bindings are both protection and prison - perhaps they need to be reshaped rather than reinforced. 🔒",
+        "The forest's consciousness stirs at this revelation."
+      ],
+      "nextId": 69,
+      "position": [3000, -100],
+      "label": "Binding Magic"
+    },
+    {
+      "id": 63,
+      "type": "skip",
+      "text": [
+        "The transformative fountain shows you the forest's adaptive nature. Like your sibling, it can change its very essence to survive. But such change requires a guide, someone to shape it with purpose and wisdom. 🔮",
+        "You sense this is the path your sibling chose."
+      ],
+      "nextId": 70,
+      "position": [3000, 0],
+      "label": "Transform Magic"
+    },
+    {
+      "id": 64,
+      "type": "skip",
+      "text": [
+        "The memory crystal pulses with stored experiences. Through it, you witness your sibling's journey of discovery - their initial fear, growing wonder, and final understanding of the forest's true nature. 💭",
+        "You see the moment they realized what they had to become."
+      ],
+      "nextId": 71,
+      "position": [3000, 100],
+      "label": "Crystal Memories"
+    },
+    {
+      "id": 65,
+      "type": "skip",
+      "text": [
+        "The power crystal resonates with raw magical energy. Your sibling used it to tap into the forest's deepest powers, learning to channel and redirect its forces. ⚡",
+        "This knowledge came with a price - each use bound them more closely to the forest's essence."
+      ],
+      "nextId": 72,
+      "position": [3000, 200],
+      "label": "Power Crystal"
+    },
+    {
+      "id": 66,
+      "type": "skip",
+      "text": [
+        "The bridge crystal connects different aspects of the forest's reality. Through it, you see how your sibling learned to walk between worlds, becoming a conduit for the forest's magic. 🌉",
+        "This crystal holds the key to finding them, but using it might change you as it changed them."
+      ],
+      "nextId": 73,
+      "position": [3000, 300],
+      "label": "Bridge Crystal"
+    },
+    {
+      "id": 67,
+      "type": "action",
+      "text": [
+        "The pool's visions settle into three clear paths: one leads to physical reunion with your sibling, another to spiritual connection, and the third to a shared transformation. 🌊",
+        "Each choice will determine not just your fate, but the forest's future."
+      ],
+      "actions": [
+        {
+          "label": "👥 Physical reunion",
+          "id": 74
+        },
+        {
+          "label": "🔮 Spirit connection",
+          "id": 75
+        },
+        {
+          "label": "✨ Joint transformation",
+          "id": 76
+        }
+      ],
+      "position": [3200, 0],
+      "label": "Path Choice"
+    },
+    {
+      "id": 68,
+      "type": "action",
+      "text": [
+        "The restoration magic flows through you, offering three ways to heal the forest: rekindle the old magics, forge new connections, or blend both approaches into something unprecedented. ✨",
+        "Your sibling's presence feels strongest along the third path."
+      ],
+      "actions": [
+        {
+          "label": "🏺 Old magic",
+          "id": 77
+        },
+        {
+          "label": "🌟 New bonds",
+          "id": 78
+        },
+        {
+          "label": "🔮 Blend ways",
+          "id": 79
+        }
+      ],
+      "position": [3200, 100],
+      "label": "Healing Choice"
+    },
+    {
+      "id": 69,
+      "type": "action",
+      "text": [
+        "Understanding the bindings presents three possibilities: strengthen them to protect the forest, loosen them to allow growth, or reshape them entirely to create a new kind of barrier. 🔒",
+        "Each choice will affect how magic flows through the forest."
+      ],
+      "actions": [
+        {
+          "label": "🛡️ Strengthen",
+          "id": 80
+        },
+        {
+          "label": "🌱 Loosen",
+          "id": 81
+        },
+        {
+          "label": "✨ Reshape",
+          "id": 82
+        }
+      ],
+      "position": [3200, 200],
+      "label": "Binding Choice"
+    },
+    {
+      "id": 70,
+      "type": "action",
+      "text": [
+        "The transformative power reveals three paths of change: become a guardian like your sibling, establish a new form of protection, or find a way to share the transformation with others. 🔮",
+        "Each path requires a different kind of sacrifice."
+      ],
+      "actions": [
+        {
+          "label": "👥 Join sibling",
+          "id": 83
+        },
+        {
+          "label": "🌟 New guardian",
+          "id": 84
+        },
+        {
+          "label": "💫 Share power",
+          "id": 85
+        }
+      ],
+      "position": [3200, 300],
+      "label": "Transform Choice"
+    },
+    {
+      "id": 71,
+      "type": "action",
+      "text": [
+        "The stored memories offer three courses of action: follow your sibling's exact path, learn from their experiences to forge your own way, or combine your journeys into a shared destiny. 💭",
+        "The crystal pulses with anticipation of your choice."
+      ],
+      "actions": [
+        {
+          "label": "👣 Follow path",
+          "id": 86
+        },
+        {
+          "label": "🌟 New path",
+          "id": 87
+        },
+        {
+          "label": "🤝 Join paths",
+          "id": 88
+        }
+      ],
+      "position": [3400, 0],
+      "label": "Memory Choice"
+    },
+    {
+      "id": 72,
+      "type": "action",
+      "text": [
+        "The power crystal presents three ways to use its energy: channel it to find your sibling, use it to stabilize the forest, or share it between both purposes in a risky balance. ⚡",
+        "The crystal's energy responds differently to each intention."
+      ],
+      "actions": [
+        {
+          "label": "🔍 Seek sibling",
+          "id": 89
+        },
+        {
+          "label": "🌳 Save forest",
+          "id": 90
+        },
+        {
+          "label": "⚖️ Balance both",
+          "id": 91
+        }
+      ],
+      "position": [3400, 100],
+      "label": "Power Choice"
+    },
+    {
+      "id": 73,
+      "type": "action",
+      "text": [
+        "The bridge crystal offers three methods of crossing: a physical journey through the forest's depths, a spiritual passage through its consciousness, or a transformation that would let you exist in multiple states like the forest itself. 🌉",
+        "Your sibling's essence resonates most strongly with the third option."
+      ],
+      "actions": [
+        {
+          "label": "👣 Physical path",
+          "id": 92
+        },
+        {
+          "label": "✨ Spirit path",
+          "id": 93
+        },
+        {
+          "label": "🔮 Transform path",
+          "id": 94
+        }
+      ],
+      "position": [3400, 200],
+      "label": "Bridge Choice"
+    },
+    {
+      "id": 74,
+      "type": "action",
+      "text": [
+        "The path to physical reunion leads you deeper into the forest's heart. Here, three trials await: a test of courage, a challenge of wisdom, and a choice of sacrifice. 👥",
+        "Your sibling faced these same trials before their transformation."
+      ],
+      "actions": [
+        {
+          "label": "⚔️ Face courage",
+          "id": 95
+        },
+        {
+          "label": "📚 Seek wisdom",
+          "id": 96
+        },
+        {
+          "label": "💝 Choose sacrifice",
+          "id": 97
+        }
+      ],
+      "position": [3400, 300],
+      "label": "Reunion Trials"
+    },
+    {
+      "id": 75,
+      "type": "skip",
+      "text": [
+        "The spiritual connection blossoms in your mind. You feel your sibling's consciousness, intertwined with the forest but still distinct. They've become something wonderful and strange - a bridge between human understanding and forest magic. 🔮",
+        "They offer to share their knowledge, showing you a way to join them without losing yourself."
+      ],
+      "nextId": 98,
+      "position": [3400, 400],
+      "label": "Spirit Bridge"
+    },
+    {
+      "id": 76,
+      "type": "skip",
+      "text": [
+        "The path of joint transformation reveals itself. Together with your sibling, you could become dual guardians of the forest, each maintaining different aspects of its magic while preserving your human connection. ✨",
+        "This path offers balance - neither fully human nor fully forest, but something beautifully in between."
+      ],
+      "nextId": 99,
+      "position": [3400, 500],
+      "label": "Dual Guardian"
+    },
+    {
+      "id": 77,
+      "type": "skip",
+      "text": [
+        "The old magics surge through you, ancient and powerful. You understand now how to restore the forest's original nature, but doing so would mean accepting its original limitations. 🏺",
+        "Your sibling sought to move beyond these bounds, but perhaps there is wisdom in tradition."
+      ],
+      "nextId": 100,
+      "position": [3600, 0],
+      "label": "Ancient Ways"
+    },
+    {
+      "id": 78,
+      "type": "skip",
+      "text": [
+        "New connections form as you channel the magic differently. You see how the forest could evolve, becoming something neither bound by old ways nor lost to chaos. 🌟",
+        "This is the possibility your sibling glimpsed - a future where the forest grows while maintaining its essence."
+      ],
+      "nextId": 101,
+      "position": [3600, 100],
+      "label": "New Growth"
+    },
+    {
+      "id": 79,
+      "type": "skip",
+      "text": [
+        "Blending old and new magics creates unexpected harmonies. The forest responds eagerly to this balance, showing you how it could be both preserved and transformed. 🔮",
+        "Your sibling's presence in the magic feels like approval - this middle path holds great promise."
+      ],
+      "nextId": 102,
+      "position": [3600, 200],
+      "label": "Magic Harmony"
+    },
+    {
+      "id": 80,
+      "type": "skip",
+      "text": [
+        "Strengthening the bindings fills them with renewed purpose. The forest's boundaries become clearer, its protections stronger, though perhaps less flexible. 🛡️",
+        "This path offers security but might limit the forest's ability to adapt."
+      ],
+      "nextId": 103,
+      "position": [3600, 300],
+      "label": "Strong Bounds"
+    },
+    {
+      "id": 81,
+      "type": "skip",
+      "text": [
+        "Loosening the bindings allows the forest more freedom to change and grow. Its magic flows more naturally, finding new paths and forms. 🌱",
+        "This matches your sibling's vision of a more dynamic, evolving forest."
+      ],
+      "nextId": 104,
+      "position": [3600, 400],
+      "label": "Free Magic"
+    },
+    {
+      "id": 82,
+      "type": "skip",
+      "text": [
+        "Reshaping the bindings creates a new kind of protection - flexible yet strong, allowing change while maintaining control. ✨",
+        "This balance feels right, a way to preserve the forest's essence while allowing it to grow."
+      ],
+      "nextId": 105,
+      "position": [3600, 500],
+      "label": "New Balance"
+    },
+    {
+      "id": 83,
+      "type": "finish",
+      "text": [
+        "You embrace transformation alongside your sibling, becoming dual guardians of the forest's heart. Together, you maintain the balance between growth and preservation, change and tradition. 👥",
+        "Your combined presence ensures the forest will always have protectors who understand both human and natural magic.",
+        "You've reached the Dual Guardians ending."
+      ],
+      "position": [3800, 0],
+      "label": "Dual Guardians"
+    },
+    {
+      "id": 84,
+      "type": "finish",
+      "text": [
+        "You forge a new path of guardianship, different from but complementary to your sibling's role. While they maintain the forest's inner magic, you become its bridge to the outside world. 🌟",
+        "This partnership creates a perfect balance, ensuring the forest can both evolve and stay true to its nature.",
+        "You've reached the Bridge Between Worlds ending."
+      ],
+      "position": [3800, 100],
+      "label": "World Bridge"
+    },
+    {
+      "id": 85,
+      "type": "finish",
+      "text": [
+        "You discover a way to share the forest's transformative power safely with others. This creates a network of guardians, each connected to a different aspect of the forest's magic. 💫",
+        "Your sibling becomes the first of many guides, teaching others to understand and protect the forest's mysteries.",
+        "You've reached the Guardian Network ending."
+      ],
+      "position": [3800, 200],
+      "label": "Guardian Network"
+    },
+    {
+      "id": 86,
+      "type": "skip",
+      "text": [
+        "Following your sibling's exact path reveals the depth of their understanding. You see how they gradually merged with the forest's consciousness, becoming something more than human but retaining their core identity. 👣",
+        "This path leads to a similar transformation."
+      ],
+      "nextId": 83,
+      "position": [3800, 300],
+      "label": "Sibling's Path"
+    },
+    {
+      "id": 87,
+      "type": "skip",
+      "text": [
+        "Learning from your sibling's experiences, you forge a new path. Your journey complements theirs, creating a balance between different kinds of forest magic. 🌟",
+        "This choice will establish you as a different but equally important guardian."
+      ],
+      "nextId": 84,
+      "position": [3800, 400],
+      "label": "New Way"
+    },
+    {
+      "id": 88,
+      "type": "skip",
+      "text": [
+        "Combining your journeys creates something unprecedented - a shared guardianship that maintains both human connection and forest magic. 🤝",
+        "Together, you and your sibling become keystones of a new era for the forest."
+      ],
+      "nextId": 85,
+      "position": [3800, 500],
+      "label": "Combined Path"
+    },
+    {
+      "id": 89,
+      "type": "skip",
+      "text": [
+        "Using the crystal's power to find your sibling reveals their true state - they've become a conscious part of the forest's magic, able to manifest throughout its realm. 🔍",
+        "They reach out to you, offering guidance toward a similar transformation."
+      ],
+      "nextId": 83,
+      "position": [4000, 0],
+      "label": "Finding Sibling"
+    },
+    {
+      "id": 90,
+      "type": "skip",
+      "text": [
+        "Channeling power to stabilize the forest creates new patterns of magic. Your sibling's presence weaves through these patterns, showing how to maintain them without losing yourself. 🌳",
+        "This could be a way to protect the forest while remaining partly human."
+      ],
+      "nextId": 84,
+      "position": [4000, 100],
+      "label": "Forest Balance"
+    },
+    {
+      "id": 91,
+      "type": "skip",
+      "text": [
+        "Balancing both goals proves challenging but rewarding. The crystal's power flows through you, connecting you to both your sibling and the forest's needs. ⚖️",
+        "This middle path offers a way to achieve everything you seek."
+      ],
+      "nextId": 85,
+      "position": [4000, 200],
+      "label": "Perfect Balance"
+    },
+    {
+      "id": 92,
+      "type": "skip",
+      "text": [
+        "The physical journey through the forest's depths leads you to hidden places where reality bends. Here, you can find your sibling in their new form, learning to exist as they do. 👣",
+        "This path requires the most change but offers the closest reunion."
+      ],
+      "nextId": 83,
+      "position": [4000, 300],
+      "label": "Deep Journey"
+    },
+    {
+      "id": 93,
+      "type": "skip",
+      "text": [
+        "The spiritual passage opens your mind to the forest's consciousness. You connect with your sibling across the boundary between physical and magical realms. ✨",
+        "This way allows you to maintain your human form while accessing forest magic."
+      ],
+      "nextId": 84,
+      "position": [4000, 400],
+      "label": "Spirit Journey"
+    },
+    {
+      "id": 94,
+      "type": "skip",
+      "text": [
+        "Embracing transformation allows you to exist in multiple states, like the forest itself. You can be both physical and spiritual, human and magical. 🔮",
+        "This complex existence matches your sibling's, creating a perfect partnership."
+      ],
+      "nextId": 85,
+      "position": [4000, 500],
+      "label": "Transform Journey"
+    },
+    {
+      "id": 95,
+      "type": "skip",
+      "text": [
+        "The test of courage reveals itself as facing your fears of change. As you push through, your sibling's presence grows stronger, proud of your determination. ⚔️",
+        "This bravery opens the way to a deeper understanding of the forest's nature."
+      ],
+      "nextId": 83,
+      "position": [4200, 0],
+      "label": "Courage Test"
+    },
+    {
+      "id": 96,
+      "type": "skip",
+      "text": [
+        "Seeking wisdom leads you to ancient knowledge about the forest's true nature. You learn why your sibling chose their path and how you might forge your own. 📚",
+        "This understanding illuminates the way forward."
+      ],
+      "nextId": 84,
+      "position": [4200, 100],
+      "label": "Wisdom Quest"
+    },
+    {
+      "id": 97,
+      "type": "skip",
+      "text": [
+        "The choice of sacrifice isn't about giving up your humanity, but about choosing what to become. Your sibling shows you how transformation can be a beginning rather than an end. 💝",
+        "This revelation opens new possibilities."
+      ],
+      "nextId": 85,
+      "position": [4200, 200],
+      "label": "Sacrifice Choice"
+    },
+    {
+      "id": 98,
+      "type": "action",
+      "text": [
+        "Through the spiritual connection, your sibling offers three paths to understanding: merge completely with the forest's magic, maintain a balance between worlds, or create a new form of existence altogether. 🔮",
+        "Each choice leads to a different kind of reunion."
+      ],
+      "actions": [
+        {
+          "label": "🌳 Full merge",
+          "id": 83
+        },
+        {
+          "label": "⚖️ Find balance",
+          "id": 84
+        },
+        {
+          "label": "✨ New existence",
+          "id": 85
+        }
+      ],
+      "position": [4200, 300],
+      "label": "Spirit Choice"
+    },
+    {
+      "id": 99,
+      "type": "action",
+      "text": [
+        "The path of joint transformation presents three ways to share guardianship: divide the forest's aspects between you, create overlapping spheres of influence, or merge your powers while maintaining separate identities. ✨",
+        "Your sibling awaits your choice."
+      ],
+      "actions": [
+        {
+          "label": "🔄 Split duties",
+          "id": 83
+        },
+        {
+          "label": "🤝 Share power",
+          "id": 84
+        },
+        {
+          "label": "🌟 Unite strength",
+          "id": 85
+        }
+      ],
+      "position": [4200, 400],
+      "label": "Guardian Choice"
+    },
+    {
+      "id": 100,
+      "type": "skip",
+      "text": [
+        "The ancient magics offer profound but rigid power. You could become a traditional guardian, maintaining the old ways while your sibling explores new possibilities. 🏺",
+        "This duality might be exactly what the forest needs."
+      ],
+      "nextId": 83,
+      "position": [4200, 500],
+      "label": "Ancient Power"
+    },
+    {
+      "id": 101,
+      "type": "skip",
+      "text": [
+        "The new connections reveal ways to evolve the forest's magic. Working with your sibling, you could guide this evolution, ensuring it remains beneficial to all. 🌟",
+        "This path promises growth without losing the forest's essence."
+      ],
+      "nextId": 84,
+      "position": [4400, 0],
+      "label": "Evolution Path"
+    },
+    {
+      "id": 102,
+      "type": "skip",
+      "text": [
+        "The harmony between old and new magic creates perfect balance. You and your sibling could maintain this balance together, each understanding both aspects. 🔮",
+        "This approach offers the best of both worlds."
+      ],
+      "nextId": 85,
+      "position": [4400, 100],
+      "label": "Magic Balance"
+    },
+    {
+      "id": 103,
+      "type": "skip",
+      "text": [
+        "Strong boundaries provide security but require constant maintenance. You could become their keeper while your sibling manages the forest's inner transformations. 🛡️",
+        "This division of duties would ensure both protection and growth."
+      ],
+      "nextId": 83,
+      "position": [4400, 200],
+      "label": "Boundary Guard"
+    },
+    {
+      "id": 104,
+      "type": "skip",
+      "text": [
+        "Freed magic flows more naturally, but needs guidance to prevent chaos. Your sibling shows you how to direct this flow while allowing necessary change. 🌱",
+        "This delicate balance requires both wisdom and flexibility."
+      ],
+      "nextId": 84,
+      "position": [4400, 300],
+      "label": "Magic Flow"
+    },
+    {
+      "id": 105,
+      "type": "skip",
+      "text": [
+        "The new balance creates harmony between structure and freedom. Together with your sibling, you could maintain this dynamic equilibrium. ✨",
+        "This path promises the most sustainable future for the forest."
+      ],
+      "nextId": 85,
+      "position": [4400, 400],
+      "label": "New Harmony"
+    },
+    {
+      "id": 106,
+      "type": "skip",
+      "text": [
+        "With your path chosen, you feel the forest's magic surge around you. Your sibling's presence grows stronger, ready to guide you through the final transformation. 🌟",
+        "The moment of change approaches, but you face it with confidence and purpose."
+      ],
+      "nextId": 83,
+      "position": [4400, 500],
+      "label": "Final Choice"
+    },
+    {
+      "id": 107,
+      "type": "skip",
+      "text": [
+        "The oath of protection settles around you like a cloak of living leaves. The forest's awareness touches your mind, showing you the scope of what you'll defend. 🛡️",
+        "You see the delicate balance of energies, the paths between worlds, the ancient magics that must be preserved.",
+        "Your sibling's presence feels closer, as if acknowledging your choice."
+      ],
+      "nextId": 110,
+      "position": [2400, 0],
+      "label": "Protection Oath"
+    },
+    {
+      "id": 108,
+      "type": "skip",
+      "text": [
+        "The healing pact resonates through your entire being. You feel the forest's pain as your own - the failing connections, the fading magic, the desperate need for renewal. 💝",
+        "But you also feel its strength, its ancient wisdom, and the deep well of power it offers to those who would help heal it.",
+        "A familiar presence brushes your consciousness - your sibling, watching and waiting."
+      ],
+      "nextId": 111,
+      "position": [2400, 100],
+      "label": "Healing Pact"
+    },
+    {
+      "id": 109,
+      "type": "skip",
+      "text": [
+        "As you make the vow of understanding, the forest's mysteries begin to unfold in your mind. You see the truth of its nature - not just a forest, but a living bridge between realities. 🔮",
+        "Your sibling discovered this too, and chose to become part of this greater purpose.",
+        "Their transformation was not a loss, but an evolution."
+      ],
+      "nextId": 112,
+      "position": [2400, 200],
+      "label": "Understanding Vow"
+    },
+    {
+      "id": 110,
+      "type": "action",
+      "text": [
+        "Standing at the threshold of your choice, you see three possible paths of protection: 🛡️",
+        "Become a guardian of the physical forest, maintaining its boundaries and protecting its inhabitants; join your sibling as a keeper of the magical pathways; or establish yourself as a bridge between the forest and the outside world."
+      ],
+      "actions": [
+        {
+          "label": "🌳 Forest Guardian",
+          "id": 113
+        },
+        {
+          "label": "✨ Path Keeper",
+          "id": 114
+        },
+        {
+          "label": "🌉 World Bridge",
+          "id": 115
+        }
+      ],
+      "position": [2600, 0],
+      "label": "Guardian Paths"
+    },
+    {
+      "id": 111,
+      "type": "action",
+      "text": [
+        "The healing power flows through you, offering three ways to restore the forest: 💫",
+        "Work with your sibling to renew the ancient magics through your combined bloodline; create a new form of healing that bridges old and new ways; or take on the forest's pain yourself, transforming it through your sacrifice."
+      ],
+      "actions": [
+        {
+          "label": "🤝 Join Sibling",
+          "id": 116
+        },
+        {
+          "label": "✨ New Magic",
+          "id": 117
+        },
+        {
+          "label": "💝 Sacred Sacrifice",
+          "id": 118
+        }
+      ],
+      "position": [2600, 100],
+      "label": "Healing Choices"
+    },
+    {
+      "id": 112,
+      "type": "action",
+      "text": [
+        "Complete understanding reveals three possible futures: 🔮",
+        "Unite with your sibling to become dual guardians of the forest's knowledge; establish a new order of protectors who will preserve the forest's wisdom; or use your understanding to heal the rift between worlds."
+      ],
+      "actions": [
+        {
+          "label": "👥 Dual Guardians",
+          "id": 119
+        },
+        {
+          "label": "📚 New Order",
+          "id": 120
+        },
+        {
+          "label": "🌟 Heal Rift",
+          "id": 121
+        }
+      ],
+      "position": [2600, 200],
+      "label": "Future Paths"
+    },
+    {
+      "id": 113,
+      "type": "finish",
+      "text": [
+        "You take your place as the Guardian of the Wandering Woods. Your presence becomes part of the forest's consciousness, a protective force that maintains its physical form. 🌳",
+        "Your sibling, now a keeper of its magical aspects, works in harmony with you. Together, you maintain the balance between the tangible and mystical realms.",
+        "The forest thrives under your care, its paths both more mysterious and more welcoming than ever before.",
+        "You've reached the Forest's Chosen ending."
+      ],
+      "position": [2800, 0],
+      "label": "Forest's Chosen"
+    },
+    {
+      "id": 114,
+      "type": "finish",
+      "text": [
+        "Following your sibling's example, you become a Keeper of the Ways, learning to navigate and maintain the magical pathways that wind through the forest's heart. ✨",
+        "Your transformation is gentler than your sibling's - you remain more human, while they have become more ethereal. This balance allows you to protect both the magical and mundane aspects of the forest.",
+        "Together, you ensure that the paths between worlds remain open but safe.",
+        "You've reached the Bridge Between Worlds ending."
+      ],
+      "position": [2800, 100],
+      "label": "Bridge Between Worlds"
+    },
+    {
+      "id": 115,
+      "type": "finish",
+      "text": [
+        "You establish yourself as a Bridge Walker, maintaining connections between the forest and the human world. 🌉",
+        "While your sibling guards the forest's inner mysteries, you ensure that its wisdom and magic can safely reach those who need it.",
+        "The forest no longer needs to trap people to maintain its power - through you, it finds willing allies and protectors.",
+        "You've reached the World Bridge ending."
+      ],
+      "position": [2800, 200],
+      "label": "World Bridge"
+    },
+    {
+      "id": 116,
+      "type": "finish",
+      "text": [
+        "You and your sibling become the new Healers of the Woods, your combined power restoring the ancient magics that sustain the forest. 💞",
+        "Through your blood connection, you create a new kind of magic - one that bridges the old ways and the new, ensuring the forest's survival in a changing world.",
+        "Your transformation becomes a symbol of hope, showing that change can lead to renewal rather than loss.",
+        "You've reached the Family Reunion ending."
+      ],
+      "position": [2800, 300],
+      "label": "Family Reunion"
+    },
+    {
+      "id": 117,
+      "type": "finish",
+      "text": [
+        "You forge a new path of magic, different from the ancient ways but just as powerful. ✨",
+        "Your innovation allows the forest to adapt and grow, finding new ways to maintain its power without requiring sacrifice.",
+        "Your sibling remains a guardian of the old magics, while you pioneer the new - together, you create a perfect balance of tradition and progress.",
+        "You've reached the Magic Master ending."
+      ],
+      "position": [2800, 400],
+      "label": "Magic Master"
+    },
+    {
+      "id": 118,
+      "type": "finish",
+      "text": [
+        "You choose the path of ultimate sacrifice, taking the forest's pain into yourself. But instead of being consumed, you are transformed. 🌟",
+        "You become the new Heart of the Forest, your consciousness expanding to embrace all its paths and secrets.",
+        "Your sibling becomes your anchor to humanity, ensuring that you never lose yourself entirely to the forest's vast awareness.",
+        "You've reached the Sacred Guardian ending."
+      ],
+      "position": [2800, 500],
+      "label": "Sacred Guardian"
+    },
+    {
+      "id": 119,
+      "type": "finish",
+      "text": [
+        "You and your sibling join forces as the dual guardians of the forest's ancient knowledge. Your combined understanding creates a perfect balance of old and new wisdom. 👥",
+        "Together, you maintain and expand the forest's legacy, ensuring its mysteries are both preserved and understood.",
+        "You've reached the Knowledge Keepers ending."
+      ],
+      "position": [2800, 600],
+      "label": "Knowledge Keepers"
+    },
+    {
+      "id": 120,
+      "type": "finish",
+      "text": [
+        "You establish a new order dedicated to protecting and studying the forest's wisdom. Your sibling becomes the spiritual guide while you train future guardians. 📚",
+        "This new community bridges the gap between the forest's ancient ways and the modern world, ensuring its knowledge will never be lost.",
+        "You've reached the Legacy Builders ending."
+      ],
+      "position": [2800, 700],
+      "label": "Legacy Builders"
+    },
+    {
+      "id": 121,
+      "type": "finish",
+      "text": [
+        "Using your deep understanding of the forest's nature, you find a way to heal the rift between worlds. Your sibling's transformation becomes a bridge between realms. 🌟",
+        "The forest flourishes as a nexus of harmony between different realities, with you and your sibling as its eternal guardians.",
+        "You've reached the Realm Healers ending."
+      ],
+      "position": [2800, 800],
+      "label": "Realm Healers"
+    }
+  ]
+}

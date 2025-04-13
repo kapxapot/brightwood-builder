@@ -25,12 +25,12 @@
 2. Create a `plan.md` file for a new story, put the story setting, plan and key story points into it. Also, define possible endings to the story.
 3. Create a story file named `story.json` in that folder. Use `plan.md` for reference.
 4. The goal is to create up to 50-100 nodes for the story.
-5. Try to generate around 50 nodes as once (ideally the whole story). If the `story.json` becomes too large (1500+ lines), put new nodes into `nodes.json`.
+5. If the `story.json` becomes too large (1500+ lines), put new nodes into `nodes.json`.
 6. After each node generation check the `plan.md` and update it if needed.
 
 ## Writing Tips
 
-1. Don't break sentences into several text lines (array items in the `text` property). Consider one text line as a paragraph not a sentence or a part of a sentence. But don't create too large paragraphs, 2-3 sentences is enough.
+1. Don't break sentences into several text lines (array items in the `text` property). Consider one text line as a paragraph not a sentence or a part of a sentence. But don't create too large paragraphs, 2-3 sentences is enough. Do not write long texts, 60-70 words per node maximum. I REPEAT NO MORE THAN 60-70 WORDS PER NODE.
 2. Try to use all node types but use `redirect` type only when something random happens in the story or there are different probabilities for different outcomes.
 3. Don't create `redirect` nodes with just one link, use `skip` node instead.
 4. There must not be more than 5-6 endings. Don't create too many endings. Of course, if the reader makes a mistake and fails, it also can be an ending, but valid endings should not be more than 5-6.
@@ -38,12 +38,13 @@
 6. Aim to create long story threads that can entertwine with each other and lead to several endings eventually.
 7. There also can be plot cycles that return to some earlier nodes.
 8. Don't overuse the time traveling and parallel universe plots, keep it simple but engaging.
-9. Use emoji, aim to use at least one emoji per node.
+9. Use emoji, aim to use at least one emoji per node. Do not use universally available emojis. Use only those that work on both mobile and desktop.
 10. You can also put an emoji on a separate text line to emphasize it's effect.
 11. You can use `<b></b>` tags for bold text and `<i></i>` tags for italic, but don't overuse it.
 12. Don't create long action labels, make them 2-3 words max. Use emoji in action labels (it is not necessary but add them where suitable).
-13. Fill node `label` property with a short (2-3 words) title based on its content.
+13. Fill node `label` property with a short (2-3 words) title based on its content. I REPEAT AGAIN FILL THE node's `label`!
 14. Don't make too many branches! Keep story relatively narrow with 4-5 parallel main story branches. If the branches grow, cut them or merge them at once, don't create 20 branches and then abruptly end them at once. I REPEAT AGAIN THERE MUST BE 5-6 VALID TERMINAL `finish` nodes not 20-30!!!
+15. Don't create all actions with 3 choices. Create some with 2, some with 3, depending on the context.
 
 ## Story Validation
 

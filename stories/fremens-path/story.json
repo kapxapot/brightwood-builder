@@ -1,0 +1,1132 @@
+{
+  "id": "9f3a7d2e-6b5c-4e1a-8d9f-2c4b8a3e7d1f",
+  "title": "🏜️ Fremen's Path",
+  "description": "Navigate the dangerous political landscape of Arrakis as a young Fremen warrior during the arrival of House Atreides, where every choice could affect the future of your people.",
+  "language": "en",
+  "startId": 1,
+  "position": [30, 30],
+  "nodes": [
+    {
+      "id": 1,
+      "type": "skip",
+      "text": [
+        "The desert wind whispers secrets across the dunes of Arrakis as you stand at the entrance of your sietch. 🏜️",
+        "The morning sun reveals unfamiliar shapes cutting through the sky - Atreides ornithopters. Change comes to Dune, but more pressing matters demand your attention.",
+        "A young scout rushes to you, voice barely above a whisper: \"Zahra, Harkonnen spies near the southern ridge!\""
+      ],
+      "nextId": 2,
+      "position": [200, 100],
+      "label": "Desert Whispers"
+    },
+    {
+      "id": 2,
+      "type": "action",
+      "text": [
+        "Your hand instinctively touches your crysknife as you process the news. The spies must not discover the sietch's location. 🗡️",
+        "The situation demands immediate action, but water-discipline has taught you the value of careful consideration.",
+        "Time is precious as the desert sun climbs higher."
+      ],
+      "actions": [
+        {
+          "label": "🦊 Track silently",
+          "id": 3
+        },
+        {
+          "label": "👥 Alert the Naib",
+          "id": 4
+        },
+        {
+          "label": "⚔️ Gather warriors",
+          "id": 5
+        }
+      ],
+      "position": [400, 100],
+      "label": "First Response"
+    },
+    {
+      "id": 3,
+      "type": "skip",
+      "text": [
+        "Moving like a shadow across the sand, you follow the ancient Fremen tracking techniques. Your stillsuit whispers with each careful movement. 👣",
+        "The spies' tracks are fresh - they're close. Through your binoculars, you spot three figures in partial stillsuits examining survey equipment.",
+        "They seem focused on taking measurements of the terrain."
+      ],
+      "nextId": 6,
+      "position": [600, 0],
+      "label": "Silent Hunter"
+    },
+    {
+      "id": 4,
+      "type": "skip",
+      "text": [
+        "You find Naib Khadim in the water-counting chambers. His weathered face grows stern as you report the situation. 👤",
+        "\"The Harkonnens grow bold,\" he says, stroking his beard. \"But perhaps this is an opportunity. House Atreides seeks allies among the Fremen.\"",
+        "He studies the water-rings on his finger, deep in thought."
+      ],
+      "nextId": 7,
+      "position": [600, 200],
+      "label": "Wisdom Sought"
+    },
+    {
+      "id": 5,
+      "type": "skip",
+      "text": [
+        "You quickly gather a small group of trusted warriors. Each checks their weapons with practiced efficiency. ⚔️",
+        "\"Remember,\" you whisper, \"we must learn their purpose before striking. The desert teaches patience.\"",
+        "Your fellow Fremen nod, understanding the wisdom in your words."
+      ],
+      "nextId": 8,
+      "position": [600, 400],
+      "label": "Warriors Ready"
+    },
+    {
+      "id": 6,
+      "type": "action",
+      "text": [
+        "The spies are using advanced water-finding equipment - technology far beyond normal survey tools. 🔍",
+        "One holds what appears to be a detailed map of the region. They're systematic in their search, marking specific locations.",
+        "You're close enough to act, but must choose your next move carefully."
+      ],
+      "actions": [
+        {
+          "label": "⚔️ Ambush them",
+          "id": 9
+        },
+        {
+          "label": "📝 Document evidence",
+          "id": 10
+        }
+      ],
+      "position": [800, 0],
+      "label": "Spy Discovery"
+    },
+    {
+      "id": 7,
+      "type": "action",
+      "text": [
+        "\"We must consider all paths,\" the Naib says. \"The Harkonnens are our enemies, but the Atreides... they could be valuable allies.\" 🤝",
+        "He turns to you, his eyes sharp with decision. \"You've proven yourself wise in water matters. How do you suggest we proceed?\"",
+        "Your choice here could shape the future of your sietch."
+      ],
+      "actions": [
+        {
+          "label": "🤝 Contact Atreides",
+          "id": 11
+        },
+        {
+          "label": "🗡️ Eliminate threat",
+          "id": 12
+        },
+        {
+          "label": "🏃 Set a trap",
+          "id": 13
+        }
+      ],
+      "position": [800, 200],
+      "label": "Strategic Choice"
+    },
+    {
+      "id": 8,
+      "type": "redirect",
+      "text": [
+        "As your group moves through the desert, a warning whistle cuts through the air - sandworm sign! 🪱",
+        "The thumping grows stronger. The spies might hear it too, but they're likely inexperienced with desert survival.",
+        "This could be either a deadly threat or a perfect opportunity."
+      ],
+      "links": [
+        {
+          "weight": 2,
+          "id": 14
+        },
+        {
+          "weight": 1,
+          "id": 15
+        }
+      ],
+      "position": [800, 400],
+      "label": "Shai-Hulud Approaches"
+    },
+    {
+      "id": 9,
+      "type": "skip",
+      "text": [
+        "With practiced silence, you and your blade become one with the desert wind. The first spy falls without a sound. 🗡️",
+        "The second reaches for a weapon but finds only sand. The third drops his equipment, hands raised in surrender.",
+        "\"Wait! I have information about Harkonnen plans - plans that threaten both Fremen and Atreides!\""
+      ],
+      "nextId": 16,
+      "position": [1000, -100],
+      "label": "Swift Strike"
+    },
+    {
+      "id": 10,
+      "type": "skip",
+      "text": [
+        "Using your maula pistol's scope, you carefully document their activities and equipment. 📝",
+        "Their water-finding instruments are unlike anything you've seen - they seem designed to detect deep aquifers.",
+        "This information could be valuable to both your people and potentially House Atreides."
+      ],
+      "nextId": 17,
+      "position": [1000, 50],
+      "label": "Gathering Intel"
+    },
+    {
+      "id": 11,
+      "type": "skip",
+      "text": [
+        "The Naib dispatches a messenger to the Atreides compound. Within hours, a response arrives by ornithopter. 🚁",
+        "Duke Leto's forces have also detected suspicious Harkonnen activity. They propose a joint operation.",
+        "This could be the beginning of a valuable alliance - or a dangerous exposure of Fremen secrets."
+      ],
+      "nextId": 18,
+      "position": [1000, 150],
+      "label": "Atreides Contact"
+    },
+    {
+      "id": 12,
+      "type": "skip",
+      "text": [
+        "The Naib nods grimly at your suggestion. \"The old ways have kept us alive this long.\" 🗡️",
+        "He assigns you a team of five warriors, each tested in combat against the Harkonnens.",
+        "\"Remember: leave no trace that leads back to the sietch.\""
+      ],
+      "nextId": 19,
+      "position": [1000, 250],
+      "label": "Traditional Path"
+    },
+    {
+      "id": 13,
+      "type": "action",
+      "text": [
+        "You propose using the desert itself as a weapon. The Naib's eyes glint with approval. 🏜️",
+        "\"But how shall we bait this trap?\" he asks. \"We could use the spice harvester's sound to draw a worm, or stage a false water cache.\"",
+        "Each option carries its own risks and rewards."
+      ],
+      "actions": [
+        {
+          "label": "🪱 Call Shai-Hulud",
+          "id": 20
+        },
+        {
+          "label": "💧 Water cache trap",
+          "id": 21
+        }
+      ],
+      "position": [1000, 350],
+      "label": "Desert's Weapon"
+    },
+    {
+      "id": 14,
+      "type": "skip",
+      "text": [
+        "The rhythmic thumping grows stronger. Your warriors instinctively space themselves in the ancient pattern. 🪱",
+        "The Harkonnen spies panic, breaking into a run - a fatal mistake in soft sand.",
+        "You have mere moments to decide how to use this situation to your advantage."
+      ],
+      "nextId": 22,
+      "position": [1000, 450],
+      "label": "Maker's Blessing"
+    },
+    {
+      "id": 15,
+      "type": "skip",
+      "text": [
+        "The sandworm's approach is too close, too fast. Your group must take emergency measures. ⚠️",
+        "\"Scatter!\" you command, \"Rock outcrops! Now!\"",
+        "In the chaos, the spies might escape - but survival takes precedence."
+      ],
+      "nextId": 23,
+      "position": [1000, 550],
+      "label": "Survival First"
+    },
+    {
+      "id": 16,
+      "type": "action",
+      "text": [
+        "The captured spy trembles, but his eyes show determination. \"The Harkonnens have found something in the deep desert.\" 🗺️",
+        "\"They're searching for ancient water caches, believing they're connected to some kind of weapon system.\"",
+        "Time is short - your companions await your decision."
+      ],
+      "actions": [
+        {
+          "label": "👥 Take him prisoner",
+          "id": 24
+        },
+        {
+          "label": "🗡️ Silence him",
+          "id": 25
+        }
+      ],
+      "position": [1200, -100],
+      "label": "Spy's Secret"
+    },
+    {
+      "id": 17,
+      "type": "action",
+      "text": [
+        "Your documentation reveals a disturbing pattern. The Harkonnens aren't just mapping water - they're searching for something specific. 📊",
+        "Their equipment readings point to an ancient system of caves deep beneath the sand.",
+        "This knowledge could be powerful... or dangerous."
+      ],
+      "actions": [
+        {
+          "label": "🤝 Share with Atreides",
+          "id": 26
+        },
+        {
+          "label": "🏺 Keep Fremen secret",
+          "id": 27
+        }
+      ],
+      "position": [1200, 50],
+      "label": "Critical Intel"
+    },
+    {
+      "id": 18,
+      "type": "action",
+      "text": [
+        "Duncan Idaho himself arrives at the meeting point, accompanied by a small guard detail. 🤝",
+        "\"We've intercepted Harkonnen communications about something called 'Project Leviathan,'\" he explains.",
+        "\"We need your desert expertise, but understand your need for secrecy.\""
+      ],
+      "actions": [
+        {
+          "label": "🤲 Full cooperation",
+          "id": 28
+        },
+        {
+          "label": "🎭 Limited alliance",
+          "id": 29
+        }
+      ],
+      "position": [1200, 150],
+      "label": "Alliance Offer"
+    },
+    {
+      "id": 19,
+      "type": "action",
+      "text": [
+        "Your team moves through the desert with lethal grace. The spies' position is vulnerable - they've made camp in a shallow basin. ⚔️",
+        "One of your warriors spots something unusual: they're taking core samples from the rock.",
+        "Whatever they're searching for, it's beneath the sand."
+      ],
+      "actions": [
+        {
+          "label": "🌙 Night strike",
+          "id": 30
+        },
+        {
+          "label": "🔍 Investigate first",
+          "id": 31
+        }
+      ],
+      "position": [1200, 250],
+      "label": "Hunter's Choice"
+    },
+    {
+      "id": 20,
+      "type": "redirect",
+      "text": [
+        "Using ancient Fremen techniques, your group creates the distinctive rhythm that calls to Shai-Hulud. 🪱",
+        "The ground trembles beneath your feet as you maintain a safe position on the rocks.",
+        "The success of this plan depends on precise timing and the desert's cooperation."
+      ],
+      "links": [
+        {
+          "weight": 2,
+          "id": 32
+        },
+        {
+          "weight": 1,
+          "id": 33
+        }
+      ],
+      "position": [1200, 350],
+      "label": "Maker's Call"
+    },
+    {
+      "id": 21,
+      "type": "skip",
+      "text": [
+        "Your team prepares a convincing false water cache, complete with authentic Fremen markings. 💧",
+        "It's a dangerous gambit - using water as bait goes against deep traditions, but these are unusual times.",
+        "The trap is set, now you wait in the shadows of the rocks."
+      ],
+      "nextId": 34,
+      "position": [1200, 450],
+      "label": "Water Trap"
+    },
+    {
+      "id": 22,
+      "type": "action",
+      "text": [
+        "The spies' panic works to your advantage. Your warriors move with practiced efficiency, cutting off their escape routes. 🏃",
+        "The worm's approach masks any sounds of combat, and the soft sand will hide all evidence.",
+        "You must act quickly before Shai-Hulud arrives."
+      ],
+      "actions": [
+        {
+          "label": "⚔️ Quick elimination",
+          "id": 35
+        },
+        {
+          "label": "🏃 Force surrender",
+          "id": 36
+        }
+      ],
+      "position": [1200, 550],
+      "label": "Desert Justice"
+    },
+    {
+      "id": 23,
+      "type": "action",
+      "text": [
+        "From your rocky vantage point, you watch the spies struggle in the soft sand. One falls behind. ⚠️",
+        "Your warriors look to you - there might be time to save one of them, potentially gaining valuable intelligence.",
+        "But any rescue attempt would risk Fremen lives."
+      ],
+      "actions": [
+        {
+          "label": "🤝 Attempt rescue",
+          "id": 37
+        },
+        {
+          "label": "👀 Observe only",
+          "id": 38
+        }
+      ],
+      "position": [1200, 650],
+      "label": "Moral Choice"
+    },
+    {
+      "id": 24,
+      "type": "skip",
+      "text": [
+        "You bind the spy securely, using Fremen rope techniques that prevent escape in the desert. 👥",
+        "\"Project Leviathan,\" he whispers, \"it's not just about water. The Harkonnens found ancient tech beyond anything we've seen.\"",
+        "This information could change everything - if it's true."
+      ],
+      "nextId": 39,
+      "position": [1400, -150],
+      "label": "Valuable Prisoner"
+    },
+    {
+      "id": 25,
+      "type": "skip",
+      "text": [
+        "Your blade finds its mark with practiced efficiency. The desert will claim all evidence. 🗡️",
+        "In the spy's fallen pack, you find encrypted communications and strange technical diagrams.",
+        "These might reveal the true extent of Harkonnen operations."
+      ],
+      "nextId": 40,
+      "position": [1400, -50],
+      "label": "Silent End"
+    },
+    {
+      "id": 26,
+      "type": "skip",
+      "text": [
+        "You arrange a secret meeting with Duncan Idaho, sharing your findings about the Harkonnen search patterns. 🗺️",
+        "\"This matches our intelligence,\" he says gravely. \"They've found traces of ancient technology - possibly pre-space flight.\"",
+        "\"We need to investigate this together, before the Harkonnens unlock its power.\""
+      ],
+      "nextId": 41,
+      "position": [1400, 50],
+      "label": "Joint Mission"
+    },
+    {
+      "id": 27,
+      "type": "skip",
+      "text": [
+        "You return to the sietch with your findings. The Fremen have kept secrets for millennia - this will be one more. 🏺",
+        "The elders gather to study the patterns you've documented. One ancient keeper's eyes widen in recognition.",
+        "\"These markers... they match our oldest water maps.\""
+      ],
+      "nextId": 42,
+      "position": [1400, 150],
+      "label": "Ancient Knowledge"
+    },
+    {
+      "id": 28,
+      "type": "skip",
+      "text": [
+        "You choose to trust in this alliance. Duncan's reputation for honor is well-known even among the Fremen. 🤝",
+        "\"Together, we can stop whatever the Harkonnens are planning,\" he says. \"And perhaps forge a lasting peace.\"",
+        "The path ahead is uncertain, but potential allies are better than certain enemies."
+      ],
+      "nextId": 43,
+      "position": [1400, 250],
+      "label": "Trust Given"
+    },
+    {
+      "id": 29,
+      "type": "skip",
+      "text": [
+        "You agree to share only what's necessary, keeping the deepest Fremen secrets hidden. 🎭",
+        "\"We'll help you track the Harkonnens,\" you tell Duncan, \"but some knowledge must remain with the desert.\"",
+        "He nods, understanding the delicate balance of this arrangement."
+      ],
+      "nextId": 44,
+      "position": [1400, 350],
+      "label": "Cautious Alliance"
+    },
+    {
+      "id": 30,
+      "type": "redirect",
+      "text": [
+        "Under the cover of darkness, your team moves into position. The spies' camp is quiet except for the soft hum of their equipment. 🌙",
+        "The night wind carries whispers of approaching danger - but whether it warns of Harkonnen reinforcements or something else remains unclear.",
+        "Success depends on perfect timing."
+      ],
+      "links": [
+        {
+          "weight": 2,
+          "id": 45
+        },
+        {
+          "weight": 1,
+          "id": 46
+        }
+      ],
+      "position": [1400, 450],
+      "label": "Night Attack"
+    },
+    {
+      "id": 31,
+      "type": "skip",
+      "text": [
+        "Using the cover of darkness, you examine the spies' equipment while they sleep. Their core samples reveal something extraordinary. 🔍",
+        "Beneath layers of sand and rock, there are traces of an ancient civilization - one that might have mastered water control on a massive scale.",
+        "This discovery could change everything for your people."
+      ],
+      "nextId": 47,
+      "position": [1400, 550],
+      "label": "Ancient Discovery"
+    },
+    {
+      "id": 32,
+      "type": "skip",
+      "text": [
+        "The great maker arrives precisely as planned. Your timing is perfect - the spies are trapped between the worm and the rocks. 🪱",
+        "\"Surrender now!\" you call out. \"We can save you from Shai-Hulud - or leave you to the desert's judgment.\"",
+        "Their faces show pure terror as the sand trembles beneath their feet."
+      ],
+      "nextId": 48,
+      "position": [1400, 650],
+      "label": "Desert's Power"
+    },
+    {
+      "id": 33,
+      "type": "skip",
+      "text": [
+        "The worm's path is unpredictable - it veers away from your target, heading toward your position! ⚠️",
+        "You signal an emergency retreat, but in the chaos, the spies manage to reach their hidden vehicle.",
+        "They escape, but drop several important documents in their haste."
+      ],
+      "nextId": 49,
+      "position": [1600, -150],
+      "label": "Maker's Will"
+    },
+    {
+      "id": 34,
+      "type": "action",
+      "text": [
+        "The spies take the bait, approaching the false water cache with obvious excitement. 💧",
+        "As they examine the markings, you notice one of them carrying what appears to be an ancient artifact.",
+        "Your warriors await your signal."
+      ],
+      "actions": [
+        {
+          "label": "⚔️ Spring trap",
+          "id": 50
+        },
+        {
+          "label": "🗣️ Negotiate",
+          "id": 51
+        }
+      ],
+      "position": [1600, -50],
+      "label": "Trap Choice"
+    },
+    {
+      "id": 35,
+      "type": "skip",
+      "text": [
+        "Your warriors strike with deadly precision. The spies never stood a chance against desert-born fighters. ⚔️",
+        "In their equipment, you find coordinates marking several locations across the deep desert.",
+        "One location is marked with a strange symbol - it matches ancient carvings in your sietch."
+      ],
+      "nextId": 52,
+      "position": [1600, 50],
+      "label": "Swift Victory"
+    },
+    {
+      "id": 36,
+      "type": "skip",
+      "text": [
+        "\"Surrender to us, and you may yet live!\" Your voice carries authority across the sand. 👥",
+        "The spies, seeing death approach from both sides, throw down their weapons. One of them steps forward.",
+        "\"We found something in the deep desert - something that could change everything. We need to talk.\""
+      ],
+      "nextId": 53,
+      "position": [1600, 150],
+      "label": "Forced Surrender"
+    },
+    {
+      "id": 37,
+      "type": "redirect",
+      "text": [
+        "You make your decision - no one deserves Shai-Hulud's judgment without a chance for redemption. 🤝",
+        "Racing across the sand, you reach for the fallen spy. The worm's approach grows louder.",
+        "Everything depends on your timing and strength now."
+      ],
+      "links": [
+        {
+          "weight": 2,
+          "id": 54
+        },
+        {
+          "weight": 1,
+          "id": 55
+        }
+      ],
+      "position": [1600, 250],
+      "label": "Rescue Attempt"
+    },
+    {
+      "id": 38,
+      "type": "skip",
+      "text": [
+        "You watch in grim silence as the desert claims its due. The spies' fate serves as a reminder of Arrakis's harsh justice. 👀",
+        "After the maker passes, you search their abandoned equipment. Among the scattered gear, you find a crystalline device.",
+        "It pulses with a faint blue light, unlike any technology you've seen before."
+      ],
+      "nextId": 56,
+      "position": [1600, 350],
+      "label": "Desert's Justice"
+    },
+    {
+      "id": 39,
+      "type": "action",
+      "text": [
+        "The prisoner reveals more about Project Leviathan - an ancient water control system buried beneath the desert. 🏺",
+        "\"The Harkonnens don't understand its true purpose,\" he says. \"But they know it could change the balance of power on Arrakis.\"",
+        "His information seems genuine, but using it requires choosing whom to trust."
+      ],
+      "actions": [
+        {
+          "label": "🤝 Share with Atreides",
+          "id": 57
+        },
+        {
+          "label": "👥 Protect Fremen secrets",
+          "id": 58
+        }
+      ],
+      "position": [1600, 450],
+      "label": "Critical Choice"
+    },
+    {
+      "id": 40,
+      "type": "action",
+      "text": [
+        "The technical diagrams show something extraordinary - a vast network of ancient water control systems. 📊",
+        "These could be the legendary works of your ancestors, systems thought lost to time.",
+        "This knowledge must be handled with great care."
+      ],
+      "actions": [
+        {
+          "label": "🏃 Find the system",
+          "id": 59
+        },
+        {
+          "label": "📚 Consult elders",
+          "id": 60
+        }
+      ],
+      "position": [1600, 550],
+      "label": "Ancient Plans"
+    },
+    {
+      "id": 41,
+      "type": "action",
+      "text": [
+        "Duncan Idaho's eyes narrow as he studies the ancient markings in your documentation. 🗺️",
+        "\"This could be what we need to secure Arrakis's future,\" he says. \"But we'll need to move fast - the Harkonnens are getting close.\"",
+        "You must decide how much to reveal about your people's ancient knowledge."
+      ],
+      "actions": [
+        {
+          "label": "🤝 Full trust",
+          "id": 61
+        },
+        {
+          "label": "🎭 Partial truth",
+          "id": 62
+        }
+      ],
+      "position": [1800, -150],
+      "label": "Trust Decision"
+    },
+    {
+      "id": 42,
+      "type": "action",
+      "text": [
+        "The elderly keeper leads you to a hidden chamber deep within the sietch. Ancient maps cover the walls. 📜",
+        "\"Our ancestors built more than just water caches,\" she reveals. \"They created a system to transform Arrakis itself.\"",
+        "This knowledge comes with great responsibility."
+      ],
+      "actions": [
+        {
+          "label": "🏺 Protect secret",
+          "id": 63
+        },
+        {
+          "label": "🌍 Transform Arrakis",
+          "id": 64
+        }
+      ],
+      "position": [1800, -50],
+      "label": "Ancient Legacy"
+    },
+    {
+      "id": 43,
+      "type": "skip",
+      "text": [
+        "Working with the Atreides proves fruitful. Their technology combined with Fremen knowledge creates a powerful alliance. 🤝",
+        "Duke Leto himself requests your presence as an advisor, recognizing the wisdom of the desert people.",
+        "Your role as a bridge between two worlds becomes increasingly important."
+      ],
+      "nextId": 65,
+      "position": [1800, 50],
+      "label": "Growing Alliance"
+    },
+    {
+      "id": 44,
+      "type": "action",
+      "text": [
+        "Your cautious approach pays off. The Atreides respect your boundaries while providing valuable support. 🎭",
+        "Together, you've uncovered evidence of massive Harkonnen operations in the deep desert.",
+        "But now a critical decision looms."
+      ],
+      "actions": [
+        {
+          "label": "⚔️ Strike Harkonnens",
+          "id": 66
+        },
+        {
+          "label": "🏃 Protect sietch",
+          "id": 67
+        }
+      ],
+      "position": [1800, 150],
+      "label": "Critical Moment"
+    },
+    {
+      "id": 45,
+      "type": "skip",
+      "text": [
+        "Your night raid succeeds perfectly. The spies are captured, and their equipment reveals vital intelligence. 🌙",
+        "But more importantly, you find proof of a massive Harkonnen operation preparing to strike at both Fremen and Atreides.",
+        "Time is running out to prevent disaster."
+      ],
+      "nextId": 68,
+      "position": [1800, 250],
+      "label": "Urgent Discovery"
+    },
+    {
+      "id": 46,
+      "type": "skip",
+      "text": [
+        "The night raid meets unexpected resistance. Harkonnen reinforcements arrive, forcing a tactical retreat. 🌙",
+        "But their quick response confirms your suspicions - they're protecting something valuable.",
+        "Your warriors gather what intelligence they can as you withdraw."
+      ],
+      "nextId": 60,
+      "position": [1800, 350],
+      "label": "Tactical Retreat"
+    },
+    {
+      "id": 47,
+      "type": "action",
+      "text": [
+        "The ancient technology beneath the sand could be the key to your people's future. 🏺",
+        "But such power always comes with a price. The elders have warned of the dangers of forgotten technologies.",
+        "Your next decision will shape generations to come."
+      ],
+      "actions": [
+        {
+          "label": "🌍 Unlock secrets",
+          "id": 64
+        },
+        {
+          "label": "👥 Preserve tradition",
+          "id": 63
+        }
+      ],
+      "position": [1800, 450],
+      "label": "Destiny's Choice"
+    },
+    {
+      "id": 48,
+      "type": "action",
+      "text": [
+        "The spies surrender, trembling before Shai-Hulud's might. Their leader steps forward. 🪱",
+        "\"We found ancient Fremen tech - water control systems. The Harkonnens plan to use it against both you and the Atreides.\"",
+        "Time is short, but this information needs verification."
+      ],
+      "actions": [
+        {
+          "label": "🤝 Work with Atreides",
+          "id": 61
+        },
+        {
+          "label": "⚔️ Strike Harkonnens",
+          "id": 66
+        }
+      ],
+      "position": [1800, 550],
+      "label": "Crucial Decision"
+    },
+    {
+      "id": 49,
+      "type": "skip",
+      "text": [
+        "The dropped documents reveal coordinates to a hidden Harkonnen base. 📝",
+        "More importantly, they contain details about Project Leviathan - a plan to seize control of ancient water systems.",
+        "This threat requires immediate action."
+      ],
+      "nextId": 44,
+      "position": [1800, 650],
+      "label": "Vital Intelligence"
+    },
+    {
+      "id": 50,
+      "type": "skip",
+      "text": [
+        "Your warriors emerge from hiding, weapons ready. The spies freeze, realizing their mistake too late. ⚔️",
+        "The artifact they carry begins to pulse with a strange blue light, responding to the nearby water cache.",
+        "Whatever this device is, it's clearly tied to the ancient systems."
+      ],
+      "nextId": 47,
+      "position": [1600, 650],
+      "label": "Ancient Tech"
+    },
+    {
+      "id": 51,
+      "type": "skip",
+      "text": [
+        "\"That artifact you carry - it's part of our heritage,\" you call out. \"Perhaps we can reach an understanding.\" 🗣️",
+        "The spies are surprised by your approach, but their leader seems relieved at the chance to talk.",
+        "\"The Harkonnens don't know what they're dealing with. This power should be in Fremen hands.\""
+      ],
+      "nextId": 39,
+      "position": [1600, 750],
+      "label": "Peaceful Approach"
+    },
+    {
+      "id": 52,
+      "type": "action",
+      "text": [
+        "The coordinates lead to a hidden cavern system deep in the desert. Ancient Fremen glyphs cover the walls. 🏛️",
+        "Your warriors stand ready, but this place holds secrets beyond mere tactical value.",
+        "The decision you make here could change the future of all Fremen."
+      ],
+      "actions": [
+        {
+          "label": "🔍 Study glyphs",
+          "id": 42
+        },
+        {
+          "label": "⚔️ Fortify position",
+          "id": 66
+        }
+      ],
+      "position": [1800, -100],
+      "label": "Ancient Cave"
+    },
+    {
+      "id": 53,
+      "type": "action",
+      "text": [
+        "The captured spies reveal more about the Harkonnen plans. They speak of a massive operation codenamed 'Desert Storm'. 📝",
+        "\"They're preparing to strike at multiple sietches simultaneously,\" one says. \"But we know their staging areas.\"",
+        "This information could save many lives - if used correctly."
+      ],
+      "actions": [
+        {
+          "label": "🏃 Warn sietches",
+          "id": 67
+        },
+        {
+          "label": "⚔️ Counter-attack",
+          "id": 66
+        }
+      ],
+      "position": [1800, 0],
+      "label": "Vital Information"
+    },
+    {
+      "id": 54,
+      "type": "skip",
+      "text": [
+        "Your timing is perfect - you grab the fallen spy and roll to safety just as Shai-Hulud passes. 🤝",
+        "The rescued spy looks at you with a mixture of fear and gratitude. \"Why?\" he asks.",
+        "\"Because mercy, like water, is precious in the desert,\" you reply. He nods, understanding the depth of the debt he now owes."
+      ],
+      "nextId": 39,
+      "position": [1800, 100],
+      "label": "Merciful Victory"
+    },
+    {
+      "id": 55,
+      "type": "skip",
+      "text": [
+        "The sand shifts unexpectedly - you stumble, precious seconds lost. The maker's approach is too close now. ⚠️",
+        "You're forced to retreat to the rocks, watching as the desert claims another soul.",
+        "In the aftermath, you find a data crystal clutched in the spy's dead hand."
+      ],
+      "nextId": 40,
+      "position": [1800, 200],
+      "label": "Failed Rescue"
+    },
+    {
+      "id": 56,
+      "type": "action",
+      "text": [
+        "The crystalline device pulses with ancient power. Your water rings resonate with its energy. 💎",
+        "This is clearly Fremen technology, but from a time before records. The elders spoke of such devices in legends.",
+        "Its discovery forces a choice between tradition and power."
+      ],
+      "actions": [
+        {
+          "label": "🏺 Keep secret",
+          "id": 63
+        },
+        {
+          "label": "🔍 Study device",
+          "id": 64
+        }
+      ],
+      "position": [1800, 300],
+      "label": "Ancient Device"
+    },
+    {
+      "id": 57,
+      "type": "skip",
+      "text": [
+        "You arrange a secret meeting with Duncan Idaho. The Atreides warrior listens intently to the details of Project Leviathan. 🤝",
+        "\"This changes everything,\" he says. \"Duke Leto must know - but he'll want to hear it from you personally.\"",
+        "The path to alliance opens before you."
+      ],
+      "nextId": 61,
+      "position": [1800, 400],
+      "label": "Alliance Path"
+    },
+    {
+      "id": 58,
+      "type": "skip",
+      "text": [
+        "You decide to keep this knowledge within the Fremen. Centuries of survival have taught your people the value of secrets. 🏺",
+        "The elders gather to hear your report. As you speak, their eyes show recognition - these are the systems of legend.",
+        "Your commitment to Fremen ways has not gone unnoticed."
+      ],
+      "nextId": 63,
+      "position": [1800, 500],
+      "label": "Fremen Way"
+    },
+    {
+      "id": 59,
+      "type": "skip",
+      "text": [
+        "Following the ancient diagrams, you lead an expedition deep into unmapped desert. 🗺️",
+        "After days of careful navigation, you find it - a hidden entrance marked with symbols matching the diagrams.",
+        "The air thrums with the power of sleeping machines."
+      ],
+      "nextId": 64,
+      "position": [1800, 600],
+      "label": "Hidden Place"
+    },
+    {
+      "id": 60,
+      "type": "action",
+      "text": [
+        "The elders study the diagrams with growing excitement. One ancient keeper recognizes symbols from forbidden texts. 📚",
+        "\"These are the water ways of our ancestors,\" she whispers. \"We thought them lost forever.\"",
+        "The choice of how to use this knowledge weighs heavy."
+      ],
+      "actions": [
+        {
+          "label": "🌍 Seek power",
+          "id": 64
+        },
+        {
+          "label": "👥 Protect wisdom",
+          "id": 63
+        }
+      ],
+      "position": [1800, 700],
+      "label": "Ancient Wisdom"
+    },
+    {
+      "id": 61,
+      "type": "skip",
+      "text": [
+        "You make the bold choice to trust the Atreides completely, sharing the ancient Fremen knowledge of water systems. 🤝",
+        "Duncan's eyes show understanding of the tremendous trust you've placed in him. \"This changes everything,\" he says.",
+        "\"Come with me to meet Duke Leto - your people need a voice in the coming changes.\""
+      ],
+      "nextId": 69,
+      "position": [2000, -150],
+      "label": "Bridge Builder"
+    },
+    {
+      "id": 62,
+      "type": "action",
+      "text": [
+        "You decide to share only part of the ancient knowledge, keeping the deepest secrets hidden. 🎭",
+        "Duncan nods, understanding the delicate balance of trust. \"Even this much changes everything,\" he says.",
+        "\"Come with me to meet Duke Leto - your people need a voice in the coming changes.\""
+      ],
+      "actions": [
+        {
+          "label": "🤝 Full trust",
+          "id": 61
+        },
+        {
+          "label": "🎭 Partial truth",
+          "id": 62
+        }
+      ],
+      "position": [2000, -100],
+      "label": "Trust Decision"
+    },
+    {
+      "id": 63,
+      "type": "skip",
+      "text": [
+        "You choose to protect the ancient secrets, knowing they must be preserved for the right moment. 🏺",
+        "The elders recognize your wisdom and dedication to Fremen traditions.",
+        "When the Naib falls ill, the people turn to you for guidance."
+      ],
+      "nextId": 71,
+      "position": [2000, 50],
+      "label": "Wisdom's Path"
+    },
+    {
+      "id": 64,
+      "type": "skip",
+      "text": [
+        "Deep in the ancient caves, you find what generations of Fremen have sought - the master controls of the water system. 🌅",
+        "With this, you could lead your people to a hidden paradise, far from both Harkonnen and Atreides influence.",
+        "The choice to activate it will change everything."
+      ],
+      "nextId": 73,
+      "position": [2000, 250],
+      "label": "Ancient Power"
+    },
+    {
+      "id": 65,
+      "type": "skip",
+      "text": [
+        "Your alliance with the Atreides grows stronger. Together, you uncover more secrets of the desert and prepare for the challenges ahead. 🤝",
+        "Duke Leto recognizes your wisdom and appoints you as a key advisor.",
+        "The future of Arrakis is shaped by your decisions."
+      ],
+      "nextId": 69,
+      "position": [2000, 0],
+      "label": "Alliance Strengthened"
+    },
+    {
+      "id": 66,
+      "type": "skip",
+      "text": [
+        "You lead a daring strike against the Harkonnen operation, your warriors moving like desert wind through their defenses. ⚔️",
+        "Your knowledge of the terrain and brilliant tactics turn the tide, driving the Harkonnens from their secret base.",
+        "Word of your victory spreads through the sietches."
+      ],
+      "nextId": 70,
+      "position": [2000, -50],
+      "label": "Warrior's Victory"
+    },
+    {
+      "id": 67,
+      "type": "skip",
+      "text": [
+        "The Harkonnen force is massive - far larger than expected. You know the sietch must be warned. ⚠️",
+        "Taking command of a small group, you prepare to hold the narrow pass, buying time for your people to escape.",
+        "\"Remember us,\" you tell the messenger, \"and keep our secrets safe.\""
+      ],
+      "nextId": 72,
+      "position": [2000, 150],
+      "label": "Final Stand"
+    },
+    {
+      "id": 68,
+      "type": "skip",
+      "text": [
+        "Your discovery of the Harkonnen plans provides critical intelligence. The Atreides and Fremen work together to counter the threat. 🗺️",
+        "Duncan Idaho leads a joint operation, with your guidance ensuring its success.",
+        "The desert's secrets remain safe, for now."
+      ],
+      "nextId": 65,
+      "position": [2000, 100],
+      "label": "Joint Success"
+    },
+    {
+      "id": 69,
+      "type": "finish",
+      "text": [
+        "🏰 Your decision to trust the Atreides marks a new chapter in Fremen history.",
+        "As advisor to Duke Leto and keeper of ancient knowledge, you help forge a lasting alliance between your peoples.",
+        "The desert may keep its secrets, but its children will know a better future."
+      ],
+      "position": [2200, -150],
+      "label": "Trusted Advisor"
+    },
+    {
+      "id": 70,
+      "type": "finish",
+      "text": [
+        "⚔️ Your name becomes legend among the Fremen, a warrior who combines ancient wisdom with bold action.",
+        "The sietches look to you as their champion, and even the Harkonnens learn to fear the desert's wrath.",
+        "Your victories ensure the Fremen ways endure, stronger than ever."
+      ],
+      "position": [2200, -50],
+      "label": "Desert's Champion"
+    },
+    {
+      "id": 71,
+      "type": "finish",
+      "text": [
+        "👥 The sietch accepts you as their new leader, recognizing your balance of tradition and foresight.",
+        "Under your guidance, the ancient knowledge remains safe, while your people grow stronger.",
+        "You lead your sietch into a future that honors the old ways while adapting to new challenges."
+      ],
+      "position": [2200, 50],
+      "label": "Sietch Leader"
+    },
+    {
+      "id": 72,
+      "type": "finish",
+      "text": [
+        "💀 Your sacrifice becomes legend among the Fremen, a tale of ultimate dedication to your people.",
+        "The sietch survives, the ancient knowledge preserved, because you held the pass until the last.",
+        "Your name joins those of the greatest heroes in Fremen history."
+      ],
+      "position": [2200, 150],
+      "label": "Martyr's Sacrifice"
+    },
+    {
+      "id": 73,
+      "type": "finish",
+      "text": [
+        "🌅 In a hidden valley, shielded by mountains and powered by the ancient systems, your people find their paradise.",
+        "Here, far from the great houses' conflicts, the Fremen build a new home where water flows freely.",
+        "You've led your people to the dream they've held for generations."
+      ],
+      "position": [2200, 250],
+      "label": "Desert's Freedom"
+    }
+  ]
+}
