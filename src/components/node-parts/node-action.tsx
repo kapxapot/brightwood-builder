@@ -122,7 +122,7 @@ export default function NodeAction({ action, index, deletable, nodeEditing, char
         {!editing &&
           <div className="break-words flex gap-1">
             <Bolt />
-            <span>
+            <span className="pr-2">
               {initialLabel} <NodeRef id={action.id} />
             </span>
           </div>
