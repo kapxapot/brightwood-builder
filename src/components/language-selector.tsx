@@ -1,7 +1,9 @@
+import { forwardRef } from "react";
 import { LanguageInfo } from "@/lib/types";
 import { Select, SelectContent, SelectGroup, SelectItem, SelectTrigger, SelectValue } from "./ui/select";
 import { Language } from "./language";
 import { useTranslation } from "react-i18next";
+import { cn } from "@/lib/utils";
 
 type Props = {
   brief?: boolean;
@@ -12,13 +14,11 @@ type Props = {
   onSelect?: (code: string) => void;
 }
 
-export function LanguageSelector({ brief = false, className, currentLanguageCode, disabled = false, languages, onSelect }: Props) {
+const LanguageSelector = forwardRef<HTMLButtonElement, Props>(({ brief = false, className, currentLanguageCode, disabled = false, languages, onSelect }, ref) => {
   const { t } = useTranslation();
 
   const currentLanguage = languages.find(lng => lng.code === currentLanguageCode);
-
   const isCurrent = (lng: LanguageInfo) => currentLanguageCode === lng.code;
-
   const otherLanguages = languages.filter(lng => !isCurrent(lng));
 
   return (
@@ -29,7 +29,12 @@ export function LanguageSelector({ brief = false, className, currentLanguageCode
       disabled={disabled}
     >
       <SelectTrigger
-        className={`hover:bg-gray-200 ${brief ? "px-1.5 py-1.5 justify-center" : "pr-1 pl-2 py-1" } h-auto border-0 shadow-none ${brief ? "" : "w-auto"} rounded-lg ${className}`}
+        ref={ref}
+        className={cn(
+          "hover:bg-gray-200 h-auto border-0 shadow-none rounded-lg",
+          brief ? "px-1.5 py-1.5 justify-center" : "pr-1 pl-2 py-1 w-auto",
+          className
+        )}
         hideIcon={brief}
       >
         {currentLanguage && (
@@ -66,4 +71,8 @@ export function LanguageSelector({ brief = false, className, currentLanguageCode
       </SelectContent>
     </Select>
   );
-}
+});
+
+LanguageSelector.displayName = "LanguageSelector";
+
+export default LanguageSelector;

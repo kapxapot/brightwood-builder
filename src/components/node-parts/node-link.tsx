@@ -5,7 +5,7 @@ import { useEffect, useRef, useState } from "react";
 import { autoHeight, focus } from "../../lib/ref-operations";
 import { weights } from "../../lib/constants";
 import HandleOut from "./handle-out";
-import { WeightDices } from "./weight-dices";
+import WeightDices from "./weight-dices";
 import { Delete, Edit, MoveDown, MoveUp } from "../core/icons";
 import Tooltip from "../core/tooltip";
 import { TextInputLabel } from "../core/text-input-label";

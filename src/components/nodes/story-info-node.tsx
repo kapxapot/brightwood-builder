@@ -9,7 +9,7 @@ import HandleOut from "../node-parts/handle-out";
 import NodeShell from "../node-parts/node-shell";
 import { Flag } from "../core/icons";
 import { useTranslation } from "react-i18next";
-import { LanguageSelector } from "../language-selector";
+import LanguageSelector from "../language-selector";
 
 type Props = {
   data: StoryInfoGraphNode;

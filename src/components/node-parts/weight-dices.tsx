@@ -1,10 +1,11 @@
+import { forwardRef } from "react";
 import { Cube } from "../core/icons";
 
 type Props = {
   weight: number;
 }
 
-export function WeightDices({ weight }: Props) {
+const WeightDices = forwardRef<HTMLDivElement, Props>(({ weight }, ref) => {
   if (weight <= 0) {
     return null;
   }
@@ -14,7 +15,7 @@ export function WeightDices({ weight }: Props) {
   const float = weight > floor;
 
   return (
-    <div className="flex">
+    <div ref={ref} className="flex">
       {Array(diceCount).fill(0).map((_, index) => <Cube key={index} />)}
       {float &&
         <span className="ml-1">
@@ -23,4 +24,8 @@ export function WeightDices({ weight }: Props) {
       }
     </div>
   );
-}
+});
+
+WeightDices.displayName = "WeightDices";
+
+export default WeightDices;

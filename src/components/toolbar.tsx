@@ -10,7 +10,7 @@ import GitHubIcon from "./github-icon";
 import { useTranslation } from "react-i18next";
 import { Bounce } from "./motion/bounce";
 import { motion } from "framer-motion";
-import { UiLanguageSelector } from "./ui-language-selector";
+import UiLanguageSelector from "./ui-language-selector";
 
 type Handler = () => void;
 
