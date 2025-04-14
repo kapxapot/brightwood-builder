@@ -57,7 +57,7 @@ function storyInfoNodeIfMessages(t: Translator, node: StoryInfoGraphNode): IfMes
     ],
     [
       !node.startId,
-      t("Add a starting node.")
+      t("Add the starting node.")
     ],
     [
       !node.language,

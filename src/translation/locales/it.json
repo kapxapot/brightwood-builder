@@ -84,7 +84,7 @@
   "Add at least one action.": "Aggiungi almeno un'azione.",
   "Add a destination node for action \"[{{index}}]{{label}}\".": "Aggiungi un nodo di destinazione per l'azione \"[{{index}}]{{label}}\".",
   "Add the story title.": "Aggiungi il titolo della storia.",
-  "Add a starting node.": "Aggiungi un nodo iniziale.",
+  "Add the starting node.": "Aggiungi il nodo iniziale.",
   "Story": "Storia",
   "Node": "Nodo",
   "Switch interface language": "Cambia lingua dell'interfaccia",

@@ -84,7 +84,7 @@
   "Add at least one action.": "Добавьте как минимум одно действие.",
   "Add a destination node for action \"[{{index}}]{{label}}\".": "Добавьте узел назначения для действия \"[{{index}}]{{label}}\".",
   "Add the story title.": "Добавьте заголовок истории.",
-  "Add a starting node.": "Добавьте начальный узел.",
+  "Add the starting node.": "Добавьте начальный узел.",
   "Story": "История",
   "Node": "Узел",
   "Switch interface language": "Переключить язык интерфейса",

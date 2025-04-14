@@ -84,7 +84,7 @@
   "Add at least one action.": "少なくとも 1 つの行いを追加してください。",
   "Add a destination node for action \"[{{index}}]{{label}}\".": "\"[{{index}}]{{label}}\"行いへの宛先ノードを追加してください。",
   "Add the story title.": "ストーリータイトルを追加してください。",
-  "Add a starting node.": "始まりノードを追加してください。",
+  "Add the starting node.": "開始ノードを追加してください。",
   "Story": "ストーリー",
   "Node": "ノード",
   "Switch interface language": "インターフェイス言語を切り替え",
