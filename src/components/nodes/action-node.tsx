@@ -15,12 +15,15 @@ import Button from "../core/button";
 type Props = {
   data: ActionStoryNode;
   selected: boolean;
-}
+  dragging?: boolean;
+};
 
-const ActionNode = memo(function ActionNode({ data, selected }: Props) {
+const ActionNode = memo(function ActionNode({ data, selected, dragging }: Props) {
   const { t } = useTranslation();
 
   const { nodeEditing, startEdit, finishEdit } = useNodeEditing(data);
+
+  const editingOrDragging = nodeEditing || dragging;
 
   return (
     <NodeShell
@@ -34,7 +37,7 @@ const ActionNode = memo(function ActionNode({ data, selected }: Props) {
 
       <NodeText
         data={data}
-        readonly={nodeEditing}
+        readonly={editingOrDragging}
         onEditStarted={startEdit}
         onEditFinished={finishEdit}
       />
@@ -45,7 +48,7 @@ const ActionNode = memo(function ActionNode({ data, selected }: Props) {
           index={index}
           action={action}
           deletable={true}
-          nodeEditing={nodeEditing}
+          nodeEditing={editingOrDragging}
           charLimit={100}
           isFirst={index === 0}
           isLast={index === data.actions.length - 1}
@@ -61,7 +64,7 @@ const ActionNode = memo(function ActionNode({ data, selected }: Props) {
       <div>
         <Button
           onClick={() => addAction(data)}
-          disabled={nodeEditing}
+          disabled={editingOrDragging}
         >
           {t("Add action")}
         </Button>
