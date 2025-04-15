@@ -29,6 +29,7 @@ import { useToastMessages } from "@/hooks/use-toast-messages";
 import { clearSearchParams, getSearchParams } from "@/lib/search";
 import { useTranslation } from "react-i18next";
 import { useLanguage } from "@/hooks/use-language";
+import StoryInfo from "./ui/story-info";
 
 const nodeTypes = {
   storyInfo: StoryInfoNode,
@@ -623,16 +624,21 @@ export default function Flow() {
             disableKeyboardA11y={true}
           >
             <Controls />
+
             <MiniMap
               zoomable
               pannable
               nodeColor={n => n.type ? colors[n.type as StoryNodeType].rgb : "gray"}
             />
+
+            <StoryInfo nodes={nodes} />
+
             {!isEmpty(validationMessages) && (
               <ValidationMessages
                 messages={validationMessages}
               />
             )}
+
             <Background variant={BackgroundVariant.Dots} gap={12} size={1} />
           </ReactFlow>
         </div>
