@@ -1,0 +1,890 @@
+{
+  "id": "f47ac10b-58cc-4372-a567-0e02b2c3d479",
+  "title": "First Contact",
+  "description": "Lead humanity's first interstellar expedition as Dr. Elena Santos, a xenolinguist discovering an inhabited alien world.",
+  "language": "en",
+  "startId": 1,
+  "nodes": [
+    {
+      "id": 1,
+      "type": "skip",
+      "label": "Mission Briefing",
+      "text": [
+        "🌌 The vast expanse of space stretches before the research vessel Horizon as it emerges from its final jump.",
+        "As Dr. Elena Santos, you've trained your entire life for this moment. The first confirmed signals of intelligent life have led your crew to Kepler-742b.",
+        "Captain Chen's voice comes through the intercom: \"All senior staff to the bridge. We have made visual contact.\""
+      ],
+      "nextId": 2
+    },
+    {
+      "id": 2,
+      "type": "action",
+      "label": "First Decision",
+      "text": [
+        "🛸 Through the bridge's panoramic window, you see it: an alien city gleaming under a purple sky.",
+        "Your crew looks to you, humanity's leading expert in xenolinguistics and first contact protocols. What's your first priority?"
+      ],
+      "actions": [
+        {
+          "id": 3,
+          "label": "📡 Analyze signals"
+        },
+        {
+          "id": 4,
+          "label": "🔍 Study architecture"
+        },
+        {
+          "id": 5,
+          "label": "👥 Consult the crew"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "type": "skip",
+      "label": "Signal Analysis",
+      "text": [
+        "👨‍💻 You focus on the communication array, detecting complex patterns in the electromagnetic spectrum.",
+        "These aren't random - they show clear signs of language structure. Your universal translator begins processing the data."
+      ],
+      "nextId": 6
+    },
+    {
+      "id": 4,
+      "type": "skip",
+      "label": "City Overview",
+      "text": [
+        "🏙️ The alien architecture defies Earth's engineering principles - structures that seem to float, buildings that spiral impossibly.",
+        "You notice distinct districts, suggesting a highly organized society. The complexity indicates an advanced civilization."
+      ],
+      "nextId": 7
+    },
+    {
+      "id": 5,
+      "type": "skip",
+      "label": "Crew Meeting",
+      "text": [
+        "👥 You gather the senior staff: Dr. Zhang (xenobiologist), Commander Rodriguez (security), and Dr. Patel (planetary scientist).",
+        "Each brings a unique perspective to this historic moment. The discussion is tense but productive."
+      ],
+      "nextId": 8
+    },
+    {
+      "id": 6,
+      "type": "action",
+      "label": "Signal Discovery",
+      "text": [
+        "📡 The patterns crystallize into something remarkable - a repeating mathematical sequence interwoven with what appears to be pictorial data.",
+        "This could be their way of initiating first contact. How do you proceed with this discovery?"
+      ],
+      "actions": [
+        {
+          "id": 9,
+          "label": "🔢 Send math response"
+        },
+        {
+          "id": 10,
+          "label": "🖼️ Send Earth images"
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "type": "action",
+      "label": "City Analysis",
+      "text": [
+        "🏗️ Your detailed scans reveal something unprecedented - the buildings appear to be partially organic, growing and adapting like living organisms.",
+        "This could be a breakthrough in understanding their technology. What's your next move?"
+      ],
+      "actions": [
+        {
+          "id": 11,
+          "label": "🔬 Research materials"
+        },
+        {
+          "id": 12,
+          "label": "🚁 Launch probe"
+        }
+      ]
+    },
+    {
+      "id": 8,
+      "type": "action",
+      "label": "Team Discussion",
+      "text": [
+        "💭 The crew's insights paint a complex picture: Dr. Zhang spots signs of biotechnology, Rodriguez notes defensive capabilities, and Dr. Patel detects unusual energy signatures.",
+        "Which expert's findings do you want to investigate further?"
+      ],
+      "actions": [
+        {
+          "id": 13,
+          "label": "🧬 Biotech analysis"
+        },
+        {
+          "id": 14,
+          "label": "🛡️ Defense assessment"
+        },
+        {
+          "id": 15,
+          "label": "⚡ Energy research"
+        }
+      ]
+    },
+    {
+      "id": 9,
+      "type": "skip",
+      "label": "Mathematical Response",
+      "text": [
+        "🔢 You transmit a sequence completing their mathematical pattern, adding basic arithmetic principles from Earth.",
+        "Minutes pass in tense silence. Suddenly, new signals flood in - they're responding with more complex equations!"
+      ],
+      "nextId": 16
+    },
+    {
+      "id": 10,
+      "type": "skip",
+      "label": "Visual Communication",
+      "text": [
+        "🖼️ You transmit a carefully curated set of Earth images: our solar system, basic human biology, and peaceful cultural exchanges.",
+        "The response is immediate - a stream of similar images from their world begins pouring in."
+      ],
+      "nextId": 17
+    },
+    {
+      "id": 11,
+      "type": "skip",
+      "label": "Material Study",
+      "text": [
+        "🔬 Initial scans indicate a revolutionary bio-synthetic composite material. The structures seem to be grown rather than built.",
+        "Dr. Zhang's eyes light up as she reviews the data: \"This could revolutionize Earth's construction industry!\""
+      ],
+      "nextId": 18
+    },
+    {
+      "id": 12,
+      "type": "redirect",
+      "label": "Probe Launch",
+      "text": [
+        "🛸 You launch a small probe to collect atmospheric and structural samples.",
+        "The alien city's defense systems might react to this approach. The tension on the bridge is palpable."
+      ],
+      "links": [
+        {
+          "id": 19,
+          "weight": 7
+        },
+        {
+          "id": 20,
+          "weight": 3
+        }
+      ]
+    },
+    {
+      "id": 13,
+      "type": "skip",
+      "label": "Biotechnology",
+      "text": [
+        "🧬 Dr. Zhang's analysis reveals incredible implications - the entire city might be a single, interconnected living organism.",
+        "\"Their technological development must have taken a completely different path from ours,\" she explains excitedly."
+      ],
+      "nextId": 21
+    },
+    {
+      "id": 14,
+      "type": "skip",
+      "label": "Defense Systems",
+      "text": [
+        "🛡️ Commander Rodriguez points out sophisticated energy barriers and what appear to be defensive platforms.",
+        "\"They're advanced, but they haven't powered up their weapons. They're cautious, not hostile.\""
+      ],
+      "nextId": 22
+    },
+    {
+      "id": 15,
+      "type": "skip",
+      "label": "Energy Analysis",
+      "text": [
+        "⚡ Dr. Patel's readings show incredible energy efficiency. The entire city runs on what appears to be clean, sustainable power.",
+        "\"Their energy technology could solve Earth's climate crisis,\" she notes."
+      ],
+      "nextId": 23
+    },
+    {
+      "id": 16,
+      "type": "action",
+      "label": "Mathematical Dialog",
+      "text": [
+        "🔢 The mathematical exchange grows more sophisticated. They're now sharing what appears to be physics equations.",
+        "This could be a gateway to understanding their technology. How do you proceed?"
+      ],
+      "actions": [
+        {
+          "id": 24,
+          "label": "📊 Share Earth physics"
+        },
+        {
+          "id": 25,
+          "label": "🌍 Request meeting"
+        }
+      ]
+    },
+    {
+      "id": 17,
+      "type": "action",
+      "label": "Visual Exchange",
+      "text": [
+        "🖼️ Their images show their species - tall, graceful beings with iridescent skin and multiple limbs.",
+        "They seem to be inviting further communication. What's your next step?"
+      ],
+      "actions": [
+        {
+          "id": 26,
+          "label": "👋 Send greetings"
+        },
+        {
+          "id": 27,
+          "label": "📝 Share language"
+        }
+      ]
+    },
+    {
+      "id": 18,
+      "type": "action",
+      "label": "Research Decision",
+      "text": [
+        "🧪 The bio-synthetic material could be the key to understanding their civilization.",
+        "Dr. Zhang suggests two possible approaches to studying this groundbreaking discovery."
+      ],
+      "actions": [
+        {
+          "id": 28,
+          "label": "🔬 Lab analysis"
+        },
+        {
+          "id": 29,
+          "label": "📡 Request data"
+        }
+      ]
+    },
+    {
+      "id": 19,
+      "type": "skip",
+      "label": "Peaceful Approach",
+      "text": [
+        "✨ The probe approaches peacefully. Their defense systems track it but don't interfere.",
+        "Data streams back: the atmosphere is breathable, and the structures emit complex bio-electronic signatures."
+      ],
+      "nextId": 30
+    },
+    {
+      "id": 20,
+      "type": "skip",
+      "label": "Defensive Reaction",
+      "text": [
+        "⚠️ A shimmering field activates around the city, gently deflecting the probe.",
+        "A new signal arrives - they're requesting direct communication before any physical contact."
+      ],
+      "nextId": 31
+    },
+    {
+      "id": 21,
+      "type": "action",
+      "label": "Biotech Discovery",
+      "text": [
+        "🧬 The city's bio-neural network suggests a symbiotic relationship between the aliens and their technology.",
+        "This could revolutionize human understanding of both biology and technology. How do you proceed?"
+      ],
+      "actions": [
+        {
+          "id": 32,
+          "label": "📝 Document findings"
+        },
+        {
+          "id": 33,
+          "label": "🤝 Propose exchange"
+        }
+      ]
+    },
+    {
+      "id": 22,
+      "type": "action",
+      "label": "Security Assessment",
+      "text": [
+        "🛡️ Their defensive capabilities far exceed ours, yet they maintain a clearly non-aggressive posture.",
+        "Commander Rodriguez suggests this might be the perfect opportunity to establish trust."
+      ],
+      "actions": [
+        {
+          "id": 34,
+          "label": "🤝 Open dialogue"
+        },
+        {
+          "id": 35,
+          "label": "🔍 Monitor defenses"
+        }
+      ]
+    },
+    {
+      "id": 23,
+      "type": "action",
+      "label": "Energy Innovation",
+      "text": [
+        "⚡ Dr. Patel's analysis shows their energy system taps into the planet's magnetic field in an unprecedented way.",
+        "This technology could transform Earth's future. What's your priority?"
+      ],
+      "actions": [
+        {
+          "id": 36,
+          "label": "📊 Study method"
+        },
+        {
+          "id": 37,
+          "label": "🤝 Seek cooperation"
+        }
+      ]
+    },
+    {
+      "id": 24,
+      "type": "skip",
+      "label": "Physics Exchange",
+      "text": [
+        "📊 You share Earth's understanding of physics, including our recent breakthroughs in quantum mechanics.",
+        "Their response contains corrections to our equations - they've mastered principles we're only beginning to grasp."
+      ],
+      "nextId": 38
+    },
+    {
+      "id": 25,
+      "type": "skip",
+      "label": "Meeting Request",
+      "text": [
+        "🤝 Using mathematical concepts as a foundation, you construct a message requesting a face-to-face meeting.",
+        "A response comes quickly, containing what appears to be coordinates and safety protocols."
+      ],
+      "nextId": 39
+    },
+    {
+      "id": 26,
+      "type": "skip",
+      "label": "First Greeting",
+      "text": [
+        "👋 You send a carefully crafted greeting message, accompanied by images of peaceful human interactions.",
+        "Their response includes similar gestures of peace, along with complex diagrams of their communication systems."
+      ],
+      "nextId": 40
+    },
+    {
+      "id": 27,
+      "type": "skip",
+      "label": "Language Share",
+      "text": [
+        "📝 You transmit basic Earth language structures, starting with simple concepts and building to more complex ideas.",
+        "The aliens quickly grasp the patterns, responding with their own linguistic framework."
+      ],
+      "nextId": 41
+    },
+    {
+      "id": 28,
+      "type": "redirect",
+      "label": "Laboratory Work",
+      "text": [
+        "🧪 Dr. Zhang begins analyzing the bio-synthetic samples in the ship's lab.",
+        "The material shows unexpected reactions to testing - it seems to respond to different stimuli in fascinating ways."
+      ],
+      "links": [
+        {
+          "id": 42,
+          "weight": 8
+        },
+        {
+          "id": 43,
+          "weight": 2
+        }
+      ]
+    },
+    {
+      "id": 29,
+      "type": "skip",
+      "label": "Technical Request",
+      "text": [
+        "📡 You compose a detailed request for information about their building materials.",
+        "The aliens respond by sharing comprehensive technical specifications - they seem eager to exchange knowledge."
+      ],
+      "nextId": 44
+    },
+    {
+      "id": 30,
+      "type": "action",
+      "label": "Atmospheric Data",
+      "text": [
+        "🌍 The probe's data confirms the atmosphere is safe for human life, with fascinating biological markers in the air.",
+        "This could be a historic opportunity for direct contact. What's your next move?"
+      ],
+      "actions": [
+        {
+          "id": 45,
+          "label": "👨‍🚀 Prepare landing"
+        },
+        {
+          "id": 46,
+          "label": "🔬 Study samples"
+        }
+      ]
+    },
+    {
+      "id": 31,
+      "type": "action",
+      "label": "Communication Request",
+      "text": [
+        "📡 Their request for communication shows both caution and wisdom. They want to establish understanding before physical contact.",
+        "How do you want to proceed with this diplomatic opening?"
+      ],
+      "actions": [
+        {
+          "id": 47,
+          "label": "🤝 Accept terms"
+        },
+        {
+          "id": 48,
+          "label": "📊 Share data first"
+        }
+      ]
+    },
+    {
+      "id": 32,
+      "type": "skip",
+      "label": "Research Documentation",
+      "text": [
+        "📝 You begin carefully documenting the bio-neural network's properties and behavior.",
+        "The data suggests possibilities far beyond current human technology - this could revolutionize everything from computing to medicine."
+      ],
+      "nextId": 54
+    },
+    {
+      "id": 33,
+      "type": "skip",
+      "label": "Exchange Initiative",
+      "text": [
+        "🤝 You propose a formal exchange of biotechnology knowledge between our species.",
+        "Their response is enthusiastic - they see great potential in combining their biological expertise with human innovation."
+      ],
+      "nextId": 55
+    },
+    {
+      "id": 34,
+      "type": "skip",
+      "label": "Open Communications",
+      "text": [
+        "📡 You initiate an open dialogue about security measures, showing trust and transparency.",
+        "The aliens appreciate this approach and begin sharing details about their defensive philosophy."
+      ],
+      "nextId": 40
+    },
+    {
+      "id": 35,
+      "type": "skip",
+      "label": "Defense Analysis",
+      "text": [
+        "🔍 You continue monitoring their defense systems, gathering detailed data.",
+        "The analysis reveals purely defensive capabilities - no weapons, only protection and containment fields."
+      ],
+      "nextId": 52
+    },
+    {
+      "id": 36,
+      "type": "skip",
+      "label": "Energy Research",
+      "text": [
+        "📊 You focus on understanding their revolutionary energy system.",
+        "The principles behind it could solve Earth's energy crisis and transform space travel capabilities."
+      ],
+      "nextId": 54
+    },
+    {
+      "id": 37,
+      "type": "skip",
+      "label": "Cooperation Request",
+      "text": [
+        "🤝 You propose a joint research initiative to study their energy technology.",
+        "They respond positively, suggesting a comprehensive exchange of knowledge."
+      ],
+      "nextId": 55
+    },
+    {
+      "id": 38,
+      "type": "action",
+      "label": "Scientific Breakthrough",
+      "text": [
+        "🌟 Their advanced physics knowledge reveals groundbreaking concepts about space-time and energy.",
+        "This could revolutionize human science. How do you handle this monumental discovery?"
+      ],
+      "actions": [
+        {
+          "id": 49,
+          "label": "🎓 Study carefully"
+        },
+        {
+          "id": 50,
+          "label": "📡 Share with Earth"
+        }
+      ]
+    },
+    {
+      "id": 39,
+      "type": "action",
+      "label": "Meeting Preparation",
+      "text": [
+        "👥 The coordinates indicate a neutral meeting zone in a transparent dome structure.",
+        "This could be humanity's first face-to-face contact with an alien species. How do you approach this historic moment?"
+      ],
+      "actions": [
+        {
+          "id": 51,
+          "label": "👨‍🚀 Lead team"
+        },
+        {
+          "id": 52,
+          "label": "🔍 Send probe first"
+        }
+      ]
+    },
+    {
+      "id": 40,
+      "type": "skip",
+      "label": "Cultural Exchange",
+      "text": [
+        "🤝 The aliens respond enthusiastically to your peaceful overture, sharing rich details about their society.",
+        "They express a deep curiosity about Earth and humanity, suggesting regular cultural exchanges."
+      ],
+      "nextId": 53
+    },
+    {
+      "id": 41,
+      "type": "skip",
+      "label": "Linguistic Progress",
+      "text": [
+        "📚 Your linguistic expertise pays off as you begin to grasp the underlying structure of their language.",
+        "They seem equally fascinated by human languages, proposing a joint linguistic database."
+      ],
+      "nextId": 54
+    },
+    {
+      "id": 42,
+      "type": "skip",
+      "label": "Successful Analysis",
+      "text": [
+        "✨ The lab tests reveal extraordinary properties - the material can self-repair and adapt to environmental changes.",
+        "Dr. Zhang believes this could lead to revolutionary advances in Earth's technology."
+      ],
+      "nextId": 55
+    },
+    {
+      "id": 43,
+      "type": "finish",
+      "label": "Critical Error",
+      "text": [
+        "⚠️ The material suddenly becomes unstable in the lab environment, threatening to breach containment.",
+        "Quick action prevents disaster, but the sample is lost. The aliens send a warning - their technology requires special handling.",
+        "While this setback ends the direct material study, it teaches valuable lessons about the challenges of working with alien technology."
+      ]
+    },
+    {
+      "id": 44,
+      "type": "action",
+      "label": "Knowledge Exchange",
+      "text": [
+        "📚 The aliens share detailed information about their bio-synthetic technology.",
+        "This level of openness suggests they're interested in technological cooperation. How do you proceed?"
+      ],
+      "actions": [
+        {
+          "id": 56,
+          "label": "🤝 Propose alliance"
+        },
+        {
+          "id": 57,
+          "label": "📝 Study further"
+        }
+      ]
+    },
+    {
+      "id": 45,
+      "type": "skip",
+      "label": "Landing Plans",
+      "text": [
+        "🚀 You begin preparations for humanity's first landing on an alien world.",
+        "The aliens transmit detailed landing protocols and safety recommendations."
+      ],
+      "nextId": 58
+    },
+    {
+      "id": 46,
+      "type": "skip",
+      "label": "Sample Analysis",
+      "text": [
+        "🔬 The atmospheric samples contain traces of advanced biotechnology - microscopic machines working in harmony with natural organisms.",
+        "This discovery suggests their entire civilization is built on bio-technological integration."
+      ],
+      "nextId": 59
+    },
+    {
+      "id": 47,
+      "type": "skip",
+      "label": "Accept Protocol",
+      "text": [
+        "🤝 You agree to their communication protocols, showing respect for their cautious approach.",
+        "This builds immediate trust, and they begin sharing more detailed information about their civilization."
+      ],
+      "nextId": 60
+    },
+    {
+      "id": 48,
+      "type": "skip",
+      "label": "Data Exchange",
+      "text": [
+        "📊 You share comprehensive data about Earth's scientific achievements and cultural history.",
+        "Their response indicates appreciation for your thoroughness, and they reciprocate with their own historical data."
+      ],
+      "nextId": 61
+    },
+    {
+      "id": 49,
+      "type": "skip",
+      "label": "Physics Study",
+      "text": [
+        "🎓 You and your team carefully analyze their advanced physics concepts, making sure to understand each principle thoroughly.",
+        "The implications are staggering - their understanding of quantum mechanics could revolutionize space travel."
+      ],
+      "nextId": 62
+    },
+    {
+      "id": 50,
+      "type": "skip",
+      "label": "Earth Communication",
+      "text": [
+        "📡 You prepare a detailed report of the physics breakthroughs and transmit it back to Earth.",
+        "The aliens seem pleased by your decision to share knowledge openly with your species."
+      ],
+      "nextId": 63
+    },
+    {
+      "id": 51,
+      "type": "finish",
+      "label": "Bridge Builder",
+      "text": [
+        "🌟 You lead the first human delegation into the transparent dome, heart pounding with anticipation.",
+        "The alien representatives greet you with gestures of peace. Through your shared understanding of mathematics and science, real communication begins.",
+        "This historic meeting marks the beginning of a lasting alliance between Earth and Kepler-742b, opening a new chapter in human history."
+      ]
+    },
+    {
+      "id": 52,
+      "type": "finish",
+      "label": "Safe Return",
+      "text": [
+        "🚀 After thorough probe investigation reveals some concerning data, you choose to maintain distance while gathering information.",
+        "Though direct contact isn't established, the wealth of scientific data collected will advance human knowledge by decades.",
+        "Your cautious approach ensures humanity can study this civilization safely while preparing for future contact."
+      ]
+    },
+    {
+      "id": 53,
+      "type": "action",
+      "label": "Cultural Bridge",
+      "text": [
+        "🌎 The cultural exchange leads to deeper understanding between both species.",
+        "They propose establishing a permanent communication link. How do you want to proceed?"
+      ],
+      "actions": [
+        {
+          "id": 64,
+          "label": "🤝 Accept proposal"
+        },
+        {
+          "id": 65,
+          "label": "🔍 Limited exchange"
+        }
+      ]
+    },
+    {
+      "id": 54,
+      "type": "finish",
+      "label": "Tech Revolution",
+      "text": [
+        "📱 Through the joint linguistic database project, both species gain unprecedented insights into communication and technology.",
+        "The combination of human creativity and alien bio-synthetic technology leads to revolutionary breakthroughs.",
+        "Your mission establishes the foundation for a new era of technological advancement and interstellar cooperation."
+      ]
+    },
+    {
+      "id": 55,
+      "type": "finish",
+      "label": "New Home",
+      "text": [
+        "🌍 The successful integration of human and alien technology opens new possibilities for both species.",
+        "The aliens invite humanity to establish a permanent presence on their world, sharing their bio-synthetic achievements.",
+        "Your mission transforms into the first step of humanity's integration with an advanced alien civilization."
+      ]
+    },
+    {
+      "id": 56,
+      "type": "skip",
+      "label": "Alliance Proposal",
+      "text": [
+        "🤝 You propose a formal technological alliance between Earth and their civilization.",
+        "Their response is enthusiastic - they see great potential in combining their bio-synthetic expertise with human innovation."
+      ],
+      "nextId": 66
+    },
+    {
+      "id": 57,
+      "type": "finish",
+      "label": "Conflict",
+      "text": [
+        "⚔️ Your prolonged study reveals concerning military applications of their technology.",
+        "When confronted, they become defensive and withdraw their cooperation.",
+        "The mission ends with tensions high, teaching humanity that trust must be earned in interstellar relations."
+      ]
+    },
+    {
+      "id": 58,
+      "type": "skip",
+      "label": "Landing Preparations",
+      "text": [
+        "👨‍🚀 Following their protocols, your team prepares for the historic landing.",
+        "The aliens have prepared a special bio-synthetic structure to accommodate human biology."
+      ],
+      "nextId": 51
+    },
+    {
+      "id": 59,
+      "type": "skip",
+      "label": "Biotechnology Discovery",
+      "text": [
+        "🧬 The microscopic machines in the atmosphere appear to be maintaining the planet's ecological balance.",
+        "This could be the key to understanding their entire civilization."
+      ],
+      "nextId": 67
+    },
+    {
+      "id": 60,
+      "type": "skip",
+      "label": "Trust Building",
+      "text": [
+        "🤝 Your respectful approach pays off as they begin sharing more sensitive information about their society.",
+        "They express interest in learning about Earth's cultures and traditions."
+      ],
+      "nextId": 40
+    },
+    {
+      "id": 61,
+      "type": "skip",
+      "label": "Historical Exchange",
+      "text": [
+        "📚 Their historical data reveals millennia of peaceful technological development.",
+        "They've overcome many of the challenges currently facing Earth."
+      ],
+      "nextId": 68
+    },
+    {
+      "id": 62,
+      "type": "skip",
+      "label": "Scientific Understanding",
+      "text": [
+        "🎓 As you delve deeper into their physics, you realize they've mastered sustainable energy and space travel.",
+        "This knowledge could transform human civilization."
+      ],
+      "nextId": 69
+    },
+    {
+      "id": 63,
+      "type": "skip",
+      "label": "Earth's Response",
+      "text": [
+        "📡 Earth's scientific community responds with excitement to your transmission.",
+        "The aliens propose establishing a permanent scientific exchange program."
+      ],
+      "nextId": 70
+    },
+    {
+      "id": 64,
+      "type": "skip",
+      "label": "Accept Link",
+      "text": [
+        "🌟 You accept their proposal for a permanent communication link.",
+        "This decision opens the door to ongoing cultural and scientific exchange."
+      ],
+      "nextId": 71
+    },
+    {
+      "id": 65,
+      "type": "skip",
+      "label": "Careful Approach",
+      "text": [
+        "🔍 You opt for a limited but steady exchange of information.",
+        "This cautious approach helps build trust gradually."
+      ],
+      "nextId": 52
+    },
+    {
+      "id": 66,
+      "type": "skip",
+      "label": "Technology Sharing",
+      "text": [
+        "🔬 The technological alliance begins with careful sharing of basic principles.",
+        "Both species find fascinating new perspectives in each other's approaches."
+      ],
+      "nextId": 54
+    },
+    {
+      "id": 67,
+      "type": "skip",
+      "label": "Integration Discovery",
+      "text": [
+        "🧪 You realize their entire society is built on perfect integration with their environment.",
+        "This harmony between technology and nature could be revolutionary for Earth."
+      ],
+      "nextId": 55
+    },
+    {
+      "id": 68,
+      "type": "skip",
+      "label": "Learning Path",
+      "text": [
+        "📚 Their historical solutions to problems like climate change and energy crises could be invaluable to Earth.",
+        "They offer to share this knowledge through a permanent exchange program."
+      ],
+      "nextId": 51
+    },
+    {
+      "id": 69,
+      "type": "skip",
+      "label": "Physics Implementation",
+      "text": [
+        "⚡ Their physics principles could revolutionize Earth's space travel capabilities.",
+        "They offer to help humanity implement these technologies safely."
+      ],
+      "nextId": 54
+    },
+    {
+      "id": 70,
+      "type": "skip",
+      "label": "Exchange Program",
+      "text": [
+        "🎓 The scientific exchange program promises to accelerate human development by centuries.",
+        "Both species see enormous potential in collaboration."
+      ],
+      "nextId": 55
+    },
+    {
+      "id": 71,
+      "type": "skip",
+      "label": "Final Decision",
+      "text": [
+        "🌟 With the communication link established, you must decide how to proceed with this historic relationship.",
+        "This choice will shape humanity's future in the cosmos."
+      ],
+      "nextId": 51
+    }
+  ]
+}
