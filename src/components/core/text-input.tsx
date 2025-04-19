@@ -32,6 +32,7 @@ export default function TextInput({ value, label, rowCount, readonly = false, de
   const initialValue = value || "";
   const noValue = !initialValue.length;
   const editable = !readonly;
+  const reallyDeletable = deletable && !noValue;
 
   const [editedValue, setEditedValue] = useState(initialValue);
   const [editing, setEditing] = useState(false);
@@ -134,13 +135,19 @@ export default function TextInput({ value, label, rowCount, readonly = false, de
               onClick={startEdit}
             >
               <TextDisplay
-                className={`whitespace-pre-line break-words ${noValue && "opacity-30"}`}
+                className={cn(
+                  "whitespace-pre-line break-words",
+                  noValue ? "opacity-30" : ""
+                )}
                 text={value || label }
               />
             </div>
           }
-          {(editable || deletable) && (
-            <div className={`absolute right-1 ${noValue ? "top-1" : "top-6"} hidden group-hover:block`}>
+          {(editable || reallyDeletable) && (
+            <div className={cn(
+              "absolute right-1 hidden group-hover:block",
+              noValue ? "top-1" : "top-6"
+            )}>
               <div className="flex gap-1">
                 {editable && (
                   <Button
@@ -151,7 +158,7 @@ export default function TextInput({ value, label, rowCount, readonly = false, de
                   </Button>
                 )}
 
-                {deletable && (
+                {reallyDeletable && (
                   <Button
                     size="small"
                     onClick={onDeleted}
