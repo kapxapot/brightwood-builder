@@ -46,7 +46,10 @@ const StoryInfoNode = memo(function StoryInfoNode({ data, selected }: Props) {
       color={colors.storyInfo.tw}
       spaceY="none"
     >
-      <NodeTitle id={data.id} label={t(nodeLabels.storyInfo)} />
+      <NodeTitle
+        id={data.id}
+        label={t(nodeLabels.storyInfo)}
+      />
 
       <TextInput
         value={data.title}
@@ -62,8 +65,10 @@ const StoryInfoNode = memo(function StoryInfoNode({ data, selected }: Props) {
         value={data.description}
         label={t("Description")}
         readonly={nodeEditing}
+        deletable={true}
         charLimit={1000}
         onValueChanged={updateDescription}
+        onDeleted={() => updateDescription("")}
         onEditStarted={startEdit}
         onEditFinished={finishEdit}
       />
@@ -72,9 +77,11 @@ const StoryInfoNode = memo(function StoryInfoNode({ data, selected }: Props) {
         value={data.cover}
         label={t("Cover")}
         readonly={nodeEditing}
+        deletable={true}
         charLimit={500}
         renderAsImage={true}
         onValueChanged={updateCover}
+        onDeleted={() => updateCover("")}
         onEditStarted={startEdit}
         onEditFinished={finishEdit}
       />

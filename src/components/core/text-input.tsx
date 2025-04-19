@@ -1,13 +1,14 @@
 import { useEffect, useRef, useState } from "react";
 import Button from "../core/button";
 import { autoHeight, focus } from "../../lib/ref-operations";
-import { Edit } from "./icons";
+import { Delete, Edit } from "./icons";
 import { TextInputLabel } from "./text-input-label";
 import { useCharLimit } from "@/hooks/use-char-limit";
 import { useTranslation } from "react-i18next";
 import TextDisplay from "./text-display";
 import { extractImageUrl } from "@/lib/url";
 import { ImageDisplay } from "./image-display";
+import { cn } from "@/lib/utils";
 
 const defaultRowCount = 2;
 
@@ -16,18 +17,21 @@ type Props = {
   label: string;
   rowCount?: number;
   readonly?: boolean;
+  deletable?: boolean;
   charLimit?: number;
   renderAsImage?: boolean;
   onValueChanged?: (value: string) => void;
+  onDeleted?: () => void;
   onEditStarted?: () => void;
   onEditFinished?: () => void;
-}
+};
 
-export default function TextInput({ value, label, rowCount, readonly = false, charLimit = 0, renderAsImage = false, onValueChanged, onEditStarted, onEditFinished }: Props) {
+export default function TextInput({ value, label, rowCount, readonly = false, deletable = false, charLimit = 0, renderAsImage = false, onValueChanged, onDeleted, onEditStarted, onEditFinished }: Props) {
   const { t } = useTranslation();
 
   const initialValue = value || "";
   const noValue = !initialValue.length;
+  const editable = !readonly;
 
   const [editedValue, setEditedValue] = useState(initialValue);
   const [editing, setEditing] = useState(false);
@@ -111,7 +115,10 @@ export default function TextInput({ value, label, rowCount, readonly = false, ch
       {/* view */}
       {!editing &&
         <div
-          className={`relative group ${!readonly && !isImage && "cursor-text"} text-sm`}
+          className={cn(
+            "relative group text-sm",
+            editable && !isImage ? "cursor-text" : ""
+          )}
         >
           {!noValue &&
             <span className="text-xs opacity-50 font-bold ml-0.5">
@@ -132,16 +139,29 @@ export default function TextInput({ value, label, rowCount, readonly = false, ch
               />
             </div>
           }
-          {!readonly &&
+          {(editable || deletable) && (
             <div className={`absolute right-1 ${noValue ? "top-1" : "top-6"} hidden group-hover:block`}>
-              <Button
-                size="small"
-                onClick={startEdit}
-              >
-                <Edit />
-              </Button>
+              <div className="flex gap-1">
+                {editable && (
+                  <Button
+                    size="small"
+                    onClick={startEdit}
+                  >
+                    <Edit />
+                  </Button>
+                )}
+
+                {deletable && (
+                  <Button
+                    size="small"
+                    onClick={onDeleted}
+                  >
+                    <Delete />
+                  </Button>
+                )}
+              </div>
             </div>
-          }
+          )}
         </div>
       }
     </div>
