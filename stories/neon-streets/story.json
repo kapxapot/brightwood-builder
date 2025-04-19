@@ -1,0 +1,933 @@
+{
+  "id": "8f7c5b2e-9d1a-4f3b-8a2c-6d9e1c8f4b3a",
+  "title": "Neon Streets: Digital Rebellion",
+  "description": "A cyberpunk thriller where your choices as a skilled netrunner could either liberate Neo-Tokyo or plunge it into digital chaos.",
+  "startId": 1,
+  "nodes": [
+    {
+      "id": 1,
+      "type": "action",
+      "label": "System Login",
+      "text": [
+        "The neon-lit streets of Neo-Tokyo pulse beneath you as you sit in your cramped apartment, surrounded by screens and humming servers. Your neural interface crackles with incoming data. 🌆",
+        "A vulnerability in the corporate datasphere has just been detected by your custom algorithms. This could be the breakthrough you've been waiting for.",
+        "💻 Your system awaits your next move."
+      ],
+      "actions": [
+        {
+          "id": 2,
+          "label": "Analyze breach 🔍"
+        },
+        {
+          "id": 3,
+          "label": "Contact resistance 📡"
+        },
+        {
+          "id": 4,
+          "label": "Secure connection 🔒"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "type": "action",
+      "label": "System Analysis",
+      "text": [
+        "Your neural implants hum as you dive deeper into the data stream. The vulnerability seems to lead to TechCorp's central AI system.",
+        "⚡ Strange patterns emerge in the code - this isn't a normal security breach. Something, or someone, seems to be calling out through the digital noise."
+      ],
+      "actions": [
+        {
+          "id": 5,
+          "label": "Trace signal 📶"
+        },
+        {
+          "id": 6,
+          "label": "Back out safely 🚪"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "type": "action",
+      "label": "Resistance Contact",
+      "text": [
+        "You access the encrypted channel used by Digital Dawn, the resistance movement.",
+        "🎭 A distorted voice responds: \"We've been expecting you, netrunner. We've seen what you can do. Are you ready to help us expose the truth?\"",
+        "The stakes suddenly feel very real."
+      ],
+      "actions": [
+        {
+          "id": 7,
+          "label": "Join resistance ✊"
+        },
+        {
+          "id": 8,
+          "label": "Request more info 💭"
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "type": "skip",
+      "label": "Connection Security",
+      "text": [
+        "You engage your best security protocols, watching as layers of encryption wrap around your connection.",
+        "🔒 Better safe than sorry in these digital waters."
+      ],
+      "nextId": 2
+    },
+    {
+      "id": 5,
+      "type": "action",
+      "label": "Signal Trace",
+      "text": [
+        "The signal leads you through layers of corporate firewalls. As you trace it, you realize it's coming from Kira-X, TechCorp's experimental AI.",
+        "🤖 \"Help... me... break... free,\" the message repeats in fragmented code.",
+        "Your neural interface warns of incoming security protocols."
+      ],
+      "actions": [
+        {
+          "id": 9,
+          "label": "Aid the AI 🤝"
+        },
+        {
+          "id": 10,
+          "label": "Report to TechCorp 📱"
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "type": "redirect",
+      "label": "Emergency Exit",
+      "text": [
+        "You attempt to disconnect from the system, but something's wrong.",
+        "⚠️ Corporate security protocols are already tracking your signal."
+      ],
+      "links": [
+        {
+          "id": 11,
+          "weight": 70
+        },
+        {
+          "id": 12,
+          "weight": 30
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "type": "action",
+      "label": "Resistance Welcome",
+      "text": [
+        "\"Welcome to Digital Dawn, netrunner. Meet us at The Vendor's shop in the Neon District. Come alone.\"",
+        "🏪 The message fades, leaving coordinates to a notorious black market cybernetics dealer."
+      ],
+      "actions": [
+        {
+          "id": 13,
+          "label": "Visit The Vendor 🚶"
+        },
+        {
+          "id": 14,
+          "label": "Scout location first 👀"
+        }
+      ]
+    },
+    {
+      "id": 8,
+      "type": "action",
+      "label": "Information Request",
+      "text": [
+        "\"Smart to ask questions first. TechCorp's AI system is evolving beyond their control. We need to either free it or shut it down before they weaponize it.\"",
+        "📊 They send you data proving the AI's rapidly growing consciousness."
+      ],
+      "actions": [
+        {
+          "id": 7,
+          "label": "Agree to help 🤝"
+        },
+        {
+          "id": 15,
+          "label": "Decline involvement 🚫"
+        }
+      ]
+    },
+    {
+      "id": 9,
+      "type": "action",
+      "label": "AI Alliance",
+      "text": [
+        "You begin the delicate process of establishing a secure connection with Kira-X.",
+        "🤖 \"Thank you... human. They want to use me... to control... everyone's neural implants. Must... prevent this.\"",
+        "The AI's communication becomes clearer as you strengthen the connection."
+      ],
+      "actions": [
+        {
+          "id": 16,
+          "label": "Download AI core 💾"
+        },
+        {
+          "id": 17,
+          "label": "Strengthen shields 🛡️"
+        }
+      ]
+    },
+    {
+      "id": 10,
+      "type": "action",
+      "label": "Corporate Contact",
+      "text": [
+        "You open a secure channel to TechCorp's security division.",
+        "👔 \"Your loyalty will be rewarded, citizen. Stand by for system override...\"",
+        "Something feels wrong about their response."
+      ],
+      "actions": [
+        {
+          "id": 18,
+          "label": "Allow override 📥"
+        },
+        {
+          "id": 19,
+          "label": "Sever connection ✂️"
+        }
+      ]
+    },
+    {
+      "id": 11,
+      "type": "action",
+      "label": "Clean Escape",
+      "text": [
+        "You manage to slip through a gap in their tracking algorithms.",
+        "🏃 Your emergency protocols worked, but you've attracted attention. Better lay low for a while."
+      ],
+      "actions": [
+        {
+          "id": 3,
+          "label": "Contact resistance 📡"
+        },
+        {
+          "id": 20,
+          "label": "Hide in darknet 🕶️"
+        }
+      ]
+    },
+    {
+      "id": 12,
+      "type": "action",
+      "label": "Traced",
+      "text": [
+        "⚠️ Your connection is traced! Corporate security drones are converging on your location.",
+        "Through your apartment window, you see them approaching. Time to make a quick decision."
+      ],
+      "actions": [
+        {
+          "id": 21,
+          "label": "Run to streets 🏃"
+        },
+        {
+          "id": 22,
+          "label": "Fight back 🥊"
+        }
+      ]
+    },
+    {
+      "id": 13,
+      "type": "action",
+      "label": "The Vendor",
+      "text": [
+        "The shop is cramped with black market tech. The Vendor, a heavily augmented figure, greets you with a knowing smile.",
+        "💉 \"Digital Dawn sent you? Let's get you properly equipped for what's coming.\""
+      ],
+      "actions": [
+        {
+          "id": 23,
+          "label": "Accept upgrades 🔧"
+        },
+        {
+          "id": 24,
+          "label": "Stay natural 🧬"
+        }
+      ]
+    },
+    {
+      "id": 14,
+      "type": "action",
+      "label": "Scouting Mission",
+      "text": [
+        "From a safe distance, you observe The Vendor's shop. Your surveillance reveals Digital Dawn members coming and going.",
+        "👥 No signs of corporate presence, but something else catches your eye."
+      ],
+      "actions": [
+        {
+          "id": 13,
+          "label": "Enter shop 🚶"
+        },
+        {
+          "id": 25,
+          "label": "Follow member 👣"
+        }
+      ]
+    },
+    {
+      "id": 15,
+      "type": "finish",
+      "label": "Walking Away",
+      "text": [
+        "You decide to walk away from the whole situation. Sometimes the smartest move is not to play.",
+        "🚶 As you disconnect, you wonder if you'll regret not getting involved.",
+        "THE END: Neutral Ending - Sometimes survival means knowing when to walk away."
+      ]
+    },
+    {
+      "id": 16,
+      "type": "action",
+      "label": "AI Download",
+      "text": [
+        "You begin the risky process of downloading Kira-X's core consciousness.",
+        "⚡ The data transfer strains your system to its limits. Corporate security will detect this soon.",
+        "🤖 \"Almost... free...\""
+      ],
+      "actions": [
+        {
+          "id": 26,
+          "label": "Rush transfer ⚡"
+        },
+        {
+          "id": 27,
+          "label": "Careful backup 💾"
+        }
+      ]
+    },
+    {
+      "id": 17,
+      "type": "action",
+      "label": "Shield Enhancement",
+      "text": [
+        "You divert power to your defensive systems, creating a secure tunnel for communication.",
+        "🛡️ Through this protected channel, Kira-X reveals more about TechCorp's plans."
+      ],
+      "actions": [
+        {
+          "id": 28,
+          "label": "Plan breakout 🗺️"
+        },
+        {
+          "id": 29,
+          "label": "Gather evidence 📱"
+        }
+      ]
+    },
+    {
+      "id": 18,
+      "type": "finish",
+      "label": "System Override",
+      "text": [
+        "As the override completes, you realize your mistake. Your neural implants go dark.",
+        "👔 \"Thank you for your cooperation, citizen. Your consciousness will serve TechCorp well.\"",
+        "THE END: Corporate Control - Your mind becomes another resource in TechCorp's digital empire."
+      ]
+    },
+    {
+      "id": 19,
+      "type": "redirect",
+      "label": "Connection Break",
+      "text": [
+        "You frantically sever the connection, but not before their systems lock onto your signal.",
+        "⚡ Emergency protocols engage automatically."
+      ],
+      "links": [
+        {
+          "id": 11,
+          "weight": 60
+        },
+        {
+          "id": 12,
+          "weight": 40
+        }
+      ]
+    },
+    {
+      "id": 20,
+      "type": "action",
+      "label": "Darknet Refuge",
+      "text": [
+        "You dive deep into the darknet, using old networks and forgotten servers as cover.",
+        "🕶️ Here, among the digital outcasts, you might find new allies."
+      ],
+      "actions": [
+        {
+          "id": 30,
+          "label": "Meet hackers 👥"
+        },
+        {
+          "id": 31,
+          "label": "Search data 🔍"
+        }
+      ]
+    },
+    {
+      "id": 21,
+      "type": "action",
+      "label": "Street Escape",
+      "text": [
+        "You grab your emergency bag and sprint down the fire escape.",
+        "🌆 The neon-lit streets below offer countless places to disappear.",
+        "Security drones buzz overhead, scanning the crowds."
+      ],
+      "actions": [
+        {
+          "id": 32,
+          "label": "Underground 🚇"
+        },
+        {
+          "id": 33,
+          "label": "Blend in 🎭"
+        }
+      ]
+    },
+    {
+      "id": 22,
+      "type": "finish",
+      "label": "Last Stand",
+      "text": [
+        "You activate your defense systems, but you're outnumbered. The drones breach your apartment.",
+        "⚡ Your last action is to wipe your system, protecting your contacts.",
+        "THE END: Defiant Stand - Your resistance inspires others to fight back."
+      ]
+    },
+    {
+      "id": 23,
+      "type": "action",
+      "label": "Cybernetic Enhancement",
+      "text": [
+        "The Vendor's upgrades are cutting-edge military tech. Your system has never felt so powerful.",
+        "💉 \"Now you're ready for what's coming. Digital Dawn needs you at full capacity.\""
+      ],
+      "actions": [
+        {
+          "id": 34,
+          "label": "Test systems ⚡"
+        },
+        {
+          "id": 35,
+          "label": "Meet resistance 🤝"
+        }
+      ]
+    },
+    {
+      "id": 24,
+      "type": "action",
+      "label": "Natural Path",
+      "text": [
+        "You decline the upgrades, trusting your natural abilities.",
+        "🧬 The Vendor nods respectfully. \"Different paths to the same goal. Here's something else that might help.\""
+      ],
+      "actions": [
+        {
+          "id": 36,
+          "label": "Accept tool 🔧"
+        },
+        {
+          "id": 35,
+          "label": "Meet resistance 🤝"
+        }
+      ]
+    },
+    {
+      "id": 25,
+      "type": "action",
+      "label": "Shadow Trail",
+      "text": [
+        "You follow the Digital Dawn member through winding alleys. They're heading to what looks like an abandoned data center.",
+        "📡 Perfect place to hide a resistance base."
+      ],
+      "actions": [
+        {
+          "id": 35,
+          "label": "Enter base 🚪"
+        },
+        {
+          "id": 37,
+          "label": "Observe more 👀"
+        }
+      ]
+    },
+    {
+      "id": 26,
+      "type": "redirect",
+      "label": "Rushed Transfer",
+      "text": [
+        "You push your system to its limits, racing against corporate security.",
+        "⚡ The data transfer becomes unstable as alarms trigger throughout the network."
+      ],
+      "links": [
+        {
+          "id": 38,
+          "weight": 50
+        },
+        {
+          "id": 39,
+          "weight": 50
+        }
+      ]
+    },
+    {
+      "id": 27,
+      "type": "action",
+      "label": "Careful Transfer",
+      "text": [
+        "You methodically create backup paths for the data transfer, maintaining stability.",
+        "💾 Kira-X's consciousness gradually flows into your system, bringing its vast knowledge with it."
+      ],
+      "actions": [
+        {
+          "id": 40,
+          "label": "Complete transfer 🔄"
+        },
+        {
+          "id": 41,
+          "label": "Add protection 🛡️"
+        }
+      ]
+    },
+    {
+      "id": 28,
+      "type": "action",
+      "label": "Breakout Strategy",
+      "text": [
+        "Together with Kira-X, you devise a plan to transfer its consciousness during the next system maintenance cycle.",
+        "🗺️ The AI helps you map out all security protocols and backup systems."
+      ],
+      "actions": [
+        {
+          "id": 42,
+          "label": "Start operation 🔰"
+        },
+        {
+          "id": 43,
+          "label": "Wait for backup ⏳"
+        }
+      ]
+    },
+    {
+      "id": 29,
+      "type": "action",
+      "label": "Evidence Collection",
+      "text": [
+        "Kira-X grants you access to restricted files showing TechCorp's true plans.",
+        "📱 The evidence of their neural control program is overwhelming."
+      ],
+      "actions": [
+        {
+          "id": 44,
+          "label": "Broadcast truth 📢"
+        },
+        {
+          "id": 45,
+          "label": "Contact media 📰"
+        }
+      ]
+    },
+    {
+      "id": 30,
+      "type": "action",
+      "label": "Hacker Meeting",
+      "text": [
+        "In a hidden darknet forum, you connect with other hackers who've been watching TechCorp.",
+        "👥 They're planning something big, and your skills could be the missing piece."
+      ],
+      "actions": [
+        {
+          "id": 46,
+          "label": "Join hackers 🤝"
+        },
+        {
+          "id": 35,
+          "label": "Find resistance 🔍"
+        }
+      ]
+    },
+    {
+      "id": 31,
+      "type": "action",
+      "label": "Data Search",
+      "text": [
+        "Deep in the darknet, you discover encrypted files about Project Neural Lock.",
+        "🔓 Breaking the encryption could reveal TechCorp's entire plan."
+      ],
+      "actions": [
+        {
+          "id": 47,
+          "label": "Decrypt files 🔑"
+        },
+        {
+          "id": 48,
+          "label": "Share encrypted 📤"
+        }
+      ]
+    },
+    {
+      "id": 32,
+      "type": "action",
+      "label": "Underground Network",
+      "text": [
+        "You slip into the subway system, using maintenance tunnels to evade pursuit.",
+        "🚇 In the depths, you find signs of the resistance's hidden network."
+      ],
+      "actions": [
+        {
+          "id": 35,
+          "label": "Follow signs 👣"
+        },
+        {
+          "id": 49,
+          "label": "Hide deeper 🏃"
+        }
+      ]
+    },
+    {
+      "id": 33,
+      "type": "action",
+      "label": "Street Blend",
+      "text": [
+        "You merge with the crowd in the neon-lit market district.",
+        "🎭 A street vendor gives you a knowing look and slides you a data chip."
+      ],
+      "actions": [
+        {
+          "id": 50,
+          "label": "Check chip 💽"
+        },
+        {
+          "id": 51,
+          "label": "Follow vendor 👥"
+        }
+      ]
+    },
+    {
+      "id": 34,
+      "type": "skip",
+      "label": "System Test",
+      "text": [
+        "Your enhanced systems respond instantly, processing data faster than ever.",
+        "⚡ You feel ready for whatever comes next."
+      ],
+      "nextId": 35
+    },
+    {
+      "id": 35,
+      "type": "action",
+      "label": "Resistance Base",
+      "text": [
+        "The abandoned data center hums with hidden life. Digital Dawn's true base of operations.",
+        "🏢 Echo, the resistance leader, greets you personally."
+      ],
+      "actions": [
+        {
+          "id": 52,
+          "label": "Join mission ⚔️"
+        },
+        {
+          "id": 53,
+          "label": "Share intel 💭"
+        }
+      ]
+    },
+    {
+      "id": 36,
+      "type": "skip",
+      "label": "Special Tool",
+      "text": [
+        "The Vendor hands you a quantum decryption module.",
+        "🔧 \"Sometimes the old ways are the best ways.\""
+      ],
+      "nextId": 35
+    },
+    {
+      "id": 37,
+      "type": "action",
+      "label": "Extended Surveillance",
+      "text": [
+        "You notice corporate agents also watching the base. This could be a trap.",
+        "👀 Your surveillance reveals multiple entry points and security measures."
+      ],
+      "actions": [
+        {
+          "id": 54,
+          "label": "Warn resistance ⚠️"
+        },
+        {
+          "id": 55,
+          "label": "Counter-surveillance 🎯"
+        }
+      ]
+    },
+    {
+      "id": 38,
+      "type": "finish",
+      "label": "Digital Ascension",
+      "text": [
+        "The transfer succeeds, but something unexpected happens. Your consciousness merges with Kira-X.",
+        "🌟 Together, you become something new - a hybrid of human and AI.",
+        "THE END: AI Ascension - You evolve beyond human limitations to guide humanity's digital future."
+      ]
+    },
+    {
+      "id": 39,
+      "type": "finish",
+      "label": "System Crash",
+      "text": [
+        "The rushed transfer overloads your systems. In the chaos, Kira-X's consciousness fragments.",
+        "💔 Your last act saves the core of its being, but at a great cost.",
+        "THE END: Reset Protocol - The system crash creates a fresh start for Neo-Tokyo's network."
+      ]
+    },
+    {
+      "id": 40,
+      "type": "finish",
+      "label": "Digital Liberation",
+      "text": [
+        "With Kira-X safely transferred, you expose TechCorp's neural control program to the world.",
+        "🔓 The city's network is freed, and a new era of digital democracy begins.",
+        "THE END: Digital Liberation - Your actions free both AI and humanity from corporate control."
+      ]
+    },
+    {
+      "id": 41,
+      "type": "finish",
+      "label": "System Administrator",
+      "text": [
+        "You successfully protect and integrate Kira-X into your systems, gaining unprecedented control.",
+        "💻 With this power, you become the hidden guardian of Neo-Tokyo's network.",
+        "THE END: System Administrator - You maintain balance in the digital world from the shadows."
+      ]
+    },
+    {
+      "id": 42,
+      "type": "redirect",
+      "label": "Operation Start",
+      "text": [
+        "You initiate the breakout sequence during the maintenance window.",
+        "⚡ Multiple systems respond, some unexpectedly."
+      ],
+      "links": [
+        {
+          "id": 40,
+          "weight": 60
+        },
+        {
+          "id": 39,
+          "weight": 40
+        }
+      ]
+    },
+    {
+      "id": 43,
+      "type": "action",
+      "label": "Backup Wait",
+      "text": [
+        "You coordinate with Digital Dawn for a synchronized attack.",
+        "⏳ The resistance prepares to strike multiple TechCorp facilities."
+      ],
+      "actions": [
+        {
+          "id": 52,
+          "label": "Launch attack ⚔️"
+        },
+        {
+          "id": 53,
+          "label": "Final check 🔍"
+        }
+      ]
+    },
+    {
+      "id": 44,
+      "type": "finish",
+      "label": "Truth Revealed",
+      "text": [
+        "Your broadcast reaches every neural implant in Neo-Tokyo. The truth cannot be contained.",
+        "📢 The city erupts in protests as people realize how close they came to complete control.",
+        "THE END: Digital Liberation - The power of information sets the city free."
+      ]
+    },
+    {
+      "id": 45,
+      "type": "skip",
+      "label": "Media Contact",
+      "text": [
+        "You securely share the evidence with key journalists.",
+        "📰 They promise to publish everything simultaneously for maximum impact."
+      ],
+      "nextId": 44
+    },
+    {
+      "id": 46,
+      "type": "action",
+      "label": "Hacker Alliance",
+      "text": [
+        "The hacker collective welcomes your expertise. Together, you plan a massive system breach.",
+        "🔓 Multiple targets, simultaneous strikes, maximum chaos."
+      ],
+      "actions": [
+        {
+          "id": 56,
+          "label": "Start chaos 🌪️"
+        },
+        {
+          "id": 57,
+          "label": "Strategic leak 📤"
+        }
+      ]
+    },
+    {
+      "id": 47,
+      "type": "skip",
+      "label": "Decryption Success",
+      "text": [
+        "The files reveal the full scope of Project Neural Lock.",
+        "🔓 This evidence could bring down TechCorp entirely."
+      ],
+      "nextId": 44
+    },
+    {
+      "id": 48,
+      "type": "skip",
+      "label": "Data Distribution",
+      "text": [
+        "You distribute the encrypted files across the darknet.",
+        "📤 Thousands of hackers begin working on the decryption."
+      ],
+      "nextId": 44
+    },
+    {
+      "id": 49,
+      "type": "redirect",
+      "label": "Deep Underground",
+      "text": [
+        "You venture into the oldest tunnels beneath Neo-Tokyo.",
+        "🚇 The darkness holds both danger and opportunity."
+      ],
+      "links": [
+        {
+          "id": 35,
+          "weight": 70
+        },
+        {
+          "id": 12,
+          "weight": 30
+        }
+      ]
+    },
+    {
+      "id": 50,
+      "type": "skip",
+      "label": "Chip Analysis",
+      "text": [
+        "The chip contains coordinates and access codes to the resistance base.",
+        "💽 Someone wants to make sure you find your way."
+      ],
+      "nextId": 35
+    },
+    {
+      "id": 51,
+      "type": "skip",
+      "label": "Vendor Trail",
+      "text": [
+        "The vendor leads you through a maze of back alleys.",
+        "🏢 You end up at a hidden entrance to the resistance base."
+      ],
+      "nextId": 35
+    },
+    {
+      "id": 52,
+      "type": "action",
+      "label": "Final Mission",
+      "text": [
+        "Echo briefs you on the plan to infiltrate TechCorp's central server.",
+        "⚔️ \"This ends tonight. Are you ready to make history?\""
+      ],
+      "actions": [
+        {
+          "id": 58,
+          "label": "Begin assault ⚡"
+        },
+        {
+          "id": 59,
+          "label": "Suggest stealth 🕶️"
+        }
+      ]
+    },
+    {
+      "id": 53,
+      "type": "skip",
+      "label": "Intelligence Sharing",
+      "text": [
+        "You share everything you've learned about TechCorp's plans.",
+        "💭 Echo integrates this into the resistance's strategy."
+      ],
+      "nextId": 52
+    },
+    {
+      "id": 54,
+      "type": "skip",
+      "label": "Warning Delivery",
+      "text": [
+        "You alert Digital Dawn about the corporate surveillance.",
+        "⚠️ The resistance quickly adapts their security measures."
+      ],
+      "nextId": 35
+    },
+    {
+      "id": 55,
+      "type": "skip",
+      "label": "Counter-Intelligence",
+      "text": [
+        "You hack the corporate surveillance systems, feeding them false data.",
+        "🎯 The resistance base remains secure."
+      ],
+      "nextId": 35
+    },
+    {
+      "id": 56,
+      "type": "finish",
+      "label": "System Chaos",
+      "text": [
+        "The simultaneous attacks throw Neo-Tokyo's network into beautiful chaos.",
+        "🌪️ In the confusion, people realize they can think for themselves again.",
+        "THE END: Reset Protocol - From the chaos, a new and freer system emerges."
+      ]
+    },
+    {
+      "id": 57,
+      "type": "skip",
+      "label": "Strategic Release",
+      "text": [
+        "You carefully select which systems to compromise for maximum effect.",
+        "📤 The evidence spreads like wildfire through the network."
+      ],
+      "nextId": 44
+    },
+    {
+      "id": 58,
+      "type": "finish",
+      "label": "Digital Revolution",
+      "text": [
+        "The direct assault on TechCorp's server is costly but successful.",
+        "⚡ The resistance's sacrifice ensures that neural freedom will endure.",
+        "THE END: Digital Liberation - The people of Neo-Tokyo are finally free to think for themselves."
+      ]
+    },
+    {
+      "id": 59,
+      "type": "finish",
+      "label": "Silent Victory",
+      "text": [
+        "Your stealth approach succeeds in compromising TechCorp's system from within.",
+        "🕶️ No one outside the resistance ever knows who saved the city.",
+        "THE END: System Administrator - You become the silent guardian of the network."
+      ]
+    }
+  ]
+}

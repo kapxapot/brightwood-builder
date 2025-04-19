@@ -27,6 +27,7 @@
 4. The goal is to create up to 50-100 nodes for the story.
 5. If the `story.json` becomes too large (1500+ lines), put new nodes into `nodes.json`.
 6. After each node generation check the `plan.md` and update it if needed.
+7. When you append nodes, make sure that their ids go in the ascending order WITH NO GAPS.
 
 ## Writing Tips
 
@@ -44,7 +45,7 @@
 12. Don't create long action labels, make them 2-3 words max. Use emoji in action labels (it is not necessary but add them where suitable).
 13. Fill node `label` property with a short (2-3 words) title based on its content. I REPEAT AGAIN FILL THE node's `label`!
 14. Don't make too many branches! Keep story relatively narrow with 4-5 parallel main story branches. If the branches grow, cut them or merge them at once, don't create 20 branches and then abruptly end them at once. I REPEAT AGAIN THERE MUST BE 5-6 VALID TERMINAL `finish` nodes not 20-30!!!
-15. Don't create all actions with 3 choices. Create some with 2, some with 3, depending on the context.
+15. Don't create all actions with 3 choices. Create some with 2, some with 3, depending on the context. I REPEATE DON'T MAKE 3 ACTIONS EVERYWHERE USE A MIX OF 2-3.
 
 ## Story Validation
 

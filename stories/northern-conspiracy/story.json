@@ -1,0 +1,935 @@
+{
+  "id": "7e9d6f2a-8b5c-4d3e-9f1a-2c4b8e7d6f2a",
+  "title": "❄️ The Northern Conspiracy",
+  "description": "As heir to a minor northern house in Westeros, navigate political intrigue and ancient mysteries during the harshest winter in living memory.",
+  "language": "en",
+  "startId": 1,
+  "position": [30, 30],
+  "nodes": [
+    {
+      "id": 1,
+      "type": "skip",
+      "text": [
+        "Snow falls silently on the ancient stones of Frosthold Keep, your family's ancestral home in the harsh North of Westeros. ❄️",
+        "As heir to House Frost, you've been raised on tales of winter's dangers and the old ways of the First Men. But nothing has prepared you for the strange reports coming from beyond the Wall.",
+        "A raven arrives bearing news that will test your loyalty to both family and realm. 📜"
+      ],
+      "nextId": 2,
+      "position": [200, 100],
+      "label": "Winter's Welcome"
+    },
+    {
+      "id": 2,
+      "type": "action",
+      "text": [
+        "The raven's message speaks of mysterious lights seen beyond the Wall and villages found abandoned. More disturbing still, your father's bannermen report strange symbols carved into heart trees. 🌲",
+        "As you ponder this news in the great hall, your steward announces two unexpected arrivals: a grizzled ranger from the Night's Watch and a scholarly maester from the Citadel."
+      ],
+      "actions": [
+        {
+          "label": "🖤 Meet ranger",
+          "id": 3
+        },
+        {
+          "label": "📚 Greet maester",
+          "id": 4
+        },
+        {
+          "label": "🗡️ Consult guard",
+          "id": 5
+        }
+      ],
+      "position": [400, 100],
+      "label": "Dark Tidings"
+    },
+    {
+      "id": 3,
+      "type": "skip",
+      "text": [
+        "The ranger, a man named Cedric Snow, has frost in his beard and shadows under his eyes. His black cloak is worn and patched. 🖤",
+        "\"My lord,\" he says gravely, \"what I've seen beyond the Wall... the old stories are waking up. We found entire villages empty, with strange markings I've never seen before.\"",
+        "He produces a rough sketch of spiral patterns that make your blood run cold."
+      ],
+      "nextId": 6,
+      "position": [600, 0],
+      "label": "Ranger's Tale"
+    },
+    {
+      "id": 4,
+      "type": "skip",
+      "text": [
+        "Maester Ebrose is unlike any maester you've met - younger, with keen eyes that seem to notice everything. His chain includes an unusual black iron link. 📚",
+        "\"The Citadel sent me to study the unusual phenomena reported in the North,\" he explains. \"But I believe there's more in your keep's ancient library that could shed light on these events.\"",
+        "There's something in his tone that suggests he already knows more than he's saying."
+      ],
+      "nextId": 7,
+      "position": [600, 100],
+      "label": "Maester's Request"
+    },
+    {
+      "id": 5,
+      "type": "skip",
+      "text": [
+        "Your captain of the guard, Ser Rodrik, is a gruff veteran of many winters. He eyes the new arrivals with open suspicion. 🗡️",
+        "\"My lord, strange times bring strange visitors,\" he warns in a low voice. \"And the crypts... the guards report hearing whispers in the night. Perhaps we should investigate before trusting outsiders.\"",
+        "His hand rests meaningfully on his sword hilt."
+      ],
+      "nextId": 8,
+      "position": [600, 200],
+      "label": "Guard's Warning"
+    },
+    {
+      "id": 6,
+      "type": "action",
+      "text": [
+        "The ranger's sketches match old carvings you've seen in the crypts beneath Frosthold Keep. Your father once said they were warnings from the First Men. ⚔️",
+        "\"There's more,\" Cedric adds. \"We found tracks in the snow - not wildlings, not animals. And the cold... it's different. Unnatural.\"",
+        "You must decide how to respond to these disturbing revelations."
+      ],
+      "actions": [
+        {
+          "label": "🏰 Fortify keep",
+          "id": 9
+        },
+        {
+          "label": "🗺️ Scout north",
+          "id": 10
+        },
+        {
+          "label": "📜 Study symbols",
+          "id": 11
+        }
+      ],
+      "position": [800, 0],
+      "label": "Dark Warnings"
+    },
+    {
+      "id": 7,
+      "type": "action",
+      "text": [
+        "Maester Ebrose's interest in your library seems too specific to be coincidence. He particularly asks about texts dating back to the Age of Heroes. 📚",
+        "\"Your ancestors were among the First Men,\" he notes. \"They would have left records... special knowledge. The kind that some would prefer stayed buried.\"",
+        "His words carry an undertone of both warning and opportunity."
+      ],
+      "actions": [
+        {
+          "label": "🔍 Search library",
+          "id": 12
+        },
+        {
+          "label": "❓ Question motives",
+          "id": 13
+        },
+        {
+          "label": "📝 Share knowledge",
+          "id": 14
+        }
+      ],
+      "position": [800, 100],
+      "label": "Hidden Knowledge"
+    },
+    {
+      "id": 8,
+      "type": "action",
+      "text": [
+        "Ser Rodrik leads you to the entrance of the crypts. The ancient stone steps descend into darkness, and cold air rises from below. 🕯️",
+        "\"Listen,\" he whispers. A faint sound echoes from the depths - like chanting in an unknown tongue. The guards are right - something stirs in the deep places of your ancestral home.",
+        "The old knight awaits your command."
+      ],
+      "actions": [
+        {
+          "label": "🔦 Explore crypts",
+          "id": 15
+        },
+        {
+          "label": "💂 Post guards",
+          "id": 16
+        },
+        {
+          "label": "🚪 Seal entrance",
+          "id": 17
+        }
+      ],
+      "position": [800, 200],
+      "label": "Crypts Below"
+    },
+    {
+      "id": 9,
+      "type": "action",
+      "text": [
+        "You order Frosthold's defenses strengthened. The old walls have weathered countless winters, but never threats like these. 🏰",
+        "As workers reinforce the gates, a messenger arrives from House Karstark. They too have seen the strange lights, and request an urgent meeting of northern lords.",
+        "Your response now could shape alliances for the coming storm."
+      ],
+      "actions": [
+        {
+          "label": "👥 Host meeting",
+          "id": 18
+        },
+        {
+          "label": "💭 Delay decision",
+          "id": 19
+        },
+        {
+          "label": "🏰 Refuse meeting",
+          "id": 20
+        }
+      ],
+      "position": [1000, -200],
+      "label": "Northern Alliance"
+    },
+    {
+      "id": 10,
+      "type": "redirect",
+      "text": [
+        "You and Cedric lead a small scouting party north. The wind carries stinging snow and whispers of danger. 🌨️",
+        "After a day's ride, you find more spiral markings, freshly carved. The cold here is fierce, unnatural - your torches barely pierce the gloom.",
+        "A sound like cracking ice echoes through the trees."
+      ],
+      "links": [
+        {
+          "weight": 2,
+          "id": 21
+        },
+        {
+          "weight": 1,
+          "id": 22
+        }
+      ],
+      "position": [1000, -100],
+      "label": "Northern Expedition"
+    },
+    {
+      "id": 11,
+      "type": "skip",
+      "text": [
+        "In the light of a flickering torch, you and Cedric compare the ranger's sketches to the ancient carvings. The similarities are undeniable. 📜",
+        "\"These markings,\" Cedric says, tracing them with a weathered finger, \"they're not just symbols. They're a language. The free folk fear them - say they're warnings from the First Men.\"",
+        "An old verse comes to mind: 'When winter rises, the blood must answer.'"
+      ],
+      "nextId": 23,
+      "position": [1000, 0],
+      "label": "Ancient Warnings"
+    },
+    {
+      "id": 12,
+      "type": "skip",
+      "text": [
+        "The library of Frosthold Keep is a maze of shadowy shelves and ancient scrolls. Maester Ebrose moves with purpose, as if he knows what he's looking for. 📚",
+        "Together, you discover a hidden compartment behind a loose stone, containing scrolls written in the Old Tongue. The maester's eyes gleam with excitement.",
+        "\"These,\" he whispers, \"speak of a power in the North. One that kept the Others at bay long before the Wall was built.\""
+      ],
+      "nextId": 27,
+      "position": [1000, 100],
+      "label": "Hidden Scrolls"
+    },
+    {
+      "id": 13,
+      "type": "action",
+      "text": [
+        "You confront Maester Ebrose about his true motives. His calm demeanor cracks slightly. ❓",
+        "\"There are... factions within the Citadel,\" he admits. \"Some believe the old powers must remain buried. Others think we'll need them for the coming winter. Your house holds secrets that could tip the balance.\"",
+        "His honesty seems genuine, but dangerous."
+      ],
+      "actions": [
+        {
+          "label": "🤝 Form alliance",
+          "id": 28
+        },
+        {
+          "label": "👥 Seek counsel",
+          "id": 29
+        },
+        {
+          "label": "⚔️ Imprison him",
+          "id": 30
+        }
+      ],
+      "position": [1000, 200],
+      "label": "Maester's Truth"
+    },
+    {
+      "id": 14,
+      "type": "redirect",
+      "text": [
+        "You decide to share your family's ancient records with Maester Ebrose. As you do, a letter falls from between the pages of an old tome. 📜",
+        "The seal is broken, but the message is clear - a warning from your grandfather about trusting the Citadel with certain knowledge.",
+        "The maester notices your hesitation."
+      ],
+      "links": [
+        {
+          "weight": 2,
+          "id": 31
+        },
+        {
+          "weight": 1,
+          "id": 32
+        }
+      ],
+      "position": [1000, 300],
+      "label": "Grandfather's Warning"
+    },
+    {
+      "id": 15,
+      "type": "redirect",
+      "text": [
+        "Torch in hand, you descend into the crypts with Ser Rodrik. The ancient stones seem to whisper with each step. 🕯️",
+        "In the deepest chamber, you find fresh footprints in the dust, leading to a wall covered in strange runes. The chanting grows louder.",
+        "The wall feels cold as death to the touch."
+      ],
+      "links": [
+        {
+          "weight": 2,
+          "id": 37
+        },
+        {
+          "weight": 1,
+          "id": 38
+        }
+      ],
+      "position": [1000, 400],
+      "label": "Deep Descent"
+    },
+    {
+      "id": 16,
+      "type": "skip",
+      "text": [
+        "You double the guard at the crypt entrance. That night, one of the sentries disappears, leaving only frost patterns on the stone where he stood. ❄️",
+        "The remaining guards are shaken but loyal. They report seeing shadows moving against the torchlight, and hearing whispers in an ancient tongue.",
+        "Whatever lurks below is growing bolder."
+      ],
+      "nextId": 39,
+      "position": [1000, 500],
+      "label": "Missing Guard"
+    },
+    {
+      "id": 17,
+      "type": "action",
+      "text": [
+        "The heavy iron doors to the crypts groan shut. As the last torch is extinguished, an otherworldly cold seeps through the seals. 🚪",
+        "\"My lord,\" Ser Rodrik cautions, \"sealing the crypts... it goes against tradition. The old powers demand respect.\"",
+        "That night, the very foundations of Frosthold seem to tremble."
+      ],
+      "actions": [
+        {
+          "label": "🔓 Reopen crypts",
+          "id": 40
+        },
+        {
+          "label": "📜 Research omens",
+          "id": 41
+        },
+        {
+          "label": "🏰 Abandon keep",
+          "id": 42
+        }
+      ],
+      "position": [1000, 600],
+      "label": "Sealed Fate"
+    },
+    {
+      "id": 18,
+      "type": "action",
+      "text": [
+        "Lords from the nearby houses gather in Frosthold's great hall. Each brings their own tales of strange occurrences. 👥",
+        "House Karstark speaks of ancient caves awakening. House Umber reports wildlings fleeing south in unprecedented numbers.",
+        "The time has come to decide how the North will face this threat."
+      ],
+      "actions": [
+        {
+          "label": "🤝 Unite houses",
+          "id": 47
+        },
+        {
+          "label": "⚔️ Prepare war",
+          "id": 48
+        },
+        {
+          "label": "🏰 Individual defense",
+          "id": 49
+        }
+      ],
+      "position": [1200, -200],
+      "label": "Lords Council"
+    },
+    {
+      "id": 19,
+      "type": "skip",
+      "text": [
+        "Your hesitation costs precious time. As the northern lords await your response, more disturbing reports arrive. ⌛",
+        "The lights beyond the Wall grow stronger, and the cold creeps further south. Some say they hear whispers in the night wind.",
+        "The time for action may soon pass."
+      ],
+      "nextId": 18,
+      "position": [1200, -150],
+      "label": "Precious Time"
+    },
+    {
+      "id": 20,
+      "type": "skip",
+      "text": [
+        "You decline the meeting, choosing to focus on Frosthold's defenses. That night, a cold wind howls through the keep. 🏰",
+        "In the morning, you find frost patterns on the walls that match the spiral markings from beyond the Wall.",
+        "Perhaps isolation was not the wisest choice."
+      ],
+      "nextId": 45,
+      "position": [1200, -100],
+      "label": "Isolation's Price"
+    },
+    {
+      "id": 21,
+      "type": "action",
+      "text": [
+        "Your party finds shelter in a shallow cave. The strange sounds grow closer, and through the swirling snow, you glimpse movement. ⚔️",
+        "Cedric nocks an arrow, his breath frosting in the air. \"Whatever's out there,\" he whispers, \"it's been following us since we left the treeline.\"",
+        "Time for a decision."
+      ],
+      "actions": [
+        {
+          "label": "⚔️ Stand ground",
+          "id": 24
+        },
+        {
+          "label": "🏃 Retreat south",
+          "id": 25
+        },
+        {
+          "label": "🔥 Light signal",
+          "id": 26
+        }
+      ],
+      "position": [1200, -150],
+      "label": "Hunter or Hunted"
+    },
+    {
+      "id": 22,
+      "type": "skip",
+      "text": [
+        "The weather turns treacherous with supernatural speed. You lose two men to the cold before finding your way back to Frosthold. ❄️",
+        "But you return with crucial knowledge - the threats beyond the Wall are real, and they're moving south.",
+        "Your father's bannermen must be warned."
+      ],
+      "nextId": 18,
+      "position": [1200, -50],
+      "label": "Bitter Return"
+    },
+    {
+      "id": 23,
+      "type": "action",
+      "text": [
+        "The ancient verse echoes in your mind as you study the markings more closely. Suddenly, patterns emerge - they're not just warnings, but instructions. 📜",
+        "\"The blood must answer when winter rises\" - your family's connection to these symbols runs deeper than you imagined.",
+        "You have three paths before you."
+      ],
+      "actions": [
+        {
+          "label": "🔮 Follow instructions",
+          "id": 44
+        },
+        {
+          "label": "📚 Research more",
+          "id": 27
+        },
+        {
+          "label": "🏰 Fortify defenses",
+          "id": 9
+        }
+      ],
+      "position": [1200, 0],
+      "label": "Ancient Instructions"
+    },
+    {
+      "id": 24,
+      "type": "skip",
+      "text": [
+        "Steel rings against ice as shapes emerge from the blizzard. They move with inhuman grace, but your arrows find their mark. ⚔️",
+        "In the aftermath, you find no bodies - only strange crystalline shards that pulse with cold light.",
+        "This victory feels temporary, but you've learned valuable information about your foe."
+      ],
+      "nextId": 18,
+      "position": [1400, -200],
+      "label": "First Contact"
+    },
+    {
+      "id": 25,
+      "type": "skip",
+      "text": [
+        "You order an immediate retreat. As you race south, the unnatural cold pursues you like a living thing. 🏃",
+        "Two men fall behind - their screams are quickly swallowed by the howling wind. The rest of you barely make it back to Frosthold.",
+        "The threat is real, and it's heading south."
+      ],
+      "nextId": 18,
+      "position": [1400, -100],
+      "label": "Hasty Retreat"
+    },
+    {
+      "id": 26,
+      "type": "skip",
+      "text": [
+        "Your signal fire blazes against the darkness. For a moment, nothing happens - then answering flames appear on distant hills. 🔥",
+        "The northern houses maintain these ancient warning beacons for good reason. Within hours, riders from Houses Karstark and Umber arrive.",
+        "Your warning has been heeded. The North will face this threat together."
+      ],
+      "nextId": 18,
+      "position": [1400, 0],
+      "label": "Warning Beacons"
+    },
+    {
+      "id": 27,
+      "type": "action",
+      "text": [
+        "The ancient scrolls reveal a shocking truth - your ancestors were more than just First Men. They were guardians of old magic, protectors of a power bound beneath Frosthold Keep. 📜",
+        "\"This is why the Citadel sent me,\" Ebrose explains. \"The seals are weakening. What's buried here could save the realm... or destroy it.\"",
+        "The decision weighs heavy on your shoulders."
+      ],
+      "actions": [
+        {
+          "label": "🔮 Unlock power",
+          "id": 33
+        },
+        {
+          "label": "🏰 Strengthen seals",
+          "id": 34
+        },
+        {
+          "label": "📚 Learn more",
+          "id": 35
+        }
+      ],
+      "position": [1200, 100],
+      "label": "Ancient Legacy"
+    },
+    {
+      "id": 28,
+      "type": "skip",
+      "text": [
+        "You and Maester Ebrose forge a careful alliance. He reveals that other houses are also investigating their ancient powers - some with darker intentions. 🤝",
+        "\"House Bolton has been gathering knowledge of blood magic,\" he warns. \"And the Karstarks... they seek something in the deep caves beneath their keep.\"",
+        "The political landscape of the North suddenly seems more treacherous than ever."
+      ],
+      "nextId": 36,
+      "position": [1200, 200],
+      "label": "Dark Alliances"
+    },
+    {
+      "id": 29,
+      "type": "skip",
+      "text": [
+        "You send ravens to trusted allies, seeking guidance about the maester's revelations. The responses paint a disturbing picture. 📜",
+        "Other houses report similar visits from scholars with black iron links. The Citadel's interest in northern magic is not coincidental.",
+        "This knowledge must be protected, but shared wisely."
+      ],
+      "nextId": 47,
+      "position": [1400, 200],
+      "label": "Allied Counsel"
+    },
+    {
+      "id": 30,
+      "type": "skip",
+      "text": [
+        "The maester is confined to quarters under guard. That night, you find his cell empty - the door still locked, frost patterns spiraling across the floor. ❄️",
+        "In his place, you find a note: 'The power awakens whether we will it or not. You'll need allies before the end.'",
+        "Perhaps there was wisdom in his warnings."
+      ],
+      "nextId": 18,
+      "position": [1400, 300],
+      "label": "Maester's Escape"
+    },
+    {
+      "id": 31,
+      "type": "skip",
+      "text": [
+        "You heed your grandfather's warning, sharing only select knowledge with the maester. His disappointment is visible but measured. 📚",
+        "\"Even fragments of truth can light the way,\" he says. \"But remember - when winter truly comes, half-measures may doom us all.\"",
+        "You've kept your family's deepest secrets, but at what cost?"
+      ],
+      "nextId": 47,
+      "position": [1400, 350],
+      "label": "Partial Trust"
+    },
+    {
+      "id": 32,
+      "type": "skip",
+      "text": [
+        "Against your grandfather's warning, you choose complete transparency with Maester Ebrose. His expertise proves invaluable in decoding ancient texts. 🤝",
+        "Together, you uncover a network of old magic that once connected all the great houses of the North. A power that could be awakened again.",
+        "But such knowledge carries its own risks."
+      ],
+      "nextId": 48,
+      "position": [1400, 450],
+      "label": "Full Disclosure"
+    },
+    {
+      "id": 33,
+      "type": "skip",
+      "text": [
+        "Following the ancient instructions, you begin the ritual to unlock the power beneath Frosthold. The very stones of the keep resonate with awakening magic. 🔮",
+        "As the seals weaken, you feel your blood respond, carrying memories of ancient battles and forgotten powers.",
+        "There's no turning back now."
+      ],
+      "nextId": 48,
+      "position": [1400, 100],
+      "label": "Power Unleashed"
+    },
+    {
+      "id": 34,
+      "type": "skip",
+      "text": [
+        "You choose to reinforce the ancient seals, channeling your bloodline's power to maintain the barriers. The keep grows colder, but more secure. 🏰",
+        "\"A wise choice,\" Ebrose admits. \"But remember - sometimes the safest path leads to greater danger.\"",
+        "Only time will tell if containment was the right decision."
+      ],
+      "nextId": 47,
+      "position": [1400, 150],
+      "label": "Seals Strengthened"
+    },
+    {
+      "id": 35,
+      "type": "skip",
+      "text": [
+        "Delving deeper into the ancient texts, you discover your ancestors' true purpose. They were not just guardians, but mediators between the realms of ice and fire. 📚",
+        "The power they sealed was meant to maintain balance, not to be used as a weapon. This knowledge changes everything.",
+        "A middle path reveals itself."
+      ],
+      "nextId": 47,
+      "position": [1400, 250],
+      "label": "Ancient Purpose"
+    },
+    {
+      "id": 36,
+      "type": "action",
+      "text": [
+        "With Maester Ebrose's help, you map the political landscape of the North's ancient powers. Each house guards its own secrets, but none see the full picture. 🗺️",
+        "The time has come to decide how to use this knowledge. The North's fate may depend on your choice.",
+        "Three paths lie before you."
+      ],
+      "actions": [
+        {
+          "label": "👥 Unite houses",
+          "id": 51
+        },
+        {
+          "label": "🏰 Guard secrets",
+          "id": 50
+        },
+        {
+          "label": "⚔️ Seize power",
+          "id": 49
+        }
+      ],
+      "position": [1600, 200],
+      "label": "Knowledge's Price"
+    },
+    {
+      "id": 37,
+      "type": "action",
+      "text": [
+        "The runes on the wall begin to glow with a pale blue light. In their illumination, you notice a pattern - they match the spiral markings from beyond the Wall. ✨",
+        "Ser Rodrik draws his sword as the chanting reaches a crescendo. \"My lord,\" he whispers, \"we're not alone down here.\"",
+        "Shadows move at the edge of your torchlight, taking forms both familiar and terrible."
+      ],
+      "actions": [
+        {
+          "label": "🗡️ Draw steel",
+          "id": 43
+        },
+        {
+          "label": "🔮 Touch runes",
+          "id": 44
+        },
+        {
+          "label": "🏃 Retreat",
+          "id": 45
+        }
+      ],
+      "position": [1200, 400],
+      "label": "Ancient Chamber"
+    },
+    {
+      "id": 38,
+      "type": "skip",
+      "text": [
+        "The wall suddenly gives way, revealing a hidden passage. Cold air rushes out, carrying with it the scent of age and secrets. 🕯️",
+        "Beyond, you glimpse an ancient chamber filled with artifacts bearing the sigil of your house - but older, different. More primal.",
+        "You've found something that was meant to stay hidden."
+      ],
+      "nextId": 46,
+      "position": [1200, 500],
+      "label": "Hidden Chamber"
+    },
+    {
+      "id": 39,
+      "type": "action",
+      "text": [
+        "After the guard's disappearance, tension grips Frosthold. The remaining sentries report strange visions - shadows of ancient battles, echoes of forgotten songs. 👻",
+        "Something stirs in the crypts, reaching out to the blood of the First Men. Your blood.",
+        "You must decide how to respond to this ancestral call."
+      ],
+      "actions": [
+        {
+          "label": "🔮 Answer call",
+          "id": 44
+        },
+        {
+          "label": "⚔️ Clear crypts",
+          "id": 43
+        },
+        {
+          "label": "🏃 Evacuate",
+          "id": 45
+        }
+      ],
+      "position": [1200, 600],
+      "label": "Ancestral Call"
+    },
+    {
+      "id": 40,
+      "type": "skip",
+      "text": [
+        "The iron doors creak open once more. The cold that rushes out carries whispers of ancient oaths and broken promises. 🚪",
+        "The crypts have changed - ice crystals form patterns that match the markings from beyond the Wall.",
+        "Your ancestors demand attention."
+      ],
+      "nextId": 37,
+      "position": [1200, 700],
+      "label": "Opened Gates"
+    },
+    {
+      "id": 41,
+      "type": "skip",
+      "text": [
+        "In the library's oldest texts, you find references to similar signs. When the crypts sing, they say, the blood of the First Men must answer. 📚",
+        "These are not warnings, but instructions passed down through generations. Your family has prepared for this moment.",
+        "The time has come to face your heritage."
+      ],
+      "nextId": 44,
+      "position": [1200, 800],
+      "label": "Ancient Signs"
+    },
+    {
+      "id": 42,
+      "type": "skip",
+      "text": [
+        "You begin preparations to abandon Frosthold. That night, the cold reaches out with purpose, freezing shut every gate and window. ❄️",
+        "The keep itself seems to resist your departure. In the crypts below, the chanting grows louder, more insistent.",
+        "Some choices are not ours to make."
+      ],
+      "nextId": 37,
+      "position": [1200, 900],
+      "label": "Keep's Will"
+    },
+    {
+      "id": 43,
+      "type": "skip",
+      "text": [
+        "Steel rings against something that's not quite ice, not quite bone. The shadows take form - the preserved bodies of your ancestors, moving with unnatural grace. ⚔️",
+        "\"The blood remembers,\" they whisper in ancient voices. \"The pact must be renewed.\"",
+        "Your blade seems to drink in the pale blue light, growing stronger with each parry."
+      ],
+      "nextId": 47,
+      "position": [1400, 400],
+      "label": "Ancestors' Dance"
+    },
+    {
+      "id": 44,
+      "type": "skip",
+      "text": [
+        "As your fingers brush the runes, ancient magic surges through your blood. Memories that aren't your own flood your mind - battles against the Others, rituals of power, sacrifices made. 🔮",
+        "You see the truth: your family wasn't just guardians of the North. They were wielders of its power, bound by blood to keep the balance.",
+        "The shadows bow in recognition of your awakening."
+      ],
+      "nextId": 48,
+      "position": [1400, 500],
+      "label": "Blood Awakening"
+    },
+    {
+      "id": 45,
+      "type": "redirect",
+      "text": [
+        "You turn to flee, but the shadows move faster. The air grows thick with ancient magic and whispered warnings. ❄️",
+        "Ser Rodrik's sword flashes in the darkness, buying you precious seconds. \"Run, my lord!\" he shouts. \"Don't let them take the blood!\"",
+        "The choice between escape and loyalty weighs heavy."
+      ],
+      "links": [
+        {
+          "weight": 2,
+          "id": 52
+        },
+        {
+          "weight": 1,
+          "id": 53
+        }
+      ],
+      "position": [1400, 600],
+      "label": "Desperate Flight"
+    },
+    {
+      "id": 46,
+      "type": "action",
+      "text": [
+        "The hidden chamber contains artifacts of incredible power - weapons forged in the Age of Heroes, scrolls written in the Old Tongue, and a throne carved from ancient weirwood. 👑",
+        "This was your family's true seat of power, where they guarded the boundary between the realms of ice and fire.",
+        "The weight of centuries rests upon your decision."
+      ],
+      "actions": [
+        {
+          "label": "👑 Claim throne",
+          "id": 49
+        },
+        {
+          "label": "📜 Study scrolls",
+          "id": 48
+        },
+        {
+          "label": "🔒 Seal chamber",
+          "id": 50
+        }
+      ],
+      "position": [1400, 550],
+      "label": "Power's Heart"
+    },
+    {
+      "id": 47,
+      "type": "action",
+      "text": [
+        "Your ancestors' spirits gather around you, their wisdom echoing through the centuries. You understand now - Frosthold was built to guard more than just the North. ❄️",
+        "\"The power is yours by right,\" they whisper. \"But power demands sacrifice. Choose wisely, heir of winter.\"",
+        "The moment of truth has arrived."
+      ],
+      "actions": [
+        {
+          "label": "👑 Claim power",
+          "id": 49
+        },
+        {
+          "label": "🛡️ Guard secrets",
+          "id": 50
+        },
+        {
+          "label": "💫 Share strength",
+          "id": 51
+        }
+      ],
+      "position": [1600, 400],
+      "label": "Heir's Choice"
+    },
+    {
+      "id": 48,
+      "type": "action",
+      "text": [
+        "The ancient power courses through your veins, bringing with it the weight of generations. Your ancestors' memories become clear as crystal. ✨",
+        "You see now why they sealed away such strength, and why it might be needed again. The threat from beyond the Wall is more than just winter - it's the return of powers as old as the First Men.",
+        "The time has come to make your choice."
+      ],
+      "actions": [
+        {
+          "label": "👑 Seize power",
+          "id": 49
+        },
+        {
+          "label": "🤝 Share power",
+          "id": 51
+        },
+        {
+          "label": "🛡️ Seal power",
+          "id": 50
+        }
+      ],
+      "position": [1600, 300],
+      "label": "Power's Choice"
+    },
+    {
+      "id": 49,
+      "type": "finish",
+      "text": [
+        "You embrace the ancient power of your bloodline, becoming more than just a northern lord. The old magics flow through you, as they did through your ancestors. 👑",
+        "Under your rule, Frosthold becomes a beacon of power in the North. The other houses bow before your strength, and even the threats beyond the Wall give your lands a wide berth.",
+        "But power has its price - you feel the cold growing in your heart, and wonder if this was the right choice.",
+        "You've reached the Power Ending."
+      ],
+      "position": [1800, 300],
+      "label": "Power's Price"
+    },
+    {
+      "id": 50,
+      "type": "finish",
+      "text": [
+        "You choose to maintain the ancient traditions, protecting the secrets that have kept the realm safe for generations. 🛡️",
+        "The power remains sealed beneath Frosthold, guarded by your blood and honor. You send warnings to the Wall and rally the northern houses to their ancient duty.",
+        "Though your name may not echo through history, your vigilance ensures the North remembers and endures.",
+        "You've reached the Guardian Ending."
+      ],
+      "position": [1800, 400],
+      "label": "Guardian's Duty"
+    },
+    {
+      "id": 51,
+      "type": "finish",
+      "text": [
+        "Understanding the true threat, you forge a bold path - sharing your ancestral power with trusted northern houses, creating a network of guardians. 🤝",
+        "United by ancient magic and common purpose, the North stands stronger than ever. Your alliance becomes a bulwark against the gathering storm.",
+        "Songs will tell of how House Frost brought the North together in its darkest hour.",
+        "You've reached the Unity Ending."
+      ],
+      "position": [1800, 500],
+      "label": "Northern Unity"
+    },
+    {
+      "id": 52,
+      "type": "action",
+      "text": [
+        "You make it to the upper levels of the crypts, but the unnatural cold follows. Behind you, Ser Rodrik's battle cry turns to silence. ⚔️",
+        "The way south lies open - you could take what you've learned to those who might help. Or you could make a final stand here, in your ancestral home.",
+        "The fate of House Frost hangs in the balance."
+      ],
+      "actions": [
+        {
+          "label": "⚔️ Last stand",
+          "id": 54
+        },
+        {
+          "label": "🏃 Flee south",
+          "id": 55
+        }
+      ],
+      "position": [1600, 600],
+      "label": "Final Choice"
+    },
+    {
+      "id": 53,
+      "type": "finish",
+      "text": [
+        "The shadows overwhelm your defenses. The last thing you see is ancient magic swirling around you, claiming another heir of the First Men. ❄️",
+        "Frosthold falls silent, its secrets and power claimed by forces older than the Wall itself. The North remembers, but some memories are best left buried.",
+        "Your tale becomes a warning to those who would wake the old powers.",
+        "You've reached the Tragic Ending."
+      ],
+      "position": [1600, 700],
+      "label": "Dark Fate"
+    },
+    {
+      "id": 54,
+      "type": "finish",
+      "text": [
+        "You make your stand in the great hall of Frosthold, your ancestors' weapons in hand. The shadows come, but you are ready. ⚔️",
+        "In your final moments, you unleash a desperate ritual learned from the ancient texts. The price is high - your life, your blood, your soul - but Frosthold's power is sealed away forever.",
+        "Your sacrifice ensures these dark forces will never threaten the realm again.",
+        "You've reached the Sacrifice Ending."
+      ],
+      "position": [1800, 600],
+      "label": "Noble Sacrifice"
+    },
+    {
+      "id": 55,
+      "type": "finish",
+      "text": [
+        "You ride hard for the south, carrying crucial knowledge about the ancient powers stirring in the North. 🐎",
+        "Though it pains you to abandon your ancestral home, you know this information must reach those who can use it. Perhaps one day, you'll return with the strength to reclaim what was lost.",
+        "The North remembers, and so will you.",
+        "You've reached the Survival Ending."
+      ],
+      "position": [1800, 700],
+      "label": "Southern Flight"
+    }
+  ]
+}
