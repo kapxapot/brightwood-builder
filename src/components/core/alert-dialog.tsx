@@ -1,4 +1,4 @@
-import { PropsWithChildren, ReactNode } from "react";
+import { forwardRef, PropsWithChildren, ReactNode, Ref } from "react";
 import { AlertDialog as ShadAlertDialog, AlertDialogContent, AlertDialogHeader, AlertDialogTitle, AlertDialogDescription, AlertDialogFooter, AlertDialogTrigger } from "../ui/alert-dialog";
 
 type Props = {
@@ -7,9 +7,9 @@ type Props = {
   trigger?: ReactNode;
   open?: boolean;
   onOpenChange?: (open: boolean) => void;
-}
+};
 
-export function AlertDialog({ title, description, trigger, open, onOpenChange, children }: PropsWithChildren<Props>) {
+const AlertDialog = forwardRef(({ title, description, trigger, open, onOpenChange, children }: PropsWithChildren<Props>, ref: Ref<HTMLDivElement>) => {
   return (
     <ShadAlertDialog open={open} onOpenChange={onOpenChange}>
       {trigger && (
@@ -17,7 +17,7 @@ export function AlertDialog({ title, description, trigger, open, onOpenChange, c
           {trigger}
         </AlertDialogTrigger>
       )}
-      <AlertDialogContent>
+      <AlertDialogContent ref={ref}>
         <AlertDialogHeader>
           <AlertDialogTitle>{title}</AlertDialogTitle>
           {!!description && (
@@ -32,4 +32,8 @@ export function AlertDialog({ title, description, trigger, open, onOpenChange, c
       </AlertDialogContent>
     </ShadAlertDialog>
   );
-}
+});
+
+AlertDialog.displayName = "AlertDialog";
+
+export default AlertDialog;

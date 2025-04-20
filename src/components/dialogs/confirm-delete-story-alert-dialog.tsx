@@ -1,17 +1,17 @@
 import { Badge } from "../ui/badge";
 import { Button } from "../ui/button";
-import { AlertDialog } from "../core/alert-dialog";
+import AlertDialog from "../core/alert-dialog";
 import { AlertDialogAction, AlertDialogCancel } from "../ui/alert-dialog";
-import { ReactNode } from "react";
+import { forwardRef, ReactNode, Ref } from "react";
 import { Trans, useTranslation } from "react-i18next";
 
 type Props = {
   storyName: string;
   trigger: ReactNode;
   onConfirm: () => void;
-}
+};
 
-export function ConfirmDeleteStoryAlertDialog({ storyName, trigger, onConfirm }: Props) {
+const ConfirmDeleteStoryAlertDialog = forwardRef(({ storyName, trigger, onConfirm }: Props, ref: Ref<HTMLDivElement>) => {
   const { t } = useTranslation();
 
   return (
@@ -27,6 +27,7 @@ export function ConfirmDeleteStoryAlertDialog({ storyName, trigger, onConfirm }:
         </Trans>
       )}
       trigger={trigger}
+      ref={ref}
     >
       <AlertDialogCancel>
         {t("Cancel")}
@@ -38,4 +39,8 @@ export function ConfirmDeleteStoryAlertDialog({ storyName, trigger, onConfirm }:
       </AlertDialogAction>
     </AlertDialog>
   );
-}
+});
+
+ConfirmDeleteStoryAlertDialog.displayName = "ConfirmDeleteStoryAlertDialog";
+
+export default ConfirmDeleteStoryAlertDialog;

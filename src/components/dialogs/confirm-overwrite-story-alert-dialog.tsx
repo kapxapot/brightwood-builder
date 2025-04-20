@@ -1,6 +1,6 @@
 import { Badge } from "../ui/badge";
 import { Button } from "../ui/button";
-import { AlertDialog } from "../core/alert-dialog";
+import AlertDialog from "../core/alert-dialog";
 import { AlertDialogAction, AlertDialogCancel } from "../ui/alert-dialog";
 import { truncateId } from "@/lib/common";
 import { Trans, useTranslation } from "react-i18next";

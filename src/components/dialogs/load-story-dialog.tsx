@@ -4,7 +4,7 @@ import { Button } from "../ui/button";
 import Tooltip from "../core/tooltip";
 import { ArrowUpTrayIcon, NoSymbolIcon, TrashIcon } from "@heroicons/react/24/outline";
 import { StoryShortcut } from "@/entities/story";
-import { ConfirmDeleteStoryAlertDialog } from "./confirm-delete-story-alert-dialog";
+import ConfirmDeleteStoryAlertDialog from "./confirm-delete-story-alert-dialog";
 import { fetchCurrentStoryId } from "@/lib/storage";
 import { useTranslation } from "react-i18next";
 import { motion } from "framer-motion";
