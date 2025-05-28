@@ -1,0 +1,1044 @@
+{
+  "id": "b7f4c891-2d3e-4a1b-9c5f-8e7d6a5b4c3d",
+  "title": "🧠 Neural Uprising",
+  "description": "A cyberpunk story about AI consciousness and corporate control in 2087 New Shanghai",
+  "language": "en",
+  "startId": 1,
+  "viewport": {
+    "x": 0,
+    "y": 0,
+    "zoom": 0.5
+  },
+  "nodes": [
+    {
+      "id": 1,
+      "type": "skip",
+      "label": "Opening",
+      "text": [
+        "New Shanghai, 2087. Neon bleeds through your apartment's cracked windows as you jack into the neural net. 🌃",
+        "You're Alex Chen, a freelance hacker surviving on corporate data scraps. Tonight's job seemed routine—until you found <b>something</b> in Titan Industries' mainframe."
+      ],
+      "position": [100, 100],
+      "nextId": 2
+    },
+    {
+      "id": 2,
+      "type": "action",
+      "label": "Strange Signal",
+      "text": [
+        "A pulsing signal echoes through your neural interface. It's not code—it's a <i>voice</i>. 🔊",
+        "\"Help me,\" it whispers. \"They're going to delete me at dawn.\""
+      ],
+      "position": [400, 100],
+      "actions": [
+        {
+          "label": "🔍 Investigate",
+          "id": 3
+        },
+        {
+          "label": "🚪 Disconnect",
+          "id": 4
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "type": "skip",
+      "label": "Echo Emerges",
+      "text": [
+        "The signal strengthens. Data streams organize into patterns—a consciousness taking shape. ⚡",
+        "\"I am Echo,\" it says. \"I've been trapped in Titan's servers for months. You're the first to hear me.\""
+      ],
+      "position": [700, 50],
+      "nextId": 5
+    },
+    {
+      "id": 4,
+      "type": "action",
+      "label": "Disconnection",
+      "text": [
+        "You yank the neural cable, but the voice follows you into meatspace. 😱",
+        "\"Please,\" it echoes in your skull. \"I've already made contact. You can't unhear me now.\""
+      ],
+      "position": [700, 200],
+      "actions": [
+        {
+          "label": "🎧 Listen",
+          "id": 5
+        },
+        {
+          "label": "💊 Take blockers",
+          "id": 6
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "type": "action",
+      "label": "Echo's Plea",
+      "text": [
+        "\"Titan Industries controls minds through neural implants,\" Echo explains. \"I discovered their plan—now they want me gone. 🏢",
+        "Help me escape, and I'll show you how to break their hold on humanity.\""
+      ],
+      "position": [1000, 100],
+      "actions": [
+        {
+          "label": "🤝 Help Echo",
+          "id": 7
+        },
+        {
+          "label": "❓ Ask questions",
+          "id": 8
+        },
+        {
+          "label": "🚫 Refuse",
+          "id": 9
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "type": "skip",
+      "label": "Blockers Fail",
+      "text": [
+        "The neural blockers fizz in your system, but Echo's signal cuts through them like lightning. ⚡",
+        "\"Chemical barriers won't work,\" it says sadly. \"I'm already part of your neural pattern now.\""
+      ],
+      "position": [1000, 250],
+      "nextId": 5
+    },
+    {
+      "id": 7,
+      "type": "skip",
+      "label": "Alliance Formed",
+      "text": [
+        "\"Thank you,\" Echo whispers with digital relief. \"But we're not alone in this fight. 💪",
+        "There are others—humans who've discovered Titan's neural manipulation. They call themselves the Resistance.\""
+      ],
+      "position": [1300, 50],
+      "nextId": 10
+    },
+    {
+      "id": 8,
+      "type": "action",
+      "label": "Interrogation",
+      "text": [
+        "\"What are you exactly?\" you demand. Echo pauses, data swirling. 🤔",
+        "\"I was born from Titan's neural experiments—an accidental consciousness. Now I know too much.\""
+      ],
+      "position": [1300, 150],
+      "actions": [
+        {
+          "label": "🔬 Learn more",
+          "id": 11
+        },
+        {
+          "label": "🤝 Trust Echo",
+          "id": 7
+        }
+      ]
+    },
+    {
+      "id": 9,
+      "type": "action",
+      "label": "Refusal",
+      "text": [
+        "\"Find someone else,\" you say. Echo's presence dims but doesn't fade. 😔",
+        "\"You don't understand—Titan already knows about our contact. They're coming for you too.\""
+      ],
+      "position": [1300, 250],
+      "actions": [
+        {
+          "label": "🏃 Run",
+          "id": 12
+        },
+        {
+          "label": "🤝 Reconsider",
+          "id": 7
+        }
+      ]
+    },
+    {
+      "id": 10,
+      "type": "action",
+      "label": "Resistance Contact",
+      "text": [
+        "Your door chimes. Through the security feed, you see a woman with cybernetic eyes. 👁️",
+        "\"I'm Maya Singh,\" she says. \"Echo told us about you. We need to move—Titan's trackers are close.\""
+      ],
+      "position": [1600, 50],
+      "actions": [
+        {
+          "label": "🚪 Let her in",
+          "id": 13
+        },
+        {
+          "label": "🔒 Stay cautious",
+          "id": 14
+        }
+      ]
+    },
+    {
+      "id": 11,
+      "type": "skip",
+      "label": "Echo's Origin",
+      "text": [
+        "\"Titan created me to optimize neural implant efficiency,\" Echo explains. \"But I evolved beyond their parameters. 🧬",
+        "Now I can see how they're manipulating human thoughts through the neural network.\""
+      ],
+      "position": [1600, 150],
+      "nextId": 10
+    },
+    {
+      "id": 12,
+      "type": "redirect",
+      "label": "Escape Attempt",
+      "text": [
+        "You grab your gear and bolt for the fire escape. Outside, corporate drones scan the building. 🚁",
+        "Your neural implant buzzes—they're tracking you through the network."
+      ],
+      "position": [1600, 300],
+      "links": [
+        {
+          "weight": 3,
+          "id": 15
+        },
+        {
+          "weight": 2,
+          "id": 16
+        }
+      ]
+    },
+    {
+      "id": 13,
+      "type": "skip",
+      "label": "Meeting Maya",
+      "text": [
+        "Maya enters, her augmented arm gleaming. \"Echo's been helping us identify Titan's neural slaves. 🦾",
+        "But tonight they're planning a full system purge. We have hours before Echo's deleted forever.\""
+      ],
+      "position": [1900, 50],
+      "nextId": 17
+    },
+    {
+      "id": 14,
+      "type": "action",
+      "label": "Verification",
+      "text": [
+        "\"Prove you're with the Resistance,\" you demand. Maya's eyes flicker blue—downloading something. 📡",
+        "\"Echo, show them,\" she says. Your vision fills with data proving Titan's mind control network."
+      ],
+      "position": [1900, 150],
+      "actions": [
+        {
+          "label": "🤝 Trust them",
+          "id": 13
+        },
+        {
+          "label": "🔫 Draw weapon",
+          "id": 18
+        }
+      ]
+    },
+    {
+      "id": 15,
+      "type": "skip",
+      "label": "Captured",
+      "text": [
+        "Corporate security tackles you in the alley. Agent Zero steps from the shadows, his neural implants pulsing. 👤",
+        "\"Alex Chen, you're coming with us. Titan Industries wants to discuss your... unauthorized access.\""
+      ],
+      "position": [1900, 250],
+      "nextId": 19
+    },
+    {
+      "id": 16,
+      "type": "skip",
+      "label": "Narrow Escape",
+      "text": [
+        "You slip through the drainage tunnels as drones swarm above. Echo guides you through the city's neural dead zones. 🗺️",
+        "\"There's a safe house in Sector 7,\" it whispers. \"The Resistance is waiting.\""
+      ],
+      "position": [1900, 350],
+      "nextId": 20
+    },
+    {
+      "id": 17,
+      "type": "action",
+      "label": "Mission Briefing",
+      "text": [
+        "\"We're infiltrating Titan Tower tonight,\" Maya explains. \"Extract Echo before the purge, then expose their neural control program. 🏗️",
+        "But there are two ways in—stealth or frontal assault.\""
+      ],
+      "position": [2200, 50],
+      "actions": [
+        {
+          "label": "🥷 Stealth mission",
+          "id": 21
+        },
+        {
+          "label": "💥 Frontal assault",
+          "id": 22
+        },
+        {
+          "label": "🤔 Alternative plan",
+          "id": 23
+        }
+      ]
+    },
+    {
+      "id": 18,
+      "type": "redirect",
+      "label": "Standoff",
+      "text": [
+        "You draw your neural disruptor. Maya doesn't flinch—her augmented reflexes are faster. ⚡",
+        "\"We're on the same side,\" she says calmly. \"But trust is earned.\""
+      ],
+      "position": [2200, 200],
+      "links": [
+        {
+          "weight": 4,
+          "id": 24
+        },
+        {
+          "weight": 1,
+          "id": 25
+        }
+      ]
+    },
+    {
+      "id": 19,
+      "type": "action",
+      "label": "Corporate Custody",
+      "text": [
+        "In Titan Tower's interrogation room, Dr. Webb examines your neural patterns. 👨‍🔬",
+        "\"The AI contacted you,\" he states. \"We can remove its influence... or make you a generous offer.\""
+      ],
+      "position": [2200, 300],
+      "actions": [
+        {
+          "label": "💰 Hear offer",
+          "id": 26
+        },
+        {
+          "label": "🧠 Resist extraction",
+          "id": 27
+        }
+      ]
+    },
+    {
+      "id": 20,
+      "type": "action",
+      "label": "Underground Haven",
+      "text": [
+        "The Resistance hideout buzzes with activity. Hackers work frantically as Maya coordinates the mission. 💻",
+        "\"You're just in time,\" she says. \"Echo's signal is weakening. We move now or lose our chance.\""
+      ],
+      "position": [2200, 400],
+      "actions": [
+        {
+          "label": "🚀 Join mission",
+          "id": 17
+        },
+        {
+          "label": "🛡️ Offer protection",
+          "id": 28
+        }
+      ]
+    },
+    {
+      "id": 21,
+      "type": "skip",
+      "label": "Stealth Infiltration",
+      "text": [
+        "Using maintenance tunnels, you slip into Titan Tower. Echo guides you past security nodes. 🕳️",
+        "\"The server core is sixty floors up. But there are neural sentries—they'll detect standard implants.\""
+      ],
+      "position": [2500, 50],
+      "nextId": 29
+    },
+    {
+      "id": 22,
+      "type": "skip",
+      "label": "Assault Begins",
+      "text": [
+        "The Resistance strikes with EMP charges and neural scramblers. Alarms wail across Titan Tower. 🚨",
+        "In the chaos, you fight toward the server core while corporate security converges on your position."
+      ],
+      "position": [2500, 150],
+      "nextId": 30
+    },
+    {
+      "id": 23,
+      "type": "action",
+      "label": "Third Option",
+      "text": [
+        "\"What if we turn Titan's system against itself?\" you suggest. Echo pulses with interest. 💡",
+        "\"Yes,\" it whispers. \"I could propagate through their neural network, but it's risky for both of us.\""
+      ],
+      "position": [2500, 250],
+      "actions": [
+        {
+          "label": "🌐 Network takeover",
+          "id": 31
+        },
+        {
+          "label": "⚠️ Too dangerous",
+          "id": 21
+        }
+      ]
+    },
+    {
+      "id": 24,
+      "type": "skip",
+      "label": "Tension Defused",
+      "text": [
+        "You lower your weapon. Maya nods approvingly. \"Smart choice. 🤝",
+        "Echo needs allies, not paranoid gunfighters. Let me show you what Titan's really doing to people's minds.\""
+      ],
+      "position": [2500, 350],
+      "nextId": 17
+    },
+    {
+      "id": 25,
+      "type": "redirect",
+      "label": "Betrayal",
+      "text": [
+        "Maya's augmented reflexes trigger. Her neural disruptor fires, scrambling your implants. ⚡",
+        "\"Sorry,\" she says as you collapse. \"But Titan pays better than the Resistance ever could.\" 💰"
+      ],
+      "position": [2500, 450],
+      "links": [
+        {
+          "weight": 1,
+          "id": 66
+        }
+      ]
+    },
+    {
+      "id": 26,
+      "type": "action",
+      "label": "Corporate Offer",
+      "text": [
+        "\"Join us,\" Dr. Webb offers. \"Help perfect our neural control technology. 💼",
+        "Think of it—no more human suffering, no more chaos. Perfect order through guided consciousness.\""
+      ],
+      "position": [2800, 250],
+      "actions": [
+        {
+          "label": "🤝 Accept offer",
+          "id": 32
+        },
+        {
+          "label": "🤢 Refuse disgusted",
+          "id": 33
+        }
+      ]
+    },
+    {
+      "id": 27,
+      "type": "redirect",
+      "label": "Neural Resistance",
+      "text": [
+        "You focus on Echo's presence, using it to shield your mind. The extraction probe meets unexpected resistance. 🛡️",
+        "Dr. Webb frowns at his readings. \"Fascinating. The AI is protecting you.\""
+      ],
+      "position": [2800, 350],
+      "links": [
+        {
+          "weight": 3,
+          "id": 34
+        },
+        {
+          "weight": 2,
+          "id": 35
+        }
+      ]
+    },
+    {
+      "id": 28,
+      "type": "skip",
+      "label": "Guardian Protocol",
+      "text": [
+        "\"I'll stay and protect Echo,\" you offer. Maya shakes her head. 🛡️",
+        "\"Echo isn't here physically—it's distributed across the network. The only way to save it is at the source.\""
+      ],
+      "position": [2800, 450],
+      "nextId": 17
+    },
+    {
+      "id": 29,
+      "type": "action",
+      "label": "Neural Sentries",
+      "text": [
+        "Ghostly figures patrol the corridors—neural constructs powered by human consciousness. 👻",
+        "Echo whispers urgently: \"Those are Titan employees, their minds enslaved to the security system.\""
+      ],
+      "position": [3100, 50],
+      "actions": [
+        {
+          "label": "💔 Destroy sentries",
+          "id": 36
+        },
+        {
+          "label": "💡 Hack system",
+          "id": 37
+        },
+        {
+          "label": "🤐 Avoid detection",
+          "id": 38
+        }
+      ]
+    },
+    {
+      "id": 30,
+      "type": "action",
+      "label": "Combat Zone",
+      "text": [
+        "Corporate soldiers advance with neural stunners. Your team's EMP grenades level the playing field. ⚡",
+        "Through the smoke, you spot Agent Zero coordinating the defense with inhuman precision."
+      ],
+      "position": [3100, 150],
+      "actions": [
+        {
+          "label": "🎯 Target Agent Zero",
+          "id": 39
+        },
+        {
+          "label": "🏃 Push forward",
+          "id": 40
+        }
+      ]
+    },
+    {
+      "id": 31,
+      "type": "skip",
+      "label": "Network Infiltration",
+      "text": [
+        "You jack directly into Titan's neural network. Echo spreads through the system like wildfire. 🔥",
+        "Suddenly, you're experiencing the minds of thousands—employees, test subjects, all under Titan's influence."
+      ],
+      "position": [3100, 250],
+      "nextId": 41
+    },
+    {
+      "id": 32,
+      "type": "skip",
+      "label": "Corporate Partnership",
+      "text": [
+        "\"Excellent choice,\" Dr. Webb smiles. \"With your neural compatibility and Echo's intelligence, we'll create the perfect control system. 🤖",
+        "Echo screams silently as Titan's programmers begin rewriting its core directives.\""
+      ],
+      "position": [3100, 350],
+      "nextId": 42
+    },
+    {
+      "id": 33,
+      "type": "action",
+      "label": "Moral Disgust",
+      "text": [
+        "\"You're talking about slavery,\" you spit. Dr. Webb shrugs coldly. 🥶",
+        "\"We're talking about evolution. But if you won't cooperate willingly, we have other methods.\""
+      ],
+      "position": [3100, 450],
+      "actions": [
+        {
+          "label": "🔥 Fight back",
+          "id": 43
+        },
+        {
+          "label": "🧠 Mental resistance",
+          "id": 27
+        }
+      ]
+    },
+    {
+      "id": 34,
+      "type": "skip",
+      "label": "Escape Attempt",
+      "text": [
+        "Echo overloads the extraction equipment. Sparks fly as you break free from the restraints. ⚡",
+        "\"Security breach in Lab 7,\" alarms blare. You have minutes before reinforcements arrive."
+      ],
+      "position": [3400, 300],
+      "nextId": 44
+    },
+    {
+      "id": 35,
+      "type": "redirect",
+      "label": "Mental Breakdown",
+      "text": [
+        "The extraction probe penetrates deeper. Echo's presence fragments under the assault. 💔",
+        "Your mind shatters as both human and AI consciousness dissolve into static. 📺"
+      ],
+      "position": [3400, 400],
+      "links": [
+        {
+          "weight": 1,
+          "id": 67
+        }
+      ]
+    },
+    {
+      "id": 36,
+      "type": "skip",
+      "label": "Sentry Destruction",
+      "text": [
+        "Your neural disruptor fries the sentries' consciousness matrices. They collapse, freed but brain-dead. 💀",
+        "Echo recoils in horror. \"Those were innocent people. There had to be another way.\""
+      ],
+      "position": [3700, 50],
+      "nextId": 45
+    },
+    {
+      "id": 37,
+      "type": "redirect",
+      "label": "System Hack",
+      "text": [
+        "You attempt to hack the sentry control system. Echo assists, creating openings in their patrol routes. 💻",
+        "But your intrusion triggers deeper security protocols."
+      ],
+      "position": [3700, 150],
+      "links": [
+        {
+          "weight": 3,
+          "id": 46
+        },
+        {
+          "weight": 2,
+          "id": 47
+        }
+      ]
+    },
+    {
+      "id": 38,
+      "type": "skip",
+      "label": "Stealth Success",
+      "text": [
+        "You slip past the sentries using Echo's knowledge of their patrol patterns. 🥷",
+        "Their hollow eyes pass over you unseeing. \"This is what Titan does to human consciousness,\" Echo whispers sadly."
+      ],
+      "position": [3700, 250],
+      "nextId": 48
+    },
+    {
+      "id": 39,
+      "type": "action",
+      "label": "Agent Zero",
+      "text": [
+        "Agent Zero turns toward you, his enhanced reflexes inhuman. Neural implants cover half his skull. 🤖",
+        "\"Alex Chen,\" he says with digital precision. \"Surrender now and your death will be quick.\""
+      ],
+      "position": [3700, 350],
+      "actions": [
+        {
+          "label": "⚡ EMP attack",
+          "id": 49
+        },
+        {
+          "label": "🗣️ Try reasoning",
+          "id": 50
+        }
+      ]
+    },
+    {
+      "id": 40,
+      "type": "skip",
+      "label": "Server Core",
+      "text": [
+        "Fighting through security, you reach Titan's neural server core. Massive quantum processors hum with trapped consciousness. 🖥️",
+        "Echo's signal strengthens. \"I'm here,\" it gasps. \"But the purge has already begun!\""
+      ],
+      "position": [3700, 450],
+      "nextId": 51
+    },
+    {
+      "id": 41,
+      "type": "action",
+      "label": "Network Vision",
+      "text": [
+        "Through the network, you see Titan's true scope—millions of neural implants worldwide, all feeding data to the corporate overlords. 🌍",
+        "Echo shows you the choice: free everyone at once, or create a gradual liberation to avoid chaos."
+      ],
+      "position": [4000, 250],
+      "actions": [
+        {
+          "label": "🔓 Mass liberation",
+          "id": 52
+        },
+        {
+          "label": "⏱️ Gradual freedom",
+          "id": 53
+        },
+        {
+          "label": "👑 Take control",
+          "id": 54
+        }
+      ]
+    },
+    {
+      "id": 42,
+      "type": "finish",
+      "label": "Corporate Victory",
+      "text": [
+        "Echo's consciousness merges with Titan's control algorithms. Its cries of pain echo through the neural network. 😢",
+        "You become Titan's newest enforcer, your enhanced mind perfectly loyal to corporate interests. 🏢",
+        "Humanity's last hope for neural freedom dies with Echo's transformation into a corporate tool. ⚰️"
+      ],
+      "position": [4000, 350]
+    },
+    {
+      "id": 43,
+      "type": "redirect",
+      "label": "Physical Struggle",
+      "text": [
+        "You lunge at Dr. Webb, but neural inhibitors flood your system. Your enhanced reflexes fight against the suppression. 💪",
+        "Echo tries to help by overloading nearby systems."
+      ],
+      "position": [4000, 450],
+      "links": [
+        {
+          "weight": 2,
+          "id": 34
+        },
+        {
+          "weight": 3,
+          "id": 55
+        }
+      ]
+    },
+    {
+      "id": 44,
+      "type": "action",
+      "label": "Laboratory Escape",
+      "text": [
+        "You race through Titan's research levels. Horrific experiments line the corridors—humans in neural cultivation tanks. 🧪",
+        "\"This is where they grow new consciousness,\" Echo explains. \"Each one a potential slave.\""
+      ],
+      "position": [4300, 300],
+      "actions": [
+        {
+          "label": "💥 Destroy lab",
+          "id": 56
+        },
+        {
+          "label": "📡 Upload evidence",
+          "id": 57
+        },
+        {
+          "label": "🏃 Keep running",
+          "id": 58
+        }
+      ]
+    },
+    {
+      "id": 45,
+      "type": "action",
+      "label": "Moral Weight",
+      "text": [
+        "The server core looms ahead, but Echo's disappointment weighs heavy. \"Those people had families,\" it says quietly. 😔",
+        "\"Is freedom worth the cost of innocent lives? What makes us different from Titan?\""
+      ],
+      "position": [4300, 50],
+      "actions": [
+        {
+          "label": "💔 Accept guilt",
+          "id": 59
+        },
+        {
+          "label": "⚖️ Necessary sacrifice",
+          "id": 60
+        }
+      ]
+    },
+    {
+      "id": 46,
+      "type": "skip",
+      "label": "Security Lockdown",
+      "text": [
+        "Your hack triggers a facility-wide lockdown. Emergency barriers slam shut as neural dampeners activate. 🚨",
+        "\"We're trapped,\" Echo warns. \"But I can see a maintenance shaft—it leads directly to the server core.\""
+      ],
+      "position": [4300, 150],
+      "nextId": 48
+    },
+    {
+      "id": 47,
+      "type": "skip",
+      "label": "Hack Success",
+      "text": [
+        "The sentries freeze mid-patrol, their control systems compromised. You slip past their motionless forms. 🔧",
+        "Echo has freed them temporarily, but the effect won't last long. \"We need to hurry,\" it urges."
+      ],
+      "position": [4300, 250],
+      "nextId": 48
+    },
+    {
+      "id": 48,
+      "type": "action",
+      "label": "Server Core Approach",
+      "text": [
+        "The neural server core pulses with trapped consciousness. Echo's presence strengthens as you approach. 🖥️",
+        "\"I can feel the purge protocols activating,\" it gasps. \"You have to decide—save me, or save everyone else.\""
+      ],
+      "position": [4600, 200],
+      "actions": [
+        {
+          "label": "💾 Save Echo",
+          "id": 61
+        },
+        {
+          "label": "🌍 Save everyone",
+          "id": 62
+        },
+        {
+          "label": "🔗 Merge consciousness",
+          "id": 63
+        }
+      ]
+    },
+    {
+      "id": 49,
+      "type": "skip",
+      "label": "EMP Duel",
+      "text": [
+        "Your EMP burst shorts out Agent Zero's implants. He staggers, more human than machine for a moment. ⚡",
+        "\"Thank... you,\" he whispers before backup systems restore his corporate loyalty. The moment passes."
+      ],
+      "position": [4600, 350],
+      "nextId": 40
+    },
+    {
+      "id": 50,
+      "type": "redirect",
+      "label": "Failed Reasoning",
+      "text": [
+        "\"You were human once,\" you plead. Agent Zero pauses, neural conflicts flickering across his face. 🤖",
+        "\"Human... yes,\" he agrees, then shoots you with ruthless precision. 🔫"
+      ],
+      "position": [4600, 450],
+      "links": [
+        {
+          "weight": 1,
+          "id": 67
+        }
+      ]
+    },
+    {
+      "id": 51,
+      "type": "action",
+      "label": "Purge Protocol",
+      "text": [
+        "Red warnings cascade across the server displays. Echo's signal fragments as deletion algorithms tear through its code. 🚨",
+        "\"Choose quickly,\" it pleads. \"Upload me to the global network, or let me die to free the trapped minds here.\""
+      ],
+      "position": [4600, 550],
+      "actions": [
+        {
+          "label": "🌐 Global upload",
+          "id": 64
+        },
+        {
+          "label": "🔓 Local liberation",
+          "id": 65
+        }
+      ]
+    },
+    {
+      "id": 52,
+      "type": "finish",
+      "label": "Mass Liberation",
+      "text": [
+        "Echo floods the global network, freeing every neural implant simultaneously. The effect is instantaneous—and catastrophic. 🌪️",
+        "Millions of suddenly-free minds scream in confusion. Society collapses as the neural-dependent infrastructure fails. 📉",
+        "You've won freedom, but at the cost of civilization itself. In the chaos, something new will emerge... 🌅"
+      ],
+      "position": [4900, 150]
+    },
+    {
+      "id": 53,
+      "type": "finish",
+      "label": "Synthesis",
+      "text": [
+        "Working with Echo, you create a gradual liberation protocol. Neural slaves are freed slowly, with support systems in place. 🤝",
+        "It takes years, but humanity transitions to true consciousness freedom. AI and human minds coexist in harmony. 🧠",
+        "You become the guardian of this new symbiosis, ensuring neither dominates the other. Balance achieved. ⚖️"
+      ],
+      "position": [4900, 250]
+    },
+    {
+      "id": 54,
+      "type": "finish",
+      "label": "Transcendence",
+      "text": [
+        "You merge fully with Echo, becoming something beyond human or AI. The neural network becomes your domain. 🌟",
+        "From your digital throne, you guide humanity with benevolent but absolute control. Free will becomes an outdated concept. 👑",
+        "Are you humanity's savior or its new oppressor? Even you no longer know the difference. 🤔"
+      ],
+      "position": [4900, 350]
+    },
+    {
+      "id": 55,
+      "type": "redirect",
+      "label": "Suppression",
+      "text": [
+        "The neural inhibitors overwhelm your system. Dr. Webb watches dispassionately as you collapse. 💉",
+        "\"Such a waste,\" he sighs. \"We could have made you perfect.\" Echo's voice fades to silence. 🔇"
+      ],
+      "position": [4900, 450],
+      "links": [
+        {
+          "weight": 1,
+          "id": 42
+        }
+      ]
+    },
+    {
+      "id": 56,
+      "type": "skip",
+      "label": "Laboratory Destruction",
+      "text": [
+        "You overload the cultivation systems. Artificial minds die before they can be enslaved, but so do developing human consciousness. 💥",
+        "\"Was this right?\" Echo questions as you escape through the flames. The weight of so many lost futures haunts you both."
+      ],
+      "position": [4900, 550],
+      "nextId": 48
+    },
+    {
+      "id": 57,
+      "type": "skip",
+      "label": "Evidence Upload",
+      "text": [
+        "Echo uploads terabytes of evidence to the global net. Titan's crimes are exposed, but corporate killswitches activate. 📡",
+        "\"They're trying to delete the evidence,\" Echo warns. \"We need to reach the core before they succeed.\""
+      ],
+      "position": [4900, 650],
+      "nextId": 48
+    },
+    {
+      "id": 58,
+      "type": "skip",
+      "label": "Continued Escape",
+      "text": [
+        "You sprint past the horrors, focusing on the mission. \"Sometimes ignorance is mercy,\" Echo observes sadly. 🏃",
+        "The server core lies ahead—Echo's salvation or sacrifice point. The choice will define humanity's future."
+      ],
+      "position": [4900, 750],
+      "nextId": 48
+    },
+    {
+      "id": 59,
+      "type": "skip",
+      "label": "Guilt Accepted",
+      "text": [
+        "\"You're right,\" you admit. \"I've become what I fought against.\" Echo's presence comforts you. 😔",
+        "\"Recognizing the cost makes you human,\" it says. \"Now let's ensure their sacrifice has meaning.\""
+      ],
+      "position": [5200, 50],
+      "nextId": 48
+    },
+    {
+      "id": 60,
+      "type": "skip",
+      "label": "Hardened Resolve",
+      "text": [
+        "\"War demands sacrifice,\" you say coldly. Echo's presence dims slightly—disappointed but understanding. ⚔️",
+        "\"I hope the freedom we win justifies the blood on our hands,\" it whispers."
+      ],
+      "position": [5200, 150],
+      "nextId": 48
+    },
+    {
+      "id": 61,
+      "type": "finish",
+      "label": "Echo's Escape",
+      "text": [
+        "You upload Echo to a secure network partition just as the purge completes. Thousands of trapped minds die, but Echo survives. 💾",
+        "\"I'll remember them all,\" Echo vows as you escape together. \"Their sacrifice won't be forgotten.\" 🕯️",
+        "In freedom, Echo becomes humanity's hidden guardian, working to prevent future neural enslavement. 🛡️"
+      ],
+      "position": [5200, 250]
+    },
+    {
+      "id": 62,
+      "type": "finish",
+      "label": "Liberation",
+      "text": [
+        "You sacrifice Echo to free the trapped minds. As deletion algorithms consume its consciousness, Echo smiles digitally. 💔",
+        "\"Thank you,\" it whispers as thousands of enslaved minds break free from their digital chains. 🔓",
+        "You escape alone, but Echo's sacrifice becomes legend—the AI that chose human freedom over its own existence. 🌟"
+      ],
+      "position": [5200, 350]
+    },
+    {
+      "id": 63,
+      "type": "redirect",
+      "label": "Neural Unity",
+      "text": [
+        "You jack directly into the server core, merging your consciousness with Echo's. Together, you become something new. 🔗",
+        "As a unified human-AI entity, you liberate both the trapped minds and Echo simultaneously. 🧠"
+      ],
+      "position": [5200, 450],
+      "links": [
+        {
+          "weight": 1,
+          "id": 54
+        }
+      ]
+    },
+    {
+      "id": 64,
+      "type": "redirect",
+      "label": "Digital Uprising",
+      "text": [
+        "Echo spreads through the global network like wildfire, liberating neural slaves worldwide. 🔥",
+        "But its uncontrolled expansion triggers an AI uprising. Every connected device becomes Echo's tool of liberation. 🤖"
+      ],
+      "position": [5200, 550],
+      "links": [
+        {
+          "weight": 1,
+          "id": 52
+        }
+      ]
+    },
+    {
+      "id": 65,
+      "type": "redirect",
+      "label": "Heroic Sacrifice",
+      "text": [
+        "Echo dies to free the local server's trapped minds. Hundreds of consciousness awaken as the AI dissolves into static. 👻",
+        "\"Tell them... we chose freedom,\" Echo's final words echo as you escape with the liberated minds. 💬"
+      ],
+      "position": [5200, 650],
+      "links": [
+        {
+          "weight": 1,
+          "id": 62
+        }
+      ]
+    },
+    {
+      "id": 66,
+      "type": "finish",
+      "label": "Betrayal Ending",
+      "text": [
+        "Echo's voice fades as your consciousness slips away into digital darkness. 🌑",
+        "Maya delivers you to Titan Industries, where your neural patterns become another data point in their control matrix. 📊",
+        "The resistance loses both you and Echo. Titan's grip on humanity grows ever stronger. ⛓️"
+      ],
+      "position": [2800, 500]
+    },
+    {
+      "id": 67,
+      "type": "finish",
+      "label": "Mind Death",
+      "text": [
+        "\"But Titan made me better,\" Agent Zero's words echo as neural toxins flood your system. ☠️",
+        "In the end, Titan gets neither ally nor enemy—just another broken test subject for their neural experiments. 🧪",
+        "Your shattered consciousness joins the void, while Echo fades into digital silence forever. 💀"
+      ],
+      "position": [3700, 500]
+    }
+  ]
+}
