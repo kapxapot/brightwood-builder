@@ -1,0 +1,1422 @@
+{
+  "id": "a8b2c4d6-e1f3-4567-8901-23456789abcd",
+  "title": "🦅 Secrets of Ravenclaw",
+  "description": "A Harry Potter story about discovering Rowena Ravenclaw's true diadem and the dangerous knowledge it contains",
+  "language": "en",
+  "startId": 1,
+  "nodes": [
+    {
+      "id": 1,
+      "type": "skip",
+      "label": "Strange Disturbances",
+      "text": [
+        "The ancient bronze knocker on Ravenclaw Tower gleams unusually bright tonight. As a seventh-year prefect, you've noticed magical disturbances throughout the week. 🌟",
+        "Books rearrange themselves in the common room, and students report unusually vivid dreams about ancient knowledge."
+      ],
+      "position": [100, 100],
+      "nextId": 2
+    },
+    {
+      "id": 2,
+      "type": "action",
+      "label": "Investigation Begins",
+      "text": [
+        "Professor Flitwick approaches you after Charms class, concern evident in his voice. 'These magical anomalies are centered around Ravenclaw Tower,' he whispers. 🎓",
+        "'As prefect, I need your help investigating. But be careful—something ancient stirs.'"
+      ],
+      "position": [400, 100],
+      "actions": [
+        {
+          "label": "📚 Research immediately",
+          "id": 3
+        },
+        {
+          "label": "🔍 Investigate tower",
+          "id": 4
+        },
+        {
+          "label": "👻 Consult Grey Lady",
+          "id": 5
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "type": "skip",
+      "label": "Library Research",
+      "text": [
+        "In the Restricted Section, you discover references to Ravenclaw's 'True Crown'—distinct from the destroyed Horcrux. 📖",
+        "The texts speak of knowledge that 'burns bright but consumes the unprepared.' Luna Lovegood appears beside you, reading over your shoulder."
+      ],
+      "position": [700, 50],
+      "nextId": 6
+    },
+    {
+      "id": 4,
+      "type": "redirect",
+      "label": "Tower Investigation",
+      "text": [
+        "You climb the spiral staircase, feeling magical energy intensify with each step. The bronze door knocker's riddle seems different tonight. ⚡",
+        "Other students whisper about strange dreams and enhanced magical abilities after spending time in the tower."
+      ],
+      "position": [700, 150],
+      "links": [
+        {
+          "weight": 3,
+          "id": 7
+        },
+        {
+          "weight": 2,
+          "id": 8
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "type": "skip",
+      "label": "Grey Lady",
+      "text": [
+        "Helena Ravenclaw materializes before you, her ethereal form shimmering with unusual intensity. 'You seek what I once stole,' she says sadly. 👻",
+        "'The true diadem has awakened. My mother's greatest creation—and her most dangerous gift to the world.'"
+      ],
+      "position": [700, 250],
+      "nextId": 9
+    },
+    {
+      "id": 6,
+      "type": "action",
+      "label": "Luna's Insight",
+      "text": [
+        "'The Nargles have been quite agitated,' Luna says dreamily. 'They whisper about crown-shaped shadows and minds growing too bright. 🌙",
+        "I think something wants to be found, but maybe it shouldn't be.'"
+      ],
+      "position": [1000, 50],
+      "actions": [
+        {
+          "label": "🤝 Ask Luna's help",
+          "id": 10
+        },
+        {
+          "label": "⚠️ Warn about danger",
+          "id": 11
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "type": "skip",
+      "label": "Enhanced Senses",
+      "text": [
+        "As you enter the common room, your mind feels sharper, more focused. You notice details you've never seen before—hidden runes carved into the ceiling. ✨",
+        "Several younger students look at you with a mixture of awe and fear. Whatever's happening, it's affecting everyone differently."
+      ],
+      "position": [1000, 100],
+      "nextId": 12
+    },
+    {
+      "id": 8,
+      "type": "skip",
+      "label": "Disturbing Dreams",
+      "text": [
+        "That night, your dreams are filled with visions of a magnificent diadem, gleaming with sapphires and ancient magic. 💎",
+        "You see Rowena Ravenclaw herself, warning about knowledge that comes with a terrible price. You wake feeling both enlightened and troubled."
+      ],
+      "position": [1000, 200],
+      "nextId": 12
+    },
+    {
+      "id": 9,
+      "type": "action",
+      "label": "Helena's Warning",
+      "text": [
+        "'I died for that diadem once,' Helena continues, her voice hollow. 'It grants wisdom beyond measure, but wisdom without restraint breeds madness. 😰",
+        "Others seek it now. You must choose—will you claim it, guard it, or destroy it?'"
+      ],
+      "position": [1000, 300],
+      "actions": [
+        {
+          "label": "🗺️ Ask for location",
+          "id": 13
+        },
+        {
+          "label": "⚖️ Seek guidance",
+          "id": 14
+        }
+      ]
+    },
+    {
+      "id": 10,
+      "type": "skip",
+      "label": "Luna's Alliance",
+      "text": [
+        "'I'd love to help,' Luna smiles serenely. 'Father always said the most dangerous treasures hide in plain sight. 🦋",
+        "Perhaps we should look where everyone expects to find nothing—like behind Rowena's portrait in the corridor.'"
+      ],
+      "position": [1300, 50],
+      "nextId": 15
+    },
+    {
+      "id": 11,
+      "type": "skip",
+      "label": "Protective Warning",
+      "text": [
+        "Luna tilts her head thoughtfully. 'Warnings are like Thestrals—only visible to those who've seen truth. 🖤",
+        "But sometimes the most dangerous thing is not warning others when they need to learn for themselves.'"
+      ],
+      "position": [1300, 150],
+      "nextId": 15
+    },
+    {
+      "id": 12,
+      "type": "action",
+      "label": "Marcus Appears",
+      "text": [
+        "Marcus Thornfield, a seventh-year Slytherin, intercepts you in the corridor. His eyes gleam with ambition. 🐍",
+        "'I know what you're looking for,' he says quietly. 'The question is—are you willing to share the power?'"
+      ],
+      "position": [1300, 250],
+      "actions": [
+        {
+          "label": "🤝 Consider alliance",
+          "id": 16
+        },
+        {
+          "label": "🚫 Refuse firmly",
+          "id": 17
+        },
+        {
+          "label": "🤔 Play ignorant",
+          "id": 18
+        }
+      ]
+    },
+    {
+      "id": 13,
+      "type": "skip",
+      "label": "Hidden Location",
+      "text": [
+        "'Behind my mother's portrait lies a chamber she created for her most precious works,' Helena reveals. 🗝️",
+        "'But beware—the diadem chooses who may approach. It tests the mind, and many have failed that test.'"
+      ],
+      "position": [1300, 350],
+      "nextId": 19
+    },
+    {
+      "id": 14,
+      "type": "skip",
+      "label": "Wisdom Shared",
+      "text": [
+        "'Knowledge without wisdom is destruction,' Helena intones. 'My mother learned this too late. 📜",
+        "The diadem shows the truth of all things, but truth without compassion becomes cruelty. Choose your path carefully.'"
+      ],
+      "position": [1300, 450],
+      "nextId": 19
+    },
+    {
+      "id": 15,
+      "type": "action",
+      "label": "Hidden Passage",
+      "text": [
+        "Following Luna's suggestion, you examine Rowena's portrait. She winks knowingly as you trace ancient runes around the frame. 🖼️",
+        "The wall begins to shimmer—there's definitely something hidden here. But footsteps echo in the corridor behind you."
+      ],
+      "position": [1600, 100],
+      "actions": [
+        {
+          "label": "🏃 Enter quickly",
+          "id": 20
+        },
+        {
+          "label": "👀 Check who's coming",
+          "id": 21
+        }
+      ]
+    },
+    {
+      "id": 16,
+      "type": "skip",
+      "label": "Slytherin Proposal",
+      "text": [
+        "'Smart choice,' Marcus grins. 'I've been tracking the magical disturbances too. Together, we could unlock secrets the professors never dreamed of. ⚗️",
+        "But first, we need to find it before Professor Vector and her Ministry contact do.'"
+      ],
+      "position": [1600, 200],
+      "nextId": 22
+    },
+    {
+      "id": 17,
+      "type": "skip",
+      "label": "Firm Refusal",
+      "text": [
+        "Marcus's expression hardens. 'Your loss, Ravenclaw. But don't think you can keep this discovery to yourself. 😠",
+        "Others are already searching—and they won't be as polite as I am.' He stalks away, leaving you wondering what forces you've awakened."
+      ],
+      "position": [1600, 300],
+      "nextId": 23
+    },
+    {
+      "id": 18,
+      "type": "redirect",
+      "label": "Deception Attempt",
+      "text": [
+        "'Playing dumb doesn't suit a Ravenclaw,' Marcus sneers. 'Fine, keep your secrets. But remember this conversation when things get dangerous. 🎭",
+        "The diadem calls to ambitious minds—and I'm not the only one who's heard it.'"
+      ],
+      "position": [1600, 400],
+      "links": [
+        {
+          "weight": 2,
+          "id": 23
+        },
+        {
+          "weight": 3,
+          "id": 24
+        }
+      ]
+    },
+    {
+      "id": 19,
+      "type": "action",
+      "label": "Vector's Arrival",
+      "text": [
+        "Professor Vector appears, accompanied by a stern-looking woman in Ministry robes. 'Ah, our ambitious prefect,' Vector says coolly. 📐",
+        "'Miss Clearwater here is investigating... irregularities. Perhaps you've noticed something unusual lately?'"
+      ],
+      "position": [1600, 500],
+      "actions": [
+        {
+          "label": "🗣️ Tell the truth",
+          "id": 25
+        },
+        {
+          "label": "🤐 Share nothing",
+          "id": 26
+        },
+        {
+          "label": "📚 Mention research only",
+          "id": 27
+        }
+      ]
+    },
+    {
+      "id": 20,
+      "type": "skip",
+      "label": "Secret Chamber",
+      "text": [
+        "You slip through the shimmering wall into a circular chamber filled with ancient artifacts and glowing runes. 🌟",
+        "At the center, on a pedestal of polished bronze, sits Rowena Ravenclaw's diadem—magnificent and terrifyingly powerful."
+      ],
+      "position": [1900, 50],
+      "nextId": 28
+    },
+    {
+      "id": 21,
+      "type": "skip",
+      "label": "Vector Approaching",
+      "text": [
+        "Professor Vector rounds the corner with Ministry Official Clearwater. They're deep in hushed conversation about 'unauthorized magical artifacts.' 👥",
+        "You quickly step away from the portrait, but Vector's sharp eyes miss nothing. She knows you've discovered something."
+      ],
+      "position": [1900, 150],
+      "nextId": 19
+    },
+    {
+      "id": 22,
+      "type": "action",
+      "label": "Unexpected Alliance",
+      "text": [
+        "Marcus leads you to an unused classroom where he's set up magical detection equipment. 'Vector's been monitoring the castle for weeks,' he explains. 🔬",
+        "'The Ministry wants to confiscate any dangerous artifacts. We need to find it first.'"
+      ],
+      "position": [1900, 250],
+      "actions": [
+        {
+          "label": "🤝 Trust Marcus fully",
+          "id": 29
+        },
+        {
+          "label": "⚠️ Remain cautious",
+          "id": 30
+        }
+      ]
+    },
+    {
+      "id": 23,
+      "type": "action",
+      "label": "Solo Investigation",
+      "text": [
+        "Alone now, you realize the weight of responsibility. The diadem's power calls to you, but so do the warnings. 🤯",
+        "You need to decide your next move carefully—others are closing in, and time is running out."
+      ],
+      "position": [1900, 350],
+      "actions": [
+        {
+          "label": "🔍 Continue investigating",
+          "id": 31
+        },
+        {
+          "label": "🛡️ Seek Flitwick's help",
+          "id": 32
+        },
+        {
+          "label": "📚 Research more",
+          "id": 33
+        }
+      ]
+    },
+    {
+      "id": 24,
+      "type": "skip",
+      "label": "Dangerous Game",
+      "text": [
+        "As Marcus leaves, you notice he drops a small piece of parchment. It contains detailed notes about the diadem's location and its connection to ancient Ravenclaw magic. 📝",
+        "He's been researching this far longer than he let on. The question is—can you trust his information?"
+      ],
+      "position": [1900, 450],
+      "nextId": 23
+    },
+    {
+      "id": 25,
+      "type": "skip",
+      "label": "Ministry Interest",
+      "text": [
+        "'Fascinating,' Clearwater murmurs, taking notes. 'Another confirmation of the artifact's presence. Professor Vector, prepare the containment protocols. 📋",
+        "You realize you may have just sealed the diadem's fate—but perhaps that's for the best.'"
+      ],
+      "position": [1900, 550],
+      "nextId": 34
+    },
+    {
+      "id": 26,
+      "type": "redirect",
+      "label": "Suspicious Silence",
+      "text": [
+        "'Your silence speaks volumes,' Vector observes. Clearwater steps forward menacingly. 'We can make this easy or difficult, student. 😤",
+        "The Ministry has ways of extracting information when cooperation fails.'"
+      ],
+      "position": [1900, 650],
+      "links": [
+        {
+          "weight": 2,
+          "id": 35
+        },
+        {
+          "weight": 3,
+          "id": 36
+        }
+      ]
+    },
+    {
+      "id": 27,
+      "type": "skip",
+      "label": "Half-Truth",
+      "text": [
+        "'Academic research into historical artifacts,' you say carefully. Vector's eyes narrow—she suspects there's more. 📖",
+        "'Perhaps you'd share your findings with the Ministry's expert? Knowledge should not be hoarded, after all.'"
+      ],
+      "position": [1900, 750],
+      "nextId": 37
+    },
+    {
+      "id": 28,
+      "type": "action",
+      "label": "The Diadem",
+      "text": [
+        "The diadem pulses with sapphire light, and whispers of infinite knowledge fill your mind. You understand the temptation Helena felt centuries ago. 💎",
+        "But Luna's warning echoes: knowledge without wisdom breeds madness."
+      ],
+      "position": [2200, 50],
+      "actions": [
+        {
+          "label": "👑 Touch the diadem",
+          "id": 38
+        },
+        {
+          "label": "🔒 Just observe",
+          "id": 39
+        },
+        {
+          "label": "🚪 Leave immediately",
+          "id": 40
+        }
+      ]
+    },
+    {
+      "id": 29,
+      "type": "skip",
+      "label": "Marcus's Plan",
+      "text": [
+        "'The diadem is hidden behind Ravenclaw's portrait,' Marcus reveals excitedly. 'Together, we could unlock its secrets before the Ministry seizes it. 🗝️",
+        "Think of the magical advancement we could achieve! But we must move tonight.'"
+      ],
+      "position": [2200, 200],
+      "nextId": 41
+    },
+    {
+      "id": 30,
+      "type": "action",
+      "label": "Cautious Partnership",
+      "text": [
+        "You agree to work with Marcus but keep your guard up. His ambition is clear, and you wonder what he'll do when he finds the diadem. ⚖️",
+        "'Smart to be careful,' he admits. 'Power changes people. But someone needs to ensure it's used wisely.'"
+      ],
+      "position": [2200, 300],
+      "actions": [
+        {
+          "label": "🤝 Continue partnership",
+          "id": 42
+        },
+        {
+          "label": "🚫 Break alliance",
+          "id": 43
+        }
+      ]
+    },
+    {
+      "id": 31,
+      "type": "skip",
+      "label": "Night Investigation",
+      "text": [
+        "Under cover of darkness, you make your way to Ravenclaw's portrait. The castle feels different at night—more aware, more dangerous. 🌙",
+        "The portrait's eyes follow your movements as you search for the hidden entrance Helena mentioned."
+      ],
+      "position": [2200, 400],
+      "nextId": 44
+    },
+    {
+      "id": 32,
+      "type": "skip",
+      "label": "Flitwick's Wisdom",
+      "text": [
+        "'Ah, you've discovered it,' Flitwick sighs when you tell him about the diadem. 'I wondered when it would resurface. 🎓",
+        "The question isn't whether to use its power, but whether we're wise enough to resist it.'"
+      ],
+      "position": [2200, 500],
+      "nextId": 45
+    },
+    {
+      "id": 33,
+      "type": "skip",
+      "label": "Ancient Warnings",
+      "text": [
+        "Deeper research reveals disturbing patterns—every previous owner of the diadem eventually succumbed to madness or obsession. 📚",
+        "Rowena Ravenclaw herself became increasingly isolated, consumed by the pursuit of absolute knowledge before her death."
+      ],
+      "position": [2200, 600],
+      "nextId": 46
+    },
+    {
+      "id": 34,
+      "type": "action",
+      "label": "Ministry Seizure",
+      "text": [
+        "Within hours, Ministry officials swarm the castle. They've located the diadem's chamber and are preparing to remove it. 🏛️",
+        "Clearwater approaches you. 'You did the right thing. Such power belongs in trained hands.'"
+      ],
+      "position": [2500, 500],
+      "actions": [
+        {
+          "label": "✅ Support their action",
+          "id": 47
+        },
+        {
+          "label": "😰 Feel regretful",
+          "id": 48
+        }
+      ]
+    },
+    {
+      "id": 35,
+      "type": "skip",
+      "label": "Magical Coercion",
+      "text": [
+        "Clearwater raises her wand threateningly, but Flitwick appears suddenly. 'I believe that's quite enough intimidation of my students,' he says firmly. ⚡",
+        "The tension breaks, but you realize the Ministry will use any means necessary to claim the diadem."
+      ],
+      "position": [2500, 600],
+      "nextId": 49
+    },
+    {
+      "id": 36,
+      "type": "skip",
+      "label": "Standing Firm",
+      "text": [
+        "You maintain your silence despite the pressure. Vector eventually backs down, but her parting words are ominous. 😤",
+        "'We'll find it with or without your help. Pray we find it before others with less noble intentions do.'"
+      ],
+      "position": [2500, 700],
+      "nextId": 50
+    },
+    {
+      "id": 37,
+      "type": "action",
+      "label": "Forced Cooperation",
+      "text": [
+        "Vector insists you accompany them to the hidden chamber. Your partial honesty has bought you a chance to influence events. 🤝",
+        "As you lead them to Ravenclaw's portrait, you must decide how much more to reveal."
+      ],
+      "position": [2500, 800],
+      "actions": [
+        {
+          "label": "🗝️ Show everything",
+          "id": 51
+        },
+        {
+          "label": "🚧 Give minimal help",
+          "id": 52
+        }
+      ]
+    },
+    {
+      "id": 38,
+      "type": "redirect",
+      "label": "Power's Touch",
+      "text": [
+        "The moment your fingers touch the diadem, knowledge floods your mind—spells beyond imagination, secrets of the universe, the true nature of magic itself. ⚡",
+        "But with it comes the terrible understanding of why Helena died for it."
+      ],
+      "position": [2800, 50],
+      "links": [
+        {
+          "weight": 2,
+          "id": 53
+        },
+        {
+          "weight": 3,
+          "id": 54
+        }
+      ]
+    },
+    {
+      "id": 39,
+      "type": "action",
+      "label": "Wise Restraint",
+      "text": [
+        "You resist the temptation to touch the artifact. The diadem seems to pulse with approval—or perhaps disappointment. 💭",
+        "Luna appears beside you. 'Sometimes the bravest thing is not taking what's offered,' she observes."
+      ],
+      "position": [2800, 150],
+      "actions": [
+        {
+          "label": "🛡️ Guard the diadem",
+          "id": 55
+        },
+        {
+          "label": "🤝 Seek Luna's advice",
+          "id": 56
+        }
+      ]
+    },
+    {
+      "id": 40,
+      "type": "skip",
+      "label": "Hasty Retreat",
+      "text": [
+        "You flee the chamber, but the diadem's whispers follow you. Knowledge once glimpsed cannot be unseen. 🏃",
+        "Even in Ravenclaw Tower, you feel its pull—and you know others will too. The secret is out now."
+      ],
+      "position": [2800, 250],
+      "nextId": 57
+    },
+    {
+      "id": 41,
+      "type": "action",
+      "label": "Joint Discovery",
+      "text": [
+        "You and Marcus enter the chamber together. The diadem's power is overwhelming—you can see the hunger in his eyes. 👥",
+        "'Finally,' he breathes. 'All the mysteries of magic within our grasp.'"
+      ],
+      "position": [2800, 350],
+      "actions": [
+        {
+          "label": "⚠️ Warn against touching",
+          "id": 58
+        },
+        {
+          "label": "👑 Reach for it together",
+          "id": 59
+        }
+      ]
+    },
+    {
+      "id": 42,
+      "type": "skip",
+      "label": "Partnership Maintained",
+      "text": [
+        "Your cautious alliance proves wise as Marcus shares crucial intelligence about Ministry movements and Professor Vector's true agenda. 🤝",
+        "'She's not just investigating,' he reveals. 'She's been searching for the diadem for years on behalf of certain... collectors.'"
+      ],
+      "position": [2800, 450],
+      "nextId": 60
+    },
+    {
+      "id": 43,
+      "type": "skip",
+      "label": "Alliance Broken",
+      "text": [
+        "'Your loss,' Marcus shrugs, but his eyes flash dangerously. 'But don't think this ends our competition. 😠",
+        "The diadem will choose its master, and ambition often triumphs over caution.' He disappears into the shadows."
+      ],
+      "position": [2800, 550],
+      "nextId": 61
+    },
+    {
+      "id": 44,
+      "type": "action",
+      "label": "Hidden Entrance",
+      "text": [
+        "The portrait swings aside, revealing the secret chamber. Inside, the diadem waits, beautiful and terrible. 🗝️",
+        "But you hear footsteps—someone else has discovered this place. Time is running out."
+      ],
+      "position": [2800, 650],
+      "actions": [
+        {
+          "label": "🏃 Grab and run",
+          "id": 62
+        },
+        {
+          "label": "🤫 Hide and observe",
+          "id": 63
+        }
+      ]
+    },
+    {
+      "id": 45,
+      "type": "action",
+      "label": "Professor's Guidance",
+      "text": [
+        "'The founders faced this choice too,' Flitwick explains. 'Power versus wisdom. The diadem represents knowledge untempered by experience. 🎓",
+        "What will you do with this terrible gift?'"
+      ],
+      "position": [2800, 750],
+      "actions": [
+        {
+          "label": "🔒 Secure it safely",
+          "id": 64
+        },
+        {
+          "label": "💥 Destroy it",
+          "id": 65
+        }
+      ]
+    },
+    {
+      "id": 46,
+      "type": "action",
+      "label": "Dark History",
+      "text": [
+        "The research reveals a pattern of corruption—the diadem doesn't just grant knowledge, it creates an insatiable hunger for more. 📚",
+        "Every owner became consumed by the pursuit of absolute understanding, losing their humanity in the process."
+      ],
+      "position": [2800, 850],
+      "actions": [
+        {
+          "label": "⚠️ Warn others",
+          "id": 66
+        },
+        {
+          "label": "🔒 Keep secret",
+          "id": 67
+        }
+      ]
+    },
+    {
+      "id": 47,
+      "type": "skip",
+      "label": "Ministry Guardian",
+      "text": [
+        "You watch as the Ministry safely contains the diadem in specialized wards. Knowledge is preserved but controlled. 🏛️",
+        "Your choice to trust authority proves wise, and you're invited to join their efforts in protecting dangerous artifacts."
+      ],
+      "position": [3100, 500],
+      "nextId": 55
+    },
+    {
+      "id": 48,
+      "type": "skip",
+      "label": "Regretful Compliance",
+      "text": [
+        "As the diadem disappears into Ministry custody, you feel the weight of lost opportunity. The whispers of infinite knowledge fade. 😔",
+        "But perhaps this regret will teach you something more valuable than any artifact could."
+      ],
+      "position": [3100, 600],
+      "nextId": 90
+    },
+    {
+      "id": 49,
+      "type": "action",
+      "label": "Protected Student",
+      "text": [
+        "With Flitwick's protection, you have more freedom to act. The Ministry will keep searching, but you have time to make your own choice. 🎓",
+        "'Whatever you decide,' Flitwick whispers, 'remember that true wisdom lies in knowing the limits of knowledge.'"
+      ],
+      "position": [3100, 700],
+      "actions": [
+        {
+          "label": "🔍 Find diadem first",
+          "id": 68
+        },
+        {
+          "label": "🤝 Seek allies",
+          "id": 69
+        }
+      ]
+    },
+    {
+      "id": 50,
+      "type": "skip",
+      "label": "Time Pressure",
+      "text": [
+        "Vector's threat proves real—other forces are converging on Hogwarts. You spot unfamiliar figures in the corridors, and magical disturbances intensify. ⏰",
+        "The race for the diadem has begun in earnest. Every moment of delay increases the danger."
+      ],
+      "position": [3100, 800],
+      "nextId": 70
+    },
+    {
+      "id": 51,
+      "type": "skip",
+      "label": "Full Revelation",
+      "text": [
+        "You lead them directly to the diadem's chamber. Clearwater's eyes gleam with triumph as she begins containment spells. 🗝️",
+        "But the diadem resists—its power is too great for simple containment. The artifact begins to glow dangerously bright."
+      ],
+      "position": [3100, 900],
+      "nextId": 71
+    },
+    {
+      "id": 52,
+      "type": "redirect",
+      "label": "Minimal Cooperation",
+      "text": [
+        "You provide just enough information to seem helpful while concealing crucial details. Vector grows suspicious. 🤫",
+        "Your delaying tactics work temporarily, but other forces close in on the diadem's location."
+      ],
+      "position": [3100, 1000],
+      "links": [
+        {
+          "weight": 2,
+          "id": 72
+        },
+        {
+          "weight": 3,
+          "id": 73
+        }
+      ]
+    },
+    {
+      "id": 53,
+      "type": "skip",
+      "label": "Knowledge Addiction",
+      "text": [
+        "The diadem's knowledge is intoxicating—you understand spells that shouldn't exist, see connections between all magical theory. 🧠",
+        "But with each revelation, you crave more. The hunger grows, and you begin to understand Helena's fatal obsession."
+      ],
+      "position": [3400, 50],
+      "nextId": 74
+    },
+    {
+      "id": 54,
+      "type": "action",
+      "label": "Overwhelming Power",
+      "text": [
+        "The knowledge threatens to burn out your mind entirely. Through sheer will, you manage to break contact with the diadem. ⚡",
+        "You're left gasping, changed forever but still yourself. The diadem pulses, almost disappointed."
+      ],
+      "position": [3400, 150],
+      "actions": [
+        {
+          "label": "🔒 Seal the chamber",
+          "id": 75
+        },
+        {
+          "label": "💥 Destroy the diadem",
+          "id": 76
+        }
+      ]
+    },
+    {
+      "id": 55,
+      "type": "finish",
+      "label": "Keeper of Wisdom",
+      "text": [
+        "You dedicate your life to guarding the diadem, becoming its protector rather than its user. The secret chamber becomes your sanctuary. 🏰",
+        "Future generations seek you out for guidance, knowing you possess access to ultimate knowledge but the wisdom not to abuse it. 🦅",
+        "You become legend—the Ravenclaw who chose protection over power, ensuring the diadem's knowledge remains available but controlled."
+      ],
+      "position": [3400, 250]
+    },
+    {
+      "id": 56,
+      "type": "action",
+      "label": "Luna's Wisdom",
+      "text": [
+        "'The diadem wants to be used,' Luna observes. 'But maybe what it needs is to be understood instead of possessed. 🌙",
+        "What if there's a way to share its knowledge safely, without the corruption?'"
+      ],
+      "position": [3400, 350],
+      "actions": [
+        {
+          "label": "🔬 Study the diadem",
+          "id": 77
+        },
+        {
+          "label": "🤝 Seek more help",
+          "id": 78
+        }
+      ]
+    },
+    {
+      "id": 57,
+      "type": "action",
+      "label": "Growing Danger",
+      "text": [
+        "News spreads quickly through the castle's hidden networks. You realize your discovery has set events in motion that cannot be stopped. ⚠️",
+        "Multiple factions now search for the diadem, each with their own agenda."
+      ],
+      "position": [3400, 450],
+      "actions": [
+        {
+          "label": "🛡️ Protect the chamber",
+          "id": 79
+        },
+        {
+          "label": "🏃 Lead them away",
+          "id": 80
+        }
+      ]
+    },
+    {
+      "id": 58,
+      "type": "skip",
+      "label": "Voice of Caution",
+      "text": [
+        "'But the power—' Marcus protests, reaching toward the diadem. The artifact pulses, responding to his ambition. ⚡",
+        "You see the hunger in his eyes and realize your warning may have come too late. The diadem has already begun to corrupt him."
+      ],
+      "position": [3400, 550],
+      "nextId": 81
+    },
+    {
+      "id": 59,
+      "type": "redirect",
+      "label": "Joint Temptation",
+      "text": [
+        "Together, you and Marcus approach the diadem. Its power calls to both ambitious minds, promising shared dominion over magical knowledge. 👑",
+        "But as your hands near the artifact, you sense something watching from the shadows."
+      ],
+      "position": [3400, 650],
+      "links": [
+        {
+          "weight": 1,
+          "id": 82
+        },
+        {
+          "weight": 4,
+          "id": 83
+        }
+      ]
+    },
+    {
+      "id": 60,
+      "type": "action",
+      "label": "Vector's Secret",
+      "text": [
+        "Marcus reveals that Vector has been selling information about Hogwarts artifacts to private collectors. 'She's not protecting them—she's cataloging them for sale. 💰",
+        "We need to act before she claims the diadem for her buyers.'"
+      ],
+      "position": [3400, 750],
+      "actions": [
+        {
+          "label": "⚡ Act immediately",
+          "id": 84
+        },
+        {
+          "label": "📋 Gather evidence",
+          "id": 85
+        }
+      ]
+    },
+    {
+      "id": 61,
+      "type": "skip",
+      "label": "Rival's Threat",
+      "text": [
+        "Marcus's warning proves prophetic—he reaches the diadem first, using information you helped him gather. 😠",
+        "The moment he touches it, his eyes blaze with newfound power and terrible ambition. 'Thank you for leading me here,' he sneers."
+      ],
+      "position": [3400, 850],
+      "nextId": 86
+    },
+    {
+      "id": 62,
+      "type": "redirect",
+      "label": "Desperate Grab",
+      "text": [
+        "You seize the diadem just as Vector and Clearwater enter the chamber. The artifact's power surges through you instantly. ⚡",
+        "Knowledge floods your mind, but so does the understanding of what you've just become."
+      ],
+      "position": [3400, 950],
+      "links": [
+        {
+          "weight": 1,
+          "id": 87
+        },
+        {
+          "weight": 2,
+          "id": 88
+        }
+      ]
+    },
+    {
+      "id": 63,
+      "type": "skip",
+      "label": "Hidden Observer",
+      "text": [
+        "From the shadows, you watch as Marcus enters the chamber. His face transforms with awe and hunger as he sees the diadem. 👀",
+        "He reaches for it without hesitation, and you witness the exact moment the artifact's corruption takes hold."
+      ],
+      "position": [3400, 1050],
+      "nextId": 89
+    },
+    {
+      "id": 64,
+      "type": "skip",
+      "label": "The Balance",
+      "text": [
+        "Working with Flitwick, you create powerful wards around the diadem that allow controlled access to its knowledge. ⚖️",
+        "This collaborative approach becomes the foundation for something even greater."
+      ],
+      "position": [3700, 750],
+      "nextId": 77
+    },
+    {
+      "id": 65,
+      "type": "finish",
+      "label": "The Sacrifice",
+      "text": [
+        "Despite the agony of destroying such knowledge, you and Flitwick work together to shatter the diadem beyond repair. 💥",
+        "The magical backlash leaves you permanently changed—your mind touched by infinite wisdom but your power greatly diminished. 😔",
+        "You become a teacher, passing on the hard-won lesson that some knowledge is too dangerous to preserve, no matter the cost."
+      ],
+      "position": [3700, 850]
+    },
+    {
+      "id": 66,
+      "type": "skip",
+      "label": "Warning Others",
+      "text": [
+        "You spread word about the diadem's corrupting influence, but your warnings fall on deaf ears. Those who seek power rarely listen to caution. ⚠️",
+        "Your research helps some resist the artifact's pull, but others dismiss your findings as jealous attempts to keep knowledge for yourself."
+      ],
+      "position": [3700, 950],
+      "nextId": 90
+    },
+    {
+      "id": 67,
+      "type": "action",
+      "label": "Keeping Secrets",
+      "text": [
+        "You decide the dark history must remain hidden—revealing it might only encourage those who believe they can succeed where others failed. 🤫",
+        "But keeping such knowledge to yourself weighs heavily on your conscience."
+      ],
+      "position": [3700, 1050],
+      "actions": [
+        {
+          "label": "🔒 Lock away research",
+          "id": 91
+        },
+        {
+          "label": "💭 Reconsider warning",
+          "id": 92
+        }
+      ]
+    },
+    {
+      "id": 68,
+      "type": "skip",
+      "label": "Race Against Time",
+      "text": [
+        "With Flitwick's subtle help, you reach the chamber first. The diadem awaits, magnificent and terrible in its beauty. 🏃",
+        "Behind you, voices echo in the corridor—the Ministry, Vector, and others are closing in. You have moments to decide."
+      ],
+      "position": [3700, 1150],
+      "nextId": 93
+    },
+    {
+      "id": 69,
+      "type": "skip",
+      "label": "Building Alliance",
+      "text": [
+        "You gather Luna, some trusted Ravenclaws, and even convince the Grey Lady to help. Together, you form a protective circle around the diadem's chamber. 🤝",
+        "Helena whispers ancient words that strengthen the chamber's defenses, buying you time to make a proper decision."
+      ],
+      "position": [3700, 1250],
+      "nextId": 94
+    },
+    {
+      "id": 70,
+      "type": "action",
+      "label": "Converging Forces",
+      "text": [
+        "The castle becomes a battlefield of competing interests. You must choose your allies quickly before the situation spirals out of control. ⏰",
+        "Each faction offers different promises—power, protection, or knowledge."
+      ],
+      "position": [3700, 1350],
+      "actions": [
+        {
+          "label": "🎓 Trust the professors",
+          "id": 95
+        },
+        {
+          "label": "🤝 Ally with students",
+          "id": 96
+        }
+      ]
+    },
+    {
+      "id": 71,
+      "type": "action",
+      "label": "Containment Failure",
+      "text": [
+        "The diadem's power overwhelms Clearwater's containment spells. Magical energy erupts throughout the chamber, and everyone present feels its influence. ⚡",
+        "In the chaos, you have one chance to act decisively."
+      ],
+      "position": [4000, 900],
+      "actions": [
+        {
+          "label": "🛡️ Shield others",
+          "id": 47
+        },
+        {
+          "label": "💥 Destroy the diadem",
+          "id": 65
+        }
+      ]
+    },
+    {
+      "id": 72,
+      "type": "skip",
+      "label": "Misdirection Success",
+      "text": [
+        "Your delaying tactics work—Vector searches empty chambers while you reach the real location first. 🎭",
+        "But time is running out, and other seekers are closing in. The final confrontation approaches."
+      ],
+      "position": [4000, 1000],
+      "nextId": 28
+    },
+    {
+      "id": 73,
+      "type": "skip",
+      "label": "Discovery Imminent",
+      "text": [
+        "Despite your efforts, Vector pieces together the truth. She races toward Ravenclaw's portrait with Clearwater in tow. 🏃",
+        "You have one last chance to reach the diadem before they do, but the cost may be your own corruption."
+      ],
+      "position": [4000, 1100],
+      "nextId": 28
+    },
+    {
+      "id": 74,
+      "type": "finish",
+      "label": "Master Scholar",
+      "text": [
+        "You master the diadem's power through sheer force of will, becoming the most brilliant wizard of your generation. 🧠",
+        "Your magical innovations revolutionize the wizarding world, but the cost is steep—you lose the ability to form deep emotional connections. 📚",
+        "You achieve ultimate knowledge but remain forever isolated, understanding everything except what it means to be truly human."
+      ],
+      "position": [4000, 50]
+    },
+    {
+      "id": 75,
+      "type": "skip",
+      "label": "Guardian's Duty",
+      "text": [
+        "You seal the chamber with powerful magic, becoming its eternal guardian. The diadem remains safe but accessible to worthy seekers. 🔒",
+        "Your dedication to protection above personal gain defines your destiny."
+      ],
+      "position": [4000, 150],
+      "nextId": 55
+    },
+    {
+      "id": 76,
+      "type": "skip",
+      "label": "The Cleansing",
+      "text": [
+        "With great sorrow, you channel all your power into destroying the diadem. The artifact shatters, taking its corrupting knowledge with it. 💥",
+        "The magical backlash is severe, but you know the sacrifice was necessary."
+      ],
+      "position": [4000, 250],
+      "nextId": 65
+    },
+    {
+      "id": 77,
+      "type": "finish",
+      "label": "Ravenclaw's Heir",
+      "text": [
+        "Through careful study with Luna's help, you discover a way to access the diadem's knowledge gradually and safely. 🔬",
+        "You establish a new method of magical education that incorporates the diadem's wisdom without its corruption. 🎓",
+        "Your innovation transforms Hogwarts and the wizarding world, earning you recognition as the true inheritor of Rowena Ravenclaw's legacy."
+      ],
+      "position": [4000, 350]
+    },
+    {
+      "id": 78,
+      "type": "skip",
+      "label": "Collaborative Wisdom",
+      "text": [
+        "With help from Flitwick, Helena, and Luna, you develop a ritual to safely extract knowledge from the diadem without personal contact. 🤝",
+        "The process is slow but allows multiple minds to share the burden, preventing any one person from being corrupted."
+      ],
+      "position": [4000, 450],
+      "nextId": 77
+    },
+    {
+      "id": 79,
+      "type": "skip",
+      "label": "Chamber Defense",
+      "text": [
+        "You ward the chamber with every protection spell you know. When the various factions arrive, they find the entrance sealed. 🛡️",
+        "But the diadem's power seeps through even your strongest barriers, calling to ambitious minds outside."
+      ],
+      "position": [4000, 550],
+      "nextId": 55
+    },
+    {
+      "id": 80,
+      "type": "skip",
+      "label": "False Trail",
+      "text": [
+        "You create false clues leading searchers away from the real chamber. The deception works temporarily. 🎭",
+        "But Marcus, using his insider knowledge, sees through your misdirection and races to the true location."
+      ],
+      "position": [4000, 650],
+      "nextId": 61
+    },
+    {
+      "id": 81,
+      "type": "action",
+      "label": "Marcus Corrupted",
+      "text": [
+        "Marcus touches the diadem despite your warning. His transformation is immediate and terrible—his eyes blaze with inhuman intelligence and cruel ambition. 😈",
+        "'Thank you for bringing me here,' he says with a voice no longer entirely his own."
+      ],
+      "position": [4000, 750],
+      "actions": [
+        {
+          "label": "⚔️ Fight Marcus",
+          "id": 74
+        },
+        {
+          "label": "🏃 Escape quickly",
+          "id": 48
+        }
+      ]
+    },
+    {
+      "id": 82,
+      "type": "skip",
+      "label": "Helena's Intervention",
+      "text": [
+        "The Grey Lady materializes between you and the diadem. 'No!' she cries. 'I will not watch another soul be consumed! 👻",
+        "Her ghostly form blazes with protective power, buying you precious moments to reconsider."
+      ],
+      "position": [4000, 850],
+      "nextId": 55
+    },
+    {
+      "id": 83,
+      "type": "skip",
+      "label": "Vector's Ambush",
+      "text": [
+        "Vector emerges from concealment, stunning Marcus before either of you can touch the diadem. 'Foolish children,' she sneers. ⚡",
+        "'Did you think you were the only ones seeking Ravenclaw's crown? This artifact belongs to those who truly understand its value.'"
+      ],
+      "position": [4000, 950],
+      "nextId": 47
+    },
+    {
+      "id": 84,
+      "type": "skip",
+      "label": "Immediate Action",
+      "text": [
+        "You and Marcus rush to the chamber, but find Vector already there with several buyers—dark wizards who care nothing for knowledge, only power. 💰",
+        "The situation has become far more dangerous than either of you anticipated."
+      ],
+      "position": [4300, 750],
+      "nextId": 74
+    },
+    {
+      "id": 85,
+      "type": "skip",
+      "label": "Evidence Gathering",
+      "text": [
+        "You document Vector's corruption, but while you're building your case, she acts. The diadem disappears from its chamber. 📋",
+        "Your evidence proves her guilt, but the artifact is gone—sold to the highest bidder among dark collectors."
+      ],
+      "position": [4300, 850],
+      "nextId": 90
+    },
+    {
+      "id": 86,
+      "type": "action",
+      "label": "Corrupted Rival",
+      "text": [
+        "Marcus, transformed by the diadem's power, turns his new abilities against you. His magic is enhanced beyond reason. 😠",
+        "'You could have shared this power,' he taunts. 'Now you'll serve as my first test subject.'"
+      ],
+      "position": [4300, 950],
+      "actions": [
+        {
+          "label": "⚔️ Duel Marcus",
+          "id": 74
+        },
+        {
+          "label": "🗣️ Try reasoning",
+          "id": 91
+        }
+      ]
+    },
+    {
+      "id": 87,
+      "type": "skip",
+      "label": "Power Overwhelming",
+      "text": [
+        "The diadem's knowledge burns through your mind like fire. You understand everything—and the terrible cost of that understanding. 🔥",
+        "Vector and Clearwater back away in fear as your eyes blaze with impossible intelligence."
+      ],
+      "position": [4300, 1050],
+      "nextId": 74
+    },
+    {
+      "id": 88,
+      "type": "action",
+      "label": "Controlled Power",
+      "text": [
+        "Through tremendous willpower, you limit the diadem's influence on your mind. The knowledge is there, but controlled. ⚖️",
+        "Vector demands you surrender the artifact, but you now understand its true nature too well to comply."
+      ],
+      "position": [4300, 1150],
+      "actions": [
+        {
+          "label": "🛡️ Protect the diadem",
+          "id": 55
+        },
+        {
+          "label": "🤝 Negotiate terms",
+          "id": 64
+        }
+      ]
+    },
+    {
+      "id": 89,
+      "type": "action",
+      "label": "Marcus's Fall",
+      "text": [
+        "You watch in horror as Marcus is consumed by the diadem's power, his personality dissolving into pure ambition. 👀",
+        "He spots you in the shadows. 'Witness the birth of a new order,' he declares with inhuman certainty."
+      ],
+      "position": [4300, 1250],
+      "actions": [
+        {
+          "label": "💥 Destroy chamber",
+          "id": 65
+        },
+        {
+          "label": "🏃 Warn others",
+          "id": 90
+        }
+      ]
+    },
+    {
+      "id": 90,
+      "type": "finish",
+      "label": "The Warning",
+      "text": [
+        "You flee to warn the professors, but it's too late. Marcus, empowered by the diadem, has begun his campaign for magical supremacy. ⚠️",
+        "Your warnings help organize resistance, and eventually Marcus is defeated, but at great cost to the wizarding world. 😔",
+        "You spend the rest of your life fighting the consequences of that fateful night when ambition triumphed over wisdom."
+      ],
+      "position": [4600, 1250]
+    },
+    {
+      "id": 91,
+      "type": "finish",
+      "label": "Lost Cause",
+      "text": [
+        "Your attempts to reason with the corrupted Marcus fail completely. The diadem has consumed his humanity entirely. 🗣️",
+        "He spares you only to demonstrate his power, but your freedom comes at the cost of watching him reshape the magical world in his image. 😰",
+        "You become a witness to what happens when unlimited knowledge falls into ambitious hands—a living reminder of wisdom ignored."
+      ],
+      "position": [4600, 950]
+    },
+    {
+      "id": 92,
+      "type": "skip",
+      "label": "Second Thoughts",
+      "text": [
+        "The weight of keeping such dangerous knowledge secret becomes unbearable. You decide to share your research after all. 💭",
+        "Your warnings help some people resist the diadem's allure, though others still dismiss your findings as academic jealousy."
+      ],
+      "position": [4600, 1050],
+      "nextId": 90
+    },
+    {
+      "id": 93,
+      "type": "action",
+      "label": "Final Choice",
+      "text": [
+        "Alone with the diadem, you face the ultimate test. Its whispers promise infinite knowledge, but you've learned the price. 🤯",
+        "The voices in the corridor grow closer. Whatever you choose must be chosen now."
+      ],
+      "position": [4600, 1150],
+      "actions": [
+        {
+          "label": "👑 Claim the power",
+          "id": 74
+        },
+        {
+          "label": "🛡️ Become its guardian",
+          "id": 55
+        },
+        {
+          "label": "💥 Destroy it forever",
+          "id": 65
+        }
+      ]
+    },
+    {
+      "id": 94,
+      "type": "skip",
+      "label": "Circle of Protection",
+      "text": [
+        "Your alliance creates an unbreakable ward around the diadem. Together, you establish a council to govern its use. 🤝",
+        "This collaborative wisdom becomes the foundation for a new approach to dangerous knowledge."
+      ],
+      "position": [4600, 1350],
+      "nextId": 77
+    },
+    {
+      "id": 95,
+      "type": "skip",
+      "label": "Academic Authority",
+      "text": [
+        "You place your trust in Hogwarts' professors, who work together to contain the diadem's influence. 🎓",
+        "Their institutional wisdom guides you toward a greater understanding of how to handle such power."
+      ],
+      "position": [4600, 1450],
+      "nextId": 77
+    },
+    {
+      "id": 96,
+      "type": "skip",
+      "label": "Student Unity",
+      "text": [
+        "Students from all houses unite under your leadership to protect the diadem from adult interference. 🏠",
+        "This unity teaches you that wisdom comes from collaboration, not individual ambition."
+      ],
+      "position": [4600, 1550],
+      "nextId": 77
+    }
+  ]
+}

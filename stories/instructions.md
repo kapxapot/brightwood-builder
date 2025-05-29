@@ -22,9 +22,9 @@
 ## Story Creation Process
 
 1. When you create a story, please, create a new folder in the `stories` folder. You can name it like `story-1` or similar to that.
-2. Create a `plan.md` file for a new story, put the story setting, plan and key story points into it. Also, define possible endings to the story.
+2. Create a `plan.md` file for a new story, put the story setting, plan and key story points into it. Also, define possible endings to the story. DON'T MODIFY `plan.md` AFTER ITS CREATION!
 3. Create a story file named `story.json` in that folder. Use `plan.md` for reference.
-4. The goal is to create up to 80-100 nodes for the story.
+4. The goal is to create up to 70-100 nodes for the story.
 5. If the `story.json` becomes too large (1500+ lines), put new nodes into `nodes.json`.
 6. After each node generation check the `plan.md` and update it if needed.
 7. When you append nodes, make sure that their ids go in the ascending order WITH NO GAPS.
@@ -53,3 +53,4 @@
 2. When you fix the story and add missing nodes, don't overexpand the story. Finish the unfinished branches but don't do it abruptly, remember that there shouldn't be too many finish nodes.
 3. Check that all nodes are reachable (other nodes reference them).
 4. Story `id` must be a valid uuid.
+5. Check that there are not too many `finish` nodes. Please remember that there should be around 5-6 valid terminal nodes. If there are too many, edit the story and reduce that amount of `finish` nodes.
