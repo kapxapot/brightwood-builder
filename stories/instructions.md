@@ -12,8 +12,8 @@
 8. Only `skip` node can have `nextId` property. It must reference an existing node.
 9. `finish` node doesn't have any additional properties.
 10. Every node must have at least one `text` line.
-11. `position` array it used to place nodes in the visual editor. Keep in mind that every node is around 250px wide and 350px high. Spread the nodes so they are placed from left to right.
-12. Use `example.json` as an additional reference for the story file structure.
+11. `position` array it used to place nodes in the visual editor. Keep in mind that every node is around 250px wide and 600px high. Spread the nodes so they are placed from left to right.
+12. Use `./neural-uprising/story.json` as an additional reference for the story file structure and a good node balance.
 13. Fill the root story `id` property with a random UUID.
 14. Do not fill the root story `cover` property unless you put there an existing image URL.
 15. Do not fill the `key` property of nodes.
@@ -24,10 +24,9 @@
 1. When you create a story, please, create a new folder in the `stories` folder. You can name it like `story-1` or similar to that.
 2. Create a `plan.md` file for a new story, put the story setting, plan and key story points into it. Also, define possible endings to the story. DON'T MODIFY `plan.md` AFTER ITS CREATION!
 3. Create a story file named `story.json` in that folder. Use `plan.md` for reference.
-4. The goal is to create up to 70-100 nodes for the story.
-5. If the `story.json` becomes too large (1500+ lines), put new nodes into `nodes.json`.
-6. After each node generation check the `plan.md` and update it if needed.
-7. When you append nodes, make sure that their ids go in the ascending order WITH NO GAPS.
+4. The goal is to create up to 60-100 nodes for the story.
+5. After each node generation check the `plan.md`.
+6. When you append nodes, make sure that their ids go in the ascending order WITH NO GAPS.
 
 ## Writing Tips
 
@@ -41,11 +40,12 @@
 8. Don't overuse the time traveling and parallel universe plots, keep it simple but engaging.
 9. Use emoji, aim to use at least one emoji per node. Do not use universally available emojis. Use only those that work on both mobile and desktop.
 10. You can also put an emoji on a separate text line to emphasize it's effect.
-11. You can use `<b></b>` tags for bold text and `<i></i>` tags for italic, but don't overuse it.
+11. Use `<b></b>` tags for bold text and `<i></i>` tags for italic where appropriate.
 12. Don't create long action labels, make them 2-3 words max. Use emoji in action labels (it is not necessary but add them where suitable).
 13. Fill node `label` property with a short (2-3 words) title based on its content. I REPEAT AGAIN FILL THE node's `label`!
 14. Don't make too many branches! Keep story relatively narrow with 4-5 parallel main story branches. If the branches grow, cut them or merge them at once, don't create 20 branches and then abruptly end them at once. I REPEAT AGAIN THERE MUST BE 5-6 VALID TERMINAL `finish` nodes not 20-30!!!
 15. Don't create all actions with 3 choices. Create some with 2, some with 3, depending on the context. I REPEATE DON'T MAKE 3 ACTIONS EVERYWHERE USE A MIX OF 2-3.
+16. When quoting someone's speech, use double quotes `"`, not single ones `'`.
 
 ## Story Validation
 

@@ -1,0 +1,1937 @@
+{
+  "id": "7a8f2d4e-9c1b-4e5f-8a2d-3c9e7b5f1a8e",
+  "title": "🎼 The Provençal Tapestry",
+  "description": "A tale of music, magic, and courtly intrigue in the fictional realm of Valence",
+  "language": "en",
+  "startId": 1,
+  "position": [30, 30],
+  "nodes": [
+    {
+      "id": 1,
+      "type": "skip",
+      "label": "Arrival",
+      "text": [
+        "🌙 The silver moon rises over the Court of Bellacorte as you, Lyrian, arrive with your lute and dreams of becoming a renowned troubadour.",
+        "The grand hall buzzes with nobles, their silk garments shimmering in candlelight. This is your chance for patronage and fame."
+      ],
+      "nextId": 2,
+      "position": [100, 100]
+    },
+    {
+      "id": 2,
+      "type": "action",
+      "label": "First Impression",
+      "text": [
+        "Count Béranger sits upon his throne, his weathered face grave with worry. Whispers speak of his missing heir, Prince Jaufré.",
+        "🎭 How do you make your entrance?"
+      ],
+      "actions": [
+        {
+          "label": "🎵 Play boldly",
+          "id": 3
+        },
+        {
+          "label": "🤫 Listen quietly",
+          "id": 4
+        }
+      ],
+      "position": [400, 100]
+    },
+    {
+      "id": 3,
+      "type": "redirect",
+      "label": "Bold Performance",
+      "text": [
+        "You stride forward and begin playing a stirring melody. The hall falls silent as your music fills the air.",
+        "🎶 Something strange happens - your song seems to shimmer with an otherworldly power."
+      ],
+      "links": [
+        {
+          "weight": 3,
+          "id": 5
+        },
+        {
+          "weight": 2,
+          "id": 6
+        }
+      ],
+      "position": [700, 50]
+    },
+    {
+      "id": 4,
+      "type": "skip",
+      "label": "Cautious Observer",
+      "text": [
+        "You hang back, observing the court's dynamics. Lady Esclarmonde notices your restraint and approaches with a knowing smile.",
+        "💫 \"Wise to watch first, young musician. These halls hold many secrets.\""
+      ],
+      "nextId": 7,
+      "position": [700, 200]
+    },
+    {
+      "id": 5,
+      "type": "skip",
+      "label": "Magical Recognition",
+      "text": [
+        "✨ Count Béranger's eyes widen as he senses the magic in your music. Several courtiers gasp in recognition of something ancient.",
+        "\"Approach, young bard. Your gift may be exactly what we need in these troubled times.\""
+      ],
+      "nextId": 8,
+      "position": [1000, 50]
+    },
+    {
+      "id": 6,
+      "type": "skip",
+      "label": "Impressive Debut",
+      "text": [
+        "Your performance earns appreciative applause, though the magical undertones remain unnoticed by most.",
+        "🏰 Sir Raimbaut, a knight-poet, steps forward with interest in his eyes."
+      ],
+      "nextId": 9,
+      "position": [1000, 150]
+    },
+    {
+      "id": 7,
+      "type": "action",
+      "label": "Lady's Guidance",
+      "text": [
+        "Lady Esclarmonde's violet eyes seem to hold ancient wisdom. \"The missing prince is not the only mystery here, musician.\"",
+        "🔮 \"Tell me, do you sense anything... unusual about this place?\""
+      ],
+      "actions": [
+        {
+          "label": "\"Yes, something magical\"",
+          "id": 10
+        },
+        {
+          "label": "\"Only court intrigue\"",
+          "id": 11
+        }
+      ],
+      "position": [1000, 250]
+    },
+    {
+      "id": 8,
+      "type": "action",
+      "label": "Count's Proposal",
+      "text": [
+        "The Count leans forward, desperation evident. \"My son vanished three nights ago, just before his wedding to unite our lands.\"",
+        "⚔️ \"War looms if he's not found. Will you help us, gifted one?\""
+      ],
+      "actions": [
+        {
+          "label": "\"I'll help find him\"",
+          "id": 12
+        },
+        {
+          "label": "\"Tell me more first\"",
+          "id": 13
+        }
+      ],
+      "position": [1300, 50]
+    },
+    {
+      "id": 9,
+      "type": "action",
+      "label": "Knight's Interest",
+      "text": [
+        "Sir Raimbaut's armor bears the scars of many battles, but his eyes hold a poet's soul.",
+        "🗡️ \"Your music stirs something in me, friend. Care to compose together?\""
+      ],
+      "actions": [
+        {
+          "label": "\"I'd be honored\"",
+          "id": 14
+        },
+        {
+          "label": "\"Perhaps later\"",
+          "id": 15
+        }
+      ],
+      "position": [1300, 150]
+    },
+    {
+      "id": 10,
+      "type": "skip",
+      "label": "Magical Awareness",
+      "text": [
+        "Lady Esclarmonde nods approvingly. \"Good. The silver moon awakens old powers. Your arrival is no coincidence.\"",
+        "🌟 \"There are forces at work here that go beyond mere politics.\""
+      ],
+      "nextId": 16,
+      "position": [1300, 250]
+    },
+    {
+      "id": 11,
+      "type": "skip",
+      "label": "Political Focus",
+      "text": [
+        "\"Perhaps,\" she says with a slight smile. \"But keep your senses open. Court intrigue often masks deeper currents.\"",
+        "📜 She hands you a silk scroll with cryptic symbols."
+      ],
+      "nextId": 17,
+      "position": [1300, 350]
+    },
+    {
+      "id": 12,
+      "type": "skip",
+      "label": "Noble Quest",
+      "text": [
+        "\"Bless you, young musician. My captain will provide you with whatever you need.\"",
+        "🏛️ The Count's relief is palpable as hope returns to his weathered features."
+      ],
+      "nextId": 18,
+      "position": [1600, 50]
+    },
+    {
+      "id": 13,
+      "type": "action",
+      "label": "Seeking Information",
+      "text": [
+        "\"Wise to be cautious. Prince Jaufré was last seen in the tower gardens, speaking with a figure in silver robes.\"",
+        "🌹 \"No one else saw this figure clearly. What would you investigate first?\""
+      ],
+      "actions": [
+        {
+          "label": "🌿 The gardens",
+          "id": 19
+        },
+        {
+          "label": "👥 Question witnesses",
+          "id": 20
+        }
+      ],
+      "position": [1600, 150]
+    },
+    {
+      "id": 14,
+      "type": "skip",
+      "label": "Poetic Alliance",
+      "text": [
+        "Sir Raimbaut beams with joy. \"Excellent! A true collaboration between sword and song.\"",
+        "⚡ As you play together, your combined music creates visible sparks of silver light."
+      ],
+      "nextId": 21,
+      "position": [1600, 250]
+    },
+    {
+      "id": 15,
+      "type": "skip",
+      "label": "Diplomatic Distance",
+      "text": [
+        "The knight nods with understanding. \"Of course. When you're ready, find me. I sense we have much in common.\"",
+        "🎪 You notice other musicians watching your interaction with interest."
+      ],
+      "nextId": 22,
+      "position": [1600, 350]
+    },
+    {
+      "id": 16,
+      "type": "action",
+      "label": "Ancient Powers",
+      "text": [
+        "\"The silver moon comes once each generation, awakening dormant magical bloodlines. You carry such blood.\"",
+        "🔥 \"But beware - others seek to exploit this power for darker purposes.\""
+      ],
+      "actions": [
+        {
+          "label": "\"Who seeks this power?\"",
+          "id": 23
+        },
+        {
+          "label": "\"How can I control it?\"",
+          "id": 24
+        }
+      ],
+      "position": [1900, 250]
+    },
+    {
+      "id": 17,
+      "type": "action",
+      "label": "Cryptic Scroll",
+      "text": [
+        "The scroll contains musical notation unlike any you've seen, with symbols that seem to shift in the moonlight.",
+        "📖 \"Study this when the moon is highest. It may reveal much.\""
+      ],
+      "actions": [
+        {
+          "label": "📚 Study it now",
+          "id": 25
+        },
+        {
+          "label": "💼 Save for later",
+          "id": 26
+        }
+      ],
+      "position": [1900, 350]
+    },
+    {
+      "id": 18,
+      "type": "action",
+      "label": "Royal Mission",
+      "text": [
+        "The captain assigns you a small escort and access to the prince's chambers.",
+        "🗝️ \"Start wherever you think best, but time is running short. The wedding was set for tomorrow.\""
+      ],
+      "actions": [
+        {
+          "label": "🏰 Prince's chambers",
+          "id": 27
+        },
+        {
+          "label": "🌙 Gardens at night",
+          "id": 28
+        }
+      ],
+      "position": [1900, 50]
+    },
+    {
+      "id": 19,
+      "type": "skip",
+      "label": "Garden Investigation",
+      "text": [
+        "The tower gardens are bathed in silver moonlight. Ancient roses bloom unusually bright tonight.",
+        "🔍 You notice strange footprints leading to a hidden alcove behind the fountain."
+      ],
+      "nextId": 29,
+      "position": [1900, 150]
+    },
+    {
+      "id": 20,
+      "type": "action",
+      "label": "Witness Accounts",
+      "text": [
+        "The servants speak in hushed tones of a figure who seemed to glide rather than walk.",
+        "👁️ \"Silver hair like moonbeams, and when they spoke, their voice was like distant music.\""
+      ],
+      "actions": [
+        {
+          "label": "\"A magical being?\"",
+          "id": 30
+        },
+        {
+          "label": "\"Where did they go?\"",
+          "id": 31
+        }
+      ],
+      "position": [2200, 150]
+    },
+    {
+      "id": 21,
+      "type": "action",
+      "label": "Musical Magic",
+      "text": [
+        "The silver sparks dance around you both. Sir Raimbaut stares in wonder at the magical display.",
+        "⚔️ \"By my sword, you're one of the old blood! This changes everything.\""
+      ],
+      "actions": [
+        {
+          "label": "\"What do you know?\"",
+          "id": 32
+        },
+        {
+          "label": "\"Keep this secret\"",
+          "id": 33
+        }
+      ],
+      "position": [2200, 250]
+    },
+    {
+      "id": 22,
+      "type": "action",
+      "label": "Social Navigation",
+      "text": [
+        "The other musicians approach cautiously. A beautiful woman with a harp introduces herself as Azalaïs.",
+        "🎶 \"You play with unusual... intensity. Where did you learn such techniques?\""
+      ],
+      "actions": [
+        {
+          "label": "\"Self-taught\"",
+          "id": 34
+        },
+        {
+          "label": "\"Family tradition\"",
+          "id": 35
+        }
+      ],
+      "position": [2200, 350]
+    },
+    {
+      "id": 23,
+      "type": "skip",
+      "label": "Dark Seekers",
+      "text": [
+        "\"There are those who would use the moon's power to control minds, to bend wills to their purpose.\"",
+        "⚡ \"The prince's disappearance may be connected to such ambitions.\""
+      ],
+      "nextId": 36,
+      "position": [2500, 200]
+    },
+    {
+      "id": 24,
+      "type": "skip",
+      "label": "Power Training",
+      "text": [
+        "\"Control comes through understanding. Your music is the key - each song a spell, each melody a thread of power.\"",
+        "🎵 \"Practice in private first. Raw power without control can be dangerous.\""
+      ],
+      "nextId": 37,
+      "position": [2500, 300]
+    },
+    {
+      "id": 25,
+      "type": "redirect",
+      "label": "Scroll Study",
+      "text": [
+        "As you study the scroll by moonlight, the symbols begin to glow. Ancient knowledge flows into your mind.",
+        "✨ The musical notation reveals itself to be a song of finding - a way to locate what is lost."
+      ],
+      "links": [
+        {
+          "weight": 3,
+          "id": 38
+        },
+        {
+          "weight": 2,
+          "id": 39
+        }
+      ],
+      "position": [2500, 400]
+    },
+    {
+      "id": 26,
+      "type": "skip",
+      "label": "Patient Planning",
+      "text": [
+        "You carefully tuck the scroll away. Lady Esclarmonde nods approvingly at your restraint.",
+        "🕰️ \"Patience is wisdom. When the time is right, you'll know.\""
+      ],
+      "nextId": 40,
+      "position": [2500, 500]
+    },
+    {
+      "id": 27,
+      "type": "action",
+      "label": "Prince's Chambers",
+      "text": [
+        "The prince's room is undisturbed save for an open window and silver flower petals on the sill.",
+        "🌸 A faint magical resonance lingers in the air, like the echo of a powerful song."
+      ],
+      "actions": [
+        {
+          "label": "🎼 Follow the resonance",
+          "id": 41
+        },
+        {
+          "label": "🔍 Search for clues",
+          "id": 42
+        }
+      ],
+      "position": [2200, 50]
+    },
+    {
+      "id": 28,
+      "type": "skip",
+      "label": "Moonlit Gardens",
+      "text": [
+        "Under the silver moon's full power, the gardens reveal their secrets. Magical pathways glow softly between the roses.",
+        "🌙 You sense a presence watching you from the shadows."
+      ],
+      "nextId": 43,
+      "position": [2500, 50]
+    },
+    {
+      "id": 29,
+      "type": "action",
+      "label": "Hidden Alcove",
+      "text": [
+        "Behind the fountain, you discover a concealed entrance marked with the same symbols from Lady Esclarmonde's scroll.",
+        "🗝️ The entrance pulses with silver light, responding to your musical gift."
+      ],
+      "actions": [
+        {
+          "label": "🚪 Enter immediately",
+          "id": 44
+        },
+        {
+          "label": "🔍 Examine first",
+          "id": 45
+        }
+      ],
+      "position": [2800, 150]
+    },
+    {
+      "id": 30,
+      "type": "skip",
+      "label": "Magical Being",
+      "text": [
+        "\"Perhaps, young master. There are old stories of the moon-touched, beings of pure song and silver light.\"",
+        "👻 \"They say such beings can walk between worlds when the silver moon rises.\""
+      ],
+      "nextId": 46,
+      "position": [2800, 100]
+    },
+    {
+      "id": 31,
+      "type": "skip",
+      "label": "Direction Found",
+      "text": [
+        "\"They seemed to drift toward the old tower, the one that's been sealed for generations.\"",
+        "🗼 \"But surely that's impossible - the tower has no entrance.\""
+      ],
+      "nextId": 47,
+      "position": [2800, 200]
+    },
+    {
+      "id": 32,
+      "type": "skip",
+      "label": "Knight's Knowledge",
+      "text": [
+        "\"My grandmother spoke of the old bloodlines, those who could weave magic through art and song.\"",
+        "🛡️ \"If you truly carry such blood, you may be our realm's salvation.\""
+      ],
+      "nextId": 48,
+      "position": [2800, 250]
+    },
+    {
+      "id": 33,
+      "type": "action",
+      "label": "Seeking Secrecy",
+      "text": [
+        "Sir Raimbaut nods solemnly. \"Your secret is safe with me. But know that others may sense your power too.\"",
+        "⚠️ \"Be careful who you trust. Not all in this court have noble intentions.\""
+      ],
+      "actions": [
+        {
+          "label": "\"Who should I avoid?\"",
+          "id": 49
+        },
+        {
+          "label": "\"I'll be cautious\"",
+          "id": 50
+        }
+      ],
+      "position": [2800, 300]
+    },
+    {
+      "id": 34,
+      "type": "action",
+      "label": "Self-Taught Claim",
+      "text": [
+        "Azalaïs studies you with keen interest. Her emerald eyes seem to see deeper than surface appearances.",
+        "🎭 \"Fascinating. Such natural talent is rare. Perhaps we could... collaborate?\""
+      ],
+      "actions": [
+        {
+          "label": "\"What kind of collaboration?\"",
+          "id": 51
+        },
+        {
+          "label": "\"I prefer working alone\"",
+          "id": 52
+        }
+      ],
+      "position": [2800, 350]
+    },
+    {
+      "id": 35,
+      "type": "skip",
+      "label": "Family Legacy",
+      "text": [
+        "Azalaïs's expression shifts to one of recognition and perhaps... envy?",
+        "👑 \"Ah, a hereditary gift. Those are the most powerful... and the most dangerous.\""
+      ],
+      "nextId": 53,
+      "position": [2800, 400]
+    },
+    {
+      "id": 36,
+      "type": "action",
+      "label": "Prince Connection",
+      "text": [
+        "\"If Prince Jaufré has been taken by such forces, we must act quickly. The longer he's held, the harder it becomes to break their influence.\"",
+        "🕒 \"Time is our enemy now.\""
+      ],
+      "actions": [
+        {
+          "label": "\"How do we find him?\"",
+          "id": 54
+        },
+        {
+          "label": "\"What can I do?\"",
+          "id": 55
+        }
+      ],
+      "position": [3100, 200]
+    },
+    {
+      "id": 37,
+      "type": "action",
+      "label": "Power Practice",
+      "text": [
+        "\"Find a private place to practice. The old music tower would be perfect - it's been unused for years.\"",
+        "🏰 \"There you can experiment safely without drawing unwanted attention.\""
+      ],
+      "actions": [
+        {
+          "label": "🗼 \"Take me there\"",
+          "id": 56
+        },
+        {
+          "label": "🌙 \"I'll practice tonight\"",
+          "id": 57
+        }
+      ],
+      "position": [3100, 300]
+    },
+    {
+      "id": 38,
+      "type": "skip",
+      "label": "Song Mastery",
+      "text": [
+        "The song of finding fills your mind completely. You now understand how to trace magical signatures through music.",
+        "🎵 With this knowledge, you could locate the prince - if he's still within the realm."
+      ],
+      "nextId": 58,
+      "position": [3100, 400]
+    },
+    {
+      "id": 39,
+      "type": "skip",
+      "label": "Overwhelming Power",
+      "text": [
+        "The magical knowledge floods your mind too quickly. You stumble backward, head spinning with half-understood melodies.",
+        "😵 It will take time to fully comprehend what you've learned."
+      ],
+      "nextId": 59,
+      "position": [3100, 500]
+    },
+    {
+      "id": 40,
+      "type": "action",
+      "label": "Timing is Key",
+      "text": [
+        "As you wait, you notice the court's rhythms. Political alliances shift like dance partners, and you begin to understand the deeper game.",
+        "♟️ \"When will the right time come?\""
+      ],
+      "actions": [
+        {
+          "label": "\"When do I act?\"",
+          "id": 60
+        },
+        {
+          "label": "\"Tell me about the politics\"",
+          "id": 61
+        }
+      ],
+      "position": [3100, 600]
+    },
+    {
+      "id": 41,
+      "type": "skip",
+      "label": "Following Magic",
+      "text": [
+        "You follow the magical resonance as it leads you through corridors and down ancient stone steps.",
+        "🔮 The trail grows stronger as you descend into forgotten parts of the castle."
+      ],
+      "nextId": 62,
+      "position": [2800, 50]
+    },
+    {
+      "id": 42,
+      "type": "action",
+      "label": "Physical Evidence",
+      "text": [
+        "Among the prince's belongings, you find a love letter written in a hand you don't recognize.",
+        "💌 The paper bears a strange watermark that shimmers in the moonlight."
+      ],
+      "actions": [
+        {
+          "label": "📖 Read the letter",
+          "id": 63
+        },
+        {
+          "label": "🔍 Examine the watermark",
+          "id": 64
+        }
+      ],
+      "position": [3100, 100]
+    },
+    {
+      "id": 43,
+      "type": "action",
+      "label": "Shadow Presence",
+      "text": [
+        "A figure emerges from behind the ancient oak tree - tall, graceful, with silver hair that seems to capture moonlight.",
+        "👤 \"You seek the lost prince. I can help... for a price.\""
+      ],
+      "actions": [
+        {
+          "label": "\"What price?\"",
+          "id": 65
+        },
+        {
+          "label": "\"Who are you?\"",
+          "id": 66
+        }
+      ],
+      "position": [3100, 50]
+    },
+    {
+      "id": 44,
+      "type": "redirect",
+      "label": "Bold Entry",
+      "text": [
+        "You step through the silver-lit entrance. Reality shifts around you as you enter a realm between worlds.",
+        "🌌 Ancient magic flows through this space like a river of starlight."
+      ],
+      "links": [
+        {
+          "weight": 2,
+          "id": 67
+        },
+        {
+          "weight": 3,
+          "id": 68
+        }
+      ],
+      "position": [3400, 150]
+    },
+    {
+      "id": 45,
+      "type": "skip",
+      "label": "Careful Examination",
+      "text": [
+        "The symbols pulse with ancient power. You recognize some from your musical training - they're notes in a magical scale.",
+        "🎼 Understanding floods through you: this is a doorway that responds to the right song."
+      ],
+      "nextId": 69,
+      "position": [3400, 200]
+    },
+    {
+      "id": 46,
+      "type": "action",
+      "label": "Moon-Touched Lore",
+      "text": [
+        "\"If such a being took the prince, it might be to protect him from some greater danger.\"",
+        "🌙 \"The moon-touched are not evil, but they follow their own mysterious purposes.\""
+      ],
+      "actions": [
+        {
+          "label": "\"How do I find them?\"",
+          "id": 70
+        },
+        {
+          "label": "\"What danger?\"",
+          "id": 71
+        }
+      ],
+      "position": [3400, 100]
+    },
+    {
+      "id": 47,
+      "type": "skip",
+      "label": "Sealed Tower",
+      "text": [
+        "You make your way to the ancient tower. Indeed, there appears to be no entrance - until you notice your musical gift reveals hidden pathways.",
+        "🗝️ Magic recognizes magic. A doorway shimmers into view."
+      ],
+      "nextId": 72,
+      "position": [3400, 250]
+    },
+    {
+      "id": 48,
+      "type": "action",
+      "label": "Realm's Salvation",
+      "text": [
+        "\"The old prophecies speak of one who would come during the silver moon to restore balance.\"",
+        "⚔️ \"Perhaps that destiny is yours, Lyrian.\""
+      ],
+      "actions": [
+        {
+          "label": "\"I accept this destiny\"",
+          "id": 73
+        },
+        {
+          "label": "\"I'm just a musician\"",
+          "id": 74
+        }
+      ],
+      "position": [3400, 300]
+    },
+    {
+      "id": 49,
+      "type": "skip",
+      "label": "Court Warnings",
+      "text": [
+        "\"Lady Mirabel has been asking many questions about newcomers with unusual talents.\"",
+        "⚠️ \"And Baron Aldric has been meeting privately with strangers who arrive only at night.\""
+      ],
+      "nextId": 75,
+      "position": [3400, 350]
+    },
+    {
+      "id": 50,
+      "type": "skip",
+      "label": "Prudent Caution",
+      "text": [
+        "\"Good. Your wisdom matches your talent. That combination will serve you well in these treacherous times.\"",
+        "🛡️ \"Remember, I am your ally. Find me if you need aid.\""
+      ],
+      "nextId": 76,
+      "position": [3400, 400]
+    },
+    {
+      "id": 51,
+      "type": "action",
+      "label": "Musical Partnership",
+      "text": [
+        "\"I've been researching songs of power, melodies that can reveal hidden truths. Your natural gift could amplify my work.\"",
+        "🔍 \"Together, we might uncover what happened to Prince Jaufré.\""
+      ],
+      "actions": [
+        {
+          "label": "\"Let's investigate together\"",
+          "id": 77
+        },
+        {
+          "label": "\"Show me these songs\"",
+          "id": 78
+        }
+      ],
+      "position": [3700, 350]
+    },
+    {
+      "id": 52,
+      "type": "skip",
+      "label": "Independent Path",
+      "text": [
+        "Azalaïs nods with a slight smile. \"I understand. Some gifts are best explored in solitude.\"",
+        "🎭 \"But remember, even the greatest artists sometimes need... guidance.\""
+      ],
+      "nextId": 79,
+      "position": [3700, 400]
+    },
+    {
+      "id": 53,
+      "type": "action",
+      "label": "Dangerous Heritage",
+      "text": [
+        "\"Hereditary magic often comes with hereditary enemies. Your bloodline may have made you targets.\"",
+        "⚡ \"The prince's disappearance and your arrival - perhaps not a coincidence?\""
+      ],
+      "actions": [
+        {
+          "label": "\"What do you mean?\"",
+          "id": 80
+        },
+        {
+          "label": "\"I came here by chance\"",
+          "id": 81
+        }
+      ],
+      "position": [3700, 450]
+    },
+    {
+      "id": 54,
+      "type": "skip",
+      "label": "Finding the Prince",
+      "text": [
+        "\"Your musical gift holds the key. There are songs of seeking, melodies that can trace magical signatures across great distances.\"",
+        "🎵 \"But such magic comes with risks. Are you prepared?\""
+      ],
+      "nextId": 82,
+      "position": [3700, 200]
+    },
+    {
+      "id": 55,
+      "type": "skip",
+      "label": "Your Role",
+      "text": [
+        "\"Learn to channel your power properly. Master the songs of protection and revelation.\"",
+        "✨ \"When you're ready, we'll need you to confront whatever took the prince.\""
+      ],
+      "nextId": 83,
+      "position": [3700, 250]
+    },
+    {
+      "id": 56,
+      "type": "skip",
+      "label": "Tower Guide",
+      "text": [
+        "Lady Esclarmonde leads you through winding corridors to a tower that seems forgotten by time itself.",
+        "🗼 \"Here you can practice safely. The walls are warded against magical detection.\""
+      ],
+      "nextId": 84,
+      "position": [3700, 300]
+    },
+    {
+      "id": 57,
+      "type": "action",
+      "label": "Night Practice",
+      "text": [
+        "\"The silver moon's power is strongest at midnight. That would be the ideal time for your first real attempt.\"",
+        "🌙 \"Find the tower when the moon reaches its peak.\""
+      ],
+      "actions": [
+        {
+          "label": "🕛 \"I'll go at midnight\"",
+          "id": 85
+        },
+        {
+          "label": "🤝 \"Come with me\"",
+          "id": 86
+        }
+      ],
+      "position": [4000, 300]
+    },
+    {
+      "id": 58,
+      "type": "action",
+      "label": "Prince Location",
+      "text": [
+        "With the song of finding mastered, you sense Prince Jaufré's presence. He's close - somewhere within the castle's hidden depths.",
+        "🔮 But there's something else: his magical signature is... changed."
+      ],
+      "actions": [
+        {
+          "label": "🏃 \"Find him immediately\"",
+          "id": 87
+        },
+        {
+          "label": "⚠️ \"Investigate the change\"",
+          "id": 88
+        }
+      ],
+      "position": [4000, 400]
+    },
+    {
+      "id": 59,
+      "type": "action",
+      "label": "Partial Understanding",
+      "text": [
+        "The overwhelming knowledge settles slowly. You grasp fragments - enough to sense magical presences but not yet locate them precisely.",
+        "🧩 \"Perhaps someone could help you make sense of this power?\""
+      ],
+      "actions": [
+        {
+          "label": "🔍 \"Seek Lady Esclarmonde\"",
+          "id": 89
+        },
+        {
+          "label": "⏳ \"Wait and practice\"",
+          "id": 90
+        }
+      ],
+      "position": [4000, 500]
+    },
+    {
+      "id": 60,
+      "type": "finish",
+      "label": "Perfect Timing",
+      "text": [
+        "✨ As if summoned by your question, the silver moon reaches its zenith. Ancient power flows through you like music made manifest.",
+        "🎼 You realize this is the moment of greatest magical potential. Your true test begins now.",
+        "🌟 <b>The Peacemaker Path:</b> With perfect timing and growing wisdom, you're ready to weave a harmony that could unite the warring lands and save the prince."
+      ],
+      "position": [4300, 600]
+    },
+    {
+      "id": 61,
+      "type": "action",
+      "label": "Political Lessons",
+      "text": [
+        "\"Three noble houses vie for power: House Montclair seeks military dominance, House Valbonne controls trade routes.\"",
+        "🏰 \"And House Belmont harbors ancient secrets. Each has reason to want the prince gone.\""
+      ],
+      "actions": [
+        {
+          "label": "🗡️ \"Investigate Montclair\"",
+          "id": 91
+        },
+        {
+          "label": "💰 \"Examine Valbonne\"",
+          "id": 92
+        },
+        {
+          "label": "🔮 \"Explore Belmont secrets\"",
+          "id": 93
+        }
+      ],
+      "position": [4300, 700]
+    },
+    {
+      "id": 62,
+      "type": "action",
+      "label": "Underground Depths",
+      "text": [
+        "The magical trail leads to ancient catacombs beneath the castle. Strange symbols glow on the walls.",
+        "💀 You hear faint singing echoing from the depths - a voice that sounds like Prince Jaufré's."
+      ],
+      "actions": [
+        {
+          "label": "🎵 \"Follow the singing\"",
+          "id": 94
+        },
+        {
+          "label": "🔍 \"Study the symbols\"",
+          "id": 95
+        }
+      ],
+      "position": [3100, 50]
+    },
+    {
+      "id": 63,
+      "type": "skip",
+      "label": "Love Letter",
+      "text": [
+        "The letter speaks of forbidden love and a plan to escape during the silver moon. It's signed with just 'S.'",
+        "💕 \"My dearest prince, when the moon reaches its peak, I will come for you. Our love transcends earthly bonds.\""
+      ],
+      "nextId": 96,
+      "position": [3400, 100]
+    },
+    {
+      "id": 64,
+      "type": "skip",
+      "label": "Magical Watermark",
+      "text": [
+        "The watermark shows a silver tree with roots that extend beyond the paper's edge. It pulses with otherworldly energy.",
+        "🌳 This is the mark of the moon-touched - beings who exist between the mortal and magical realms."
+      ],
+      "nextId": 97,
+      "position": [3400, 150]
+    },
+    {
+      "id": 65,
+      "type": "action",
+      "label": "Mysterious Price",
+      "text": [
+        "The silver-haired figure's eyes gleam with ancient knowledge. \"A song, young musician. One song of your choosing.\"",
+        "🎼 \"But know this - the song you give will be lost to you forever.\""
+      ],
+      "actions": [
+        {
+          "label": "\"I accept\"",
+          "id": 98
+        },
+        {
+          "label": "\"Too high a price\"",
+          "id": 99
+        }
+      ],
+      "position": [3700, 50]
+    },
+    {
+      "id": 66,
+      "type": "skip",
+      "label": "Moon-Touched Identity",
+      "text": [
+        "\"I am Silviana, guardian of the threshold between worlds. The prince came to me willingly.\"",
+        "🌙 \"He sought to protect his realm from a darkness that even now gathers strength.\""
+      ],
+      "nextId": 100,
+      "position": [3700, 100]
+    },
+    {
+      "id": 67,
+      "type": "skip",
+      "label": "Overwhelming Magic",
+      "text": [
+        "The magical realm's power floods through you uncontrolled. Silver light burns behind your eyes as reality bends.",
+        "⚡ You collapse, overwhelmed by forces beyond mortal comprehension."
+      ],
+      "nextId": 101,
+      "position": [4000, 150]
+    },
+    {
+      "id": 68,
+      "type": "skip",
+      "label": "Controlled Entry",
+      "text": [
+        "You steady yourself and allow the magic to flow through you gradually. The realm reveals itself as a place of incredible beauty.",
+        "✨ Ancient melodies float through the air like visible streams of silver light."
+      ],
+      "nextId": 102,
+      "position": [4000, 200]
+    },
+    {
+      "id": 69,
+      "type": "action",
+      "label": "Song Door",
+      "text": [
+        "You understand now - this entrance requires a specific melody to open. Your musical training guides you.",
+        "🎵 \"Which type of song do you attempt?\""
+      ],
+      "actions": [
+        {
+          "label": "🌙 \"A song of moonlight\"",
+          "id": 103
+        },
+        {
+          "label": "💕 \"A song of love\"",
+          "id": 104
+        }
+      ],
+      "position": [4000, 250]
+    },
+    {
+      "id": 70,
+      "type": "skip",
+      "label": "Finding Moon-Touched",
+      "text": [
+        "\"They dwell in places where magic is strongest - gardens under moonlight, ancient towers, anywhere music has power.\"",
+        "🔍 \"But beware. Not all who claim to be moon-touched have noble intentions.\""
+      ],
+      "nextId": 105,
+      "position": [4000, 100]
+    },
+    {
+      "id": 71,
+      "type": "skip",
+      "label": "Hidden Danger",
+      "text": [
+        "\"There are those who would use the silver moon's power to enslave minds, to create an army of the enchanted.\"",
+        "⚔️ \"If the prince has been taken for such purposes, time grows short.\""
+      ],
+      "nextId": 106,
+      "position": [4000, 50]
+    },
+    {
+      "id": 72,
+      "type": "action",
+      "label": "Tower Entry",
+      "text": [
+        "Inside the ancient tower, you find Prince Jaufré sitting in meditation, surrounded by floating symbols of silver light.",
+        "👑 He opens his eyes and smiles. \"I've been waiting for you, musician. The realm has great need.\""
+      ],
+      "actions": [
+        {
+          "label": "\"Are you imprisoned?\"",
+          "id": 107
+        },
+        {
+          "label": "\"What need?\"",
+          "id": 108
+        }
+      ],
+      "position": [4000, 300]
+    },
+    {
+      "id": 73,
+      "type": "skip",
+      "label": "Accepting Destiny",
+      "text": [
+        "Sir Raimbaut's face lights up with hope. \"Then let us begin your true training. The realm's fate may depend on it.\"",
+        "⚔️ \"But first, we must gather allies. This task is too great for any one person.\""
+      ],
+      "nextId": 109,
+      "position": [4000, 350]
+    },
+    {
+      "id": 74,
+      "type": "skip",
+      "label": "Humble Musician",
+      "text": [
+        "\"Sometimes the greatest heroes are those who never sought to be. Your humility may be your greatest strength.\"",
+        "🎵 \"Music has power beyond swords and sorcery. Trust in your gift.\""
+      ],
+      "nextId": 110,
+      "position": [4000, 400]
+    },
+    {
+      "id": 75,
+      "type": "action",
+      "label": "Dangerous Courtiers",
+      "text": [
+        "\"Lady Mirabel has connections to dark sorcerers from the eastern kingdoms. Baron Aldric trades in forbidden artifacts.\"",
+        "💀 \"Both would benefit greatly from controlling someone with your abilities.\""
+      ],
+      "actions": [
+        {
+          "label": "\"I'll avoid them\"",
+          "id": 111
+        },
+        {
+          "label": "\"Perhaps I should confront them\"",
+          "id": 112
+        }
+      ],
+      "position": [4000, 450]
+    },
+    {
+      "id": 76,
+      "type": "action",
+      "label": "Trusted Ally",
+      "text": [
+        "With Sir Raimbaut as your ally, you feel more confident navigating the court's treacherous waters.",
+        "🛡️ \"What's your next move, friend?\""
+      ],
+      "actions": [
+        {
+          "label": "🔍 \"Search for the prince\"",
+          "id": 113
+        },
+        {
+          "label": "🎼 \"Develop my powers\"",
+          "id": 114
+        }
+      ],
+      "position": [4000, 500]
+    },
+    {
+      "id": 77,
+      "type": "skip",
+      "label": "Joint Investigation",
+      "text": [
+        "Azalaïs proves to be a capable partner. Together, your combined musical talents reveal hidden magical traces throughout the castle.",
+        "🔮 \"The prince's trail leads toward the forbidden archives,\" she observes."
+      ],
+      "nextId": 115,
+      "position": [4300, 350]
+    },
+    {
+      "id": 78,
+      "type": "skip",
+      "label": "Songs of Power",
+      "text": [
+        "Azalaïs teaches you melodies that can reveal illusions and detect magical auras. Your natural gift amplifies their effect.",
+        "⚡ \"Remarkable! Your bloodline makes these songs incredibly potent.\""
+      ],
+      "nextId": 116,
+      "position": [4300, 400]
+    },
+    {
+      "id": 79,
+      "type": "action",
+      "label": "Solo Path",
+      "text": [
+        "Working alone, you're free to explore at your own pace. Your magical senses guide you toward areas of concentrated power.",
+        "🌟 \"Which magical signature calls to you most strongly?\""
+      ],
+      "actions": [
+        {
+          "label": "🗼 \"The ancient tower\"",
+          "id": 117
+        },
+        {
+          "label": "🌹 \"The enchanted gardens\"",
+          "id": 118
+        }
+      ],
+      "position": [4300, 450]
+    },
+    {
+      "id": 80,
+      "type": "skip",
+      "label": "Bloodline Secrets",
+      "text": [
+        "\"Your family line traces back to the first musician-mages, those who helped found this realm centuries ago.\"",
+        "👑 \"Their enemies still exist in the shadows, seeking revenge for ancient defeats.\""
+      ],
+      "nextId": 119,
+      "position": [4300, 500]
+    },
+    {
+      "id": 81,
+      "type": "skip",
+      "label": "Destiny Finds You",
+      "text": [
+        "\"Chance? Perhaps. Or perhaps your bloodline called you here when the realm had greatest need.\"",
+        "🌙 \"The silver moon awakens more than just magical powers - it awakens destiny itself.\""
+      ],
+      "nextId": 120,
+      "position": [4300, 550]
+    },
+    {
+      "id": 82,
+      "type": "action",
+      "label": "Magical Risks",
+      "text": [
+        "\"The songs of seeking can attract unwanted attention. Dark forces are drawn to such displays of power.\"",
+        "⚠️ \"Are you willing to risk exposure to save the prince?\""
+      ],
+      "actions": [
+        {
+          "label": "\"Yes, I'll take the risk\"",
+          "id": 121
+        },
+        {
+          "label": "\"Let me prepare first\"",
+          "id": 122
+        }
+      ],
+      "position": [4300, 200]
+    },
+    {
+      "id": 83,
+      "type": "action",
+      "label": "Power Development",
+      "text": [
+        "\"Your training must be swift but thorough. Each day the prince remains missing weakens our realm's defenses.\"",
+        "🎵 \"Which aspect of your gift would you focus on first?\""
+      ],
+      "actions": [
+        {
+          "label": "🔍 \"Songs of finding\"",
+          "id": 123
+        },
+        {
+          "label": "🛡️ \"Songs of protection\"",
+          "id": 124
+        }
+      ],
+      "position": [4300, 250]
+    },
+    {
+      "id": 84,
+      "type": "action",
+      "label": "Safe Practice",
+      "text": [
+        "In the warded tower, your magical abilities flourish without fear of detection. Ancient knowledge flows through you.",
+        "✨ \"What type of magic feels most natural?\""
+      ],
+      "actions": [
+        {
+          "label": "🌙 \"Moon magic\"",
+          "id": 125
+        },
+        {
+          "label": "🎶 \"Song magic\"",
+          "id": 126
+        }
+      ],
+      "position": [4300, 300]
+    },
+    {
+      "id": 85,
+      "type": "skip",
+      "label": "Midnight Appointment",
+      "text": [
+        "As midnight approaches, you make your way to the ancient tower. The silver moon bathes everything in ethereal light.",
+        "🕛 Your magical powers feel incredibly strong, almost overwhelming in their intensity."
+      ],
+      "nextId": 127,
+      "position": [4600, 300]
+    },
+    {
+      "id": 86,
+      "type": "skip",
+      "label": "Guided Practice",
+      "text": [
+        "Lady Esclarmonde accompanies you to the tower. Her presence helps you channel the moon's power more safely.",
+        "🤝 \"Together, we can accomplish what neither could alone,\" she whispers."
+      ],
+      "nextId": 128,
+      "position": [4600, 350]
+    },
+    {
+      "id": 87,
+      "type": "redirect",
+      "label": "Urgent Rescue",
+      "text": [
+        "You rush toward the prince's location, but his changed magical signature concerns you greatly.",
+        "⚡ Something has fundamentally altered about Prince Jaufré's essence."
+      ],
+      "links": [
+        {
+          "weight": 2,
+          "id": 129
+        },
+        {
+          "weight": 3,
+          "id": 130
+        }
+      ],
+      "position": [4600, 400]
+    },
+    {
+      "id": 88,
+      "type": "skip",
+      "label": "Cautious Investigation",
+      "text": [
+        "You probe deeper into the prince's altered magical signature. The changes suggest transformation rather than harm.",
+        "🔮 He's been touched by powerful magic - perhaps willingly."
+      ],
+      "nextId": 131,
+      "position": [4600, 450]
+    },
+    {
+      "id": 89,
+      "type": "skip",
+      "label": "Seeking Guidance",
+      "text": [
+        "You find Lady Esclarmonde in her private study, surrounded by ancient texts and glowing crystals.",
+        "📚 \"Ah, the power overwhelmed you. This is why patience is crucial with such gifts.\""
+      ],
+      "nextId": 132,
+      "position": [4600, 500]
+    },
+    {
+      "id": 90,
+      "type": "action",
+      "label": "Patient Practice",
+      "text": [
+        "You spend time alone, gradually piecing together the fragments of magical knowledge. Progress is slow but steady.",
+        "⏳ \"Which aspect of the power becomes clearer first?\""
+      ],
+      "actions": [
+        {
+          "label": "🎵 \"Musical enhancement\"",
+          "id": 133
+        },
+        {
+          "label": "👁️ \"Magical sight\"",
+          "id": 134
+        }
+      ],
+      "position": [4600, 550]
+    },
+    {
+      "id": 91,
+      "type": "finish",
+      "label": "Military Investigation",
+      "text": [
+        "🗡️ Your investigation into House Montclair reveals they've been secretly recruiting sellswords and foreign mercenaries.",
+        "⚔️ But more concerning - they've been seeking musicians with 'special talents' for their ranks.",
+        "🎯 <b>The Revelator Path:</b> You've uncovered a military conspiracy that goes far beyond the missing prince, potentially saving the realm from conquest."
+      ],
+      "position": [4900, 700]
+    },
+    {
+      "id": 92,
+      "type": "finish",
+      "label": "Trade Secrets",
+      "text": [
+        "💰 House Valbonne's trade records reveal unusual imports: rare crystals, ancient instruments, and books of forbidden knowledge.",
+        "📜 They're building a network of magical artifacts that could control minds on a massive scale.",
+        "🕵️ <b>The Shadow Path:</b> You've discovered a conspiracy to create an empire of the magically enslaved, gaining dark knowledge in the process."
+      ],
+      "position": [5200, 700]
+    },
+    {
+      "id": 93,
+      "type": "finish",
+      "label": "Ancient Secrets",
+      "text": [
+        "🔮 House Belmont guards secrets dating back to the realm's founding. They know of your bloodline and have been waiting.",
+        "👑 The missing prince is part of an ancient ritual to awaken the realm's sleeping magical defenses.",
+        "🌟 <b>The True Love Path:</b> You discover that love - not just power - is the key to the realm's salvation, finding your heart's desire."
+      ],
+      "position": [5500, 700]
+    },
+    {
+      "id": 94,
+      "type": "finish",
+      "label": "Prince's Song",
+      "text": [
+        "🎵 Following the ethereal singing, you find Prince Jaufré in a chamber of crystalline beauty, his voice weaving protective spells.",
+        "🛡️ He's been maintaining magical barriers that protect the entire realm from an approaching darkness.",
+        "🎼 <b>The Wanderer Path:</b> You join the prince in his eternal vigil, becoming legendary guardians who sacrifice personal freedom for the greater good."
+      ],
+      "position": [4900, 50]
+    },
+    {
+      "id": 95,
+      "type": "finish",
+      "label": "Ancient Wisdom",
+      "text": [
+        "📜 The glowing symbols reveal the true history of the realm - a secret war between light and shadow that spans generations.",
+        "⚡ Your arrival marks the beginning of the final battle, and your musical magic is the key to victory.",
+        "🏆 <b>The Sacrifice Path:</b> You give up your musical gift to power ancient defenses, saving the realm but losing what made you special."
+      ],
+      "position": [5200, 50]
+    },
+    {
+      "id": 96,
+      "type": "finish",
+      "label": "Forbidden Love",
+      "text": [
+        "💕 The love letter reveals Prince Jaufré's secret romance with Silviana, the moon-touched guardian.",
+        "🌙 Their love transcends mortal and magical realms, but threatens the political marriage that would prevent war.",
+        "💫 <b>The True Love Path:</b> You help unite two souls across impossible boundaries, though it may cost the realm its peace."
+      ],
+      "position": [4900, 100]
+    },
+    {
+      "id": 97,
+      "type": "finish",
+      "label": "Moon-Touched Mark",
+      "text": [
+        "🌳 The watermark's magic reveals the prince's location - he's in the realm between worlds, protected by ancient guardians.",
+        "✨ Your musical gift resonates with the mark, opening a pathway to rescue him.",
+        "🎼 <b>The Wanderer Path:</b> You become a bridge between worlds, gaining the ability to travel between mortal and magical realms."
+      ],
+      "position": [5200, 100]
+    },
+    {
+      "id": 98,
+      "type": "finish",
+      "label": "Song Sacrifice",
+      "text": [
+        "🎵 You offer your most cherished melody - a lullaby your mother sang. The price is steep but necessary.",
+        "💔 Though you lose that song forever, Silviana reveals the prince's location and the true danger threatening the realm.",
+        "⚔️ <b>The Sacrifice Path:</b> Your willingness to give up something precious proves your noble heart and saves the kingdom."
+      ],
+      "position": [4900, 150]
+    },
+    {
+      "id": 99,
+      "type": "action",
+      "label": "Rejecting the Deal",
+      "text": [
+        "\"I cannot trade away my music,\" you declare. Silviana nods with understanding rather than anger.",
+        "🤝 \"Then perhaps there is another way. Your integrity itself has value.\""
+      ],
+      "actions": [
+        {
+          "label": "\"What other way?\"",
+          "id": 135
+        },
+        {
+          "label": "\"I'll find another path\"",
+          "id": 136
+        }
+      ],
+      "position": [4900, 200]
+    },
+    {
+      "id": 100,
+      "type": "action",
+      "label": "Guardian's Truth",
+      "text": [
+        "\"Dark sorcerers seek to corrupt the silver moon's power. The prince volunteered to help us strengthen the barriers between worlds.\"",
+        "🛡️ \"But the ritual requires a musician of the old blood to complete it.\""
+      ],
+      "actions": [
+        {
+          "label": "\"I'll help complete it\"",
+          "id": 137
+        },
+        {
+          "label": "\"Bring him back first\"",
+          "id": 138
+        }
+      ],
+      "position": [5200, 150]
+    },
+    {
+      "id": 101,
+      "type": "finish",
+      "label": "Magical Overload",
+      "text": [
+        "⚡ The magical realm's power proves too much for your untrained abilities. You collapse, overwhelmed.",
+        "🌟 When you awaken, you find yourself back in the gardens with enhanced magical sight but weakened overall power.",
+        "👁️ <b>The Revelator Path:</b> Though diminished, you can now see through illusions and detect magical threats others cannot."
+      ],
+      "position": [5500, 150]
+    },
+    {
+      "id": 102,
+      "type": "finish",
+      "label": "Realm Mastery",
+      "text": [
+        "✨ You successfully navigate the magical realm, learning to control its incredible energies.",
+        "🎼 Here you discover the true source of your musical magic and master abilities beyond mortal comprehension.",
+        "🌟 <b>The Peacemaker Path:</b> With newfound power and wisdom, you return to broker peace between all factions and save the realm."
+      ],
+      "position": [5500, 200]
+    },
+    {
+      "id": 103,
+      "type": "finish",
+      "label": "Moonlight Song",
+      "text": [
+        "🌙 Your song of moonlight resonates perfectly with the magical doorway, opening it with silver radiance.",
+        "✨ Inside, you find Prince Jaufré in willing collaboration with moon-touched beings, working to protect the realm.",
+        "🤝 <b>The Peacemaker Path:</b> You help forge an alliance between mortal and magical realms, bringing lasting peace."
+      ],
+      "position": [4900, 250]
+    },
+    {
+      "id": 104,
+      "type": "finish",
+      "label": "Love Song",
+      "text": [
+        "💕 Your song of love touches something deep within the magical barrier, and it opens to reveal a beautiful garden.",
+        "👑 Prince Jaufré and Silviana are there together, their love having created a sanctuary between worlds.",
+        "💫 <b>The True Love Path:</b> You help protect their forbidden romance while finding your own heart's desire in the process."
+      ],
+      "position": [5200, 250]
+    },
+    {
+      "id": 105,
+      "type": "finish",
+      "label": "Finding the Moon-Touched",
+      "text": [
+        "🔍 Following the servant's guidance, you discover the moon-touched dwelling in the castle's highest tower.",
+        "🌙 They reveal they've been protecting the prince from dark forces, but need your help to complete their magical defenses.",
+        "🛡️ <b>The Wanderer Path:</b> You join their eternal vigil, becoming a guardian who travels between realms to protect the innocent."
+      ],
+      "position": [5500, 100]
+    },
+    {
+      "id": 106,
+      "type": "finish",
+      "label": "Urgent Mission",
+      "text": [
+        "⚔️ Armed with knowledge of the true threat, you race against time to prevent an army of the enchanted from forming.",
+        "⚡ Your musical magic proves to be the key to breaking the dark enchantments and freeing those already enslaved.",
+        "🏆 <b>The Sacrifice Path:</b> You exhaust your magical abilities to save countless innocent minds, becoming a legendary hero."
+      ],
+      "position": [5500, 50]
+    },
+    {
+      "id": 107,
+      "type": "finish",
+      "label": "Willing Guardian",
+      "text": [
+        "👑 \"Not imprisoned - protected,\" the prince explains. \"Dark forces seek to use the silver moon's power to enslave minds.\"",
+        "🛡️ \"I volunteered to help maintain the magical barriers until someone with the old blood could assist us.\"",
+        "🎼 <b>The Wanderer Path:</b> You join Prince Jaufré as eternal guardians, using your combined musical magic to protect the realm from supernatural threats."
+      ],
+      "position": [5800, 300]
+    },
+    {
+      "id": 108,
+      "type": "finish",
+      "label": "Realm's Need",
+      "text": [
+        "⚔️ \"Our realm stands at a crossroads. Ancient enemies gather strength, seeking to corrupt the silver moon's power.\"",
+        "🎵 \"Your musical magic, combined with my royal authority, can forge new alliances and strengthen our defenses.\"",
+        "🌟 <b>The Peacemaker Path:</b> Together, you and the prince create a new golden age of cooperation between magical and mortal realms."
+      ],
+      "position": [5800, 350]
+    },
+    {
+      "id": 109,
+      "type": "finish",
+      "label": "Gathering Allies",
+      "text": [
+        "⚔️ With Sir Raimbaut's help, you gather a circle of trusted allies: Lady Esclarmonde, loyal knights, and even some moon-touched beings.",
+        "🤝 Together, you form a new order dedicated to protecting the realm from magical threats.",
+        "🏆 <b>The Peacemaker Path:</b> Your leadership and musical gifts unite all factions, creating lasting peace and prosperity."
+      ],
+      "position": [5800, 400]
+    },
+    {
+      "id": 110,
+      "type": "finish",
+      "label": "Humble Hero",
+      "text": [
+        "🎵 Your humility proves to be your greatest strength. By never seeking power for yourself, you earn trust from all sides.",
+        "✨ Your music becomes a force for healing and unity, bridging differences between nobles and commoners alike.",
+        "💫 <b>The True Love Path:</b> In helping others find love and happiness, you discover your own purpose and contentment."
+      ],
+      "position": [5800, 450]
+    },
+    {
+      "id": 111,
+      "type": "finish",
+      "label": "Wise Avoidance",
+      "text": [
+        "🛡️ By avoiding the dangerous courtiers, you focus on positive alliances and gradually weaken their influence through unity.",
+        "🎼 Your music brings hope and courage to those who oppose corruption, creating a movement of resistance.",
+        "🌟 <b>The Peacemaker Path:</b> Through patience and wisdom, you help cleanse the court of dark influences and restore honor."
+      ],
+      "position": [5800, 500]
+    },
+    {
+      "id": 112,
+      "type": "finish",
+      "label": "Bold Confrontation",
+      "text": [
+        "⚔️ You decide to confront the dangerous courtiers directly, using your musical magic to reveal their true nature.",
+        "💀 The confrontation is perilous, but your courage inspires others to stand against corruption.",
+        "🏆 <b>The Sacrifice Path:</b> Though you risk everything, your bold actions expose the conspiracy and save many innocent lives."
+      ],
+      "position": [5800, 550]
+    },
+    {
+      "id": 113,
+      "type": "finish",
+      "label": "Prince Search",
+      "text": [
+        "🔍 With Sir Raimbaut's support, your search for the prince becomes more focused and effective.",
+        "👑 Together, you uncover the truth: the prince has been working secretly to protect the realm from ancient threats.",
+        "🤝 <b>The Peacemaker Path:</b> Your alliance with both the knight and the prince creates a new era of openness and cooperation."
+      ],
+      "position": [6100, 500]
+    },
+    {
+      "id": 114,
+      "type": "finish",
+      "label": "Power Development",
+      "text": [
+        "🎼 Under Sir Raimbaut's protection, you develop your musical magic to incredible heights.",
+        "⚡ Your enhanced abilities allow you to sense and counter magical threats throughout the realm.",
+        "🛡️ <b>The Wanderer Path:</b> You become a legendary traveling guardian, using your powers to protect the innocent wherever darkness gathers."
+      ],
+      "position": [6100, 550]
+    },
+    {
+      "id": 115,
+      "type": "finish",
+      "label": "Forbidden Archives",
+      "text": [
+        "📚 In the forbidden archives with Azalaïs, you discover ancient texts that reveal the true history of your bloodline.",
+        "👑 Your ancestors were the realm's first magical protectors, and now it's time to reclaim that legacy.",
+        "🌟 <b>The Revelator Path:</b> Armed with ancient knowledge, you expose centuries-old secrets and restore the rightful magical order."
+      ],
+      "position": [6100, 350]
+    },
+    {
+      "id": 116,
+      "type": "finish",
+      "label": "Enhanced Abilities",
+      "text": [
+        "⚡ With Azalaïs's training, your musical magic becomes incredibly refined and powerful.",
+        "🔮 You can now weave spells of protection, revelation, and healing through your melodies.",
+        "💫 <b>The True Love Path:</b> Your enhanced abilities help you heal old wounds and bring together star-crossed lovers across the realm."
+      ],
+      "position": [6100, 400]
+    },
+    {
+      "id": 117,
+      "type": "finish",
+      "label": "Tower Discovery",
+      "text": [
+        "🗼 Your solo investigation of the ancient tower reveals it to be a nexus of magical power.",
+        "✨ Here, you master abilities that transcend normal musical magic, becoming something between mortal and divine.",
+        "🎼 <b>The Wanderer Path:</b> You become a bridge between worlds, able to travel between mortal and magical realms at will."
+      ],
+      "position": [6100, 450]
+    },
+    {
+      "id": 118,
+      "type": "finish",
+      "label": "Garden Secrets",
+      "text": [
+        "🌹 The enchanted gardens reveal themselves to be a sanctuary where love transcends all boundaries.",
+        "💕 Here, you witness Prince Jaufré and Silviana's pure love, which has the power to heal the realm's divisions.",
+        "💫 <b>The True Love Path:</b> You help protect and celebrate true love, finding your own heart's desire in the process."
+      ],
+      "position": [6100, 500]
+    },
+    {
+      "id": 119,
+      "type": "finish",
+      "label": "Ancient Enemies",
+      "text": [
+        "👑 Learning of your ancient bloodline's enemies gives you purpose beyond the current crisis.",
+        "⚔️ You decide to seek out and confront these shadow forces before they can strike again.",
+        "🗡️ <b>The Sacrifice Path:</b> You dedicate your life to hunting down ancient evils, protecting future generations at great personal cost."
+      ],
+      "position": [6400, 500]
+    },
+    {
+      "id": 120,
+      "type": "finish",
+      "label": "Awakened Destiny",
+      "text": [
+        "🌙 The silver moon's call brought you here for reasons beyond coincidence - you are part of an ancient plan.",
+        "✨ Your arrival marks the beginning of a new age where music and magic unite to heal old wounds.",
+        "🌟 <b>The Peacemaker Path:</b> You embrace your role as a bridge between worlds, ushering in an era of harmony."
+      ],
+      "position": [6400, 550]
+    },
+    {
+      "id": 121,
+      "type": "finish",
+      "label": "Bold Risk",
+      "text": [
+        "⚡ You cast the song of seeking with full power, risking exposure to save Prince Jaufré.",
+        "🎵 The magical energy draws both allies and enemies, leading to a climactic confrontation.",
+        "🏆 <b>The Sacrifice Path:</b> Your courage in risking everything inspires others to stand against darkness, changing the realm forever."
+      ],
+      "position": [6400, 200]
+    },
+    {
+      "id": 122,
+      "type": "finish",
+      "label": "Careful Preparation",
+      "text": [
+        "⏳ You spend time mastering protective spells before attempting the song of seeking.",
+        "🛡️ Your cautious approach allows you to locate the prince while avoiding detection by dark forces.",
+        "🤝 <b>The Peacemaker Path:</b> Your wisdom and preparation enable you to rescue the prince and negotiate peace between all factions."
+      ],
+      "position": [6400, 250]
+    },
+    {
+      "id": 123,
+      "type": "finish",
+      "label": "Master of Finding",
+      "text": [
+        "🔍 You become incredibly skilled at locating lost people and hidden secrets through your music.",
+        "🎵 Your abilities make you invaluable to the realm, helping reunite families and uncover conspiracies.",
+        "🌟 <b>The Revelator Path:</b> You use your gift to expose all hidden truths, creating a more transparent and just society."
+      ],
+      "position": [6400, 300]
+    },
+    {
+      "id": 124,
+      "type": "finish",
+      "label": "Guardian's Shield",
+      "text": [
+        "🛡️ You master songs of protection that can shield entire communities from magical and physical harm.",
+        "✨ Your defensive abilities become legendary, and you establish safe havens throughout the realm.",
+        "🏰 <b>The Wanderer Path:</b> You travel from place to place, creating sanctuaries for those threatened by dark forces."
+      ],
+      "position": [6400, 350]
+    },
+    {
+      "id": 125,
+      "type": "finish",
+      "label": "Moon's Champion",
+      "text": [
+        "🌙 You become a conduit for the silver moon's power, able to channel its energy at will.",
+        "⚡ Your connection to lunar magic allows you to perform miracles of healing and transformation.",
+        "💫 <b>The True Love Path:</b> You use the moon's blessing to unite star-crossed lovers and heal broken hearts across the realm."
+      ],
+      "position": [6400, 400]
+    },
+    {
+      "id": 126,
+      "type": "finish",
+      "label": "Song Weaver",
+      "text": [
+        "🎶 You master the art of weaving multiple songs together, creating complex magical symphonies.",
+        "🎼 Your musical compositions become works of art that inspire and protect for generations.",
+        "🎭 <b>The True Love Path:</b> Your greatest composition celebrates the power of love to overcome all obstacles."
+      ],
+      "position": [6400, 450]
+    },
+    {
+      "id": 127,
+      "type": "finish",
+      "label": "Midnight Power",
+      "text": [
+        "🕛 At the stroke of midnight, your magical abilities reach their peak under the silver moon's blessing.",
+        "⚡ The overwhelming power threatens to consume you, but you learn to channel it into protective magic.",
+        "🛡️ <b>The Sacrifice Path:</b> You use this incredible power to create permanent magical defenses, exhausting yourself to save the realm."
+      ],
+      "position": [6700, 300]
+    },
+    {
+      "id": 128,
+      "type": "finish",
+      "label": "Guided Mastery",
+      "text": [
+        "🤝 With Lady Esclarmonde's guidance, you safely harness the silver moon's full power.",
+        "✨ Together, you forge a new understanding between the mortal court and magical forces.",
+        "🌟 <b>The Peacemaker Path:</b> Your partnership creates lasting treaties between all realms, ensuring peace for generations."
+      ],
+      "position": [6700, 350]
+    },
+    {
+      "id": 129,
+      "type": "finish",
+      "label": "Transformed Prince",
+      "text": [
+        "👑 You discover that Prince Jaufré has been transformed by moon magic - enhanced rather than harmed.",
+        "⚡ His new abilities complement your own, creating a powerful partnership to protect the realm.",
+        "🤝 <b>The Peacemaker Path:</b> Together, you establish a new order where magic and royalty work in harmony."
+      ],
+      "position": [6700, 400]
+    },
+    {
+      "id": 130,
+      "type": "finish",
+      "label": "Dangerous Change",
+      "text": [
+        "⚠️ The prince's magical transformation proves unstable, requiring your intervention to stabilize.",
+        "🎵 Your music becomes the anchor that keeps his enhanced abilities from consuming him.",
+        "💫 <b>The True Love Path:</b> Your dedication to saving him reveals the true power of selfless love."
+      ],
+      "position": [6700, 450]
+    },
+    {
+      "id": 131,
+      "type": "finish",
+      "label": "Willing Transformation",
+      "text": [
+        "🔮 You realize the prince chose to undergo magical transformation to better protect his people.",
+        "👑 His sacrifice inspires you to make your own commitment to the realm's defense.",
+        "🛡️ <b>The Wanderer Path:</b> You both become eternal guardians, watching over the realm through the centuries."
+      ],
+      "position": [6700, 500]
+    },
+    {
+      "id": 132,
+      "type": "finish",
+      "label": "Patient Teacher",
+      "text": [
+        "📚 Lady Esclarmonde becomes your mentor, helping you slowly master the overwhelming magical knowledge.",
+        "🎓 Under her guidance, you become one of the most skilled magical practitioners in the realm's history.",
+        "🌟 <b>The Revelator Path:</b> Your mastery allows you to uncover and share ancient magical wisdom, advancing civilization."
+      ],
+      "position": [6700, 550]
+    },
+    {
+      "id": 133,
+      "type": "finish",
+      "label": "Musical Enhancement",
+      "text": [
+        "🎵 Your musical abilities are greatly enhanced, allowing you to perform previously impossible feats.",
+        "🎼 Your songs can now heal physical wounds, mend broken hearts, and inspire courage in the hopeless.",
+        "💝 <b>The True Love Path:</b> You become a legendary bard whose songs of love are remembered for centuries."
+      ],
+      "position": [6700, 600]
+    },
+    {
+      "id": 134,
+      "type": "finish",
+      "label": "Magical Sight",
+      "text": [
+        "👁️ You develop the ability to see magical auras and hidden enchantments throughout the realm.",
+        "🔍 This sight allows you to detect dangers others cannot perceive and protect the innocent.",
+        "🛡️ <b>The Wanderer Path:</b> You become a traveling guardian, using your sight to warn communities of magical threats."
+      ],
+      "position": [6700, 650]
+    },
+    {
+      "id": 135,
+      "type": "finish",
+      "label": "Alternative Path",
+      "text": [
+        "🤝 Silviana respects your refusal to trade your music and offers to teach you moon magic instead.",
+        "🌙 This partnership between mortal musician and moon-touched being creates new possibilities.",
+        "✨ <b>The Peacemaker Path:</b> Your collaboration bridges the gap between worlds, creating lasting peace and understanding."
+      ],
+      "position": [6700, 700]
+    },
+    {
+      "id": 136,
+      "type": "finish",
+      "label": "Independent Search",
+      "text": [
+        "🚶 You politely decline Silviana's help and continue your search independently.",
+        "🎵 Your determination and musical gifts eventually lead you to discover the prince through your own efforts.",
+        "🌟 <b>The Revelator Path:</b> Your independent discovery reveals truths that change how the realm understands magic and royalty."
+      ],
+      "position": [7000, 200]
+    },
+    {
+      "id": 137,
+      "type": "finish",
+      "label": "Ritual Completion",
+      "text": [
+        "🛡️ You join Silviana and Prince Jaufré in completing the ritual to strengthen the barriers between worlds.",
+        "⚡ Your musical magic proves to be the missing piece that makes the protective spell permanent.",
+        "🌟 <b>The Sacrifice Path:</b> You give up your ability to return to normal life, becoming an eternal guardian between realms."
+      ],
+      "position": [7000, 150]
+    },
+    {
+      "id": 138,
+      "type": "finish",
+      "label": "Prince's Return",
+      "text": [
+        "👑 You negotiate for Prince Jaufré's return to the mortal realm before completing any rituals.",
+        "💕 Your insistence on protecting his choice leads to a deeper understanding between all parties.",
+        "💫 <b>The True Love Path:</b> You help arrange a solution where love transcends the boundaries between worlds."
+      ],
+      "position": [7000, 100]
+    }
+  ]
+}
