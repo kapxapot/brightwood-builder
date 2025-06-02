@@ -1,0 +1,1145 @@
+{
+  "id": "d8e7c6b5-a4f3-4d2e-b1c9-9a8b7c6d5e4f",
+  "title": "🌨️ The Winter's Crown",
+  "description": "A tale of political intrigue and subtle magic in medieval Sarvona, inspired by Provençal courts and Renaissance Italy",
+  "language": "en",
+  "startId": 1,
+  "nodes": [
+    {
+      "id": 1,
+      "type": "skip",
+      "label": "Arrival at Court",
+      "text": [
+        "❄️ Winter approaches the prosperous city-state of Sarvona. As the Principe's Court Advisor, you feel the weight of coming changes.",
+        "🏰 In the grand Palazzo Vecchio, nobles whisper of the aging Principe's failing health, while an ancient power stirs beneath the city's foundations."
+      ],
+      "position": [100, 100],
+      "nextId": 2
+    },
+    {
+      "id": 2,
+      "type": "action",
+      "label": "First Signs",
+      "text": [
+        "Two paths diverge before you: Alessandra studies ancient texts in the library, while Marco inspects the city guard. 📚",
+        "The siblings' rivalry for succession grows as their father weakens. Yet something else demands your attention - a strange resonance in the ancient stones."
+      ],
+      "position": [400, 100],
+      "actions": [
+        {
+          "label": "📖 Visit Alessandra",
+          "id": 3
+        },
+        {
+          "label": "⚔️ Meet Marco",
+          "id": 4
+        },
+        {
+          "label": "🔮 Investigate resonance",
+          "id": 5
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "type": "action",
+      "label": "Ancient Library",
+      "text": [
+        "📚 In the Ancient Library, Alessandra pores over chronicles of Sarvona's founding. Her violet eyes gleam with intensity.",
+        "\"Advisor, I've found references to a power tied to our city's protection - the Winter's Crown. But some pages are missing.\""
+      ],
+      "position": [700, 50],
+      "actions": [
+        {
+          "label": "🔍 Help research",
+          "id": 6
+        },
+        {
+          "label": "❄️ Ask about crown",
+          "id": 7
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "type": "action",
+      "label": "City Walls",
+      "text": [
+        "⚔️ Marco stands atop the walls, watching his men train. His presence commands respect from the guards.",
+        "\"Strange times, Advisor. The merchants whisper of unrest, and I've doubled the watch. What brings you here?\""
+      ],
+      "position": [700, 150],
+      "actions": [
+        {
+          "label": "🏰 Discuss defense",
+          "id": 8
+        },
+        {
+          "label": "👑 Talk succession",
+          "id": 9
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "type": "action",
+      "label": "Ancient Power",
+      "text": [
+        "🔮 The resonance leads you to the Cathedral of the Five Seasons. Sister Chiara tends the eternal flame.",
+        "\"You feel it too? The old powers wake as winter nears. The stones remember what the chronicles forgot.\""
+      ],
+      "position": [700, 250],
+      "actions": [
+        {
+          "label": "🕯️ Seek wisdom",
+          "id": 10
+        },
+        {
+          "label": "📜 Ask of history",
+          "id": 11
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "type": "skip",
+      "label": "Research Progress",
+      "text": [
+        "Together, you uncover texts speaking of a mystical crown forged from winter's essence. 👑",
+        "\"It protected the city,\" Alessandra whispers, \"but was hidden away when its power grew too great.\""
+      ],
+      "position": [1000, 50],
+      "nextId": 12
+    },
+    {
+      "id": 7,
+      "type": "skip",
+      "label": "Crown's Nature",
+      "text": [
+        "❄️ \"The chronicles say it was more than mere jewelry - it was winter itself given form,\" she explains.",
+        "\"Some write it granted wisdom to rule, others that it held power to freeze the hearts of enemies.\""
+      ],
+      "position": [1000, 100],
+      "nextId": 12
+    },
+    {
+      "id": 8,
+      "type": "skip",
+      "label": "Military Matters",
+      "text": [
+        "⚔️ Marco outlines his plans to strengthen the city guard. His military insight is sharp, yet there's tension in his voice.",
+        "\"The merchants, especially Duchess Beatrice, grow too powerful. They think gold can buy more than steel.\""
+      ],
+      "position": [1000, 150],
+      "nextId": 13
+    },
+    {
+      "id": 9,
+      "type": "skip",
+      "label": "Succession Talk",
+      "text": [
+        "👑 \"My sister buries herself in ancient texts while real threats gather,\" Marco says bitterly.",
+        "\"Sarvona needs strength now, not scholars. But tell me, Advisor - what do the old nobles whisper of succession?\""
+      ],
+      "position": [1000, 200],
+      "nextId": 13
+    },
+    {
+      "id": 10,
+      "type": "action",
+      "label": "Sister's Wisdom",
+      "text": [
+        "🕯️ Sister Chiara leads you deeper into the cathedral, where the eternal flame casts dancing shadows.",
+        "\"The Winter's Crown appears in our oldest prayers. It chose those worthy to rule - through wisdom or through power.\""
+      ],
+      "position": [1000, 250],
+      "actions": [
+        {
+          "label": "📖 Ask of wisdom",
+          "id": 14
+        },
+        {
+          "label": "⚔️ Ask of power",
+          "id": 15
+        }
+      ]
+    },
+    {
+      "id": 11,
+      "type": "skip",
+      "label": "Ancient History",
+      "text": [
+        "📜 \"When Sarvona was founded,\" Sister Chiara recounts, \"winter itself blessed the first rulers with its crown.",
+        "🌨️ But the crown's power grew with each generation, until it threatened to freeze more than just our enemies.\""
+      ],
+      "position": [1000, 300],
+      "nextId": 16
+    },
+    {
+      "id": 12,
+      "type": "action",
+      "label": "Hidden Chamber",
+      "text": [
+        "Alessandra leads you to a sealed chamber beneath the library. Ancient wards mark the door. 🚪",
+        "\"These symbols match the ones in the chronicles. Help me understand them - they speak of both ice and flame.\""
+      ],
+      "position": [1300, 50],
+      "actions": [
+        {
+          "label": "❄️ Study ice runes",
+          "id": 17
+        },
+        {
+          "label": "🔥 Study flame runes",
+          "id": 18
+        }
+      ]
+    },
+    {
+      "id": 13,
+      "type": "action",
+      "label": "Military Discovery",
+      "text": [
+        "As you speak with Marco, a guard captain rushes up with urgent news. 🏃",
+        "\"Commander, we've found something in the old fortifications - a chamber with strange markings of ice and flame.\""
+      ],
+      "position": [1300, 150],
+      "actions": [
+        {
+          "label": "👥 Bring Alessandra",
+          "id": 19
+        },
+        {
+          "label": "⚔️ Investigate now",
+          "id": 20
+        }
+      ]
+    },
+    {
+      "id": 14,
+      "type": "skip",
+      "label": "Crown's Wisdom",
+      "text": [
+        "📖 \"The crown granted insight into the hearts of both friends and enemies,\" Sister Chiara explains.",
+        "\"But wisdom can be a curse. Some rulers saw too much, understood too deeply, and it drove them to solitude.\""
+      ],
+      "position": [1300, 250],
+      "nextId": 16
+    },
+    {
+      "id": 15,
+      "type": "skip",
+      "label": "Crown's Power",
+      "text": [
+        "⚔️ \"The crown's power was absolute - it could freeze armies, turn summer to winter,\" she says gravely.",
+        "\"But power corrupts. The last ruler to wear it nearly froze the city in eternal ice during a fit of rage.\""
+      ],
+      "position": [1300, 300],
+      "nextId": 16
+    },
+    {
+      "id": 16,
+      "type": "action",
+      "label": "Eternal Flame",
+      "text": [
+        "🕯️ The eternal flame flickers strangely as Sister Chiara speaks. In its light, you notice symbols on the floor.",
+        "\"The flame and the frost - always in balance. The crown's chamber can only be opened by understanding both.\""
+      ],
+      "position": [1600, 250],
+      "actions": [
+        {
+          "label": "🔥 Follow the flame",
+          "id": 21
+        },
+        {
+          "label": "❄️ Trace frost marks",
+          "id": 22
+        }
+      ]
+    },
+    {
+      "id": 17,
+      "type": "skip",
+      "label": "Ice Magic",
+      "text": [
+        "❄️ The ice runes pulse with ancient power. They speak of winter's heart and the price of power.",
+        "\"These warn of frost that burns in the blood of rulers,\" Alessandra translates. \"The crown changes those who wear it.\""
+      ],
+      "position": [1600, 50],
+      "nextId": 23
+    },
+    {
+      "id": 18,
+      "type": "skip",
+      "label": "Flame Secrets",
+      "text": [
+        "🔥 The flame runes tell of balance - the eternal flame that keeps winter's power in check.",
+        "\"The crown's chamber,\" Alessandra realizes, \"it needs both frost and flame to open. One force balances the other.\""
+      ],
+      "position": [1600, 100],
+      "nextId": 23
+    },
+    {
+      "id": 19,
+      "type": "action",
+      "label": "Sibling Meeting",
+      "text": [
+        "👥 Alessandra arrives, tension crackling between the siblings like winter frost.",
+        "\"The crown's chamber,\" they say in unison, then share a look of surprise. \"You knew about this?\""
+      ],
+      "position": [1600, 150],
+      "actions": [
+        {
+          "label": "🤝 Encourage cooperation",
+          "id": 24
+        },
+        {
+          "label": "⚖️ Maintain balance",
+          "id": 25
+        }
+      ]
+    },
+    {
+      "id": 20,
+      "type": "redirect",
+      "label": "Chamber Guard",
+      "text": [
+        "⚔️ Marco posts guards and enters the chamber. Ancient magic stirs at your presence.",
+        "The runes begin to glow - some with frost's bite, others with flame's warmth. Choose carefully."
+      ],
+      "position": [1600, 200],
+      "links": [
+        {
+          "weight": 2,
+          "id": 26
+        },
+        {
+          "weight": 3,
+          "id": 27
+        }
+      ]
+    },
+    {
+      "id": 21,
+      "type": "skip",
+      "label": "Flame Path",
+      "text": [
+        "🔥 Following the flame's guidance, you discover a hidden passage beneath the cathedral.",
+        "Ancient prayers echo in the stone - \"Let flame's wisdom temper winter's might.\""
+      ],
+      "position": [1900, 250],
+      "nextId": 28
+    },
+    {
+      "id": 22,
+      "type": "skip",
+      "label": "Frost Path",
+      "text": [
+        "❄️ The frost marks lead to an ancient door, its surface covered in intricate ice crystals.",
+        "\"The crown's resting place,\" Sister Chiara whispers. \"But we need the flame's blessing to enter safely.\""
+      ],
+      "position": [1900, 300],
+      "nextId": 28
+    },
+    {
+      "id": 23,
+      "type": "action",
+      "label": "Crown's Location",
+      "text": [
+        "The runes reveal more than expected. Not just the crown's location, but its true nature. 👑",
+        "\"It's not just a symbol of power,\" Alessandra says, \"it's winter's heart. It needs both wisdom and strength to control.\""
+      ],
+      "position": [1900, 50],
+      "actions": [
+        {
+          "label": "🤝 Share with Marco",
+          "id": 29
+        },
+        {
+          "label": "📚 Research more",
+          "id": 30
+        }
+      ]
+    },
+    {
+      "id": 24,
+      "type": "skip",
+      "label": "Sibling Unity",
+      "text": [
+        "🤝 \"The crown requires both wisdom and strength,\" you remind them. \"Perhaps that's why you both found it.\"",
+        "The siblings exchange thoughtful looks. For a moment, ancient rivalry gives way to shared purpose."
+      ],
+      "position": [1900, 150],
+      "nextId": 31
+    },
+    {
+      "id": 25,
+      "type": "skip",
+      "label": "Careful Balance",
+      "text": [
+        "⚖️ You mediate carefully, ensuring neither sibling dominates the discovery.",
+        "Their combined knowledge - Alessandra's lore and Marco's tactical mind - begins to unravel the chamber's secrets."
+      ],
+      "position": [1900, 200],
+      "nextId": 31
+    },
+    {
+      "id": 26,
+      "type": "skip",
+      "label": "Power's Touch",
+      "text": [
+        "⚔️ The frost runes respond to Marco's touch, filling the chamber with winter's power.",
+        "But without balance, ice begins to spread uncontrollably. You need flame's warmth - quickly."
+      ],
+      "position": [1900, 350],
+      "nextId": 32
+    },
+    {
+      "id": 27,
+      "type": "skip",
+      "label": "Ancient Warning",
+      "text": [
+        "The flame runes flare in warning. A voice echoes: \"Power without wisdom brings only destruction.\" 🔥",
+        "Marco steps back, understanding dawning in his eyes. \"Perhaps... perhaps I need my sister's help after all.\""
+      ],
+      "position": [1900, 400],
+      "nextId": 33
+    },
+    {
+      "id": 28,
+      "type": "action",
+      "label": "Sacred Chamber",
+      "text": [
+        "🕯️ The chamber of the Winter's Crown lies before you, suspended between flame and frost.",
+        "Sister Chiara's voice trembles: \"The crown will test whoever seeks it. What matters most - wisdom, strength, or balance?\""
+      ],
+      "position": [2200, 250],
+      "actions": [
+        {
+          "label": "📖 Seek wisdom",
+          "id": 34
+        },
+        {
+          "label": "⚔️ Prove strength",
+          "id": 35
+        },
+        {
+          "label": "⚖️ Find balance",
+          "id": 36
+        }
+      ]
+    },
+    {
+      "id": 29,
+      "type": "redirect",
+      "label": "Knowledge Shared",
+      "text": [
+        "🤝 You share the discoveries with Marco. His military mind quickly grasps the tactical implications.",
+        "But will this knowledge bridge the gap between siblings or deepen their rivalry?"
+      ],
+      "position": [2200, 50],
+      "links": [
+        {
+          "weight": 3,
+          "id": 37
+        },
+        {
+          "weight": 2,
+          "id": 38
+        }
+      ]
+    },
+    {
+      "id": 30,
+      "type": "skip",
+      "label": "Deep Research",
+      "text": [
+        "📚 Further research reveals a pattern - the crown's power grows stronger as winter approaches.",
+        "\"If we don't act soon,\" Alessandra warns, \"its power might awaken on its own.\""
+      ],
+      "position": [2200, 100],
+      "nextId": 39
+    },
+    {
+      "id": 31,
+      "type": "action",
+      "label": "United Purpose",
+      "text": [
+        "Together, the siblings begin deciphering the chamber's mysteries. Their combined talents prove formidable.",
+        "👥 \"The crown requires both wisdom and strength,\" they realize. \"But who should wield it?\""
+      ],
+      "position": [2200, 150],
+      "actions": [
+        {
+          "label": "👑 Choose Alessandra",
+          "id": 40
+        },
+        {
+          "label": "⚔️ Choose Marco",
+          "id": 41
+        },
+        {
+          "label": "🤝 Share power",
+          "id": 42
+        }
+      ]
+    },
+    {
+      "id": 32,
+      "type": "action",
+      "label": "Frost Crisis",
+      "text": [
+        "❄️ The chamber fills with killing frost. Guards retreat as ice crystals form on their armor.",
+        "\"Find my sister!\" Marco shouts, struggling against the cold. \"Quickly!\""
+      ],
+      "position": [2200, 350],
+      "actions": [
+        {
+          "label": "🏃 Get Alessandra",
+          "id": 43
+        },
+        {
+          "label": "🔥 Find flame runes",
+          "id": 44
+        }
+      ]
+    },
+    {
+      "id": 33,
+      "type": "skip",
+      "label": "Humbled Leader",
+      "text": [
+        "Marco's admission of need marks a turning point. The frost recedes slightly.",
+        "\"Perhaps,\" he says thoughtfully, \"true strength lies in knowing when to seek help.\""
+      ],
+      "position": [2200, 400],
+      "nextId": 31
+    },
+    {
+      "id": 34,
+      "type": "skip",
+      "label": "Wisdom's Path",
+      "text": [
+        "📖 You choose the path of wisdom. The crown's test begins, revealing visions of the past rulers of Sarvona.",
+        "Each vision offers a lesson, a glimpse into the burdens of power and the importance of wisdom."
+      ],
+      "position": [2500, 250],
+      "nextId": 45
+    },
+    {
+      "id": 35,
+      "type": "skip",
+      "label": "Strength's Path",
+      "text": [
+        "⚔️ You choose the path of strength. The crown's test manifests as a trial by combat against spectral warriors.",
+        "Each victory strengthens your resolve, but the final warrior awaits - a foe from your past."
+      ],
+      "position": [2500, 300],
+      "nextId": 46
+    },
+    {
+      "id": 36,
+      "type": "skip",
+      "label": "Balance's Path",
+      "text": [
+        "⚖️ You choose the path of balance. The crown's test requires harmonizing opposing forces - ice and fire, wisdom and power.",
+        "Only by achieving perfect balance can the crown's true power be revealed."
+      ],
+      "position": [2500, 350],
+      "nextId": 47
+    },
+    {
+      "id": 37,
+      "type": "skip",
+      "label": "Tactical Advantage",
+      "text": [
+        "🤝 Marco devises a plan to use the knowledge of the crown's location strategically.",
+        "The city-state's defenses are strengthened, and a covert operation is launched to secure the crown."
+      ],
+      "position": [2500, 50],
+      "nextId": 48
+    },
+    {
+      "id": 38,
+      "type": "skip",
+      "label": "Rivalry Deepens",
+      "text": [
+        "😠 Sharing knowledge backfires. Marco feels overshadowed, his authority challenged.",
+        "The rivalry between Alessandra and Marco intensifies, each believing they alone should wield the crown's power."
+      ],
+      "position": [2500, 100],
+      "nextId": 49
+    },
+    {
+      "id": 39,
+      "type": "skip",
+      "label": "Awakening Power",
+      "text": [
+        "🌌 The research uncovers a ritual to safely harness the crown's power. But it requires a sacrifice.",
+        "\"One must be willing to give up their claim to the throne,\" Alessandra concludes, \"to protect the city from itself.\""
+      ],
+      "position": [2500, 150],
+      "nextId": 50
+    },
+    {
+      "id": 40,
+      "type": "skip",
+      "label": "Alessandra's Ascension",
+      "text": [
+        "👑 Alessandra is chosen by the crown. Her wisdom and knowledge of the ancients prove paramount.",
+        "But with the crown's power, she must also bear the burden of its past - and the isolation it brings."
+      ],
+      "position": [2500, 200],
+      "nextId": 51
+    },
+    {
+      "id": 41,
+      "type": "skip",
+      "label": "Marco's Might",
+      "text": [
+        "⚔️ Marco claims the crown, his strength and leadership in battle undeniable.",
+        "Yet, the crown's power tests his very humanity, threatening to consume him with each use."
+      ],
+      "position": [2500, 250],
+      "nextId": 52
+    },
+    {
+      "id": 42,
+      "type": "skip",
+      "label": "Shared Rule",
+      "text": [
+        "🤝 The siblings decide to rule jointly, combining their strengths. The crown's power is balanced between them.",
+        "But can their bond withstand the pressures of shared power, especially with the crown's dark legacy?"
+      ],
+      "position": [2500, 300],
+      "nextId": 53
+    },
+    {
+      "id": 43,
+      "type": "skip",
+      "label": "Sister's Aid",
+      "text": [
+        "🏃 You rush to find Alessandra. Her knowledge of the ancients is crucial to withstand the frost.",
+        "Together, you return to the chamber, just as Marco begins to succumb to the cold."
+      ],
+      "position": [2500, 350],
+      "nextId": 54
+    },
+    {
+      "id": 44,
+      "type": "skip",
+      "label": "Flame Runes Found",
+      "text": [
+        "🔥 You search for the flame runes, hoping to find a way to counter the frost.",
+        "The runes, when activated, create a barrier of fire, protecting against the deadly cold."
+      ],
+      "position": [2500, 400],
+      "nextId": 55
+    },
+    {
+      "id": 45,
+      "type": "skip",
+      "label": "Wisdom Gained",
+      "text": [
+        "📖 The visions grant profound insights. You understand the delicate balance required to wield the crown's power.",
+        "Emerging from the test, you feel the weight of wisdom - and the loneliness it can bring."
+      ],
+      "position": [2800, 250],
+      "nextId": 56
+    },
+    {
+      "id": 46,
+      "type": "skip",
+      "label": "Strength Honed",
+      "text": [
+        "⚔️ Each battle with the spectral warriors strengthens your resolve and hones your skills.",
+        "But the final warrior awaits - a manifestation of your deepest fears and regrets."
+      ],
+      "position": [2800, 300],
+      "nextId": 57
+    },
+    {
+      "id": 47,
+      "type": "skip",
+      "label": "Balance Achieved",
+      "text": [
+        "⚖️ The test of balance is grueling, requiring every ounce of strength and wisdom you possess.",
+        "But as you achieve harmony between the opposing forces, the crown's true power is revealed."
+      ],
+      "position": [2800, 350],
+      "nextId": 58
+    },
+    {
+      "id": 48,
+      "type": "skip",
+      "label": "Crown Secured",
+      "text": [
+        "🏰 The operation to secure the crown is a success. Marco's leadership shines, and the city-state is fortified.",
+        "But the crown's location is now known to many. Rivals will come, drawn by the promise of power."
+      ],
+      "position": [2800, 50],
+      "nextId": 59
+    },
+    {
+      "id": 49,
+      "type": "skip",
+      "label": "Rivalry's Peak",
+      "text": [
+        "😡 The rivalry between Alessandra and Marco reaches new heights. Each believes the crown rightfully belongs to them.",
+        "The court is abuzz with their conflict, and the city's future hangs in the balance."
+      ],
+      "position": [2800, 100],
+      "nextId": 60
+    },
+    {
+      "id": 50,
+      "type": "skip",
+      "label": "Sacrifice Made",
+      "text": [
+        "💔 The ritual to harness the crown's power requires a heavy sacrifice. One must give up their claim to the throne.",
+        "In a heartbreaking decision, Alessandra steps forward, knowing it's the only way to protect Sarvona."
+      ],
+      "position": [2800, 150],
+      "nextId": 61
+    },
+    {
+      "id": 51,
+      "type": "skip",
+      "label": "Alessandra's Rule",
+      "text": [
+        "👑 With the crown's power, Alessandra rules wisely, her decisions guided by the lessons of the ancients.",
+        "But the crown's burden is heavy, and she often finds herself alone in her thoughts."
+      ],
+      "position": [2800, 200],
+      "nextId": 62
+    },
+    {
+      "id": 52,
+      "type": "skip",
+      "label": "Marco's Reign",
+      "text": [
+        "⚔️ Marco's rule is marked by strength and military might. The city-state thrives under his leadership.",
+        "Yet, the crown's power is a constant temptation, whispering of greater conquests and control."
+      ],
+      "position": [2800, 250],
+      "nextId": 63
+    },
+    {
+      "id": 53,
+      "type": "skip",
+      "label": "Shared Destiny",
+      "text": [
+        "🤝 United in purpose, the siblings rule together. The crown's power is a symbol of their bond.",
+        "But shadows loom on the horizon. Enemies gather, and the crown's dark legacy is not easily forgotten."
+      ],
+      "position": [2800, 300],
+      "nextId": 64
+    },
+    {
+      "id": 54,
+      "type": "skip",
+      "label": "Sister's Strength",
+      "text": [
+        "🏃 Together, you and Alessandra face the deadly frost. Her knowledge and your resolve prove a powerful combination.",
+        "Marco watches, realizing the true strength of unity."
+      ],
+      "position": [2800, 350],
+      "nextId": 65
+    },
+    {
+      "id": 55,
+      "type": "skip",
+      "label": "Flame's Embrace",
+      "text": [
+        "🔥 The flame runes' barrier holds, protecting you from the frost's deadly touch.",
+        "With the barrier active, you can safely approach Marco and stabilize the chamber."
+      ],
+      "position": [2800, 400],
+      "nextId": 66
+    },
+    {
+      "id": 56,
+      "type": "skip",
+      "label": "Wisdom's Burden",
+      "text": [
+        "📖 The weight of wisdom is both a gift and a curse. You see the paths of the future, but each is fraught with peril.",
+        "The crown's power is immense, but so is the responsibility that comes with it."
+      ],
+      "position": [3100, 250],
+      "nextId": 67
+    },
+    {
+      "id": 57,
+      "type": "skip",
+      "label": "Fear Confronted",
+      "text": [
+        "⚔️ The final spectral warrior is a manifestation of your deepest fears. Defeating it requires confronting your past.",
+        "Only by accepting your history can you truly wield the crown's power."
+      ],
+      "position": [3100, 300],
+      "nextId": 68
+    },
+    {
+      "id": 58,
+      "type": "skip",
+      "label": "True Power",
+      "text": [
+        "⚖️ Achieving balance unlocks the crown's true power. You see visions of the past, present, and future of Sarvona.",
+        "With this knowledge, you can guide the city-state to greatness - or doom."
+      ],
+      "position": [3100, 350],
+      "nextId": 69
+    },
+    {
+      "id": 59,
+      "type": "skip",
+      "label": "Fortified City",
+      "text": [
+        "🏰 The city-state is fortified, its defenses stronger than ever. Marco stands as a bulwark against any threat.",
+        "But with strength comes the temptation to wield power recklessly."
+      ],
+      "position": [3100, 50],
+      "nextId": 70
+    },
+    {
+      "id": 60,
+      "type": "skip",
+      "label": "Rivalry's Cost",
+      "text": [
+        "😡 The rivalry between Alessandra and Marco exacts a toll. The court is divided, and the city's future is uncertain.",
+        "Each sibling's supporters push for dominance, threatening to tear the city-state apart."
+      ],
+      "position": [3100, 100],
+      "nextId": 71
+    },
+    {
+      "id": 61,
+      "type": "skip",
+      "label": "Legacy of Sacrifice",
+      "text": [
+        "💔 Alessandra's sacrifice weighs heavily on the city-state. Her absence is felt in every corner of Sarvona.",
+        "The crown's power is a constant reminder of the price paid for safety."
+      ],
+      "position": [3100, 150],
+      "nextId": 72
+    },
+    {
+      "id": 62,
+      "type": "skip",
+      "label": "Alessandra's Solitude",
+      "text": [
+        "👑 Alessandra rules with wisdom, but the crown's burden is a heavy one. She often finds herself alone in her thoughts.",
+        "The city-state thrives, yet the ruler's heart is burdened by the crown's legacy."
+      ],
+      "position": [3100, 200],
+      "nextId": 73
+    },
+    {
+      "id": 63,
+      "type": "skip",
+      "label": "Marco's Temptation",
+      "text": [
+        "⚔️ Marco's strength is unquestioned, but the crown's power whispers of greater conquests and control.",
+        "He stands at a crossroads, between the path of a ruler and the path of a conqueror."
+      ],
+      "position": [3100, 250],
+      "nextId": 74
+    },
+    {
+      "id": 64,
+      "type": "skip",
+      "label": "Shared Burden",
+      "text": [
+        "🤝 United, the siblings face the challenges ahead. The crown's power is a symbol of their bond and shared responsibility.",
+        "But shadows loom on the horizon. Enemies gather, and the crown's dark legacy is not easily forgotten."
+      ],
+      "position": [3100, 300],
+      "nextId": 75
+    },
+    {
+      "id": 65,
+      "type": "skip",
+      "label": "Unity in Adversity",
+      "text": [
+        "🏃 United, you and Alessandra withstand the frost's onslaught. Your bond proves stronger than the crown's curse.",
+        "Marco watches, realizing the true meaning of strength and unity."
+      ],
+      "position": [3100, 350],
+      "nextId": 76
+    },
+    {
+      "id": 66,
+      "type": "skip",
+      "label": "Barrier of Flame",
+      "text": [
+        "🔥 The barrier of flame holds, protecting you from the deadly frost. Together, you stabilize the chamber.",
+        "Marco, freed from the frost's grip, aids in controlling the crown's power."
+      ],
+      "position": [3100, 400],
+      "nextId": 77
+    },
+    {
+      "id": 67,
+      "type": "skip",
+      "label": "Wisdom's Path Chosen",
+      "text": [
+        "📖 You have walked the path of wisdom. The crown's power is now a part of you, guiding your decisions.",
+        "But with this power comes the burden of knowledge - and the loneliness of leadership."
+      ],
+      "position": [3400, 250],
+      "nextId": 78
+    },
+    {
+      "id": 68,
+      "type": "skip",
+      "label": "Strength Conquered",
+      "text": [
+        "⚔️ You have conquered the final warrior, confronting your deepest fears. The crown's power is now yours to wield.",
+        "But the line between strength and tyranny is thin, and the crown's whispers grow louder."
+      ],
+      "position": [3400, 300],
+      "nextId": 79
+    },
+    {
+      "id": 69,
+      "type": "skip",
+      "label": "Balance Perfected",
+      "text": [
+        "⚖️ You have achieved perfect balance. The crown's true power is revealed, offering visions of Sarvona's possible futures.",
+        "With this knowledge, you can guide the city-state to greatness - or doom."
+      ],
+      "position": [3400, 350],
+      "nextId": 80
+    },
+    {
+      "id": 70,
+      "type": "skip",
+      "label": "City's Guardian",
+      "text": [
+        "🏰 Marco stands as the city's guardian, his strength a bulwark against any threat. The crown's power enhances his abilities.",
+        "But with each use, the crown's whispers grow stronger, tempting him with visions of conquest."
+      ],
+      "position": [3400, 50],
+      "nextId": 81
+    },
+    {
+      "id": 71,
+      "type": "skip",
+      "label": "Rivalry Resolved",
+      "text": [
+        "😌 The rivalry between Alessandra and Marco finds a resolution. They come to respect each other's strengths.",
+        "Together, they prepare to face the challenges ahead, united by the crown's power."
+      ],
+      "position": [3400, 100],
+      "nextId": 82
+    },
+    {
+      "id": 72,
+      "type": "skip",
+      "label": "Legacy Honored",
+      "text": [
+        "🏺 Alessandra's legacy is honored throughout the city-state. Her sacrifice is a constant reminder of the crown's true purpose.",
+        "The crown's power is used wisely, guiding Sarvona into a new era of prosperity."
+      ],
+      "position": [3400, 150],
+      "nextId": 83
+    },
+    {
+      "id": 73,
+      "type": "skip",
+      "label": "Alessandra's Solitude",
+      "text": [
+        "👑 Alessandra rules with wisdom, but the crown's burden is a heavy one. She often finds herself alone in her thoughts.",
+        "The city-state thrives, yet the ruler's heart is burdened by the crown's legacy."
+      ],
+      "position": [3400, 200],
+      "nextId": 84
+    },
+    {
+      "id": 74,
+      "type": "skip",
+      "label": "Marco's Ambition",
+      "text": [
+        "⚔️ Marco's ambition grows. The crown's power tempts him with visions of grandeur and conquest.",
+        "He stands at a crossroads, between the path of a ruler and the path of a conqueror."
+      ],
+      "position": [3400, 250],
+      "nextId": 85
+    },
+    {
+      "id": 75,
+      "type": "skip",
+      "label": "Shared Legacy",
+      "text": [
+        "🤝 United, the siblings face the future. The crown's power is a symbol of their bond and shared responsibility.",
+        "But shadows loom on the horizon. Enemies gather, and the crown's dark legacy is not easily forgotten."
+      ],
+      "position": [3400, 300],
+      "nextId": 86
+    },
+    {
+      "id": 76,
+      "type": "skip",
+      "label": "Unity in Adversity",
+      "text": [
+        "🏃 United, you and Alessandra withstand the frost's onslaught. Your bond proves stronger than the crown's curse.",
+        "Marco watches, realizing the true meaning of strength and unity."
+      ],
+      "position": [3400, 350],
+      "nextId": 87
+    },
+    {
+      "id": 77,
+      "type": "skip",
+      "label": "Flame's Embrace",
+      "text": [
+        "🔥 The barrier of flame holds, protecting you from the deadly frost. Together, you stabilize the chamber.",
+        "Marco, freed from the frost's grip, aids in controlling the crown's power."
+      ],
+      "position": [3400, 400],
+      "nextId": 88
+    },
+    {
+      "id": 78,
+      "type": "finish",
+      "label": "The Wisdom Crown",
+      "text": [
+        "👑 Through wisdom, you unite the siblings and uncover the crown's ancient knowledge.",
+        "📚 Alessandra and Marco rule together, their combined strengths creating a golden age for Sarvona.",
+        "✨ The Winter's Crown becomes a symbol of unity and wisdom, its power used to protect and guide rather than dominate."
+      ],
+      "position": [3700, 250]
+    },
+    {
+      "id": 79,
+      "type": "finish",
+      "label": "The Iron Crown",
+      "text": [
+        "⚔️ Military might prevails, but at a cost. Marco's strength secures Sarvona's borders.",
+        "❄️ The Winter's Crown freezes the hearts of enemies, but its cold touch begins to affect Marco himself.",
+        "🏰 Sarvona becomes an unassailable fortress, but loses its soul to the crown's corrupting power."
+      ],
+      "position": [3700, 300]
+    },
+    {
+      "id": 80,
+      "type": "finish",
+      "label": "The Scholar's Path",
+      "text": [
+        "📖 Alessandra's wisdom proves paramount. She chooses knowledge over power.",
+        "🔮 The Winter's Crown's secrets are studied and preserved, its power carefully contained.",
+        "📚 Sarvona becomes a center of learning, where wisdom tempers the cold touch of winter's might."
+      ],
+      "position": [3700, 350]
+    },
+    {
+      "id": 81,
+      "type": "finish",
+      "label": "The Winter's Voice",
+      "text": [
+        "❄️ You become one with the crown's power, accepting its ancient burden.",
+        "🌨️ As the city's mystical protector, you walk the line between human and legend.",
+        "👻 Through the ages, your whispers guide Sarvona's rulers, a voice of winter's wisdom."
+      ],
+      "position": [3700, 400]
+    },
+    {
+      "id": 82,
+      "type": "finish",
+      "label": "The Exile's Choice",
+      "text": [
+        "🏃 Recognizing the crown's corrupting influence, you choose exile to protect Sarvona.",
+        "💔 From afar, you watch over the city, ensuring the crown's power remains dormant.",
+        "🌅 Your sacrifice is remembered in legend, the advisor who chose wisdom over power."
+      ],
+      "position": [3700, 450]
+    },
+    {
+      "id": 83,
+      "type": "action",
+      "label": "Final Choice",
+      "text": [
+        "The moment of truth arrives. The Winter's Crown hovers before you, its power waiting to be claimed.",
+        "🌨️ The fate of Sarvona rests in your hands. What path will you choose?"
+      ],
+      "position": [3700, 150],
+      "actions": [
+        {
+          "label": "👑 Unite the siblings",
+          "id": 78
+        },
+        {
+          "label": "⚔️ Support strength",
+          "id": 79
+        },
+        {
+          "label": "📚 Choose knowledge",
+          "id": 80
+        },
+        {
+          "label": "❄️ Become guardian",
+          "id": 81
+        },
+        {
+          "label": "🏃 Choose exile",
+          "id": 82
+        }
+      ]
+    },
+    {
+      "id": 84,
+      "type": "skip",
+      "label": "Scholar's Choice",
+      "text": [
+        "📚 Alessandra's dedication to knowledge shapes her decision. The crown's power must be understood, not wielded.",
+        "\"Some powers are meant to be studied, not used,\" she declares. \"We can learn from its wisdom without succumbing to its might.\""
+      ],
+      "position": [3400, 450],
+      "nextId": 83
+    },
+    {
+      "id": 85,
+      "type": "skip",
+      "label": "Warrior's Path",
+      "text": [
+        "⚔️ Marco stands at the threshold of power. The crown calls to his warrior's heart.",
+        "\"With this, we could make Sarvona invincible,\" he muses. Yet doubt flickers in his eyes."
+      ],
+      "position": [3400, 500],
+      "nextId": 83
+    },
+    {
+      "id": 86,
+      "type": "skip",
+      "label": "United Front",
+      "text": [
+        "🤝 The siblings stand together, their rivalry transformed into strength.",
+        "\"Perhaps this was the crown's test all along,\" they realize. \"Not to choose between wisdom and strength, but to unite them.\""
+      ],
+      "position": [3400, 550],
+      "nextId": 83
+    },
+    {
+      "id": 87,
+      "type": "skip",
+      "label": "Guardian's Call",
+      "text": [
+        "❄️ The crown's power resonates with your spirit. You feel its ancient burden calling.",
+        "\"Someone must bear this weight,\" you realize. \"Someone who understands both its power and its price.\""
+      ],
+      "position": [3400, 600],
+      "nextId": 83
+    },
+    {
+      "id": 88,
+      "type": "skip",
+      "label": "Path of Sacrifice",
+      "text": [
+        "🏃 The crown's corrupting influence becomes clear. Its power is too great for any one person.",
+        "\"The only way to truly protect Sarvona is to ensure no one wields this power,\" you conclude."
+      ],
+      "position": [3400, 650],
+      "nextId": 83
+    }
+  ]
+}

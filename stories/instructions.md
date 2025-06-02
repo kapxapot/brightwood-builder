@@ -24,7 +24,7 @@
 1. When you create a story, please, create a new folder in the `stories` folder. You can name it like `story-1` or similar to that.
 2. Create a `plan.md` file for a new story, put the story setting, plan and key story points into it. Also, define possible endings to the story. DON'T MODIFY `plan.md` AFTER ITS CREATION!
 3. Create a story file named `story.json` in that folder. Use `plan.md` for reference.
-4. The goal is to create up to 60-100 nodes for the story.
+4. The goal is to create up to 60-90 nodes for the story.
 5. After each node generation check the `plan.md`.
 6. When you append nodes, make sure that their ids go in the ascending order WITH NO GAPS.
 
