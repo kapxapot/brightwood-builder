@@ -1,0 +1,1394 @@
+{
+  "id": "f7a8b9c2-d3e4-4f5a-b6c7-8d9e0f1a2b3c",
+  "title": "🌙 Crimson Hollow: The Blood Moon's Curse",
+  "description": "A dark fantasy tale about breaking an ancient curse that plagues a remote village every thirteen years",
+  "language": "en",
+  "startId": 1,
+  "nodes": [
+    {
+      "id": 1,
+      "type": "skip",
+      "label": "Arrival",
+      "text": [
+        "The blood moon hangs low over Crimson Hollow as your carriage creaks to a halt. 🌙",
+        "The driver won't meet your eyes. \"This is as far as I go, scholar. Whatever business you have here, finish it before dawn.\""
+      ],
+      "position": [100, 100],
+      "nextId": 2
+    },
+    {
+      "id": 2,
+      "type": "action",
+      "label": "Village Entry",
+      "text": [
+        "Empty streets stretch before you, windows shuttered tight despite the early hour. 🏘️",
+        "A distant scream echoes from the village square. In the shadows, something moves with unnatural jerky motions."
+      ],
+      "position": [400, 100],
+      "actions": [
+        {
+          "label": "🏃 Investigate scream",
+          "id": 3
+        },
+        {
+          "label": "🏠 Find shelter",
+          "id": 4
+        },
+        {
+          "label": "📚 Check notes",
+          "id": 5
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "type": "skip",
+      "label": "Square Horror",
+      "text": [
+        "In the village square, a woman in tattered clothes circles the ancient well, muttering in tongues. ⚰️",
+        "Her neck bends at an impossible angle. When she notices you, her blackened eyes fix on yours with hungry recognition."
+      ],
+      "position": [700, 50],
+      "nextId": 6
+    },
+    {
+      "id": 4,
+      "type": "action",
+      "label": "Seeking Refuge",
+      "text": [
+        "You try several doors, but most are barred from within. 🚪",
+        "Finally, candlelight flickers behind one window. A voice whispers: \"Scholar? Enter quickly, before they smell your living blood.\""
+      ],
+      "position": [700, 150],
+      "actions": [
+        {
+          "label": "🚪 Enter house",
+          "id": 7
+        },
+        {
+          "label": "⚠️ Stay cautious",
+          "id": 8
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "type": "skip",
+      "label": "Research Notes",
+      "text": [
+        "Your notes mention the curse: every thirteen years, the dead walk and the living transform. 📖",
+        "The original source lies in a betrayal centuries ago—a witch burned for protecting the village from raiders."
+      ],
+      "position": [700, 250],
+      "nextId": 9
+    },
+    {
+      "id": 6,
+      "type": "action",
+      "label": "Cursed Woman",
+      "text": [
+        "\"Fresh... flesh...\" she rasps, lurching toward you with clawed fingers. 🧟",
+        "Behind her, more figures emerge from the shadows—villagers twisted by the curse's power."
+      ],
+      "position": [1000, 50],
+      "actions": [
+        {
+          "label": "🗡️ Fight back",
+          "id": 10
+        },
+        {
+          "label": "🏃 Retreat",
+          "id": 11
+        },
+        {
+          "label": "📿 Use blessed salt",
+          "id": 12
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "type": "skip",
+      "label": "Elder Thorne",
+      "text": [
+        "An ancient man with silver hair opens the door. \"I am Elder Thorne. I've been expecting you, scholar. 👴",
+        "The curse grows stronger each cycle. Tonight may be our last chance to break it.\""
+      ],
+      "position": [1000, 150],
+      "nextId": 13
+    },
+    {
+      "id": 8,
+      "type": "redirect",
+      "label": "Hesitation",
+      "text": [
+        "Your caution proves wise—or perhaps fatal. 🎲",
+        "As you hesitate, the night's events unfold around you with supernatural force."
+      ],
+      "position": [1000, 200],
+      "links": [
+        {
+          "weight": 3,
+          "id": 14
+        },
+        {
+          "weight": 2,
+          "id": 15
+        }
+      ]
+    },
+    {
+      "id": 9,
+      "type": "action",
+      "label": "Knowledge Check",
+      "text": [
+        "Your research suggests three potential approaches to breaking the curse. 🔍",
+        "Each carries risks, but dawn approaches and you must choose your path."
+      ],
+      "position": [1000, 300],
+      "actions": [
+        {
+          "label": "⛪ Seek church",
+          "id": 16
+        },
+        {
+          "label": "🌲 Forest ritual",
+          "id": 17
+        },
+        {
+          "label": "👥 Find survivors",
+          "id": 18
+        }
+      ]
+    },
+    {
+      "id": 10,
+      "type": "skip",
+      "label": "Combat",
+      "text": [
+        "You strike with your walking stick, but the cursed woman feels no pain. 💥",
+        "More shadows converge as your scuffle draws their attention. Escape becomes urgent."
+      ],
+      "position": [1300, 50],
+      "nextId": 19
+    },
+    {
+      "id": 11,
+      "type": "skip",
+      "label": "Retreat",
+      "text": [
+        "You back away slowly, then run toward the nearest building. 🏃",
+        "Behind you, inhuman howls pierce the night as the cursed give chase."
+      ],
+      "position": [1300, 100],
+      "nextId": 20
+    },
+    {
+      "id": 12,
+      "type": "skip",
+      "label": "Sacred Protection",
+      "text": [
+        "You scatter blessed salt in a circle. The cursed woman recoils, hissing. ✨",
+        "\"Clever scholar,\" a voice says behind you. \"But salt won't last till dawn.\""
+      ],
+      "position": [1300, 150],
+      "nextId": 21
+    },
+    {
+      "id": 13,
+      "type": "action",
+      "label": "Elder's Tale",
+      "text": [
+        "\"The witch Morwyn was innocent,\" Thorne explains. \"We burned her to appease raiders, but her spirit cursed us. 🔥",
+        "Three paths remain: redemption, destruction, or... acceptance.\""
+      ],
+      "position": [1300, 200],
+      "actions": [
+        {
+          "label": "💔 Redemption path",
+          "id": 22
+        },
+        {
+          "label": "⚔️ Destruction path",
+          "id": 23
+        },
+        {
+          "label": "❓ Acceptance path",
+          "id": 24
+        }
+      ]
+    },
+    {
+      "id": 14,
+      "type": "skip",
+      "label": "Ambush",
+      "text": [
+        "Cursed villagers surround you while you hesitate. Their leader speaks with a hollow voice. 🧟‍♂️",
+        "\"Join us, scholar. Why fight what you cannot change?\""
+      ],
+      "position": [1300, 250],
+      "nextId": 25
+    },
+    {
+      "id": 15,
+      "type": "skip",
+      "label": "Safe Passage",
+      "text": [
+        "A young woman emerges from an alley, gesturing urgently. 👧",
+        "\"This way! I know where it's safe. My name is Maya—I've been fighting the curse all night.\""
+      ],
+      "position": [1300, 300],
+      "nextId": 26
+    },
+    {
+      "id": 16,
+      "type": "skip",
+      "label": "Abandoned Church",
+      "text": [
+        "The church doors hang open, revealing a desecrated interior. ⛪",
+        "At the altar, Father Aldric kneels before a twisted crucifix, chanting in an ancient language."
+      ],
+      "position": [1600, 50],
+      "nextId": 27
+    },
+    {
+      "id": 17,
+      "type": "skip",
+      "label": "Forest Path",
+      "text": [
+        "Ancient trees claw at the crimson sky as you venture into the woods. 🌲",
+        "Deep within, you sense the original ritual site where Morwyn was condemned."
+      ],
+      "position": [1600, 150],
+      "nextId": 28
+    },
+    {
+      "id": 18,
+      "type": "action",
+      "label": "Survivor Search",
+      "text": [
+        "You hear whispers from a basement window. Survivors huddle in fear below. 👥",
+        "\"The curse takes more each hour,\" one gasps. \"Soon none will remain human.\""
+      ],
+      "position": [1600, 250],
+      "actions": [
+        {
+          "label": "🛡️ Protect them",
+          "id": 29
+        },
+        {
+          "label": "📖 Question them",
+          "id": 30
+        }
+      ]
+    },
+    {
+      "id": 19,
+      "type": "action",
+      "label": "Escape Route",
+      "text": [
+        "You break free but face a choice: the church offers holy ground, the forest holds answers. 🔀",
+        "Behind you, the cursed gather strength from your spilled blood."
+      ],
+      "position": [1600, 350],
+      "actions": [
+        {
+          "label": "⛪ Seek sanctuary",
+          "id": 16
+        },
+        {
+          "label": "🌲 Forest escape",
+          "id": 17
+        }
+      ]
+    },
+    {
+      "id": 20,
+      "type": "skip",
+      "label": "Narrow Escape",
+      "text": [
+        "You reach Elder Thorne's house just as claws scrape the door behind you. 🚪",
+        "\"Welcome, scholar. I see you've met our nightly visitors.\""
+      ],
+      "position": [1900, 50],
+      "nextId": 13
+    },
+    {
+      "id": 21,
+      "type": "skip",
+      "label": "Maya's Help",
+      "text": [
+        "A young woman emerges from the shadows. \"Impressive. Most don't know the old protections. 🌟",
+        "I'm Maya. I've been fighting this curse since sunset. We need to work together.\""
+      ],
+      "position": [1900, 150],
+      "nextId": 31
+    },
+    {
+      "id": 22,
+      "type": "skip",
+      "label": "Redemption Quest",
+      "text": [
+        "\"To redeem Morwyn's spirit, you must prove the village's remorse,\" Thorne explains. 💫",
+        "\"Find her remains and give them proper burial. But beware—she may not welcome your approach.\""
+      ],
+      "position": [1900, 250],
+      "nextId": 32
+    },
+    {
+      "id": 23,
+      "type": "skip",
+      "label": "Destruction Quest",
+      "text": [
+        "\"The curse's anchor is in the ritual circle where she died,\" Thorne says grimly. ⚔️",
+        "\"Destroy it with holy fire, but know that violence may only strengthen her rage.\""
+      ],
+      "position": [1900, 350],
+      "nextId": 33
+    },
+    {
+      "id": 24,
+      "type": "action",
+      "label": "Dark Choice",
+      "text": [
+        "Thorne's eyes gleam strangely. \"Or perhaps you could join her power, scholar. 🖤",
+        "Become the curse's new master. Rule over life and death itself.\""
+      ],
+      "position": [1900, 450],
+      "actions": [
+        {
+          "label": "😈 Accept power",
+          "id": 34
+        },
+        {
+          "label": "😡 Reject offer",
+          "id": 35
+        }
+      ]
+    },
+    {
+      "id": 25,
+      "type": "action",
+      "label": "Cursed Offer",
+      "text": [
+        "The leader extends a skeletal hand. \"End your suffering. Become eternal like us. 💀",
+        "Why struggle against the inevitable? The curse always wins.\""
+      ],
+      "position": [2200, 50],
+      "actions": [
+        {
+          "label": "🤝 Join them",
+          "id": 36
+        },
+        {
+          "label": "🚫 Refuse",
+          "id": 37
+        }
+      ]
+    },
+    {
+      "id": 26,
+      "type": "skip",
+      "label": "Maya's Refuge",
+      "text": [
+        "Maya leads you to a hidden cellar protected by salt circles and iron charms. 🛡️",
+        "\"I've kept a few others safe here. But the protection won't last much longer.\""
+      ],
+      "position": [2200, 150],
+      "nextId": 38
+    },
+    {
+      "id": 27,
+      "type": "action",
+      "label": "Corrupted Priest",
+      "text": [
+        "Father Aldric turns, his face pale and eyes black. \"Welcome, scholar. ⛪",
+        "I serve a higher power now. The curse offers such... enlightenment.\""
+      ],
+      "position": [2200, 250],
+      "actions": [
+        {
+          "label": "🗡️ Confront him",
+          "id": 39
+        },
+        {
+          "label": "📿 Use holy symbol",
+          "id": 40
+        },
+        {
+          "label": "💬 Reason with him",
+          "id": 41
+        }
+      ]
+    },
+    {
+      "id": 28,
+      "type": "skip",
+      "label": "Ritual Circle",
+      "text": [
+        "You find the ancient stone circle where Morwyn died. 🌙",
+        "Her ghostly form materializes, eyes filled with centuries of pain and rage."
+      ],
+      "position": [2200, 350],
+      "nextId": 42
+    },
+    {
+      "id": 29,
+      "type": "skip",
+      "label": "Guardian Role",
+      "text": [
+        "You fortify the basement with blessed salt and iron nails. 🛡️",
+        "\"Thank you,\" whispers an elderly woman. \"But can you really save us all?\""
+      ],
+      "position": [2200, 450],
+      "nextId": 43
+    },
+    {
+      "id": 30,
+      "type": "skip",
+      "label": "Gathered Knowledge",
+      "text": [
+        "The survivors share fragments of the truth: Morwyn was betrayed by those she protected. 📚",
+        "\"She loved this village,\" one sobs. \"That's why her curse hurts so much.\""
+      ],
+      "position": [2500, 50],
+      "nextId": 44
+    },
+    {
+      "id": 31,
+      "type": "action",
+      "label": "Alliance Formed",
+      "text": [
+        "Maya shows you her collection of protective charms and ancient texts. ✨",
+        "\"I think I know where Morwyn's remains are hidden. But it's dangerous.\""
+      ],
+      "position": [2500, 150],
+      "actions": [
+        {
+          "label": "🏴 Follow Maya",
+          "id": 45
+        },
+        {
+          "label": "📖 Study texts first",
+          "id": 46
+        }
+      ]
+    },
+    {
+      "id": 32,
+      "type": "skip",
+      "label": "Burial Quest",
+      "text": [
+        "You search the village for Morwyn's unmarked grave. 🪦",
+        "Finally, beneath the church floor, you find bones wrapped in cursed iron chains."
+      ],
+      "position": [2500, 250],
+      "nextId": 47
+    },
+    {
+      "id": 33,
+      "type": "skip",
+      "label": "Holy Fire",
+      "text": [
+        "You gather blessed oil and sacred artifacts from the church. 🔥",
+        "The ritual circle awaits, but Morwyn's spirit grows stronger as you approach."
+      ],
+      "position": [2500, 350],
+      "nextId": 48
+    },
+    {
+      "id": 34,
+      "type": "skip",
+      "label": "Dark Transformation",
+      "text": [
+        "Power flows through you as the curse claims another willing soul. 🖤",
+        "Your humanity fades, but knowledge beyond mortal understanding fills the void."
+      ],
+      "position": [2500, 450],
+      "nextId": 49
+    },
+    {
+      "id": 35,
+      "type": "skip",
+      "label": "Rejection",
+      "text": [
+        "\"Fool!\" Thorne snarls, his true nature revealed. \"Then you'll join them the hard way!\" 😡",
+        "He lunges with inhuman speed, but you're ready for treachery."
+      ],
+      "position": [2800, 50],
+      "nextId": 50
+    },
+    {
+      "id": 36,
+      "type": "finish",
+      "label": "Cursed Scholar",
+      "text": [
+        "You accept the curse's embrace. Your flesh grows cold, your thoughts slow. 💀",
+        "As dawn breaks, you understand too late that you've become part of the very evil you came to study."
+      ],
+      "position": [2800, 150]
+    },
+    {
+      "id": 37,
+      "type": "skip",
+      "label": "Defiance",
+      "text": [
+        "\"Never!\" you shout, breaking free with desperate strength. 💪",
+        "The cursed give chase as you flee toward the forest and its hidden truths."
+      ],
+      "position": [2800, 250],
+      "nextId": 28
+    },
+    {
+      "id": 38,
+      "type": "action",
+      "label": "Safe Haven",
+      "text": [
+        "In the cellar, three other survivors huddle in fear. 👥",
+        "\"The curse grows stronger each hour,\" Maya warns. \"We must act before dawn, or all is lost.\""
+      ],
+      "position": [2800, 350],
+      "actions": [
+        {
+          "label": "🔍 Plan together",
+          "id": 51
+        },
+        {
+          "label": "🏃 Leave to act",
+          "id": 52
+        }
+      ]
+    },
+    {
+      "id": 39,
+      "type": "skip",
+      "label": "Priest Battle",
+      "text": [
+        "Father Aldric moves with unnatural speed, his corrupted faith granting terrible power. ⚔️",
+        "You dodge his clawed strikes while seeking holy artifacts to turn against him."
+      ],
+      "position": [2800, 450],
+      "nextId": 53
+    },
+    {
+      "id": 40,
+      "type": "redirect",
+      "label": "Holy Symbol",
+      "text": [
+        "You raise your silver cross. Its effect depends on the strength of your faith. ✝️",
+        "The corrupted priest either recoils in pain or laughs at your futile gesture."
+      ],
+      "position": [3100, 50],
+      "links": [
+        {
+          "weight": 3,
+          "id": 54
+        },
+        {
+          "weight": 2,
+          "id": 55
+        }
+      ]
+    },
+    {
+      "id": 41,
+      "type": "skip",
+      "label": "Reasoning",
+      "text": [
+        "\"Father, remember your vows!\" you plead. For a moment, humanity flickers in his eyes. 💬",
+        "\"Too late,\" he whispers. \"The curse showed me truth. God abandoned this place long ago.\""
+      ],
+      "position": [3100, 150],
+      "nextId": 56
+    },
+    {
+      "id": 42,
+      "type": "action",
+      "label": "Morwyn's Ghost",
+      "text": [
+        "\"Why do you disturb my rest, scholar?\" Morwyn's spirit asks, pain evident in every word. 👻",
+        "\"I was betrayed by those I loved. Why should I forgive?\""
+      ],
+      "position": [3100, 250],
+      "actions": [
+        {
+          "label": "💔 Apologize",
+          "id": 57
+        },
+        {
+          "label": "⚖️ Seek justice",
+          "id": 58
+        },
+        {
+          "label": "🔥 Threaten destruction",
+          "id": 59
+        }
+      ]
+    },
+    {
+      "id": 43,
+      "type": "action",
+      "label": "Guardian's Duty",
+      "text": [
+        "Hours pass as you defend the survivors from cursed attacks. 🛡️",
+        "Dawn approaches, but the curse's power peaks. Your protection may not be enough."
+      ],
+      "position": [3100, 350],
+      "actions": [
+        {
+          "label": "💪 Fight harder",
+          "id": 60
+        },
+        {
+          "label": "🌅 Wait for dawn",
+          "id": 61
+        }
+      ]
+    },
+    {
+      "id": 44,
+      "type": "skip",
+      "label": "Truth Revealed",
+      "text": [
+        "Armed with the full truth, you understand the curse's nature. 📚",
+        "Morwyn's love became twisted by betrayal. Only genuine remorse can break her bonds."
+      ],
+      "position": [3100, 450],
+      "nextId": 62
+    },
+    {
+      "id": 45,
+      "type": "skip",
+      "label": "Hidden Grave",
+      "text": [
+        "Maya leads you to a concealed grave beneath ancient oak roots. 🌳",
+        "\"She was buried in secret, without rites. Her spirit has never found peace.\""
+      ],
+      "position": [3400, 50],
+      "nextId": 63
+    },
+    {
+      "id": 46,
+      "type": "skip",
+      "label": "Ancient Wisdom",
+      "text": [
+        "The texts reveal the curse's true nature: love corrupted by betrayal. 📖",
+        "You learn the proper ritual words to free Morwyn's spirit from its torment."
+      ],
+      "position": [3400, 150],
+      "nextId": 64
+    },
+    {
+      "id": 47,
+      "type": "action",
+      "label": "Chained Remains",
+      "text": [
+        "The cursed iron burns your hands as you lift Morwyn's bones. 🔗",
+        "Each chain bears words of hatred and fear. Breaking them requires great sacrifice."
+      ],
+      "position": [3400, 250],
+      "actions": [
+        {
+          "label": "💔 Sacrifice blood",
+          "id": 65
+        },
+        {
+          "label": "📿 Use prayer",
+          "id": 66
+        }
+      ]
+    },
+    {
+      "id": 48,
+      "type": "skip",
+      "label": "Circle Confrontation",
+      "text": [
+        "At the ritual circle, Morwyn's ghost appears in full fury. 🔥",
+        "\"You would destroy my only connection to this world? How dare you!\""
+      ],
+      "position": [3400, 350],
+      "nextId": 67
+    },
+    {
+      "id": 49,
+      "type": "finish",
+      "label": "Dark Ascension",
+      "text": [
+        "As the new master of the curse, you feel godlike power flow through you. 🖤",
+        "The village becomes your domain, its people your eternal servants. Dawn holds no salvation—only your will matters now."
+      ],
+      "position": [3400, 450]
+    },
+    {
+      "id": 50,
+      "type": "skip",
+      "label": "Thorne's True Form",
+      "text": [
+        "Thorne transforms into something monstrous, his flesh melting and reforming. 👹",
+        "\"I've guarded this curse for centuries! You cannot stop what must be!\""
+      ],
+      "position": [3700, 50],
+      "nextId": 68
+    },
+    {
+      "id": 51,
+      "type": "skip",
+      "label": "Group Strategy",
+      "text": [
+        "Together, you plan a coordinated strike on the curse's sources. 🗺️",
+        "Maya will distract the cursed while you perform the cleansing ritual."
+      ],
+      "position": [3700, 150],
+      "nextId": 69
+    },
+    {
+      "id": 52,
+      "type": "skip",
+      "label": "Lone Mission",
+      "text": [
+        "You leave the safety of the cellar to face the curse alone. 🏃",
+        "Maya calls after you, but you know some battles must be fought in solitude."
+      ],
+      "position": [3700, 250],
+      "nextId": 28
+    },
+    {
+      "id": 53,
+      "type": "action",
+      "label": "Church Battle",
+      "text": [
+        "You grab a silver candlestick and holy water, fighting the corrupted priest. ⚔️",
+        "His inhuman strength nearly overwhelms you before you spot the altar's weakness."
+      ],
+      "position": [3700, 350],
+      "actions": [
+        {
+          "label": "🔥 Destroy altar",
+          "id": 70
+        },
+        {
+          "label": "💧 Use holy water",
+          "id": 71
+        }
+      ]
+    },
+    {
+      "id": 54,
+      "type": "skip",
+      "label": "Faith Triumphant",
+      "text": [
+        "The cross blazes with divine light, forcing Aldric to his knees. ✝️",
+        "\"Forgive me,\" he gasps as the curse releases its hold. \"I was lost in darkness.\""
+      ],
+      "position": [4000, 50],
+      "nextId": 72
+    },
+    {
+      "id": 55,
+      "type": "skip",
+      "label": "Faith Failing",
+      "text": [
+        "Aldric laughs as your cross remains cold and lifeless. 😈",
+        "\"Your god has no power here, scholar. Only the curse remains eternal.\""
+      ],
+      "position": [4000, 150],
+      "nextId": 73
+    },
+    {
+      "id": 56,
+      "type": "action",
+      "label": "Priest's Despair",
+      "text": [
+        "\"Help me end this,\" Aldric pleads, his corruption wavering. \"I know where her bones lie hidden. 💔",
+        "But I lack the strength to do what must be done.\""
+      ],
+      "position": [4000, 250],
+      "actions": [
+        {
+          "label": "🤝 Help him",
+          "id": 74
+        },
+        {
+          "label": "⚔️ End his suffering",
+          "id": 75
+        }
+      ]
+    },
+    {
+      "id": 57,
+      "type": "skip",
+      "label": "Sincere Apology",
+      "text": [
+        "\"I speak for all who wronged you, Morwyn. We are truly sorry.\" 💔",
+        "Her ghostly form wavers, pain mixing with surprise at your genuine remorse."
+      ],
+      "position": [4000, 350],
+      "nextId": 76
+    },
+    {
+      "id": 58,
+      "type": "skip",
+      "label": "Justice Sought",
+      "text": [
+        "\"Your betrayers are long dead,\" you say firmly. \"But their descendants suffer for their sins. ⚖️",
+        "Is eternal punishment truly justice?\""
+      ],
+      "position": [4000, 450],
+      "nextId": 77
+    },
+    {
+      "id": 59,
+      "type": "skip",
+      "label": "Destruction Threat",
+      "text": [
+        "\"I'll burn this place to ash if I must!\" you declare, raising holy fire. 🔥",
+        "Morwyn's rage intensifies. \"Then you are no different from those who betrayed me!\""
+      ],
+      "position": [4300, 50],
+      "nextId": 78
+    },
+    {
+      "id": 60,
+      "type": "redirect",
+      "label": "Final Stand",
+      "text": [
+        "You fight with desperate strength as dawn approaches. 💪",
+        "Your success depends on both courage and luck."
+      ],
+      "position": [4300, 150],
+      "links": [
+        {
+          "weight": 3,
+          "id": 79
+        },
+        {
+          "weight": 2,
+          "id": 80
+        }
+      ]
+    },
+    {
+      "id": 61,
+      "type": "finish",
+      "label": "Dawn's Light",
+      "text": [
+        "As the first rays of sunlight pierce the cellar, the curse retreats. 🌅",
+        "You've saved a few lives, but the village remains trapped in its cycle. In thirteen years, the nightmare will return."
+      ],
+      "position": [4300, 250]
+    },
+    {
+      "id": 62,
+      "type": "skip",
+      "label": "Path Forward",
+      "text": [
+        "Armed with truth and compassion, you approach Morwyn's resting place. 💫",
+        "The curse can be broken, but only through genuine sacrifice and forgiveness."
+      ],
+      "position": [4300, 350],
+      "nextId": 81
+    },
+    {
+      "id": 63,
+      "type": "action",
+      "label": "Unmarked Grave",
+      "text": [
+        "You and Maya carefully exhume Morwyn's remains. 🪦",
+        "\"She deserves proper burial rites,\" Maya whispers. \"But where? The church is corrupted.\""
+      ],
+      "position": [4300, 450],
+      "actions": [
+        {
+          "label": "🌳 Forest shrine",
+          "id": 82
+        },
+        {
+          "label": "⛪ Reclaim church",
+          "id": 83
+        }
+      ]
+    },
+    {
+      "id": 64,
+      "type": "skip",
+      "label": "Ritual Knowledge",
+      "text": [
+        "You memorize the ancient words of release and forgiveness. 📚",
+        "The ritual requires a willing sacrifice—not of life, but of something precious."
+      ],
+      "position": [4600, 50],
+      "nextId": 84
+    },
+    {
+      "id": 65,
+      "type": "skip",
+      "label": "Blood Sacrifice",
+      "text": [
+        "Your blood dissolves the cursed iron like acid. ❤️",
+        "Morwyn's bones gleam white and pure as centuries of hatred wash away."
+      ],
+      "position": [4600, 150],
+      "nextId": 85
+    },
+    {
+      "id": 66,
+      "type": "redirect",
+      "label": "Prayer Power",
+      "text": [
+        "Your prayers either shatter the chains or leave them intact. 🙏",
+        "Faith alone may not be enough—but it might be everything."
+      ],
+      "position": [4600, 250],
+      "links": [
+        {
+          "weight": 2,
+          "id": 85
+        },
+        {
+          "weight": 3,
+          "id": 86
+        }
+      ]
+    },
+    {
+      "id": 67,
+      "type": "action",
+      "label": "Final Confrontation",
+      "text": [
+        "\"Choose, scholar,\" Morwyn's ghost demands. \"Destroy the circle and end my existence, or find another way. 👻",
+        "But know that I will not go quietly into that darkness.\""
+      ],
+      "position": [4600, 350],
+      "actions": [
+        {
+          "label": "🔥 Destroy circle",
+          "id": 87
+        },
+        {
+          "label": "💔 Offer redemption",
+          "id": 88
+        }
+      ]
+    },
+    {
+      "id": 68,
+      "type": "action",
+      "label": "Monster Battle",
+      "text": [
+        "Thorne's true form is a creature of shadow and hatred. 👹",
+        "\"I am the curse's first victim and greatest servant! You cannot destroy what I have become!\""
+      ],
+      "position": [4600, 450],
+      "actions": [
+        {
+          "label": "⚔️ Fight monster",
+          "id": 89
+        },
+        {
+          "label": "💔 Show pity",
+          "id": 90
+        }
+      ]
+    },
+    {
+      "id": 69,
+      "type": "finish",
+      "label": "Dawn's Liberation",
+      "text": [
+        "Working together, you and Maya break the curse as dawn arrives. 🌅",
+        "The village awakens from its nightmare. Morwyn's spirit finds peace at last, and Crimson Hollow is truly free."
+      ],
+      "position": [4900, 50]
+    },
+    {
+      "id": 70,
+      "type": "skip",
+      "label": "Altar Destroyed",
+      "text": [
+        "The corrupted altar crumbles under your assault. ⛪",
+        "Father Aldric screams as the curse's hold on him breaks, then collapses in exhaustion."
+      ],
+      "position": [4900, 150],
+      "nextId": 91
+    },
+    {
+      "id": 71,
+      "type": "skip",
+      "label": "Blessed Water",
+      "text": [
+        "Holy water burns Aldric's corrupted flesh like acid. 💧",
+        "He staggers back, the curse's influence weakening with each drop."
+      ],
+      "position": [4900, 250],
+      "nextId": 91
+    },
+    {
+      "id": 72,
+      "type": "skip",
+      "label": "Priest Redeemed",
+      "text": [
+        "With Aldric's help, you locate the true source of the curse. ✝️",
+        "Together, you prepare to face Morwyn's tortured spirit with compassion instead of force."
+      ],
+      "position": [4900, 350],
+      "nextId": 92
+    },
+    {
+      "id": 73,
+      "type": "skip",
+      "label": "Faith Shattered",
+      "text": [
+        "Your faith crumbles as Aldric overwhelms you. 💔",
+        "As consciousness fades, you hear his laughter echoing through the desecrated church."
+      ],
+      "position": [4900, 450],
+      "nextId": 36
+    },
+    {
+      "id": 74,
+      "type": "finish",
+      "label": "Priest's Redemption",
+      "text": [
+        "Together, you and the repentant priest give Morwyn proper burial. ⛪",
+        "As dawn breaks, her spirit appears one last time—not in rage, but in gratitude. The curse finally ends."
+      ],
+      "position": [5200, 50]
+    },
+    {
+      "id": 75,
+      "type": "skip",
+      "label": "Mercy Kill",
+      "text": [
+        "You end Aldric's torment with a swift stroke. ⚔️",
+        "As he dies, he whispers Morwyn's location with his final breath."
+      ],
+      "position": [5200, 150],
+      "nextId": 93
+    },
+    {
+      "id": 76,
+      "type": "skip",
+      "label": "Forgiveness",
+      "text": [
+        "Morwyn's anger wavers at your genuine remorse. 💫",
+        "\"You... truly understand my pain,\" she whispers. \"Perhaps there is hope for redemption after all.\""
+      ],
+      "position": [5200, 250],
+      "nextId": 94
+    },
+    {
+      "id": 77,
+      "type": "skip",
+      "label": "Justice Considered",
+      "text": [
+        "\"You speak wisdom, scholar,\" Morwyn admits slowly. ⚖️",
+        "\"But how can I trust that this torment will truly end?\""
+      ],
+      "position": [5200, 350],
+      "nextId": 95
+    },
+    {
+      "id": 78,
+      "type": "finish",
+      "label": "Mutual Destruction",
+      "text": [
+        "Your threats trigger Morwyn's final rage. 🔥",
+        "In the ensuing battle, both village and curse are consumed by fire. Dawn finds only ashes where Crimson Hollow once stood."
+      ],
+      "position": [5200, 450]
+    },
+    {
+      "id": 79,
+      "type": "finish",
+      "label": "Eternal Guardian",
+      "text": [
+        "Your heroic defense saves the survivors until dawn. 🛡️",
+        "Though the curse retreats, you choose to remain in Crimson Hollow as its guardian, protecting it from future supernatural threats."
+      ],
+      "position": [5500, 50]
+    },
+    {
+      "id": 80,
+      "type": "finish",
+      "label": "Noble Sacrifice",
+      "text": [
+        "You fall defending the innocent, your blood breaking part of the curse. 💔",
+        "The survivors escape as dawn arrives, carrying your memory and the tale of a scholar who died to save strangers."
+      ],
+      "position": [5500, 150]
+    },
+    {
+      "id": 81,
+      "type": "finish",
+      "label": "Witch's Redemption",
+      "text": [
+        "With truth as your weapon and compassion as your shield, you help Morwyn find peace. ✨",
+        "Her spirit ascends as dawn breaks, taking the curse with her. Crimson Hollow wakes to its first free morning in centuries."
+      ],
+      "position": [5500, 250]
+    },
+    {
+      "id": 82,
+      "type": "skip",
+      "label": "Forest Shrine",
+      "text": [
+        "In the peaceful woods, you and Maya build a shrine for Morwyn's remains. 🌳",
+        "As you speak words of forgiveness, her spirit appears one final time in gratitude."
+      ],
+      "position": [5500, 350],
+      "nextId": 81
+    },
+    {
+      "id": 83,
+      "type": "skip",
+      "label": "Church Reclaimed",
+      "text": [
+        "You purify the church with prayer and blessed water. ⛪",
+        "Morwyn's proper burial in consecrated ground finally gives her rest."
+      ],
+      "position": [5500, 450],
+      "nextId": 81
+    },
+    {
+      "id": 84,
+      "type": "action",
+      "label": "Precious Sacrifice",
+      "text": [
+        "The ritual requires sacrificing something dear to you. 💎",
+        "Your most prized possession could break the curse—but are you willing to give it up?"
+      ],
+      "position": [5800, 50],
+      "actions": [
+        {
+          "label": "📚 Sacrifice knowledge",
+          "id": 96
+        },
+        {
+          "label": "💔 Sacrifice memories",
+          "id": 97
+        }
+      ]
+    },
+    {
+      "id": 85,
+      "type": "skip",
+      "label": "Chains Broken",
+      "text": [
+        "Free from cursed bonds, Morwyn's remains can finally rest in peace. ⚰️",
+        "Her grateful spirit appears as the curse begins to lift from the village."
+      ],
+      "position": [5800, 150],
+      "nextId": 81
+    },
+    {
+      "id": 86,
+      "type": "skip",
+      "label": "Chains Remain",
+      "text": [
+        "Your prayers aren't enough to break the cursed iron. 🔗",
+        "Morwyn's bones remain trapped, and her spirit grows more agitated as dawn approaches."
+      ],
+      "position": [5800, 250],
+      "nextId": 98
+    },
+    {
+      "id": 87,
+      "type": "finish",
+      "label": "Destructive End",
+      "text": [
+        "You pour blessed oil on the ritual circle and set it ablaze. 🔥",
+        "Morwyn screams as she's destroyed rather than redeemed. The curse ends, but at the cost of any chance for true peace."
+      ],
+      "position": [5800, 350]
+    },
+    {
+      "id": 88,
+      "type": "skip",
+      "label": "Redemption Offered",
+      "text": [
+        "\"I offer you what was denied—understanding, respect, and peace,\" you say. 💫",
+        "Morwyn's ghostly form wavers between rage and hope."
+      ],
+      "position": [5800, 450],
+      "nextId": 81
+    },
+    {
+      "id": 89,
+      "type": "redirect",
+      "label": "Monster Combat",
+      "text": [
+        "You battle Thorne's corrupted form with desperate courage. ⚔️",
+        "Victory depends on both skill and the strength of your will."
+      ],
+      "position": [6100, 50],
+      "links": [
+        {
+          "weight": 2,
+          "id": 99
+        },
+        {
+          "weight": 3,
+          "id": 100
+        }
+      ]
+    },
+    {
+      "id": 90,
+      "type": "skip",
+      "label": "Compassion Shown",
+      "text": [
+        "\"You were the curse's first victim, Thorne. I pity you.\" 💔",
+        "Your compassion penetrates his monstrous exterior, revealing the trapped man within."
+      ],
+      "position": [6100, 150],
+      "nextId": 101
+    },
+    {
+      "id": 91,
+      "type": "skip",
+      "label": "Church Cleansed",
+      "text": [
+        "With the altar destroyed and priest freed, you can properly honor Morwyn. ⛪",
+        "The church becomes a place of healing rather than corruption."
+      ],
+      "position": [6100, 250],
+      "nextId": 81
+    },
+    {
+      "id": 92,
+      "type": "skip",
+      "label": "United Purpose",
+      "text": [
+        "You and the redeemed Aldric work together to break the curse. ✝️",
+        "With faith and knowledge combined, Morwyn's spirit finds the peace it has long sought."
+      ],
+      "position": [6100, 350],
+      "nextId": 81
+    },
+    {
+      "id": 93,
+      "type": "skip",
+      "label": "Final Location",
+      "text": [
+        "Following Aldric's dying words, you find Morwyn's hidden remains. 🪦",
+        "Alone but determined, you perform the ritual of redemption."
+      ],
+      "position": [6100, 450],
+      "nextId": 81
+    },
+    {
+      "id": 94,
+      "type": "skip",
+      "label": "Understanding Reached",
+      "text": [
+        "\"Tell me, scholar,\" Morwyn asks, \"how can you guarantee this pain will end?\" 💫",
+        "Your answer will determine whether redemption or destruction follows."
+      ],
+      "position": [6400, 50],
+      "nextId": 95
+    },
+    {
+      "id": 95,
+      "type": "action",
+      "label": "Promise Made",
+      "text": [
+        "\"I swear by my own soul,\" you declare, \"that your story will be remembered with honor. 🌅",
+        "Your sacrifice will never be forgotten again.\""
+      ],
+      "position": [6400, 150],
+      "actions": [
+        {
+          "label": "📚 Record her story",
+          "id": 102
+        },
+        {
+          "label": "🪦 Build memorial",
+          "id": 103
+        }
+      ]
+    },
+    {
+      "id": 96,
+      "type": "finish",
+      "label": "Knowledge Sacrificed",
+      "text": [
+        "You burn your precious research notes in the ritual fire. 📚",
+        "As your years of study turn to ash, Morwyn's spirit finds peace. The curse ends, but you've lost your life's work."
+      ],
+      "position": [6400, 250]
+    },
+    {
+      "id": 97,
+      "type": "finish",
+      "label": "Memories Sacrificed",
+      "text": [
+        "You surrender your memories of loved ones to break the curse. 💔",
+        "As personal connections fade, Morwyn's spirit ascends in gratitude. The village is free, but you've lost yourself."
+      ],
+      "position": [6400, 350]
+    },
+    {
+      "id": 98,
+      "type": "skip",
+      "label": "Last Resort",
+      "text": [
+        "With time running out, you have one final option. 🕐",
+        "You can offer your own life force to break the cursed chains."
+      ],
+      "position": [6400, 450],
+      "nextId": 80
+    },
+    {
+      "id": 99,
+      "type": "finish",
+      "label": "Monster Defeated",
+      "text": [
+        "You strike down Thorne's corrupted form with blessed steel. ⚔️",
+        "As he dies, his final words reveal how to break the curse. Dawn brings liberation to Crimson Hollow."
+      ],
+      "position": [6700, 50]
+    },
+    {
+      "id": 100,
+      "type": "skip",
+      "label": "Overwhelmed",
+      "text": [
+        "Thorne's monstrous strength overwhelms you. 👹",
+        "As darkness claims you, your sacrifice weakens the curse enough for others to finish what you started."
+      ],
+      "position": [6700, 150],
+      "nextId": 80
+    },
+    {
+      "id": 101,
+      "type": "skip",
+      "label": "Thorne's Redemption",
+      "text": [
+        "\"Help me end this nightmare,\" the real Thorne pleads through his corruption. 💔",
+        "Together, you find a way to break both his curse and Morwyn's."
+      ],
+      "position": [6700, 250],
+      "nextId": 81
+    },
+    {
+      "id": 102,
+      "type": "finish",
+      "label": "Chronicle Written",
+      "text": [
+        "You spend the remaining hours writing Morwyn's true story. 📚",
+        "As dawn breaks and her spirit finds peace, you vow to publish her tale. Crimson Hollow's curse ends with truth."
+      ],
+      "position": [6700, 350]
+    },
+    {
+      "id": 103,
+      "type": "finish",
+      "label": "Memorial Built",
+      "text": [
+        "You and the survivors build a beautiful memorial in Morwyn's honor. 🪦",
+        "As the first stone is placed, her spirit appears in gratitude. The curse breaks with this act of remembrance."
+      ],
+      "position": [6700, 450]
+    }
+  ]
+}
