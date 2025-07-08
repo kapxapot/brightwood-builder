@@ -1,0 +1,1274 @@
+{
+  "id": "b47e9d3a-8f4c-4e89-b7f2-9a69c2c82f1e",
+  "title": "Iron and Honor: The Bastard's Gambit",
+  "description": "Rise from a bastard's fate to claim your destiny in the realm of Vaelthorne. Navigate treacherous politics, ancient threats, and difficult choices that will shape not just your future, but the fate of the entire kingdom.",
+  "language": "en",
+  "startId": 1,
+  "nodes": [
+    {
+      "id": 1,
+      "type": "action",
+      "label": "The Bastard's Beginning",
+      "text": [
+        "The candles flicker in Maester Qyburn's cramped study as you, Lyra Stone, pour over ancient texts. As a bastard daughter of a minor lord, you've found solace in learning, serving as the maester's assistant. Tonight, however, something about his behavior seems... different. 🕯️",
+        "\"My child,\" he whispers, his weathered hands trembling as he pulls out a dusty tome, \"what I'm about to show you will change everything. These records... they speak of your mother's true lineage.\""
+      ],
+      "actions": [
+        {
+          "id": 2,
+          "label": "Read the records 📜"
+        },
+        {
+          "id": 3,
+          "label": "Question his motives 🤔"
+        },
+        {
+          "id": 4,
+          "label": "Leave immediately ⚔️"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "type": "skip",
+      "label": "Ancient Records",
+      "text": [
+        "Your hands shake as you read the carefully preserved documents. Your mother wasn't just any noblewoman - she was the secret daughter of the old king's younger brother, hidden away to prevent a succession crisis. 👑",
+        "Through her, you have a legitimate claim to the Iron Throne."
+      ],
+      "nextId": 5
+    },
+    {
+      "id": 3,
+      "type": "action",
+      "label": "Suspicious Mind",
+      "text": [
+        "\"Why tell me this now, Maester? After all these years?\" You study his face carefully, years of living as a bastard having taught you to be wary of sudden revelations. 🔍",
+        "\"Because, child,\" he glances nervously at the window, \"the king lies dying, and dark forces move in the shadows. You may be the realm's only hope.\""
+      ],
+      "actions": [
+        {
+          "id": 2,
+          "label": "Read the records anyway 📚"
+        },
+        {
+          "id": 4,
+          "label": "Refuse to get involved ⚔️"
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "type": "action",
+      "label": "Walking Away",
+      "text": [
+        "You turn to leave, but Maester Qyburn's next words freeze you in place. \"Your mother died protecting this secret, Lyra. She gave her life so that you might live.\" 💔",
+        "The truth about your mother has haunted you all your life. Could you really walk away now?"
+      ],
+      "actions": [
+        {
+          "id": 2,
+          "label": "Return and read the records 📜"
+        },
+        {
+          "id": 6,
+          "label": "Leave anyway 🚪"
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "type": "action",
+      "label": "The Choice",
+      "text": [
+        "As the weight of this revelation settles over you, bells begin to toll across King's Landing. The sound can mean only one thing - the king is dead. 🔔",
+        "Maester Qyburn looks at you gravely. \"The realm will descend into chaos now. You must choose your path carefully.\""
+      ],
+      "actions": [
+        {
+          "id": 7,
+          "label": "Embrace political intrigue 🏰"
+        },
+        {
+          "id": 8,
+          "label": "Follow the path of honor ⚔️"
+        },
+        {
+          "id": 9,
+          "label": "Seek forbidden power 🔥"
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "type": "finish",
+      "label": "A Simple Life",
+      "text": [
+        "You choose to walk away from the burden of your heritage. Perhaps there is wisdom in living a simple life, away from the deadly game of thrones. 🏡",
+        "Years later, as war engulfs the realm, you wonder if you made the right choice..."
+      ]
+    },
+    {
+      "id": 7,
+      "type": "action",
+      "label": "The Game Begins",
+      "text": [
+        "The political arena of King's Landing is a deadlier battlefield than any war. You decide to play the game of thrones from the shadows first, gathering allies before revealing your claim. 🏰",
+        "\"Wise choice,\" Qyburn nods. \"Lady Catelyn Barrow has been seeking allies against Prince Daemon. She could be a powerful friend... or a dangerous enemy.\""
+      ],
+      "actions": [
+        {
+          "id": 10,
+          "label": "Meet Lady Barrow 👒"
+        },
+        {
+          "id": 11,
+          "label": "Investigate Prince Daemon first 👑"
+        },
+        {
+          "id": 12,
+          "label": "Contact the Whisperer 🗣️"
+        }
+      ]
+    },
+    {
+      "id": 8,
+      "type": "action",
+      "label": "Path of Honor",
+      "text": [
+        "\"I will not play their game of lies and schemes,\" you declare. \"If I have a claim, I shall pursue it openly and honorably.\" ⚔️",
+        "\"Honor killed your mother,\" Qyburn warns gravely. \"But perhaps... perhaps you could succeed where she failed.\""
+      ],
+      "actions": [
+        {
+          "id": 13,
+          "label": "Seek Kingsguard support 🛡️"
+        },
+        {
+          "id": 14,
+          "label": "Announce claim publicly 📢"
+        }
+      ]
+    },
+    {
+      "id": 9,
+      "type": "action",
+      "label": "Dark Arts",
+      "text": [
+        "You've heard whispers of Qyburn's experiments with forbidden arts. If you're to survive what's coming, perhaps conventional power isn't enough. 🔥",
+        "The old maester's eyes glimmer with interest at your question about his... alternative research."
+      ],
+      "actions": [
+        {
+          "id": 15,
+          "label": "Learn blood magic 🩸"
+        },
+        {
+          "id": 16,
+          "label": "Study ancient texts 📚"
+        },
+        {
+          "id": 7,
+          "label": "Reconsider this path 🔙"
+        }
+      ]
+    },
+    {
+      "id": 10,
+      "type": "action",
+      "label": "The Spider's Web",
+      "text": [
+        "Lady Catelyn receives you in her solar, her smile as sharp as a blade. \"So, the bastard girl seeks to rise above her station. How intriguing.\" 🕷️",
+        "She offers you a deal: her support for your claim, in exchange for a marriage alliance with her house once you take the throne."
+      ],
+      "actions": [
+        {
+          "id": 17,
+          "label": "Accept alliance 🤝"
+        },
+        {
+          "id": 18,
+          "label": "Negotiate terms 📜"
+        },
+        {
+          "id": 19,
+          "label": "Refuse offer ❌"
+        }
+      ]
+    },
+    {
+      "id": 11,
+      "type": "action",
+      "label": "The Prince's Secret",
+      "text": [
+        "Through careful observation and discreet inquiries, you discover Prince Daemon's weakness - he's deeply in debt to the Iron Bank of Braavos. 💰",
+        "This information could be powerful leverage... or dangerous knowledge to possess."
+      ],
+      "actions": [
+        {
+          "id": 20,
+          "label": "Blackmail Daemon 🗡️"
+        },
+        {
+          "id": 21,
+          "label": "Buy his debts 💳"
+        },
+        {
+          "id": 10,
+          "label": "Seek Lady Barrow's counsel 👒"
+        }
+      ]
+    },
+    {
+      "id": 12,
+      "type": "redirect",
+      "label": "The Whisperer's Game",
+      "text": [
+        "You leave a message in the arranged spot - a hollow tree in the godswood. The Whisperer's network of spies could be invaluable... if you survive dealing with them. 🌳"
+      ],
+      "links": [
+        {
+          "id": 22,
+          "weight": 7
+        },
+        {
+          "id": 23,
+          "weight": 3
+        }
+      ]
+    },
+    {
+      "id": 13,
+      "type": "action",
+      "label": "The Kingsguard",
+      "text": [
+        "You seek audience with Lord Commander Theon Blackwater of the Kingsguard. His reputation for honor is legendary, though rumors speak of divided loyalties. 🛡️",
+        "\"These are troubled times,\" he says carefully, studying your face. \"The realm bleeds from a thousand cuts, and now you claim royal blood flows in your veins.\""
+      ],
+      "actions": [
+        {
+          "id": 24,
+          "label": "Show proof of lineage 📜"
+        },
+        {
+          "id": 25,
+          "label": "Appeal to his honor ⚔️"
+        },
+        {
+          "id": 26,
+          "label": "Request private counsel 🤝"
+        }
+      ]
+    },
+    {
+      "id": 14,
+      "type": "action",
+      "label": "Public Declaration",
+      "text": [
+        "Standing before the Great Sept of Baelor, you declare your heritage to all who would hear. The crowd's reaction is mixed - some cheer, others scoff, and many simply watch in calculating silence. ⚡",
+        "Guards are approaching, their hands on their sword hilts."
+      ],
+      "actions": [
+        {
+          "id": 27,
+          "label": "Stand your ground 🗡️"
+        },
+        {
+          "id": 28,
+          "label": "Seek sanctuary 🏰"
+        },
+        {
+          "id": 29,
+          "label": "Flee into the crowd 🏃"
+        }
+      ]
+    },
+    {
+      "id": 15,
+      "type": "action",
+      "label": "Blood and Power",
+      "text": [
+        "In Qyburn's secret chamber, ancient tomes speak of blood magic that could grant immense power. But the price... the price is always steep. 🩸",
+        "\"Royal blood has special properties,\" Qyburn whispers. \"And you have the blood of kings.\""
+      ],
+      "actions": [
+        {
+          "id": 30,
+          "label": "Begin the ritual 🔮"
+        },
+        {
+          "id": 31,
+          "label": "Research safer options 📚"
+        },
+        {
+          "id": 8,
+          "label": "Choose honor instead ⚔️"
+        }
+      ]
+    },
+    {
+      "id": 16,
+      "type": "skip",
+      "label": "Ancient Knowledge",
+      "text": [
+        "The ancient texts reveal mentions of the Shadow Walkers and their connection to the royal bloodline. Perhaps there's more to your heritage than just a claim to the throne... ❄️",
+        "As you read deeper, you find disturbing prophecies about the realm's future."
+      ],
+      "nextId": 32
+    },
+    {
+      "id": 17,
+      "type": "action",
+      "label": "Marriage Pact",
+      "text": [
+        "You accept Lady Barrow's terms, sealing the alliance with a blood oath. She smiles, but it doesn't reach her eyes. 💍",
+        "\"Together, we shall reshape this realm. But remember, my dear - betrayal will have... consequences.\""
+      ],
+      "actions": [
+        {
+          "id": 33,
+          "label": "Plan next move 🎯"
+        },
+        {
+          "id": 34,
+          "label": "Investigate allies 🔍"
+        }
+      ]
+    },
+    {
+      "id": 18,
+      "type": "action",
+      "label": "Counter Offer",
+      "text": [
+        "\"A marriage alliance is too binding,\" you counter. \"But perhaps we can find another arrangement.\" Lady Barrow's eyes narrow with interest. 📜",
+        "\"What did you have in mind, child?\""
+      ],
+      "actions": [
+        {
+          "id": 35,
+          "label": "Offer trade rights 💰"
+        },
+        {
+          "id": 36,
+          "label": "Promise a council seat 👑"
+        },
+        {
+          "id": 19,
+          "label": "Walk away ❌"
+        }
+      ]
+    },
+    {
+      "id": 19,
+      "type": "action",
+      "label": "Dangerous Refusal",
+      "text": [
+        "Lady Barrow's smile freezes. \"Think carefully, child. In these troubled times, one needs... friends.\" The threat in her voice is unmistakable. ⚔️",
+        "You've made a powerful enemy, but perhaps that's better than a false friend."
+      ],
+      "actions": [
+        {
+          "id": 37,
+          "label": "Seek protection 🛡️"
+        },
+        {
+          "id": 38,
+          "label": "Gather evidence 📜"
+        }
+      ]
+    },
+    {
+      "id": 20,
+      "type": "action",
+      "label": "Royal Blackmail",
+      "text": [
+        "You arrange a private meeting with Prince Daemon. His face remains impassive as you reveal your knowledge of his debts. 👑",
+        "\"Interesting approach,\" he says softly. \"But dangerous. What exactly do you want?\""
+      ],
+      "actions": [
+        {
+          "id": 39,
+          "label": "Demand support 👊"
+        },
+        {
+          "id": 40,
+          "label": "Propose alliance 🤝"
+        },
+        {
+          "id": 41,
+          "label": "Warn of enemies 🗣️"
+        }
+      ]
+    },
+    {
+      "id": 21,
+      "type": "skip",
+      "label": "Banking Maneuvers",
+      "text": [
+        "Through careful negotiation with the Iron Bank's representatives, you manage to buy Prince Daemon's debts. Now you hold real power over a potential heir to the throne. 💰",
+        "But such power comes with its own dangers..."
+      ],
+      "nextId": 42
+    },
+    {
+      "id": 22,
+      "type": "action",
+      "label": "Shadow Meeting",
+      "text": [
+        "The Whisperer's agent appears silently beside you - a hooded figure speaking in whispers. They offer information about all major players in the game of thrones... for a price. 🕯️",
+        "\"Knowledge is power, but secrets are deadly currency.\""
+      ],
+      "actions": [
+        {
+          "id": 43,
+          "label": "Buy information 💰"
+        },
+        {
+          "id": 44,
+          "label": "Offer a trade 🤝"
+        }
+      ]
+    },
+    {
+      "id": 23,
+      "type": "finish",
+      "label": "Deadly Game",
+      "text": [
+        "You wait for hours, but no one comes. Later, you find a warning written in blood on your chamber door - some games are too dangerous to play. 🩸",
+        "Perhaps it's best to try a different approach... if you survive the night."
+      ]
+    },
+    {
+      "id": 24,
+      "type": "action",
+      "label": "Proof of Heritage",
+      "text": [
+        "You present the ancient documents to Lord Commander Theon. His eyes widen as he reads, recognition dawning on his face. 📜",
+        "\"These seals... I recognize them. Your mother - I knew her. She was the kindest soul in court, and the bravest.\""
+      ],
+      "actions": [
+        {
+          "id": 45,
+          "label": "Ask about mother 💝"
+        },
+        {
+          "id": 46,
+          "label": "Request support ⚔️"
+        }
+      ]
+    },
+    {
+      "id": 25,
+      "type": "action",
+      "label": "Honor's Call",
+      "text": [
+        "\"The Kingsguard swore to protect the rightful rulers of the realm,\" you remind him. \"Not just those who wear the crown, but those who deserve to.\" ⚔️",
+        "Lord Commander Theon's weathered face shows conflict - duty warring with conscience."
+      ],
+      "actions": [
+        {
+          "id": 47,
+          "label": "Swear fealty 👑"
+        },
+        {
+          "id": 48,
+          "label": "Propose alliance 🤝"
+        }
+      ]
+    },
+    {
+      "id": 26,
+      "type": "skip",
+      "label": "Secret Meeting",
+      "text": [
+        "In a secluded corner of the White Sword Tower, Lord Commander Theon reveals disturbing news. The Faith Militant has been gathering strength, and they seek to put their own puppet on the throne. 🗡️",
+        "This could be either a threat... or an opportunity."
+      ],
+      "nextId": 49
+    },
+    {
+      "id": 27,
+      "type": "redirect",
+      "label": "Public Confrontation",
+      "text": [
+        "The guards approach as the crowd watches. Your next move could mean the difference between glory and death. Time seems to slow as you make your choice... ⚔️"
+      ],
+      "links": [
+        {
+          "id": 50,
+          "weight": 6
+        },
+        {
+          "id": 51,
+          "weight": 4
+        }
+      ]
+    },
+    {
+      "id": 28,
+      "type": "action",
+      "label": "Sacred Sanctuary",
+      "text": [
+        "You rush into the Great Sept, invoking the ancient right of sanctuary. The High Septon himself appears, intrigued by your claim. 🏰",
+        "\"The Faith has always been... concerned with matters of succession.\""
+      ],
+      "actions": [
+        {
+          "id": 52,
+          "label": "Accept Faith's support ✨"
+        },
+        {
+          "id": 53,
+          "label": "Negotiate terms 📜"
+        }
+      ]
+    },
+    {
+      "id": 29,
+      "type": "skip",
+      "label": "Escape",
+      "text": [
+        "You disappear into the crowd, your noble birth making it easy to blend with the common folk. As you slip away, you hear the guards cursing. 🏃",
+        "But now everyone knows your claim - there's no going back."
+      ],
+      "nextId": 54
+    },
+    {
+      "id": 30,
+      "type": "action",
+      "label": "Dark Ritual",
+      "text": [
+        "In the flickering candlelight, Qyburn draws ancient symbols with blood. The air grows thick with power, and whispers echo from the shadows. 🔮",
+        "\"Power requires sacrifice,\" he intones. \"Are you prepared to pay the price?\""
+      ],
+      "actions": [
+        {
+          "id": 55,
+          "label": "Complete the ritual 🩸"
+        },
+        {
+          "id": 56,
+          "label": "Stop the ritual ✋"
+        }
+      ]
+    },
+    {
+      "id": 31,
+      "type": "action",
+      "label": "Ancient Secrets",
+      "text": [
+        "You discover references to a different kind of power - the ability to bind others to your will through ancient oaths and blood magic. 📚",
+        "These techniques are less destructive but require careful preparation and timing."
+      ],
+      "actions": [
+        {
+          "id": 57,
+          "label": "Study binding magic ⛓️"
+        },
+        {
+          "id": 58,
+          "label": "Research prophecies 🔮"
+        }
+      ]
+    },
+    {
+      "id": 32,
+      "type": "finish",
+      "label": "Shattered Legacy",
+      "text": [
+        "The prophecies speak of a 'shadow with a crown' bringing either doom or salvation to the realm. You realize your heritage is both a gift and a curse. 🌑",
+        "As you ponder your next move, the weight of the crown feels both inviting and terrifying..."
+      ]
+    },
+    {
+      "id": 33,
+      "type": "action",
+      "label": "Strategic Planning",
+      "text": [
+        "With Lady Barrow's support secured, you begin planning your next moves carefully. The game of thrones requires patience and precision. 🎯",
+        "You need more allies, but choosing the wrong ones could be fatal."
+      ],
+      "actions": [
+        {
+          "id": 59,
+          "label": "Approach merchants 💰"
+        },
+        {
+          "id": 60,
+          "label": "Court minor lords ⚔️"
+        }
+      ]
+    },
+    {
+      "id": 34,
+      "type": "skip",
+      "label": "Hidden Motives",
+      "text": [
+        "Your discrete investigation reveals troubling information - Lady Barrow has been meeting secretly with the Faith Militant. 🔍",
+        "She's playing her own game, using you as just another piece on the board."
+      ],
+      "nextId": 61
+    },
+    {
+      "id": 35,
+      "type": "skip",
+      "label": "Trade Deal",
+      "text": [
+        "Lady Barrow considers your offer of exclusive trade rights. \"The Barrow fleet could indeed be... useful to your cause.\" 🚢",
+        "The alliance is sealed, though perhaps not as binding as she'd hoped."
+      ],
+      "nextId": 33
+    },
+    {
+      "id": 36,
+      "type": "skip",
+      "label": "Council Position",
+      "text": [
+        "\"A seat on the small council?\" Lady Barrow's eyes glitter with ambition. \"An interesting proposition, though one that assumes your victory.\" 👑",
+        "She accepts, but you sense she'll be watching for any sign of weakness."
+      ],
+      "nextId": 33
+    },
+    {
+      "id": 37,
+      "type": "action",
+      "label": "Protective Measures",
+      "text": [
+        "With Lady Barrow as an enemy, you need protection. You consider your options carefully, knowing that showing weakness now could be fatal. 🛡️",
+        "Who can you trust in this nest of vipers?"
+      ],
+      "actions": [
+        {
+          "id": 13,
+          "label": "Seek Kingsguard 🛡️"
+        },
+        {
+          "id": 62,
+          "label": "Hire sellswords ⚔️"
+        }
+      ]
+    },
+    {
+      "id": 38,
+      "type": "action",
+      "label": "Evidence Collection",
+      "text": [
+        "Through careful observation and well-placed bribes, you uncover evidence of Lady Barrow's own schemes against the crown. 📜",
+        "This could be valuable leverage... or paint an even larger target on your back."
+      ],
+      "actions": [
+        {
+          "id": 63,
+          "label": "Blackmail her 🗡️"
+        },
+        {
+          "id": 64,
+          "label": "Share with allies 🤝"
+        }
+      ]
+    },
+    {
+      "id": 39,
+      "type": "skip",
+      "label": "Royal Pressure",
+      "text": [
+        "Prince Daemon's face darkens at your demands. \"You play a dangerous game, bastard. But perhaps we can help each other...\" 👑",
+        "He agrees to support your claim, though you wonder if you've made a deal with a viper."
+      ],
+      "nextId": 65
+    },
+    {
+      "id": 40,
+      "type": "action",
+      "label": "Royal Alliance",
+      "text": [
+        "\"An alliance?\" Prince Daemon raises an eyebrow. \"Interesting. Perhaps together we could restore proper order to the realm.\" 🤝",
+        "He proposes a marriage to unite your claims."
+      ],
+      "actions": [
+        {
+          "id": 66,
+          "label": "Accept proposal 💍"
+        },
+        {
+          "id": 67,
+          "label": "Decline carefully 🎭"
+        }
+      ]
+    },
+    {
+      "id": 41,
+      "type": "skip",
+      "label": "Enemy Warning",
+      "text": [
+        "You warn Daemon about those plotting against him. He listens intently, his expression calculating. 🗣️",
+        "\"Perhaps we have more in common than I thought. Enemies surrounding us, yet royal blood in our veins.\""
+      ],
+      "nextId": 40
+    },
+    {
+      "id": 42,
+      "type": "action",
+      "label": "Debt Collection",
+      "text": [
+        "With Prince Daemon's debts in your possession, you now control his fate. The Iron Bank's representatives bow slightly - they care not who holds the debt, only that it's paid. 💰",
+        "How will you leverage this power over the prince?"
+      ],
+      "actions": [
+        {
+          "id": 89,
+          "label": "Demand fealty 👑"
+        },
+        {
+          "id": 40,
+          "label": "Offer partnership 🤝"
+        }
+      ]
+    },
+    {
+      "id": 43,
+      "type": "action",
+      "label": "Information Network",
+      "text": [
+        "Gold changes hands in the shadows. The Whisperer's agent reveals plots within plots - the Faith Militant's secret army, Prince Daemon's foreign allies, and Lady Barrow's true ambitions. 🕯️",
+        "Knowledge is indeed power, but now you must decide how to use it."
+      ],
+      "actions": [
+        {
+          "id": 68,
+          "label": "Counter their plots 🗡️"
+        },
+        {
+          "id": 69,
+          "label": "Prepare defenses 🛡️"
+        }
+      ]
+    },
+    {
+      "id": 44,
+      "type": "skip",
+      "label": "Information Exchange",
+      "text": [
+        "You offer your own valuable secrets in exchange for the Whisperer's support. The hooded figure nods approvingly. 🤝",
+        "\"Wise. Very wise. The Whisperer values those who understand the true currency of power.\""
+      ],
+      "nextId": 70
+    },
+    {
+      "id": 45,
+      "type": "skip",
+      "label": "Mother's Tale",
+      "text": [
+        "Lord Commander Theon's eyes grow distant with memory. \"Your mother was brave beyond measure. She died protecting you from those who would use your bloodline for their own ends.\" 💝",
+        "His words strengthen your resolve - you must be worthy of her sacrifice."
+      ],
+      "nextId": 46
+    },
+    {
+      "id": 46,
+      "type": "action",
+      "label": "Kingsguard Support",
+      "text": [
+        "\"I will support your claim,\" Lord Commander Theon declares, \"but we must move carefully. The Faith Militant grows stronger, and dark forces gather beyond the Wall.\" ⚔️",
+        "\"We must prepare for both the political battle ahead and the greater threat that looms.\""
+      ],
+      "actions": [
+        {
+          "id": 71,
+          "label": "Focus on throne 👑"
+        },
+        {
+          "id": 72,
+          "label": "Investigate threats ❄️"
+        }
+      ]
+    },
+    {
+      "id": 47,
+      "type": "action",
+      "label": "Sacred Oath",
+      "text": [
+        "Lord Commander Theon kneels before you, his white cloak spread across the floor. \"By the old gods and the new, I swear my sword to your cause.\" ⚔️",
+        "His loyalty could make the difference between victory and defeat."
+      ],
+      "actions": [
+        {
+          "id": 73,
+          "label": "March on capital 🗡️"
+        },
+        {
+          "id": 74,
+          "label": "Gather more support ⚔️"
+        }
+      ]
+    },
+    {
+      "id": 48,
+      "type": "skip",
+      "label": "Honor's Price",
+      "text": [
+        "\"An alliance, then,\" Lord Commander Theon agrees. \"The Kingsguard will support your claim, but we must act within the bounds of honor and law.\" 🛡️",
+        "You've gained powerful allies, but their code of honor may limit your options."
+      ],
+      "nextId": 47
+    },
+    {
+      "id": 49,
+      "type": "action",
+      "label": "Faith's Shadow",
+      "text": [
+        "The Faith Militant's growing power could either be your salvation or your doom. Their support would give you legitimacy among the common people. 🙏",
+        "But their price might be higher than you're willing to pay."
+      ],
+      "actions": [
+        {
+          "id": 52,
+          "label": "Seek their blessing ✨"
+        },
+        {
+          "id": 75,
+          "label": "Oppose them openly ⚔️"
+        }
+      ]
+    },
+    {
+      "id": 50,
+      "type": "finish",
+      "label": "The Iron Queen",
+      "text": [
+        "Your public stand inspires the crowd. As the guards approach, common folk step between you and them. Word of your courage spreads through the city like wildfire. 👑",
+        "You've won the hearts of the people - the first step to winning the throne."
+      ]
+    },
+    {
+      "id": 51,
+      "type": "finish",
+      "label": "Martyr's End",
+      "text": [
+        "The guards seize you, but your public execution becomes a rallying cry. Your death sparks an uprising that changes the realm forever. 💔",
+        "Sometimes the greatest victories require the ultimate sacrifice."
+      ]
+    },
+    {
+      "id": 52,
+      "type": "action",
+      "label": "Divine Alliance",
+      "text": [
+        "The High Septon listens to your claim with great interest. \"Perhaps the gods have sent you to restore proper order to the realm.\" ✨",
+        "But his support comes with conditions - the Faith must regain its ancient privileges."
+      ],
+      "actions": [
+        {
+          "id": 76,
+          "label": "Accept terms 🤝"
+        },
+        {
+          "id": 77,
+          "label": "Negotiate limits 📜"
+        }
+      ]
+    },
+    {
+      "id": 53,
+      "type": "skip",
+      "label": "Faith's Price",
+      "text": [
+        "You carefully negotiate with the High Septon, trying to balance the Faith's demands with the realm's needs. A delicate dance of power begins. 🕊️",
+        "The Faith will support you, but their influence will be... substantial."
+      ],
+      "nextId": 76
+    },
+    {
+      "id": 54,
+      "type": "action",
+      "label": "Underground Movement",
+      "text": [
+        "Your claim spreads through whispers and rumors. The common people begin speaking of the 'true heir' in hushed, hopeful tones. 👥",
+        "Perhaps there's a way to build power from below rather than above."
+      ],
+      "actions": [
+        {
+          "id": 78,
+          "label": "Rally the people ✊"
+        },
+        {
+          "id": 79,
+          "label": "Build secret army 🗡️"
+        }
+      ]
+    },
+    {
+      "id": 55,
+      "type": "finish",
+      "label": "Dark Queen",
+      "text": [
+        "The ritual succeeds, filling you with terrible power. Your eyes glow with ancient magic, and shadows dance at your command. 🌑",
+        "You've gained the power to take the throne, but at what cost to your humanity?"
+      ]
+    },
+    {
+      "id": 56,
+      "type": "skip",
+      "label": "Ritual Interrupted",
+      "text": [
+        "You stop the ritual, refusing to pay such a terrible price for power. Qyburn seems disappointed, but perhaps there are other ways... 🛑",
+        "Sometimes the wisest choice is knowing which power to reject."
+      ],
+      "nextId": 31
+    },
+    {
+      "id": 57,
+      "type": "finish",
+      "label": "Shadow Puppeteer",
+      "text": [
+        "Through ancient magic and careful manipulation, you bind key players to your will. The throne will be yours, though few will know the true source of your power. 🕯️",
+        "You rule from the shadows, a puppet master pulling the strings of the realm."
+      ]
+    },
+    {
+      "id": 58,
+      "type": "action",
+      "label": "Ancient Prophecy",
+      "text": [
+        "The prophecies speak of a time when the Shadow Walkers return, threatening not just the throne, but all life in the realm. Your royal blood might be the key to stopping them. ❄️",
+        "Will you pursue your ambition, or prepare for the greater threat?"
+      ],
+      "actions": [
+        {
+          "id": 80,
+          "label": "Save the realm 🌟"
+        },
+        {
+          "id": 71,
+          "label": "Secure throne first 👑"
+        }
+      ]
+    },
+    {
+      "id": 59,
+      "type": "skip",
+      "label": "Merchant Alliance",
+      "text": [
+        "The merchant princes see the advantage in backing your claim. With their gold, you can buy swords, loyalty, and influence. 💰",
+        "But remember - merchants always expect a return on their investment."
+      ],
+      "nextId": 81
+    },
+    {
+      "id": 60,
+      "type": "skip",
+      "label": "Noble Support",
+      "text": [
+        "The minor lords, tired of being pawns in the great houses' games, rally to your banner. Their combined strength could tip the balance. ⚔️",
+        "United, they could challenge even the greatest houses."
+      ],
+      "nextId": 82
+    },
+    {
+      "id": 61,
+      "type": "action",
+      "label": "Betrayal's Shadow",
+      "text": [
+        "Lady Barrow's treachery runs deep. She plans to use you as a figurehead while the Faith Militant holds the real power. 🎭",
+        "You must act quickly before the trap closes around you."
+      ],
+      "actions": [
+        {
+          "id": 83,
+          "label": "Spring your own trap 🕸️"
+        },
+        {
+          "id": 84,
+          "label": "Expose her plans 📢"
+        }
+      ]
+    },
+    {
+      "id": 62,
+      "type": "finish",
+      "label": "Mercenary Queen",
+      "text": [
+        "With a mercenary army at your back, you take what you want by force. The throne is yours, but you must now rely on gold to keep your crown. 💰",
+        "Power through strength has its own price - eternal vigilance."
+      ]
+    },
+    {
+      "id": 63,
+      "type": "finish",
+      "label": "Spider's Web",
+      "text": [
+        "You and Lady Barrow reach a new understanding through mutual blackmail. Neither can move against the other, creating a dangerous balance. 🕷️",
+        "Sometimes the most stable alliances are built on shared secrets."
+      ]
+    },
+    {
+      "id": 64,
+      "type": "skip",
+      "label": "Power Play",
+      "text": [
+        "You share the evidence with carefully chosen allies, strengthening your position while weakening Lady Barrow's influence. 📜",
+        "The game of thrones is won with information as much as swords."
+      ],
+      "nextId": 85
+    },
+    {
+      "id": 65,
+      "type": "finish",
+      "label": "Iron Alliance",
+      "text": [
+        "Through careful manipulation and strategic pressure, you forge a strong alliance with Prince Daemon. Together, you unite the realm under a new dynasty. 👑",
+        "Sometimes the best way to win the game is to change its rules."
+      ]
+    },
+    {
+      "id": 66,
+      "type": "finish",
+      "label": "Royal Marriage",
+      "text": [
+        "Your marriage to Prince Daemon unites your claims and brings peace to the realm. Though you share the power, you find ways to guide the kingdom's fate. 💍",
+        "Not all victories require blood - some are won with a kiss."
+      ]
+    },
+    {
+      "id": 67,
+      "type": "skip",
+      "label": "Diplomatic Refusal",
+      "text": [
+        "You decline the marriage proposal with such grace and political skill that Prince Daemon remains an ally rather than becoming an enemy. 🎭",
+        "In the game of thrones, how you refuse is often as important as what you accept."
+      ],
+      "nextId": 85
+    },
+    {
+      "id": 68,
+      "type": "finish",
+      "label": "Master Player",
+      "text": [
+        "Using the Whisperer's information, you masterfully turn your enemies against each other. When the dust settles, you're the only one left standing. 🎯",
+        "The greatest victory is the one where your enemies defeat themselves."
+      ]
+    },
+    {
+      "id": 69,
+      "type": "skip",
+      "label": "Defensive Measures",
+      "text": [
+        "You carefully prepare defenses against every threat the Whisperer revealed. Your enemies find their plots blocked at every turn. 🛡️",
+        "Knowledge is indeed power, especially when used wisely."
+      ],
+      "nextId": 85
+    },
+    {
+      "id": 70,
+      "type": "finish",
+      "label": "Shadow Queen",
+      "text": [
+        "Your partnership with the Whisperer makes you the most feared player in the game. No secret escapes your notice, no plot succeeds without your knowledge. 🌑",
+        "You rule the realm from the shadows, the power behind every throne."
+      ]
+    },
+    {
+      "id": 71,
+      "type": "skip",
+      "label": "Throne First",
+      "text": [
+        "You decide to secure the throne before facing the greater threat. But time is running short, and the Shadow Walkers grow stronger. ❄️",
+        "Will you gain your crown in time to save the realm?"
+      ],
+      "nextId": 85
+    },
+    {
+      "id": 72,
+      "type": "action",
+      "label": "Greater Threat",
+      "text": [
+        "You journey north to investigate rumors of the Shadow Walkers. What you discover there changes everything - the game of thrones seems petty compared to this danger. ❄️",
+        "The realm must unite or fall."
+      ],
+      "actions": [
+        {
+          "id": 80,
+          "label": "Rally the realm 🌟"
+        },
+        {
+          "id": 86,
+          "label": "Face threat alone ⚔️"
+        }
+      ]
+    },
+    {
+      "id": 73,
+      "type": "finish",
+      "label": "Honor's Victory",
+      "text": [
+        "With the Kingsguard at your side, you take the throne through righteous strength. The realm accepts you as its true and honorable ruler. ⚔️",
+        "You've proven that sometimes honor is the best policy."
+      ]
+    },
+    {
+      "id": 74,
+      "type": "skip",
+      "label": "Growing Strength",
+      "text": [
+        "More nobles rally to your banner, drawn by the Kingsguard's support and your reputation for honor. Your army grows stronger each day. ⚔️",
+        "Victory through honor may be slower, but it builds a stronger foundation."
+      ],
+      "nextId": 85
+    },
+    {
+      "id": 75,
+      "type": "skip",
+      "label": "Faith's Enemy",
+      "text": [
+        "Your opposition to the Faith Militant earns you powerful enemies, but also respect from those who fear religious tyranny. 📢",
+        "Sometimes the right path is the harder one."
+      ],
+      "nextId": 85
+    },
+    {
+      "id": 76,
+      "type": "finish",
+      "label": "Faith's Champion",
+      "text": [
+        "You take the throne with the Faith's blessing, becoming their chosen champion. The realm enters a new age of religious influence. ✨",
+        "Power shared with faith is power multiplied."
+      ]
+    },
+    {
+      "id": 77,
+      "type": "skip",
+      "label": "Balanced Power",
+      "text": [
+        "Through careful negotiation, you establish clear boundaries between crown and faith. It's a delicate balance, but one that might just work. 📜",
+        "The best agreements leave all parties satisfied but none supreme."
+      ],
+      "nextId": 85
+    },
+    {
+      "id": 78,
+      "type": "finish",
+      "label": "People's Queen",
+      "text": [
+        "The common people rise up in your name, overthrowing the old order. You establish a new kind of monarchy, one that listens to the voice of the people. 👥",
+        "True power comes from those you rule."
+      ]
+    },
+    {
+      "id": 79,
+      "type": "skip",
+      "label": "Hidden Army",
+      "text": [
+        "Your secret army grows in the shadows, loyal men and women ready to fight for your cause when the time comes. 🗡️",
+        "The best weapon is the one your enemy doesn't know exists."
+      ],
+      "nextId": 85
+    },
+    {
+      "id": 80,
+      "type": "finish",
+      "label": "Realm's Savior",
+      "text": [
+        "You unite the realm against the Shadow Walkers, sacrificing your chance at the throne to save humanity. Your name becomes legend. ❄️",
+        "Some victories are worth more than a crown."
+      ]
+    },
+    {
+      "id": 81,
+      "type": "skip",
+      "label": "Golden Power",
+      "text": [
+        "With the merchants' support, you control the realm's economy. Your enemies find their gold turning to lead and their armies deserting. 💰",
+        "Money, properly applied, can be sharper than any sword."
+      ],
+      "nextId": 85
+    },
+    {
+      "id": 82,
+      "type": "skip",
+      "label": "Noble Army",
+      "text": [
+        "The combined forces of the minor houses form a formidable army. What they lack in individual strength, they make up for in numbers and devotion. ⚔️",
+        "Unity makes strength."
+      ],
+      "nextId": 85
+    },
+    {
+      "id": 83,
+      "type": "finish",
+      "label": "Perfect Trap",
+      "text": [
+        "You turn Lady Barrow's trap against her, exposing her treachery to the Faith while positioning yourself as their true champion. 🕸️",
+        "The best trap is the one your enemy thinks is their own."
+      ]
+    },
+    {
+      "id": 84,
+      "type": "skip",
+      "label": "Public Justice",
+      "text": [
+        "You expose Lady Barrow's schemes publicly, destroying her credibility and strengthening your position as an honest claimant. 📢",
+        "Truth, properly wielded, can be the deadliest weapon."
+      ],
+      "nextId": 85
+    },
+    {
+      "id": 85,
+      "type": "action",
+      "label": "Final Gambit",
+      "text": [
+        "The time has come for your final move. The pieces are in place, but success is not guaranteed. The fate of the realm hangs in the balance. ⚔️",
+        "How will you claim your destiny?"
+      ],
+      "actions": [
+        {
+          "id": 87,
+          "label": "Seize power 👑"
+        },
+        {
+          "id": 88,
+          "label": "Negotiate peace 🕊️"
+        },
+        {
+          "id": 80,
+          "label": "Save the realm ❄️"
+        }
+      ]
+    },
+    {
+      "id": 86,
+      "type": "finish",
+      "label": "Lone Guardian",
+      "text": [
+        "You face the Shadow Walkers alone, using your royal blood and newfound powers. Though you fall in battle, your sacrifice gives the realm time to prepare. 💔",
+        "Sometimes the greatest victory requires the ultimate sacrifice."
+      ]
+    },
+    {
+      "id": 87,
+      "type": "finish",
+      "label": "Iron Victory",
+      "text": [
+        "Through force of arms and strength of will, you seize the Iron Throne. The realm bends to your rule, ushering in a new dynasty. 👑",
+        "You've won the game of thrones - now comes the challenge of ruling."
+      ]
+    },
+    {
+      "id": 88,
+      "type": "finish",
+      "label": "Peaceful Transition",
+      "text": [
+        "Through skilled negotiation, you arrange a peaceful transition of power. The realm is spared further bloodshed, and your rule begins with hope rather than fear. 🕊️",
+        "The wisest victory is the one that makes allies of enemies."
+      ]
+    },
+    {
+      "id": 89,
+      "type": "finish",
+      "label": "Debt's Power",
+      "text": [
+        "Prince Daemon kneels before you, his pride broken by the weight of his debts. You now control one of the most powerful figures in the realm through the power of gold. 👑",
+        "Sometimes the mightiest chains are forged not of iron, but of debt."
+      ]
+    }
+  ]
+}

@@ -27,6 +27,8 @@
 4. The goal is to create up to 60-90 nodes for the story.
 5. After each node generation check the `plan.md`.
 6. When you append nodes, make sure that their ids go in the ascending order WITH NO GAPS.
+7. THIS IS VERY IMPORTANT! DON'T EVER REFERENCE THE FUTURE NODES WITH IDS MORE THAN 120!
+8. Don't create too long story branches, carefully plan to finish them by reaching NODE ID 100. Loop the story branches to existing nodes if it makes sense.
 
 ## Writing Tips
 
