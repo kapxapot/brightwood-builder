@@ -12,7 +12,7 @@
 8. Only `skip` node can have `nextId` property. It must reference an existing node.
 9. `finish` node doesn't have any additional properties.
 10. Every node must have at least one `text` line.
-11. `position` array it used to place nodes in the visual editor. Keep in mind that every node is around 250px wide and 600px high. Spread the nodes so they are placed from left to right.
+11. `position` array it used to place nodes in the visual editor. Keep in mind that every node is around 250px wide and 1200px high. Spread the nodes so they are placed from left to right.
 12. Use `./neural-uprising/story.json` as an additional reference for the story file structure and a good node balance.
 13. Fill the root story `id` property with a random UUID.
 14. Do not fill the root story `cover` property unless you put there an existing image URL.
