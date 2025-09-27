@@ -4,7 +4,7 @@ import { StoryShortcut } from "@/entities/story";
 const storiesKey = "stories";
 const currentStoryIdKey = "currentStoryId";
 
-export function localStore(key: string, data: unknown) {
+export function localStore<T>(key: string, data: T) {
   localStorage.setItem(key, JSON.stringify(data));
 }
 
