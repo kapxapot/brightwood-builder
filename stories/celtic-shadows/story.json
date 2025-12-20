@@ -1,0 +1,1578 @@
+{
+  "id": "8f2e9b7a-5d1c-4c3a-9e8c-f3b7d4a6e5d2",
+  "title": "Celtic Shadows",
+  "description": "Journey through ancient Ireland as a young druid's apprentice, where the veil between worlds grows thin and dark forces threaten to break through. Your choices will determine not just your fate, but the balance between light and shadow.",
+  "language": "en",
+  "startId": 1,
+  "nodes": [
+    {
+      "id": 1,
+      "type": "action",
+      "label": "The Awakening",
+      "position": [0, 0],
+      "text": [
+        "🌿 The morning mist clings to the ancient stones of the druid circle where you've trained for years.",
+        "A strange tingling sensation courses through your veins as you trace the spiral patterns carved into the megalith. Something feels different today - the boundary between worlds seems paper-thin.",
+        "Your mentor, Aidan, watches you with knowing eyes. \"The old blood awakens in you,\" he says. \"It's time to choose your path.\""
+      ],
+      "actions": [
+        {
+          "label": "🤔 Ask about the old blood",
+          "id": 2
+        },
+        {
+          "label": "✨ Embrace the sensation",
+          "id": 3
+        },
+        {
+          "label": "⚔️ Focus on training",
+          "id": 4
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "type": "action",
+      "label": "Ancient Heritage",
+      "position": [300, 0],
+      "text": [
+        "🧬 Aidan's eyes gleam with ancient wisdom.",
+        "\"Your bloodline carries the essence of both mortal and Sidhe. Few remain with such heritage, bridging the gap between realms. This gift comes with great responsibility - and danger.\"",
+        "Dark shadows flicker at the edge of your vision, and a chill runs down your spine."
+      ],
+      "actions": [
+        {
+          "label": "🌟 Seek wisdom",
+          "id": 5
+        },
+        {
+          "label": "🔍 Investigate shadows",
+          "id": 6
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "type": "action",
+      "label": "Power Awakens",
+      "position": [300, 300],
+      "text": [
+        "✨ The energy surges through you like lightning, ancient magic responding to your acceptance.",
+        "The stones of the circle begin to hum with power, and ghostly figures dance at the corner of your vision. You can feel the presence of the Otherworld more strongly than ever.",
+        "\"The Sidhe call to their own,\" Aidan whispers."
+      ],
+      "actions": [
+        {
+          "label": "👻 Contact spirits",
+          "id": 7
+        },
+        {
+          "label": "🛡️ Ground yourself",
+          "id": 8
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "type": "action",
+      "label": "Warrior's Path",
+      "position": [300, 600],
+      "text": [
+        "⚔️ You center yourself, focusing on the practical aspects of your training.",
+        "\"The old ways aren't just about magic,\" Aidan nods approvingly. \"Sometimes the best defense against darkness is a well-trained arm and a steady heart.\"",
+        "In the distance, war horns sound - perhaps not just an echo of the past."
+      ],
+      "actions": [
+        {
+          "label": "🗡️ Investigate horns",
+          "id": 9
+        },
+        {
+          "label": "🛡️ Prepare defenses",
+          "id": 10
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "type": "action",
+      "label": "Ancient Knowledge",
+      "position": [600, 0],
+      "text": [
+        "📚 Aidan leads you to an ancient oak, its trunk hollow and filled with scrolls.",
+        "\"These contain the wisdom of ages - tales of those who walked between worlds. But knowledge comes with a price. The more you learn of the Otherworld, the more it becomes aware of you.\"",
+        "You sense unseen eyes watching."
+      ],
+      "actions": [
+        {
+          "label": "📖 Study scrolls",
+          "id": 11
+        },
+        {
+          "label": "🌳 Commune with oak",
+          "id": 12
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "type": "skip",
+      "label": "Dark Presence",
+      "position": [600, 150],
+      "text": [
+        "👥 The shadows coalesce into a dark figure - a Fomorian scout, twisted and ancient.",
+        "Its presence confirms your worst fears: the ancient enemies of the Tuatha Dé Danann have returned.",
+        "There's no time to waste."
+      ],
+      "nextId": 13
+    },
+    {
+      "id": 7,
+      "type": "action",
+      "label": "Spirit Dance",
+      "position": [600, 300],
+      "text": [
+        "👻 You open yourself to the spirits, and they respond eagerly - perhaps too eagerly.",
+        "Ethereal figures emerge from the mist: some beautiful beyond words, others dark and dangerous.",
+        "\"Choose carefully who you trust,\" Aidan warns. \"Not all that glitters in the Otherworld is gold.\""
+      ],
+      "actions": [
+        {
+          "label": "🌟 Trust beauty",
+          "id": 14
+        },
+        {
+          "label": "🌑 Embrace shadow",
+          "id": 15
+        }
+      ]
+    },
+    {
+      "id": 8,
+      "type": "action",
+      "label": "Earthen Power",
+      "position": [600, 450],
+      "text": [
+        "🌍 You plant your feet firmly on the earth, drawing strength from the land itself.",
+        "The wild magic settles into a steady flow, more controlled but no less powerful.",
+        "A path opens before you in the mist, leading to an ancient burial mound."
+      ],
+      "actions": [
+        {
+          "label": "⛰️ Enter mound",
+          "id": 16
+        },
+        {
+          "label": "🔮 Scry for danger",
+          "id": 17
+        }
+      ]
+    },
+    {
+      "id": 9,
+      "type": "action",
+      "label": "Battle Call",
+      "position": [600, 600],
+      "text": [
+        "🎺 Following the sound leads you to a hidden valley where spectral warriors gather.",
+        "They bear the marks of ancient battles - these are the souls of fallen Celtic warriors, awakened by approaching danger.",
+        "Their leader, a scarred chieftain, turns to you expectantly."
+      ],
+      "actions": [
+        {
+          "label": "⚔️ Join warriors",
+          "id": 18
+        },
+        {
+          "label": "🗣️ Seek counsel",
+          "id": 19
+        }
+      ]
+    },
+    {
+      "id": 10,
+      "type": "action",
+      "label": "Sacred Defense",
+      "position": [600, 750],
+      "text": [
+        "🛡️ You begin reinforcing the ancient wards around the sacred site.",
+        "As you work, you uncover symbols of protection not seen for centuries.",
+        "But something darker lurks beneath them - a warning written in blood."
+      ],
+      "actions": [
+        {
+          "label": "📖 Decode warning",
+          "id": 20
+        },
+        {
+          "label": "💪 Strengthen wards",
+          "id": 21
+        }
+      ]
+    },
+    {
+      "id": 11,
+      "type": "action",
+      "label": "Ancient Secrets",
+      "position": [900, 0],
+      "text": [
+        "📚 The scrolls reveal tales of a great seal, created by your ancestors to hold back the forces of chaos.",
+        "But the seal is weakening, and only one of your bloodline can restore it.",
+        "Time grows short as darkness gathers."
+      ],
+      "actions": [
+        {
+          "label": "🔍 Find seal",
+          "id": 22
+        },
+        {
+          "label": "📖 Learn more",
+          "id": 23
+        }
+      ]
+    },
+    {
+      "id": 12,
+      "type": "redirect",
+      "label": "Tree's Wisdom",
+      "position": [900, 150],
+      "text": [
+        "🌳 The ancient oak's consciousness touches yours, sharing visions of past and future.",
+        "But the connection goes both ways - sometimes the tree chooses the path."
+      ],
+      "links": [
+        {
+          "id": 24,
+          "weight": 5
+        },
+        {
+          "id": 25,
+          "weight": 5
+        }
+      ]
+    },
+    {
+      "id": 13,
+      "type": "action",
+      "label": "Dark Warning",
+      "position": [900, 300],
+      "text": [
+        "⚠️ The Fomorian's presence is a harbinger of worse to come.",
+        "You must choose quickly - warn the nearby village or pursue the creature to its lair.",
+        "Either choice will have consequences."
+      ],
+      "actions": [
+        {
+          "label": "🏃 Warn village",
+          "id": 26
+        },
+        {
+          "label": "🦹 Track Fomorian",
+          "id": 27
+        }
+      ]
+    },
+    {
+      "id": 14,
+      "type": "skip",
+      "label": "Sidhe's Grace",
+      "position": [900, 450],
+      "text": [
+        "✨ The beautiful spirits are members of the Seelie Court, noble Sidhe who have long protected these lands.",
+        "They recognize the old blood in you and offer their guidance.",
+        "But their help comes with expectations - the Sidhe never give without taking."
+      ],
+      "nextId": 28
+    },
+    {
+      "id": 15,
+      "type": "skip",
+      "label": "Shadow's Touch",
+      "position": [900, 600],
+      "text": [
+        "🌑 The dark spirits whisper secrets of power and survival.",
+        "Their knowledge is dangerous but potentially vital for the coming darkness.",
+        "You feel their influence growing stronger within you."
+      ],
+      "nextId": 29
+    },
+    {
+      "id": 16,
+      "type": "action",
+      "label": "Ancient Tomb",
+      "position": [900, 750],
+      "text": [
+        "⛰️ Inside the burial mound, you find yourself in a chamber filled with ancient weapons and artifacts.",
+        "Each item pulses with its own power, each offering a different path.",
+        "Choose wisely - what you take will shape your destiny."
+      ],
+      "actions": [
+        {
+          "label": "🗡️ Take sword",
+          "id": 30
+        },
+        {
+          "label": "📿 Take amulet",
+          "id": 31
+        },
+        {
+          "label": "📜 Take scroll",
+          "id": 32
+        }
+      ]
+    },
+    {
+      "id": 17,
+      "type": "redirect",
+      "label": "Vision Quest",
+      "position": [1200, 0],
+      "text": [
+        "🔮 You cast your senses into the mists of time and space.",
+        "The visions come quickly and chaotically - the future is in flux."
+      ],
+      "links": [
+        {
+          "id": 33,
+          "weight": 4
+        },
+        {
+          "id": 34,
+          "weight": 3
+        },
+        {
+          "id": 35,
+          "weight": 3
+        }
+      ]
+    },
+    {
+      "id": 18,
+      "type": "action",
+      "label": "Warrior's Oath",
+      "position": [1200, 150],
+      "text": [
+        "⚔️ The spectral warriors welcome you as one of their own.",
+        "They offer to teach you their ancient combat techniques, but warn that the path of the warrior demands complete dedication.",
+        "\"The sword or the staff,\" the chieftain says. \"You cannot master both.\""
+      ],
+      "actions": [
+        {
+          "label": "🗡️ Choose sword",
+          "id": 36
+        },
+        {
+          "label": "🌟 Keep magic",
+          "id": 37
+        }
+      ]
+    },
+    {
+      "id": 19,
+      "type": "skip",
+      "label": "Ancient Wisdom",
+      "position": [1200, 300],
+      "text": [
+        "👻 The spectral chieftain shares dire news - the Fomorians are gathering an army in the Otherworld.",
+        "They plan to exploit the weakening veil during the upcoming solar eclipse.",
+        "You have until then to prepare."
+      ],
+      "nextId": 38
+    },
+    {
+      "id": 20,
+      "type": "action",
+      "label": "Blood Warning",
+      "position": [1200, 450],
+      "text": [
+        "📜 The warning speaks of a traitor among the druids, one who seeks to deliberately weaken the veil.",
+        "The signs point to someone close to you.",
+        "Trust becomes a precious commodity."
+      ],
+      "actions": [
+        {
+          "label": "🔍 Investigate",
+          "id": 39
+        },
+        {
+          "label": "🤫 Keep secret",
+          "id": 40
+        }
+      ]
+    },
+    {
+      "id": 21,
+      "type": "skip",
+      "label": "Ward Mastery",
+      "position": [1200, 600],
+      "text": [
+        "🛡️ You pour your power into the ancient wards, feeling them respond to your blood.",
+        "The protections grow stronger, but you sense they won't hold forever.",
+        "A more permanent solution must be found."
+      ],
+      "nextId": 41
+    },
+    {
+      "id": 22,
+      "type": "action",
+      "label": "The Seal",
+      "position": [1200, 750],
+      "text": [
+        "🔐 Your research leads you to a hidden valley where the great seal lies.",
+        "It's a massive stone circle, each megalith inscribed with runes of power.",
+        "But the Fomorians have found it too - their dark shapes lurk in the shadows."
+      ],
+      "actions": [
+        {
+          "label": "⚔️ Fight",
+          "id": 42
+        },
+        {
+          "label": "🌟 Channel power",
+          "id": 43
+        }
+      ]
+    },
+    {
+      "id": 23,
+      "type": "skip",
+      "label": "Deep Knowledge",
+      "position": [1500, 0],
+      "text": [
+        "📚 Further study reveals a terrible truth - restoring the seal requires a sacrifice.",
+        "The power must be balanced: a life freely given to maintain the boundary between worlds.",
+        "The choice becomes clear but heavy."
+      ],
+      "nextId": 44
+    },
+    {
+      "id": 24,
+      "type": "action",
+      "label": "Nature's Path",
+      "position": [1500, 150],
+      "text": [
+        "🌳 The oak shows you a path of harmony - working with nature's forces rather than commanding them.",
+        "This way offers balance and wisdom, though perhaps less raw power.",
+        "You sense this choice will be crucial in the coming conflict."
+      ],
+      "actions": [
+        {
+          "label": "🍃 Accept harmony",
+          "id": 45
+        },
+        {
+          "label": "💪 Seek power",
+          "id": 46
+        }
+      ]
+    },
+    {
+      "id": 25,
+      "type": "skip",
+      "label": "Dark Vision",
+      "position": [1500, 300],
+      "text": [
+        "🌑 The oak shows you a vision of darkness consuming the land.",
+        "But within that darkness lies understanding - sometimes shadow must be fought with shadow.",
+        "The path ahead grows clearer, though darker."
+      ],
+      "nextId": 47
+    },
+    {
+      "id": 26,
+      "type": "finish",
+      "label": "Village Hero",
+      "position": [1500, 450],
+      "text": [
+        "🏘️ Your warning saves the village from a Fomorian raid.",
+        "Though you lose the chance to track the creature, you gain the villagers' trust and support.",
+        "In the coming war between worlds, these allies prove invaluable.",
+        "You become a protector of both worlds, maintaining peace through vigilance and compassion.",
+        "🌟 Achievement: Guardian of Balance"
+      ]
+    },
+    {
+      "id": 27,
+      "type": "action",
+      "label": "Dark Trail",
+      "position": [1500, 600],
+      "text": [
+        "👣 Following the Fomorian leads you to a dark cave entrance.",
+        "Inside, you hear chanting in an ancient tongue.",
+        "Time to make a choice - swift action or careful planning."
+      ],
+      "actions": [
+        {
+          "label": "⚡ Strike now",
+          "id": 48
+        },
+        {
+          "label": "🤫 Gather intel",
+          "id": 49
+        }
+      ]
+    },
+    {
+      "id": 28,
+      "type": "action",
+      "label": "Sidhe's Request",
+      "position": [1500, 750],
+      "text": [
+        "✨ The Sidhe ask you to undergo their trials, to prove worthy of their knowledge.",
+        "Success would mean power beyond imagination, but failure...",
+        "The stakes are high, but time is short."
+      ],
+      "actions": [
+        {
+          "label": "✨ Accept trials",
+          "id": 50
+        },
+        {
+          "label": "🤝 Negotiate",
+          "id": 51
+        }
+      ]
+    },
+    {
+      "id": 29,
+      "type": "action",
+      "label": "Dark Knowledge",
+      "position": [1800, 0],
+      "text": [
+        "🌑 The shadow spirits reveal forbidden knowledge of both healing and harm.",
+        "You learn to walk the twilight path between light and dark.",
+        "But such power comes at a price - your humanity begins to fade."
+      ],
+      "actions": [
+        {
+          "label": "💫 Resist change",
+          "id": 52
+        },
+        {
+          "label": "🌑 Embrace darkness",
+          "id": 53
+        }
+      ]
+    },
+    {
+      "id": 30,
+      "type": "skip",
+      "label": "Ancient Blade",
+      "position": [1800, 150],
+      "text": [
+        "⚔️ The sword thrums with ancient power - a weapon used by hero-kings of old.",
+        "Its edge gleams with otherworldly light, perfect for cutting through both physical and spiritual barriers.",
+        "You feel its warrior spirit merge with yours."
+      ],
+      "nextId": 54
+    },
+    {
+      "id": 31,
+      "type": "skip",
+      "label": "Protection Charm",
+      "position": [1800, 300],
+      "text": [
+        "📿 The amulet pulses with protective magic, a shield against both physical and spiritual harm.",
+        "It feels warm against your skin, responding to your blood.",
+        "This could be key to surviving what's ahead."
+      ],
+      "nextId": 55
+    },
+    {
+      "id": 32,
+      "type": "skip",
+      "label": "Ancient Text",
+      "position": [1800, 450],
+      "text": [
+        "📜 The scroll contains powerful spells and rituals, some too dangerous to speak aloud.",
+        "Knowledge floods your mind - both enlightening and terrifying.",
+        "You understand now why some secrets were meant to stay buried."
+      ],
+      "nextId": 56
+    },
+    {
+      "id": 33,
+      "type": "finish",
+      "label": "Dark Victory",
+      "position": [1800, 600],
+      "text": [
+        "🌑 Your vision shows a path to victory through shadow.",
+        "By embracing the darker aspects of your power, you gain the strength to defeat the Fomorians.",
+        "But the price is high - you become what you fought against, a being of twilight neither fully human nor Sidhe.",
+        "The worlds are safe, but you can never truly return to either.",
+        "⚫ Achievement: Shadow Keeper"
+      ]
+    },
+    {
+      "id": 34,
+      "type": "finish",
+      "label": "Sacrifice",
+      "position": [1800, 750],
+      "text": [
+        "✨ The vision reveals the ultimate truth - only a willing sacrifice can seal the breach permanently.",
+        "In that moment, you understand your destiny.",
+        "Your sacrifice saves both worlds, your essence becoming part of the seal between realms.",
+        "Stories will be told of your choice for generations to come.",
+        "🌟 Achievement: The Ultimate Guardian"
+      ]
+    },
+    {
+      "id": 35,
+      "type": "finish",
+      "label": "Warrior's End",
+      "position": [2100, 0],
+      "text": [
+        "⚔️ You see yourself leading an army of both mortals and Sidhe against the Fomorian hordes.",
+        "Through strength of arms and unwavering courage, you drive back the darkness.",
+        "Victory comes at a cost, but your legend will inspire others for centuries.",
+        "You become a hero of two worlds, honored by both mortal and fae.",
+        "🗡️ Achievement: Warrior Champion"
+      ]
+    },
+    {
+      "id": 36,
+      "type": "skip",
+      "label": "Warrior's Way",
+      "position": [2100, 150],
+      "text": [
+        "⚔️ The spectral warriors train you in ancient Celtic combat techniques.",
+        "Your magical abilities diminish, but your martial prowess grows exponentially.",
+        "You become a living weapon against the darkness."
+      ],
+      "nextId": 57
+    },
+    {
+      "id": 37,
+      "type": "skip",
+      "label": "Mystic Warrior",
+      "position": [2100, 300],
+      "text": [
+        "🌟 You find a way to blend magic with combat, though mastering neither completely.",
+        "This versatility could prove valuable in the coming conflict.",
+        "The spectral warriors respect your choice, though some seem disappointed."
+      ],
+      "nextId": 58
+    },
+    {
+      "id": 38,
+      "type": "finish",
+      "label": "Dark Fate",
+      "position": [2100, 450],
+      "text": [
+        "🌑 Despite your best efforts to prepare, the darkness proves too strong.",
+        "The Fomorians breach the veil, bringing chaos to both worlds.",
+        "In your final moments, you use your power to ensure some survivors can escape.",
+        "Your sacrifice gives humanity a chance to fight another day.",
+        "💀 Achievement: Last Stand"
+      ]
+    },
+    {
+      "id": 39,
+      "type": "skip",
+      "label": "Betrayal",
+      "position": [2100, 600],
+      "text": [
+        "🔍 Your investigation leads to a shocking discovery - Aidan himself is the traitor.",
+        "He believes unleashing chaos will forge a stronger world from the ashes.",
+        "Now you must face your mentor in magical combat."
+      ],
+      "nextId": 59
+    },
+    {
+      "id": 40,
+      "type": "skip",
+      "label": "Secret Bearer",
+      "position": [2100, 750],
+      "text": [
+        "🤫 You keep the warning to yourself, watching and waiting.",
+        "The traitor grows bolder, making mistakes.",
+        "Your patience will soon be rewarded."
+      ],
+      "nextId": 60
+    },
+    {
+      "id": 41,
+      "type": "action",
+      "label": "Final Defense",
+      "position": [2400, 0],
+      "text": [
+        "🛡️ With the wards strengthened, you sense a brief window of opportunity.",
+        "The Fomorians' power is temporarily contained, but they're gathering their strength for a final assault.",
+        "Time to make your move before it's too late."
+      ],
+      "actions": [
+        {
+          "label": "🌟 Seek allies",
+          "id": 61
+        },
+        {
+          "label": "⚔️ Launch attack",
+          "id": 62
+        }
+      ]
+    },
+    {
+      "id": 42,
+      "type": "skip",
+      "label": "Battle Fury",
+      "position": [2400, 150],
+      "text": [
+        "⚔️ You charge into battle against the Fomorian warriors.",
+        "Your blood sings with ancient power as you fight, each strike guided by generations of warrior spirits.",
+        "Victory seems within reach, but at what cost?"
+      ],
+      "nextId": 63
+    },
+    {
+      "id": 43,
+      "type": "action",
+      "label": "Power Surge",
+      "position": [2400, 300],
+      "text": [
+        "✨ You begin channeling power into the seal, feeling it respond to your blood.",
+        "The Fomorians howl in rage as their darkness is pushed back.",
+        "But something feels wrong - the seal is cracking under the strain."
+      ],
+      "actions": [
+        {
+          "label": "💫 Push harder",
+          "id": 64
+        },
+        {
+          "label": "🤝 Share burden",
+          "id": 65
+        }
+      ]
+    },
+    {
+      "id": 44,
+      "type": "action",
+      "label": "Ultimate Choice",
+      "position": [2400, 450],
+      "text": [
+        "⚖️ The gravity of the situation becomes clear - only a sacrifice of pure intention can seal the breach.",
+        "Your mixed blood makes you uniquely suited for this task.",
+        "But perhaps there's another way..."
+      ],
+      "actions": [
+        {
+          "label": "✨ Self-sacrifice",
+          "id": 66
+        },
+        {
+          "label": "🔍 Seek alternative",
+          "id": 67
+        }
+      ]
+    },
+    {
+      "id": 45,
+      "type": "skip",
+      "label": "Nature's Embrace",
+      "position": [2400, 600],
+      "text": [
+        "🌿 The path of harmony opens before you.",
+        "The very land responds to your presence, offering its strength.",
+        "You understand now - true power comes from balance, not dominance."
+      ],
+      "nextId": 68
+    },
+    {
+      "id": 46,
+      "type": "skip",
+      "label": "Power's Price",
+      "position": [2400, 750],
+      "text": [
+        "💪 You reach for greater power, pushing beyond the oak's wisdom.",
+        "The energy surges through you, intoxicating and dangerous.",
+        "There's no turning back now."
+      ],
+      "nextId": 69
+    },
+    {
+      "id": 47,
+      "type": "action",
+      "label": "Shadow's Path",
+      "position": [2700, 0],
+      "text": [
+        "🌑 The darkness offers clarity - sometimes shadow must be used to protect the light.",
+        "You feel your powers growing darker, but your purpose remains pure.",
+        "The final battle approaches."
+      ],
+      "actions": [
+        {
+          "label": "🌓 Find balance",
+          "id": 70
+        },
+        {
+          "label": "⚫ Embrace dark",
+          "id": 71
+        }
+      ]
+    },
+    {
+      "id": 48,
+      "type": "finish",
+      "label": "Failed Strike",
+      "position": [2700, 150],
+      "text": [
+        "⚡ Your hasty attack alerts the Fomorian ritualists.",
+        "Overwhelmed by their dark magic, you fall in battle.",
+        "Your last thoughts are of the warning you failed to deliver.",
+        "The darkness spreads, unchecked.",
+        "💀 Achievement: Valiant End"
+      ]
+    },
+    {
+      "id": 49,
+      "type": "skip",
+      "label": "Dark Intel",
+      "position": [2700, 300],
+      "text": [
+        "🔍 Patient observation reveals the Fomorians' true plan.",
+        "They're not just invading - they're trying to corrupt the very essence of both worlds.",
+        "This knowledge could be the key to stopping them."
+      ],
+      "nextId": 72
+    },
+    {
+      "id": 50,
+      "type": "skip",
+      "label": "Sidhe Trial",
+      "position": [2700, 450],
+      "text": [
+        "✨ The trials are brutal but enlightening.",
+        "Each challenge strips away another layer of your mortality.",
+        "You emerge changed, but powerful."
+      ],
+      "nextId": 73
+    },
+    {
+      "id": 51,
+      "type": "skip",
+      "label": "Fair Bargain",
+      "position": [2700, 600],
+      "text": [
+        "🤝 You negotiate with the Sidhe, maintaining your independence.",
+        "They respect your wisdom, offering alliance rather than servitude.",
+        "This partnership could change everything."
+      ],
+      "nextId": 74
+    },
+    {
+      "id": 52,
+      "type": "skip",
+      "label": "Inner Light",
+      "position": [2700, 750],
+      "text": [
+        "💫 You fight to maintain your humanity.",
+        "The struggle strengthens your resolve and clarifies your purpose.",
+        "The path ahead becomes clear."
+      ],
+      "nextId": 75
+    },
+    {
+      "id": 53,
+      "type": "finish",
+      "label": "Dark Power",
+      "position": [3000, 0],
+      "text": [
+        "⚫ The darkness consumes you completely.",
+        "You become a being of immense power, neither human nor Fomorian.",
+        "Though you defeat the invaders, you become what you sought to destroy.",
+        "The worlds are safe, but at the cost of your soul.",
+        "🌑 Achievement: Corrupted Guardian"
+      ]
+    },
+    {
+      "id": 54,
+      "type": "action",
+      "label": "Warrior's Choice",
+      "position": [3000, 150],
+      "text": [
+        "⚔️ The ancient sword hums with power, urging you to battle.",
+        "But first, you must choose your target - the Fomorian army or their dark rituals.",
+        "Time allows for only one strike."
+      ],
+      "actions": [
+        {
+          "label": "⚔️ Attack army",
+          "id": 76
+        },
+        {
+          "label": "🎯 Stop ritual",
+          "id": 77
+        }
+      ]
+    },
+    {
+      "id": 55,
+      "type": "skip",
+      "label": "Protected Path",
+      "position": [3000, 300],
+      "text": [
+        "🛡️ The amulet's protection gives you confidence to act boldly.",
+        "You can now walk between worlds safely, gathering allies and information.",
+        "The time has come to use this advantage."
+      ],
+      "nextId": 78
+    },
+    {
+      "id": 56,
+      "type": "skip",
+      "label": "Forbidden Lore",
+      "position": [3000, 450],
+      "text": [
+        "📚 The scroll's knowledge changes you fundamentally.",
+        "You understand now both the problem and the solution.",
+        "But the price of this power will be steep."
+      ],
+      "nextId": 79
+    },
+    {
+      "id": 57,
+      "type": "action",
+      "label": "Final Battle",
+      "position": [3000, 600],
+      "text": [
+        "⚔️ Your warrior training has prepared you for this moment.",
+        "The Fomorian army approaches, and you stand ready.",
+        "One last choice remains."
+      ],
+      "actions": [
+        {
+          "label": "⚔️ Lead charge",
+          "id": 80
+        },
+        {
+          "label": "🎯 Duel leader",
+          "id": 81
+        }
+      ]
+    },
+    {
+      "id": 58,
+      "type": "skip",
+      "label": "Balance Found",
+      "position": [3000, 750],
+      "text": [
+        "☯️ Your balanced approach proves wise.",
+        "Magic enhances your combat skills, while martial discipline focuses your power.",
+        "You are ready for the final confrontation."
+      ],
+      "nextId": 82
+    },
+    {
+      "id": 59,
+      "type": "action",
+      "label": "Mentor's Betrayal",
+      "position": [3300, 0],
+      "text": [
+        "💔 Aidan's betrayal cuts deep, but now is not the time for grief.",
+        "He channels dark power, prepared to destroy everything you both once protected.",
+        "Your next move could change everything."
+      ],
+      "actions": [
+        {
+          "label": "🤝 Reason with him",
+          "id": 83
+        },
+        {
+          "label": "⚔️ Stop him",
+          "id": 84
+        }
+      ]
+    },
+    {
+      "id": 60,
+      "type": "skip",
+      "label": "Truth Revealed",
+      "position": [3300, 150],
+      "text": [
+        "👁️ Your patience pays off - you discover the full extent of the conspiracy.",
+        "Not just one traitor, but a network of corrupted druids.",
+        "Now you can strike at the heart of the threat."
+      ],
+      "nextId": 85
+    },
+    {
+      "id": 61,
+      "type": "skip",
+      "label": "United Front",
+      "position": [3300, 300],
+      "text": [
+        "🤝 You gather allies from both worlds - warriors, druids, and Sidhe.",
+        "Together, you might have the strength to end this threat once and for all.",
+        "The final battle approaches."
+      ],
+      "nextId": 86
+    },
+    {
+      "id": 62,
+      "type": "skip",
+      "label": "Swift Strike",
+      "position": [3300, 450],
+      "text": [
+        "⚡ You launch a daring attack while the Fomorians are weakened.",
+        "Your timing is perfect, catching them off guard.",
+        "Victory seems within reach."
+      ],
+      "nextId": 87
+    },
+    {
+      "id": 63,
+      "type": "action",
+      "label": "Turning Point",
+      "position": [3300, 600],
+      "text": [
+        "⚔️ The battle reaches its climax.",
+        "The seal pulsates with power, responding to the conflict around it.",
+        "You must make a final choice."
+      ],
+      "actions": [
+        {
+          "label": "🌟 Seal breach",
+          "id": 88
+        },
+        {
+          "label": "💪 Fight on",
+          "id": 89
+        }
+      ]
+    },
+    {
+      "id": 64,
+      "type": "finish",
+      "label": "Power Overwhelmed",
+      "position": [3300, 750],
+      "text": [
+        "💥 You push your power to its limits, forcing the seal closed.",
+        "The surge of energy is too much for your mortal form.",
+        "Your sacrifice seals the breach permanently, your essence becoming one with the barrier between worlds.",
+        "Both realms will remember your sacrifice.",
+        "✨ Achievement: The Ultimate Sacrifice"
+      ]
+    },
+    {
+      "id": 65,
+      "type": "skip",
+      "label": "United Power",
+      "position": [3600, 0],
+      "text": [
+        "🤝 You reach out to your allies, sharing the burden of power.",
+        "Together, you might accomplish what would be impossible alone.",
+        "The final moment approaches."
+      ],
+      "nextId": 90
+    },
+    {
+      "id": 66,
+      "type": "finish",
+      "label": "Noble End",
+      "position": [3600, 150],
+      "text": [
+        "✨ You offer yourself to seal the breach, your mixed blood making the perfect bridge.",
+        "As your consciousness fades, you see both worlds beginning to heal.",
+        "Your sacrifice will be remembered in both realms for generations.",
+        "Peace returns to both worlds, though at a great price.",
+        "🌟 Achievement: The Ultimate Guardian"
+      ]
+    },
+    {
+      "id": 67,
+      "type": "skip",
+      "label": "Another Way",
+      "position": [3600, 300],
+      "text": [
+        "🔍 Your search for alternatives leads to an ancient ritual.",
+        "It's dangerous and uncertain, but might spare your life.",
+        "The choice is yours."
+      ],
+      "nextId": 91
+    },
+    {
+      "id": 68,
+      "type": "skip",
+      "label": "Nature's Champion",
+      "position": [3600, 450],
+      "text": [
+        "🌿 The power of nature flows through you, pure and strong.",
+        "You understand now how to heal the breach without destruction.",
+        "The final task awaits."
+      ],
+      "nextId": 92
+    },
+    {
+      "id": 69,
+      "type": "skip",
+      "label": "Dark Power",
+      "position": [3600, 600],
+      "text": [
+        "⚫ Raw power courses through your veins, dark but effective.",
+        "You can feel it changing you, but perhaps that's necessary.",
+        "The end is in sight."
+      ],
+      "nextId": 93
+    },
+    {
+      "id": 70,
+      "type": "finish",
+      "label": "Perfect Balance",
+      "position": [3600, 750],
+      "text": [
+        "☯️ You find the perfect balance between light and shadow.",
+        "Using both powers, you seal the breach and defeat the Fomorians.",
+        "You become a guardian of both realms, walking the twilight path.",
+        "Both worlds are safe under your eternal vigilance.",
+        "🌓 Achievement: Shadow Keeper"
+      ]
+    },
+    {
+      "id": 71,
+      "type": "finish",
+      "label": "Shadow Lord",
+      "position": [3900, 0],
+      "text": [
+        "⚫ The darkness claims you completely.",
+        "Though you defeat the Fomorians, you become something else entirely.",
+        "You rule the shadow realm between worlds, neither hero nor villain.",
+        "The worlds are safe, but at the cost of your humanity.",
+        "🌑 Achievement: Dark Guardian"
+      ]
+    },
+    {
+      "id": 72,
+      "type": "action",
+      "label": "Critical Choice",
+      "position": [3900, 150],
+      "text": [
+        "⚖️ Armed with knowledge of the Fomorians' true plan, you must act quickly.",
+        "You can warn the Sidhe court or strike at the ritual's heart.",
+        "Both paths have merit, but time allows only one."
+      ],
+      "actions": [
+        {
+          "label": "👥 Warn Sidhe",
+          "id": 94
+        },
+        {
+          "label": "🎯 Strike heart",
+          "id": 95
+        }
+      ]
+    },
+    {
+      "id": 73,
+      "type": "skip",
+      "label": "Transformed",
+      "position": [3900, 300],
+      "text": [
+        "✨ The Sidhe trials have changed you fundamentally.",
+        "You are now something between human and fae, powerful but different.",
+        "Time to use this new power."
+      ],
+      "nextId": 96
+    },
+    {
+      "id": 74,
+      "type": "finish",
+      "label": "Alliance's Victory",
+      "position": [3900, 450],
+      "text": [
+        "🤝 Your alliance with the Sidhe proves decisive.",
+        "Together, you drive back the Fomorians and heal the breach between worlds.",
+        "You become a bridge between realms, respected by both.",
+        "Peace is maintained through understanding and cooperation.",
+        "✨ Achievement: Guardian of Balance"
+      ]
+    },
+    {
+      "id": 75,
+      "type": "skip",
+      "label": "Light's Champion",
+      "position": [3900, 600],
+      "text": [
+        "💫 Your humanity becomes your greatest strength.",
+        "The darkness cannot corrupt what remains true to itself.",
+        "The final battle awaits."
+      ],
+      "nextId": 97
+    },
+    {
+      "id": 76,
+      "type": "skip",
+      "label": "Army's Defeat",
+      "position": [3900, 750],
+      "text": [
+        "⚔️ You lead the charge against the Fomorian army.",
+        "The ancient sword proves decisive, its power breaking their ranks.",
+        "Victory is near, but the cost is high."
+      ],
+      "nextId": 98
+    },
+    {
+      "id": 77,
+      "type": "finish",
+      "label": "Ritual's End",
+      "position": [4200, 0],
+      "text": [
+        "🎯 You strike at the heart of the dark ritual.",
+        "The ancient sword cleaves through their magic, disrupting their plans.",
+        "Though many Fomorians escape, their power is broken.",
+        "The worlds are safe, thanks to your decisive action.",
+        "⚔️ Achievement: Warrior Champion"
+      ]
+    },
+    {
+      "id": 78,
+      "type": "action",
+      "label": "Protected Strike",
+      "position": [4200, 150],
+      "text": [
+        "🛡️ The amulet's protection gives you the confidence to act boldly.",
+        "You can now confront the heart of the darkness directly.",
+        "Time to end this."
+      ],
+      "actions": [
+        {
+          "label": "⚔️ Attack",
+          "id": 99
+        },
+        {
+          "label": "🌟 Banish",
+          "id": 100
+        }
+      ]
+    },
+    {
+      "id": 79,
+      "type": "action",
+      "label": "Knowledge's Price",
+      "position": [4200, 300],
+      "text": [
+        "📚 The scroll's knowledge reveals the true price of victory.",
+        "You can save both worlds, but the cost will be steep.",
+        "The choice must be made now."
+      ],
+      "actions": [
+        {
+          "label": "💫 Pay price",
+          "id": 34
+        },
+        {
+          "label": "🔍 Find alternative",
+          "id": 67
+        }
+      ]
+    },
+    {
+      "id": 80,
+      "type": "skip",
+      "label": "Final Charge",
+      "position": [4200, 450],
+      "text": [
+        "⚔️ You lead the final charge against the Fomorian forces.",
+        "Your warriors follow without hesitation, inspired by your courage.",
+        "The battle that follows will become legend."
+      ],
+      "nextId": 98
+    },
+    {
+      "id": 81,
+      "type": "finish",
+      "label": "Champion's Duel",
+      "position": [4200, 600],
+      "text": [
+        "🎯 You challenge the Fomorian leader to single combat.",
+        "The duel is fierce, but your training proves superior.",
+        "With their leader fallen, the invasion crumbles.",
+        "Songs will be sung of this day for generations.",
+        "⚔️ Achievement: Warrior Champion"
+      ]
+    },
+    {
+      "id": 82,
+      "type": "action",
+      "label": "Balanced Victory",
+      "position": [4200, 750],
+      "text": [
+        "☯️ Your mastery of both combat and magic gives you unique advantages.",
+        "The final confrontation approaches.",
+        "How will you use your diverse skills?"
+      ],
+      "actions": [
+        {
+          "label": "🌟 Seal breach",
+          "id": 88
+        },
+        {
+          "label": "⚔️ Lead battle",
+          "id": 89
+        }
+      ]
+    },
+    {
+      "id": 83,
+      "type": "finish",
+      "label": "Redemption",
+      "position": [4500, 0],
+      "text": [
+        "🤝 Your words reach through Aidan's corruption.",
+        "Together, you find a way to seal the breach without further bloodshed.",
+        "Though the price is high, both mentor and apprentice survive to protect the realms.",
+        "Your compassion proves stronger than darkness.",
+        "✨ Achievement: Guardian of Balance"
+      ]
+    },
+    {
+      "id": 84,
+      "type": "skip",
+      "label": "Mentor's End",
+      "position": [4500, 150],
+      "text": [
+        "⚔️ With a heavy heart, you move to stop Aidan's madness.",
+        "The battle between mentor and apprentice shakes the very foundations of reality.",
+        "Only one can walk away."
+      ],
+      "nextId": 99
+    },
+    {
+      "id": 85,
+      "type": "action",
+      "label": "Network Exposed",
+      "position": [4500, 300],
+      "text": [
+        "👥 The corrupt druids' network lies exposed before you.",
+        "You must decide how to deal with this threat once and for all.",
+        "The future of both worlds hangs on your choice."
+      ],
+      "actions": [
+        {
+          "label": "⚖️ Justice",
+          "id": 83
+        },
+        {
+          "label": "⚔️ Vengeance",
+          "id": 84
+        }
+      ]
+    },
+    {
+      "id": 86,
+      "type": "skip",
+      "label": "United Strength",
+      "position": [4500, 450],
+      "text": [
+        "🤝 Your allied forces stand ready for the final battle.",
+        "The power of unity flows through your ranks.",
+        "Victory seems within reach."
+      ],
+      "nextId": 98
+    },
+    {
+      "id": 87,
+      "type": "action",
+      "label": "Decisive Moment",
+      "position": [4500, 600],
+      "text": [
+        "⚡ Your attack catches the Fomorians at their weakest.",
+        "But they're still dangerous - perhaps even more so in their desperation.",
+        "The final moment is here."
+      ],
+      "actions": [
+        {
+          "label": "💫 End this",
+          "id": 100
+        },
+        {
+          "label": "🤝 Offer mercy",
+          "id": 83
+        }
+      ]
+    },
+    {
+      "id": 88,
+      "type": "skip",
+      "label": "Sealing Fate",
+      "position": [4500, 750],
+      "text": [
+        "🌟 You channel all your power into sealing the breach.",
+        "The very fabric of reality trembles at your effort.",
+        "The moment of truth arrives."
+      ],
+      "nextId": 34
+    },
+    {
+      "id": 89,
+      "type": "skip",
+      "label": "Last Battle",
+      "position": [4800, 0],
+      "text": [
+        "⚔️ You choose to fight on, leading the charge against the remaining Fomorians.",
+        "Your courage inspires others to greatness.",
+        "The end is in sight."
+      ],
+      "nextId": 35
+    },
+    {
+      "id": 90,
+      "type": "finish",
+      "label": "United Victory",
+      "position": [4800, 150],
+      "text": [
+        "🤝 Together with your allies, you complete the sealing ritual.",
+        "The combined power of many proves stronger than the sacrifice of one.",
+        "The breach is sealed, and both worlds are saved through cooperation.",
+        "You remain as a guardian, ensuring peace between realms.",
+        "✨ Achievement: Guardian of Balance"
+      ]
+    },
+    {
+      "id": 91,
+      "type": "action",
+      "label": "Ancient Ritual",
+      "position": [4800, 300],
+      "text": [
+        "📜 The alternative ritual is complex and dangerous.",
+        "It requires perfect timing and absolute focus.",
+        "One mistake could doom both worlds."
+      ],
+      "actions": [
+        {
+          "label": "✨ Risk ritual",
+          "id": 90
+        },
+        {
+          "label": "💫 Safe sacrifice",
+          "id": 66
+        }
+      ]
+    },
+    {
+      "id": 92,
+      "type": "skip",
+      "label": "Nature's Power",
+      "position": [4800, 450],
+      "text": [
+        "🌿 The power of nature itself flows through you.",
+        "You understand now how to heal the breach without destruction.",
+        "The time has come."
+      ],
+      "nextId": 90
+    },
+    {
+      "id": 93,
+      "type": "action",
+      "label": "Power's Choice",
+      "position": [4800, 600],
+      "text": [
+        "⚫ Dark power courses through your veins, tempting and dangerous.",
+        "You stand at the crossroads of light and shadow.",
+        "Your next choice will determine your fate."
+      ],
+      "actions": [
+        {
+          "label": "🌓 Find balance",
+          "id": 70
+        },
+        {
+          "label": "⚫ Embrace dark",
+          "id": 71
+        }
+      ]
+    },
+    {
+      "id": 94,
+      "type": "skip",
+      "label": "Sidhe Alliance",
+      "position": [4800, 750],
+      "text": [
+        "👥 The Sidhe court mobilizes at your warning.",
+        "Their ancient magics combine with your power.",
+        "Together, you prepare for the final confrontation."
+      ],
+      "nextId": 74
+    },
+    {
+      "id": 95,
+      "type": "skip",
+      "label": "Critical Strike",
+      "position": [5100, 0],
+      "text": [
+        "🎯 You strike at the heart of the Fomorian ritual.",
+        "Your timing is perfect, your aim true.",
+        "The final moment approaches."
+      ],
+      "nextId": 77
+    },
+    {
+      "id": 96,
+      "type": "action",
+      "label": "New Power",
+      "position": [5100, 150],
+      "text": [
+        "✨ Your transformed nature gives you unique insights and abilities.",
+        "You can now see the path to victory clearly.",
+        "The choice is yours."
+      ],
+      "actions": [
+        {
+          "label": "🌟 Use power",
+          "id": 90
+        },
+        {
+          "label": "💫 Transform more",
+          "id": 71
+        }
+      ]
+    },
+    {
+      "id": 97,
+      "type": "skip",
+      "label": "True Path",
+      "position": [5100, 300],
+      "text": [
+        "💫 Your unwavering spirit lights the way forward.",
+        "The darkness cannot stand against your inner strength.",
+        "Victory awaits."
+      ],
+      "nextId": 35
+    },
+    {
+      "id": 98,
+      "type": "finish",
+      "label": "Hero's Victory",
+      "position": [5100, 450],
+      "text": [
+        "⚔️ Your leadership proves decisive in the final battle.",
+        "The Fomorians are driven back, their power broken.",
+        "Though the cost is high, both worlds are saved.",
+        "Your name will be remembered as a legendary warrior.",
+        "⚔️ Achievement: Warrior Champion"
+      ]
+    },
+    {
+      "id": 99,
+      "type": "skip",
+      "label": "Final Strike",
+      "position": [5100, 600],
+      "text": [
+        "⚔️ You launch your attack, protected by ancient magic.",
+        "The battle that follows will be spoken of for generations.",
+        "The end draws near."
+      ],
+      "nextId": 98
+    },
+    {
+      "id": 100,
+      "type": "skip",
+      "label": "Banishment",
+      "position": [5100, 750],
+      "text": [
+        "🌟 You channel pure power, banishing the darkness.",
+        "The Fomorians' connection to this world is severed.",
+        "One final task remains."
+      ],
+      "nextId": 90
+    }
+  ]
+}
