@@ -2,7 +2,7 @@
 
 A web app for building **Brightwood Stories**.
 
-Live: https://brightwood-builder.onrender.com
+Live: https://builder.brightwood.ink
 
 UI languages:
 
@@ -18,9 +18,9 @@ Brightwood Stories Telegram bot: [@BrightwoodBot](https://t.me/BrightwoodBot) �
 
 You can view and edit several test stories:
 
-- [Test](https://brightwood-builder.onrender.com?edit=https://raw.githubusercontent.com/kapxapot/brightwood-builder/master/public/stories/test.json&lng=ru) 🇷🇺
-- [Mystery](https://brightwood-builder.onrender.com?edit=https://raw.githubusercontent.com/kapxapot/brightwood-builder/master/public/stories/mystery.json&lng=ru) 🇷🇺
-- [Kolobok](https://brightwood-builder.onrender.com?edit=https://raw.githubusercontent.com/kapxapot/brightwood-builder/master/public/stories/kolobok.json&lng=en) 🇬🇧
+- [Test](https://builder.brightwood.ink?edit=https://raw.githubusercontent.com/kapxapot/brightwood-builder/master/public/stories/test.json&lng=ru) 🇷🇺
+- [Mystery](https://builder.brightwood.ink?edit=https://raw.githubusercontent.com/kapxapot/brightwood-builder/master/public/stories/mystery.json&lng=ru) 🇷🇺
+- [Kolobok](https://builder.brightwood.ink?edit=https://raw.githubusercontent.com/kapxapot/brightwood-builder/master/public/stories/kolobok.json&lng=en) 🇬🇧
 
 ## Demos
 
