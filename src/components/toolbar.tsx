@@ -228,11 +228,11 @@ export default function Toolbar({ onNew, onSave, onLoad, onImport, onExport, exp
       <div className={`space-y-3 ${expanded ? "p-2" : "p-1.5"}`}>
         <div className={`flex ${!expanded && "flex-col"} items-center justify-center gap-3`}>
           <Tooltip
-            tooltip={t("Brightwood Bot (Telegram)")}
+            tooltip={t("Brightwood Stories")}
             side={expanded ? "top" : "right"}
           >
             <a
-              href="https://t.me/BrightwoodBot"
+              href="https://brightwood.ink"
               target="_blank"
               className="opacity-75 hover:opacity-100 transition-opacity"
             >
@@ -254,6 +254,15 @@ export default function Toolbar({ onNew, onSave, onLoad, onImport, onExport, exp
               <GitHubIcon className="fill-gray-600 hover:fill-purple-800 w-8 h-8 transition-colors" />
             </a>
           </Tooltip>
+        </div>
+
+        <div className="text-center">
+          <a
+            href="https://t.me/BrightwoodBot"
+            target="_blank"
+          >
+            {expanded ? "Brightwood Bot" : "Bot"}
+          </a>
         </div>
 
         <div className={expanded ? "text-right mr-1" : "text-center"}>
