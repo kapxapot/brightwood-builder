@@ -193,8 +193,8 @@
       "type": "skip",
       "label": "Dust Archive",
       "text": [
-        "📚 The state archive smells of cedar dust and old lamp oil. A bronze-bound chest sits open on the table, one seal cut too neatly to be honest.",
-        "Whoever touched it knew court habits better than any common thief."
+        "📚 A page hustles you from Iria's chamber to the state archive, where cedar dust and old lamp oil hang over a bronze-bound chest left open on the table.",
+        "One seal has been cut too neatly to be honest; whoever touched it knew court habits better than any common thief."
       ],
       "nextId": 14,
       "position": [
@@ -207,7 +207,7 @@
       "type": "skip",
       "label": "Young Prince",
       "text": [
-        "👑 Prince Alexen is in a schoolroom with river maps and toy soldiers arranged like real provinces.",
+        "👑 Another summons sends you to Prince Alexen's schoolroom, where river maps and toy soldiers are arranged like real provinces.",
         "He asks whether old books can stop men from killing each other, and you cannot answer quickly."
       ],
       "nextId": 14,
@@ -221,7 +221,7 @@
       "type": "skip",
       "label": "Salt Jetty",
       "text": [
-        "⚓ At the salt jetty, Tamar Kesri steps ashore in dark riding silk, composed enough to make the whole harbor look theatrical.",
+        "⚓ Down at the salt jetty, the Kardeshi envoy Tamar Kesri steps ashore in dark riding silk, composed enough to make the whole harbor look theatrical.",
         "When Tamar learns your name, the envoy's expression suggests Kardesh keeps better records than Selucor admits."
       ],
       "nextId": 14,
@@ -235,8 +235,8 @@
       "type": "action",
       "label": "First Duty",
       "text": [
-        "🗝️ Iria wants movement before rumor hardens into certainty.",
-        "You can inspect the broken archive chest, speak properly with Tamar, or walk the painted gallery where the founders hid their history in plain sight."
+        "🗝️ After the first rush of messages, Iria wants movement before rumor hardens into certainty.",
+        "You can inspect the broken archive chest, go greet the Kardeshi envoy Tamar Kesri, or walk the painted gallery where the founders hid their history in plain sight."
       ],
       "actions": [
         {
@@ -244,7 +244,7 @@
           "id": 15
         },
         {
-          "label": "🤝 Meet Tamar",
+          "label": "🤝 Meet envoy Tamar",
           "id": 16
         },
         {
