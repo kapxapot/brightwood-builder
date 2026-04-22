@@ -110,7 +110,7 @@
           "id": 8
         },
         {
-          "label": "🫶 Stay careful",
+          "label": "😌 Stay careful",
           "id": 9
         }
       ],
@@ -152,7 +152,7 @@
       "type": "skip",
       "label": "Held Breath",
       "text": [
-        "🫶 You keep your voice steady, but Julien notices the caution instantly and lets his own smile soften into patience.",
+        "😌 You keep your voice steady, but Julien notices the caution instantly and lets his own smile soften into patience.",
         "\"We can begin again slowly,\" he says. \"I know better than to rush you this time.\""
       ],
       "nextId": 10,
@@ -401,7 +401,7 @@
       "label": "Garden Turn",
       "text": [
         "🌹 The crowd spills you toward the cliff garden, where Julien waits beside a trellis of white roses as if he guessed you would choose the quieter path.",
-        "\"There you are,\" he says, relief too quick to hide."
+        "\"There you are,\" he says, relief too quick to hide. Then he holds out a folded note edged with pressed petals. \"I wrote this in case I lost my nerve.\""
       ],
       "nextId": 26,
       "position": [
@@ -414,7 +414,7 @@
       "type": "skip",
       "label": "Pastry Note",
       "text": [
-        "🥐 Theo intercepts you with flour on his sleeves and mischief in his smile. \"Looking for Julien? Then you might want this first.\"",
+        "🥐 Theo from the bakery intercepts you with flour on his sleeves and mischief in his smile. \"Looking for Julien? Then you might want this first.\"",
         "He passes you a folded note edged with pressed petals."
       ],
       "nextId": 26,
@@ -774,7 +774,7 @@
       "label": "Scattered Envelopes",
       "text": [
         "💌 A gust barrels through the lane and lifts half a stack of festival envelopes into the air like startled birds.",
-        "You lunge after them, but Bellarose decides whether the missing note lands with you, with Theo, or back at the atelier."
+        "You lunge after them, but Bellarose decides whether the missing note lands with you, with Theo from the bakery, or back at the atelier."
       ],
       "links": [
         {
@@ -814,7 +814,7 @@
       "type": "skip",
       "label": "Theo's Grin",
       "text": [
-        "🥐 Theo snatches a drifting envelope before it hits a tart stand and hands it over with a knowing grin.",
+        "🥐 Theo from the bakery snatches a drifting envelope before it hits a tart stand and hands it over with a knowing grin.",
         "\"He really should learn subtler methods,\" he says, but his voice is kind."
       ],
       "nextId": 48,
@@ -938,7 +938,7 @@
       "type": "skip",
       "label": "Terrace Pause",
       "text": [
-        "🥐 Theo catches you on the bakery terrace, presses a sugared apricot into your hand, and says, \"For stamina, not nerves.\"",
+        "🥐 Theo, flour-dusted from the bakery below, catches you on the terrace, presses a sugared apricot into your hand, and says, \"For stamina, not nerves.\"",
         "His teasing leaves you smiling when you continue upward."
       ],
       "nextId": 56,
@@ -1339,7 +1339,7 @@
       "label": "Dawn Promise",
       "text": [
         "🌅 Before you part, Julien asks if you will meet him at dawn, when the old observatory opens for the festival's first light viewing.",
-        "You can promise to come, stay with Mireille's conservatory work, or ask Theo for one last measure of advice."
+        "You can promise to come, stay with Mireille's conservatory work, or ask Theo at the bakery for one last measure of advice."
       ],
       "actions": [
         {
@@ -1393,7 +1393,7 @@
       "type": "skip",
       "label": "Theo's Counsel",
       "text": [
-        "🥐 Theo listens while icing tiny lemon cakes, then points the spoon at you like a magistrate.",
+        "🥐 Theo from the bakery listens while icing tiny lemon cakes, then points the spoon at you like a magistrate.",
         "\"Go where your heart speaks clearly,\" he says. \"And if it stays silent, that is an answer too.\""
       ],
       "nextId": 81,
@@ -1834,7 +1834,7 @@
       "type": "skip",
       "label": "Small Talk",
       "text": [
-        "🫖 Sabine asks about the conservatory as though it were a charming hobby and not a living promise.",
+        "☕ Sabine asks about the conservatory as though it were a charming hobby and not a living promise.",
         "Julien's jaw tightens so slightly only someone studying him would see it."
       ],
       "nextId": 106,

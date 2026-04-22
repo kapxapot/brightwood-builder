@@ -40,7 +40,7 @@
 6. Aim to create long story threads that can entertwine with each other and lead to several endings eventually.
 7. There also can be plot cycles that return to some earlier nodes.
 8. Don't overuse the time traveling and parallel universe plots, keep it simple but engaging.
-9. Use emoji, aim to use at least one emoji per node. Use only universally available emojis.
+9. Use emoji, aim to use at least one emoji per node. Use only browser-safe, broadly supported emoji. Target emoji that render correctly in current desktop Chrome, Edge, Firefox, and Safari on common Windows and macOS systems.
 10. You can also put an emoji on a separate text line to emphasize it's effect.
 11. Use `<b></b>` tags for bold text and `<i></i>` tags for italic where appropriate.
 12. Don't create long action labels, make them 2-3 words max. Use emoji in action labels (it is not necessary but add them where suitable).
