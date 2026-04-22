@@ -1,0 +1,2104 @@
+{
+  "id": "c4d8e9b1-6a2f-4f07-9cb4-3e5d2a7f91b8",
+  "title": "🌙 Moonlit Bellarose",
+  "description": "A romantic festival story of letters, music, and second chances in the cliffside town of Bellarose",
+  "language": "en",
+  "startId": 1,
+  "position": [
+    30,
+    30
+  ],
+  "nodes": [
+    {
+      "id": 1,
+      "type": "skip",
+      "label": "Arrival",
+      "text": [
+        "🌙 Bellarose glows under strings of lantern light as you arrive at the old glass conservatory with dust on your cuffs and salt in the air.",
+        "Aunt Mireille is waiting with pruning shears, and somewhere beyond the square a violin rises in a melody you have not heard since your last summer here."
+      ],
+      "nextId": 2,
+      "position": [
+        100,
+        100
+      ]
+    },
+    {
+      "id": 2,
+      "type": "action",
+      "label": "First Turn",
+      "text": [
+        "🎐 The festival has already begun. Mireille points toward the conservatory doors, the pier shimmers below the cliff, and the market bells ring from the square.",
+        "Somewhere in that bright confusion is Julien Marceau, the almost-love Bellarose never quite let you forget."
+      ],
+      "actions": [
+        {
+          "label": "🌿 Help inside",
+          "id": 3
+        },
+        {
+          "label": "🌊 Walk pier",
+          "id": 4
+        },
+        {
+          "label": "🛍️ Cross market",
+          "id": 5
+        }
+      ],
+      "position": [
+        100,
+        360
+      ]
+    },
+    {
+      "id": 3,
+      "type": "skip",
+      "label": "Glass Doors",
+      "text": [
+        "🌿 You slip inside the conservatory and catch Julien on a ladder, tying moon-silver ribbon between iron arches.",
+        "He looks down, startled, then smiles as if he had been expecting you and only forgot to admit it to himself."
+      ],
+      "nextId": 6,
+      "position": [
+        100,
+        620
+      ]
+    },
+    {
+      "id": 4,
+      "type": "skip",
+      "label": "Pier Glimpse",
+      "text": [
+        "🌊 At the pier, lantern boats knock gently against the wood while Julien tunes his violin for the evening launch.",
+        "When he sees you on the steps, his bow stills in midair, and the years between your last goodbye seem to fold like paper."
+      ],
+      "nextId": 6,
+      "position": [
+        420,
+        100
+      ]
+    },
+    {
+      "id": 5,
+      "type": "skip",
+      "label": "Market Glimpse",
+      "text": [
+        "🛍️ The market is all roses, sugared almonds, and silk masks. Julien is bargaining with Inez over ribbon colors when he turns and finds you in the crowd.",
+        "The laugh that leaves him is soft and disbelieving, as if Bellarose has handed him a secret he wanted back."
+      ],
+      "nextId": 6,
+      "position": [
+        420,
+        360
+      ]
+    },
+    {
+      "id": 6,
+      "type": "action",
+      "label": "First Words",
+      "text": [
+        "💫 Julien closes the distance with careful slowness. \"You came back,\" he says, like he is testing whether hope sounds safer out loud.",
+        "The town noise fades, leaving only the two of you and the pulse of everything unsaid."
+      ],
+      "actions": [
+        {
+          "label": "🤍 Smile first",
+          "id": 7
+        },
+        {
+          "label": "😏 Tease him",
+          "id": 8
+        },
+        {
+          "label": "🫶 Stay careful",
+          "id": 9
+        }
+      ],
+      "position": [
+        420,
+        620
+      ]
+    },
+    {
+      "id": 7,
+      "type": "skip",
+      "label": "Soft Return",
+      "text": [
+        "🤍 You smile before you can help it, and Julien answers with the same old crooked warmth that once ruined your ability to stay sensible.",
+        "\"Then Bellarose is luckier than usual tonight,\" he murmurs."
+      ],
+      "nextId": 10,
+      "position": [
+        740,
+        100
+      ]
+    },
+    {
+      "id": 8,
+      "type": "skip",
+      "label": "Bright Tease",
+      "text": [
+        "😏 \"You still greet people like a confession,\" you say. Julien laughs, color touching his cheeks.",
+        "\"Only the dangerous ones,\" he replies, and the answer lands closer to your heart than you planned."
+      ],
+      "nextId": 10,
+      "position": [
+        740,
+        360
+      ]
+    },
+    {
+      "id": 9,
+      "type": "skip",
+      "label": "Held Breath",
+      "text": [
+        "🫶 You keep your voice steady, but Julien notices the caution instantly and lets his own smile soften into patience.",
+        "\"We can begin again slowly,\" he says. \"I know better than to rush you this time.\""
+      ],
+      "nextId": 10,
+      "position": [
+        740,
+        620
+      ]
+    },
+    {
+      "id": 10,
+      "type": "redirect",
+      "label": "Festival Pull",
+      "text": [
+        "🎭 A burst of festival noise swallows the moment. Mireille calls for help with the vines, Celia waves from the lantern steps, and Inez runs past chasing a silver mask.",
+        "Bellarose has a way of deciding that tenderness must survive interruption before it is trusted."
+      ],
+      "links": [
+        {
+          "weight": 4,
+          "id": 11
+        },
+        {
+          "weight": 3,
+          "id": 12
+        },
+        {
+          "weight": 3,
+          "id": 13
+        }
+      ],
+      "position": [
+        1060,
+        100
+      ]
+    },
+    {
+      "id": 11,
+      "type": "skip",
+      "label": "Vine Duty",
+      "text": [
+        "🌿 Aunt Mireille presses twine and pruning gloves into your hands, pretending not to notice how often Julien glances your way from the roses.",
+        "\"If romance wants space,\" she says dryly, \"it can help me train these moonflowers first.\""
+      ],
+      "nextId": 14,
+      "position": [
+        1060,
+        360
+      ]
+    },
+    {
+      "id": 12,
+      "type": "skip",
+      "label": "Lantern Errand",
+      "text": [
+        "🕯️ Celia recruits you to carry lantern oil to the pier, grinning like someone who enjoys being useful at exactly the wrong moment.",
+        "Julien follows with a crate of candles, and suddenly the short walk feels suspiciously like a gift."
+      ],
+      "nextId": 14,
+      "position": [
+        1060,
+        620
+      ]
+    },
+    {
+      "id": 13,
+      "type": "skip",
+      "label": "Mask Chase",
+      "text": [
+        "🎭 Inez nearly collides with you and thrusts a silver mask into your hands before darting after the rest of her runaway ribbons.",
+        "Julien reaches for the same mask a beat later, your fingers brushing over cool painted enamel."
+      ],
+      "nextId": 14,
+      "position": [
+        1380,
+        100
+      ]
+    },
+    {
+      "id": 14,
+      "type": "action",
+      "label": "Afternoon Choice",
+      "text": [
+        "🌤️ The interruption settles into laughter instead of disappointment. Julien tucks a stray ribbon into his pocket and asks how you want to spend the next hour.",
+        "His tone is casual, but Bellarose teaches you to hear longing under lightness."
+      ],
+      "actions": [
+        {
+          "label": "🌿 Stay nearby",
+          "id": 15
+        },
+        {
+          "label": "🌊 Take walk",
+          "id": 16
+        },
+        {
+          "label": "🛍️ Browse stalls",
+          "id": 17
+        }
+      ],
+      "position": [
+        1380,
+        360
+      ]
+    },
+    {
+      "id": 15,
+      "type": "skip",
+      "label": "Near Work",
+      "text": [
+        "🌿 You stay near the conservatory, sorting ivy and polishing cloudy panes while Julien works within arm's reach.",
+        "Every brushed shoulder feels accidental only if you are generous enough to lie to yourself."
+      ],
+      "nextId": 18,
+      "position": [
+        1380,
+        620
+      ]
+    },
+    {
+      "id": 16,
+      "type": "skip",
+      "label": "Pier Walk",
+      "text": [
+        "🌊 You drift down the promenade together, speaking of small things until the silence between them turns warm instead of awkward.",
+        "Julien points out the best place to watch the lantern boats and remembers, annoyingly well, how you take your tea."
+      ],
+      "nextId": 18,
+      "position": [
+        1700,
+        100
+      ]
+    },
+    {
+      "id": 17,
+      "type": "skip",
+      "label": "Market Stroll",
+      "text": [
+        "🛍️ You wander the market with Julien at your side, sharing sugared pear slices and pausing at every glittering booth.",
+        "He keeps choosing things he thinks you'll like, then pretending each choice was chance."
+      ],
+      "nextId": 18,
+      "position": [
+        1700,
+        360
+      ]
+    },
+    {
+      "id": 18,
+      "type": "action",
+      "label": "Gentle Questions",
+      "text": [
+        "🎻 A breeze carries violin notes from the square, and the conversation tilts toward the things neither of you has named yet.",
+        "You can ask about the summer you left, the Paris rumor circling him, or keep the hour bright a little longer."
+      ],
+      "actions": [
+        {
+          "label": "🕰️ Ask past",
+          "id": 19
+        },
+        {
+          "label": "🚆 Ask Paris",
+          "id": 20
+        },
+        {
+          "label": "✨ Keep light",
+          "id": 21
+        }
+      ],
+      "position": [
+        1700,
+        620
+      ]
+    },
+    {
+      "id": 19,
+      "type": "skip",
+      "label": "Summer Echo",
+      "text": [
+        "🕰️ Julien studies the sea before answering. \"I kept thinking you would write,\" he says, not accusing, only honest.",
+        "The quiet hurts because it deserves to."
+      ],
+      "nextId": 22,
+      "position": [
+        2020,
+        100
+      ]
+    },
+    {
+      "id": 20,
+      "type": "skip",
+      "label": "Paris Whisper",
+      "text": [
+        "🚆 At the word Paris, Julien's expression flickers. \"It is an offer,\" he admits, \"not a promise.\"",
+        "Then he adds, almost too softly, \"I have not decided what kind of life I want it to buy.\""
+      ],
+      "nextId": 22,
+      "position": [
+        2020,
+        360
+      ]
+    },
+    {
+      "id": 21,
+      "type": "skip",
+      "label": "Bright Deflect",
+      "text": [
+        "✨ You steer the talk toward festival gossip, and Julien lets you, though the look he gives you is tender with patience.",
+        "\"All right,\" he says. \"We can borrow one easy hour before Bellarose asks for honesty again.\""
+      ],
+      "nextId": 22,
+      "position": [
+        2020,
+        620
+      ]
+    },
+    {
+      "id": 22,
+      "type": "redirect",
+      "label": "Bell Chorus",
+      "text": [
+        "🔔 The chapel bells ring for the afternoon parade, and the square breaks apart into moving silk, petals, and street musicians.",
+        "You lose Julien for one breath, then two, and the town offers three possible ways to find him again."
+      ],
+      "links": [
+        {
+          "weight": 4,
+          "id": 23
+        },
+        {
+          "weight": 3,
+          "id": 24
+        },
+        {
+          "weight": 2,
+          "id": 25
+        }
+      ],
+      "position": [
+        2340,
+        100
+      ]
+    },
+    {
+      "id": 23,
+      "type": "skip",
+      "label": "Garden Turn",
+      "text": [
+        "🌹 The crowd spills you toward the cliff garden, where Julien waits beside a trellis of white roses as if he guessed you would choose the quieter path.",
+        "\"There you are,\" he says, relief too quick to hide."
+      ],
+      "nextId": 26,
+      "position": [
+        2340,
+        360
+      ]
+    },
+    {
+      "id": 24,
+      "type": "skip",
+      "label": "Pastry Note",
+      "text": [
+        "🥐 Theo intercepts you with flour on his sleeves and mischief in his smile. \"Looking for Julien? Then you might want this first.\"",
+        "He passes you a folded note edged with pressed petals."
+      ],
+      "nextId": 26,
+      "position": [
+        2340,
+        620
+      ]
+    },
+    {
+      "id": 25,
+      "type": "skip",
+      "label": "Promenade Loop",
+      "text": [
+        "🌊 The crowd sweeps you clear to the promenade before you can protest, leaving you laughing breathlessly at Bellarose's terrible sense of timing.",
+        "When you look up, the sea is beside you and finding Julien means beginning that walk again."
+      ],
+      "nextId": 16,
+      "position": [
+        2660,
+        100
+      ]
+    },
+    {
+      "id": 26,
+      "type": "action",
+      "label": "Folded Note",
+      "text": [
+        "💌 The note is unmistakably Julien's hand, but the seal is still closed and slightly rain-smudged.",
+        "You can open it now, return it untouched, or keep it close until evening."
+      ],
+      "actions": [
+        {
+          "label": "📖 Open now",
+          "id": 27
+        },
+        {
+          "label": "🤲 Return it",
+          "id": 28
+        },
+        {
+          "label": "🌙 Wait tonight",
+          "id": 29
+        }
+      ],
+      "position": [
+        2660,
+        360
+      ]
+    },
+    {
+      "id": 27,
+      "type": "skip",
+      "label": "Opened Heart",
+      "text": [
+        "📖 Inside is only a line: \"If Bellarose gives me courage, meet me where the glass catches <b>sunset</b>.\"",
+        "The simplicity of it makes your pulse jump harder than a speech would have."
+      ],
+      "nextId": 30,
+      "position": [
+        2660,
+        620
+      ]
+    },
+    {
+      "id": 28,
+      "type": "skip",
+      "label": "Honest Return",
+      "text": [
+        "🤲 You find Julien near the flower cart and offer the note back unopened. His surprise melts into gratitude.",
+        "\"Then I will have to be brave in person,\" he says, voice gone low."
+      ],
+      "nextId": 30,
+      "position": [
+        2980,
+        100
+      ]
+    },
+    {
+      "id": 29,
+      "type": "skip",
+      "label": "Hidden Promise",
+      "text": [
+        "🌙 You slip the note into your pocket without opening it. The secret of it warms against your palm all afternoon.",
+        "When Julien catches you touching the folded paper later, his smile turns helplessly hopeful."
+      ],
+      "nextId": 30,
+      "position": [
+        2980,
+        360
+      ]
+    },
+    {
+      "id": 30,
+      "type": "action",
+      "label": "Sunset Route",
+      "text": [
+        "🌇 As the light turns honey-gold, Julien asks where you want the evening to begin.",
+        "He offers the conservatory at sunset, the pier at lantern launch, or the rehearsal hall before the waltz."
+      ],
+      "actions": [
+        {
+          "label": "🏛️ Glass sunset",
+          "id": 31
+        },
+        {
+          "label": "🕯️ Lantern pier",
+          "id": 32
+        },
+        {
+          "label": "🎼 Hear rehearsal",
+          "id": 33
+        }
+      ],
+      "position": [
+        2980,
+        620
+      ]
+    },
+    {
+      "id": 31,
+      "type": "skip",
+      "label": "Golden Glass",
+      "text": [
+        "🏛️ Inside the conservatory, the fading sun turns every pane into liquid amber and lays stripes of light across Julien's sleeves.",
+        "He looks suddenly younger there, and far more dangerous to your composure."
+      ],
+      "nextId": 34,
+      "position": [
+        3300,
+        100
+      ]
+    },
+    {
+      "id": 32,
+      "type": "skip",
+      "label": "Lantern Glow",
+      "text": [
+        "🕯️ At the pier, lanterns are being lit one by one, each flame mirrored in the darkening water.",
+        "Julien walks close enough for your hands to brush whenever the steps narrow."
+      ],
+      "nextId": 34,
+      "position": [
+        3300,
+        360
+      ]
+    },
+    {
+      "id": 33,
+      "type": "skip",
+      "label": "Empty Hall",
+      "text": [
+        "🎼 The rehearsal hall is almost empty, save for scattered sheet music and Julien's violin case resting open like a held breath.",
+        "He plays three quiet bars just for you, and the room changes shape around the sound."
+      ],
+      "nextId": 34,
+      "position": [
+        3300,
+        620
+      ]
+    },
+    {
+      "id": 34,
+      "type": "redirect",
+      "label": "Summer Rain",
+      "text": [
+        "☔ Bellarose weather changes with theatrical timing. Rain sweeps over the festival in a silver curtain, sending everyone running for cover.",
+        "Whether you shelter together or lose a few precious minutes to the storm depends entirely on where the crowd breaks."
+      ],
+      "links": [
+        {
+          "weight": 5,
+          "id": 35
+        },
+        {
+          "weight": 3,
+          "id": 36
+        },
+        {
+          "weight": 2,
+          "id": 30
+        }
+      ],
+      "position": [
+        3620,
+        100
+      ]
+    },
+    {
+      "id": 35,
+      "type": "skip",
+      "label": "Shared Shelter",
+      "text": [
+        "☔ You and Julien duck beneath the conservatory arcade, laughing as rain freckles your sleeves and hair.",
+        "He reaches out to brush a wet strand from your temple, then seems unable to remember why he should stop."
+      ],
+      "nextId": 37,
+      "position": [
+        3620,
+        360
+      ]
+    },
+    {
+      "id": 36,
+      "type": "skip",
+      "label": "Separate Shelter",
+      "text": [
+        "🌧️ The crowd cuts between you, and by the time you reach shelter Julien is across the lane under striped awning light.",
+        "He lifts two fingers in apology, all fondness and frustration across the rain."
+      ],
+      "nextId": 37,
+      "position": [
+        3620,
+        620
+      ]
+    },
+    {
+      "id": 37,
+      "type": "action",
+      "label": "Near Confession",
+      "text": [
+        "💞 When the rain softens, Julien steps closer with the look of a man standing at the edge of a sentence he has rewritten too many times.",
+        "You can press for the truth, answer with touch, or let the moment stay unfinished."
+      ],
+      "actions": [
+        {
+          "label": "💬 Ask plainly",
+          "id": 38
+        },
+        {
+          "label": "🤍 Touch hand",
+          "id": 39
+        },
+        {
+          "label": "🙂 Let it rest",
+          "id": 40
+        }
+      ],
+      "position": [
+        3940,
+        100
+      ]
+    },
+    {
+      "id": 38,
+      "type": "skip",
+      "label": "Plain Truth",
+      "text": [
+        "💬 \"What were you going to say?\" you ask. Julien exhales and almost smiles at your courage.",
+        "\"That I made leaving you once look easier than it was,\" he admits."
+      ],
+      "nextId": 41,
+      "position": [
+        3940,
+        360
+      ]
+    },
+    {
+      "id": 39,
+      "type": "skip",
+      "label": "Gentle Touch",
+      "text": [
+        "🤍 Your fingers find his hand before your caution can object. Julien holds on with immediate, startled tenderness.",
+        "Whatever words fail him, his pulse does not."
+      ],
+      "nextId": 41,
+      "position": [
+        3940,
+        620
+      ]
+    },
+    {
+      "id": 40,
+      "type": "skip",
+      "label": "Unfinished Breath",
+      "text": [
+        "🙂 You save him from the edge of confession, and gratitude mixes strangely with regret in his eyes.",
+        "\"Then give me another chance later,\" he says."
+      ],
+      "nextId": 41,
+      "position": [
+        4260,
+        100
+      ]
+    },
+    {
+      "id": 41,
+      "type": "action",
+      "label": "Morning Plans",
+      "text": [
+        "🌤️ The next morning opens bright and salt-sweet, with half the town already shouting about festival lists and missing ribbons.",
+        "You can help Celia ready the lantern boats, join Inez at the mask atelier, or meet Julien early inside the conservatory."
+      ],
+      "actions": [
+        {
+          "label": "🕯️ Help Celia",
+          "id": 42
+        },
+        {
+          "label": "🎭 Join Inez",
+          "id": 43
+        },
+        {
+          "label": "🌿 Meet Julien",
+          "id": 44
+        }
+      ],
+      "position": [
+        4260,
+        360
+      ]
+    },
+    {
+      "id": 42,
+      "type": "skip",
+      "label": "Boat Morning",
+      "text": [
+        "🕯️ Celia has you knotting silver cords to paper lanterns while she watches you over the rims like a patient older sister.",
+        "\"If he looks at you any more obviously,\" she says, \"I may charge him pier fees.\""
+      ],
+      "nextId": 45,
+      "position": [
+        4260,
+        620
+      ]
+    },
+    {
+      "id": 43,
+      "type": "skip",
+      "label": "Mask Morning",
+      "text": [
+        "🎭 Inez's atelier smells like glue, lilies, and crushed velvet. She fits masks against your face while speculating shamelessly about kisses.",
+        "Somehow the silver half-mask she chooses makes you feel braver."
+      ],
+      "nextId": 45,
+      "position": [
+        4580,
+        100
+      ]
+    },
+    {
+      "id": 44,
+      "type": "skip",
+      "label": "Early Glass",
+      "text": [
+        "🌿 Julien is already inside the conservatory, sleeves rolled, coaxing a stubborn moonflower vine along the iron ribs.",
+        "In the cool morning hush, being alone with him feels more intimate than last night's storm."
+      ],
+      "nextId": 45,
+      "position": [
+        4580,
+        360
+      ]
+    },
+    {
+      "id": 45,
+      "type": "redirect",
+      "label": "Scattered Envelopes",
+      "text": [
+        "💌 A gust barrels through the lane and lifts half a stack of festival envelopes into the air like startled birds.",
+        "You lunge after them, but Bellarose decides whether the missing note lands with you, with Theo, or back at the atelier."
+      ],
+      "links": [
+        {
+          "weight": 4,
+          "id": 46
+        },
+        {
+          "weight": 3,
+          "id": 47
+        },
+        {
+          "weight": 2,
+          "id": 43
+        }
+      ],
+      "position": [
+        4580,
+        620
+      ]
+    },
+    {
+      "id": 46,
+      "type": "skip",
+      "label": "Fountain Catch",
+      "text": [
+        "⛲ One envelope slaps wetly against the fountain rim. Inside is a short invitation written in Julien's hand: \"Observatory steps at noon, if you come.\"",
+        "The paper smells faintly of cedar and rain."
+      ],
+      "nextId": 48,
+      "position": [
+        4900,
+        100
+      ]
+    },
+    {
+      "id": 47,
+      "type": "skip",
+      "label": "Theo's Grin",
+      "text": [
+        "🥐 Theo snatches a drifting envelope before it hits a tart stand and hands it over with a knowing grin.",
+        "\"He really should learn subtler methods,\" he says, but his voice is kind."
+      ],
+      "nextId": 48,
+      "position": [
+        4900,
+        360
+      ]
+    },
+    {
+      "id": 48,
+      "type": "action",
+      "label": "Noon Answer",
+      "text": [
+        "📝 Julien's invitation feels simple until it doesn't. Accepting means stepping closer to whatever Bellarose is building between you.",
+        "You can send a written reply, go in person without one, or keep your answer to yourself until noon."
+      ],
+      "actions": [
+        {
+          "label": "✍️ Write back",
+          "id": 49
+        },
+        {
+          "label": "🚶 Go yourself",
+          "id": 50
+        },
+        {
+          "label": "🤫 Say nothing",
+          "id": 51
+        }
+      ],
+      "position": [
+        4900,
+        620
+      ]
+    },
+    {
+      "id": 49,
+      "type": "skip",
+      "label": "Written Reply",
+      "text": [
+        "✍️ You write only, \"I will come if courage keeps pace with me.\" Celia volunteers to deliver it with indecent enthusiasm.",
+        "When Julien reads it across the square, he smiles into the paper."
+      ],
+      "nextId": 52,
+      "position": [
+        5220,
+        100
+      ]
+    },
+    {
+      "id": 50,
+      "type": "skip",
+      "label": "Quiet Resolve",
+      "text": [
+        "🚶 You choose not to hide behind ink and spend the morning doing everything a little too carefully.",
+        "The anticipation of seeing Julien makes even folding ribbon feel like a dangerous act."
+      ],
+      "nextId": 52,
+      "position": [
+        5220,
+        360
+      ]
+    },
+    {
+      "id": 51,
+      "type": "skip",
+      "label": "Pocket Secret",
+      "text": [
+        "🤫 You keep the invitation tucked close, answering no one and nothing.",
+        "The silence sharpens your thoughts instead of calming them."
+      ],
+      "nextId": 52,
+      "position": [
+        5220,
+        620
+      ]
+    },
+    {
+      "id": 52,
+      "type": "action",
+      "label": "Noon Paths",
+      "text": [
+        "🌤️ Noon arrives with church shade on the square and sunlight blazing on the cliffs.",
+        "You can reach the observatory by the rose garden, the bakery terrace, or the rehearsal corridor."
+      ],
+      "actions": [
+        {
+          "label": "🌹 Take garden",
+          "id": 53
+        },
+        {
+          "label": "🥐 Cross terrace",
+          "id": 54
+        },
+        {
+          "label": "🎼 Use corridor",
+          "id": 55
+        }
+      ],
+      "position": [
+        5540,
+        100
+      ]
+    },
+    {
+      "id": 53,
+      "type": "skip",
+      "label": "Rose Steps",
+      "text": [
+        "🌹 The garden path winds through climbing roses and warm stone, making every step feel chosen instead of accidental.",
+        "Julien meets you halfway and slows as if afraid of hurrying something fragile."
+      ],
+      "nextId": 56,
+      "position": [
+        5540,
+        360
+      ]
+    },
+    {
+      "id": 54,
+      "type": "skip",
+      "label": "Terrace Pause",
+      "text": [
+        "🥐 Theo catches you on the bakery terrace, presses a sugared apricot into your hand, and says, \"For stamina, not nerves.\"",
+        "His teasing leaves you smiling when you continue upward."
+      ],
+      "nextId": 56,
+      "position": [
+        5540,
+        620
+      ]
+    },
+    {
+      "id": 55,
+      "type": "skip",
+      "label": "Music Passage",
+      "text": [
+        "🎼 The rehearsal corridor is lined with old posters and drifting scales from distant practice rooms.",
+        "Julien waits beside a cracked mirror, violin tucked under one arm, looking almost unbearably hopeful."
+      ],
+      "nextId": 56,
+      "position": [
+        5860,
+        100
+      ]
+    },
+    {
+      "id": 56,
+      "type": "redirect",
+      "label": "Rumor Thread",
+      "text": [
+        "🗣️ Before either of you can speak properly, a ribbon of gossip whips through the corridor: Madame Sabine D'Orsay has arrived, and Paris is suddenly everyone's favorite word.",
+        "The rumor can harden into fear, soften through a friend, or send you back to the garden to breathe."
+      ],
+      "links": [
+        {
+          "weight": 4,
+          "id": 57
+        },
+        {
+          "weight": 3,
+          "id": 58
+        },
+        {
+          "weight": 2,
+          "id": 53
+        }
+      ],
+      "position": [
+        5860,
+        360
+      ]
+    },
+    {
+      "id": 57,
+      "type": "skip",
+      "label": "Sabine Shadow",
+      "text": [
+        "🖤 You glimpse Sabine below in pearl silk, speaking to a hotel manager with the calm certainty of someone used to arranging other people's futures.",
+        "The sight makes Julien's unopened explanation feel suddenly urgent."
+      ],
+      "nextId": 59,
+      "position": [
+        5860,
+        620
+      ]
+    },
+    {
+      "id": 58,
+      "type": "skip",
+      "label": "Celia's Spin",
+      "text": [
+        "🌼 Celia finds you first and rolls her eyes at the gossip. \"Rumor loves pretty lighting,\" she says.",
+        "Still, even she cannot quite deny there is a real offer somewhere inside the noise."
+      ],
+      "nextId": 59,
+      "position": [
+        6180,
+        100
+      ]
+    },
+    {
+      "id": 59,
+      "type": "action",
+      "label": "Rumor Answer",
+      "text": [
+        "🎻 Julien sees the worry land on your face and opens his mouth, but this time you can choose the shape of the moment.",
+        "You can confront him now, trust him enough to wait, or bury yourself in work until your heart steadies."
+      ],
+      "actions": [
+        {
+          "label": "🔥 Confront him",
+          "id": 60
+        },
+        {
+          "label": "🤍 Trust him",
+          "id": 61
+        },
+        {
+          "label": "🌿 Choose work",
+          "id": 62
+        }
+      ],
+      "position": [
+        6180,
+        360
+      ]
+    },
+    {
+      "id": 60,
+      "type": "skip",
+      "label": "Hard Question",
+      "text": [
+        "🔥 \"Are you leaving?\" you ask with more force than grace. Julien flinches, then nods once.",
+        "\"I was considering it,\" he says. \"That is not the same as wanting to lose this.\""
+      ],
+      "nextId": 63,
+      "position": [
+        6180,
+        620
+      ]
+    },
+    {
+      "id": 61,
+      "type": "skip",
+      "label": "Chosen Patience",
+      "text": [
+        "🤍 You let your fear loosen instead of harden. \"Then tell me when you are ready,\" you say.",
+        "The relief in Julien's face is so immediate it almost counts as an answer."
+      ],
+      "nextId": 63,
+      "position": [
+        6500,
+        100
+      ]
+    },
+    {
+      "id": 62,
+      "type": "skip",
+      "label": "Rose Labor",
+      "text": [
+        "🌿 You return to the conservatory and throw yourself into pruning and tying until your hands smell green and sharp.",
+        "Julien does not interrupt, but the fact that he comes to help says enough."
+      ],
+      "nextId": 63,
+      "position": [
+        6500,
+        360
+      ]
+    },
+    {
+      "id": 63,
+      "type": "action",
+      "label": "Festival Errands",
+      "text": [
+        "🎐 By afternoon, everyone is assigning tasks with suspicious strategic generosity.",
+        "Inez needs a final mask fitting, Mireille needs flowers set along the aisle, and Julien asks if you can look over his waltz score."
+      ],
+      "actions": [
+        {
+          "label": "🎭 Fit mask",
+          "id": 64
+        },
+        {
+          "label": "🌸 Set flowers",
+          "id": 65
+        },
+        {
+          "label": "🎼 Read score",
+          "id": 66
+        }
+      ],
+      "position": [
+        6500,
+        620
+      ]
+    },
+    {
+      "id": 64,
+      "type": "skip",
+      "label": "Silver Mask",
+      "text": [
+        "🎭 Inez fits the silver half-mask against your cheek and nods as if approving a duel.",
+        "\"Good,\" she says. \"Now if he hesitates, at least you can look devastating while waiting.\""
+      ],
+      "nextId": 67,
+      "position": [
+        6820,
+        100
+      ]
+    },
+    {
+      "id": 65,
+      "type": "skip",
+      "label": "White Roses",
+      "text": [
+        "🌸 Mireille hands you white climbing roses and makes you loop them over iron arches until the whole conservatory smells like summer memory.",
+        "She never asks what you feel, which somehow makes it easier to feel it."
+      ],
+      "nextId": 67,
+      "position": [
+        6820,
+        360
+      ]
+    },
+    {
+      "id": 66,
+      "type": "skip",
+      "label": "Margin Notes",
+      "text": [
+        "🎼 Julien's score is full of small pencil notes and one line in the margin that simply reads, \"Don't rush the turn.\"",
+        "You suspect he meant the music. You are not certain he meant only the music."
+      ],
+      "nextId": 67,
+      "position": [
+        6820,
+        620
+      ]
+    },
+    {
+      "id": 67,
+      "type": "redirect",
+      "label": "Parade Crush",
+      "text": [
+        "🎺 The evening parade rolls through Bellarose in a thunder of brass, satin banners, and cheering children.",
+        "It can sweep you toward the promenade, push you into the ballroom queue, or spit you back toward the errands you thought you had already finished."
+      ],
+      "links": [
+        {
+          "weight": 4,
+          "id": 68
+        },
+        {
+          "weight": 4,
+          "id": 69
+        },
+        {
+          "weight": 2,
+          "id": 63
+        }
+      ],
+      "position": [
+        7140,
+        100
+      ]
+    },
+    {
+      "id": 68,
+      "type": "skip",
+      "label": "Seaside Pause",
+      "text": [
+        "🌊 The promenade opens before you in blue dusk and lantern light. Celia is there, elbows on the rail, guarding a private moment with suspicious tenderness.",
+        "\"You know he listens for your footsteps,\" she says without looking over."
+      ],
+      "nextId": 70,
+      "position": [
+        7140,
+        360
+      ]
+    },
+    {
+      "id": 69,
+      "type": "skip",
+      "label": "Ballroom Queue",
+      "text": [
+        "💃 The ballroom corridor is all perfume, candlelight, and muffled strings. Julien is waiting beside the door as if the crush of guests never touched him.",
+        "When he sees you, the whole room seems to become background."
+      ],
+      "nextId": 70,
+      "position": [
+        7140,
+        620
+      ]
+    },
+    {
+      "id": 70,
+      "type": "action",
+      "label": "Evening Ask",
+      "text": [
+        "🌙 Julien offers you three versions of the same question: a private waltz before the guests arrive, an honest talk about Paris, or a quiet walk above the sea.",
+        "Whatever you choose, the ease between you is gone now; in its place is something truer."
+      ],
+      "actions": [
+        {
+          "label": "💃 Take waltz",
+          "id": 71
+        },
+        {
+          "label": "🚆 Ask again",
+          "id": 72
+        },
+        {
+          "label": "🌊 Choose walk",
+          "id": 73
+        }
+      ],
+      "position": [
+        7460,
+        100
+      ]
+    },
+    {
+      "id": 71,
+      "type": "skip",
+      "label": "Private Waltz",
+      "text": [
+        "💃 In the empty ballroom, Julien counts softly and guides you into the turn with maddening gentleness.",
+        "When your bodies settle into the same rhythm, you understand why some people confuse dancing with confession."
+      ],
+      "nextId": 74,
+      "position": [
+        7460,
+        360
+      ]
+    },
+    {
+      "id": 72,
+      "type": "skip",
+      "label": "Clear Answer",
+      "text": [
+        "🚆 Julien does not dodge this time. \"Paris is brilliant,\" he says, \"but brilliance is not the same as home.\"",
+        "Then he looks at you with a steadiness that feels almost like a vow."
+      ],
+      "nextId": 74,
+      "position": [
+        7460,
+        620
+      ]
+    },
+    {
+      "id": 73,
+      "type": "skip",
+      "label": "Sea Air",
+      "text": [
+        "🌊 You walk the cliff path while the first lamps come alive below. Julien speaks more easily in motion, as though honesty needs the sea at its shoulder.",
+        "By the time you stop, the silence between you is full, not empty."
+      ],
+      "nextId": 74,
+      "position": [
+        7780,
+        100
+      ]
+    },
+    {
+      "id": 74,
+      "type": "redirect",
+      "label": "Firework Break",
+      "text": [
+        "🎆 The first fireworks leap over the harbor, startling everyone on the cliff path and scattering the evening into bright fragments.",
+        "You might reach a quiet terrace together, get separated on the staircase, or be pulled back toward the promenade by the crowd."
+      ],
+      "links": [
+        {
+          "weight": 4,
+          "id": 75
+        },
+        {
+          "weight": 3,
+          "id": 76
+        },
+        {
+          "weight": 2,
+          "id": 68
+        }
+      ],
+      "position": [
+        7780,
+        360
+      ]
+    },
+    {
+      "id": 75,
+      "type": "skip",
+      "label": "Quiet Terrace",
+      "text": [
+        "🎆 A hidden terrace above the ballroom catches the fireworks in perfect reflection across its glass doors.",
+        "Julien laughs once, softly, and says, \"Bellarose never did know how to make anything subtle.\""
+      ],
+      "nextId": 77,
+      "position": [
+        7780,
+        620
+      ]
+    },
+    {
+      "id": 76,
+      "type": "skip",
+      "label": "Staircase Gap",
+      "text": [
+        "🪜 The guest crowd cuts between you on the staircase, and by the time you reach the top Julien is two landings away.",
+        "He leaves his glove on the rail for you to find, which is either absurdly romantic or completely unfair."
+      ],
+      "nextId": 77,
+      "position": [
+        8100,
+        100
+      ]
+    },
+    {
+      "id": 77,
+      "type": "action",
+      "label": "Dawn Promise",
+      "text": [
+        "🌅 Before you part, Julien asks if you will meet him at dawn, when the old observatory opens for the festival's first light viewing.",
+        "You can promise to come, stay with Mireille's conservatory work, or ask Theo for one last measure of advice."
+      ],
+      "actions": [
+        {
+          "label": "🔭 Promise dawn",
+          "id": 78
+        },
+        {
+          "label": "🌿 Stay needed",
+          "id": 79
+        },
+        {
+          "label": "🥐 Ask Theo",
+          "id": 80
+        }
+      ],
+      "position": [
+        8100,
+        360
+      ]
+    },
+    {
+      "id": 78,
+      "type": "skip",
+      "label": "Spoken Promise",
+      "text": [
+        "🔭 You say yes before caution can stage an objection. Julien's shoulders ease as though he had been holding that breath since yesterday.",
+        "\"Then dawn will be kinder than usual,\" he says."
+      ],
+      "nextId": 81,
+      "position": [
+        8100,
+        620
+      ]
+    },
+    {
+      "id": 79,
+      "type": "skip",
+      "label": "Necessary Duty",
+      "text": [
+        "🌿 Mireille needs help before sunrise with the moonflower trellis, and you agree because love is never the only thing asking for your hands.",
+        "Still, the choice tastes bittersweet before it is even made."
+      ],
+      "nextId": 81,
+      "position": [
+        8420,
+        100
+      ]
+    },
+    {
+      "id": 80,
+      "type": "skip",
+      "label": "Theo's Counsel",
+      "text": [
+        "🥐 Theo listens while icing tiny lemon cakes, then points the spoon at you like a magistrate.",
+        "\"Go where your heart speaks clearly,\" he says. \"And if it stays silent, that is an answer too.\""
+      ],
+      "nextId": 81,
+      "position": [
+        8420,
+        360
+      ]
+    },
+    {
+      "id": 81,
+      "type": "redirect",
+      "label": "Mist Delay",
+      "text": [
+        "🌫️ Dawn rolls in under a veil of sea mist, turning every lane into a guess.",
+        "You might reach Julien at the observatory, find him instead by the pier, or lose precious minutes to conservatory duty and circle back."
+      ],
+      "links": [
+        {
+          "weight": 4,
+          "id": 82
+        },
+        {
+          "weight": 3,
+          "id": 83
+        },
+        {
+          "weight": 2,
+          "id": 79
+        }
+      ],
+      "position": [
+        8420,
+        620
+      ]
+    },
+    {
+      "id": 82,
+      "type": "skip",
+      "label": "Observatory Light",
+      "text": [
+        "🔭 The observatory dome opens above you like a silver eyelid. Julien is already there, hands curled around two cups of hot tea.",
+        "In the pale light, neither of you looks inclined to pretend this meeting is casual."
+      ],
+      "nextId": 84,
+      "position": [
+        8740,
+        100
+      ]
+    },
+    {
+      "id": 83,
+      "type": "skip",
+      "label": "Pier Apology",
+      "text": [
+        "🌊 The mist misleads you to the pier first, where Julien waits with damp hair and a rueful smile.",
+        "\"I thought Bellarose might do something dramatic,\" he says. \"It rarely disappoints.\""
+      ],
+      "nextId": 84,
+      "position": [
+        8740,
+        360
+      ]
+    },
+    {
+      "id": 84,
+      "type": "action",
+      "label": "Future Talk",
+      "text": [
+        "☀️ With dawn brightening around you, the question of what comes after the festival finally stands in the open.",
+        "You can ask Julien to stay, offer to leave with him, or demand the plain truth before hope grows any larger."
+      ],
+      "actions": [
+        {
+          "label": "🏡 Ask stay",
+          "id": 85
+        },
+        {
+          "label": "🚆 Offer go",
+          "id": 86
+        },
+        {
+          "label": "💬 Need truth",
+          "id": 87
+        }
+      ],
+      "position": [
+        8740,
+        620
+      ]
+    },
+    {
+      "id": 85,
+      "type": "skip",
+      "label": "Rooted Wish",
+      "text": [
+        "🏡 When you ask whether he could stay, Julien looks out over Bellarose as though measuring love against habit and history.",
+        "\"I could,\" he says. \"The harder question is whether I would be brave enough to choose it.\""
+      ],
+      "nextId": 88,
+      "position": [
+        9060,
+        100
+      ]
+    },
+    {
+      "id": 86,
+      "type": "skip",
+      "label": "Bold Offer",
+      "text": [
+        "🚆 \"Then I could leave with you,\" you say, surprising yourself first. Julien's gaze snaps to yours.",
+        "Whatever fear he carried softens into wonder."
+      ],
+      "nextId": 88,
+      "position": [
+        9060,
+        360
+      ]
+    },
+    {
+      "id": 87,
+      "type": "skip",
+      "label": "Plain Terms",
+      "text": [
+        "💬 \"No more almost,\" you say. Julien nods like a man relieved to be caught.",
+        "\"Then the truth is this,\" he answers. \"I want you in whatever life I choose next.\""
+      ],
+      "nextId": 88,
+      "position": [
+        9060,
+        620
+      ]
+    },
+    {
+      "id": 88,
+      "type": "action",
+      "label": "Day Two",
+      "text": [
+        "🌤️ Bellarose gives you only a few hours to absorb that before festival business closes in again.",
+        "You can inspect the lantern route with Celia, help Julien shape the final waltz, or read the old guest book in the conservatory office."
+      ],
+      "actions": [
+        {
+          "label": "🕯️ Trace route",
+          "id": 89
+        },
+        {
+          "label": "🎼 Shape waltz",
+          "id": 90
+        },
+        {
+          "label": "📚 Read guestbook",
+          "id": 91
+        }
+      ],
+      "position": [
+        9380,
+        100
+      ]
+    },
+    {
+      "id": 89,
+      "type": "skip",
+      "label": "Lantern Route",
+      "text": [
+        "🕯️ Celia walks you along the boat line, pointing out where the current usually swings lanterns toward the bridge.",
+        "\"Useful knowledge,\" she says innocently, which means it is probably not innocent at all."
+      ],
+      "nextId": 92,
+      "position": [
+        9380,
+        360
+      ]
+    },
+    {
+      "id": 90,
+      "type": "skip",
+      "label": "Shared Music",
+      "text": [
+        "🎼 Julien plays phrases until you begin correcting him by instinct, and soon the two of you are building a turn in the music that feels like a smile made audible.",
+        "He watches your face more than the notes."
+      ],
+      "nextId": 92,
+      "position": [
+        9380,
+        620
+      ]
+    },
+    {
+      "id": 91,
+      "type": "skip",
+      "label": "Old Pages",
+      "text": [
+        "📚 The guest book is full of pressed petals, smudged signatures, and love notes disguised as room requests.",
+        "One tucked page bears Mireille's neat hand beside the name of Julien's late mother."
+      ],
+      "nextId": 92,
+      "position": [
+        9700,
+        100
+      ]
+    },
+    {
+      "id": 92,
+      "type": "redirect",
+      "label": "Loose Pages",
+      "text": [
+        "📜 A draft snakes through the office and sends old paper slipping across the floor.",
+        "You might catch the most revealing page, get an explanation from Mireille instead, or lose the clue and end up back on the lantern route."
+      ],
+      "links": [
+        {
+          "weight": 4,
+          "id": 93
+        },
+        {
+          "weight": 3,
+          "id": 94
+        },
+        {
+          "weight": 2,
+          "id": 89
+        }
+      ],
+      "position": [
+        9700,
+        360
+      ]
+    },
+    {
+      "id": 93,
+      "type": "skip",
+      "label": "Hidden History",
+      "text": [
+        "💞 The loose page describes a love that almost left Bellarose for the city and chose, at the last minute, to stay long enough for a whole life.",
+        "Seeing the names makes your chest tighten with recognition."
+      ],
+      "nextId": 95,
+      "position": [
+        9700,
+        620
+      ]
+    },
+    {
+      "id": 94,
+      "type": "skip",
+      "label": "Mireille's Story",
+      "text": [
+        "🌼 Mireille gently takes the papers from your hands and tells you the rest herself.",
+        "\"Love is not ruined by hesitation,\" she says. \"Only by silence kept too long.\""
+      ],
+      "nextId": 95,
+      "position": [
+        10020,
+        100
+      ]
+    },
+    {
+      "id": 95,
+      "type": "action",
+      "label": "Brave Admit",
+      "text": [
+        "💗 The afternoon feels suddenly too short for pretense.",
+        "You can tell Celia what you want, tell Julien outright before night falls, or write your feelings into a letter first so your courage has something to hold."
+      ],
+      "actions": [
+        {
+          "label": "🕯️ Tell Celia",
+          "id": 96
+        },
+        {
+          "label": "❤️ Tell Julien",
+          "id": 97
+        },
+        {
+          "label": "✍️ Write letter",
+          "id": 98
+        }
+      ],
+      "position": [
+        10020,
+        360
+      ]
+    },
+    {
+      "id": 96,
+      "type": "skip",
+      "label": "Friend's Blessing",
+      "text": [
+        "🕯️ Celia listens without interruption, then squeezes your wrist hard enough to mean it.",
+        "\"Good,\" she says. \"Wanting something clearly is half the rescue.\""
+      ],
+      "nextId": 99,
+      "position": [
+        10020,
+        620
+      ]
+    },
+    {
+      "id": 97,
+      "type": "skip",
+      "label": "Interrupted Truth",
+      "text": [
+        "❤️ You find Julien by the ballroom doors and start to speak, but Sabine arrives before the second sentence can survive.",
+        "The frustration in his eyes matches your own."
+      ],
+      "nextId": 99,
+      "position": [
+        10340,
+        100
+      ]
+    },
+    {
+      "id": 98,
+      "type": "skip",
+      "label": "Written Courage",
+      "text": [
+        "✍️ You write by the fountain arcade until the page stops trembling beneath your hand.",
+        "The letter is not polished, only honest, which feels more dangerous."
+      ],
+      "nextId": 99,
+      "position": [
+        10340,
+        360
+      ]
+    },
+    {
+      "id": 99,
+      "type": "action",
+      "label": "Sabine Arrives",
+      "text": [
+        "🖤 Madame Sabine D'Orsay steps into the square in pearl silk, carrying herself like a verdict wrapped in lace.",
+        "You can greet her politely, hide your letter before she sees it, or challenge her cool confidence outright."
+      ],
+      "actions": [
+        {
+          "label": "🎩 Greet Sabine",
+          "id": 100
+        },
+        {
+          "label": "📄 Hide letter",
+          "id": 101
+        },
+        {
+          "label": "🔥 Challenge her",
+          "id": 102
+        }
+      ],
+      "position": [
+        10340,
+        620
+      ]
+    },
+    {
+      "id": 100,
+      "type": "skip",
+      "label": "Polite Masks",
+      "text": [
+        "🎩 You greet Sabine with faultless manners. She studies you as if assessing a role someone forgot to announce.",
+        "Her smile is elegant enough to cut."
+      ],
+      "nextId": 103,
+      "position": [
+        10660,
+        100
+      ]
+    },
+    {
+      "id": 101,
+      "type": "skip",
+      "label": "Crumpled Secret",
+      "text": [
+        "📄 You tuck the letter away too quickly, and Sabine notices anyway.",
+        "Her amusement is subtle, which somehow makes it worse."
+      ],
+      "nextId": 103,
+      "position": [
+        10660,
+        360
+      ]
+    },
+    {
+      "id": 102,
+      "type": "skip",
+      "label": "Sharp Reply",
+      "text": [
+        "🔥 \"Bellarose is not a waiting room for Paris,\" you say before diplomacy can stop you.",
+        "Sabine's brows lift, interested rather than offended."
+      ],
+      "nextId": 103,
+      "position": [
+        10660,
+        620
+      ]
+    },
+    {
+      "id": 103,
+      "type": "redirect",
+      "label": "Satin Current",
+      "text": [
+        "🧵 Sabine turns the conversation with practiced ease, and suddenly the entire square feels arranged around her.",
+        "She can draw you toward a Paris invitation, trap you in polite business talk, or let you slip away long enough to steady yourself with the letter."
+      ],
+      "links": [
+        {
+          "weight": 4,
+          "id": 104
+        },
+        {
+          "weight": 3,
+          "id": 105
+        },
+        {
+          "weight": 2,
+          "id": 98
+        }
+      ],
+      "position": [
+        10980,
+        100
+      ]
+    },
+    {
+      "id": 104,
+      "type": "skip",
+      "label": "Golden Offer",
+      "text": [
+        "✨ Sabine gestures toward Julien and speaks of salons, orchestras, and a life large enough to swallow any smaller dream whole.",
+        "The future she paints is dazzling, which is exactly what makes it dangerous."
+      ],
+      "nextId": 106,
+      "position": [
+        10980,
+        360
+      ]
+    },
+    {
+      "id": 105,
+      "type": "skip",
+      "label": "Small Talk",
+      "text": [
+        "🫖 Sabine asks about the conservatory as though it were a charming hobby and not a living promise.",
+        "Julien's jaw tightens so slightly only someone studying him would see it."
+      ],
+      "nextId": 106,
+      "position": [
+        10980,
+        620
+      ]
+    },
+    {
+      "id": 106,
+      "type": "action",
+      "label": "Answer Sabine",
+      "text": [
+        "🎻 Sabine finally turns to you with direct curiosity. \"And what do <i>you</i> imagine for him?\" she asks.",
+        "You can defend Bellarose, hold your silence and watch Julien answer, or ask him to choose with his own voice."
+      ],
+      "actions": [
+        {
+          "label": "🌹 Defend home",
+          "id": 107
+        },
+        {
+          "label": "🤐 Stay silent",
+          "id": 108
+        },
+        {
+          "label": "🗣️ Ask him",
+          "id": 109
+        }
+      ],
+      "position": [
+        11300,
+        100
+      ]
+    },
+    {
+      "id": 107,
+      "type": "skip",
+      "label": "Home Spoken",
+      "text": [
+        "🌹 You speak of moonflowers, stubborn towns, and lives that matter because they are tended, not because they are admired from afar.",
+        "Julien looks at you as if you have named him more truly than anyone in months."
+      ],
+      "nextId": 110,
+      "position": [
+        11300,
+        360
+      ]
+    },
+    {
+      "id": 108,
+      "type": "skip",
+      "label": "Costly Silence",
+      "text": [
+        "🤐 You say nothing, and the emptiness lands heavier than any argument.",
+        "Julien's face shutters for a moment before he smooths it away."
+      ],
+      "nextId": 110,
+      "position": [
+        11300,
+        620
+      ]
+    },
+    {
+      "id": 109,
+      "type": "skip",
+      "label": "Chosen Voice",
+      "text": [
+        "🗣️ \"He can answer for himself,\" you say. Julien straightens, almost grateful.",
+        "\"Then hear me clearly,\" he tells Sabine. \"I am not merchandise.\""
+      ],
+      "nextId": 110,
+      "position": [
+        11620,
+        100
+      ]
+    },
+    {
+      "id": 110,
+      "type": "action",
+      "label": "Aftershock",
+      "text": [
+        "🌙 Once Sabine drifts away, the air feels charged and fragile.",
+        "You can ask Julien to meet you in the greenhouse, clear your head together by the sea, or rehearse one last time before the lantern waltz."
+      ],
+      "actions": [
+        {
+          "label": "🌿 Meet greenhouse",
+          "id": 111
+        },
+        {
+          "label": "🌊 Walk sea",
+          "id": 112
+        },
+        {
+          "label": "🎼 Rehearse once",
+          "id": 113
+        }
+      ],
+      "position": [
+        11620,
+        360
+      ]
+    },
+    {
+      "id": 111,
+      "type": "skip",
+      "label": "Greenhouse Truth",
+      "text": [
+        "🌿 In the greenhouse, moonflowers are just beginning to open, white petals unfurling like withheld answers.",
+        "Julien apologizes for every time fear made him sound uncertain."
+      ],
+      "nextId": 114,
+      "position": [
+        11620,
+        620
+      ]
+    },
+    {
+      "id": 112,
+      "type": "skip",
+      "label": "Sea Clarity",
+      "text": [
+        "🌊 The cliff path is cooler now, and the salt wind strips some of the panic from your thoughts.",
+        "Julien walks beside you without rushing, as if he finally understands that pace can be a form of devotion."
+      ],
+      "nextId": 114,
+      "position": [
+        11940,
+        100
+      ]
+    },
+    {
+      "id": 113,
+      "type": "skip",
+      "label": "Last Rehearsal",
+      "text": [
+        "🎼 The final rehearsal lasts only minutes, but the duet between your silence and his violin says everything the room cannot.",
+        "When the last note fades, no one applauds because no one dares break it."
+      ],
+      "nextId": 114,
+      "position": [
+        11940,
+        360
+      ]
+    },
+    {
+      "id": 114,
+      "type": "action",
+      "label": "Final Night",
+      "text": [
+        "🕯️ The last lanterns are being carried toward the bridge, the station lights glitter below the cliff road, and the conservatory doors stand open behind you.",
+        "Bellarose has done all it can. The rest must be <b>chosen</b>."
+      ],
+      "actions": [
+        {
+          "label": "🌉 Meet bridge",
+          "id": 115
+        },
+        {
+          "label": "🚉 Chase Paris",
+          "id": 116
+        },
+        {
+          "label": "🌱 Stay rooted",
+          "id": 117
+        }
+      ],
+      "position": [
+        11940,
+        620
+      ]
+    },
+    {
+      "id": 115,
+      "type": "action",
+      "label": "Bridge Choice",
+      "text": [
+        "🌉 On the lantern bridge, water flickers gold beneath the rails and Julien waits without disguise or distance.",
+        "You can speak now and choose him openly, ask for one season of letters instead of promises, or let the beautiful moment remain unfinished."
+      ],
+      "actions": [
+        {
+          "label": "❤️ Speak now",
+          "id": 118
+        },
+        {
+          "label": "💌 Take season",
+          "id": 119
+        },
+        {
+          "label": "🌫️ Hold back",
+          "id": 120
+        }
+      ],
+      "position": [
+        12260,
+        100
+      ]
+    },
+    {
+      "id": 116,
+      "type": "finish",
+      "label": "Paris Waltz",
+      "text": [
+        "🚉 You catch Julien by the station steps and choose motion over fear. He laughs once, stunned, then kisses you like someone stepping into weather he has wanted all along.",
+        "By dawn the train is carrying both of you toward Paris, not because the city won, but because love finally stopped pretending it wanted safety first."
+      ],
+      "position": [
+        12260,
+        360
+      ]
+    },
+    {
+      "id": 117,
+      "type": "finish",
+      "label": "Steady Bloom",
+      "text": [
+        "🌱 You turn back toward the conservatory and choose the life with roots under it. Mireille meets you at the doors, and Julien lets you go with sorrow, respect, and a promise not to call this ending when it is only truth.",
+        "Moonflowers open above you as Bellarose keeps you, and for the first time that choice feels like its own kind of romance."
+      ],
+      "position": [
+        12260,
+        620
+      ]
+    },
+    {
+      "id": 118,
+      "type": "finish",
+      "label": "Bellarose Kiss",
+      "text": [
+        "❤️ You tell Julien to stay, and then tell him you love him before caution can edit the sentence. His answer comes as laughter, tears, and a kiss under swinging lantern light.",
+        "By sunrise you are planning roses, music, and a reopened conservatory together, with Bellarose glittering around your impossible good luck."
+      ],
+      "position": [
+        12580,
+        100
+      ]
+    },
+    {
+      "id": 119,
+      "type": "finish",
+      "label": "Season Letters",
+      "text": [
+        "💌 You ask for one honest season instead of a perfect forever. Julien presses his forehead to yours and agrees, relieved that love can be brave without pretending certainty.",
+        "Lantern boats drift under the bridge while you trade the first of many letters, each one a promise to return more clearly than before."
+      ],
+      "position": [
+        12580,
+        360
+      ]
+    },
+    {
+      "id": 120,
+      "type": "finish",
+      "label": "Missed Tide",
+      "text": [
+        "🌫️ You let the moment pass with a soft smile, and Julien understands enough not to force what your heart cannot yet hold.",
+        "The bridge glows, the music fades, and Bellarose keeps the memory gentle: not a ruin, only a love that arrived a little too close to the tide."
+      ],
+      "position": [
+        12580,
+        620
+      ]
+    }
+  ]
+}

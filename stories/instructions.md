@@ -24,11 +24,11 @@
 1. When you create a story, please, create a new folder in the `stories` folder. You can name it like `story-1` or similar to that.
 2. Create a `plan.md` file for a new story, put the story setting, plan and key story points into it. Also, define possible endings to the story. DON'T MODIFY `plan.md` AFTER ITS CREATION!
 3. Create a story file named `story.json` in that folder. Use `plan.md` for reference.
-4. The goal is to create up to 60-90 nodes for the story.
+4. The goal is to create up to 100+ nodes for the story.
 5. After each node generation check the `plan.md`.
 6. When you append nodes, make sure that their ids go in the ascending order WITH NO GAPS.
-7. THIS IS VERY IMPORTANT! DON'T EVER REFERENCE THE FUTURE NODES WITH IDS MORE THAN 120!
-8. Don't create too long story branches, carefully plan to finish them by reaching NODE ID 100. Loop the story branches to existing nodes if it makes sense.
+7. THIS IS VERY IMPORTANT! DON'T EVER REFERENCE THE FUTURE NODES WITH IDS MORE THAN +20 than it's planned!
+8. Don't create too long story branches, carefully plan to finish them by reaching final nodes. Loop the story branches to existing nodes if it makes sense.
 
 ## Writing Tips
 
@@ -40,7 +40,7 @@
 6. Aim to create long story threads that can entertwine with each other and lead to several endings eventually.
 7. There also can be plot cycles that return to some earlier nodes.
 8. Don't overuse the time traveling and parallel universe plots, keep it simple but engaging.
-9. Use emoji, aim to use at least one emoji per node. Do not use universally available emojis. Use only those that work on both mobile and desktop.
+9. Use emoji, aim to use at least one emoji per node. Use only universally available emojis.
 10. You can also put an emoji on a separate text line to emphasize it's effect.
 11. Use `<b></b>` tags for bold text and `<i></i>` tags for italic where appropriate.
 12. Don't create long action labels, make them 2-3 words max. Use emoji in action labels (it is not necessary but add them where suitable).

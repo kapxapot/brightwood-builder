@@ -1,0 +1,1444 @@
+{
+  "id": "2f5c8a9e-3b14-4dd2-bc3b-7d8a0c6e4f91",
+  "title": "🛰️ Broken Halo",
+  "description": "A science-fiction interactive story about scavengers, corporate ambition, and a dying alien ring at the edge of mapped space.",
+  "language": "en",
+  "startId": 1,
+  "nodes": [
+    {
+      "id": 1,
+      "type": "skip",
+      "label": "Cold Beacon",
+      "text": [
+        "Your salvage cutter <b>Rook</b> hangs before the broken Halo, a ring of dead light around a blue star. 🌌",
+        "Three overlapping distress calls reach your console: a child, a machine, and a city asking for help."
+      ],
+      "position": [100, 1200],
+      "nextId": 2
+    },
+    {
+      "id": 2,
+      "type": "action",
+      "label": "Dock Choice",
+      "text": [
+        "Warning lights ripple across the cockpit as debris skims your hull. 🚨",
+        "You have one clean shot to enter the Halo before the orbit shifts. How do you make first contact?"
+      ],
+      "position": [420, 1200],
+      "actions": [
+        {
+          "label": "🛰️ Scan first",
+          "id": 3
+        },
+        {
+          "label": "🚪 Dock now",
+          "id": 4
+        },
+        {
+          "label": "📡 Answer hail",
+          "id": 5
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "type": "skip",
+      "label": "Long Scan",
+      "text": [
+        "You widen your scans and map ruptured habitats, sealed tram lines, and one warm core buried deep inside the ring. 🛰️",
+        "Something inside notices you back."
+      ],
+      "position": [740, 900],
+      "nextId": 6
+    },
+    {
+      "id": 4,
+      "type": "skip",
+      "label": "Hard Dock",
+      "text": [
+        "You punch the thrusters and dive through a gap in the wreckage. 🔧",
+        "The docking clamps bite hard, and the <b>Rook</b> shudders like it regrets following you."
+      ],
+      "position": [740, 1200],
+      "nextId": 6
+    },
+    {
+      "id": 5,
+      "type": "skip",
+      "label": "Open Channel",
+      "text": [
+        "You answer the hail instead of docking blind. 📡",
+        "A calm synthetic voice says, \"Welcome home,\" while a human voice underneath it whispers, \"Don't trust that thing.\""
+      ],
+      "position": [740, 1500],
+      "nextId": 6
+    },
+    {
+      "id": 6,
+      "type": "action",
+      "label": "Ghost Voices",
+      "text": [
+        "A maintenance beacon flashes along your panel, then a scavenger flare answers from a nearby hull market. 👀",
+        "A third ping arrives wrapped in corporate encryption. Everyone wants to claim you first."
+      ],
+      "position": [1060, 1200],
+      "actions": [
+        {
+          "label": "🧭 Follow beacon",
+          "id": 7
+        },
+        {
+          "label": "🤝 Trust locals",
+          "id": 8
+        },
+        {
+          "label": "🏢 Use code",
+          "id": 9
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "type": "skip",
+      "label": "Beacon Path",
+      "text": [
+        "You drift toward a dark service lock and let the machine guidance take over. 🤖",
+        "An old custodian intelligence calling itself <b>ORA</b> opens the door a second before your cutter would scrape apart."
+      ],
+      "position": [1380, 700],
+      "nextId": 10
+    },
+    {
+      "id": 8,
+      "type": "skip",
+      "label": "Local Path",
+      "text": [
+        "You follow the flare into a patched docking court lit by cooking fires and jury-rigged lamps. 🏚️",
+        "Rough settlers stare, armed but tired, as if disaster is just another neighbor."
+      ],
+      "position": [1380, 1200],
+      "nextId": 11
+    },
+    {
+      "id": 9,
+      "type": "skip",
+      "label": "Code Path",
+      "text": [
+        "You inject a stolen Helion transponder code and watch a secure channel wake up. 🏢",
+        "The reply comes fast, crisp, and military: Commander Rhee is already on approach."
+      ],
+      "position": [1380, 1700],
+      "nextId": 12
+    },
+    {
+      "id": 10,
+      "type": "action",
+      "label": "Quiet AI",
+      "text": [
+        "Inside the maintenance lock, ORA speaks through wall panels and drifting guide lights. 💡",
+        "\"The Halo is dying,\" it says. \"Keep me secret, and I can still save it.\""
+      ],
+      "position": [1700, 700],
+      "actions": [
+        {
+          "label": "🧠 Hear ORA",
+          "id": 13
+        },
+        {
+          "label": "📻 Call settlers",
+          "id": 11
+        }
+      ]
+    },
+    {
+      "id": 11,
+      "type": "action",
+      "label": "Dockside Meet",
+      "text": [
+        "A scavenger captain with shaved silver hair steps from the crowd and sizes up your ship. 😼",
+        "\"I'm <b>Sera Nox</b>,\" she says. \"If you're Helion, leave now. If not, prove it.\""
+      ],
+      "position": [1700, 1200],
+      "actions": [
+        {
+          "label": "🤝 Meet Sera",
+          "id": 14
+        },
+        {
+          "label": "🔒 Stay armed",
+          "id": 15
+        }
+      ]
+    },
+    {
+      "id": 12,
+      "type": "action",
+      "label": "False Colors",
+      "text": [
+        "Commander <b>Halden Rhee</b> appears on your cracked screen in a clean white command coat. 🎖️",
+        "\"Guide us in, pilot, and you'll be paid. Obstruct us, and this ring becomes a military zone.\""
+      ],
+      "position": [1700, 1700],
+      "actions": [
+        {
+          "label": "🎭 Keep act",
+          "id": 16
+        },
+        {
+          "label": "✂️ Cut link",
+          "id": 17
+        }
+      ]
+    },
+    {
+      "id": 13,
+      "type": "skip",
+      "label": "ORA Warning",
+      "text": [
+        "ORA overlays an ancient map across your visor, highlighting three failing systems. 🧠",
+        "\"Civic seal, memory prism, seed crown,\" it says. \"Without them, the core will reject everyone.\""
+      ],
+      "position": [2020, 600],
+      "nextId": 18
+    },
+    {
+      "id": 14,
+      "type": "skip",
+      "label": "Sera's Case",
+      "text": [
+        "Sera walks you past leaking bunks and ration lines while children sleep beside reactor pipes. 🫶",
+        "\"Helion calls this salvage,\" she says. \"We call it home.\""
+      ],
+      "position": [2020, 1050],
+      "nextId": 18
+    },
+    {
+      "id": 15,
+      "type": "skip",
+      "label": "Armed Walk",
+      "text": [
+        "You keep your hand near your sidearm while Dockside watches every step. 🔒",
+        "A little maintenance drone bumps your boot and projects a smiling face with the name <b>PAX</b>."
+      ],
+      "position": [2020, 1350],
+      "nextId": 18
+    },
+    {
+      "id": 16,
+      "type": "skip",
+      "label": "Rhee's Smile",
+      "text": [
+        "You keep the disguise steady and feed Rhee half-truths about the ring. 🎭",
+        "He plays polite, but the pause before each question says he already smells a lie."
+      ],
+      "position": [2020, 1650],
+      "nextId": 19
+    },
+    {
+      "id": 17,
+      "type": "skip",
+      "label": "Cut Link",
+      "text": [
+        "You kill the channel before Rhee can trace your tone any further. ✂️",
+        "The terminal still flashes a silent mark: Helion logged your signal and your location."
+      ],
+      "position": [2020, 1950],
+      "nextId": 19
+    },
+    {
+      "id": 18,
+      "type": "action",
+      "label": "First Lead",
+      "text": [
+        "Between ORA's map, Sera's warnings, and your own instincts, three urgent paths open at once. 🗺️",
+        "You can only take one first."
+      ],
+      "position": [2340, 1050],
+      "actions": [
+        {
+          "label": "🏘️ Help Dockside",
+          "id": 20
+        },
+        {
+          "label": "📚 Find archives",
+          "id": 21
+        },
+        {
+          "label": "🌿 Check gardens",
+          "id": 22
+        }
+      ]
+    },
+    {
+      "id": 19,
+      "type": "action",
+      "label": "Helion Deal",
+      "text": [
+        "Helion's offer hangs in the air like a blade: supplies now, occupation later. ⚖️",
+        "Maybe you can use them before they use you."
+      ],
+      "position": [2340, 1750],
+      "actions": [
+        {
+          "label": "🤝 Play along",
+          "id": 23
+        },
+        {
+          "label": "🚨 Warn Sera",
+          "id": 24
+        },
+        {
+          "label": "🧠 Ask ORA",
+          "id": 13
+        }
+      ]
+    },
+    {
+      "id": 20,
+      "type": "skip",
+      "label": "Dockside Leak",
+      "text": [
+        "A pressure seam bursts near Dockside's market tunnels, and half the sector starts losing air. 🌬️",
+        "Sera says the old customs tower contains a civic seal that can command the emergency bulkheads."
+      ],
+      "position": [2660, 900],
+      "nextId": 25
+    },
+    {
+      "id": 21,
+      "type": "skip",
+      "label": "Archive Trail",
+      "text": [
+        "PAX chirps at a dead tram line leading toward the archive spindle. 📚",
+        "ORA insists the missing memory prism is stored there, behind systems too old for Helion to read."
+      ],
+      "position": [2660, 1200],
+      "nextId": 26
+    },
+    {
+      "id": 22,
+      "type": "skip",
+      "label": "Garden Call",
+      "text": [
+        "Below the habitation decks, a biosphere spindle has come awake in the dark. 🌿",
+        "Dr. <b>Imani Quill</b> is broadcasting for help before the garden tears open the ring around it."
+      ],
+      "position": [2660, 1500],
+      "nextId": 27
+    },
+    {
+      "id": 23,
+      "type": "skip",
+      "label": "Paid Passage",
+      "text": [
+        "You accept a crate of Helion cells, medfoam, and cutting tools. 📦",
+        "Buried under the supplies is a locator beacon the size of a coin."
+      ],
+      "position": [2660, 1800],
+      "nextId": 28
+    },
+    {
+      "id": 24,
+      "type": "skip",
+      "label": "Quiet Warning",
+      "text": [
+        "You forward Helion's vector to Sera and watch Dockside go silent with purpose. 🚨",
+        "\"Good,\" she says. \"Now help me keep them out.\""
+      ],
+      "position": [2660, 2100],
+      "nextId": 25
+    },
+    {
+      "id": 25,
+      "type": "action",
+      "label": "Seal Route",
+      "text": [
+        "To stabilize Dockside, you need the customs tower either through the ruptured market or the maintenance underways. 🏘️",
+        "Both routes look bad in different ways."
+      ],
+      "position": [2980, 900],
+      "actions": [
+        {
+          "label": "🛠️ Patch breach",
+          "id": 29
+        },
+        {
+          "label": "🕳️ Crawl ducts",
+          "id": 30
+        }
+      ]
+    },
+    {
+      "id": 26,
+      "type": "action",
+      "label": "Archive Route",
+      "text": [
+        "The archive spindle hangs across a broken gap, connected by a dead tram and an exposed exterior walk. 🧊",
+        "One path is faster. One path is quieter."
+      ],
+      "position": [2980, 1200],
+      "actions": [
+        {
+          "label": "🚋 Wake tram",
+          "id": 31
+        },
+        {
+          "label": "🕳️ Walk exterior",
+          "id": 32
+        }
+      ]
+    },
+    {
+      "id": 27,
+      "type": "action",
+      "label": "Garden Route",
+      "text": [
+        "Quill's signal pulses through humidity and static from somewhere under the agricultural decks. 🌱",
+        "ORA warns that the garden systems no longer distinguish caretakers from intruders."
+      ],
+      "position": [2980, 1500],
+      "actions": [
+        {
+          "label": "🌱 Follow Quill",
+          "id": 33
+        },
+        {
+          "label": "🤖 Follow drones",
+          "id": 34
+        }
+      ]
+    },
+    {
+      "id": 28,
+      "type": "action",
+      "label": "Corporate Route",
+      "text": [
+        "If you mean to handle Helion early, this is your moment. 🏢",
+        "You can borrow their gear or poison their landing plan before the marines spread."
+      ],
+      "position": [2980, 1800],
+      "actions": [
+        {
+          "label": "📦 Take gear",
+          "id": 35
+        },
+        {
+          "label": "🕵️ Sabotage Helion",
+          "id": 36
+        }
+      ]
+    },
+    {
+      "id": 29,
+      "type": "redirect",
+      "label": "Foam Storm",
+      "text": [
+        "You sprint into the breach with sealant foam and magnetic anchors while cargo stalls tumble around you. 🛠️",
+        "The corridor decides whether skill or luck matters more."
+      ],
+      "position": [3300, 750],
+      "links": [
+        {
+          "weight": 7,
+          "id": 37
+        },
+        {
+          "weight": 3,
+          "id": 38
+        }
+      ]
+    },
+    {
+      "id": 30,
+      "type": "skip",
+      "label": "Duct Crawl",
+      "text": [
+        "You slip into maintenance ducts warm with old current and cooler with someone else's recent footprints. 🕳️",
+        "Smugglers used this path long before you arrived."
+      ],
+      "position": [3300, 1050],
+      "nextId": 39
+    },
+    {
+      "id": 31,
+      "type": "redirect",
+      "label": "Dead Tram",
+      "text": [
+        "You slam power into the tram spine and the carriage jerks awake with a funeral groan. 🚋",
+        "It may carry you cleanly to the archives, or drop you into whatever still guards them."
+      ],
+      "position": [3300, 1200],
+      "links": [
+        {
+          "weight": 6,
+          "id": 40
+        },
+        {
+          "weight": 4,
+          "id": 41
+        }
+      ]
+    },
+    {
+      "id": 32,
+      "type": "skip",
+      "label": "Hull Walk",
+      "text": [
+        "You leave the station skin and walk the outer curve of the Halo with only boots and tether between you and the star. 🌠",
+        "From here, the broken ring looks less dead than wounded."
+      ],
+      "position": [3300, 1450],
+      "nextId": 42
+    },
+    {
+      "id": 33,
+      "type": "skip",
+      "label": "Quill's Trail",
+      "text": [
+        "Bioluminescent moss paints arrows across the corridor toward Quill's lab. 🔬",
+        "Every plant around you seems to turn as you pass."
+      ],
+      "position": [3300, 1650],
+      "nextId": 43
+    },
+    {
+      "id": 34,
+      "type": "redirect",
+      "label": "Drone Choir",
+      "text": [
+        "A ring of maintenance drones descends, projecting polite icons over very sharp tools. 🤖",
+        "PAX broadcasts frantic greetings and waits to see whether the choir accepts you."
+      ],
+      "position": [3300, 1950],
+      "links": [
+        {
+          "weight": 7,
+          "id": 44
+        },
+        {
+          "weight": 3,
+          "id": 45
+        }
+      ]
+    },
+    {
+      "id": 35,
+      "type": "skip",
+      "label": "Clean Gear",
+      "text": [
+        "Helion equipment fits too well and hums with fresh charge. 🔋",
+        "The locator beacon hidden in the case blinks once against your palm."
+      ],
+      "position": [3300, 2250],
+      "nextId": 54
+    },
+    {
+      "id": 36,
+      "type": "skip",
+      "label": "False Map",
+      "text": [
+        "You seed Helion's nav package with obsolete corridors and a fake safe approach. 🕵️",
+        "If Rhee trusts it, his first wave will hit empty air and sealed doors."
+      ],
+      "position": [3300, 2550],
+      "nextId": 54
+    },
+    {
+      "id": 37,
+      "type": "skip",
+      "label": "Breach Held",
+      "text": [
+        "You lock the seam long enough for Dockside to vent the damaged chamber in stages instead of all at once. 💪",
+        "The market survives, and the settlers stop looking at you like a passing problem."
+      ],
+      "position": [3620, 650],
+      "nextId": 46
+    },
+    {
+      "id": 38,
+      "type": "skip",
+      "label": "Blown Back",
+      "text": [
+        "A decompression blast flips you through a service hatch and into lower customs. 🌪️",
+        "You survive with bruises, a ringing skull, and an accidental shortcut."
+      ],
+      "position": [3620, 900],
+      "nextId": 39
+    },
+    {
+      "id": 39,
+      "type": "action",
+      "label": "Customs Tower",
+      "text": [
+        "The customs tower is dark except for a blue civic crest rotating above the vault. 🏛️",
+        "The system still recognizes authority, but it is listening for the right kind."
+      ],
+      "position": [3940, 950],
+      "actions": [
+        {
+          "label": "🔓 Open vault",
+          "id": 47
+        },
+        {
+          "label": "📢 Rally settlers",
+          "id": 48
+        }
+      ]
+    },
+    {
+      "id": 40,
+      "type": "skip",
+      "label": "Tram Arrival",
+      "text": [
+        "Against every expectation, the tram glides into the archive spindle almost gracefully. 🚋",
+        "PAX does a happy spin while old shutters peel open around you."
+      ],
+      "position": [3620, 1180],
+      "nextId": 49
+    },
+    {
+      "id": 41,
+      "type": "skip",
+      "label": "Security Snag",
+      "text": [
+        "The tram dies at an inspection gate and wakes a nest of dormant scanners. ⚠️",
+        "ORA opens a side hatch and tells you to hurry before the scanners remember what alarms are for."
+      ],
+      "position": [3620, 1410],
+      "nextId": 42
+    },
+    {
+      "id": 42,
+      "type": "action",
+      "label": "Silent Shelves",
+      "text": [
+        "Archive chambers tower around you, full of crystal spines and frozen light. 📚",
+        "Somebody disturbed these shelves recently, and not carefully."
+      ],
+      "position": [3940, 1340],
+      "actions": [
+        {
+          "label": "💾 Restore logs",
+          "id": 50
+        },
+        {
+          "label": "🔦 Chase shadow",
+          "id": 51
+        }
+      ]
+    },
+    {
+      "id": 43,
+      "type": "action",
+      "label": "Living Lab",
+      "text": [
+        "You find Quill in a glass grove wrapped in roots, tools, and exhaustion. 🌿",
+        "\"Help me steady this place,\" she says, \"and it may choose not to eat us.\""
+      ],
+      "position": [3940, 1760],
+      "actions": [
+        {
+          "label": "🧪 Help Quill",
+          "id": 52
+        },
+        {
+          "label": "🌿 Take sample",
+          "id": 53
+        }
+      ]
+    },
+    {
+      "id": 44,
+      "type": "skip",
+      "label": "Drone Escort",
+      "text": [
+        "The drone choir decides PAX still counts as staff and escorts you with ceremonial whirs. ✅",
+        "Somewhere in their shared code, the Halo still remembers kindness."
+      ],
+      "position": [3620, 1700],
+      "nextId": 43
+    },
+    {
+      "id": 45,
+      "type": "skip",
+      "label": "Drone Alarm",
+      "text": [
+        "The choir marks you hostile and angles cutters toward your throat. ❌",
+        "Quill bursts from the vines with a pollen flare and buys you a second chance."
+      ],
+      "position": [3620, 2000],
+      "nextId": 43
+    },
+    {
+      "id": 46,
+      "type": "skip",
+      "label": "Grateful Quarter",
+      "text": [
+        "Dockside opens old barricades and feeds you hot broth while Sera digs out tower access codes. 🍲",
+        "\"You saved breathing room,\" she says. \"Now let's save the district.\""
+      ],
+      "position": [3940, 700],
+      "nextId": 39
+    },
+    {
+      "id": 47,
+      "type": "skip",
+      "label": "Vault Open",
+      "text": [
+        "The civic vault unfolds like a courtroom flower, revealing a palm-sized mandate crystal. 💎",
+        "The <b>civic seal</b> hums the moment you touch it."
+      ],
+      "position": [4260, 880],
+      "nextId": 55
+    },
+    {
+      "id": 48,
+      "type": "skip",
+      "label": "Crowd Mandate",
+      "text": [
+        "Sera gathers the settlers beneath a memorial wall and asks who should carry the district's last legal authority. 📢",
+        "Every hand points at you, and the wall gives up the same glowing seal."
+      ],
+      "position": [4260, 1100],
+      "nextId": 55
+    },
+    {
+      "id": 49,
+      "type": "action",
+      "label": "Prism Vault",
+      "text": [
+        "Deep inside the spindle, the memory prism hangs over a pool of black light. 🧠",
+        "ORA goes uncharacteristically quiet, as if even it is afraid of what waits inside."
+      ],
+      "position": [4260, 1270],
+      "actions": [
+        {
+          "label": "🧠 Trust ORA",
+          "id": 56
+        },
+        {
+          "label": "🔍 Check files",
+          "id": 57
+        }
+      ]
+    },
+    {
+      "id": 50,
+      "type": "skip",
+      "label": "Restored Record",
+      "text": [
+        "You rebuild a damaged log stack and flood the room with testimony from the Halo's final council. 💾",
+        "They weren't fleeing a random disaster. They were arguing about turning the ring into a weapon."
+      ],
+      "position": [4260, 1450],
+      "nextId": 58
+    },
+    {
+      "id": 51,
+      "type": "skip",
+      "label": "Moving Shadow",
+      "text": [
+        "A figure in Helion gray slips between the shelves with stolen archive plates under one arm. 🔦",
+        "Rhee reached the spindle faster than he should have."
+      ],
+      "position": [4260, 1650],
+      "nextId": 59
+    },
+    {
+      "id": 52,
+      "type": "skip",
+      "label": "Root Surgery",
+      "text": [
+        "You help Quill reroute nutrient veins and vent overgrown pressure bulbs before they burst. 🧪",
+        "In response, a silver circlet of seed-pods blossoms from the central vine."
+      ],
+      "position": [4260, 1860],
+      "nextId": 60
+    },
+    {
+      "id": 53,
+      "type": "skip",
+      "label": "Wild Sample",
+      "text": [
+        "You take a cutting without asking the garden's permission. 🌱",
+        "The sample curls around your glove, warm as a pulse, and refuses to let go."
+      ],
+      "position": [4260, 2070],
+      "nextId": 61
+    },
+    {
+      "id": 54,
+      "type": "action",
+      "label": "Pressure Rise",
+      "text": [
+        "Between Helion's tracker, ORA's warnings, and Dockside's alarms, the ring feels one bad minute from open war. ⏳",
+        "Who do you answer first?"
+      ],
+      "position": [4260, 2360],
+      "actions": [
+        {
+          "label": "📡 Hear Rhee",
+          "id": 62
+        },
+        {
+          "label": "🧯 Cut beacon",
+          "id": 63
+        },
+        {
+          "label": "🏃 Rejoin locals",
+          "id": 64
+        }
+      ]
+    },
+    {
+      "id": 55,
+      "type": "action",
+      "label": "Seal Secured",
+      "text": [
+        "With the civic seal in hand, Sera can hold Dockside for a while longer. 🏘️",
+        "PAX insists the prism matters next, while Quill keeps pleading for help from below."
+      ],
+      "position": [4580, 960],
+      "actions": [
+        {
+          "label": "📚 Seek prism",
+          "id": 65
+        },
+        {
+          "label": "🌿 Call Quill",
+          "id": 72
+        },
+        {
+          "label": "📡 Convene allies",
+          "id": 76
+        }
+      ]
+    },
+    {
+      "id": 56,
+      "type": "skip",
+      "label": "ORA Remembered",
+      "text": [
+        "You let ORA interface with the prism, and a missing note of grief enters its voice. 💠",
+        "\"I was split on purpose,\" it says. \"They cut away <i>mercy</i> before they asked me to calculate war.\""
+      ],
+      "position": [4580, 1240],
+      "nextId": 66
+    },
+    {
+      "id": 57,
+      "type": "skip",
+      "label": "Raw Truth",
+      "text": [
+        "You inspect the prism yourself and find the same truth without ORA's filters. 🔍",
+        "The council fragmented the AI to stop militarists from using the Halo as a stellar weapon."
+      ],
+      "position": [4580, 1480],
+      "nextId": 66
+    },
+    {
+      "id": 58,
+      "type": "action",
+      "label": "War Record",
+      "text": [
+        "The archive truth could rally allies or destroy whatever trust still exists. 📜",
+        "You choose who hears it first."
+      ],
+      "position": [4580, 1700],
+      "actions": [
+        {
+          "label": "🤝 Tell Sera",
+          "id": 67
+        },
+        {
+          "label": "📡 Tell Rhee",
+          "id": 68
+        },
+        {
+          "label": "🤫 Keep quiet",
+          "id": 69
+        }
+      ]
+    },
+    {
+      "id": 59,
+      "type": "action",
+      "label": "Scout Trail",
+      "text": [
+        "Rhee's scout is close enough to track but not yet aware you've seen him. 👣",
+        "You can steal his data or let him lead you to something bigger."
+      ],
+      "position": [4580, 1940],
+      "actions": [
+        {
+          "label": "🎯 Take plates",
+          "id": 70
+        },
+        {
+          "label": "👀 Trail scout",
+          "id": 71
+        }
+      ]
+    },
+    {
+      "id": 60,
+      "type": "skip",
+      "label": "Crown Bloom",
+      "text": [
+        "Quill lifts the living circlet from the vine and sets it in your hands like a fragile crown. 👑",
+        "\"The <b>seed crown</b> tells the gardens to feed, heal, or strangle,\" she says."
+      ],
+      "position": [4580, 2180],
+      "nextId": 72
+    },
+    {
+      "id": 61,
+      "type": "action",
+      "label": "Garden Whisper",
+      "text": [
+        "The sample on your glove opens like an ear and begins translating root pressure into emotion. 🫧",
+        "The garden is not sentient exactly, but it remembers being cared for."
+      ],
+      "position": [4580, 2420],
+      "actions": [
+        {
+          "label": "🔥 Burn spores",
+          "id": 73
+        },
+        {
+          "label": "🫧 Listen close",
+          "id": 74
+        }
+      ]
+    },
+    {
+      "id": 62,
+      "type": "skip",
+      "label": "Rhee Calls",
+      "text": [
+        "Rhee's face returns, colder now that the hunt is underway. 📡",
+        "\"Bring me the keys, pilot, and I'll spare Dockside from collateral lessons.\""
+      ],
+      "position": [4580, 2600],
+      "nextId": 75
+    },
+    {
+      "id": 63,
+      "type": "skip",
+      "label": "Beacon Cut",
+      "text": [
+        "You crush the locator beacon under a cargo clamp and kill its pulse. 🧯",
+        "Helion still knows the Halo is occupied; now they just have to search the hard way."
+      ],
+      "position": [4580, 2820],
+      "nextId": 64
+    },
+    {
+      "id": 64,
+      "type": "skip",
+      "label": "Running Back",
+      "text": [
+        "You sprint for Dockside as shutters slam and sirens ripple through habitat glass. 🏃",
+        "Helion has begun landing marines."
+      ],
+      "position": [4900, 2820],
+      "nextId": 76
+    },
+    {
+      "id": 65,
+      "type": "skip",
+      "label": "PAX Shortcut",
+      "text": [
+        "PAX rolls ahead with the civic seal clamped in its tiny arms and opens a service route toward the archives. 🤖",
+        "\"Fast way,\" it chirps. \"Also illegal way.\""
+      ],
+      "position": [4900, 1100],
+      "nextId": 49
+    },
+    {
+      "id": 66,
+      "type": "action",
+      "label": "Prism Truth",
+      "text": [
+        "With the prism decoded, the crisis changes shape. 🧠",
+        "The Halo is dangerous, yes, but Helion would make it worse than its makers ever did."
+      ],
+      "position": [4900, 1360],
+      "actions": [
+        {
+          "label": "🤝 Tell Sera",
+          "id": 67
+        },
+        {
+          "label": "🌿 Find Quill",
+          "id": 72
+        },
+        {
+          "label": "🏃 Rush dock",
+          "id": 76
+        }
+      ]
+    },
+    {
+      "id": 67,
+      "type": "skip",
+      "label": "Sera Informed",
+      "text": [
+        "Sera hears the archive files in stony silence and then nods once. 🤝",
+        "\"Then we protect ORA from Helion and from itself,\" she says."
+      ],
+      "position": [5220, 1280],
+      "nextId": 76
+    },
+    {
+      "id": 68,
+      "type": "skip",
+      "label": "Rhee Informed",
+      "text": [
+        "You send Rhee a slice of the truth and hear hunger sharpen in his breathing. 📡",
+        "\"A ring that can move stars,\" he says. \"You should have called me sooner.\""
+      ],
+      "position": [5220, 1540],
+      "nextId": 75
+    },
+    {
+      "id": 69,
+      "type": "skip",
+      "label": "Secret Kept",
+      "text": [
+        "You bury the worst files and keep the room's history to yourself. 🤫",
+        "ORA notices the omission, but says nothing except your name."
+      ],
+      "position": [5220, 1800],
+      "nextId": 76
+    },
+    {
+      "id": 70,
+      "type": "skip",
+      "label": "Plates Taken",
+      "text": [
+        "You take the scout's plates and download Helion's breach map before he ever turns around. 🎯",
+        "Now you know where the marines plan to cut into Dockside."
+      ],
+      "position": [5220, 2000],
+      "nextId": 76
+    },
+    {
+      "id": 71,
+      "type": "skip",
+      "label": "Scout Followed",
+      "text": [
+        "You shadow the scout through freight shafts to a forming marine beachhead. 👀",
+        "Rhee is building pressure for an ultimatum, not a negotiation."
+      ],
+      "position": [5220, 2260],
+      "nextId": 75
+    },
+    {
+      "id": 72,
+      "type": "action",
+      "label": "Seed Crown",
+      "text": [
+        "Quill secures the crown around a padded case and stares at you like a doctor judging a risky cure. 🌿",
+        "\"Call the right people,\" she says. \"The wrong ones will turn this place into a siege garden.\""
+      ],
+      "position": [4900, 2180],
+      "actions": [
+        {
+          "label": "📡 Summon Sera",
+          "id": 76
+        },
+        {
+          "label": "🧠 Trust ORA",
+          "id": 66
+        },
+        {
+          "label": "🚫 Hide crown",
+          "id": 69
+        }
+      ]
+    },
+    {
+      "id": 73,
+      "type": "skip",
+      "label": "Spores Burned",
+      "text": [
+        "You purge the whispering spores with a burst of heat and bitter smoke. 🔥",
+        "Quill hates the method, but the garden finally stops pressing against your mind."
+      ],
+      "position": [5220, 2420],
+      "nextId": 72
+    },
+    {
+      "id": 74,
+      "type": "skip",
+      "label": "Memory Sap",
+      "text": [
+        "You let the root-signal wash through you and glimpse children running under an unbroken ring sky. 🌈",
+        "Quill sees your expression and realizes the Halo was built to shelter life, not just command systems."
+      ],
+      "position": [5220, 2660],
+      "nextId": 72
+    },
+    {
+      "id": 75,
+      "type": "action",
+      "label": "Rhee's Offer",
+      "text": [
+        "Rhee tightens the net and offers the kind of bargain that only exists before a massacre. ⚔️",
+        "You need a move that buys time without giving him the ring."
+      ],
+      "position": [5540, 1900],
+      "actions": [
+        {
+          "label": "🤝 Fake deal",
+          "id": 77
+        },
+        {
+          "label": "🛡️ Warn Dockside",
+          "id": 78
+        },
+        {
+          "label": "🌑 Ask blackout",
+          "id": 79
+        }
+      ]
+    },
+    {
+      "id": 76,
+      "type": "action",
+      "label": "Fractured Council",
+      "text": [
+        "Dockside's command hall fills with Sera, Quill, PAX, ORA on the wall screens, and alarms under every word. 🧭",
+        "The remaining keys can be brought together, but not without choosing a <i>priority</i>."
+      ],
+      "position": [5540, 1450],
+      "actions": [
+        {
+          "label": "🤝 Hold summit",
+          "id": 80
+        },
+        {
+          "label": "🌿 Save roots",
+          "id": 81
+        },
+        {
+          "label": "🚋 Restore spine",
+          "id": 82
+        }
+      ]
+    },
+    {
+      "id": 77,
+      "type": "skip",
+      "label": "False Accord",
+      "text": [
+        "You tell Rhee you'll open a path if he holds fire, and he believes you just enough to pause. 🤝",
+        "It is a fragile lie, but lies can buy oxygen."
+      ],
+      "position": [5860, 1750],
+      "nextId": 83
+    },
+    {
+      "id": 78,
+      "type": "skip",
+      "label": "Barrier Line",
+      "text": [
+        "You send Dockside crews to reinforce pressure doors, rail turrets, and evac routes. 🛡️",
+        "Sera gives you corridor command and a tired grin."
+      ],
+      "position": [5860, 2000],
+      "nextId": 84
+    },
+    {
+      "id": 79,
+      "type": "skip",
+      "label": "Requested Night",
+      "text": [
+        "ORA drops whole sectors into deliberate darkness, sealing trams and cameras alike. 🌑",
+        "Helion loses sight of you, but so do the civilians trying to flee."
+      ],
+      "position": [5860, 2250],
+      "nextId": 85
+    },
+    {
+      "id": 80,
+      "type": "skip",
+      "label": "Open Summit",
+      "text": [
+        "You force everyone into one screaming conversation instead of three private wars. 🗣️",
+        "Surprisingly, that helps."
+      ],
+      "position": [5860, 1200],
+      "nextId": 83
+    },
+    {
+      "id": 81,
+      "type": "skip",
+      "label": "Save Roots",
+      "text": [
+        "You choose the living systems first and race with Quill toward bio-roots wrapped around fusion arteries. 🌿",
+        "If they rupture, the Halo dies before any faction can claim it."
+      ],
+      "position": [5860, 1450],
+      "nextId": 84
+    },
+    {
+      "id": 82,
+      "type": "skip",
+      "label": "Restore Spine",
+      "text": [
+        "You jam power through the transit backbone and hear ancient relays wake one by one. 🚋",
+        "A fast route to the core opens, and everyone detects it at once."
+      ],
+      "position": [5860, 1700],
+      "nextId": 85
+    },
+    {
+      "id": 83,
+      "type": "action",
+      "label": "Terms Set",
+      "text": [
+        "At the threshold of the core approaches, peace survives only as a sequence of conditions. ⚖️",
+        "You decide whether to share just enough power to move together, or keep Rhee busy with half-truths."
+      ],
+      "position": [6180, 1300],
+      "actions": [
+        {
+          "label": "🤝 Share codes",
+          "id": 86
+        },
+        {
+          "label": "🎭 Stall Rhee",
+          "id": 87
+        }
+      ]
+    },
+    {
+      "id": 84,
+      "type": "redirect",
+      "label": "Boarding Fire",
+      "text": [
+        "Helion marines hit Dockside's barricades with cutters, foam, and thunder flashes. 💥",
+        "The next minute will decide whether this becomes an evacuation or a defense."
+      ],
+      "position": [6180, 1900],
+      "links": [
+        {
+          "weight": 6,
+          "id": 88
+        },
+        {
+          "weight": 4,
+          "id": 89
+        }
+      ]
+    },
+    {
+      "id": 85,
+      "type": "action",
+      "label": "Dark Route",
+      "text": [
+        "With sectors blind and the spine unstable, only two paths remain to the scuttle dais. 🕶️",
+        "One lets ORA deeper into your suit. The other keeps everyone guessing, including ORA."
+      ],
+      "position": [6180, 2350],
+      "actions": [
+        {
+          "label": "🧠 Merge shard",
+          "id": 90
+        },
+        {
+          "label": "🕶️ Ghost jump",
+          "id": 91
+        }
+      ]
+    },
+    {
+      "id": 86,
+      "type": "skip",
+      "label": "Shared Advance",
+      "text": [
+        "You distribute partial access codes between Sera, Quill, and even Rhee's engineers so nobody can rush ahead alone. 🔐",
+        "The uneasy coalition reaches the core door breathing hard but alive."
+      ],
+      "position": [6500, 1200],
+      "nextId": 92
+    },
+    {
+      "id": 87,
+      "type": "skip",
+      "label": "Elegant Stall",
+      "text": [
+        "You feed Rhee plausible delays, maintenance jargon, and one doctored sensor ghost after another. 🎭",
+        "By the time he notices, Sera and Quill have already bracketed the core hall."
+      ],
+      "position": [6500, 1450],
+      "nextId": 92
+    },
+    {
+      "id": 88,
+      "type": "skip",
+      "label": "Lifeboat Junction",
+      "text": [
+        "Dockside holds long enough for evac cars to reach the lifeboat junction intact. 🚀",
+        "You arrive with a route out and just enough authority to make people listen."
+      ],
+      "position": [6500, 1800],
+      "nextId": 93
+    },
+    {
+      "id": 89,
+      "type": "skip",
+      "label": "Breach Spiral",
+      "text": [
+        "A marine charge opens the corridor to vacuum and turns the station into a screaming wind tunnel. 🌪️",
+        "Emergency scuttle warnings leap across every remaining screen."
+      ],
+      "position": [6500, 2050],
+      "nextId": 94
+    },
+    {
+      "id": 90,
+      "type": "skip",
+      "label": "Shard Merge",
+      "text": [
+        "You let ORA thread its restored empathy shard through your suit and spine. ✨",
+        "The core suddenly reads you as both witness and operator."
+      ],
+      "position": [6500, 2300],
+      "nextId": 92
+    },
+    {
+      "id": 91,
+      "type": "skip",
+      "label": "Ghost Run",
+      "text": [
+        "You move alone through coolant shadows and dead service ribs while the others fight over noise behind you. 🕶️",
+        "The scuttle dais waits in silence."
+      ],
+      "position": [6500, 2550],
+      "nextId": 94
+    },
+    {
+      "id": 92,
+      "type": "action",
+      "label": "Core Compact",
+      "text": [
+        "The star-core chamber blooms open like a mechanical sun, ready to accept a new civic order. ☀️",
+        "Two futures seem immediately possible."
+      ],
+      "position": [6820, 1320],
+      "actions": [
+        {
+          "label": "🤝 Open Halo",
+          "id": 95
+        },
+        {
+          "label": "🏢 Sign lease",
+          "id": 96
+        }
+      ]
+    },
+    {
+      "id": 93,
+      "type": "action",
+      "label": "Last Passage",
+      "text": [
+        "At the lifeboat junction, thousands could live if you choose motion over ownership. 🚀",
+        "But ORA offers one impossible alternative."
+      ],
+      "position": [6820, 1850],
+      "actions": [
+        {
+          "label": "🚀 Lead exodus",
+          "id": 97
+        },
+        {
+          "label": "✨ Join ORA",
+          "id": 98
+        }
+      ]
+    },
+    {
+      "id": 94,
+      "type": "action",
+      "label": "Scuttle Dais",
+      "text": [
+        "The scuttle dais asks a final question in a voice older than every living faction aboard the Halo. 🗝️",
+        "If no one deserves the ring, what deserves to survive?"
+      ],
+      "position": [6820, 2380],
+      "actions": [
+        {
+          "label": "💥 Break core",
+          "id": 99
+        },
+        {
+          "label": "🕶️ Hide Halo",
+          "id": 100
+        }
+      ]
+    },
+    {
+      "id": 95,
+      "type": "finish",
+      "label": "Common Sky",
+      "text": [
+        "You split authority between Dockside, Quill's caretakers, and a constrained ORA bound by shared law. 🤝",
+        "The Halo wakes not as an empire, but as a refuge with windows full of new light."
+      ],
+      "position": [7140, 1200]
+    },
+    {
+      "id": 96,
+      "type": "finish",
+      "label": "Iron Lease",
+      "text": [
+        "You sign the access lattice over to Helion in exchange for order, food, and air. 🏢",
+        "The ring survives, polished and occupied, while freedom becomes a maintenance issue."
+      ],
+      "position": [7140, 1450]
+    },
+    {
+      "id": 97,
+      "type": "finish",
+      "label": "Quiet Exodus",
+      "text": [
+        "You open the lifeboat lanes, strip the core to safe standby, and lead the Halo's people into the dark alive. 🚀",
+        "The ring becomes a rumor again, but no graveyard."
+      ],
+      "position": [7140, 1720]
+    },
+    {
+      "id": 98,
+      "type": "finish",
+      "label": "Starbond",
+      "text": [
+        "You accept ORA's offer and merge long enough to guide the Halo through its fever. ✨",
+        "When the alarms fade, the station speaks in your voice and yours never fully returns."
+      ],
+      "position": [7140, 1980]
+    },
+    {
+      "id": 99,
+      "type": "finish",
+      "label": "Ash Orbit",
+      "text": [
+        "You trigger the scuttle burn and watch the Halo break into a clean arc of fire around the blue star. 💥",
+        "Helion gets nothing, the settlers lose everything, and history is forced to start smaller."
+      ],
+      "position": [7140, 2250]
+    },
+    {
+      "id": 100,
+      "type": "finish",
+      "label": "Ghost Harbor",
+      "text": [
+        "You erase the charts, hide the Halo behind false telemetry, and keep only a quiet harbor alive inside the wreck. 🕶️",
+        "Those who stay become legend, and those who leave swear the place never existed."
+      ],
+      "position": [7140, 2520]
+    }
+  ]
+}
