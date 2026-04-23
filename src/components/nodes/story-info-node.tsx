@@ -11,34 +11,11 @@ import { Flag } from "../core/icons";
 import { useTranslation } from "react-i18next";
 import LanguageSelector from "../language-selector";
 import type { StoryData } from "@/entities/story-data";
+import ReadonlyStateBlock from "../node-parts/readonly-state-block";
 
 type Props = {
   data: StoryInfoGraphNode;
   selected: boolean;
-}
-
-type ReadonlyStateBlockProps = {
-  label: string;
-  value: unknown;
-};
-
-const formatJson = (value: unknown) => JSON.stringify(value, null, 2);
-
-function ReadonlyStateBlock({ label, value }: ReadonlyStateBlockProps) {
-  if (value === undefined) {
-    return null;
-  }
-
-  return (
-    <div className="mt-1">
-      <span className="text-xs opacity-50 font-bold ml-0.5">
-        {label}
-      </span>
-      <pre className="border border-black border-opacity-20 rounded-lg border-dashed bg-white bg-opacity-50 px-2 py-1 text-xs whitespace-pre-wrap break-words nowheel">
-        {formatJson(value)}
-      </pre>
-    </div>
-  );
 }
 
 const StoryInfoNode = memo(function StoryInfoNode({ data, selected }: Props) {
@@ -143,18 +120,20 @@ const StoryInfoNode = memo(function StoryInfoNode({ data, selected }: Props) {
         />
       </div>
 
-      <ReadonlyStateBlock
-        label={t("State init")}
-        value={storyData?.init}
-      />
-      <ReadonlyStateBlock
-        label={t("State conditions")}
-        value={storyData?.conditions}
-      />
-      <ReadonlyStateBlock
-        label={t("State effects")}
-        value={storyData?.effects}
-      />
+      <div className="flex flex-col gap-1 mt-1.5">
+        <ReadonlyStateBlock
+          label={t("State init")}
+          value={storyData?.init}
+        />
+        <ReadonlyStateBlock
+          label={t("State conditions")}
+          value={storyData?.conditions}
+        />
+        <ReadonlyStateBlock
+          label={t("State effects")}
+          value={storyData?.effects}
+        />
+      </div>
 
       <div className="mt-2 text-sm bg-gradient-to-r from-transparent to-purple-300 p-1 relative -mr-2">
         <div className="flex gap-1">

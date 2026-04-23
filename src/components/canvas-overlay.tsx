@@ -1,7 +1,7 @@
 import { useTranslation } from "react-i18next";
 import { Node } from "reactflow";
 import { GraphNode, StoryInfoGraphNode } from "@/entities/story-node";
-import Button from "../core/button";
+import { Button } from "@/components/ui/button";
 
 type Props = {
   nodes: Node<GraphNode>[];
@@ -42,6 +42,7 @@ export default function CanvasOverlay({ nodes, onAutoArrange }: Props) {
         </div>
       </div>
       <Button
+        variant="outlineHighlight"
         onClick={onAutoArrange}
         disabled={!storyInfoData?.startId}
       >
@@ -50,4 +51,3 @@ export default function CanvasOverlay({ nodes, onAutoArrange }: Props) {
     </div>
   );
 }
-

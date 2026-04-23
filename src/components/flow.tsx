@@ -29,7 +29,7 @@ import { useToastMessages } from "@/hooks/use-toast-messages";
 import { clearSearchParams, getSearchParams } from "@/lib/search";
 import { useTranslation } from "react-i18next";
 import { useLanguage } from "@/hooks/use-language";
-import CanvasOverlay from "./ui/canvas-overlay";
+import CanvasOverlay from "./canvas-overlay";
 import { autoArrangeStoryNodes } from "@/lib/node-auto-arrange";
 
 const nodeTypes = {
