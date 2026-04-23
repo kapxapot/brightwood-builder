@@ -1,5 +1,6 @@
 import { ChevronDownIcon, ChevronRightIcon } from "@heroicons/react/24/outline";
 import { useState } from "react";
+import StateCode from "./state-code";
 
 type Props = {
   label: string;
@@ -32,9 +33,10 @@ export default function ReadonlyStateBlock({ label, value }: Props) {
         }
       </button>
       {expanded && (
-        <pre className="border border-black border-opacity-20 rounded-lg border-dashed bg-white bg-opacity-50 px-2 py-1 text-xs whitespace-pre-wrap break-words nowheel">
-          {formatJson(value)}
-        </pre>
+        <StateCode
+          code={formatJson(value)}
+          block={true}
+        />
       )}
     </div>
   );
