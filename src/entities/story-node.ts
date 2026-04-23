@@ -1,5 +1,5 @@
 import { toArray } from "@/lib/common";
-import type { ConditionName, EffectInvocation, StoryData } from "./story-data";
+import type { ConditionExpression, EffectInvocation, StoryData } from "./story-data";
 
 export type NodeId = number;
 export type Text = string | string[];
@@ -9,12 +9,15 @@ export const isEmptyText = (text: Text) => toArray(text).join().length === 0;
 export type Action = {
   id?: NodeId;
   label: string;
+  condition?: ConditionExpression;
+  effects?: EffectInvocation[];
 };
 
 export type Link = {
   id?: NodeId;
   weight: number;
-  condition?: ConditionName;
+  condition?: ConditionExpression;
+  effects?: EffectInvocation[];
 };
 
 export type NodeEvent = {
@@ -34,7 +37,7 @@ type BaseGraphNode = {
 type BaseStoryNode = BaseGraphNode & {
   label?: string | NodeId;
   text: Text;
-  effect?: EffectInvocation;
+  entryEffects?: EffectInvocation[];
 };
 
 export type ActionStoryNode = BaseStoryNode & {

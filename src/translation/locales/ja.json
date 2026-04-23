@@ -62,6 +62,8 @@
   "importVerb": "インポートする",
   "Action label": "行いの説明",
   "effect": "エフェクト",
+  "effects": "エフェクト",
+  "entryEffects": "到達時エフェクト",
   "{{count}} in total": "{{count}}合計で",
   "Malformed story JSON.": "不正な形式のストーリー JSON。",
   "Incorrect values": "不正な値",
@@ -92,5 +94,6 @@
   "Select the story language.": "ストーリー言語を選択してください。",
   "Cover": "表紙",
   "Move up": "繰り上げる",
-  "Move down": "繰り下げる"
+  "Move down": "繰り下げる",
+  "Auto-arrange": "自動整列"
 }

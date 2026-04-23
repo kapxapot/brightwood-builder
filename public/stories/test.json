@@ -3,7 +3,7 @@
   "title": "🌲 Лес",
   "description": "A test story.",
   "startId": 1,
-  "prefix": "День: {day}",
+  "prefix": "День: {{day}}",
   "data": {
     "init": {
       "day": 1
@@ -81,9 +81,11 @@
           "weight": 1
         }
       ],
-      "effect": {
-        "name": "nextDay"
-      }
+      "entryEffects": [
+        {
+          "name": "nextDay"
+        }
+      ]
     },
     {
       "id": 6,

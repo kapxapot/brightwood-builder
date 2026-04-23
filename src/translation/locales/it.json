@@ -62,6 +62,8 @@
   "importVerb": "Importa",
   "Action label": "Etichetta dell'azione",
   "effect": "effetto",
+  "effects": "effetti",
+  "entryEffects": "effetti di ingresso",
   "{{count}} in total": "{{count}} in totale",
   "Malformed story JSON.": "JSON della storia non valido.",
   "Incorrect values": "Valori non corretti",
@@ -92,5 +94,6 @@
   "Select the story language.": "Seleziona la lingua della storia.",
   "Cover": "Copertina",
   "Move up": "Spostare su",
-  "Move down": "Spostare giù"
+  "Move down": "Spostare giù",
+  "Auto-arrange": "Disponi automaticamente"
 }

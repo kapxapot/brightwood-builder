@@ -29,7 +29,8 @@ import { useToastMessages } from "@/hooks/use-toast-messages";
 import { clearSearchParams, getSearchParams } from "@/lib/search";
 import { useTranslation } from "react-i18next";
 import { useLanguage } from "@/hooks/use-language";
-import StoryInfo from "./ui/story-info";
+import CanvasOverlay from "./ui/canvas-overlay";
+import { autoArrangeStoryNodes } from "@/lib/node-auto-arrange";
 
 const nodeTypes = {
   storyInfo: StoryInfoNode,
@@ -403,6 +404,10 @@ export default function Flow() {
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [deletePressed]);
 
+  const autoArrange = useCallback(() => {
+    setNodes(curNodes => autoArrangeStoryNodes(curNodes as Node<GraphNode>[]));
+  }, [setNodes]);
+
   const saveStory = useCallback(() => {
     const currentStoryData = getCurrentStoryData();
     const storyGraph = getCurrentStoryGraph();
@@ -631,7 +636,10 @@ export default function Flow() {
               nodeColor={n => n.type ? colors[n.type as StoryNodeType].rgb : "gray"}
             />
 
-            <StoryInfo nodes={nodes} />
+            <CanvasOverlay
+              nodes={nodes}
+              onAutoArrange={autoArrange}
+            />
 
             {!isEmpty(validationMessages) && (
               <ValidationMessages

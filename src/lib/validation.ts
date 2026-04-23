@@ -1,6 +1,17 @@
-import { ActionStoryNode, FinishStoryNode, GraphNode, NodeId, RedirectStoryNode, SkipStoryNode, StoryInfoGraphNode, isEmptyText } from "@/entities/story-node";
+import {
+  ActionStoryNode,
+  FinishStoryNode,
+  GraphNode,
+  NodeId,
+  RedirectStoryNode,
+  SkipStoryNode,
+  StoryInfoGraphNode,
+  StoryNode,
+  isEmptyText
+} from "@/entities/story-node";
 import { NodeType, Translator } from "./types";
 import { isEmpty } from "./common";
+import { validateStoryStateModel } from "./story-state";
 
 const addTextLine = "Add at least one text line.";
 
@@ -19,11 +30,30 @@ type Context = {
 export function validateNodes(t: Translator, nodes: NodeType[]): ValidationMessage[] {
   const graphNodes = nodes.map(node => node.data);
   const context = buildContext(graphNodes);
+  const storyInfoNode = graphNodes.find(
+    (node): node is StoryInfoGraphNode => node.type === "storyInfo"
+  );
+  const storyNodes = graphNodes.filter(
+    (node): node is StoryNode => node.type !== "storyInfo"
+  );
 
-  return graphNodes.reduce(
+  const validationMessages = graphNodes.reduce(
     (prevMessages, node) => [...prevMessages, ...validateNode(t, node, context)],
     [] as ValidationMessage[]
   );
+
+  const stateValidationMessages = storyInfoNode
+    ? validateStoryStateModel(
+        storyInfoNode.data,
+        storyNodes,
+        storyInfoNode.id
+      ).map(issue => ({
+        nodeId: issue.nodeId,
+        message: issue.message
+      }))
+    : [];
+
+  return [...validationMessages, ...stateValidationMessages];
 }
 
 function buildContext(nodes: GraphNode[]): Context {

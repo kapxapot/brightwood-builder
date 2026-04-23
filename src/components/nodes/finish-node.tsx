@@ -27,7 +27,7 @@ const FinishNode = memo(function FinishNode({ data, selected }: Props) {
     >
       <NodeTitle id={data.id} label={data.label ?? t(nodeLabels.finish)} />
 
-      <NodeEffect effect={data.effect} />
+      <NodeEffect effects={data.entryEffects} />
 
       <NodeText
         data={data}

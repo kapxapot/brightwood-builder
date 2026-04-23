@@ -11,6 +11,11 @@ import Tooltip from "../core/tooltip";
 import { TextInputLabel } from "../core/text-input-label";
 import { useTranslation } from "react-i18next";
 
+const formatInvocation = (name: string, args?: Array<string | number | boolean>) => {
+  const formattedArgs = args?.map(arg => JSON.stringify(arg)).join(", ");
+  return `${name}(${formattedArgs ?? ""})`;
+};
+
 type Props = {
   link: Link;
   index: number;
@@ -127,24 +132,34 @@ export default function NodeLink({ link, index, totalWeight, deletable, isFirst,
         }
         {/* view */}
         {!editing &&
-          <div className="flex gap-1 max-h-5">
-            <Tooltip
-              tooltip={
-                <div className="flex flex-col">
-                  <span>{t("Link weight")}: {link.weight}</span>
-                  <span>{t("Probability")}: {weightPercent}%</span>
-                </div>
-              }
-              side="top"
-            >
-              <WeightDices weight={link.weight} />
-            </Tooltip>
+          <div className="break-words pr-2">
+            <div className="flex gap-1">
+              <Tooltip
+                tooltip={
+                  <div className="flex flex-col">
+                    <span>{t("Link weight")}: {link.weight}</span>
+                    <span>{t("Probability")}: {weightPercent}%</span>
+                  </div>
+                }
+                side="top"
+              >
+                <WeightDices weight={link.weight} />
+              </Tooltip>
+              <div>
+                <NodeRef id={link.id} />
+              </div>
+            </div>
             {link.condition && (
-              <span>
+              <div className="text-sm opacity-70 text-left">
                 <span className="italic">{t("if")}:</span> {link.condition}
-              </span>
+              </div>
             )}
-            <NodeRef id={link.id} />
+            {link.effects?.length ? (
+              <div className="text-sm opacity-70 text-left">
+                <span className="italic">{t("effects")}:</span>{" "}
+                {link.effects.map(effect => formatInvocation(effect.name, effect.args)).join(", ")}
+              </div>
+            ) : null}
           </div>
         }
         {!noWeight &&

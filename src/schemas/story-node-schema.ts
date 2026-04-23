@@ -8,12 +8,15 @@ const textSchema = z.union([z.string(), z.array(z.string())]);
 const actionSchema = z.object({
   id: nodeIdSchema.optional(),
   label: z.string(),
+  condition: conditionNameSchema.optional(),
+  effects: z.array(effectInvocationSchema).optional(),
 });
 
 const linkSchema = z.object({
   id: nodeIdSchema.optional(),
   weight: z.number(),
   condition: conditionNameSchema.optional(),
+  effects: z.array(effectInvocationSchema).optional(),
 });
 
 const baseGraphNodeSchema = z.object({
@@ -25,7 +28,7 @@ const baseStoryNodeSchema = baseGraphNodeSchema.and(
   z.object({
     label: z.union([z.string(), nodeIdSchema]).optional(),
     text: textSchema,
-    effect: effectInvocationSchema.optional(),
+    entryEffects: z.array(effectInvocationSchema).optional(),
   }),
 );
 

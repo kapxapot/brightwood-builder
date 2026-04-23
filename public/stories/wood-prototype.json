@@ -1,8 +1,11 @@
 {
-  "title": "🌲 Лес (A PROTOTYPE)",
+  "id": "04993f15-d6c6-47b2-a701-d33a53d73e86",
+  "title": "🌲 Лес",
   "description": "Вы заблудились в лесу и пытаетесь из него выбраться. Или не пытаетесь. Сложность: 3/5",
+  "language": "ru",
+  "cover": "https://i.imgur.com/2gykp3B.png",
   "startId": 1,
-  "prefix": "День: {day}, Здоровье: {hp}",
+  "prefix": "День: {{day}}, Здоровье: {{hp}}",
   "data": {
     "init": {
       "maxHp": 6,
@@ -10,22 +13,27 @@
       "wanderedEnough": 10,
       "maxWandersPerDay": 3,
       "day": 1,
-      "hp": "{maxHp}",
-      "shoes": "{maxShoes}",
+      "hp": {
+        "ref": "maxHp"
+      },
+      "shoes": {
+        "ref": "maxShoes"
+      },
       "wandered": 0,
-      "wanderedToday": 0
+      "wanderedToday": false
     },
     "conditions": {
       "isAlive": "hp > 0",
       "isDead": "hp <= 0",
-      "hasShoes": "shoes > 0"
+      "hasShoes": "shoes > 0",
+      "hasWanderedEnough": "wandered >= wanderedEnough"
     },
     "effects": [
       {
         "name": "nextDay",
         "statements": [
           "day = day + 1",
-          "wanderedToday = 0",
+          "wanderedToday = false",
           "hit(1)"
         ]
       },
@@ -43,9 +51,420 @@
         "args": "amount",
         "conditions": "amount > 0",
         "statements": "hp = max(hp - amount, 0)"
+      },
+      {
+        "name": "heal",
+        "args": "amount",
+        "conditions": "amount > 0 && isAlive()",
+        "statements": "hp = min(hp + amount, maxHp)"
+      },
+      {
+        "name": "wander",
+        "statements": [
+          "wandered = wandered + 1",
+          "wanderedToday = true"
+        ]
       }
     ]
   },
   "nodes": [
+    {
+      "id": 1,
+      "type": "skip",
+      "nextId": 9,
+      "text": "Вы гуляли по 🌲 <b>лесу</b> и заблудились. 😮"
+    },
+    {
+      "id": 2,
+      "type": "finish",
+      "text": "Вы умерли от <b>голода</b>. 💀"
+    },
+    {
+      "id": 3,
+      "type": "redirect",
+      "text": "Вы долго бродили по 🌲 <b>лесу</b> в поисках выхода.",
+      "entryEffects": [
+        "wander"
+      ],
+      "links": [
+        {
+          "id": 10,
+          "weight": 1
+        },
+        {
+          "id": 11,
+          "weight": 1
+        },
+        {
+          "id": 12,
+          "weight": 1
+        },
+        {
+          "id": 13,
+          "weight": 1
+        },
+        {
+          "id": 29,
+          "weight": 0.3
+        },
+        {
+          "id": 4,
+          "weight": 1,
+          "condition": "hasWanderedEnough()"
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "type": "finish",
+      "text": [
+        "Вы нашли дорогу и выбрались из 🌲 <b>леса</b>.",
+        "Поздравляем! 🎉"
+      ]
+    },
+    {
+      "id": 5,
+      "type": "redirect",
+      "text": "Вы сели на <b>пенек</b>, проплакали 😭 весь день и уснули. 😴",
+      "entryEffects": [
+        "nextDay"
+      ],
+      "links": [
+        {
+          "id": 6,
+          "weight": 2,
+          "condition": "isAlive()"
+        },
+        {
+          "id": 7,
+          "weight": 2,
+          "condition": "isAlive()"
+        },
+        {
+          "id": 8,
+          "weight": 1,
+          "condition": "isAlive()"
+        },
+        {
+          "id": 2,
+          "weight": 1,
+          "condition": "isDead()"
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "type": "skip",
+      "nextId": 9,
+      "text": "Проснувшись, вы вспомнили, что заблудились в 🌲 <b>лесу</b>. 😕"
+    },
+    {
+      "id": 7,
+      "type": "skip",
+      "nextId": 3,
+      "text": [
+        "Вас разбудила 👩‍👩‍👧‍👧 <b>избирательная комиссия</b>, которой понадобился ваш пенек. 🤔",
+        "Вам пришлось уйти. 👣"
+      ]
+    },
+    {
+      "id": 8,
+      "type": "skip",
+      "nextId": 14,
+      "text": "Пока вы спали, пришли 🐺 <b>волки</b> и загрызли вас."
+    },
+    {
+      "id": 9,
+      "type": "action",
+      "text": "Вы на поляне, где лишь пара деревьев и одинокий <b>пенек</b>.",
+      "actions": [
+        {
+          "id": 5,
+          "label": "Сесть на пенек"
+        },
+        {
+          "id": 3,
+          "label": "👣 Искать выход"
+        }
+      ]
+    },
+    {
+      "id": 10,
+      "type": "redirect",
+      "text": "Засмотревшись на красивые виды 🏞, вы случайно упали в глубокую 🕳 <b>яму</b> и сильно ударились. 🤕",
+      "entryEffects": [
+        {
+          "name": "hit",
+          "args": [
+            1
+          ]
+        }
+      ],
+      "links": [
+        {
+          "id": 15,
+          "weight": 1,
+          "condition": "isAlive()"
+        },
+        {
+          "id": 14,
+          "weight": 1,
+          "condition": "isDead()"
+        }
+      ]
+    },
+    {
+      "id": 11,
+      "type": "action",
+      "text": "Вы нашли какие-то неизвестные 🍒 <b>ягоды</b>.",
+      "actions": [
+        {
+          "id": 16,
+          "label": "🍒 Есть"
+        },
+        {
+          "id": 9,
+          "label": "❌ Не есть"
+        }
+      ]
+    },
+    {
+      "id": 12,
+      "type": "action",
+      "text": "Под деревом растут какие-то подозрительные 🍄 <b>грибы</b>.",
+      "actions": [
+        {
+          "id": 17,
+          "label": "🍄 Есть"
+        },
+        {
+          "id": 9,
+          "label": "❌ Не есть"
+        }
+      ]
+    },
+    {
+      "id": 13,
+      "type": "action",
+      "text": [
+        "Вы встретили 🐻 <b>медведя</b>. Похоже, он настроен недружелюбно.",
+        "Вы можете попытаться напугать зверя, залезть на 🌲 <b>дерево</b> или убежать."
+      ],
+      "actions": [
+        {
+          "id": 19,
+          "label": "Напугать"
+        },
+        {
+          "id": 20,
+          "label": "🌲 Лезть на дерево"
+        },
+        {
+          "id": 21,
+          "label": "🏃 Убежать"
+        }
+      ]
+    },
+    {
+      "id": 14,
+      "type": "finish",
+      "text": "Вы умерли. 💀",
+      "entryEffects": [
+        "kill"
+      ]
+    },
+    {
+      "id": 15,
+      "type": "skip",
+      "nextId": 9,
+      "text": "С трудом выбравшись из 🕳 <b>ямы</b>, вы добрались 👣 до ближайшей поляны."
+    },
+    {
+      "id": 16,
+      "type": "skip",
+      "nextId": 9,
+      "text": "🍒 <b>ягоды</b> оказались вкусными и питательными. Вскоре вы снова вышли 👣 на поляну.",
+      "entryEffects": [
+        {
+          "name": "heal",
+          "args": [
+            1
+          ]
+        }
+      ]
+    },
+    {
+      "id": 17,
+      "type": "redirect",
+      "text": [
+        "Вам стало нехорошо. 🤢",
+        "Зачем же вы ели 🍄 <b>мухоморы</b>?"
+      ],
+      "entryEffects": [
+        {
+          "name": "hit",
+          "args": [
+            1
+          ]
+        }
+      ],
+      "links": [
+        {
+          "id": 18,
+          "weight": 1,
+          "condition": "isAlive()"
+        },
+        {
+          "id": 14,
+          "weight": 1,
+          "condition": "isDead()"
+        }
+      ]
+    },
+    {
+      "id": 18,
+      "type": "skip",
+      "nextId": 9,
+      "text": "Вы бесцельно слонялись по 🌲 <b>лесу</b> и снова вышли на поляну.",
+      "entryEffects": [
+        "wander"
+      ]
+    },
+    {
+      "id": 19,
+      "type": "redirect",
+      "text": "Вы подняли руки вверх и громко зарычали. Точнее, закричали. 😱",
+      "links": [
+        {
+          "id": 22,
+          "weight": 2
+        },
+        {
+          "id": 23,
+          "weight": 1
+        }
+      ]
+    },
+    {
+      "id": 20,
+      "type": "skip",
+      "nextId": 26,
+      "text": [
+        "Лезть на 🌲 <b>дерево</b> от 🐻 <b>медведя</b>? Точно?",
+        "🐻 <b>медведь</b> полез за вами!"
+      ]
+    },
+    {
+      "id": 21,
+      "type": "action",
+      "text": [
+        "🐻 <b>медведь</b> бежит за вами.",
+        "Медведи бегают довольно быстро и очень выносливы..."
+      ],
+      "actions": [
+        {
+          "id": 20,
+          "label": "🌲 Лезть на дерево"
+        },
+        {
+          "id": 21,
+          "label": "🏃 Бежать дальше"
+        }
+      ]
+    },
+    {
+      "id": 22,
+      "type": "skip",
+      "nextId": 18,
+      "text": "Это сработало! 🐻 <b>медведь</b> убрался восвояси."
+    },
+    {
+      "id": 23,
+      "type": "action",
+      "text": [
+        "Упс! 🐻 <b>медведь</b> все еще желает вами перекусить.",
+        "Что будем делать?"
+      ],
+      "actions": [
+        {
+          "id": 20,
+          "label": "🌲 Лезть на дерево"
+        },
+        {
+          "id": 21,
+          "label": "🏃 Убежать"
+        }
+      ]
+    },
+    {
+      "id": 24,
+      "type": "skip",
+      "nextId": 26,
+      "text": [
+        "Вам удалось перепрыгнуть на другое 🌲 <b>дерево</b>, но...",
+        "🐻 <b>медведь</b> прыгнул за вами! 😮"
+      ]
+    },
+    {
+      "id": 25,
+      "type": "redirect",
+      "text": "Вы со всей силы пнули 🐻 <b>медведя</b>.",
+      "links": [
+        {
+          "id": 27,
+          "weight": 1,
+          "condition": "hasShoes()"
+        },
+        {
+          "id": 28,
+          "weight": 1,
+          "condition": "!hasShoes()"
+        }
+      ]
+    },
+    {
+      "id": 26,
+      "type": "action",
+      "text": "Вы можете прыгнуть на другое 🌲 <b>дерево</b> или пнуть 🐻 <b>медведя</b>.",
+      "actions": [
+        {
+          "id": 24,
+          "label": "Прыгнуть"
+        },
+        {
+          "id": 25,
+          "label": "Пнуть"
+        }
+      ]
+    },
+    {
+      "id": 27,
+      "type": "skip",
+      "nextId": 18,
+      "text": [
+        "🐻 <b>медведь</b> схватил вашу 👟 <b>кроссовку</b> и скрылся в подлеске.",
+        "Спустя несколько минут вы спустились и быстро убежали."
+      ],
+      "entryEffects": [
+        "removeShoe"
+      ]
+    },
+    {
+      "id": 28,
+      "type": "skip",
+      "nextId": 14,
+      "text": "У вас не осталось обуви, поэтому 🐻 <b>медведь</b> схватил вас за ногу и сбросил с 🌲 <b>дерева</b>."
+    },
+    {
+      "id": 29,
+      "type": "skip",
+      "nextId": 14,
+      "text": [
+        "Наступив на кочку, вы внезапно улетели в небеса. ☁",
+        "Вы увидели 🌲 <b>лес</b> как на ладони и узнали, где выход.",
+        "Упав с большой высоты, вы разбились. 💥",
+        "Последней вашей мыслью было <i>«Неужели <tg-spoiler>мишки Гамми</tg-spoiler>...»</i> 🤔"
+      ]
+    }
   ]
 }

@@ -40,6 +40,18 @@ Real state support should make stories:
 - easier to validate automatically
 - ready for a proper player/runtime later
 
+## Runtime Alignment
+
+The actual Brightwood story renderer and player live in the neighboring `../brightwood` project.
+
+State, interpolation, and execution semantics implemented in this builder should stay aligned with:
+
+- `../brightwood/lib/story-engine.ts`
+- `../brightwood/lib/message-renderer.ts`
+- `../brightwood/components/story-player.tsx`
+
+If the builder adds a format feature before the runtime supports it, that gap should be documented and tracked explicitly instead of becoming an accidental mismatch.
+
 ## Current Gaps
 
 The repo already has some placeholders for state-like concepts, but they are incomplete:

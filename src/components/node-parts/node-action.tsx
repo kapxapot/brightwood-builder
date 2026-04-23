@@ -9,6 +9,11 @@ import { TextInputLabel } from "../core/text-input-label";
 import { useCharLimit } from "@/hooks/use-char-limit";
 import { useTranslation } from "react-i18next";
 
+const formatInvocation = (name: string, args?: Array<string | number | boolean>) => {
+  const formattedArgs = args?.map(arg => JSON.stringify(arg)).join(", ");
+  return `${name}(${formattedArgs ?? ""})`;
+};
+
 type Props = {
   action: Action;
   index: number;
@@ -120,11 +125,24 @@ export default function NodeAction({ action, index, deletable, nodeEditing, char
         }
         {/* view */}
         {!editing &&
-          <div className="break-words flex gap-1">
-            <Bolt />
-            <span className="pr-2">
-              {initialLabel} <NodeRef id={action.id} />
-            </span>
+          <div className="break-words pr-2">
+            <div className="flex gap-1">
+              <Bolt />
+              <div>
+                {initialLabel} <NodeRef id={action.id} />
+              </div>
+            </div>
+            {action.condition && (
+              <div className="text-sm opacity-70 text-left">
+                <span className="italic">{t("if")}:</span> {action.condition}
+              </div>
+            )}
+            {action.effects?.length ? (
+              <div className="text-sm opacity-70 text-left">
+                <span className="italic">{t("effects")}:</span>{" "}
+                {action.effects.map(effect => formatInvocation(effect.name, effect.args)).join(", ")}
+              </div>
+            ) : null}
           </div>
         }
         {!noLabel &&

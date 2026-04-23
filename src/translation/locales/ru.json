@@ -62,6 +62,8 @@
   "importVerb": "Импортировать",
   "Action label": "Текст действия",
   "effect": "эффект",
+  "effects": "эффекты",
+  "entryEffects": "эффекты входа",
   "{{count}} in total": "{{count}} всего",
   "Malformed story JSON.": "Некорректный JSON-формат истории.",
   "Incorrect values": "Неверные значения",
@@ -92,5 +94,6 @@
   "Select the story language.": "Выберите язык истории.",
   "Cover": "Обложка",
   "Move up": "Передвинуть вверх",
-  "Move down": "Передвинуть вниз"
+  "Move down": "Передвинуть вниз",
+  "Auto-arrange": "Автовыравнивание"
 }

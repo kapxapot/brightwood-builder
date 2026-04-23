@@ -62,6 +62,8 @@
   "importVerb": "Importar",
   "Action label": "Texto de acción",
   "effect": "efecto",
+  "effects": "efectos",
+  "entryEffects": "efectos de entrada",
   "{{count}} in total": "{{count}} en total",
   "Malformed story JSON.": "Historia JSON mal formada.",
   "Incorrect values": "Valores incorrectos",
@@ -92,5 +94,6 @@
   "Select the story language.": "Selecciona el idioma.",
   "Cover": "Tapa",
   "Move up": "Mover hacia arriba",
-  "Move down": "Mover hacia abajo"
+  "Move down": "Mover hacia abajo",
+  "Auto-arrange": "Autoordenar"
 }

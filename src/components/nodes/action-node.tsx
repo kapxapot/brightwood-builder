@@ -33,7 +33,7 @@ const ActionNode = memo(function ActionNode({ data, selected, dragging }: Props)
     >
       <NodeTitle id={data.id} label={data.label ?? t(nodeLabels.action)} />
 
-      <NodeEffect effect={data.effect} />
+      <NodeEffect effects={data.entryEffects} />
 
       <NodeText
         data={data}

@@ -1,7 +1,7 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
   "type": "object",
-  "required": ["id", "title", "language", "startId", "nodes"],
+  "required": ["id", "title", "startId", "nodes"],
   "properties": {
     "id": {
       "type": "string"
@@ -31,11 +31,95 @@
       "minItems": 2,
       "maxItems": 2
     },
+    "prefix": {
+      "type": "string"
+    },
+    "data": {
+      "type": "object",
+      "properties": {
+        "init": {
+          "type": "object",
+          "additionalProperties": {
+            "oneOf": [
+              {
+                "type": ["string", "number", "boolean"]
+              },
+              {
+                "type": "object",
+                "required": ["ref"],
+                "properties": {
+                  "ref": {
+                    "type": "string"
+                  }
+                }
+              }
+            ]
+          }
+        },
+        "conditions": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        },
+        "effects": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["name", "statements"],
+            "properties": {
+              "name": {
+                "type": "string"
+              },
+              "args": {
+                "oneOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  }
+                ]
+              },
+              "conditions": {
+                "oneOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  }
+                ]
+              },
+              "statements": {
+                "oneOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  }
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
     "nodes": {
       "type": "array",
       "items": {
         "type": "object",
-        "required": ["id", "type", "text", "label"],
+        "required": ["id", "type", "text"],
         "properties": {
           "id": {
             "type": "integer"
@@ -48,11 +132,18 @@
             "type": "string"
           },
           "text": {
-            "type": "array",
-            "items": {
-              "type": "string"
-            },
-            "minItems": 1
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                },
+                "minItems": 1
+              }
+            ]
           },
           "key": {
             "type": "string"
@@ -65,6 +156,32 @@
             "minItems": 2,
             "maxItems": 2
           },
+          "entryEffects": {
+            "type": "array",
+            "items": {
+              "oneOf": [
+                {
+                  "type": "object",
+                  "required": ["name"],
+                  "properties": {
+                    "name": {
+                      "type": "string"
+                    },
+                    "args": {
+                      "type": "array",
+                      "items": {
+                        "type": ["string", "number", "boolean"]
+                      }
+                    }
+                  }
+                },
+                {
+                  "type": "string",
+                  "pattern": "^[A-Za-z_][A-Za-z0-9_]*(\\(\\))?$"
+                }
+              ]
+            }
+          },
           "nextId": {
             "type": "integer"
           },
@@ -76,6 +193,35 @@
               "properties": {
                 "label": {
                   "type": "string"
+                },
+                "condition": {
+                  "type": "string"
+                },
+                "effects": {
+                  "type": "array",
+                  "items": {
+                    "oneOf": [
+                      {
+                        "type": "object",
+                        "required": ["name"],
+                        "properties": {
+                          "name": {
+                            "type": "string"
+                          },
+                          "args": {
+                            "type": "array",
+                            "items": {
+                              "type": ["string", "number", "boolean"]
+                            }
+                          }
+                        }
+                      },
+                      {
+                        "type": "string",
+                        "pattern": "^[A-Za-z_][A-Za-z0-9_]*(\\(\\))?$"
+                      }
+                    ]
+                  }
                 },
                 "id": {
                   "type": "integer"
@@ -93,6 +239,35 @@
                   "type": "number",
                   "minimum": 0,
                   "maximum": 10
+                },
+                "condition": {
+                  "type": "string"
+                },
+                "effects": {
+                  "type": "array",
+                  "items": {
+                    "oneOf": [
+                      {
+                        "type": "object",
+                        "required": ["name"],
+                        "properties": {
+                          "name": {
+                            "type": "string"
+                          },
+                          "args": {
+                            "type": "array",
+                            "items": {
+                              "type": ["string", "number", "boolean"]
+                            }
+                          }
+                        }
+                      },
+                      {
+                        "type": "string",
+                        "pattern": "^[A-Za-z_][A-Za-z0-9_]*(\\(\\))?$"
+                      }
+                    ]
+                  }
                 },
                 "id": {
                   "type": "integer"

@@ -10,10 +10,35 @@ import NodeShell from "../node-parts/node-shell";
 import { Flag } from "../core/icons";
 import { useTranslation } from "react-i18next";
 import LanguageSelector from "../language-selector";
+import type { StoryData } from "@/entities/story-data";
 
 type Props = {
   data: StoryInfoGraphNode;
   selected: boolean;
+}
+
+type ReadonlyStateBlockProps = {
+  label: string;
+  value: unknown;
+};
+
+const formatJson = (value: unknown) => JSON.stringify(value, null, 2);
+
+function ReadonlyStateBlock({ label, value }: ReadonlyStateBlockProps) {
+  if (value === undefined) {
+    return null;
+  }
+
+  return (
+    <div className="mt-1">
+      <span className="text-xs opacity-50 font-bold ml-0.5">
+        {label}
+      </span>
+      <pre className="border border-black border-opacity-20 rounded-lg border-dashed bg-white bg-opacity-50 px-2 py-1 text-xs whitespace-pre-wrap break-words nowheel">
+        {formatJson(value)}
+      </pre>
+    </div>
+  );
 }
 
 const StoryInfoNode = memo(function StoryInfoNode({ data, selected }: Props) {
@@ -22,6 +47,7 @@ const StoryInfoNode = memo(function StoryInfoNode({ data, selected }: Props) {
   const { nodeEditing, startEdit, finishEdit } = useNodeEditing(data);
 
   const hasLanguage = !!data.language;
+  const storyData = data.data as StoryData | undefined;
 
   const updateTitle = (title: string) => {
     data.onChange?.({ ...data, title });
@@ -37,6 +63,10 @@ const StoryInfoNode = memo(function StoryInfoNode({ data, selected }: Props) {
 
   const updateLanguage = (language: string) => {
     data.onChange?.({ ...data, language });
+  };
+
+  const updatePrefix = (prefix: string) => {
+    data.onChange?.({ ...data, prefix });
   };
 
   return (
@@ -86,6 +116,18 @@ const StoryInfoNode = memo(function StoryInfoNode({ data, selected }: Props) {
         onEditFinished={finishEdit}
       />
 
+      <TextInput
+        value={data.prefix}
+        label={t("Prefix")}
+        readonly={nodeEditing}
+        deletable={true}
+        charLimit={500}
+        onValueChanged={updatePrefix}
+        onDeleted={() => updatePrefix("")}
+        onEditStarted={startEdit}
+        onEditFinished={finishEdit}
+      />
+
       <div>
         {hasLanguage &&
           <span className="text-xs opacity-50 font-bold ml-0.5">
@@ -100,6 +142,19 @@ const StoryInfoNode = memo(function StoryInfoNode({ data, selected }: Props) {
           onSelect={updateLanguage}
         />
       </div>
+
+      <ReadonlyStateBlock
+        label={t("State init")}
+        value={storyData?.init}
+      />
+      <ReadonlyStateBlock
+        label={t("State conditions")}
+        value={storyData?.conditions}
+      />
+      <ReadonlyStateBlock
+        label={t("State effects")}
+        value={storyData?.effects}
+      />
 
       <div className="mt-2 text-sm bg-gradient-to-r from-transparent to-purple-300 p-1 relative -mr-2">
         <div className="flex gap-1">

@@ -2,6 +2,18 @@
 
 A web app for building **Brightwood Stories**.
 
+## Reference Runtime
+
+The actual Brightwood story renderer and player live in the neighboring `../brightwood` project.
+
+When changing story JSON semantics in this builder, keep them aligned with the runtime behavior there, especially:
+
+- `../brightwood/lib/story-engine.ts`
+- `../brightwood/lib/message-renderer.ts`
+- `../brightwood/components/story-player.tsx`
+
+If this builder intentionally gets ahead of the runtime, document that gap clearly and plan the matching runtime update.
+
 Live: https://builder.brightwood.ink
 
 UI languages:

@@ -52,10 +52,7 @@ export function parseStoryGraph(
   text: string,
   changeHandler: OnChangeHandler
 ): StoryGraph {
-  const story = JSON.parse(text);
-
-  // validate the story
-  storySchema.parse(story);
+  const story = storySchema.parse(JSON.parse(text));
 
   return buildStoryGraph(story as Story, changeHandler);
 }

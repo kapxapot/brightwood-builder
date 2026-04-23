@@ -1,26 +1,30 @@
-type ValueName = string;
-type Value = string | number | boolean;
+export type StateKey = string;
+export type StateValue = string | number | boolean;
+export type StateReference = {
+  ref: StateKey;
+};
+export type InitValue = StateValue | StateReference;
 
-type EffectName = string;
-type EffectStatement = string;
+export type EffectName = string;
+export type EffectStatement = string;
 
 export type ConditionName = string;
-type ConditionStatement = string;
+export type ConditionExpression = string;
 
-type Effect = {
+export type EffectDefinition = {
   name: EffectName;
-  args?: ValueName | ValueName[];
-  conditions?: ConditionName | ConditionName[];
-  statements?: EffectStatement | EffectStatement[];
+  args?: StateKey | StateKey[];
+  conditions?: ConditionExpression | ConditionExpression[];
+  statements: EffectStatement | EffectStatement[];
 };
 
 export type StoryData = {
-  init: Record<ValueName, Value>;
-  effects?: Effect[];
-  conditions?: Record<ConditionName, ConditionStatement>;
+  init?: Record<StateKey, InitValue>;
+  effects?: EffectDefinition[];
+  conditions?: Record<ConditionName, ConditionExpression>;
 };
 
 export type EffectInvocation = {
   name: EffectName;
-  args?: Value[];
-}
+  args?: StateValue[];
+};

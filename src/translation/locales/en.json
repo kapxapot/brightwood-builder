@@ -5,7 +5,10 @@
     "overwriteStory": "A story with the same id <0>{{storyId}}...</0> already exists.",
     "chooseFileToImport": "Choose a <0>.json</0> story file to import"
   },
+  "effects": "effects",
+  "entryEffects": "entry effects",
   "loadStoryTitle": "Load story",
   "importStoryTitle": "Import story",
-  "importVerb": "Import"
+  "importVerb": "Import",
+  "Auto-arrange": "Auto-arrange"
 }

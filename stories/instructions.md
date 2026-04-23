@@ -18,6 +18,9 @@
 14. Do not fill the root story `cover` property unless you put there an existing image URL.
 15. Do not fill the `key` property of nodes.
 16. Do not fill the root story `viewport` property.
+17. The actual Brightwood player/runtime lives in the neighboring `../brightwood` project. When story format, interpolation, or runtime behavior matters, use `../brightwood/lib/story-engine.ts`, `../brightwood/lib/message-renderer.ts`, and `../brightwood/components/story-player.tsx` as reference and keep this builder aligned with them unless an intentional divergence is documented.
+18. In state conditions, bare flags like `met_theo` and negations like `!met_theo` are valid. Missing keys behave like no value and are falsy in conditions.
+19. Effect assignments can create new state keys dynamically, for example `weapon = 1`. Use `unset("weapon")` to remove a key. `unset` is a reserved built-in effect name and must not be redefined in story data. String literals inside conditions and effect statements must use double quotes, not single quotes. In `entryEffects`, `action.effects`, and `link.effects`, no-argument invocations can be written as shorthand strings: `removeShoe` or `removeShoe()`.
 
 ## Story Creation Process
 
