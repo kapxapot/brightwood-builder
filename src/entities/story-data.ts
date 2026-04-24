@@ -24,7 +24,9 @@ export type StoryData = {
   conditions?: Record<ConditionName, ConditionExpression>;
 };
 
-export type EffectInvocation = {
+export type EffectInvocationObject = {
   name: EffectName;
   args?: StateValue[];
 };
+
+export type EffectInvocation = EffectInvocationObject | EffectStatement;

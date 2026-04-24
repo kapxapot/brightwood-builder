@@ -10,8 +10,14 @@ import { Delete, Edit, MoveDown, MoveUp } from "../core/icons";
 import Tooltip from "../core/tooltip";
 import { TextInputLabel } from "../core/text-input-label";
 import { useTranslation } from "react-i18next";
+import type { EffectInvocation } from "@/entities/story-data";
 
-const formatInvocation = (name: string, args?: Array<string | number | boolean>) => {
+const formatInvocation = (effect: EffectInvocation) => {
+  if (typeof effect === "string") {
+    return effect;
+  }
+
+  const { name, args } = effect;
   const formattedArgs = args?.map(arg => JSON.stringify(arg)).join(", ");
   return `${name}(${formattedArgs ?? ""})`;
 };
@@ -157,7 +163,7 @@ export default function NodeLink({ link, index, totalWeight, deletable, isFirst,
             {link.effects?.length ? (
               <div className="text-sm opacity-70 text-left">
                 <span className="italic">{t("effects")}:</span>{" "}
-                {link.effects.map(effect => formatInvocation(effect.name, effect.args)).join(", ")}
+                {link.effects.map(formatInvocation).join(", ")}
               </div>
             ) : null}
           </div>

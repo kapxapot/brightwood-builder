@@ -73,6 +73,10 @@ type StatementNode =
   | { type: "assign"; key: string; value: ExpressionNode }
   | { type: "invoke"; name: string; args: ExpressionNode[] };
 
+type EffectInvocationValidationTarget =
+  | { kind: "value"; value: StateValue }
+  | { kind: "expression"; value: ExpressionNode };
+
 type EvaluationContext = {
   state: StoryState;
   storyData?: StoryData;
@@ -412,41 +416,54 @@ export function validateStoryStateModel(
     location: string
   ) => {
     for (const effect of effectInvocations ?? []) {
-      if (builtInEffectNames.has(effect.name)) {
-        const actualArgs = effect.args ?? [];
+      if (typeof effect === "string") {
+        try {
+          const statement = parseEffectInvocationStatement(effect);
 
-        if (actualArgs.length !== 1) {
-          addIssue(
-            nodeId,
-            `${location} calls built-in effect "${effect.name}" with ${actualArgs.length} argument(s), but 1 is required.`
+          if (statement.type === "assign") {
+            continue;
+          }
+
+          validateEffectInvocationTarget(
+            statement.name,
+            statement.args.length,
+            location,
+            statement.args[0]
+              ? { kind: "expression", value: statement.args[0] }
+              : undefined,
+            storyData
           );
-          continue;
-        }
-
-        if (typeof actualArgs[0] !== "string") {
+        } catch (error) {
           addIssue(
             nodeId,
-            `${location} calls built-in effect "${effect.name}" with a non-string key argument.`
+            formatError(
+              error,
+              `${location} has invalid effect invocation "${effect}".`
+            )
           );
         }
 
         continue;
       }
 
-      const definition = findEffectDefinition(effect.name, storyData);
-
-      if (!definition) {
-        addIssue(nodeId, `${location} references unknown effect "${effect.name}".`);
-        continue;
-      }
-
-      const expectedArgs = toArray(definition.args);
       const actualArgs = effect.args ?? [];
-
-      if (expectedArgs.length !== actualArgs.length) {
+      try {
+        validateEffectInvocationTarget(
+          effect.name,
+          actualArgs.length,
+          location,
+          actualArgs[0] !== undefined
+            ? { kind: "value", value: actualArgs[0] }
+            : undefined,
+          storyData
+        );
+      } catch (error) {
         addIssue(
           nodeId,
-          `${location} calls "${effect.name}" with ${actualArgs.length} argument(s), but ${expectedArgs.length} are required.`
+          formatError(
+            error,
+            `${location} has invalid effect invocation "${effect.name}".`
+          )
         );
       }
     }
@@ -510,6 +527,54 @@ export function validateStoryStateModel(
   return issues;
 }
 
+function validateEffectInvocationTarget(
+  effectName: string,
+  actualArgCount: number,
+  location: string,
+  firstArg?: EffectInvocationValidationTarget,
+  storyData?: StoryData
+) {
+  if (builtInEffectNames.has(effectName)) {
+    if (actualArgCount !== 1) {
+      throw new Error(
+        `${location} calls built-in effect "${effectName}" with ${actualArgCount} argument(s), but 1 is required.`
+      );
+    }
+
+    if (firstArg?.kind === "value" && typeof firstArg.value !== "string") {
+      throw new Error(
+        `${location} calls built-in effect "${effectName}" with a non-string key argument.`
+      );
+    }
+
+    if (
+      firstArg?.kind === "expression" &&
+      firstArg.value.type === "literal" &&
+      typeof firstArg.value.value !== "string"
+    ) {
+      throw new Error(
+        `${location} calls built-in effect "${effectName}" with a non-string literal key argument.`
+      );
+    }
+
+    return;
+  }
+
+  const definition = findEffectDefinition(effectName, storyData);
+
+  if (!definition) {
+    throw new Error(`${location} references unknown effect "${effectName}".`);
+  }
+
+  const expectedArgs = toArray(definition.args);
+
+  if (expectedArgs.length !== actualArgCount) {
+    throw new Error(
+      `${location} calls "${effectName}" with ${actualArgCount} argument(s), but ${expectedArgs.length} are required.`
+    );
+  }
+}
+
 function parseConditionReferenceOrExpression(
   condition: ConditionExpression,
   storyData?: StoryData
@@ -528,27 +593,40 @@ function applyEffectInvocation(
   invocation: EffectInvocation,
   context: EvaluationContext
 ) {
-  if (applyBuiltInEffectInvocation(invocation.name, invocation.args ?? [], context)) {
+  if (typeof invocation === "string") {
+    executeStatement(parseEffectInvocationStatement(invocation), context);
     return;
   }
 
-  const definition = findEffectDefinition(invocation.name, context.storyData);
+  applyNamedEffectInvocation(invocation.name, invocation.args ?? [], context);
+}
 
-  if (!definition) {
-    throw new Error(`Unknown effect "${invocation.name}".`);
+function applyNamedEffectInvocation(
+  name: string,
+  args: StateValue[],
+  context: EvaluationContext
+) {
+  if (applyBuiltInEffectInvocation(name, args, context)) {
+    return;
   }
 
-  if (context.effectStack.includes(invocation.name)) {
-    const cycle = [...context.effectStack, invocation.name].join(" -> ");
+  const definition = findEffectDefinition(name, context.storyData);
+
+  if (!definition) {
+    throw new Error(`Unknown effect "${name}".`);
+  }
+
+  if (context.effectStack.includes(name)) {
+    const cycle = [...context.effectStack, name].join(" -> ");
     throw new Error(`Cyclic effect invocation detected: ${cycle}.`);
   }
 
   const argNames = toArray(definition.args);
-  const argValues = invocation.args ?? [];
+  const argValues = args;
 
   if (argNames.length !== argValues.length) {
     throw new Error(
-      `Effect "${invocation.name}" expects ${argNames.length} argument(s), received ${argValues.length}.`
+      `Effect "${name}" expects ${argNames.length} argument(s), received ${argValues.length}.`
     );
   }
 
@@ -559,7 +637,7 @@ function applyEffectInvocation(
   const scopedContext: EvaluationContext = {
     ...context,
     scope,
-    effectStack: [...context.effectStack, invocation.name],
+    effectStack: [...context.effectStack, name],
   };
 
   for (const condition of toArray(definition.conditions)) {
@@ -595,13 +673,11 @@ function executeStatement(statement: StatementNode, context: EvaluationContext) 
         break;
       }
 
-      applyEffectInvocation(
-        {
-          name: statement.name,
-          args: evaluatedArgs.map((arg, index) =>
-            toEffectInvocationArg(arg, statement.name, index)
-          ),
-        },
+      applyNamedEffectInvocation(
+        statement.name,
+        evaluatedArgs.map((arg, index) =>
+          toEffectInvocationArg(arg, statement.name, index)
+        ),
         context
       );
       break;
@@ -831,6 +907,26 @@ function parseStatement(input: string): StatementNode {
   statementCache.set(input, statement);
 
   return statement;
+}
+
+function parseEffectInvocationStatement(input: string): StatementNode {
+  const trimmedInput = input.trim();
+
+  if (!trimmedInput) {
+    throw new Error("Effect invocation must not be empty.");
+  }
+
+  const tokens = tokenize(trimmedInput);
+
+  if (tokens.length === 1 && tokens[0]?.type === "identifier") {
+    return {
+      type: "invoke",
+      name: tokens[0].value,
+      args: [],
+    };
+  }
+
+  return parseStatement(trimmedInput);
 }
 
 function applyBuiltInEffectInvocation(

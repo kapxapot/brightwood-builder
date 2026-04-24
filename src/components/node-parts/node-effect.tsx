@@ -6,6 +6,10 @@ type Props = {
 };
 
 const formatInvocation = (effect: EffectInvocation) => {
+  if (typeof effect === "string") {
+    return effect;
+  }
+
   const args = effect.args?.map(arg => JSON.stringify(arg)).join(", ");
   return `${effect.name}(${args ?? ""})`;
 };

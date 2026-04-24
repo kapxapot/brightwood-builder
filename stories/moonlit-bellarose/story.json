@@ -8,6 +8,20 @@
     30,
     30
   ],
+  "data": {
+    "init": {
+      "reunionStyle": 0,
+      "topicFocus": 0,
+      "noteChoice": 0,
+      "confessionStyle": 0,
+      "futureChoice": 0,
+      "admitStyle": 0,
+      "sabineStance": 0,
+      "aftershockScene": 0,
+      "hasConfessionLetter": false,
+      "learnedHistory": false
+    }
+  },
   "nodes": [
     {
       "id": 1,
@@ -123,6 +137,9 @@
       "id": 7,
       "type": "skip",
       "label": "Soft Return",
+      "entryEffects": [
+        "reunionStyle = 1"
+      ],
       "text": [
         "🤍 You smile before you can help it, and Julien answers with the same old crooked warmth that once ruined your ability to stay sensible.",
         "\"Then Bellarose is luckier than usual tonight,\" he murmurs."
@@ -137,6 +154,9 @@
       "id": 8,
       "type": "skip",
       "label": "Bright Tease",
+      "entryEffects": [
+        "reunionStyle = 2"
+      ],
       "text": [
         "😏 \"You still greet people like a confession,\" you say. Julien laughs, color touching his cheeks.",
         "\"Only the dangerous ones,\" he replies, and the answer lands closer to your heart than you planned."
@@ -151,6 +171,9 @@
       "id": 9,
       "type": "skip",
       "label": "Held Breath",
+      "entryEffects": [
+        "reunionStyle = 3"
+      ],
       "text": [
         "😌 You keep your voice steady, but Julien notices the caution instantly and lets his own smile soften into patience.",
         "\"We can begin again slowly,\" he says. \"I know better than to rush you this time.\""
@@ -330,6 +353,9 @@
       "id": 19,
       "type": "skip",
       "label": "Summer Echo",
+      "entryEffects": [
+        "topicFocus = 1"
+      ],
       "text": [
         "🕰️ Julien studies the sea before answering. \"I kept thinking you would write,\" he says, not accusing, only honest.",
         "The quiet hurts because it deserves to."
@@ -344,6 +370,9 @@
       "id": 20,
       "type": "skip",
       "label": "Paris Whisper",
+      "entryEffects": [
+        "topicFocus = 2"
+      ],
       "text": [
         "🚆 At the word Paris, Julien's expression flickers. \"It is an offer,\" he admits, \"not a promise.\"",
         "Then he adds, almost too softly, \"I have not decided what kind of life I want it to buy.\""
@@ -358,6 +387,9 @@
       "id": 21,
       "type": "skip",
       "label": "Bright Deflect",
+      "entryEffects": [
+        "topicFocus = 3"
+      ],
       "text": [
         "✨ You steer the talk toward festival gossip, and Julien lets you, though the look he gives you is tender with patience.",
         "\"All right,\" he says. \"We can borrow one easy hour before Bellarose asks for honesty again.\""
@@ -468,6 +500,9 @@
       "id": 27,
       "type": "skip",
       "label": "Opened Heart",
+      "entryEffects": [
+        "noteChoice = 1"
+      ],
       "text": [
         "📖 Inside is only a line: \"If Bellarose gives me courage, meet me where the glass catches <b>sunset</b>.\"",
         "The simplicity of it makes your pulse jump harder than a speech would have."
@@ -482,6 +517,9 @@
       "id": 28,
       "type": "skip",
       "label": "Honest Return",
+      "entryEffects": [
+        "noteChoice = 2"
+      ],
       "text": [
         "🤲 You find Julien near the flower cart and offer the note back unopened. His surprise melts into gratitude.",
         "\"Then I will have to be brave in person,\" he says, voice gone low."
@@ -496,6 +534,9 @@
       "id": 29,
       "type": "skip",
       "label": "Hidden Promise",
+      "entryEffects": [
+        "noteChoice = 3"
+      ],
       "text": [
         "🌙 You slip the note into your pocket without opening it. The secret of it warms against your palm all afternoon.",
         "When Julien catches you touching the folded paper later, his smile turns helplessly hopeful."
@@ -512,7 +553,7 @@
       "label": "Sunset Route",
       "text": [
         "🌇 As the light turns honey-gold, Julien asks where you want the evening to begin.",
-        "He offers the conservatory at sunset, the pier at lantern launch, or the rehearsal hall before the waltz."
+        "{{noteChoice:📖 Because you already opened his note, the invitation feels less like a surprise than a dare finally answered.|🤲 Because you returned the note unopened, every glance from Julien feels brave enough to count twice.|🌙 The folded note is still warm in your pocket, turning his question into a secret you are both pretending not to share.}} He offers the conservatory at sunset, the pier at lantern launch, or the rehearsal hall before the waltz."
       ],
       "actions": [
         {
@@ -636,7 +677,7 @@
       "label": "Near Confession",
       "text": [
         "💞 When the rain softens, Julien steps closer with the look of a man standing at the edge of a sentence he has rewritten too many times.",
-        "You can press for the truth, answer with touch, or let the moment stay unfinished."
+        "{{reunionStyle:🤍 The easy warmth from your reunion still lingers, making honesty feel less impossible.|😏 The teasing spark from earlier has burned down into something more dangerous and sincere.|🕊️ The caution you brought back to Bellarose is still there, which makes his nearness feel bolder than either of you admits.}} You can press for the truth, answer with touch, or let the moment stay unfinished."
       ],
       "actions": [
         {
@@ -661,6 +702,9 @@
       "id": 38,
       "type": "skip",
       "label": "Plain Truth",
+      "entryEffects": [
+        "confessionStyle = 1"
+      ],
       "text": [
         "💬 \"What were you going to say?\" you ask. Julien exhales and almost smiles at your courage.",
         "\"That I made leaving you once look easier than it was,\" he admits."
@@ -675,6 +719,9 @@
       "id": 39,
       "type": "skip",
       "label": "Gentle Touch",
+      "entryEffects": [
+        "confessionStyle = 2"
+      ],
       "text": [
         "🤍 Your fingers find his hand before your caution can object. Julien holds on with immediate, startled tenderness.",
         "Whatever words fail him, his pulse does not."
@@ -689,6 +736,9 @@
       "id": 40,
       "type": "skip",
       "label": "Unfinished Breath",
+      "entryEffects": [
+        "confessionStyle = 3"
+      ],
       "text": [
         "🙂 You save him from the edge of confession, and gratitude mixes strangely with regret in his eyes.",
         "\"Then give me another chance later,\" he says."
@@ -1022,7 +1072,7 @@
       "label": "Rumor Answer",
       "text": [
         "🎻 Julien sees the worry land on your face and opens his mouth, but this time you can choose the shape of the moment.",
-        "You can confront him now, trust him enough to wait, or bury yourself in work until your heart steadies."
+        "{{topicFocus:🕰️ Because you asked about the summer first, the fear between you still carries the shape of what was left unwritten.|🚆 Because you raised Paris before, the rumor lands on already tender ground.|✨ Because you kept things light earlier, the sudden seriousness feels even sharper now.}} You can confront him now, trust him enough to wait, or bury yourself in work until your heart steadies."
       ],
       "actions": [
         {
@@ -1463,7 +1513,7 @@
       "label": "Future Talk",
       "text": [
         "☀️ With dawn brightening around you, the question of what comes after the festival finally stands in the open.",
-        "You can ask Julien to stay, offer to leave with him, or demand the plain truth before hope grows any larger."
+        "{{confessionStyle:💬 After asking for the truth in the rain, you can feel how little patience remains for half-answers.|🤝 After taking his hand instead of his words, closeness no longer feels theoretical.|🌧️ Because you spared the last confession, dawn still carries that unfinished sentence.}} You can ask Julien to stay, offer to leave with him, or demand the plain truth before hope grows any larger."
       ],
       "actions": [
         {
@@ -1488,6 +1538,9 @@
       "id": 85,
       "type": "skip",
       "label": "Rooted Wish",
+      "entryEffects": [
+        "futureChoice = 1"
+      ],
       "text": [
         "🏡 When you ask whether he could stay, Julien looks out over Bellarose as though measuring love against habit and history.",
         "\"I could,\" he says. \"The harder question is whether I would be brave enough to choose it.\""
@@ -1502,6 +1555,9 @@
       "id": 86,
       "type": "skip",
       "label": "Bold Offer",
+      "entryEffects": [
+        "futureChoice = 2"
+      ],
       "text": [
         "🚆 \"Then I could leave with you,\" you say, surprising yourself first. Julien's gaze snaps to yours.",
         "Whatever fear he carried softens into wonder."
@@ -1516,6 +1572,9 @@
       "id": 87,
       "type": "skip",
       "label": "Plain Terms",
+      "entryEffects": [
+        "futureChoice = 3"
+      ],
       "text": [
         "💬 \"No more almost,\" you say. Julien nods like a man relieved to be caught.",
         "\"Then the truth is this,\" he answers. \"I want you in whatever life I choose next.\""
@@ -1626,6 +1685,9 @@
       "id": 93,
       "type": "skip",
       "label": "Hidden History",
+      "entryEffects": [
+        "learnedHistory = true"
+      ],
       "text": [
         "💞 The loose page describes a love that almost left Bellarose for the city and chose, at the last minute, to stay long enough for a whole life.",
         "Seeing the names makes your chest tighten with recognition."
@@ -1640,6 +1702,9 @@
       "id": 94,
       "type": "skip",
       "label": "Mireille's Story",
+      "entryEffects": [
+        "learnedHistory = true"
+      ],
       "text": [
         "🌼 Mireille gently takes the papers from your hands and tells you the rest herself.",
         "\"Love is not ruined by hesitation,\" she says. \"Only by silence kept too long.\""
@@ -1656,7 +1721,7 @@
       "label": "Brave Admit",
       "text": [
         "💗 The afternoon feels suddenly too short for pretense.",
-        "You can tell Celia what you want, tell Julien outright before night falls, or write your feelings into a letter first so your courage has something to hold."
+        "{{learnedHistory:📖 Mireille's hidden story has taken some of the glamour out of hesitation and left only the decision itself. }}You can tell Celia what you want, tell Julien outright before night falls, or write your feelings into a letter first so your courage has something to hold."
       ],
       "actions": [
         {
@@ -1681,6 +1746,9 @@
       "id": 96,
       "type": "skip",
       "label": "Friend's Blessing",
+      "entryEffects": [
+        "admitStyle = 1"
+      ],
       "text": [
         "🕯️ Celia listens without interruption, then squeezes your wrist hard enough to mean it.",
         "\"Good,\" she says. \"Wanting something clearly is half the rescue.\""
@@ -1695,6 +1763,9 @@
       "id": 97,
       "type": "skip",
       "label": "Interrupted Truth",
+      "entryEffects": [
+        "admitStyle = 2"
+      ],
       "text": [
         "❤️ You find Julien by the ballroom doors and start to speak, but Sabine arrives before the second sentence can survive.",
         "The frustration in his eyes matches your own."
@@ -1709,6 +1780,10 @@
       "id": 98,
       "type": "skip",
       "label": "Written Courage",
+      "entryEffects": [
+        "admitStyle = 3",
+        "hasConfessionLetter = true"
+      ],
       "text": [
         "✍️ You write by the fountain arcade until the page stops trembling beneath your hand.",
         "The letter is not polished, only honest, which feels more dangerous."
@@ -1725,7 +1800,7 @@
       "label": "Sabine Arrives",
       "text": [
         "🖤 Madame Sabine D'Orsay steps into the square in pearl silk, carrying herself like a verdict wrapped in lace.",
-        "You can greet her politely, hide your letter before she sees it, or challenge her cool confidence outright."
+        "You can greet her politely{{hasConfessionLetter:, hide your letter before she sees it,}} or challenge her cool confidence outright."
       ],
       "actions": [
         {
@@ -1734,6 +1809,7 @@
         },
         {
           "label": "📄 Hide letter",
+          "condition": "hasConfessionLetter",
           "id": 101
         },
         {
@@ -1794,7 +1870,7 @@
       "label": "Satin Current",
       "text": [
         "🧵 Sabine turns the conversation with practiced ease, and suddenly the entire square feels arranged around her.",
-        "She can draw you toward a Paris invitation, trap you in polite business talk, or let you slip away long enough to steady yourself with the letter."
+        "She can draw you toward a Paris invitation, trap you in polite business talk{{admitStyle:, or let you slip away long enough to write down what you cannot say yet|, or let you slip away long enough to write down what you cannot say yet|, or let you slip away long enough to steady yourself with the letter}}."
       ],
       "links": [
         {
@@ -1849,7 +1925,7 @@
       "label": "Answer Sabine",
       "text": [
         "🎻 Sabine finally turns to you with direct curiosity. \"And what do <i>you</i> imagine for him?\" she asks.",
-        "You can defend Bellarose, hold your silence and watch Julien answer, or ask him to choose with his own voice."
+        "{{futureChoice:🏡 After asking whether he could stay, the question feels less abstract than it would have an hour ago.|🚆 After offering to leave with him, you can hear your own bravery echoing back at you.|💬 After demanding the truth at dawn, silence now feels more expensive than ever.}} You can defend Bellarose, hold your silence and watch Julien answer, or ask him to choose with his own voice."
       ],
       "actions": [
         {
@@ -1874,6 +1950,9 @@
       "id": 107,
       "type": "skip",
       "label": "Home Spoken",
+      "entryEffects": [
+        "sabineStance = 1"
+      ],
       "text": [
         "🌹 You speak of moonflowers, stubborn towns, and lives that matter because they are tended, not because they are admired from afar.",
         "Julien looks at you as if you have named him more truly than anyone in months."
@@ -1888,6 +1967,9 @@
       "id": 108,
       "type": "skip",
       "label": "Costly Silence",
+      "entryEffects": [
+        "sabineStance = 2"
+      ],
       "text": [
         "🤐 You say nothing, and the emptiness lands heavier than any argument.",
         "Julien's face shutters for a moment before he smooths it away."
@@ -1902,6 +1984,9 @@
       "id": 109,
       "type": "skip",
       "label": "Chosen Voice",
+      "entryEffects": [
+        "sabineStance = 3"
+      ],
       "text": [
         "🗣️ \"He can answer for himself,\" you say. Julien straightens, almost grateful.",
         "\"Then hear me clearly,\" he tells Sabine. \"I am not merchandise.\""
@@ -1943,6 +2028,9 @@
       "id": 111,
       "type": "skip",
       "label": "Greenhouse Truth",
+      "entryEffects": [
+        "aftershockScene = 1"
+      ],
       "text": [
         "🌿 In the greenhouse, moonflowers are just beginning to open, white petals unfurling like withheld answers.",
         "Julien apologizes for every time fear made him sound uncertain."
@@ -1957,6 +2045,9 @@
       "id": 112,
       "type": "skip",
       "label": "Sea Clarity",
+      "entryEffects": [
+        "aftershockScene = 2"
+      ],
       "text": [
         "🌊 The cliff path is cooler now, and the salt wind strips some of the panic from your thoughts.",
         "Julien walks beside you without rushing, as if he finally understands that pace can be a form of devotion."
@@ -1971,6 +2062,9 @@
       "id": 113,
       "type": "skip",
       "label": "Last Rehearsal",
+      "entryEffects": [
+        "aftershockScene = 3"
+      ],
       "text": [
         "🎼 The final rehearsal lasts only minutes, but the duet between your silence and his violin says everything the room cannot.",
         "When the last note fades, no one applauds because no one dares break it."
@@ -1987,7 +2081,7 @@
       "label": "Final Night",
       "text": [
         "🕯️ The last lanterns are being carried toward the bridge, the station lights glitter below the cliff road, and the conservatory doors stand open behind you.",
-        "Bellarose has done all it can. The rest must be <b>chosen</b>."
+        "{{sabineStance:🌹 After defending Bellarose out loud, you can no longer pretend this choice is theoretical.|🤐 The silence you kept with Sabine still presses at the edges of the night.|🗣️ After asking Julien to speak for himself, what happens next already feels more shared than fated.}} Bellarose has done all it can. The rest must be <b>chosen</b>."
       ],
       "actions": [
         {
@@ -2014,7 +2108,7 @@
       "label": "Bridge Choice",
       "text": [
         "🌉 On the lantern bridge, water flickers gold beneath the rails and Julien waits without disguise or distance.",
-        "You can speak now and choose him openly, ask for one season of letters instead of promises, or let the beautiful moment remain unfinished."
+        "{{noteChoice:📖 His first note proved he could be brave on paper.|🤲 Returning that note unopened taught both of you how much courage directness requires.|🌙 The note you once kept hidden is still folded somewhere in your thoughts.}} You can speak now and choose him openly, ask for one season of letters instead of promises, or let the beautiful moment remain unfinished."
       ],
       "actions": [
         {
@@ -2041,7 +2135,7 @@
       "label": "Paris Waltz",
       "text": [
         "🚉 You catch Julien by the station steps and choose motion over fear. He laughs once, stunned, then kisses you like someone stepping into weather he has wanted all along.",
-        "By dawn the train is carrying both of you toward Paris, not because the city won, but because love finally stopped pretending it wanted safety first."
+        "{{futureChoice:🏡 Paris does not feel like a victory over Bellarose, only the road love takes after learning it can be spoken aloud.|🚆 It feels less like surrendering to Paris than keeping the brave offer you made at dawn.|💬 The plain truth you demanded that morning carries all the way to the station steps.}} By dawn the train is carrying both of you toward Paris, not because the city won, but because love finally stopped pretending it wanted safety first."
       ],
       "position": [
         12260,
@@ -2054,7 +2148,7 @@
       "label": "Steady Bloom",
       "text": [
         "🌱 You turn back toward the conservatory and choose the life with roots under it. Mireille meets you at the doors, and Julien lets you go with sorrow, respect, and a promise not to call this ending when it is only truth.",
-        "Moonflowers open above you as Bellarose keeps you, and for the first time that choice feels like its own kind of romance."
+        "{{learnedHistory:📖 Mireille's hidden history reminds you that staying can be brave, not merely safe. }}Moonflowers open above you as Bellarose keeps you, and for the first time that choice feels like its own kind of romance."
       ],
       "position": [
         12260,
@@ -2067,7 +2161,7 @@
       "label": "Bellarose Kiss",
       "text": [
         "❤️ You tell Julien to stay, and then tell him you love him before caution can edit the sentence. His answer comes as laughter, tears, and a kiss under swinging lantern light.",
-        "By sunrise you are planning roses, music, and a reopened conservatory together, with Bellarose glittering around your impossible good luck."
+        "{{aftershockScene:🌿 The greenhouse promise of opening petals seems to bloom all at once around you.|🌊 The steadiness you found by the sea carries cleanly into the words at last.|🎼 The last rehearsal has already taught you how confession sounds when both hearts keep time.}} By sunrise you are planning roses, music, and a reopened conservatory together, with Bellarose glittering around your impossible good luck."
       ],
       "position": [
         12580,
@@ -2080,7 +2174,7 @@
       "label": "Season Letters",
       "text": [
         "💌 You ask for one honest season instead of a perfect forever. Julien presses his forehead to yours and agrees, relieved that love can be brave without pretending certainty.",
-        "Lantern boats drift under the bridge while you trade the first of many letters, each one a promise to return more clearly than before."
+        "{{noteChoice:📖 Because you opened his first note, the letters that follow feel like a conversation finally grown brave enough to continue.|🤲 Because you once returned his note unopened, the first letter you trade now feels doubly earned.|🌙 The note you once kept hidden becomes the pattern for a promise that knows how to wait.}} {{hasConfessionLetter:Your own folded confession rests between you too, proof that caution can still choose honesty. }}Lantern boats drift under the bridge while you trade the first of many letters, each one a promise to return more clearly than before."
       ],
       "position": [
         12580,
@@ -2093,7 +2187,7 @@
       "label": "Missed Tide",
       "text": [
         "🌫️ You let the moment pass with a soft smile, and Julien understands enough not to force what your heart cannot yet hold.",
-        "The bridge glows, the music fades, and Bellarose keeps the memory gentle: not a ruin, only a love that arrived a little too close to the tide."
+        "{{confessionStyle:Having already asked for the truth once, you know exactly what you are refusing and why.|Even after taking his hand and nearly crossing every distance, you trust yourself enough not to promise what you cannot keep.|The unfinished sentence from the rain remains unfinished, but no longer cruel.}} The bridge glows, the music fades, and Bellarose keeps the memory gentle: not a ruin, only a love that arrived a little too close to the tide."
       ],
       "position": [
         12580,
