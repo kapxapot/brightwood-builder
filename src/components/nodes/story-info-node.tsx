@@ -133,6 +133,10 @@ const StoryInfoNode = memo(function StoryInfoNode({ data, selected }: Props) {
           label={t("State effects")}
           value={storyData?.effects}
         />
+        <ReadonlyStateBlock
+          label={t("State redirect triggers")}
+          value={storyData?.redirectTriggers}
+        />
       </div>
 
       <div className="mt-2 text-sm bg-gradient-to-r from-transparent to-purple-300 p-1 relative -mr-2">

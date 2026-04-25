@@ -24,12 +24,18 @@ const effectSchema = z.object({
     .optional(),
 });
 
+const redirectTriggerSchema = z.object({
+  condition: conditionStatementSchema,
+  targetId: z.number(),
+});
+
 export const storyDataSchema = z.object({
   init: z.record(valueNameSchema, initValueSchema).optional(),
   effects: z.array(effectSchema).optional(),
   conditions: z
     .record(conditionNameSchema, conditionStatementSchema)
     .optional(),
+  redirectTriggers: z.array(redirectTriggerSchema).optional(),
 });
 
 const effectInvocationObjectSchema = z.object({

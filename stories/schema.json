@@ -62,6 +62,21 @@
             "type": "string"
           }
         },
+        "redirectTriggers": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["condition", "targetId"],
+            "properties": {
+              "condition": {
+                "type": "string"
+              },
+              "targetId": {
+                "type": "integer"
+              }
+            }
+          }
+        },
         "effects": {
           "type": "array",
           "items": {

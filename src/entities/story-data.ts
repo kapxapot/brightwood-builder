@@ -18,10 +18,16 @@ export type EffectDefinition = {
   statements: EffectStatement | EffectStatement[];
 };
 
+export type RedirectTrigger = {
+  condition: ConditionExpression;
+  targetId: number;
+};
+
 export type StoryData = {
   init?: Record<StateKey, InitValue>;
   effects?: EffectDefinition[];
   conditions?: Record<ConditionName, ConditionExpression>;
+  redirectTriggers?: RedirectTrigger[];
 };
 
 export type EffectInvocationObject = {

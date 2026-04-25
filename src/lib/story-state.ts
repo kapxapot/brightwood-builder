@@ -8,6 +8,7 @@ import type {
   EffectDefinition,
   EffectInvocation,
   InitValue,
+  RedirectTrigger,
   StateKey,
   StateReference,
   StateValue,
@@ -218,6 +219,21 @@ export function evaluateCondition(
   });
 }
 
+export function findMatchingRedirectTrigger(
+  storyData: StoryData | undefined,
+  state: StoryState
+): RedirectTrigger | undefined {
+  const redirectTriggers = storyData?.redirectTriggers ?? [];
+
+  for (const redirectTrigger of redirectTriggers) {
+    if (evaluateCondition(redirectTrigger.condition, state, storyData)) {
+      return redirectTrigger;
+    }
+  }
+
+  return undefined;
+}
+
 export function applyEntryEffects(
   node: StoryNode,
   state: StoryState,
@@ -330,6 +346,7 @@ export function validateStoryStateModel(
   const issues: StoryStateValidationIssue[] = [];
   const effectDefinitions = storyData?.effects ?? [];
   const effectNameCounts = new Map<string, number>();
+  const nodeIds = new Set(nodes.map(node => node.id));
 
   const addIssue = (nodeId: NodeId, message: string) => {
     issues.push({ nodeId, message });
@@ -487,6 +504,21 @@ export function validateStoryStateModel(
       );
     }
   };
+
+  storyData?.redirectTriggers?.forEach((redirectTrigger, index) => {
+    validateCondition(
+      redirectTrigger.condition,
+      storyInfoNodeId,
+      `Redirect trigger [${index + 1}]`
+    );
+
+    if (!nodeIds.has(redirectTrigger.targetId)) {
+      addIssue(
+        storyInfoNodeId,
+        `Redirect trigger [${index + 1}] references unknown target node ${redirectTrigger.targetId}.`
+      );
+    }
+  });
 
   for (const node of nodes) {
     validateEffectInvocations(

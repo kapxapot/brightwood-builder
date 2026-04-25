@@ -59,6 +59,12 @@
         "name": "gainShard",
         "statements": "emberShards = emberShards + 1"
       }
+    ],
+    "redirectTriggers": [
+      {
+        "condition": "isDead()",
+        "targetId": 30
+      }
     ]
   },
   "nodes": [

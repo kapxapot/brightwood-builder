@@ -69,6 +69,10 @@ function buildContext(nodes: GraphNode[]): Context {
           references.add(node.startId);
         }
 
+        node.data?.redirectTriggers?.forEach(redirectTrigger => {
+          references.add(redirectTrigger.targetId);
+        });
+
         break;
 
       case "action":
