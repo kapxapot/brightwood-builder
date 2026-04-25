@@ -195,7 +195,7 @@
           "id": 7
         },
         {
-          "label": "🪞 Mirror wall",
+          "label": "✨ Mirror wall",
           "id": 20
         },
         {
@@ -465,7 +465,7 @@
       ],
       "actions": [
         {
-          "label": "🪞 Mirror next",
+          "label": "✨ Mirror next",
           "id": 20
         },
         {
@@ -479,7 +479,7 @@
       "type": "action",
       "label": "Mirror Wall",
       "text": [
-        "The mirror 🪞 spans an entire alcove, but it reflects the room one second late. In the reflection, the exit door is slightly open.",
+        "The mirror ✨ spans an entire alcove, but it reflects the room one second late. In the reflection, the exit door is slightly open.",
         "A hairline crack runs from your reflected hand to the real frame."
       ],
       "position": [
@@ -496,7 +496,7 @@
           ]
         },
         {
-          "label": "🪞 Fog glass",
+          "label": "✨ Fog glass",
           "id": 22,
           "effects": [
             "tick(1)"
@@ -565,7 +565,7 @@
           ]
         },
         {
-          "label": "🪞 Wrap shard",
+          "label": "✨ Wrap shard",
           "condition": "hasMirrorShard",
           "id": 27
         },
@@ -634,7 +634,7 @@
       ],
       "actions": [
         {
-          "label": "🪞 Align shard",
+          "label": "✨ Align shard",
           "condition": "hasMirrorShard && litLamp && !learnedOrreryPattern",
           "id": 29,
           "effects": [
@@ -652,7 +652,7 @@
           ]
         },
         {
-          "label": "🪞 Behind glass",
+          "label": "✨ Behind glass",
           "id": 31
         },
         {
@@ -694,7 +694,7 @@
       ],
       "actions": [
         {
-          "label": "🪞 Fit lens",
+          "label": "✨ Fit lens",
           "condition": "hasMoonLens",
           "id": 32
         },
@@ -780,7 +780,7 @@
       ],
       "actions": [
         {
-          "label": "🪞 Enter reflection",
+          "label": "✨ Enter reflection",
           "condition": "learnedExitTruth && !restoredPower",
           "id": 37
         },
@@ -1612,7 +1612,7 @@
       ],
       "actions": [
         {
-          "label": "🪞 Use lens",
+          "label": "✨ Use lens",
           "condition": "hasMoonLens && !learnedOrreryPattern",
           "id": 85,
           "effects": [
@@ -1767,7 +1767,7 @@
           ]
         },
         {
-          "label": "🪞 Glass case",
+          "label": "✨ Glass case",
           "condition": "learnedNumberCode",
           "id": 93
         },
@@ -1837,7 +1837,7 @@
       ],
       "actions": [
         {
-          "label": "🪞 Warm mirror",
+          "label": "✨ Warm mirror",
           "condition": "litLamp && !learnedNumberCode",
           "id": 97
         },
@@ -1973,7 +1973,7 @@
       ],
       "actions": [
         {
-          "label": "🪞 Glass key",
+          "label": "✨ Glass key",
           "condition": "hasGlassKey",
           "id": 104,
           "effects": [
@@ -2044,7 +2044,7 @@
       ],
       "actions": [
         {
-          "label": "🪞 Mirror seal",
+          "label": "✨ Mirror seal",
           "condition": "hasMirrorShard && learnedExitTruth && !mirrorSeal",
           "id": 107,
           "effects": [
@@ -2598,7 +2598,7 @@
       "id": 138,
       "type": "redirect",
       "label": "Below Hatch",
-      "text": "The hatch opens on a ladder 🪜 and a breath of old machine air. The state of the room matters now.",
+      "text": "The hatch opens on a ladder ⬆️ and a breath of old machine air. The state of the room matters now.",
       "position": [
         1720,
         3300

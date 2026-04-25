@@ -54,6 +54,17 @@
 15. Don't create all actions with 3 choices. Create some with 2, some with 3, depending on the context. I REPEATE DON'T MAKE 3 ACTIONS EVERYWHERE USE A MIX OF 2-3.
 16. When quoting someone's speech, use double quotes `"`, not single ones `'`.
 
+## Emoji Safety
+
+Before generating or editing a story, check emoji choices against this list of glyphs that have rendered as missing-character rectangles in the browser. Do not use these emoji in story titles, action labels, node labels, or story text:
+
+- `🪙` coin. Use `💰` instead.
+- `🪢` knot. Use `🔗` instead.
+- `🪞` mirror. Use `✨` instead for mirror/glass magic cues, or `🔎` when the action is inspection.
+- `🪜` ladder. Use `⬆️`, `🧭`, or another older navigation/climbing cue instead.
+
+`🪑` chair has been checked in the browser and is allowed.
+
 ## Story Validation
 
 1. Check that all referenced nodes are added to the story.
