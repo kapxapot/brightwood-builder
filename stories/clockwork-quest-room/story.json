@@ -1,0 +1,2321 @@
+{
+  "id": "8d2a89ec-59e2-4e57-86d8-0e4c34f81625",
+  "title": "The Clockwork Quest Room",
+  "description": "A state-driven escape-room quest about finding objects, learning rules, and opening the right exit.",
+  "language": "en",
+  "startId": 1,
+  "prefix": "Time: {{timeLeft}} | Focus: {{focus}} | Clues: {{clues}}",
+  "data": {
+    "init": {
+      "maxFocus": 5,
+      "timeLeft": 14,
+      "focus": 4,
+      "tension": 0,
+      "clues": 0,
+      "hasBrassKey": false,
+      "hasMirrorShard": false,
+      "hasInkVial": false,
+      "hasTuningFork": false,
+      "hasValveHandle": false,
+      "hasGlassKey": false,
+      "hasChalk": false,
+      "hasSunDialGear": false,
+      "hasCopperWire": false,
+      "hasMoonLens": false,
+      "hasCrystalStar": false,
+      "hasMasterKey": false,
+      "hasExitMap": false,
+      "hasFuse": false,
+      "learnedMotto": false,
+      "learnedBellOrder": false,
+      "learnedWaterClock": false,
+      "learnedNumberCode": false,
+      "learnedOrreryPattern": false,
+      "learnedExitTruth": false,
+      "learnedPowerRisk": false,
+      "learnedFinalSequence": false,
+      "learnedRoomVoice": false,
+      "learnedTrueExit": false,
+      "learnedRoomName": false,
+      "openedDeskLock": false,
+      "drainedBasin": false,
+      "solvedBells": false,
+      "gearInstalled": false,
+      "restoredCircuit": false,
+      "restoredPower": false,
+      "openedGlassCase": false,
+      "mirrorSeal": false,
+      "bellSeal": false,
+      "waterSeal": false,
+      "markedTrapdoor": false,
+      "foundTrapdoor": false,
+      "foundLooseTile": false,
+      "spokeMotto": false,
+      "emergencyRoute": false,
+      "roomAppeased": false,
+      "keeperPromise": false,
+      "roomFreed": false,
+      "litLamp": false
+    },
+    "conditions": {
+      "timeGone": "timeLeft <= 0",
+      "canOpenCabinet": "hasBrassKey && learnedMotto && !openedDeskLock",
+      "canDrainBasin": "hasValveHandle && learnedWaterClock && !drainedBasin",
+      "canPlayBells": "learnedBellOrder && hasTuningFork",
+      "canSolveOrrery": "hasSunDialGear && learnedOrreryPattern",
+      "escapeReady": "mirrorSeal && bellSeal && waterSeal && restoredPower",
+      "perfectEscape": "escapeReady() && hasMasterKey && learnedTrueExit && timeLeft >= 4 && tension <= 3"
+    },
+    "effects": [
+      {
+        "name": "tick",
+        "args": "amount",
+        "conditions": "amount > 0",
+        "statements": "timeLeft = max(timeLeft - amount, 0)"
+      },
+      {
+        "name": "learn",
+        "statements": "clues = clues + 1"
+      },
+      {
+        "name": "strain",
+        "statements": [
+          "focus = max(focus - 1, 0)",
+          "tension = tension + 1"
+        ]
+      },
+      {
+        "name": "rest",
+        "statements": [
+          "focus = min(focus + 1, maxFocus)",
+          "tick(1)"
+        ]
+      }
+    ]
+  },
+  "nodes": [
+    {
+      "id": 1,
+      "type": "skip",
+      "label": "Waking",
+      "text": [
+        "You wake on a black-and-white marble floor inside a circular room. Brass ribs cross the ceiling like the inside of a clock.",
+        "A sealed door waits opposite you. Above it, small letters read: <b>The exit opens for the one who notices.</b>"
+      ],
+      "position": [100, 900],
+      "nextId": 2
+    },
+    {
+      "id": 2,
+      "type": "action",
+      "label": "First Sense",
+      "text": [
+        "The room is quiet except for water ticking somewhere behind stone. Five alcoves wait around the wall, each lit by a narrow lamp.",
+        "Your pockets are empty. Your memory offers only your name and the certainty that someone built this place to be solved."
+      ],
+      "position": [420, 900],
+      "actions": [
+        {
+          "label": "Check door",
+          "id": 3,
+          "effects": ["tick(1)"]
+        },
+        {
+          "label": "Call out",
+          "id": 4,
+          "effects": ["strain"]
+        },
+        {
+          "label": "Listen",
+          "id": 5,
+          "effects": ["learn"]
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "type": "skip",
+      "label": "Cold Door",
+      "text": "The exit handle refuses to move. Three empty seals sit above it: one shaped like a mirror, one like a bell, and one like a drop of water.",
+      "position": [740, 720],
+      "nextId": 6
+    },
+    {
+      "id": 4,
+      "type": "skip",
+      "label": "No Answer",
+      "text": "Your shout comes back too neatly. The echo is not natural; it arrives measured, clipped, and almost amused.",
+      "position": [740, 900],
+      "nextId": 6
+    },
+    {
+      "id": 5,
+      "type": "skip",
+      "label": "Hidden Tick",
+      "text": "Under the silence, you hear three rhythms: a desk spring clicking, water counting seconds, and a bell humming without being struck.",
+      "position": [740, 1080],
+      "nextId": 6
+    },
+    {
+      "id": 6,
+      "type": "action",
+      "label": "Central Room",
+      "text": [
+        "You stand at the center of the quest room. {{learnedMotto:The motto feels less like decoration and more like a rule. }}{{restoredPower:A warm current now moves through the floor. }}{{hasExitMap:The folded map in your pocket marks one route in red. }}",
+        "The alcoves wait: desk, mirror, basin, bells, orrery, and the sealed exit."
+      ],
+      "position": [1080, 900],
+      "actions": [
+        {
+          "label": "Desk alcove",
+          "id": 7
+        },
+        {
+          "label": "Mirror wall",
+          "id": 20
+        },
+        {
+          "label": "Water basin",
+          "id": 40
+        },
+        {
+          "label": "Bell alcove",
+          "id": 60
+        },
+        {
+          "label": "Orrery",
+          "id": 80
+        },
+        {
+          "label": "Exit door",
+          "id": 100
+        },
+        {
+          "label": "Floor hatch",
+          "condition": "markedTrapdoor",
+          "id": 137
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "type": "action",
+      "label": "Rolltop Desk",
+      "text": [
+        "The desk is walnut, old, and stubborn. Its rolltop is closed, but three scratches run across it like tally marks.",
+        "A carved sentence circles the keyhole: <i>Begin where the room repeats itself.</i>"
+      ],
+      "position": [1400, 420],
+      "actions": [
+        {
+          "label": "Pull drawers",
+          "id": 8,
+          "effects": ["strain"]
+        },
+        {
+          "label": "Read scratches",
+          "id": 9,
+          "effects": ["learnedMotto = true", "learn"]
+        },
+        {
+          "label": "Check chair",
+          "id": 10
+        },
+        {
+          "label": "Go back",
+          "id": 6
+        }
+      ]
+    },
+    {
+      "id": 8,
+      "type": "skip",
+      "label": "Stuck Drawer",
+      "text": "The drawers bite your fingers and refuse to open. Force answers nothing here, but the desk clicks when you stop fighting it.",
+      "position": [1720, 240],
+      "nextId": 12
+    },
+    {
+      "id": 9,
+      "type": "skip",
+      "label": "Repeated Words",
+      "text": "The scratches are not damage. They mark the repeated word in the room's motto: <b>notice</b>. The room wants observation before action.",
+      "position": [1720, 420],
+      "nextId": 12
+    },
+    {
+      "id": 10,
+      "type": "action",
+      "label": "Desk Chair",
+      "text": "The chair is bolted down, but the leather cushion lifts at one corner. Something small taps wood beneath it when you press.",
+      "position": [1720, 600],
+      "actions": [
+        {
+          "label": "Lift cushion",
+          "id": 11,
+          "effects": ["hasBrassKey = true", "learn"]
+        },
+        {
+          "label": "Leave chair",
+          "id": 12
+        }
+      ]
+    },
+    {
+      "id": 11,
+      "type": "skip",
+      "label": "Brass Key",
+      "text": "A tiny brass key drops into your palm. Its bow is shaped like an open eye, and its teeth are too delicate for the main exit.",
+      "position": [2040, 600],
+      "nextId": 12
+    },
+    {
+      "id": 12,
+      "type": "action",
+      "label": "Desk Return",
+      "text": "The desk waits with theatrical patience. {{hasBrassKey:The brass key fits the small lock. }}{{learnedMotto:The word <i>notice</i> seems to tug your eye back to the keyhole. }}",
+      "position": [2040, 420],
+      "actions": [
+        {
+          "label": "Use key",
+          "condition": "canOpenCabinet()",
+          "id": 13,
+          "effects": ["openedDeskLock = true", "tick(1)"]
+        },
+        {
+          "label": "Ink drawer",
+          "id": 14
+        },
+        {
+          "label": "Go back",
+          "id": 6
+        }
+      ]
+    },
+    {
+      "id": 13,
+      "type": "action",
+      "label": "Secret Drawer",
+      "text": "The rolltop sighs upward. Inside are velvet channels, a silver tuning fork, and an index card written in a careful hand.",
+      "position": [2360, 260],
+      "actions": [
+        {
+          "label": "Take fork",
+          "id": 15,
+          "effects": ["hasTuningFork = true", "learn"]
+        },
+        {
+          "label": "Read card",
+          "id": 16,
+          "effects": ["learnedBellOrder = true", "learn"]
+        },
+        {
+          "label": "Go back",
+          "id": 6
+        }
+      ]
+    },
+    {
+      "id": 14,
+      "type": "action",
+      "label": "Ink Drawer",
+      "text": "The side drawer opens without a key. It contains a corked vial of dark ink and a blotter stained with old circular marks.",
+      "position": [2360, 580],
+      "actions": [
+        {
+          "label": "Take ink",
+          "id": 17,
+          "effects": ["hasInkVial = true"]
+        },
+        {
+          "label": "Wet blotter",
+          "condition": "hasInkVial && !hasExitMap",
+          "id": 18,
+          "effects": ["hasExitMap = true", "learn", "tick(1)"]
+        },
+        {
+          "label": "Go back",
+          "id": 6
+        }
+      ]
+    },
+    {
+      "id": 15,
+      "type": "skip",
+      "label": "Tuning Fork",
+      "text": "The fork hums before you touch it to anything. One tine is marked high-low-high-low, a pattern too deliberate to be musical accident.",
+      "position": [2680, 180],
+      "nextId": 13
+    },
+    {
+      "id": 16,
+      "type": "skip",
+      "label": "Bell Order",
+      "text": "The card reads: <i>Small bell hears the truth. Low bell carries it. Twin bells agree. Large bell ends the argument.</i>",
+      "position": [2680, 340],
+      "nextId": 13
+    },
+    {
+      "id": 17,
+      "type": "skip",
+      "label": "Dark Ink",
+      "text": "The ink smells faintly of iron and oranges. It clings to the glass as if it would rather become writing than stay liquid.",
+      "position": [2680, 520],
+      "nextId": 14
+    },
+    {
+      "id": 18,
+      "type": "skip",
+      "label": "Blotter Map",
+      "text": "Ink fills the old stains and reveals a tiny map of the room. One red line runs from the exit to a service crawl under the floor.",
+      "position": [2680, 680],
+      "nextId": 19
+    },
+    {
+      "id": 19,
+      "type": "action",
+      "label": "Desk Complete",
+      "text": "The desk has given up what it knows. The room seems a little less silent now, as if a listener has leaned closer.",
+      "position": [3000, 580],
+      "actions": [
+        {
+          "label": "Mirror next",
+          "id": 20
+        },
+        {
+          "label": "Back center",
+          "id": 6
+        }
+      ]
+    },
+    {
+      "id": 20,
+      "type": "action",
+      "label": "Mirror Wall",
+      "text": [
+        "The mirror spans an entire alcove, but it reflects the room one second late. In the reflection, the exit door is slightly open.",
+        "A hairline crack runs from your reflected hand to the real frame."
+      ],
+      "position": [1400, 900],
+      "actions": [
+        {
+          "label": "Inspect crack",
+          "id": 21,
+          "effects": ["hasMirrorShard = true", "strain"]
+        },
+        {
+          "label": "Fog glass",
+          "id": 22,
+          "effects": ["tick(1)"]
+        },
+        {
+          "label": "Study frame",
+          "id": 23
+        },
+        {
+          "label": "Go back",
+          "id": 6
+        }
+      ]
+    },
+    {
+      "id": 21,
+      "type": "skip",
+      "label": "Mirror Shard",
+      "text": "A silver splinter comes free. It is sharp enough to cut cloth and bright enough to throw a thin blade of light across the room.",
+      "position": [1720, 740],
+      "nextId": 28
+    },
+    {
+      "id": 22,
+      "type": "redirect",
+      "label": "Fogged Glass",
+      "text": "Your breath clouds the mirror. Letters rise in the mist, but the lamp behind you decides how much of them can be read.",
+      "position": [1720, 900],
+      "links": [
+        {
+          "id": 24,
+          "weight": 1,
+          "condition": "litLamp"
+        },
+        {
+          "id": 25,
+          "weight": 1,
+          "condition": "!litLamp"
+        }
+      ]
+    },
+    {
+      "id": 23,
+      "type": "action",
+      "label": "Silver Frame",
+      "text": "The frame is engraved with moons, closed eyes, and a notch just wide enough for a thin tool.",
+      "position": [1720, 1060],
+      "actions": [
+        {
+          "label": "Pry notch",
+          "condition": "hasMirrorShard && !hasMoonLens",
+          "id": 26,
+          "effects": ["hasMoonLens = true", "learn"]
+        },
+        {
+          "label": "Wrap shard",
+          "condition": "hasMirrorShard",
+          "id": 27
+        },
+        {
+          "label": "Return",
+          "id": 28
+        }
+      ]
+    },
+    {
+      "id": 24,
+      "type": "skip",
+      "label": "Lit Letters",
+      "text": "In the warmed fog you read a number: <b>4173</b>. Beneath it: <i>The case opens only when the room can see itself.</i>",
+      "position": [2040, 820],
+      "entryEffects": ["learnedNumberCode = true", "learn"],
+      "nextId": 28
+    },
+    {
+      "id": 25,
+      "type": "skip",
+      "label": "Dim Letters",
+      "text": "Only broken strokes appear before the fog fades. Whatever the mirror knows, it needs a warmer lamp before it will speak clearly.",
+      "position": [2040, 980],
+      "nextId": 28
+    },
+    {
+      "id": 26,
+      "type": "skip",
+      "label": "Moon Lens",
+      "text": "A crescent lens slips from the frame. When you look through it, the reflected room has labels where the real room has silence.",
+      "position": [2040, 1140],
+      "nextId": 28
+    },
+    {
+      "id": 27,
+      "type": "skip",
+      "label": "Safe Shard",
+      "text": "You bind the shard in a torn strip from your cuff. It still gleams, but now it can be held without bleeding for every answer.",
+      "position": [2040, 1300],
+      "nextId": 28
+    },
+    {
+      "id": 28,
+      "type": "action",
+      "label": "Mirror Center",
+      "text": "The delayed reflection raises its hand only after you do. {{hasMoonLens:The moon lens makes hidden scratches glow around the glass. }}{{learnedNumberCode:The number 4173 stays bright in your memory. }}",
+      "position": [2360, 980],
+      "actions": [
+        {
+          "label": "Align shard",
+          "condition": "hasMirrorShard && litLamp && !learnedOrreryPattern",
+          "id": 29,
+          "effects": ["learnedOrreryPattern = true", "learn"]
+        },
+        {
+          "label": "Read reflection",
+          "condition": "learnedMotto && !learnedExitTruth",
+          "id": 30,
+          "effects": ["learnedExitTruth = true", "learn"]
+        },
+        {
+          "label": "Behind glass",
+          "id": 31
+        },
+        {
+          "label": "Go back",
+          "id": 6
+        }
+      ]
+    },
+    {
+      "id": 29,
+      "type": "skip",
+      "label": "Star Pattern",
+      "text": "The shard reflects seven tiny stars onto the ceiling. Their order matches the frozen arms of the orrery across the room.",
+      "position": [2680, 800],
+      "nextId": 31
+    },
+    {
+      "id": 30,
+      "type": "skip",
+      "label": "False Exit",
+      "text": "The reflection mouths the motto backward: <i>The obvious exit opens for escape. The true exit opens for understanding.</i>",
+      "position": [2680, 960],
+      "nextId": 31
+    },
+    {
+      "id": 31,
+      "type": "action",
+      "label": "Behind Glass",
+      "text": "Behind the mirror, something like a corridor wavers. It is not quite a place yet, only a promise made of silver light.",
+      "position": [3000, 980],
+      "actions": [
+        {
+          "label": "Fit lens",
+          "condition": "hasMoonLens",
+          "id": 32
+        },
+        {
+          "label": "Tap frame",
+          "id": 33,
+          "effects": ["strain"]
+        },
+        {
+          "label": "Go back",
+          "id": 6
+        }
+      ]
+    },
+    {
+      "id": 32,
+      "type": "redirect",
+      "label": "Lens Light",
+      "text": "The moon lens settles into a hidden socket. A thread of pale light searches the room for a lamp strong enough to answer.",
+      "position": [3320, 860],
+      "links": [
+        {
+          "id": 34,
+          "weight": 1,
+          "condition": "litLamp"
+        },
+        {
+          "id": 35,
+          "weight": 1,
+          "condition": "!litLamp"
+        }
+      ]
+    },
+    {
+      "id": 33,
+      "type": "skip",
+      "label": "Hard Glass",
+      "text": "The frame rings like a bell and sends a sting up your arm. The mirror does not like being hurried.",
+      "position": [3320, 1040],
+      "nextId": 36
+    },
+    {
+      "id": 34,
+      "type": "skip",
+      "label": "Moon Door",
+      "text": "The lens catches lamplight and paints a small door in the reflection. Its handle is real only while the room has power.",
+      "position": [3640, 800],
+      "entryEffects": ["learn"],
+      "nextId": 36
+    },
+    {
+      "id": 35,
+      "type": "skip",
+      "label": "Need Light",
+      "text": "The socket accepts the lens, but the reflection stays dull. Somewhere in the room a lamp must be woken before this path matters.",
+      "position": [3640, 960],
+      "nextId": 36
+    },
+    {
+      "id": 36,
+      "type": "action",
+      "label": "Mirror Choice",
+      "text": "The reflection shows two exits now: the real door and a silver corridor. One is physical. The other may be hunger wearing a hallway.",
+      "position": [3960, 900],
+      "actions": [
+        {
+          "label": "Enter reflection",
+          "condition": "learnedExitTruth && !restoredPower",
+          "id": 37
+        },
+        {
+          "label": "Mark frame",
+          "id": 38,
+          "effects": ["learnedExitTruth = true"]
+        },
+        {
+          "label": "Go back",
+          "id": 6
+        }
+      ]
+    },
+    {
+      "id": 37,
+      "type": "redirect",
+      "label": "Silver Risk",
+      "text": "You press your hand to the mirror. The surface gives like cold water, and the reflected room inhales.",
+      "position": [4280, 760],
+      "links": [
+        {
+          "id": 118,
+          "weight": 1,
+          "condition": "!restoredPower && tension >= 4"
+        },
+        {
+          "id": 39,
+          "weight": 3
+        }
+      ]
+    },
+    {
+      "id": 38,
+      "type": "skip",
+      "label": "Frame Mark",
+      "text": "You scratch the frame with the shard. The reflection flinches after a delay, and the mark appears on both sides.",
+      "position": [4280, 920],
+      "nextId": 6
+    },
+    {
+      "id": 39,
+      "type": "skip",
+      "label": "Thrown Back",
+      "text": "The mirror spits you onto the marble floor. You keep your body, your fear, and the useful knowledge that the silver route is unfinished.",
+      "position": [4600, 820],
+      "entryEffects": ["strain"],
+      "nextId": 6
+    },
+    {
+      "id": 40,
+      "type": "action",
+      "label": "Water Basin",
+      "text": "The basin is dry, though you still hear water ticking behind it. Its rim is carved with twelve marks and one missing valve.",
+      "position": [1400, 1380],
+      "actions": [
+        {
+          "label": "Listen water",
+          "id": 41,
+          "effects": ["learnedWaterClock = true", "learn"]
+        },
+        {
+          "label": "Dry valve",
+          "id": 42
+        },
+        {
+          "label": "Test basin",
+          "id": 43,
+          "effects": ["tick(1)"]
+        },
+        {
+          "label": "Go back",
+          "id": 6
+        }
+      ]
+    },
+    {
+      "id": 41,
+      "type": "skip",
+      "label": "Water Clock",
+      "text": "The ticking water pauses every fourth beat. The basin is not broken; it is waiting for the missing valve to match that rhythm.",
+      "position": [1720, 1200],
+      "nextId": 44
+    },
+    {
+      "id": 42,
+      "type": "action",
+      "label": "Missing Valve",
+      "text": "The valve stem is square, polished, and empty. A scratch beneath it points toward the shadow under the basin.",
+      "position": [1720, 1380],
+      "actions": [
+        {
+          "label": "Search below",
+          "id": 45,
+          "effects": ["hasValveHandle = true"]
+        },
+        {
+          "label": "Key lever",
+          "condition": "hasBrassKey",
+          "id": 46,
+          "effects": ["strain"]
+        },
+        {
+          "label": "Return",
+          "id": 44
+        }
+      ]
+    },
+    {
+      "id": 43,
+      "type": "skip",
+      "label": "Dust Ripples",
+      "text": "Your fingers brush the dry stone. Dust ripples outward as if stirred by invisible drops, then settles into twelve small rings.",
+      "position": [1720, 1560],
+      "nextId": 44
+    },
+    {
+      "id": 44,
+      "type": "action",
+      "label": "Basin Rim",
+      "text": "{{learnedWaterClock:The fourth-beat rhythm makes the valve marks readable. }}{{hasValveHandle:The handle is heavy enough to wake the dry mechanism. }}The basin waits for a choice.",
+      "position": [2040, 1380],
+      "actions": [
+        {
+          "label": "Pour ink",
+          "condition": "hasInkVial && !learnedNumberCode",
+          "id": 47,
+          "effects": ["learnedNumberCode = true", "learn"]
+        },
+        {
+          "label": "Turn valve",
+          "condition": "canDrainBasin()",
+          "id": 48,
+          "effects": ["drainedBasin = true", "hasGlassKey = true", "learn", "tick(1)"]
+        },
+        {
+          "label": "Low grate",
+          "id": 49
+        },
+        {
+          "label": "Go back",
+          "id": 6
+        }
+      ]
+    },
+    {
+      "id": 45,
+      "type": "skip",
+      "label": "Valve Handle",
+      "text": "You find the handle magnetized beneath the basin. It snaps into your grip with the smug click of a thing hidden in plain sight.",
+      "position": [2040, 1200],
+      "nextId": 42
+    },
+    {
+      "id": 46,
+      "type": "skip",
+      "label": "Bent Key",
+      "text": "The brass key can move the stem, but only badly. The mechanism groans, and the room answers with a disapproving tick.",
+      "position": [2040, 1560],
+      "nextId": 49
+    },
+    {
+      "id": 47,
+      "type": "skip",
+      "label": "Ink Rings",
+      "text": "Ink races through the dry rings and writes <b>4173</b> around the rim. The same number belongs to the mirror's hidden case.",
+      "position": [2360, 1180],
+      "nextId": 50
+    },
+    {
+      "id": 48,
+      "type": "skip",
+      "label": "Basin Drains",
+      "text": "The invisible water finally becomes visible for one breath, then drains away. A transparent glass key remains in the lowest cup.",
+      "position": [2360, 1340],
+      "nextId": 54
+    },
+    {
+      "id": 49,
+      "type": "action",
+      "label": "Low Grate",
+      "text": "A brass grate sits near the floor behind the basin. Through it you see chalk dust, a wire loop, and the edge of another tile.",
+      "position": [2360, 1540],
+      "actions": [
+        {
+          "label": "Reach inside",
+          "id": 51,
+          "effects": ["hasChalk = true"]
+        },
+        {
+          "label": "Inspect gears",
+          "id": 52,
+          "effects": ["learnedOrreryPattern = true", "learn"]
+        },
+        {
+          "label": "Return",
+          "id": 44
+        }
+      ]
+    },
+    {
+      "id": 50,
+      "type": "action",
+      "label": "Wet Numbers",
+      "text": "The number stains the rim until you wipe it away. The ink has given you a code, but not yet told you where pride hides the lock.",
+      "position": [2680, 1180],
+      "actions": [
+        {
+          "label": "Remember code",
+          "id": 53
+        },
+        {
+          "label": "Return",
+          "id": 44
+        }
+      ]
+    },
+    {
+      "id": 51,
+      "type": "skip",
+      "label": "White Chalk",
+      "text": "Your fingers close around a chalk nub. It leaves marks even on polished brass, which feels like exactly why it was hidden.",
+      "position": [2680, 1460],
+      "nextId": 49
+    },
+    {
+      "id": 52,
+      "type": "skip",
+      "label": "Gear Timing",
+      "text": "Behind the grate, two gears turn around an empty third space. Their teeth pause in the same seven-point rhythm the mirror hinted at.",
+      "position": [2680, 1620],
+      "nextId": 49
+    },
+    {
+      "id": 53,
+      "type": "skip",
+      "label": "Code Fixed",
+      "text": "You repeat the digits until they settle: four, one, seven, three. The room gives no applause, but the number feels earned.",
+      "position": [3000, 1180],
+      "nextId": 6
+    },
+    {
+      "id": 54,
+      "type": "action",
+      "label": "Dry Basin",
+      "text": "The dry basin now shows a circular seam in the floor beside it. The glass key catches every lamp at once.",
+      "position": [2680, 1340],
+      "actions": [
+        {
+          "label": "Inspect drain",
+          "id": 55,
+          "effects": ["foundTrapdoor = true", "learn"]
+        },
+        {
+          "label": "Fill cup",
+          "id": 56,
+          "effects": ["tick(1)"]
+        },
+        {
+          "label": "Return",
+          "id": 6
+        }
+      ]
+    },
+    {
+      "id": 55,
+      "type": "skip",
+      "label": "Floor Seam",
+      "text": "The seam is not a crack. It is a hatch outline, nearly invisible unless the basin has been emptied first.",
+      "position": [3000, 1300],
+      "nextId": 57
+    },
+    {
+      "id": 56,
+      "type": "skip",
+      "label": "Empty Cup",
+      "text": "You cup your hands, but the water has already vanished. The room allows lessons, not hoarding.",
+      "position": [3000, 1460],
+      "nextId": 57
+    },
+    {
+      "id": 57,
+      "type": "action",
+      "label": "Trapdoor Mark",
+      "text": "The floor seam is easy to lose when you look away. A chalk mark would keep it from vanishing into the marble pattern.",
+      "position": [3320, 1380],
+      "actions": [
+        {
+          "label": "Chalk outline",
+          "condition": "hasChalk",
+          "id": 58,
+          "effects": ["markedTrapdoor = true", "learn"]
+        },
+        {
+          "label": "Leave seam",
+          "id": 59
+        }
+      ]
+    },
+    {
+      "id": 58,
+      "type": "skip",
+      "label": "Marked Hatch",
+      "text": "The chalk line settles around the hidden hatch. The center room will remember this option now, even if your eyes do not.",
+      "position": [3640, 1300],
+      "nextId": 59
+    },
+    {
+      "id": 59,
+      "type": "skip",
+      "label": "Basin Done",
+      "text": "The basin returns to silence. It has taken a secret from the floor and given you a key made of clear light.",
+      "position": [3960, 1380],
+      "nextId": 6
+    },
+    {
+      "id": 60,
+      "type": "action",
+      "label": "Bell Alcove",
+      "text": "Four bells hang in a row: small, low, twin, and large. None of them move, but all of them seem to be listening.",
+      "position": [1400, 1860],
+      "actions": [
+        {
+          "label": "Strike large",
+          "id": 61,
+          "effects": ["tick(1)"]
+        },
+        {
+          "label": "Read plaques",
+          "id": 62,
+          "effects": ["learnedBellOrder = true", "learn"]
+        },
+        {
+          "label": "Go back",
+          "id": 6
+        }
+      ]
+    },
+    {
+      "id": 61,
+      "type": "redirect",
+      "label": "First Ring",
+      "text": "You strike the large bell. The note rolls through the chamber and asks whether you brought the right tool.",
+      "position": [1720, 1720],
+      "links": [
+        {
+          "id": 63,
+          "weight": 1,
+          "condition": "hasTuningFork"
+        },
+        {
+          "id": 64,
+          "weight": 1,
+          "condition": "!hasTuningFork"
+        }
+      ]
+    },
+    {
+      "id": 62,
+      "type": "skip",
+      "label": "Plaque Order",
+      "text": "The plaques repeat the desk card's riddle. Truth starts small, grows low, agrees in twins, and ends large.",
+      "position": [1720, 1880],
+      "nextId": 65
+    },
+    {
+      "id": 63,
+      "type": "skip",
+      "label": "Fork Resonance",
+      "text": "The tuning fork vibrates in sympathy and softens the wrong note. The bells forgive the mistake because you came prepared.",
+      "position": [2040, 1700],
+      "nextId": 65
+    },
+    {
+      "id": 64,
+      "type": "skip",
+      "label": "Painful Ring",
+      "text": "The bell answers too loudly. Brass dust falls from the ceiling, and the room's patience grows thinner.",
+      "position": [2040, 1860],
+      "entryEffects": ["strain"],
+      "nextId": 65
+    },
+    {
+      "id": 65,
+      "type": "action",
+      "label": "Four Bells",
+      "text": "{{learnedBellOrder:The order is no longer a guess. }}{{hasTuningFork:The tuning fork hums in your pocket. }}The four bells wait for a sequence.",
+      "position": [2360, 1800],
+      "actions": [
+        {
+          "label": "Play order",
+          "condition": "canPlayBells()",
+          "id": 66,
+          "effects": ["solvedBells = true", "learn", "tick(1)"]
+        },
+        {
+          "label": "Guess pattern",
+          "id": 67
+        },
+        {
+          "label": "Go back",
+          "id": 6
+        }
+      ]
+    },
+    {
+      "id": 66,
+      "type": "skip",
+      "label": "Correct Chime",
+      "text": "Small, low, twin, large. The final note hangs in the room, and a brass panel opens beneath the bells.",
+      "position": [2680, 1660],
+      "nextId": 68
+    },
+    {
+      "id": 67,
+      "type": "redirect",
+      "label": "Wrong Music",
+      "text": "You invent an order. The bells tolerate invention poorly.",
+      "position": [2680, 1840],
+      "links": [
+        {
+          "id": 69,
+          "weight": 2
+        },
+        {
+          "id": 70,
+          "weight": 1
+        }
+      ]
+    },
+    {
+      "id": 68,
+      "type": "action",
+      "label": "Bell Panel",
+      "text": "Inside the panel lie a toothed sun gear and a thin warning plate wired to the wall.",
+      "position": [3000, 1660],
+      "actions": [
+        {
+          "label": "Take gear",
+          "id": 71,
+          "effects": ["hasSunDialGear = true", "learn"]
+        },
+        {
+          "label": "Read warning",
+          "id": 72,
+          "effects": ["learnedPowerRisk = true", "learn"]
+        },
+        {
+          "label": "Go back",
+          "id": 6
+        }
+      ]
+    },
+    {
+      "id": 69,
+      "type": "skip",
+      "label": "Sour Echo",
+      "text": "The bells clash and send a sour echo under the floor. Something below the marble knocks once in irritation.",
+      "position": [3000, 1840],
+      "entryEffects": ["strain"],
+      "nextId": 65
+    },
+    {
+      "id": 70,
+      "type": "skip",
+      "label": "Lost Minute",
+      "text": "Nothing breaks, but the attempt costs time. The ticking water behind the basin sounds faster afterward.",
+      "position": [3000, 2000],
+      "entryEffects": ["tick(1)"],
+      "nextId": 65
+    },
+    {
+      "id": 71,
+      "type": "skip",
+      "label": "Sun Gear",
+      "text": "The sun gear is warm and dense. Its teeth are too specific for any mechanism except the frozen orrery.",
+      "position": [3320, 1580],
+      "nextId": 73
+    },
+    {
+      "id": 72,
+      "type": "skip",
+      "label": "Power Warning",
+      "text": "The plate reads: <i>Power wakes the room. Power also lets it decide what counts as an answer.</i>",
+      "position": [3320, 1740],
+      "nextId": 73
+    },
+    {
+      "id": 73,
+      "type": "action",
+      "label": "Music Memory",
+      "text": "The bells are quiet again, but the opened panel has changed the alcove. A loose tile now sits beneath your left foot.",
+      "position": [3640, 1660],
+      "actions": [
+        {
+          "label": "Hum sequence",
+          "condition": "solvedBells && !learnedOrreryPattern",
+          "id": 74,
+          "effects": ["learnedOrreryPattern = true", "learn"]
+        },
+        {
+          "label": "Tap wall",
+          "id": 75,
+          "effects": ["foundLooseTile = true"]
+        },
+        {
+          "label": "Return",
+          "id": 6
+        }
+      ]
+    },
+    {
+      "id": 74,
+      "type": "skip",
+      "label": "Seven Beats",
+      "text": "The bell sequence becomes seven silent beats in your head. It matches the star pattern reflected by the mirror shard.",
+      "position": [3960, 1540],
+      "nextId": 76
+    },
+    {
+      "id": 75,
+      "type": "skip",
+      "label": "Loose Tile",
+      "text": "The wall sounds hollow near the base. A square tile shifts, then settles as if embarrassed to have been caught.",
+      "position": [3960, 1700],
+      "nextId": 76
+    },
+    {
+      "id": 76,
+      "type": "action",
+      "label": "Hidden Tile",
+      "text": "The loose tile can be lifted, but its edges are narrow. Chalk marks already on the floor show where other solvers tried.",
+      "position": [4280, 1660],
+      "actions": [
+        {
+          "label": "Lift tile",
+          "condition": "foundLooseTile",
+          "id": 77,
+          "effects": ["hasCopperWire = true"]
+        },
+        {
+          "label": "Chalk symbols",
+          "condition": "hasChalk",
+          "id": 78,
+          "effects": ["learnedMotto = true", "learn"]
+        },
+        {
+          "label": "Return",
+          "id": 6
+        }
+      ]
+    },
+    {
+      "id": 77,
+      "type": "skip",
+      "label": "Copper Wire",
+      "text": "Behind the tile you find a loop of copper wire, still flexible and clean. It looks like a bridge for a broken circuit.",
+      "position": [4600, 1580],
+      "nextId": 79
+    },
+    {
+      "id": 78,
+      "type": "skip",
+      "label": "Chalk Motto",
+      "text": "Your chalk catches old grooves and reveals the motto again: <b>Notice, name, answer, leave.</b>",
+      "position": [4600, 1740],
+      "nextId": 79
+    },
+    {
+      "id": 79,
+      "type": "skip",
+      "label": "Bell Done",
+      "text": "The bell alcove has become still. It has given you rhythm, metal, and a warning about waking the room too soon.",
+      "position": [4920, 1660],
+      "nextId": 6
+    },
+    {
+      "id": 80,
+      "type": "action",
+      "label": "Orrery",
+      "text": "A brass orrery fills the alcove. Its planets are frozen around an empty sun socket, and the crank hangs useless beside it.",
+      "position": [1400, 2340],
+      "actions": [
+        {
+          "label": "Inspect arms",
+          "id": 81
+        },
+        {
+          "label": "Fit gear",
+          "condition": "hasSunDialGear",
+          "id": 82,
+          "effects": ["gearInstalled = true"]
+        },
+        {
+          "label": "Go back",
+          "id": 6
+        }
+      ]
+    },
+    {
+      "id": 81,
+      "type": "skip",
+      "label": "Frozen Planets",
+      "text": "The arms are locked at seven points. Without the missing sun gear, the whole machine is a beautiful refusal.",
+      "position": [1720, 2200],
+      "nextId": 83
+    },
+    {
+      "id": 82,
+      "type": "skip",
+      "label": "Gear Installed",
+      "text": "The sun gear sinks into place. The orrery gives one grateful shiver, then waits for the correct pattern.",
+      "position": [1720, 2360],
+      "nextId": 84
+    },
+    {
+      "id": 83,
+      "type": "action",
+      "label": "Planet Arms",
+      "text": "The planets have tiny mirrored backs. If you had a lens or a pattern, the machine might tell you where each one belongs.",
+      "position": [2040, 2200],
+      "actions": [
+        {
+          "label": "Use lens",
+          "condition": "hasMoonLens && !learnedOrreryPattern",
+          "id": 85,
+          "effects": ["learnedOrreryPattern = true", "learn"]
+        },
+        {
+          "label": "Force arm",
+          "id": 86,
+          "effects": ["strain"]
+        },
+        {
+          "label": "Return",
+          "id": 84
+        }
+      ]
+    },
+    {
+      "id": 84,
+      "type": "action",
+      "label": "Crank Socket",
+      "text": "{{gearInstalled:The sun gear is seated. }}{{learnedOrreryPattern:The seven-point pattern is clear now. }}{{hasCopperWire:The copper wire could close the broken circuit. }}",
+      "position": [2360, 2300],
+      "actions": [
+        {
+          "label": "Turn crank",
+          "condition": "canSolveOrrery()",
+          "id": 87,
+          "effects": ["tick(1)"]
+        },
+        {
+          "label": "Bridge circuit",
+          "condition": "hasCopperWire && !restoredCircuit",
+          "id": 88,
+          "effects": ["restoredCircuit = true", "learn"]
+        },
+        {
+          "label": "Return",
+          "id": 6
+        }
+      ]
+    },
+    {
+      "id": 85,
+      "type": "skip",
+      "label": "Lens Pattern",
+      "text": "Through the moon lens, each planet wears a number of dots. Seven positions, seven beats, one order.",
+      "position": [2360, 2140],
+      "nextId": 84
+    },
+    {
+      "id": 86,
+      "type": "skip",
+      "label": "Bent Arm",
+      "text": "The arm moves a finger-width and snaps back. The orrery is willing to be solved, not wrestled.",
+      "position": [2360, 2460],
+      "nextId": 84
+    },
+    {
+      "id": 87,
+      "type": "redirect",
+      "label": "Orrery Whirs",
+      "text": "You set the planets in order and turn the crank. The machine spins, testing whether its circuit is whole.",
+      "position": [2680, 2200],
+      "links": [
+        {
+          "id": 89,
+          "weight": 1,
+          "condition": "hasCopperWire || restoredCircuit"
+        },
+        {
+          "id": 90,
+          "weight": 1,
+          "condition": "!hasCopperWire && !restoredCircuit"
+        }
+      ]
+    },
+    {
+      "id": 88,
+      "type": "skip",
+      "label": "Circuit Bridge",
+      "text": "The copper wire fits between two tired contacts. The orrery's lamp brightens from amber to steady gold.",
+      "position": [2680, 2380],
+      "nextId": 84
+    },
+    {
+      "id": 89,
+      "type": "skip",
+      "label": "Power Restored",
+      "text": "Gold light races through the floor channels. Lamps wake across the room, including one above the mirror.",
+      "position": [3000, 2140],
+      "entryEffects": ["restoredPower = true", "litLamp = true", "learn"],
+      "nextId": 91
+    },
+    {
+      "id": 90,
+      "type": "skip",
+      "label": "Broken Circuit",
+      "text": "The orrery spins once, sparks, and stops. It knows the pattern now, but its circuit cannot carry the answer.",
+      "position": [3000, 2300],
+      "nextId": 84
+    },
+    {
+      "id": 91,
+      "type": "action",
+      "label": "Power Wakes",
+      "text": "With power restored, the exit seals glow faintly. A glass case rises from the orrery base, asking for four digits.",
+      "position": [3320, 2140],
+      "actions": [
+        {
+          "label": "Read glyphs",
+          "id": 92,
+          "effects": ["learnedExitTruth = true", "learn"]
+        },
+        {
+          "label": "Glass case",
+          "condition": "learnedNumberCode",
+          "id": 93
+        },
+        {
+          "label": "Lit room",
+          "id": 94
+        },
+        {
+          "label": "Go back",
+          "id": 6
+        }
+      ]
+    },
+    {
+      "id": 92,
+      "type": "skip",
+      "label": "Exit Glyphs",
+      "text": "The glowing glyphs repeat the lesson from the mirror: escape is allowed, but understanding changes which door is real.",
+      "position": [3640, 1980],
+      "nextId": 94
+    },
+    {
+      "id": 93,
+      "type": "action",
+      "label": "Glass Case",
+      "text": "The case waits with four numbered wheels. The glass key in your pocket hums faintly near it.",
+      "position": [3640, 2140],
+      "actions": [
+        {
+          "label": "Enter code",
+          "condition": "learnedNumberCode && !openedGlassCase",
+          "id": 95,
+          "effects": ["openedGlassCase = true", "hasCrystalStar = true", "learn"]
+        },
+        {
+          "label": "Use key",
+          "condition": "hasBrassKey",
+          "id": 96,
+          "effects": ["strain"]
+        },
+        {
+          "label": "Return",
+          "id": 91
+        }
+      ]
+    },
+    {
+      "id": 94,
+      "type": "action",
+      "label": "Lit Chamber",
+      "text": "Every lamp is awake now. The room has become easier to read and harder to ignore.",
+      "position": [3640, 2320],
+      "actions": [
+        {
+          "label": "Warm mirror",
+          "condition": "litLamp && !learnedNumberCode",
+          "id": 97
+        },
+        {
+          "label": "Study shadows",
+          "condition": "litLamp && !learnedFinalSequence",
+          "id": 98,
+          "effects": ["learnedFinalSequence = true", "learn"]
+        },
+        {
+          "label": "Return",
+          "id": 6
+        }
+      ]
+    },
+    {
+      "id": 95,
+      "type": "skip",
+      "label": "Crystal Star",
+      "text": "The case opens around a small crystal star. It is cut to fit no lock you have seen, which makes it suspiciously important.",
+      "position": [3960, 2060],
+      "nextId": 99
+    },
+    {
+      "id": 96,
+      "type": "skip",
+      "label": "Wrong Key",
+      "text": "The brass key scratches the case and achieves nothing. The room records the attempt with a small, judgmental click.",
+      "position": [3960, 2220],
+      "nextId": 93
+    },
+    {
+      "id": 97,
+      "type": "skip",
+      "label": "Lamp Warmed",
+      "text": "The lamp above the mirror is already warm from the restored power. Its light is now part of the puzzle.",
+      "position": [3960, 2380],
+      "nextId": 22
+    },
+    {
+      "id": 98,
+      "type": "skip",
+      "label": "Shadow Order",
+      "text": "The orrery casts three shadows on the exit: mirror first, bell second, water third. The door wants proof in that order.",
+      "position": [3960, 2540],
+      "nextId": 6
+    },
+    {
+      "id": 99,
+      "type": "skip",
+      "label": "Orrery Done",
+      "text": "The orrery slows to a graceful stop. Its work is done, but the star in your hand still feels unfinished.",
+      "position": [4280, 2140],
+      "nextId": 6
+    },
+    {
+      "id": 100,
+      "type": "action",
+      "label": "Exit Door",
+      "text": "The exit door has three seals and one handle. The handle is plain iron, which almost makes it more threatening.",
+      "position": [1400, 2820],
+      "actions": [
+        {
+          "label": "Try handle",
+          "id": 101
+        },
+        {
+          "label": "Read locks",
+          "id": 102
+        },
+        {
+          "label": "Go back",
+          "id": 6
+        }
+      ]
+    },
+    {
+      "id": 101,
+      "type": "redirect",
+      "label": "Handle Test",
+      "text": "The handle tests the room's verdict before it tests your grip.",
+      "position": [1720, 2700],
+      "links": [
+        {
+          "id": 140,
+          "weight": 1,
+          "condition": "timeGone()"
+        },
+        {
+          "id": 110,
+          "weight": 1,
+          "condition": "escapeReady()"
+        },
+        {
+          "id": 103,
+          "weight": 1,
+          "condition": "!timeGone() && !escapeReady()"
+        }
+      ]
+    },
+    {
+      "id": 102,
+      "type": "action",
+      "label": "Three Locks",
+      "text": "The mirror, bell, and water seals sit above the door. Each has a hollow center waiting for a different kind of proof.",
+      "position": [1720, 2860],
+      "actions": [
+        {
+          "label": "Glass key",
+          "condition": "hasGlassKey",
+          "id": 104,
+          "effects": ["waterSeal = true", "learn"]
+        },
+        {
+          "label": "Speak motto",
+          "condition": "learnedMotto",
+          "id": 105,
+          "effects": ["spokeMotto = true", "learn"]
+        },
+        {
+          "label": "Set seals",
+          "id": 106
+        },
+        {
+          "label": "Return",
+          "id": 6
+        }
+      ]
+    },
+    {
+      "id": 103,
+      "type": "skip",
+      "label": "Door Holds",
+      "text": "The door does not open. It is not locked by strength, but by missing evidence.",
+      "position": [2040, 2700],
+      "nextId": 106
+    },
+    {
+      "id": 104,
+      "type": "skip",
+      "label": "Water Proof",
+      "text": "The glass key melts into the water seal, then reforms in your hand. The door accepts the proof without stealing the tool.",
+      "position": [2040, 2860],
+      "nextId": 106
+    },
+    {
+      "id": 105,
+      "type": "skip",
+      "label": "Motto Spoken",
+      "text": "You say, \"Notice, name, answer, leave.\" The door warms, as if glad you learned the room's grammar.",
+      "position": [2040, 3020],
+      "nextId": 106
+    },
+    {
+      "id": 106,
+      "type": "action",
+      "label": "Three Seals",
+      "text": "{{mirrorSeal:The mirror seal glows. }}{{bellSeal:The bell seal glows. }}{{waterSeal:The water seal glows. }}The exit waits for all three proofs.",
+      "position": [2360, 2860],
+      "actions": [
+        {
+          "label": "Mirror seal",
+          "condition": "hasMirrorShard && learnedExitTruth && !mirrorSeal",
+          "id": 107,
+          "effects": ["mirrorSeal = true"]
+        },
+        {
+          "label": "Bell seal",
+          "condition": "solvedBells && !bellSeal",
+          "id": 108,
+          "effects": ["bellSeal = true"]
+        },
+        {
+          "label": "Water seal",
+          "condition": "drainedBasin && !waterSeal",
+          "id": 109,
+          "effects": ["waterSeal = true"]
+        },
+        {
+          "label": "Try door",
+          "id": 101
+        },
+        {
+          "label": "Return",
+          "id": 6
+        }
+      ]
+    },
+    {
+      "id": 107,
+      "type": "skip",
+      "label": "Mirror Proof",
+      "text": "The mirror shard flashes silver and the first seal fills with reflected light.",
+      "position": [2680, 2700],
+      "nextId": 106
+    },
+    {
+      "id": 108,
+      "type": "skip",
+      "label": "Bell Proof",
+      "text": "The memory of the correct chime travels through your fingers. The second seal answers in a clear, low note.",
+      "position": [2680, 2860],
+      "nextId": 106
+    },
+    {
+      "id": 109,
+      "type": "skip",
+      "label": "Water Proof",
+      "text": "The drained-basin rhythm taps once behind the door. The third seal fills with blue-white light.",
+      "position": [2680, 3020],
+      "nextId": 106
+    },
+    {
+      "id": 110,
+      "type": "redirect",
+      "label": "Door Judges",
+      "text": "The three seals burn together. The door decides whether you solved enough to leave cleanly or merely found a way out.",
+      "position": [3000, 2860],
+      "links": [
+        {
+          "id": 111,
+          "weight": 1,
+          "condition": "escapeReady() && hasExitMap"
+        },
+        {
+          "id": 112,
+          "weight": 1,
+          "condition": "escapeReady() && !hasExitMap"
+        },
+        {
+          "id": 113,
+          "weight": 1,
+          "condition": "!escapeReady()"
+        }
+      ]
+    },
+    {
+      "id": 111,
+      "type": "action",
+      "label": "Open Way",
+      "text": "The door opens onto a narrow passage, exactly where the ink map promised. A smaller alcove glows beside the threshold.",
+      "position": [3320, 2700],
+      "actions": [
+        {
+          "label": "Leave now",
+          "id": 119
+        },
+        {
+          "label": "Last alcove",
+          "condition": "learnedFinalSequence",
+          "id": 121
+        }
+      ]
+    },
+    {
+      "id": 112,
+      "type": "skip",
+      "label": "Unmapped Way",
+      "text": "The door opens, but the passage beyond is dark and cramped. You can leave, though you will not know what watched you go.",
+      "position": [3320, 2860],
+      "nextId": 130
+    },
+    {
+      "id": 113,
+      "type": "action",
+      "label": "Locks Resist",
+      "text": "The seals flare and fade. The door is not angry, only unconvinced.",
+      "position": [3320, 3020],
+      "actions": [
+        {
+          "label": "Review clues",
+          "id": 114
+        },
+        {
+          "label": "Force door",
+          "id": 115,
+          "effects": ["strain"]
+        },
+        {
+          "label": "Return",
+          "id": 6
+        }
+      ]
+    },
+    {
+      "id": 114,
+      "type": "skip",
+      "label": "Clue Review",
+      "text": "You count what the room has taught you. Mirror, bell, water, power: the exit wants proof from each living system.",
+      "position": [3640, 2940],
+      "nextId": 6
+    },
+    {
+      "id": 115,
+      "type": "redirect",
+      "label": "Force Door",
+      "text": "You throw your shoulder into the door. The room allows the attempt, which is not the same as approving it.",
+      "position": [3640, 3100],
+      "links": [
+        {
+          "id": 116,
+          "weight": 2
+        },
+        {
+          "id": 117,
+          "weight": 1
+        }
+      ]
+    },
+    {
+      "id": 116,
+      "type": "skip",
+      "label": "Bruised Shoulder",
+      "text": "The door wins. Your shoulder aches, and a line of brass numbers above the frame ticks downward.",
+      "position": [3960, 3020],
+      "entryEffects": ["tick(1)"],
+      "nextId": 6
+    },
+    {
+      "id": 117,
+      "type": "redirect",
+      "label": "Last Warning",
+      "text": "The impact shakes dust from the ceiling. The room checks how much time you have left.",
+      "position": [3960, 3180],
+      "links": [
+        {
+          "id": 140,
+          "weight": 1,
+          "condition": "timeGone()"
+        },
+        {
+          "id": 6,
+          "weight": 1,
+          "condition": "!timeGone()"
+        }
+      ]
+    },
+    {
+      "id": 118,
+      "type": "finish",
+      "label": "Mirror Prison",
+      "text": [
+        "The reflection closes around you before the room has power enough to make it honest.",
+        "Outside the glass, another version of you lowers their hand one second too late."
+      ],
+      "position": [4920, 720]
+    },
+    {
+      "id": 119,
+      "type": "skip",
+      "label": "Threshold",
+      "text": "You step through the opened exit. The room exhales behind you, its clocks slowing as if a question has finally been answered.",
+      "position": [3640, 2700],
+      "nextId": 120
+    },
+    {
+      "id": 120,
+      "type": "finish",
+      "label": "Clean Escape",
+      "text": [
+        "The passage delivers you to a quiet garden under dawn light.",
+        "You escaped the clockwork quest room with your mind intact and enough answers to know the door was never only a door."
+      ],
+      "position": [3960, 2700]
+    },
+    {
+      "id": 121,
+      "type": "action",
+      "label": "Last Alcove",
+      "text": "The small alcove contains a star-shaped socket and a panel that breathes warm air through tiny holes.",
+      "position": [3640, 2540],
+      "actions": [
+        {
+          "label": "Set star",
+          "condition": "hasCrystalStar",
+          "id": 122,
+          "effects": ["hasMasterKey = true", "learn"]
+        },
+        {
+          "label": "Listen wall",
+          "id": 123,
+          "effects": ["learnedRoomVoice = true", "learn"]
+        },
+        {
+          "label": "Leave",
+          "id": 119
+        }
+      ]
+    },
+    {
+      "id": 122,
+      "type": "skip",
+      "label": "Master Key",
+      "text": "The crystal star unfolds into a master key made of seven interlocking pieces. It is less a key than an argument won.",
+      "position": [3960, 2460],
+      "nextId": 124
+    },
+    {
+      "id": 123,
+      "type": "skip",
+      "label": "Room Voice",
+      "text": "Through the panel, a dry voice whispers, \"Most leave. Few ask who built the leaving.\"",
+      "position": [3960, 2620],
+      "nextId": 124
+    },
+    {
+      "id": 124,
+      "type": "action",
+      "label": "Awake Room",
+      "text": "The alcove is no longer pretending to be furniture. It is an ear, a lock, and perhaps a witness.",
+      "position": [4280, 2540],
+      "actions": [
+        {
+          "label": "Bargain",
+          "id": 125,
+          "effects": ["tick(1)"]
+        },
+        {
+          "label": "Refuse",
+          "id": 126
+        },
+        {
+          "label": "Use key",
+          "condition": "hasMasterKey",
+          "id": 127
+        }
+      ]
+    },
+    {
+      "id": 125,
+      "type": "redirect",
+      "label": "Bargain Test",
+      "text": "You offer the room a trade: truth for passage. It weighs what you have actually understood, not just what you have touched.",
+      "position": [4600, 2380],
+      "links": [
+        {
+          "id": 128,
+          "weight": 1,
+          "condition": "learnedRoomVoice && hasMasterKey && learnedExitTruth && hasExitMap"
+        },
+        {
+          "id": 129,
+          "weight": 1,
+          "condition": "!learnedRoomVoice || !hasMasterKey || !learnedExitTruth || !hasExitMap"
+        }
+      ]
+    },
+    {
+      "id": 126,
+      "type": "skip",
+      "label": "Refused Ear",
+      "text": "You refuse to bargain with architecture. The alcove closes politely, leaving the ordinary exit available.",
+      "position": [4600, 2540],
+      "nextId": 119
+    },
+    {
+      "id": 127,
+      "type": "skip",
+      "label": "Key Turns",
+      "text": "The master key turns in a lock you cannot see. A deeper seam opens along the passage wall.",
+      "position": [4600, 2700],
+      "nextId": 135
+    },
+    {
+      "id": 128,
+      "type": "skip",
+      "label": "Trade Accepted",
+      "text": "The room accepts your attention as payment. \"Ask,\" it says, and every lamp bends toward you.",
+      "position": [4920, 2340],
+      "entryEffects": ["roomAppeased = true"],
+      "nextId": 131
+    },
+    {
+      "id": 129,
+      "type": "skip",
+      "label": "Trade Refused",
+      "text": "\"Too little noticed,\" the room whispers. The alcove remains open, but its patience has cooled.",
+      "position": [4920, 2500],
+      "entryEffects": ["strain"],
+      "nextId": 131
+    },
+    {
+      "id": 130,
+      "type": "finish",
+      "label": "Narrow Escape",
+      "text": [
+        "You squeeze through the dark passage and emerge in a locked courtyard with scraped hands and a racing heart.",
+        "You escaped, but some part of the room keeps ticking in your memory, waiting for the answer you did not find."
+      ],
+      "position": [3640, 2860]
+    },
+    {
+      "id": 131,
+      "type": "action",
+      "label": "Archivist Wall",
+      "text": "A panel slides aside, revealing writing layered over writing. Some of it is blueprint. Some of it is apology.",
+      "position": [5240, 2420],
+      "actions": [
+        {
+          "label": "Ask exit",
+          "condition": "roomAppeased",
+          "id": 132,
+          "effects": ["learnedTrueExit = true", "learn"]
+        },
+        {
+          "label": "Ask name",
+          "id": 133,
+          "effects": ["learnedRoomName = true", "learn"]
+        },
+        {
+          "label": "Leave",
+          "id": 119
+        }
+      ]
+    },
+    {
+      "id": 132,
+      "type": "skip",
+      "label": "True Exit",
+      "text": "\"The true exit is not beyond the first door,\" the room says. \"It is below the floor, past the service crawl, where builders fled.\"",
+      "position": [5560, 2320],
+      "nextId": 134
+    },
+    {
+      "id": 133,
+      "type": "skip",
+      "label": "Room Name",
+      "text": "\"I was named Asterion,\" the room says. \"A maze made small enough to fit one frightened person at a time.\"",
+      "position": [5560, 2480],
+      "nextId": 134
+    },
+    {
+      "id": 134,
+      "type": "action",
+      "label": "Deeper Choice",
+      "text": "{{learnedTrueExit:The service crawl is no longer just a map mark; it is the real path. }}{{learnedRoomName:Asterion waits for what you will do with its name. }}",
+      "position": [5880, 2400],
+      "actions": [
+        {
+          "label": "Find crawl",
+          "condition": "hasMasterKey && learnedTrueExit",
+          "id": 135
+        },
+        {
+          "label": "Take notes",
+          "id": 136,
+          "effects": ["learn"]
+        },
+        {
+          "label": "Old exit",
+          "id": 119
+        }
+      ]
+    },
+    {
+      "id": 135,
+      "type": "skip",
+      "label": "Hidden Seam",
+      "text": "The master key points toward the chalked hatch and the red line on the ink map. The ordinary exit suddenly feels like a side door.",
+      "position": [6200, 2320],
+      "nextId": 137
+    },
+    {
+      "id": 136,
+      "type": "skip",
+      "label": "Last Notes",
+      "text": "You copy three lines from the wall before they fade: Asterion, service crawl, builders fled.",
+      "position": [6200, 2480],
+      "nextId": 134
+    },
+    {
+      "id": 137,
+      "type": "action",
+      "label": "Floor Hatch",
+      "text": "The chalked hatch waits in the marble. {{restoredPower:Gold light leaks through the seam. }}The seam feels colder than the marble around it.",
+      "position": [1400, 3300],
+      "actions": [
+        {
+          "label": "Lift hatch",
+          "condition": "markedTrapdoor || learnedTrueExit",
+          "id": 138
+        },
+        {
+          "label": "Return",
+          "id": 6
+        }
+      ]
+    },
+    {
+      "id": 138,
+      "type": "redirect",
+      "label": "Below Hatch",
+      "text": "The hatch opens on a ladder and a breath of old machine air. The state of the room matters now.",
+      "position": [1720, 3300],
+      "links": [
+        {
+          "id": 139,
+          "weight": 1,
+          "condition": "!restoredPower"
+        },
+        {
+          "id": 141,
+          "weight": 1,
+          "condition": "restoredPower"
+        }
+      ]
+    },
+    {
+      "id": 139,
+      "type": "finish",
+      "label": "Below Forever",
+      "text": [
+        "You descend before the room is powered. The hatch closes above you, and the ladder withdraws into the dark.",
+        "The ticking water continues overhead, counting for someone else now."
+      ],
+      "position": [2040, 3220]
+    },
+    {
+      "id": 140,
+      "type": "finish",
+      "label": "Out of Time",
+      "text": [
+        "The final brass number becomes zero. Every alcove closes at once.",
+        "The room does not kill you. It simply stops being a puzzle and becomes a cell."
+      ],
+      "position": [2040, 3500]
+    },
+    {
+      "id": 141,
+      "type": "action",
+      "label": "Service Crawl",
+      "text": "Below the hatch, a crawlspace runs beneath the whole room. Warm cables pulse along one wall, and a dead fuse box waits ahead.",
+      "position": [2040, 3360],
+      "actions": [
+        {
+          "label": "Follow cable",
+          "id": 142,
+          "effects": ["emergencyRoute = true"]
+        },
+        {
+          "label": "Pocket fuse",
+          "id": 143,
+          "effects": ["hasFuse = true"]
+        },
+        {
+          "label": "Climb back",
+          "id": 6
+        }
+      ]
+    },
+    {
+      "id": 142,
+      "type": "skip",
+      "label": "Warm Cable",
+      "text": "The cable leads toward the exit wall, not away from it. The ink map was honest about the hidden route.",
+      "position": [2360, 3280],
+      "nextId": 144
+    },
+    {
+      "id": 143,
+      "type": "skip",
+      "label": "Spare Fuse",
+      "text": "You take a ceramic fuse from a cracked holder. It is old, but the filament inside is intact.",
+      "position": [2360, 3440],
+      "nextId": 144
+    },
+    {
+      "id": 144,
+      "type": "action",
+      "label": "Fuse Box",
+      "text": "The fuse box is labeled <i>emergency release</i>. A plaque beneath it has been scratched nearly blank.",
+      "position": [2680, 3360],
+      "actions": [
+        {
+          "label": "Replace fuse",
+          "condition": "hasFuse && !restoredPower",
+          "id": 145,
+          "effects": ["restoredPower = true", "litLamp = true"]
+        },
+        {
+          "label": "Read plaque",
+          "id": 146,
+          "effects": ["learnedFinalSequence = true", "learn"]
+        },
+        {
+          "label": "Crawl onward",
+          "id": 147,
+          "effects": ["tick(1)"]
+        }
+      ]
+    },
+    {
+      "id": 145,
+      "type": "skip",
+      "label": "Fuse Replaced",
+      "text": "The spare fuse locks in. Power hums through the crawlspace, and dust jumps from every cable.",
+      "position": [3000, 3200],
+      "nextId": 144
+    },
+    {
+      "id": 146,
+      "type": "skip",
+      "label": "Builder Plaque",
+      "text": "You decipher the scratched plaque: <i>Mirror proves sight. Bell proves order. Water proves patience. Name proves mercy.</i>",
+      "position": [3000, 3360],
+      "nextId": 144
+    },
+    {
+      "id": 147,
+      "type": "redirect",
+      "label": "Tight Crawl",
+      "text": "The crawlspace narrows. It checks your accumulated tension as much as your courage.",
+      "position": [3000, 3520],
+      "links": [
+        {
+          "id": 148,
+          "weight": 1,
+          "condition": "tension >= 5"
+        },
+        {
+          "id": 149,
+          "weight": 3
+        }
+      ]
+    },
+    {
+      "id": 148,
+      "type": "skip",
+      "label": "Crawl Collapse",
+      "text": "A bracket snaps behind you. You scramble forward, but the delay costs the last of the room's patience.",
+      "position": [3320, 3440],
+      "entryEffects": ["timeLeft = 0"],
+      "nextId": 140
+    },
+    {
+      "id": 149,
+      "type": "action",
+      "label": "Narrow Stair",
+      "text": "The crawlspace opens onto a steep maintenance stair. Cool air spills down from somewhere beyond the original exit wall.",
+      "position": [3320, 3600],
+      "actions": [
+        {
+          "label": "Use map",
+          "condition": "hasExitMap",
+          "id": 150,
+          "effects": ["emergencyRoute = true", "learn"]
+        },
+        {
+          "label": "Follow air",
+          "id": 151,
+          "effects": ["strain"]
+        },
+        {
+          "label": "Turn back",
+          "id": 6
+        }
+      ]
+    },
+    {
+      "id": 150,
+      "type": "skip",
+      "label": "Map Route",
+      "text": "The red line on the map matches the stair exactly. You avoid two dead turns and one floor plate that probably bites.",
+      "position": [3640, 3520],
+      "nextId": 152
+    },
+    {
+      "id": 151,
+      "type": "skip",
+      "label": "Air Guess",
+      "text": "You follow the cool air and find the stair by instinct. It works, but your nerves scrape thin in the dark.",
+      "position": [3640, 3680],
+      "nextId": 152
+    },
+    {
+      "id": 152,
+      "type": "action",
+      "label": "Service Door",
+      "text": "At the top of the stair is a small service door with no handle. It has a mouth-shaped keyhole.",
+      "position": [3960, 3600],
+      "actions": [
+        {
+          "label": "Speak motto",
+          "condition": "learnedMotto",
+          "id": 153,
+          "effects": ["spokeMotto = true"]
+        },
+        {
+          "label": "Use master",
+          "condition": "hasMasterKey",
+          "id": 154
+        },
+        {
+          "label": "Return",
+          "id": 6
+        }
+      ]
+    },
+    {
+      "id": 153,
+      "type": "skip",
+      "label": "Mouth Opens",
+      "text": "The mouth-shaped keyhole repeats the motto in your own voice, then opens wide enough for the master key.",
+      "position": [4280, 3520],
+      "nextId": 154
+    },
+    {
+      "id": 154,
+      "type": "action",
+      "label": "Final Latch",
+      "text": "The last latch is old builder work, rougher than the quest room above. It wants both authority and understanding.",
+      "position": [4280, 3680],
+      "actions": [
+        {
+          "label": "Combine proofs",
+          "condition": "hasMasterKey && learnedTrueExit && emergencyRoute",
+          "id": 155
+        },
+        {
+          "label": "Practical exit",
+          "condition": "emergencyRoute && restoredPower",
+          "id": 119
+        },
+        {
+          "label": "Return",
+          "id": 6
+        }
+      ]
+    },
+    {
+      "id": 155,
+      "type": "redirect",
+      "label": "Last Choice",
+      "text": "The latch opens to a final chamber no larger than a closet. Asterion's voice waits in the dark.",
+      "position": [4600, 3600],
+      "links": [
+        {
+          "id": 156,
+          "weight": 1,
+          "condition": "hasMasterKey && learnedTrueExit"
+        },
+        {
+          "id": 130,
+          "weight": 1,
+          "condition": "!hasMasterKey || !learnedTrueExit"
+        }
+      ]
+    },
+    {
+      "id": 156,
+      "type": "skip",
+      "label": "Room Remembers",
+      "text": "The final chamber holds a single brass heart. It beats in time with every puzzle you solved above.",
+      "position": [4920, 3520],
+      "nextId": 157
+    },
+    {
+      "id": 157,
+      "type": "action",
+      "label": "Answer Room",
+      "text": "\"I can keep testing people,\" Asterion says, \"or I can become a door and be done.\"",
+      "position": [5240, 3520],
+      "actions": [
+        {
+          "label": "Keep room",
+          "id": 158,
+          "effects": ["keeperPromise = true"]
+        },
+        {
+          "label": "Free room",
+          "id": 159,
+          "effects": ["roomFreed = true"]
+        }
+      ]
+    },
+    {
+      "id": 158,
+      "type": "skip",
+      "label": "Keeper Promise",
+      "text": "You promise to send seekers, not prisoners. The brass heart accepts the distinction and slows to a calmer rhythm.",
+      "position": [5560, 3440],
+      "nextId": 160
+    },
+    {
+      "id": 159,
+      "type": "skip",
+      "label": "Room Freed",
+      "text": "You tell Asterion no room should need fear to prove attention. The brass heart cracks, and warm daylight leaks through.",
+      "position": [5560, 3600],
+      "nextId": 160
+    },
+    {
+      "id": 160,
+      "type": "finish",
+      "label": "Master Exit",
+      "text": [
+        "{{keeperPromise:Asterion remains behind you, changed from trap to trial. }}{{roomFreed:Asterion dissolves into light, leaving only an open doorway. }}",
+        "You step out through the true master exit, carrying not just the route, but the room's name."
+      ],
+      "position": [5880, 3520]
+    }
+  ]
+}
