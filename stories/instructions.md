@@ -44,8 +44,8 @@
 6. Aim to create long story threads that can entertwine with each other and lead to several endings eventually.
 7. There also can be plot cycles that return to some earlier nodes.
 8. Don't overuse the time traveling and parallel universe plots, keep it simple but engaging.
-9. Use emoji, aim to use at least one emoji per node. Use only browser-safe, broadly supported emoji. Target emoji that render correctly in current desktop Chrome, Edge, Firefox, and Safari on common Windows and macOS systems.
-10. You can also put an emoji on a separate text line to emphasize it's effect.
+9. Use emoji sparingly inside story text, and place them where they emphasize a meaningful object, event, emotion, or turn in the scene. Do not prefix every text block with an emoji as an illustration badge. Use only browser-safe, broadly supported emoji. Target emoji that render correctly in current desktop Chrome, Edge, Firefox, and Safari on common Windows and macOS systems.
+10. You can put an emoji on a separate text line only when the emoji itself is the intended beat or emphasis, not as routine decoration.
 11. Use `<b></b>` tags for bold text and `<i></i>` tags for italic where appropriate.
 12. Don't create long action labels, make them 2-3 words max. Use emoji in action labels (it is not necessary but add them where suitable).
 13. Fill node `label` property with a short (2-3 words) title based on its content. I REPEAT AGAIN FILL THE node's `label`!

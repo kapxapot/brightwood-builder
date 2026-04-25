@@ -14,7 +14,7 @@
       "type": "skip",
       "label": "Black Sails",
       "text": [
-        "🕯️ Black funeral sails hang over Selucor as your ferry glides beneath the palace hill and its cypress terraces.",
+        "Black funeral sails hang over Selucor as your ferry glides beneath the palace hill and its cypress terraces 🌿.",
         "You have not seen the capital since exile, but the bronze domes and sea walls remember you too well."
       ],
       "nextId": 2,
@@ -28,7 +28,7 @@
       "type": "action",
       "label": "First Step",
       "text": [
-        "🌊 Pages wait at the dock, bells sound from the shrine stair, and cavalry banners flash at the upper gate.",
+        "Pages wait at the dock, bells sound from the shrine stair 🕯️, and cavalry banners flash at the upper gate.",
         "Before the regent's summons catches you, you can enter Selucor by memory, trade, or prayer."
       ],
       "actions": [
@@ -55,7 +55,7 @@
       "type": "skip",
       "label": "Palace Gate",
       "text": [
-        "🏛️ At the upper gate, Captain Soren Vale reins in beside you with rain on his cloak and surprise in his eyes.",
+        "At the upper gate, Captain Soren Vale reins in beside you with rain on his cloak and surprise in his eyes.",
         "He does not waste words on welcome, but relief crosses his face before discipline buries it."
       ],
       "nextId": 6,
@@ -69,7 +69,7 @@
       "type": "skip",
       "label": "Harbor Road",
       "text": [
-        "⚓ The harbor road smells of tar, wet rope, and quince from the river barges crowding the lower quay.",
+        "The harbor road smells of tar, wet rope, and quince from the river barges crowding the lower quay.",
         "Lady Danira Sol looks up from a grain scale and mutters that the Kardeshi envoy arrived under too many guards."
       ],
       "nextId": 6,
@@ -83,7 +83,7 @@
       "type": "skip",
       "label": "Shrine Stair",
       "text": [
-        "🕯️ Mother Calia waits beneath the hill cypresses as though the stones warned her you were coming.",
+        "Mother Calia waits beneath the hill cypresses as though the stones warned her you were coming.",
         "She touches your sleeve once and says, \"Old words are waking, child of ink.\""
       ],
       "nextId": 6,
@@ -97,8 +97,8 @@
       "type": "action",
       "label": "Regent Summons",
       "text": [
-        "👑 Regent Iria Valen receives you in a chamber still draped for mourning, maps and sealed ledgers spread around her like weapons.",
-        "A piece of the Covenant of Bridges is missing, the boy prince must be crowned, and a peace embassy from Kardesh is already inside the city."
+        "Regent Iria Valen receives you in a chamber still draped for mourning, maps and sealed ledgers spread around her like weapons.",
+        "A piece of the Covenant of Bridges is missing 📜, the boy prince must be crowned, and a peace embassy from Kardesh is already inside the city."
       ],
       "actions": [
         {
@@ -124,7 +124,7 @@
       "type": "skip",
       "label": "Ready Service",
       "text": [
-        "🤝 You bow and take the charge before caution can intervene.",
+        "You bow and take the charge before caution can intervene.",
         "Iria's shoulders ease by a fraction, which is how she shows gratitude when the court can see her."
       ],
       "nextId": 10,
@@ -138,7 +138,7 @@
       "type": "skip",
       "label": "Hard Terms",
       "text": [
-        "❓ You ask what price follows obedience this time. Iria answers without flinching: \"Truth, if we can still afford it.\"",
+        "You ask what price follows obedience this time. Iria answers without flinching: \"Truth, if we can still afford it.\"",
         "The candor unsettles you more than a lie would have."
       ],
       "nextId": 10,
@@ -152,7 +152,7 @@
       "type": "skip",
       "label": "Old Exile",
       "text": [
-        "🩹 You remind her that Selucor once sent you away in disgrace beside your father's name.",
+        "You remind her that Selucor once sent you away in disgrace beside your father's name.",
         "Iria accepts the wound without argument and says only, \"Then help me stop this city from earning another.\""
       ],
       "nextId": 10,
@@ -166,7 +166,7 @@
       "type": "redirect",
       "label": "Court Tide",
       "text": [
-        "📯 Before more can be said, pages, harbor officers, and shrine novices collide around you in a tide of urgent messages.",
+        "Before more can be said, pages, harbor officers, and shrine novices collide around you in a tide of urgent messages.",
         "Mourning has not slowed the court; it has only sharpened every errand."
       ],
       "links": [
@@ -193,7 +193,7 @@
       "type": "skip",
       "label": "Dust Archive",
       "text": [
-        "📚 A page hustles you from Iria's chamber to the state archive, where cedar dust and old lamp oil hang over a bronze-bound chest left open on the table.",
+        "A page hustles you from Iria's chamber to the state archive, where cedar dust and old lamp oil hang over a bronze-bound chest left open on the table 📚.",
         "One seal has been cut too neatly to be honest; whoever touched it knew court habits better than any common thief."
       ],
       "nextId": 14,
@@ -207,7 +207,7 @@
       "type": "skip",
       "label": "Young Prince",
       "text": [
-        "👑 Another summons sends you to Prince Alexen's schoolroom, where river maps and toy soldiers are arranged like real provinces.",
+        "Another summons sends you to Prince Alexen's schoolroom, where river maps and toy soldiers are arranged like real provinces.",
         "He asks whether old books can stop men from killing each other, and you cannot answer quickly."
       ],
       "nextId": 14,
@@ -221,7 +221,7 @@
       "type": "skip",
       "label": "Salt Jetty",
       "text": [
-        "⚓ Down at the salt jetty, the Kardeshi envoy Tamar Kesri steps ashore in dark riding silk, composed enough to make the whole harbor look theatrical.",
+        "Down at the salt jetty, the Kardeshi envoy Tamar Kesri steps ashore in dark riding silk, composed enough to make the whole harbor look theatrical.",
         "When Tamar learns your name, the envoy's expression suggests Kardesh keeps better records than Selucor admits."
       ],
       "nextId": 14,
@@ -235,7 +235,7 @@
       "type": "action",
       "label": "First Duty",
       "text": [
-        "🗝️ After the first rush of messages, Iria wants movement before rumor hardens into certainty.",
+        "After the first rush of messages, Iria wants movement before rumor hardens into certainty.",
         "You can inspect the broken archive chest, go greet the Kardeshi envoy Tamar Kesri, or walk the painted gallery where the founders hid their history in plain sight."
       ],
       "actions": [
@@ -262,7 +262,7 @@
       "type": "skip",
       "label": "Broken Chest",
       "text": [
-        "📦 Inside the chest, tax tablets remain neatly stacked, but one folded parchment case is missing from the center.",
+        "Inside the chest, tax tablets remain neatly stacked, but one folded parchment case is missing from the center.",
         "The dust suggests it was removed recently and by patient hands."
       ],
       "nextId": 18,
@@ -276,7 +276,7 @@
       "type": "skip",
       "label": "Envoy Court",
       "text": [
-        "🤝 Tamar receives you in a wind-bright harbor court, with Kardeshi guards pretending not to watch every roofline.",
+        "Tamar receives you in a wind-bright harbor court, with Kardeshi guards pretending not to watch every roofline.",
         "The envoy says peace remains possible, but not if Selucor arrives at ceremony empty-handed and proud."
       ],
       "nextId": 18,
@@ -290,7 +290,7 @@
       "type": "skip",
       "label": "Painted Gallery",
       "text": [
-        "🖼️ The imperial gallery carries painted bridges, cypress groves, and long-dead rulers clasping hands with riders from the eastern plain.",
+        "The imperial gallery carries painted bridges, cypress groves, and long-dead rulers clasping hands with riders from the eastern plain.",
         "One damaged panel shows a treaty scene scratched almost blank around the witnesses."
       ],
       "nextId": 18,
@@ -304,7 +304,7 @@
       "type": "action",
       "label": "First Inquiry",
       "text": [
-        "🔎 Three questions rise above the rest: what was taken, who profits from the raids, and what the dead emperor was trying to say before fever closed his mouth.",
+        "Three questions rise above the rest: what was taken, who profits from the raids, and what the dead emperor was trying to say before fever closed his mouth.",
         "The answer you chase first will color everything after."
       ],
       "actions": [
@@ -331,7 +331,7 @@
       "type": "skip",
       "label": "Missing Leaves",
       "text": [
-        "📜 The missing case held the final leaves of the Covenant of Bridges, copied twice and sealed under imperial bronze.",
+        "The missing case held the final leaves of the Covenant of Bridges, copied twice and sealed under imperial bronze.",
         "Without them, no one can prove the exact obligations owed to Kardesh or the river cities."
       ],
       "nextId": 22,
@@ -345,7 +345,7 @@
       "type": "skip",
       "label": "Border Smoke",
       "text": [
-        "🔥 Reports show recent raids striking grain roads and ferries rather than frontier forts, which is a merchant's pattern, not a conqueror's.",
+        "Reports show recent raids striking grain roads and ferries rather than frontier forts, which is a merchant's pattern, not a conqueror's.",
         "Someone wants hunger and blame more than territory."
       ],
       "nextId": 22,
@@ -359,7 +359,7 @@
       "type": "skip",
       "label": "Last Words",
       "text": [
-        "👑 A palace physician tells you the emperor woke only once on his final night and said, \"The bridges remember before crowns.\"",
+        "A palace physician tells you the emperor woke only once on his final night and said, \"The bridges remember before crowns 👑.\"",
         "The phrase sounds less like delirium than a warning he died too late to explain."
       ],
       "nextId": 22,
@@ -373,7 +373,7 @@
       "type": "redirect",
       "label": "Sunset Pull",
       "text": [
-        "🌆 As evening bells answer harbor horns, the streets choke with mourners, traders, and torchbearers bound for competing duties.",
+        "As evening bells answer harbor horns, the streets choke with mourners, traders, and torchbearers bound for competing duties.",
         "Selucor decides whether you reach the regent's lamps, the wharves, the shrine, or lose precious time in the painted gallery again."
       ],
       "links": [
@@ -404,7 +404,7 @@
       "type": "skip",
       "label": "Supper Lamps",
       "text": [
-        "🍷 In a supper chamber lit by mourning lamps, Iria eats almost nothing and listens to everyone as if measuring knives by weight.",
+        "In a supper chamber lit by mourning lamps, Iria eats almost nothing and listens to everyone as if measuring knives by weight.",
         "She asks which danger feels closest: the court, the harbor, or the memory under the hill."
       ],
       "nextId": 26,
@@ -418,7 +418,7 @@
       "type": "skip",
       "label": "Wharf Alarm",
       "text": [
-        "🚨 At the western wharves, a grain lock has been cut and guards are shouting over one another while sacks burst underfoot.",
+        "At the western wharves, a grain lock has been cut and guards are shouting over one another while sacks burst underfoot.",
         "Danira swears the theft is too clumsy to be ordinary smuggling."
       ],
       "nextId": 26,
@@ -432,7 +432,7 @@
       "type": "skip",
       "label": "Cypress Vespers",
       "text": [
-        "🌿 Beneath the palace hill, shrine bells tremble through cypress smoke and old stone as Calia begins evening prayers.",
+        "Beneath the palace hill, shrine bells tremble through cypress smoke and old stone as Calia begins evening prayers.",
         "When she names the founders, a draft moves through the chamber with no open door to blame."
       ],
       "nextId": 26,
@@ -446,7 +446,7 @@
       "type": "action",
       "label": "First Trust",
       "text": [
-        "🤔 By nightfall, Selucor offers three possible centers of gravity and none of them are safe.",
+        "By nightfall, Selucor offers three possible centers of gravity and none of them are safe.",
         "You can lean toward Iria's statecraft, Soren's frontier instincts, or Calia's older understanding of the city."
       ],
       "actions": [
@@ -473,7 +473,7 @@
       "type": "skip",
       "label": "Regent Quiet",
       "text": [
-        "👑 Iria speaks plainly once the chamber empties. She fears not foreign invasion but domestic men who profit whenever the border burns.",
+        "Iria speaks plainly once the chamber empties. She fears not foreign invasion but domestic men who profit whenever the border burns.",
         "It is the kind of honesty rulers seldom survive for long."
       ],
       "nextId": 30,
@@ -487,7 +487,7 @@
       "type": "skip",
       "label": "Soldier Walk",
       "text": [
-        "⚔️ Soren walks you along the wall circuit where the harbor lights look like embers on black cloth.",
+        "Soren walks you along the wall circuit where the harbor lights look like embers on black cloth.",
         "He says the riders on the frontier are angry, tired, and one bad week away from wanting war because it is simpler than doubt."
       ],
       "nextId": 30,
@@ -501,7 +501,7 @@
       "type": "skip",
       "label": "Shrine Warning",
       "text": [
-        "🌿 Calia offers watered wine and tells you the cypress roots under Selucor were planted before empire claimed the hill.",
+        "Calia offers watered wine and tells you the cypress roots 🌿 under Selucor were planted before empire claimed the hill.",
         "\"Old bargains fail noisily,\" she says. \"Listen for what the city repeats.\""
       ],
       "nextId": 30,
@@ -515,7 +515,7 @@
       "type": "action",
       "label": "Morning Work",
       "text": [
-        "🌤️ Dawn comes silver and wind-cold over the sea, and the court begins moving again before grief has finished dressing.",
+        "Dawn comes silver and wind-cold over the sea, and the court begins moving again before grief has finished dressing.",
         "You can spend the morning at the archive, the barracks yard, or the harbor customs hall."
       ],
       "actions": [
@@ -542,7 +542,7 @@
       "type": "skip",
       "label": "Scholar Table",
       "text": [
-        "📚 Two archivists argue over dates while pretending not to fear the broken chest beside them.",
+        "Two archivists argue over dates while pretending not to fear the broken chest beside them.",
         "A copied inventory reveals that one marginal note about witness seals was removed years before the final leaves vanished."
       ],
       "nextId": 34,
@@ -556,7 +556,7 @@
       "type": "skip",
       "label": "Barracks Yard",
       "text": [
-        "🐎 In the barracks yard, grooms tighten girths while officers speak too softly whenever the word Kardesh surfaces.",
+        "In the barracks yard, grooms tighten girths while officers speak too softly whenever the word Kardesh surfaces.",
         "Soren lets you watch a dispatch board crowded with fresh pins along the river roads."
       ],
       "nextId": 34,
@@ -570,7 +570,7 @@
       "type": "skip",
       "label": "Customs Hall",
       "text": [
-        "⚓ Customs scribes tally wool, salt fish, wax, and barley beneath cracked frescoes of imperial abundance.",
+        "Customs scribes tally wool, salt fish, wax, and barley beneath cracked frescoes of imperial abundance.",
         "Danira points out that missing grain always seems to vanish just before a council session about border security."
       ],
       "nextId": 34,
@@ -584,7 +584,7 @@
       "type": "redirect",
       "label": "Lost Courier",
       "text": [
-        "📨 A courier meant for the council arrives breathless, missing one satchel and carrying the wrong seal in the other.",
+        "A courier meant for the council arrives breathless, missing one satchel and carrying the wrong seal in the other.",
         "The confusion can lead you to forged wax, the prince's falcon loft, a river rider at the gate, or back into the archive where the mistake began."
       ],
       "links": [
@@ -615,7 +615,7 @@
       "type": "skip",
       "label": "Wrong Seal",
       "text": [
-        "🕯️ The courier's spare packet carries the chancellor's household seal pressed in cheap wax and trimmed too cleanly at the edge.",
+        "The courier's spare packet carries the chancellor's household seal pressed in cheap wax and trimmed too cleanly at the edge.",
         "Forgers often copy images; they rarely copy pressure."
       ],
       "nextId": 38,
@@ -629,7 +629,7 @@
       "type": "skip",
       "label": "Falcon Ribbon",
       "text": [
-        "🦅 In the loft above the schoolroom, the prince's white falcon wears a fresh ribbon stamped with the bridge-fort mark.",
+        "In the loft above the schoolroom, the prince's white falcon wears a fresh ribbon stamped with the bridge-fort mark.",
         "Alexen insists he never tied it there and looks more intrigued than afraid."
       ],
       "nextId": 38,
@@ -643,7 +643,7 @@
       "type": "skip",
       "label": "River Rider",
       "text": [
-        "🐎 At the gate, a river rider from the west asks for Soren and carries mud from roads that should be dry this season.",
+        "At the gate, a river rider from the west asks for Soren and carries mud from roads that should be dry this season.",
         "He says someone reopened an old causeway near the ruined bridge fort."
       ],
       "nextId": 38,
@@ -657,7 +657,7 @@
       "type": "action",
       "label": "Follow Clue",
       "text": [
-        "🧭 The morning finally offers something solid enough to chase.",
+        "The morning finally offers something solid enough to chase.",
         "You can study the forged wax, question the river rider, or place the clue in Tamar's hands and see what the envoy notices."
       ],
       "actions": [
@@ -684,7 +684,7 @@
       "type": "skip",
       "label": "Wax Trace",
       "text": [
-        "🕯️ Under lamp heat, the wax releases traces of fennel oil used in one palace office to keep packets from sticking in summer.",
+        "Under lamp heat, the wax releases traces of fennel oil 🕯️ used in one palace office to keep packets from sticking in summer.",
         "The scent points toward Chancellor Marek Danos more cleanly than any witness would dare."
       ],
       "nextId": 42,
@@ -698,7 +698,7 @@
       "type": "skip",
       "label": "Fort Name",
       "text": [
-        "🐎 The rider names the ruined bridge fort of Valdaran, once the place where Orsanna and Kardesh exchanged foster sons under the covenant.",
+        "The rider names the ruined bridge fort of Valdaran, once the place where Orsanna and Kardesh exchanged foster sons under the covenant.",
         "Few men at court still remember that part aloud."
       ],
       "nextId": 42,
@@ -712,7 +712,7 @@
       "type": "skip",
       "label": "Tamar Gloss",
       "text": [
-        "🤝 Tamar studies the ribbon and quietly translates its stitched proverb: \"Bridges rot first in secret.\"",
+        "Tamar studies the ribbon and quietly translates its stitched proverb: \"Bridges rot first in secret.\"",
         "The envoy says it is an old Kardeshi warning against councils that smile too much."
       ],
       "nextId": 42,
@@ -726,7 +726,7 @@
       "type": "action",
       "label": "Midday Route",
       "text": [
-        "☀️ Midday draws you in three directions at once: maps, princes, and locked rooms.",
+        "Midday draws you in three directions at once: maps, princes, and locked rooms.",
         "You can examine bridge records, dine with Alexen, or search the clerk quarters tied to Marek's office."
       ],
       "actions": [
@@ -753,7 +753,7 @@
       "type": "skip",
       "label": "Bridge Maps",
       "text": [
-        "🗺️ The survey room shows old ferries, toll houses, and two bridges erased from the modern military charts.",
+        "The survey room shows old ferries, toll houses, and two bridges erased from the modern military charts.",
         "Someone has been simplifying the border on paper for years."
       ],
       "nextId": 46,
@@ -767,7 +767,7 @@
       "type": "skip",
       "label": "Prince Meal",
       "text": [
-        "🍞 Alexen picks at flatbread and olives while asking why adults always call fear by larger names like duty or honor.",
+        "Alexen picks at flatbread and olives while asking why adults always call fear by larger names like duty or honor.",
         "When you mention the covenant, he says he has dreamed of a bridge under cypresses three nights in a row."
       ],
       "nextId": 46,
@@ -781,7 +781,7 @@
       "type": "skip",
       "label": "Clerk Rooms",
       "text": [
-        "🗝️ In the clerk quarters you find scraped wax, a cracked tally board, and one hidden key wrapped in ordinary linen.",
+        "In the clerk quarters you find scraped wax, a cracked tally board, and one hidden key wrapped in ordinary linen.",
         "The room is too careful, which is another form of confession."
       ],
       "nextId": 46,
@@ -795,7 +795,7 @@
       "type": "redirect",
       "label": "Procession Jolt",
       "text": [
-        "🎺 A mourning procession surges through the inner court with drums, incense, and armed ushers clearing space by force.",
+        "A mourning procession surges through the inner court with drums, incense, and armed ushers clearing space by force 🥁.",
         "You might be knocked toward the market fire, the soldiers' chapel, a fresco alcove, or back into the prince's entourage."
       ],
       "links": [
@@ -826,7 +826,7 @@
       "type": "skip",
       "label": "Market Sparks",
       "text": [
-        "🔥 In the lower market, a brazier has overturned and traders are shouting over scorched baskets and spilled grain.",
+        "In the lower market, a brazier has overturned and traders are shouting over scorched baskets and spilled grain.",
         "Danira sees sabotage in the timing even if the damage itself is small."
       ],
       "nextId": 50,
@@ -840,7 +840,7 @@
       "type": "skip",
       "label": "Chapel Smoke",
       "text": [
-        "⛪ The soldiers' chapel is thick with tallow smoke and muttered vows from men who would rather face arrows than uncertainty.",
+        "The soldiers' chapel is thick with tallow smoke and muttered vows from men who would rather face arrows than uncertainty.",
         "A votive board lists the names of riders lost on roads supposedly held by Orsanna."
       ],
       "nextId": 50,
@@ -854,7 +854,7 @@
       "type": "skip",
       "label": "Alcove Fresco",
       "text": [
-        "🖼️ In a side alcove, soot-darkened frescoes show founders exchanging children beside a bridge instead of swords beside a throne.",
+        "In a side alcove, soot-darkened frescoes show founders exchanging children beside a bridge instead of swords beside a throne.",
         "Someone later painted imperial banners over the children and failed to hide their outlines."
       ],
       "nextId": 50,
@@ -868,7 +868,7 @@
       "type": "action",
       "label": "Answer Unrest",
       "text": [
-        "⚖️ Every rumor in Selucor now points toward a different culprit and a different remedy.",
+        "Every rumor in Selucor now points toward a different culprit and a different remedy.",
         "You can steady the merchants, back the riders publicly, or follow a hooded monk slipping toward the crypt stairs."
       ],
       "actions": [
@@ -895,7 +895,7 @@
       "type": "skip",
       "label": "Calm Traders",
       "text": [
-        "⚖️ You help Danira sort witnesses from opportunists until the shouting loses some of its hunger.",
+        "You help Danira sort witnesses from opportunists until the shouting loses some of its hunger.",
         "In thanks, she tells you which grain firms grow rich whenever military escorts become mandatory."
       ],
       "nextId": 54,
@@ -909,7 +909,7 @@
       "type": "skip",
       "label": "Back Riders",
       "text": [
-        "🛡️ With Soren at your shoulder, you speak for the exhausted frontier riders instead of letting the court call them reckless provincials.",
+        "With Soren at your shoulder, you speak for the exhausted frontier riders instead of letting the court call them reckless provincials.",
         "The barracks will remember that kindness if things turn hard."
       ],
       "nextId": 54,
@@ -923,7 +923,7 @@
       "type": "skip",
       "label": "Crypt Stairs",
       "text": [
-        "🕳️ The hooded monk leads you beneath the chapel and vanishes, leaving only damp steps, lamp soot, and a carved cypress at the landing.",
+        "The hooded monk leads you beneath the chapel and vanishes, leaving only damp steps, lamp soot, and a carved cypress at the landing.",
         "The lower crypt feels older than the empire above it."
       ],
       "nextId": 54,
@@ -937,7 +937,7 @@
       "type": "redirect",
       "label": "Storm Break",
       "text": [
-        "⛈️ A sudden sea storm slams into the hill and turns every corridor, stair, and quay into a choice made under pressure.",
+        "A sudden sea storm ⛈️ slams into the hill and turns every corridor, stair, and quay into a choice made under pressure.",
         "You may be trapped in the flooded crypt, delayed at council, driven to the harbor for shelter, or pushed back among the traders again."
       ],
       "links": [
@@ -968,7 +968,7 @@
       "type": "skip",
       "label": "Flooded Crypt",
       "text": [
-        "🌊 Water sheets through the lower crypt and reveals a mosaic floor beneath centuries of limewash.",
+        "Water sheets through the lower crypt and reveals a mosaic floor beneath centuries of limewash.",
         "The image shows two rulers kneeling before a bridge while a priestess holds a cypress branch between them."
       ],
       "nextId": 58,
@@ -982,7 +982,7 @@
       "type": "skip",
       "label": "Delayed Council",
       "text": [
-        "🏛️ Council stalls while servants bolt shutters and chase papers across the marble floor.",
+        "Council stalls while servants bolt shutters and chase papers across the marble floor.",
         "In the confusion, you hear Marek press for emergency toll powers that would enrich his allies by week's end."
       ],
       "nextId": 58,
@@ -996,7 +996,7 @@
       "type": "skip",
       "label": "Harbor Shelter",
       "text": [
-        "⚓ Driven to the harbor arcade, you find Tamar watching the storm as if weather were another negotiator at court.",
+        "Driven to the harbor arcade, you find Tamar watching the storm as if weather were another negotiator at court.",
         "The envoy says broken rituals kill peace more reliably than open hatred."
       ],
       "nextId": 58,
@@ -1010,7 +1010,7 @@
       "type": "action",
       "label": "Read Signs",
       "text": [
-        "🌫️ Once the rain passes, you are left with symbols, gossip, and hard reports that do not quite agree.",
+        "Once the rain passes, you are left with symbols, gossip, and hard reports that do not quite agree.",
         "You can trust the omen of the mosaic, the logic of council, or the evidence from the frontier riders."
       ],
       "actions": [
@@ -1037,7 +1037,7 @@
       "type": "skip",
       "label": "Omen Weight",
       "text": [
-        "🌿 The flooded mosaic convinces you the covenant was always more ceremonial and more sacred than the court admits.",
+        "The flooded mosaic convinces you the covenant was always more ceremonial and more sacred than the court admits.",
         "What was hidden may matter because it changed who has the right to speak during peace."
       ],
       "nextId": 62,
@@ -1051,7 +1051,7 @@
       "type": "skip",
       "label": "Council Logic",
       "text": [
-        "🏛️ Council evidence points cleanly toward domestic profiteers using the border to force new taxes and military contracts.",
+        "Council evidence points cleanly toward domestic profiteers using the border to force new taxes and military contracts.",
         "It is persuasive, though perhaps too clean to be the whole truth."
       ],
       "nextId": 62,
@@ -1065,7 +1065,7 @@
       "type": "skip",
       "label": "Scout Weight",
       "text": [
-        "🐎 Frontier reports still matter most to you: roads cut, ferries burned, shepherd camps emptied just far enough from the forts to avoid pitched war.",
+        "Frontier reports still matter most to you: roads cut, ferries burned, shepherd camps emptied just far enough from the forts to avoid pitched war.",
         "Someone is shaping fear with professional care."
       ],
       "nextId": 62,
@@ -1079,7 +1079,7 @@
       "type": "action",
       "label": "Ride Choice",
       "text": [
-        "🐴 The next clue lies somewhere beyond easy chambers and polished floors.",
+        "The next clue lies somewhere beyond easy chambers and polished floors.",
         "You can ride with Soren to the north gate, remain at court to watch Marek, or cross by boat to the island shrine."
       ],
       "actions": [
@@ -1106,7 +1106,7 @@
       "type": "skip",
       "label": "North Gate",
       "text": [
-        "🐎 You ride out with Soren through a gate lined by petitioners, widows, and mule carts waiting for escort orders.",
+        "You ride out with Soren through a gate lined by petitioners, widows, and mule carts waiting for escort orders.",
         "Beyond the walls, the empire looks poorer and more honest."
       ],
       "nextId": 66,
@@ -1120,7 +1120,7 @@
       "type": "skip",
       "label": "Palace Hold",
       "text": [
-        "🏛️ You stay within the palace maze and watch Marek's servants move packets between offices that should have no reason to speak.",
+        "You stay within the palace maze and watch Marek's servants move packets between offices that should have no reason to speak.",
         "Secrecy at court is often only speed dressed in silk."
       ],
       "nextId": 66,
@@ -1134,7 +1134,7 @@
       "type": "skip",
       "label": "Shrine Boat",
       "text": [
-        "⛵ A narrow boat carries you to the island shrine where votive ribbons snap in the wind and salt gathers on old stone saints.",
+        "A narrow boat carries you to the island shrine where votive ribbons snap in the wind and salt gathers on old stone saints.",
         "Calia's younger acolyte says the prince's mother used to pray here before public ceremonies."
       ],
       "nextId": 66,
@@ -1148,7 +1148,7 @@
       "type": "redirect",
       "label": "Horse Scatter",
       "text": [
-        "🐎 A pack mule rears at a drumbeat and sets horses, porters, and riders lunging in four directions at once.",
+        "A pack mule rears at a drumbeat and sets horses, porters, and riders lunging in four directions at once.",
         "You may end up at a watchtower, an orchard camp, the stable chapel, or thrown back toward the palace after all."
       ],
       "links": [
@@ -1179,7 +1179,7 @@
       "type": "skip",
       "label": "Tower Smoke",
       "text": [
-        "🚩 From the watchtower, you see three thin smokes along the western road where no villages stand close enough to justify them.",
+        "From the watchtower, you see three thin smokes along the western road where no villages stand close enough to justify them.",
         "Someone is signaling with frontier discipline inside imperial territory."
       ],
       "nextId": 70,
@@ -1193,7 +1193,7 @@
       "type": "skip",
       "label": "Orchard Camp",
       "text": [
-        "🍎 In an abandoned orchard camp, refugees from the river road share watered wine and a map scratched in ash on a plank.",
+        "In an abandoned orchard camp, refugees from the river road share watered wine and a map scratched in ash on a plank.",
         "They describe raiders who knew exactly which ferries carried grain and which carried children."
       ],
       "nextId": 70,
@@ -1207,7 +1207,7 @@
       "type": "skip",
       "label": "Stable Chapel",
       "text": [
-        "🕯️ The tiny chapel beside the stables shelters grooms, tack, and one priest who remembers too much.",
+        "The tiny chapel beside the stables shelters grooms, tack, and one priest who remembers too much.",
         "He says the covenant once required witnesses from shrine, court, and frontier together, never one alone."
       ],
       "nextId": 70,
@@ -1221,7 +1221,7 @@
       "type": "action",
       "label": "Third Inquiry",
       "text": [
-        "🧩 The roads now speak in fragments, and each fragment makes the others heavier.",
+        "The roads now speak in fragments, and each fragment makes the others heavier.",
         "You can question the refugees, read the smoke signals, or search the abandoned saddlebags left near the chapel."
       ],
       "actions": [
@@ -1248,7 +1248,7 @@
       "type": "skip",
       "label": "Refugee Story",
       "text": [
-        "🫂 One elderly boatman insists the raiders spared a shrine wagon but seized tax books before taking grain.",
+        "One elderly boatman insists the raiders spared a shrine wagon but seized tax books before taking grain.",
         "That choice makes no sense unless someone needed records altered, not supplies stolen."
       ],
       "nextId": 74,
@@ -1262,7 +1262,7 @@
       "type": "skip",
       "label": "Signal Pattern",
       "text": [
-        "🚩 The smoke pattern matches old Kardeshi field marks for \"delay,\" yet Tamar swears no envoy riders were sent west.",
+        "The smoke pattern matches old Kardeshi field marks for \"delay,\" yet Tamar swears no envoy riders were sent west.",
         "It feels like imitation meant to stain the wrong people."
       ],
       "nextId": 74,
@@ -1276,7 +1276,7 @@
       "type": "skip",
       "label": "False Dispatch",
       "text": [
-        "🎒 Inside the abandoned bags lie spare seals, dried figs, and a dispatch naming Marek's cousins as emergency grain contractors.",
+        "Inside the abandoned bags lie spare seals, dried figs, and a dispatch naming Marek's cousins as emergency grain contractors.",
         "At last the border trouble has a ledger attached to it."
       ],
       "nextId": 74,
@@ -1290,7 +1290,7 @@
       "type": "action",
       "label": "Return Way",
       "text": [
-        "🌤️ With the light slipping toward evening, you need to bring what you know back into Selucor without losing it to chance.",
+        "With the light slipping toward evening, you need to bring what you know back into Selucor without losing it to chance.",
         "You can take the ferry, the ridge road, or the orchard path below the walls."
       ],
       "actions": [
@@ -1317,7 +1317,7 @@
       "type": "skip",
       "label": "Ferry Wake",
       "text": [
-        "⛴️ The ferry rocks under carts, soldiers, and frightened hens while the city hill darkens ahead of you.",
+        "The ferry rocks under carts, soldiers, and frightened hens while the city hill darkens ahead of you.",
         "A ferryman mutters that the river has carried too many sealed boxes this week for a season of mourning."
       ],
       "nextId": 78,
@@ -1331,7 +1331,7 @@
       "type": "skip",
       "label": "Ridge Road",
       "text": [
-        "⛰️ The ridge road gives you a full view of Selucor, all bronze domes above the black harbor like something too beautiful to trust.",
+        "The ridge road gives you a full view of Selucor, all bronze domes above the black harbor like something too beautiful to trust.",
         "From here, the palace seems built directly on its own forgetting."
       ],
       "nextId": 78,
@@ -1345,7 +1345,7 @@
       "type": "skip",
       "label": "Orchard Path",
       "text": [
-        "🍎 The orchard path skirts refugee fires and old walls where children play at coronations with sticks for scepters.",
+        "The orchard path skirts refugee fires and old walls where children play at coronations with sticks for scepters.",
         "One girl declares that bridges choose kings better than crowns do."
       ],
       "nextId": 78,
@@ -1359,7 +1359,7 @@
       "type": "redirect",
       "label": "River Fog",
       "text": [
-        "🌫️ Sea fog folds into the river mouth and erases distances, bells, and half the lower harbor in one patient breath.",
+        "Sea fog folds into the river mouth and erases distances, bells, and half the lower harbor in one patient breath.",
         "You may land at the shrine quay, the harbor steps, the broken aqueduct, or circle back toward the ferry landing again."
       ],
       "links": [
@@ -1390,7 +1390,7 @@
       "type": "skip",
       "label": "Shrine Quay",
       "text": [
-        "🌿 The fog opens briefly on the shrine quay where votive lamps float like low stars against the stone steps.",
+        "The fog opens briefly on the shrine quay where votive lamps float like low stars against the stone steps.",
         "Calia is there already, as though she expected the river to choose for you."
       ],
       "nextId": 82,
@@ -1404,7 +1404,7 @@
       "type": "skip",
       "label": "Harbor Steps",
       "text": [
-        "⚓ You come in by the harbor steps where Danira's men are arguing over missing manifests and three sacks of wax tablets.",
+        "You come in by the harbor steps where Danira's men are arguing over missing manifests and three sacks of wax tablets.",
         "The whole quay feels one rumor away from violence."
       ],
       "nextId": 82,
@@ -1418,7 +1418,7 @@
       "type": "skip",
       "label": "Broken Aqueduct",
       "text": [
-        "🧱 The fog lifts beside a broken aqueduct arch scrawled with recent chalk marks and an old bridge sigil.",
+        "The fog lifts beside a broken aqueduct arch scrawled with recent chalk marks and an old bridge sigil.",
         "Someone has been using forgotten imperial masonry as a meeting place."
       ],
       "nextId": 82,
@@ -1432,7 +1432,7 @@
       "type": "action",
       "label": "Seek Counsel",
       "text": [
-        "🤝 By now you know too much to keep moving alone without choosing whose judgment matters most.",
+        "By now you know too much to keep moving alone without choosing whose judgment matters most.",
         "You can ask Calia, Danira, or Iria to help interpret what the city is really doing."
       ],
       "actions": [
@@ -1459,7 +1459,7 @@
       "type": "skip",
       "label": "Calia Reed",
       "text": [
-        "🌿 Calia says covenants die first in ritual and only later in law. \"If witnesses are broken apart,\" she warns, \"power forgets its limits.\"",
+        "Calia says covenants die first in ritual and only later in law. \"If witnesses are broken apart,\" she warns, \"power forgets its limits.\"",
         "The shrine wants reunion more than punishment."
       ],
       "nextId": 86,
@@ -1473,7 +1473,7 @@
       "type": "skip",
       "label": "Danira Grain",
       "text": [
-        "⚓ Danira spreads invoices across a tavern table and shows you exactly who grew rich from convoy panic and bridge closures.",
+        "Danira spreads invoices across a tavern table and shows you exactly who grew rich from convoy panic and bridge closures.",
         "Marek's allies have been selling fear by the wagon."
       ],
       "nextId": 86,
@@ -1487,7 +1487,7 @@
       "type": "skip",
       "label": "Iria Grief",
       "text": [
-        "👑 Alone at last, Iria admits her brother let Marek grow powerful because order was easier to buy than justice.",
+        "Alone at last, Iria admits her brother let Marek grow powerful because order was easier to buy than justice.",
         "Her voice makes clear she does not intend the same bargain."
       ],
       "nextId": 86,
@@ -1501,7 +1501,7 @@
       "type": "action",
       "label": "Hidden Page",
       "text": [
-        "📖 One proof still eludes you: the missing witness line that could turn suspicion into certainty.",
+        "One proof still eludes you: the missing witness line that could turn suspicion into certainty.",
         "You can search the annex, inspect the aqueduct marks, or compare your dispatches against Tamar's copies."
       ],
       "actions": [
@@ -1528,7 +1528,7 @@
       "type": "skip",
       "label": "Annex Dust",
       "text": [
-        "📚 In a locked annex drawer you find a copyist's scrap naming three witness seats: crown, cypress, and saddle.",
+        "In a locked annex drawer you find a copyist's scrap naming three witness seats: crown, cypress, and saddle.",
         "The final line is torn away, but the structure of the rite is suddenly clear."
       ],
       "nextId": 90,
@@ -1542,7 +1542,7 @@
       "type": "skip",
       "label": "Aqueduct Marks",
       "text": [
-        "🧱 The chalk marks at the aqueduct prove to be meeting signs used by state couriers before the civil wars.",
+        "The chalk marks at the aqueduct prove to be meeting signs used by state couriers before the civil wars.",
         "Marek has been using the empire's oldest routes to hide the newest crimes."
       ],
       "nextId": 90,
@@ -1556,7 +1556,7 @@
       "type": "skip",
       "label": "Paired Copies",
       "text": [
-        "📨 Tamar's archive copy keeps a marginal note Orsanna omitted: the covenant required the prince to hear the pledge, not merely benefit from it.",
+        "Tamar's archive copy keeps a marginal note Orsanna omitted: the covenant required the prince to hear the pledge, not merely benefit from it.",
         "That single phrase could shift the ceremony from spectacle to accountability."
       ],
       "nextId": 90,
@@ -1570,7 +1570,7 @@
       "type": "redirect",
       "label": "Feast Shuffle",
       "text": [
-        "🍽️ The mourning feast becomes a small war of seating charts, precedence, and quiet sabotage as servants change place cards at the last breath.",
+        "The mourning feast becomes a small war of seating charts, precedence, and quiet sabotage as servants change place cards at the last breath.",
         "You may end up beside Marek, beside Tamar, beside the prince, or slipping out to seek counsel once more."
       ],
       "links": [
@@ -1601,7 +1601,7 @@
       "type": "skip",
       "label": "Chancellor Seat",
       "text": [
-        "🪑 Marek dines with impeccable restraint, speaking of duty while his rings catch every candle in the room.",
+        "Marek dines with impeccable restraint, speaking of duty while his rings catch every candle in the room.",
         "He watches you with the ease of a man who believes evidence can still be priced."
       ],
       "nextId": 94,
@@ -1615,7 +1615,7 @@
       "type": "skip",
       "label": "Envoy Seat",
       "text": [
-        "🤝 Tamar uses the feast to speak of horses, salt, and weather while saying very little about peace itself.",
+        "Tamar uses the feast to speak of horses, salt, and weather while saying very little about peace itself.",
         "Only once does the envoy murmur that Kardesh remembers every foster child not returned."
       ],
       "nextId": 94,
@@ -1629,7 +1629,7 @@
       "type": "skip",
       "label": "Prince Seat",
       "text": [
-        "👑 Alexen sits too straight in mourning black and asks whether a ruler may obey truth even when his council hates it.",
+        "Alexen sits too straight in mourning black and asks whether a ruler may obey truth even when his council hates it.",
         "He is young enough to ask the question honestly and old enough to understand the answer may hurt."
       ],
       "nextId": 94,
@@ -1643,7 +1643,7 @@
       "type": "action",
       "label": "Table Answer",
       "text": [
-        "🍷 The feast gives you one chance to shift the balance without drawing open steel.",
+        "The feast gives you one chance to shift the balance without drawing open steel.",
         "You can flatter Marek into carelessness, bait him into revealing too much, or keep the pressure off Alexen."
       ],
       "actions": [
@@ -1670,7 +1670,7 @@
       "type": "skip",
       "label": "Silver Praise",
       "text": [
-        "🍷 You praise Marek's efficiency until vanity loosens his caution.",
+        "You praise Marek's efficiency until vanity loosens his caution.",
         "He boasts that empires are held by men who keep roads profitable, not by children reciting dead promises."
       ],
       "nextId": 98,
@@ -1684,7 +1684,7 @@
       "type": "skip",
       "label": "Sharp Bait",
       "text": [
-        "🪤 You ask whether the missing leaves trouble him, and his fork pauses one beat too long.",
+        "You ask whether the missing leaves trouble him, and his fork pauses one beat too long.",
         "The smallest hesitation can become a door if one is patient enough."
       ],
       "nextId": 98,
@@ -1698,7 +1698,7 @@
       "type": "skip",
       "label": "Quiet Shield",
       "text": [
-        "🛡️ You turn the conversation away from Alexen and let the prince breathe for a few precious minutes.",
+        "You turn the conversation away from Alexen and let the prince breathe for a few precious minutes.",
         "Iria notices, and so does Tamar, though each values it for different reasons."
       ],
       "nextId": 98,
@@ -1712,7 +1712,7 @@
       "type": "action",
       "label": "After Feast",
       "text": [
-        "🌙 Once the plates clear, Selucor grows quieter and more dangerous.",
+        "Once the plates clear, Selucor grows quieter and more dangerous.",
         "You can trail the suspicious clerk, lift the hidden key into safer hands, or tell Soren what the ledgers now prove."
       ],
       "actions": [
@@ -1739,7 +1739,7 @@
       "type": "skip",
       "label": "Shadow Clerk",
       "text": [
-        "👣 The clerk leaves by servant passages, checks twice for pursuit, and heads toward the old tower rather than Marek's office.",
+        "The clerk leaves by servant passages, checks twice for pursuit, and heads toward the old tower rather than Marek's office.",
         "Guilt, it seems, prefers lonely architecture."
       ],
       "nextId": 102,
@@ -1753,7 +1753,7 @@
       "type": "skip",
       "label": "Hidden Key",
       "text": [
-        "🗝️ You palm the wrapped key from the clerk room before dawn staff can tidy the evidence into oblivion.",
+        "You palm the wrapped key from the clerk room before dawn staff can tidy the evidence into oblivion.",
         "It is heavy bronze, old enough to belong to the first palace rather than the current one."
       ],
       "nextId": 102,
@@ -1767,7 +1767,7 @@
       "type": "skip",
       "label": "Tell Soren",
       "text": [
-        "⚔️ Soren listens without interruption while sharpening a knife that no ceremony will see.",
+        "Soren listens without interruption while sharpening a knife that no ceremony will see.",
         "When you finish, he says peace may still be possible, but only if truth arrives before panic does."
       ],
       "nextId": 102,
@@ -1781,7 +1781,7 @@
       "type": "redirect",
       "label": "Midnight Bells",
       "text": [
-        "🔔 At midnight, shrine bells strike out of rhythm with the palace clock and send guards, servants, and plotters colliding in the dark.",
+        "At midnight, shrine bells strike out of rhythm with the palace clock and send guards, servants, and plotters colliding in the dark.",
         "The disruption may throw you into patrol lines, draw you below to the shrine, pull you toward the tower shadow, or force you back into your earlier choice."
       ],
       "links": [
@@ -1812,7 +1812,7 @@
       "type": "skip",
       "label": "Corridor Watch",
       "text": [
-        "🕯️ Patrols thicken in the upper corridors, and one nervous guard admits he was ordered to watch the tower stairs, not the prince.",
+        "Patrols thicken in the upper corridors, and one nervous guard admits he was ordered to watch the tower stairs, not the prince.",
         "That inversion tells you exactly where fear sits tonight."
       ],
       "nextId": 106,
@@ -1826,7 +1826,7 @@
       "type": "skip",
       "label": "Shrine Call",
       "text": [
-        "🌿 In the under-hill shrine, Calia says the bells answered movement above the roots, not the other way around.",
+        "In the under-hill shrine, Calia says the bells answered movement above the roots, not the other way around.",
         "She tells you to choose whether truth should be spoken, hidden, or handed to the child who must bear it."
       ],
       "nextId": 106,
@@ -1840,7 +1840,7 @@
       "type": "skip",
       "label": "Tower Shadow",
       "text": [
-        "🗼 At the old tower, the clerk disappears through a bronze door half-hidden behind scaffolding and prayer banners.",
+        "At the old tower, the clerk disappears through a bronze door half-hidden behind scaffolding and prayer banners.",
         "The key in your sleeve seems suddenly much less hypothetical."
       ],
       "nextId": 106,
@@ -1854,7 +1854,7 @@
       "type": "action",
       "label": "Tower Find",
       "text": [
-        "🗝️ Inside the tower are dust, rat droppings, a reading stand, and the hush of a place used by people who believed themselves invisible.",
+        "Inside the tower are dust, rat droppings, a reading stand, and the hush of a place used by people who believed themselves invisible.",
         "You can open the bronze chest, read the prayer book on the stand, or wake Alexen and force innocence into the room."
       ],
       "actions": [
@@ -1881,7 +1881,7 @@
       "type": "skip",
       "label": "Bronze Chest",
       "text": [
-        "📦 The chest contains the missing leaves, three forged convoy orders, and a witness list with Marek's cipher in the margin.",
+        "The chest contains the missing leaves, three forged convoy orders, and a witness list with Marek's cipher in the margin.",
         "At last, theft and profit share the same box."
       ],
       "nextId": 110,
@@ -1895,7 +1895,7 @@
       "type": "skip",
       "label": "Prayer Book",
       "text": [
-        "📖 The book is a Book of Hours once owned by Alexen's mother, filled with notes on river vows and foster law.",
+        "The book is a Book of Hours once owned by Alexen's mother, filled with notes on river vows and foster law.",
         "One line insists that a prince must hear the covenant before he can rightfully receive the crown."
       ],
       "nextId": 110,
@@ -1909,7 +1909,7 @@
       "type": "skip",
       "label": "Waking Alexen",
       "text": [
-        "🌙 Alexen comes to the tower without complaint and reads the first visible line of the witness text with unnerving calm.",
+        "Alexen comes to the tower without complaint and reads the first visible line of the witness text with unnerving calm 📜.",
         "\"So they were all supposed to stand together,\" he says. \"No wonder someone separated them.\""
       ],
       "nextId": 110,
@@ -1923,7 +1923,7 @@
       "type": "action",
       "label": "Use Tablet",
       "text": [
-        "⚖️ Proof is now in your hands, but proof is never the same as wisdom.",
+        "Proof is now in your hands, but proof is never the same as wisdom.",
         "You can name the clerk immediately, hide the tablet until ceremony, or bring everything to Iria before dawn."
       ],
       "actions": [
@@ -1950,7 +1950,7 @@
       "type": "skip",
       "label": "Name Clerk",
       "text": [
-        "⚖️ You drag the clerk into lamplight and crack the story open just enough to hear Marek's name hiss through frightened teeth.",
+        "You drag the clerk into lamplight and crack the story open just enough to hear Marek's name hiss through frightened teeth.",
         "It is satisfying, but public noise carries risks of its own."
       ],
       "nextId": 114,
@@ -1964,7 +1964,7 @@
       "type": "skip",
       "label": "Hide Tablet",
       "text": [
-        "🫥 You wrap the leaves in plain cloth and conceal them where no elegant search would think to look.",
+        "You wrap the leaves in plain cloth and conceal them where no elegant search would think to look.",
         "Sometimes survival belongs to the unceremonious."
       ],
       "nextId": 114,
@@ -1978,7 +1978,7 @@
       "type": "skip",
       "label": "Bring Iria",
       "text": [
-        "👑 Iria reads the missing text with her face gone still as carved ivory.",
+        "Iria reads the missing text with her face gone still as carved ivory.",
         "When she looks up, grief and fury have settled into something colder and more useful."
       ],
       "nextId": 114,
@@ -1992,7 +1992,7 @@
       "type": "redirect",
       "label": "Courtyard Panic",
       "text": [
-        "🐎 Before dawn fully breaks, a bolting mare, screaming servants, and clashing guard orders throw the lower courtyard into chaos.",
+        "Before dawn fully breaks, a bolting mare, screaming servants, and clashing guard orders throw the lower courtyard into chaos.",
         "You may be dragged toward the stables, into the servant crush, up the guard stair, or forced to hide the tablet all over again."
       ],
       "links": [
@@ -2023,7 +2023,7 @@
       "type": "skip",
       "label": "Bolting Mare",
       "text": [
-        "🐎 The mare smashes a cart wheel and nearly kills a groom before Soren's men bring her down with blankets and patience.",
+        "The mare smashes a cart wheel and nearly kills a groom before Soren's men bring her down with blankets and patience.",
         "In the wreckage you find one more crate of forged convoy seals."
       ],
       "nextId": 118,
@@ -2037,7 +2037,7 @@
       "type": "skip",
       "label": "Servant Crush",
       "text": [
-        "🧺 In the servant crush, two kitchen boys swear they carried midnight trays to the tower for Marek's household all month.",
+        "In the servant crush, two kitchen boys swear they carried midnight trays to the tower for Marek's household all month.",
         "Conspiracies, like courts, rely on underpaid people remembering everything."
       ],
       "nextId": 118,
@@ -2051,7 +2051,7 @@
       "type": "skip",
       "label": "Guard Stair",
       "text": [
-        "🗼 The guard stair gives you a clean path to the upper galleries where ceremony banners already hang over the bridge court.",
+        "The guard stair gives you a clean path to the upper galleries where ceremony banners already hang over the bridge court.",
         "Selucor is preparing to celebrate before deciding whether it deserves to."
       ],
       "nextId": 118,
@@ -2065,7 +2065,7 @@
       "type": "action",
       "label": "Final Prep",
       "text": [
-        "🌤️ The last day before crowning pulls every faction toward its chosen ground.",
+        "The last day before crowning pulls every faction toward its chosen ground.",
         "You can ride for the bridge fort, question the old commander who once kept foster records, or stay in Selucor for palace preparations."
       ],
       "actions": [
@@ -2092,7 +2092,7 @@
       "type": "skip",
       "label": "Bridge Fort",
       "text": [
-        "🌉 At ruined Valdaran, wind moves through empty arches where sworn children once crossed between realms under escort.",
+        "At ruined Valdaran, wind moves through empty arches where sworn children once crossed between realms under escort.",
         "The place feels less abandoned than waiting."
       ],
       "nextId": 122,
@@ -2106,7 +2106,7 @@
       "type": "skip",
       "label": "Old Commander",
       "text": [
-        "🪖 The retired commander keeps goats now, but his memory for protocol has not softened.",
+        "The retired commander keeps goats now, but his memory for protocol has not softened.",
         "He confirms that no coronation under the covenant is lawful unless shrine, saddle, and crown all witness it together."
       ],
       "nextId": 122,
@@ -2120,7 +2120,7 @@
       "type": "skip",
       "label": "Palace Weave",
       "text": [
-        "🏛️ Staying in Selucor lets you watch ceremony workers lace banners over the bridge court while Marek's allies push for extra guards and closed doors.",
+        "Staying in Selucor lets you watch ceremony workers lace banners over the bridge court while Marek's allies push for extra guards and closed doors.",
         "The stage is being built for either peace or a very elegant theft of it."
       ],
       "nextId": 122,
@@ -2134,7 +2134,7 @@
       "type": "action",
       "label": "Core Truth",
       "text": [
-        "📜 By now the structure of the betrayal is clear, but its most useful edge still depends on what you emphasize.",
+        "By now the structure of the betrayal is clear, but its most useful edge still depends on what you emphasize.",
         "You can read the covenant whole, follow the silver behind the raids, or ask Alexen what kind of reign he wants."
       ],
       "actions": [
@@ -2161,7 +2161,7 @@
       "type": "skip",
       "label": "Full Covenant",
       "text": [
-        "📜 The restored text binds Orsanna and Kardesh not only to peace but to shared toll rights, foster exchange, and public witness before the prince.",
+        "The restored text binds Orsanna and Kardesh not only to peace but to shared toll rights, foster exchange, and public witness before the prince.",
         "Marek stole more than leaves; he stole the ceremony's meaning."
       ],
       "nextId": 126,
@@ -2175,7 +2175,7 @@
       "type": "skip",
       "label": "Silver Trail",
       "text": [
-        "💰 Danira's ledgers and the forged convoy orders prove Marek's cousins turned every raid rumor into contracts, levies, and escort fees.",
+        "Danira's ledgers and the forged convoy orders prove Marek's cousins turned every raid rumor into contracts, levies, and escort fees.",
         "War was becoming an investment portfolio."
       ],
       "nextId": 126,
@@ -2189,7 +2189,7 @@
       "type": "skip",
       "label": "Prince Resolve",
       "text": [
-        "👑 Alexen listens longer than most adults and says he would rather be embarrassed by truth than protected by a lie he must inherit.",
+        "Alexen listens longer than most adults and says he would rather be embarrassed by truth than protected by a lie he must inherit.",
         "The sentence is simple enough to shame half the court."
       ],
       "nextId": 126,
@@ -2203,7 +2203,7 @@
       "type": "redirect",
       "label": "Market Surge",
       "text": [
-        "🎐 On the morning of the ceremony, the lower market erupts with rumor: Kardesh plots treachery, the prince is cursed, the bridges are closed.",
+        "On the morning of the ceremony, the lower market erupts with rumor: Kardesh plots treachery, the prince is cursed, the bridges are closed.",
         "The surge can draw you into a harbor speech, the shrine lots, a forced return to palace preparations, or back toward the palace weave again."
       ],
       "links": [
@@ -2234,7 +2234,7 @@
       "type": "skip",
       "label": "Harbor Cry",
       "text": [
-        "⚓ At the harbor rail, Danira shouts down panic by reading prices aloud and naming the men who benefit if ships stop moving.",
+        "At the harbor rail, Danira shouts down panic by reading prices aloud and naming the men who benefit if ships stop moving.",
         "Sometimes commerce is the only language a frightened crowd still trusts."
       ],
       "nextId": 130,
@@ -2248,7 +2248,7 @@
       "type": "skip",
       "label": "Shrine Lots",
       "text": [
-        "🌿 At the shrine, Calia casts cypress lots into a bronze bowl and tells you the old pact can still be renewed if spoken by the right mouths together.",
+        "At the shrine, Calia casts cypress lots into a bronze bowl and tells you the old pact can still be renewed if spoken by the right mouths together.",
         "She means you are no longer merely an observer."
       ],
       "nextId": 130,
@@ -2262,7 +2262,7 @@
       "type": "skip",
       "label": "Palace Return",
       "text": [
-        "🏛️ Back at the bridge court, Iria stands in mourning white while Soren stations riders with visible reluctance and visible skill.",
+        "Back at the bridge court, Iria stands in mourning white while Soren stations riders with visible reluctance and visible skill.",
         "Marek smiles the smile of a man who thinks ceremonies belong to whoever controls the doors."
       ],
       "nextId": 130,
@@ -2276,7 +2276,7 @@
       "type": "action",
       "label": "Final Side",
       "text": [
-        "⚖️ When the bells begin, you must decide which center of power to strengthen before truth enters the open air.",
+        "When the bells begin, you must decide which center of power to strengthen before truth enters the open air.",
         "You can stand with Iria, with Soren, or with Calia and the old form of the oath."
       ],
       "actions": [
@@ -2303,7 +2303,7 @@
       "type": "skip",
       "label": "Regent Path",
       "text": [
-        "👑 You take your place near Iria and the prince, where speech can still alter the shape of the ceremony before steel does.",
+        "You take your place near Iria and the prince, where speech can still alter the shape of the ceremony before steel does.",
         "It is the most dangerous kind of loyalty because everyone can see it."
       ],
       "nextId": 134,
@@ -2317,7 +2317,7 @@
       "type": "skip",
       "label": "Captain Path",
       "text": [
-        "⚔️ You move beside Soren and the frontier riders, where peace must survive suspicion long enough to be declared.",
+        "You move beside Soren and the frontier riders, where peace must survive suspicion long enough to be declared.",
         "One bad command will turn the bridge court into a battlefield."
       ],
       "nextId": 135,
@@ -2331,7 +2331,7 @@
       "type": "action",
       "label": "Keeper Stand",
       "text": [
-        "🌿 Calia lifts the cypress branch and waits for your answer while the bells gather under the dome.",
+        "Calia lifts the cypress branch and waits for your answer while the bells gather under the dome.",
         "You can renew the old oath before all witnesses, or carry the truth away from court before empire swallows it again."
       ],
       "actions": [
@@ -2354,7 +2354,7 @@
       "type": "action",
       "label": "Regent Stand",
       "text": [
-        "📣 Iria gives you one breath to choose the shape of revelation.",
+        "Iria gives you one breath to choose the shape of revelation.",
         "You can read the covenant aloud yourself, or place the leaves in Alexen's hands and let the prince claim truth as his first act."
       ],
       "actions": [
@@ -2377,7 +2377,7 @@
       "type": "action",
       "label": "Captain Stand",
       "text": [
-        "🛡️ Soren asks whether the riders should hold the court open for peace or strike first when Marek's men begin to move.",
+        "Soren asks whether the riders should hold the court open for peace or strike first when Marek's men begin to move.",
         "What you answer will decide whether fear serves order or devours it."
       ],
       "actions": [
@@ -2400,7 +2400,7 @@
       "type": "finish",
       "label": "Peace Bridges",
       "text": [
-        "🌉 The covenant is read before shrine, saddle, crown, and envoy, and the bridge court falls into the shocked silence that real truth earns.",
+        "The covenant is read before shrine, saddle, crown, and envoy, and the bridge court falls into the shocked silence that real truth earns ⚖️.",
         "Marek is stripped of office, Alexen is crowned under witness rather than flattery, and Orsanna chooses a hard peace that may finally endure."
       ],
       "position": [
@@ -2413,7 +2413,7 @@
       "type": "finish",
       "label": "Hidden Chronicle",
       "text": [
-        "📖 You place the leaves in Alexen's hands, and the boy prince speaks the restored oath himself with a steadiness no tutor could invent.",
+        "You place the leaves in Alexen's hands, and the boy prince speaks the restored oath himself with a steadiness no tutor could invent.",
         "The court learns that memory can govern as surely as force, and you remain to write the first honest chronicle Selucor has seen in years."
       ],
       "position": [
@@ -2426,7 +2426,7 @@
       "type": "finish",
       "label": "Iron Falcon",
       "text": [
-        "🦅 When Marek's faction reaches for blades, Soren's riders move faster and the bridge court becomes a lesson written in steel.",
+        "When Marek's faction reaches for blades, Soren's riders move faster and the bridge court becomes a lesson written in steel.",
         "Orsanna survives under an iron peace and a sharpened frontier, but everyone present understands how much beauty was lost to keep the realm intact."
       ],
       "position": [
@@ -2439,7 +2439,7 @@
       "type": "finish",
       "label": "Cypress Oath",
       "text": [
-        "🌿 Under Calia's branch, Iria, Alexen, Tamar, and Soren stand together where the founders once stood, and the old oath is renewed in the form empire tried to erase.",
+        "Under Calia's branch 🌿, Iria, Alexen, Tamar, and Soren stand together where the founders once stood, and the old oath is renewed in the form empire tried to erase.",
         "Power changes shape that morning: less splendid, more bounded, and far harder for men like Marek to steal."
       ],
       "position": [
@@ -2452,7 +2452,7 @@
       "type": "finish",
       "label": "Road Dust",
       "text": [
-        "🚶 You leave Selucor before applause can turn you into another ornament of the court, carrying copied leaves and the names of all who tried to bury them.",
+        "You leave Selucor before applause can turn you into another ornament of the court, carrying copied leaves and the names of all who tried to bury them.",
         "Behind you the empire must decide what to do with truth; ahead of you, the roads remain uncertain, honest, and wonderfully free of ceremony."
       ],
       "position": [
