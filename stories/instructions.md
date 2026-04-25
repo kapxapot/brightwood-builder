@@ -15,13 +15,14 @@
 11. `position` array it used to place nodes in the visual editor. Keep in mind that every node is around 250px wide and 1200px high. Spread the nodes so they are placed from left to right.
 12. Use `./neural-uprising/story.json` as an additional reference for the story file structure and a good node balance. When you need a concrete example of story state, also reference `../public/stories/wood-prototype.json` for `data.init`, `conditions`, `effects`, `entryEffects`, and state-driven branching.
 13. Fill the root story `id` property with a random UUID.
-14. Do not fill the root story `cover` property unless you put there an existing image URL.
-15. Do not fill the `key` property of nodes.
-16. Do not fill the root story `viewport` property.
-17. The actual Brightwood player/runtime lives in the neighboring `../brightwood` project. When story format, interpolation, or runtime behavior matters, use `../brightwood/lib/story-engine.ts`, `../brightwood/lib/message-renderer.ts`, and `../brightwood/components/story-player.tsx` as reference and keep this builder aligned with them unless an intentional divergence is documented.
-18. Use camelCase for `data.init` keys and for any state keys, condition names, and effect names you introduce later. Do not use snake_case in story state.
-19. In node, action, and redirect `condition` fields you can use inline boolean expressions directly, including bare flags like `metTheo`, negations like `!metTheo`, and larger expressions like `hasLetter && courage > 1`. Missing keys behave like no value and are falsy in conditions. You do not need to define a named condition just to read a boolean state value.
-20. Effect assignments can create new state keys dynamically, for example `weapon = 1`. Use `unset("weapon")` to remove a key. `unset` is a reserved built-in effect name and must not be redefined in story data. String literals inside conditions and effect statements must use double quotes, not single quotes. In `entryEffects`, `action.effects`, and `link.effects`, string entries may be written as `effectName`, `effectName()`, `effectName(1, false, "test")`, or direct assignments like `weapon = 1`. Object calls like `{ "name": "hit", "args": [1] }` are still valid and should be preferred only when the shorthand becomes awkward.
+14. The root story `title` must start with a relevant emoji followed by the title text, for example `🌙 Moonlit Bellarose`.
+15. Do not fill the root story `cover` property unless you put there an existing image URL.
+16. Do not fill the `key` property of nodes.
+17. Do not fill the root story `viewport` property.
+18. The actual Brightwood player/runtime lives in the neighboring `../brightwood` project. When story format, interpolation, or runtime behavior matters, use `../brightwood/lib/story-engine.ts`, `../brightwood/lib/message-renderer.ts`, and `../brightwood/components/story-player.tsx` as reference and keep this builder aligned with them unless an intentional divergence is documented.
+19. Use camelCase for `data.init` keys and for any state keys, condition names, and effect names you introduce later. Do not use snake_case in story state.
+20. In node, action, and redirect `condition` fields you can use inline boolean expressions directly, including bare flags like `metTheo`, negations like `!metTheo`, and larger expressions like `hasLetter && courage > 1`. Missing keys behave like no value and are falsy in conditions. You do not need to define a named condition just to read a boolean state value.
+21. Effect assignments can create new state keys dynamically, for example `weapon = 1`. Use `unset("weapon")` to remove a key. `unset` is a reserved built-in effect name and must not be redefined in story data. String literals inside conditions and effect statements must use double quotes, not single quotes. In `entryEffects`, `action.effects`, and `link.effects`, string entries may be written as `effectName`, `effectName()`, `effectName(1, false, "test")`, or direct assignments like `weapon = 1`. Object calls like `{ "name": "hit", "args": [1] }` are still valid and should be preferred only when the shorthand becomes awkward.
 
 ## Story Creation Process
 
@@ -44,10 +45,10 @@
 6. Aim to create long story threads that can entertwine with each other and lead to several endings eventually.
 7. There also can be plot cycles that return to some earlier nodes.
 8. Don't overuse the time traveling and parallel universe plots, keep it simple but engaging.
-9. Use emoji sparingly inside story text, and place them where they emphasize a meaningful object, event, emotion, or turn in the scene. Do not prefix every text block with an emoji as an illustration badge. Use only browser-safe, broadly supported emoji. Target emoji that render correctly in current desktop Chrome, Edge, Firefox, and Safari on common Windows and macOS systems.
+9. Use emoji in the story, but use the right placement for each surface: the story title must start with an emoji, every action label must start with a relevant emoji, and story text should include occasional inline emoji where they emphasize a meaningful object, event, emotion, or turn in the scene. Do not prefix every text block with an emoji as an illustration badge, and do not omit emoji from the story entirely. Use only browser-safe, broadly supported emoji. Target emoji that render correctly in current desktop Chrome, Edge, Firefox, and Safari on common Windows and macOS systems.
 10. You can put an emoji on a separate text line only when the emoji itself is the intended beat or emphasis, not as routine decoration.
 11. Use `<b></b>` tags for bold text and `<i></i>` tags for italic where appropriate.
-12. Don't create long action labels, make them 2-3 words max. Use emoji in action labels (it is not necessary but add them where suitable).
+12. Don't create long action labels, make them 2-3 words max. Every action label must begin with a relevant emoji followed by a short label, for example `🗝️ Use key` or `🌊 Walk pier`.
 13. Fill node `label` property with a short (2-3 words) title based on its content. I REPEAT AGAIN FILL THE node's `label`!
 14. Don't make too many branches! Keep story relatively narrow with 4-5 parallel main story branches. If the branches grow, cut them or merge them at once, don't create 20 branches and then abruptly end them at once. I REPEAT AGAIN THERE MUST BE 5-6 VALID TERMINAL `finish` nodes not 20-30!!!
 15. Don't create all actions with 3 choices. Create some with 2, some with 3, depending on the context. I REPEATE DON'T MAKE 3 ACTIONS EVERYWHERE USE A MIX OF 2-3.

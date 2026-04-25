@@ -1,0 +1,3543 @@
+{
+  "id": "79c0b8a2-2b2e-4e4a-bf7c-4d4b6731ab2e",
+  "title": "🔥 The Ember Crown",
+  "description": "A 180-node fantasy RPG quest through wild woods, ruined keeps, marsh shrines, ashen mines, and a storm citadel.",
+  "language": "en",
+  "startId": 1,
+  "position": [
+    30,
+    30
+  ],
+  "prefix": "HP: {{hp}} | Gold: {{gold}} | Supplies: {{supplies}} | Ember Shards: {{emberShards}}",
+  "data": {
+    "init": {
+      "maxHp": 12,
+      "hp": {
+        "ref": "maxHp"
+      },
+      "gold": 8,
+      "supplies": 3,
+      "weapon": 1,
+      "shield": 0,
+      "emberShards": 0,
+      "hasRope": false,
+      "hasTorch": false,
+      "hasMap": false,
+      "arcaneMark": false,
+      "cryptBlessing": false,
+      "liora": false,
+      "bram": false,
+      "knox": false,
+      "wolfDefeated": false,
+      "faeFavor": false,
+      "royalSigil": false,
+      "crownLore": false,
+      "marshFavor": false,
+      "sunstone": false
+    },
+    "conditions": {
+      "isAlive": "hp > 0",
+      "isDead": "hp <= 0",
+      "wellArmed": "weapon >= 2",
+      "strongParty": "liora || bram || knox",
+      "readyForCrown": "emberShards >= 4 || (royalSigil && sunstone)"
+    },
+    "effects": [
+      {
+        "name": "hit",
+        "args": "amount",
+        "conditions": "amount > 0",
+        "statements": "hp = max(hp - amount, 0)"
+      },
+      {
+        "name": "heal",
+        "args": "amount",
+        "conditions": "amount > 0 && isAlive()",
+        "statements": "hp = min(hp + amount, maxHp)"
+      },
+      {
+        "name": "gainShard",
+        "statements": "emberShards = emberShards + 1"
+      }
+    ]
+  },
+  "nodes": [
+    {
+      "id": 1,
+      "type": "skip",
+      "label": "Cold Omen",
+      "text": [
+        "Summer snow falls over Elderglen ❄️ as the chapel bell cracks by itself. The elders name you oath-bearer before the whole square.",
+        "Lord Malrec has taken the <b>Ember Crown</b> 🔥 to the Sky Citadel. If it burns black by moonrise, Asterfall belongs to winter."
+      ],
+      "position": [
+        100,
+        100
+      ],
+      "nextId": 2
+    },
+    {
+      "id": 2,
+      "type": "action",
+      "label": "Oath Path",
+      "text": [
+        "The armory master opens three chests. Each holds a different beginning, not a destiny.",
+        "\"Choose what gets you through the first mile,\" she says. \"The rest of the road will choose back.\""
+      ],
+      "position": [
+        100,
+        390
+      ],
+      "actions": [
+        {
+          "label": "⚔️ Blade path",
+          "id": 3,
+          "effects": [
+            "weapon = 2",
+            "shield = 1"
+          ]
+        },
+        {
+          "label": "🧭 Scout path",
+          "id": 4,
+          "effects": [
+            "hasMap = true",
+            "hasRope = true"
+          ]
+        },
+        {
+          "label": "🔶 Rune path",
+          "id": 5,
+          "effects": [
+            "arcaneMark = true",
+            "maxHp = 10",
+            "hp = 10"
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "type": "skip",
+      "label": "Iron Oath",
+      "text": [
+        "You take a practical sword and a battered shield ⚔️. The weight steadies your hands, and the armory master nods as if steel is a language she trusts."
+      ],
+      "position": [
+        100,
+        680
+      ],
+      "nextId": 6
+    },
+    {
+      "id": 4,
+      "type": "skip",
+      "label": "Trail Oath",
+      "text": [
+        "You take a ranger map 🧭, soft boots, and a coil of climbing rope. The roads around Asterfall have teeth, but at least you know where some of them are."
+      ],
+      "position": [
+        100,
+        970
+      ],
+      "nextId": 6
+    },
+    {
+      "id": 5,
+      "type": "skip",
+      "label": "Rune Oath",
+      "text": [
+        "You press your palm to a warm rune-stone 🔶. It leaves a red mark under your skin and whispers a word you almost understand."
+      ],
+      "position": [
+        100,
+        1260
+      ],
+      "nextId": 6
+    },
+    {
+      "id": 6,
+      "type": "action",
+      "label": "First Ally",
+      "text": [
+        "At the town gate, three volunteers wait under the frost-stiff banners.",
+        "Only one can travel quickly enough with you. The others must hold Elderglen if you fail."
+      ],
+      "position": [
+        440,
+        100
+      ],
+      "actions": [
+        {
+          "label": "🤝 Take Liora",
+          "id": 7,
+          "effects": [
+            "liora = true"
+          ]
+        },
+        {
+          "label": "🤝 Take Bram",
+          "id": 8,
+          "effects": [
+            "bram = true",
+            "weapon = weapon + 1"
+          ]
+        },
+        {
+          "label": "🤝 Take Knox",
+          "id": 9,
+          "effects": [
+            "knox = true",
+            "gold = gold + 3"
+          ]
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "type": "skip",
+      "label": "Liora Joins",
+      "text": [
+        "Liora buckles a healer's satchel across her shoulder. \"I cannot promise miracles,\" she says, \"but I can promise you will not bleed alone.\""
+      ],
+      "position": [
+        440,
+        390
+      ],
+      "nextId": 10
+    },
+    {
+      "id": 8,
+      "type": "skip",
+      "label": "Bram Joins",
+      "text": [
+        "Bram rests his hammer on one shoulder and grins at the closed road. \"If the crown wants a fight, it can stand in line.\""
+      ],
+      "position": [
+        440,
+        680
+      ],
+      "nextId": 10
+    },
+    {
+      "id": 9,
+      "type": "skip",
+      "label": "Knox Joins",
+      "text": [
+        "Knox flips a lockpick between his fingers and pockets three coins from nowhere obvious. \"Every doomed quest needs someone sensible,\" he says."
+      ],
+      "position": [
+        440,
+        970
+      ],
+      "nextId": 10
+    },
+    {
+      "id": 10,
+      "type": "action",
+      "label": "Town Edge",
+      "text": [
+        "Elderglen's last lanterns gutter in blue wind. The market still has a few useful goods, and the shrine door stands open.",
+        "Beyond both waits the road into the Wildwood."
+      ],
+      "position": [
+        440,
+        1260
+      ],
+      "actions": [
+        {
+          "label": "🪙 Visit market",
+          "id": 11
+        },
+        {
+          "label": "🕯️ Visit shrine",
+          "id": 12
+        },
+        {
+          "label": "🚪 Leave town",
+          "id": 13
+        }
+      ]
+    },
+    {
+      "id": 11,
+      "type": "action",
+      "label": "Frost Market",
+      "text": [
+        "The market is almost packed away, but a stubborn trader remains beside a brazier.",
+        "\"Rope, torch, food,\" she says. \"Heroes usually discover they needed all three after prices stop mattering.\""
+      ],
+      "position": [
+        780,
+        100
+      ],
+      "actions": [
+        {
+          "label": "🪙 Buy rope",
+          "id": 11,
+          "condition": "gold >= 3 && !hasRope",
+          "effects": [
+            "gold = gold - 3",
+            "hasRope = true"
+          ]
+        },
+        {
+          "label": "🔥 Buy torch",
+          "id": 11,
+          "condition": "gold >= 2 && !hasTorch",
+          "effects": [
+            "gold = gold - 2",
+            "hasTorch = true"
+          ]
+        },
+        {
+          "label": "🪙 Buy supplies",
+          "id": 11,
+          "condition": "gold >= 2",
+          "effects": [
+            "gold = gold - 2",
+            "supplies = supplies + 1"
+          ]
+        },
+        {
+          "label": "🪙 Leave market",
+          "id": 13
+        }
+      ]
+    },
+    {
+      "id": 12,
+      "type": "action",
+      "label": "Village Shrine",
+      "text": [
+        "The shrine flame burns in a bowl of ice 🕯️. When you kneel, the flame leans toward your breath like it remembers the first kings.",
+        "A carved fox on the altar watches with silver eyes."
+      ],
+      "position": [
+        780,
+        390
+      ],
+      "actions": [
+        {
+          "label": "🕯️ Pray once",
+          "id": 12,
+          "condition": "!cryptBlessing",
+          "effects": [
+            "cryptBlessing = true",
+            "gold = max(gold - 1, 0)",
+            "heal(2)"
+          ]
+        },
+        {
+          "label": "🕯️ Ask omen",
+          "id": 12,
+          "condition": "!crownLore",
+          "effects": [
+            "crownLore = true"
+          ]
+        },
+        {
+          "label": "🕯️ Leave shrine",
+          "id": 13
+        }
+      ]
+    },
+    {
+      "id": 13,
+      "type": "skip",
+      "label": "North Road",
+      "text": [
+        "You leave Elderglen by the north road. Behind you, bells ring once for hope and once for warning."
+      ],
+      "position": [
+        780,
+        680
+      ],
+      "nextId": 14
+    },
+    {
+      "id": 14,
+      "type": "action",
+      "label": "Wildwood Gate",
+      "text": [
+        "The Wildwood closes around the road in green-black arches 🌲. Frozen leaves hang without falling, each one veined with ember light.",
+        "Three ways split beneath the trees."
+      ],
+      "position": [
+        780,
+        970
+      ],
+      "actions": [
+        {
+          "label": "🧭 Old trail",
+          "id": 15
+        },
+        {
+          "label": "✨ Moon glade",
+          "id": 16
+        },
+        {
+          "label": "🧭 Ravine path",
+          "id": 17,
+          "condition": "hasRope"
+        }
+      ]
+    },
+    {
+      "id": 15,
+      "type": "skip",
+      "label": "Old Trail",
+      "text": [
+        "You follow wagon ruts filled with glassy ice. Something large moves parallel to you, careful enough to stay unseen."
+      ],
+      "position": [
+        780,
+        1260
+      ],
+      "nextId": 18
+    },
+    {
+      "id": 16,
+      "type": "skip",
+      "label": "Moon Glade",
+      "text": [
+        "The glade is bright with white flowers despite the frost. Liora would call them impossible; Knox would call them expensive."
+      ],
+      "position": [
+        1120,
+        100
+      ],
+      "nextId": 18,
+      "entryEffects": [
+        "supplies = supplies + 1"
+      ]
+    },
+    {
+      "id": 17,
+      "type": "skip",
+      "label": "Ravine Path",
+      "text": [
+        "Your rope bites into a dead cedar as you descend the ravine. Below, a stone bridge crosses black water and old bones."
+      ],
+      "position": [
+        1120,
+        390
+      ],
+      "nextId": 19
+    },
+    {
+      "id": 18,
+      "type": "action",
+      "label": "Wolf Signs",
+      "text": [
+        "Fresh claw marks score the trees. A pack is close, and the forest has gone quiet in the way prey understands too late."
+      ],
+      "position": [
+        1120,
+        680
+      ],
+      "actions": [
+        {
+          "label": "🧭 Track pack",
+          "id": 20
+        },
+        {
+          "label": "🧭 Avoid tracks",
+          "id": 21
+        },
+        {
+          "label": "🐺 Set lure",
+          "id": 22,
+          "condition": "supplies > 0",
+          "effects": [
+            "supplies = supplies - 1"
+          ]
+        }
+      ]
+    },
+    {
+      "id": 19,
+      "type": "skip",
+      "label": "Stone Bridge",
+      "text": [
+        "Under the bridge, an old campfire still smolders without fuel. A child's wooden sword lies beside it, charred only at the tip."
+      ],
+      "position": [
+        1120,
+        970
+      ],
+      "nextId": 23
+    },
+    {
+      "id": 20,
+      "type": "redirect",
+      "label": "Wolf Ambush",
+      "text": [
+        "You find the pack and the pack finds you. Yellow eyes circle between trunks as the alpha lowers its frost-white head."
+      ],
+      "position": [
+        1120,
+        1260
+      ],
+      "links": [
+        {
+          "weight": 4,
+          "id": 24
+        },
+        {
+          "weight": 3,
+          "id": 25
+        },
+        {
+          "weight": 1,
+          "id": 26
+        }
+      ]
+    },
+    {
+      "id": 21,
+      "type": "skip",
+      "label": "Quiet Detour",
+      "text": [
+        "You circle away from the claw marks and lose an hour. The forest lets you pass, which feels less like mercy than curiosity."
+      ],
+      "position": [
+        1460,
+        100
+      ],
+      "nextId": 23
+    },
+    {
+      "id": 22,
+      "type": "redirect",
+      "label": "Meat Lure",
+      "text": [
+        "You leave food in the snow and retreat behind a cedar. The wolves rush the bait, but hunger makes every creature unpredictable."
+      ],
+      "position": [
+        1460,
+        390
+      ],
+      "links": [
+        {
+          "weight": 5,
+          "id": 24
+        },
+        {
+          "weight": 2,
+          "id": 25
+        },
+        {
+          "weight": 1,
+          "id": 26
+        }
+      ]
+    },
+    {
+      "id": 23,
+      "type": "action",
+      "label": "Hollow Bridge",
+      "text": [
+        "The stone bridge hums under your boots. Runes flare along the rail, asking for either courage, patience, or a very good excuse.",
+        "The water below carries sparks instead of reflections."
+      ],
+      "position": [
+        1460,
+        680
+      ],
+      "actions": [
+        {
+          "label": "✨ Cross boldly",
+          "id": 27
+        },
+        {
+          "label": "🔎 Search bank",
+          "id": 29
+        },
+        {
+          "label": "🪢 Climb roots",
+          "id": 31,
+          "condition": "hasRope || hasMap"
+        }
+      ]
+    },
+    {
+      "id": 24,
+      "type": "skip",
+      "label": "Alpha Falls",
+      "text": [
+        "You break the alpha's charge and the pack scatters into the trees. In the trampled snow, you find an ember shard 🔥 warm as breath."
+      ],
+      "position": [
+        1460,
+        970
+      ],
+      "nextId": 27,
+      "entryEffects": [
+        "gainShard()",
+        "wolfDefeated = true"
+      ]
+    },
+    {
+      "id": 25,
+      "type": "skip",
+      "label": "Bite Price",
+      "text": [
+        "The wolves retreat, but not before one tears your sleeve and skin beneath it. The shard they guarded still glows in the snow."
+      ],
+      "position": [
+        1460,
+        1260
+      ],
+      "nextId": 27,
+      "entryEffects": [
+        "hit(2)",
+        "gainShard()",
+        "wolfDefeated = true"
+      ]
+    },
+    {
+      "id": 26,
+      "type": "skip",
+      "label": "Dragged Down",
+      "text": [
+        "The alpha knocks you into the roots. Your companion drives it off, but pain blooms hot under the cold."
+      ],
+      "position": [
+        1800,
+        100
+      ],
+      "nextId": 28,
+      "entryEffects": [
+        "hit(5)"
+      ]
+    },
+    {
+      "id": 27,
+      "type": "action",
+      "label": "Moonwell",
+      "text": [
+        "A round well waits beyond the trees. Its water shines upward with a soft red light, and old coins sleep at the bottom."
+      ],
+      "position": [
+        1800,
+        390
+      ],
+      "actions": [
+        {
+          "label": "💧 Drink water",
+          "id": 29,
+          "effects": [
+            "heal(2)"
+          ]
+        },
+        {
+          "label": "🔎 Gather herbs",
+          "id": 31
+        },
+        {
+          "label": "⛰️ Move onward",
+          "id": 32
+        }
+      ]
+    },
+    {
+      "id": 28,
+      "type": "redirect",
+      "label": "Wound Check",
+      "text": [
+        "You force yourself upright and count breaths. The Wildwood gives no applause for surviving pain."
+      ],
+      "position": [
+        1800,
+        680
+      ],
+      "links": [
+        {
+          "weight": 1,
+          "id": 27,
+          "condition": "isAlive()"
+        },
+        {
+          "weight": 1,
+          "id": 30,
+          "condition": "isDead()"
+        }
+      ]
+    },
+    {
+      "id": 29,
+      "type": "skip",
+      "label": "Well Mercy",
+      "text": [
+        "The moonwell chills your teeth, then eases the ache in your ribs. For a moment, the forest smells like rain instead of fear."
+      ],
+      "position": [
+        1800,
+        970
+      ],
+      "nextId": 32,
+      "entryEffects": [
+        "heal(2)"
+      ]
+    },
+    {
+      "id": 30,
+      "type": "finish",
+      "label": "Road Death",
+      "text": [
+        "Your strength leaves you before the quest does.",
+        "Asterfall's winter deepens, and the Ember Crown burns black in another hand."
+      ],
+      "position": [
+        1800,
+        1260
+      ]
+    },
+    {
+      "id": 31,
+      "type": "skip",
+      "label": "Root Cache",
+      "text": [
+        "Among the roots you find bittergreen herbs tied with red thread. Someone meant to return for them and never did."
+      ],
+      "position": [
+        2140,
+        100
+      ],
+      "nextId": 32,
+      "entryEffects": [
+        "supplies = supplies + 1"
+      ]
+    },
+    {
+      "id": 32,
+      "type": "action",
+      "label": "Thorn Court",
+      "text": [
+        "The path opens into a court of thorn-crowned fae ✨. Their queen sits on a stump, small as a child and old as rain.",
+        "\"Mortal oath-bearer,\" she says, \"what price do you offer for passage?\""
+      ],
+      "position": [
+        2140,
+        390
+      ],
+      "actions": [
+        {
+          "label": "🗣️ Parley softly",
+          "id": 33
+        },
+        {
+          "label": "👑 Steal sigil",
+          "id": 34,
+          "condition": "knox || hasMap"
+        },
+        {
+          "label": "⚔️ Challenge knight",
+          "id": 35
+        }
+      ]
+    },
+    {
+      "id": 33,
+      "type": "skip",
+      "label": "Fae Bargain",
+      "text": [
+        "You speak honestly of Elderglen. The queen smiles without warmth and gifts you a thorn token that pricks only liars."
+      ],
+      "position": [
+        2140,
+        680
+      ],
+      "nextId": 36,
+      "entryEffects": [
+        "faeFavor = true"
+      ]
+    },
+    {
+      "id": 34,
+      "type": "redirect",
+      "label": "Quick Fingers",
+      "text": [
+        "You reach for a silver sigil hanging from the court banner. The court keeps smiling, which is not comforting."
+      ],
+      "position": [
+        2140,
+        970
+      ],
+      "links": [
+        {
+          "weight": 3,
+          "id": 36,
+          "effects": [
+            "royalSigil = true"
+          ]
+        },
+        {
+          "weight": 2,
+          "id": 37
+        }
+      ]
+    },
+    {
+      "id": 35,
+      "type": "redirect",
+      "label": "Thorn Duel",
+      "text": [
+        "The fae knight bows and attacks before the bow is finished. His spear is made of a branch that remembers lightning."
+      ],
+      "position": [
+        2140,
+        1260
+      ],
+      "links": [
+        {
+          "weight": 3,
+          "id": 38
+        },
+        {
+          "weight": 2,
+          "id": 39
+        }
+      ]
+    },
+    {
+      "id": 36,
+      "type": "skip",
+      "label": "Safe Passage",
+      "text": [
+        "The court parts. Whether by gift or theft, you carry a mark that makes the thorns lean away from your skin."
+      ],
+      "position": [
+        2480,
+        100
+      ],
+      "nextId": 40
+    },
+    {
+      "id": 37,
+      "type": "skip",
+      "label": "Stinging Debt",
+      "text": [
+        "The banner wraps around your wrist and cuts like wire. You keep the sigil, but the court's laughter follows for miles."
+      ],
+      "position": [
+        2480,
+        390
+      ],
+      "nextId": 40,
+      "entryEffects": [
+        "hit(3)",
+        "royalSigil = true"
+      ]
+    },
+    {
+      "id": 38,
+      "type": "skip",
+      "label": "Knight Yielded",
+      "text": [
+        "You strike the fae knight's spear aside. He salutes with delight and leaves a sliver of ember-bright bark in your hand."
+      ],
+      "position": [
+        2480,
+        680
+      ],
+      "nextId": 40,
+      "entryEffects": [
+        "gainShard()"
+      ]
+    },
+    {
+      "id": 39,
+      "type": "skip",
+      "label": "Knight's Lesson",
+      "text": [
+        "The fae knight touches your chest with the spear, and pain folds you to one knee. He calls it instruction, not defeat."
+      ],
+      "position": [
+        2480,
+        970
+      ],
+      "nextId": 40,
+      "entryEffects": [
+        "hit(3)"
+      ]
+    },
+    {
+      "id": 40,
+      "type": "redirect",
+      "label": "Lost Paths",
+      "text": [
+        "The Wildwood rearranges itself while you blink. Three paths appear where there had been one."
+      ],
+      "position": [
+        2480,
+        1260
+      ],
+      "links": [
+        {
+          "weight": 3,
+          "id": 41
+        },
+        {
+          "weight": 3,
+          "id": 42
+        },
+        {
+          "weight": 2,
+          "id": 43
+        }
+      ]
+    },
+    {
+      "id": 41,
+      "type": "skip",
+      "label": "Amber Track",
+      "text": [
+        "You follow amber drops hardened on the leaves. Each one is warm enough to melt a thumbprint in the frost."
+      ],
+      "position": [
+        2820,
+        100
+      ],
+      "nextId": 44
+    },
+    {
+      "id": 42,
+      "type": "skip",
+      "label": "Glass Brook",
+      "text": [
+        "A brook of clear ice blocks the path. Beneath it, fish swim through solid water and watch you pass."
+      ],
+      "position": [
+        2820,
+        390
+      ],
+      "nextId": 44
+    },
+    {
+      "id": 43,
+      "type": "action",
+      "label": "Hag Hut",
+      "text": [
+        "A hut made of wagon wheels creaks between two trees. The hag inside offers soup, gossip, and three different ways to regret both."
+      ],
+      "position": [
+        2820,
+        680
+      ],
+      "actions": [
+        {
+          "label": "🪙 Trade food",
+          "id": 45,
+          "condition": "supplies > 0",
+          "effects": [
+            "supplies = supplies - 1"
+          ]
+        },
+        {
+          "label": "🗣️ Refuse soup",
+          "id": 46
+        },
+        {
+          "label": "🚪 Leave quickly",
+          "id": 44
+        }
+      ]
+    },
+    {
+      "id": 44,
+      "type": "action",
+      "label": "Forest Exit",
+      "text": [
+        "At last the trees thin. Smoke rises from a ruined keep beyond the valley, but a final pulse of ember light draws your eye."
+      ],
+      "position": [
+        2820,
+        970
+      ],
+      "actions": [
+        {
+          "label": "🌿 Ancient oak",
+          "id": 47
+        },
+        {
+          "label": "✨ Burning tracks",
+          "id": 48
+        },
+        {
+          "label": "⛰️ March onward",
+          "id": 51
+        }
+      ]
+    },
+    {
+      "id": 45,
+      "type": "skip",
+      "label": "Hag's Hint",
+      "text": [
+        "The hag slurps your food and points with her spoon. \"Crowns open to blood, keys, or fools. Try to be the first two.\""
+      ],
+      "position": [
+        2820,
+        1260
+      ],
+      "nextId": 44,
+      "entryEffects": [
+        "crownLore = true"
+      ]
+    },
+    {
+      "id": 46,
+      "type": "skip",
+      "label": "Sour Soup",
+      "text": [
+        "You refuse politely. The hag throws soup at your boots anyway, and the broth hisses where it touches leather."
+      ],
+      "position": [
+        3160,
+        100
+      ],
+      "nextId": 44,
+      "entryEffects": [
+        "hit(1)"
+      ]
+    },
+    {
+      "id": 47,
+      "type": "skip",
+      "label": "Oak Ember",
+      "text": [
+        "Inside the ancient oak, a coal-red seed beats like a tiny heart 🌿. When you take it, the forest exhales around you."
+      ],
+      "position": [
+        3160,
+        390
+      ],
+      "nextId": 50,
+      "entryEffects": [
+        "gainShard()"
+      ]
+    },
+    {
+      "id": 48,
+      "type": "skip",
+      "label": "Burning Tracks",
+      "text": [
+        "The tracks lead to a stag made of cinders. It lowers its antlers, and every coal in its body brightens."
+      ],
+      "position": [
+        3160,
+        680
+      ],
+      "nextId": 49
+    },
+    {
+      "id": 49,
+      "type": "redirect",
+      "label": "Cinder Stag",
+      "text": [
+        "The stag charges through a curtain of sparks. You have one heartbeat to meet it or move."
+      ],
+      "position": [
+        3160,
+        970
+      ],
+      "links": [
+        {
+          "weight": 4,
+          "id": 50,
+          "effects": [
+            "gainShard()"
+          ]
+        },
+        {
+          "weight": 1,
+          "id": 30
+        }
+      ]
+    },
+    {
+      "id": 50,
+      "type": "skip",
+      "label": "Wood's Edge",
+      "text": [
+        "You leave the Wildwood with smoke in your cloak and ember heat in your pack. Ahead, the Ruined Keep straddles the old road."
+      ],
+      "position": [
+        3160,
+        1260
+      ],
+      "nextId": 51
+    },
+    {
+      "id": 51,
+      "type": "action",
+      "label": "Broken Road",
+      "text": [
+        "The Ruined Keep was once a royal checkpoint 🏰. Now its towers lean together like conspirators over a courtyard full of tents."
+      ],
+      "position": [
+        3500,
+        100
+      ],
+      "actions": [
+        {
+          "label": "✨ Approach keep",
+          "id": 52
+        },
+        {
+          "label": "🔎 Search camp",
+          "id": 53
+        },
+        {
+          "label": "🧭 Follow ravens",
+          "id": 54
+        }
+      ]
+    },
+    {
+      "id": 52,
+      "type": "skip",
+      "label": "Open Approach",
+      "text": [
+        "You walk the road openly. Bandit lookouts spot you at once and ring a cracked dinner bell."
+      ],
+      "position": [
+        3500,
+        390
+      ],
+      "nextId": 55
+    },
+    {
+      "id": 53,
+      "type": "skip",
+      "label": "Empty Camp",
+      "text": [
+        "You search an abandoned camp and find coins hidden in a boot. The owner probably left quickly or without feet."
+      ],
+      "position": [
+        3500,
+        680
+      ],
+      "nextId": 55,
+      "entryEffects": [
+        "gold = gold + 4"
+      ]
+    },
+    {
+      "id": 54,
+      "type": "skip",
+      "label": "Raven Trail",
+      "text": [
+        "The ravens lead you around the keep to a narrow postern door carved with a royal flame."
+      ],
+      "position": [
+        3500,
+        970
+      ],
+      "nextId": 56
+    },
+    {
+      "id": 55,
+      "type": "action",
+      "label": "Bandit Toll",
+      "text": [
+        "A bandit captain blocks the gate with six bored archers behind him.",
+        "\"Toll for crossing royal land,\" he says. \"Royalty is absent, so I am improvising.\""
+      ],
+      "position": [
+        3500,
+        1260
+      ],
+      "actions": [
+        {
+          "label": "🪙 Pay toll",
+          "id": 57,
+          "condition": "gold >= 3",
+          "effects": [
+            "gold = gold - 3"
+          ]
+        },
+        {
+          "label": "⚔️ Intimidate him",
+          "id": 58
+        },
+        {
+          "label": "⚔️ Fight through",
+          "id": 59
+        }
+      ]
+    },
+    {
+      "id": 56,
+      "type": "action",
+      "label": "Raven Door",
+      "text": [
+        "The postern door has no handle, only a flame-shaped hollow and old scratch marks around it."
+      ],
+      "position": [
+        3840,
+        100
+      ],
+      "actions": [
+        {
+          "label": "👑 Use sigil",
+          "id": 60,
+          "condition": "royalSigil"
+        },
+        {
+          "label": "⚔️ Force door",
+          "id": 61
+        },
+        {
+          "label": "↩️ Return gate",
+          "id": 55
+        }
+      ]
+    },
+    {
+      "id": 57,
+      "type": "skip",
+      "label": "Paid Passage",
+      "text": [
+        "The captain takes your coins and looks disappointed that honesty worked. He waves you through the gate."
+      ],
+      "position": [
+        3840,
+        390
+      ],
+      "nextId": 62
+    },
+    {
+      "id": 58,
+      "type": "redirect",
+      "label": "Hard Stare",
+      "text": [
+        "You tell the captain what happens to thieves who slow a royal errand. His archers shift uneasily."
+      ],
+      "position": [
+        3840,
+        680
+      ],
+      "links": [
+        {
+          "weight": 4,
+          "id": 62
+        },
+        {
+          "weight": 2,
+          "id": 63
+        }
+      ]
+    },
+    {
+      "id": 59,
+      "type": "redirect",
+      "label": "Gate Skirmish",
+      "text": [
+        "You charge before the archers settle. The courtyard erupts into shouts, bootfalls, and the iron taste of risk."
+      ],
+      "position": [
+        3840,
+        970
+      ],
+      "links": [
+        {
+          "weight": 3,
+          "id": 64
+        },
+        {
+          "weight": 3,
+          "id": 65
+        }
+      ]
+    },
+    {
+      "id": 60,
+      "type": "skip",
+      "label": "Royal Flame",
+      "text": [
+        "The sigil warms the postern door until its lock melts into harmless wax. A hidden corridor opens."
+      ],
+      "position": [
+        3840,
+        1260
+      ],
+      "nextId": 66,
+      "entryEffects": [
+        "royalSigil = true"
+      ]
+    },
+    {
+      "id": 61,
+      "type": "skip",
+      "label": "Shoulder Bruise",
+      "text": [
+        "You force the old door with a shoulder that complains immediately. The lock breaks, but so does your grace."
+      ],
+      "position": [
+        4180,
+        100
+      ],
+      "nextId": 66,
+      "entryEffects": [
+        "hit(2)"
+      ]
+    },
+    {
+      "id": 62,
+      "type": "action",
+      "label": "Old Courtyard",
+      "text": [
+        "Inside the keep, three places still hold power: the barracks, the chapel, and the tower where ravens circle without landing."
+      ],
+      "position": [
+        4180,
+        390
+      ],
+      "actions": [
+        {
+          "label": "🔎 Search barracks",
+          "id": 67
+        },
+        {
+          "label": "🚪 Enter chapel",
+          "id": 68
+        },
+        {
+          "label": "🪢 Climb tower",
+          "id": 69
+        }
+      ]
+    },
+    {
+      "id": 63,
+      "type": "skip",
+      "label": "Arrow Warning",
+      "text": [
+        "The captain loses his nerve but an archer does not. The arrow cuts your side before the bandits scatter."
+      ],
+      "position": [
+        4180,
+        680
+      ],
+      "nextId": 62,
+      "entryEffects": [
+        "hit(2)"
+      ]
+    },
+    {
+      "id": 64,
+      "type": "skip",
+      "label": "Bandits Break",
+      "text": [
+        "Bram would approve of the noise you make. The bandits break and leave a purse behind in their hurry."
+      ],
+      "position": [
+        4180,
+        970
+      ],
+      "nextId": 62,
+      "entryEffects": [
+        "gold = gold + 5"
+      ]
+    },
+    {
+      "id": 65,
+      "type": "skip",
+      "label": "Messy Victory",
+      "text": [
+        "You win the gate, but not cleanly. A cudgel catches your ribs, and every breath afterward feels negotiated."
+      ],
+      "position": [
+        4180,
+        1260
+      ],
+      "nextId": 62,
+      "entryEffects": [
+        "hit(4)"
+      ]
+    },
+    {
+      "id": 66,
+      "type": "skip",
+      "label": "Hidden Corridor",
+      "text": [
+        "The postern corridor brings you behind the courtyard shrine. Dusty royal banners hang there, untouched by bandit hands."
+      ],
+      "position": [
+        4520,
+        100
+      ],
+      "nextId": 62
+    },
+    {
+      "id": 67,
+      "type": "action",
+      "label": "Dust Barracks",
+      "text": [
+        "The barracks smells of rust and old straw. A shield hangs above a broken bunk, and a locked chest waits below it."
+      ],
+      "position": [
+        4520,
+        390
+      ],
+      "actions": [
+        {
+          "label": "🛡️ Take shield",
+          "id": 70,
+          "condition": "shield < 1",
+          "effects": [
+            "shield = 1"
+          ]
+        },
+        {
+          "label": "🚪 Open chest",
+          "id": 71
+        },
+        {
+          "label": "🚪 Leave room",
+          "id": 72
+        }
+      ]
+    },
+    {
+      "id": 68,
+      "type": "action",
+      "label": "Keep Chapel",
+      "text": [
+        "The chapel roof is gone, but the altar flame still burns under open sky 🕯️. Names of dead queens cover the floor."
+      ],
+      "position": [
+        4520,
+        680
+      ],
+      "actions": [
+        {
+          "label": "🕯️ Pray here",
+          "id": 73
+        },
+        {
+          "label": "🔎 Inspect crypt",
+          "id": 74
+        },
+        {
+          "label": "🚪 Leave chapel",
+          "id": 72
+        }
+      ]
+    },
+    {
+      "id": 69,
+      "type": "redirect",
+      "label": "Raven Tower",
+      "text": [
+        "The tower stairs groan as you climb. Ravens burst from arrow slits and turn the air into black feathers."
+      ],
+      "position": [
+        4520,
+        970
+      ],
+      "links": [
+        {
+          "weight": 3,
+          "id": 75
+        },
+        {
+          "weight": 2,
+          "id": 76
+        },
+        {
+          "weight": 2,
+          "id": 77
+        }
+      ]
+    },
+    {
+      "id": 70,
+      "type": "skip",
+      "label": "Better Guard",
+      "text": [
+        "The shield is scarred but sound. Whoever left it behind survived enough battles to make it worth trusting."
+      ],
+      "position": [
+        4520,
+        1260
+      ],
+      "nextId": 72
+    },
+    {
+      "id": 71,
+      "type": "redirect",
+      "label": "Chest Trap",
+      "text": [
+        "The chest lock clicks too easily. Knox would call that a warning, not an invitation."
+      ],
+      "position": [
+        4860,
+        100
+      ],
+      "links": [
+        {
+          "weight": 3,
+          "id": 78
+        },
+        {
+          "weight": 2,
+          "id": 79
+        }
+      ]
+    },
+    {
+      "id": 72,
+      "type": "action",
+      "label": "Keep Gate",
+      "text": [
+        "You regroup near the inner gate. The road east drops toward the marsh, but there is still time to steady yourself."
+      ],
+      "position": [
+        4860,
+        390
+      ],
+      "actions": [
+        {
+          "label": "🧭 Scout walls",
+          "id": 80
+        },
+        {
+          "label": "🧭 Descend road",
+          "id": 81
+        },
+        {
+          "label": "🪙 Use supplies",
+          "id": 72,
+          "condition": "supplies > 0",
+          "effects": [
+            "supplies = supplies - 1",
+            "heal(3)"
+          ]
+        }
+      ]
+    },
+    {
+      "id": 73,
+      "type": "skip",
+      "label": "Queen Names",
+      "text": [
+        "You speak the names carved in stone. The chapel answers with a pulse of warmth and the smell of summer rain."
+      ],
+      "position": [
+        4860,
+        680
+      ],
+      "nextId": 72,
+      "entryEffects": [
+        "heal(2)",
+        "cryptBlessing = true"
+      ]
+    },
+    {
+      "id": 74,
+      "type": "skip",
+      "label": "Crypt Mark",
+      "text": [
+        "Below the altar, a royal seal is hidden behind loose stone. It flares when your fingers brush it."
+      ],
+      "position": [
+        4860,
+        970
+      ],
+      "nextId": 72,
+      "entryEffects": [
+        "royalSigil = true"
+      ]
+    },
+    {
+      "id": 75,
+      "type": "skip",
+      "label": "Tower Ember",
+      "text": [
+        "At the top, a raven drops a coal-red bead into your palm and caws like it expects payment later."
+      ],
+      "position": [
+        4860,
+        1260
+      ],
+      "nextId": 80,
+      "entryEffects": [
+        "gainShard()"
+      ]
+    },
+    {
+      "id": 76,
+      "type": "skip",
+      "label": "Wing Storm",
+      "text": [
+        "Ravens hammer your face and shoulders until you stumble back down the stairs, swearing through feathers."
+      ],
+      "position": [
+        5200,
+        100
+      ],
+      "nextId": 80,
+      "entryEffects": [
+        "hit(2)"
+      ]
+    },
+    {
+      "id": 77,
+      "type": "skip",
+      "label": "Sky View",
+      "text": [
+        "From the tower you see the marsh shining like a cracked mirror. Beyond it, the Ashen Mine smokes under the mountains."
+      ],
+      "position": [
+        5200,
+        390
+      ],
+      "nextId": 80,
+      "entryEffects": [
+        "hasMap = true"
+      ]
+    },
+    {
+      "id": 78,
+      "type": "skip",
+      "label": "Chest Prize",
+      "text": [
+        "The chest contains a small purse, a whetstone, and a note that says, \"Never trust easy locks.\" Useful advice, late delivery."
+      ],
+      "position": [
+        5200,
+        680
+      ],
+      "nextId": 72,
+      "entryEffects": [
+        "gold = gold + 3",
+        "weapon = weapon + 1"
+      ]
+    },
+    {
+      "id": 79,
+      "type": "skip",
+      "label": "Needle Bite",
+      "text": [
+        "A spring needle stabs your thumb. The poison is weak, but the insult is strong."
+      ],
+      "position": [
+        5200,
+        970
+      ],
+      "nextId": 72,
+      "entryEffects": [
+        "hit(2)"
+      ]
+    },
+    {
+      "id": 80,
+      "type": "skip",
+      "label": "Keep Behind",
+      "text": [
+        "You leave the Ruined Keep with its ravens circling above. The road sinks east into mist and mosquito-song."
+      ],
+      "position": [
+        5200,
+        1260
+      ],
+      "nextId": 81
+    },
+    {
+      "id": 81,
+      "type": "action",
+      "label": "Sunken Marsh",
+      "text": [
+        "The Sunken Marsh spreads under a silver fog 💧. Half-drowned statues point toward places the road no longer reaches."
+      ],
+      "position": [
+        5540,
+        100
+      ],
+      "actions": [
+        {
+          "label": "🧭 Reed path",
+          "id": 82
+        },
+        {
+          "label": "💧 Ferry lights",
+          "id": 83
+        },
+        {
+          "label": "🧭 Mud causeway",
+          "id": 84
+        }
+      ]
+    },
+    {
+      "id": 82,
+      "type": "skip",
+      "label": "Reed Path",
+      "text": [
+        "You move between reeds taller than spears. Something follows in the water, matching your pace with patient bubbles."
+      ],
+      "position": [
+        5540,
+        390
+      ],
+      "nextId": 85
+    },
+    {
+      "id": 83,
+      "type": "redirect",
+      "label": "Ferry Lights",
+      "text": [
+        "Blue lights drift over the water like lanterns on invisible boats. They may guide travelers, or count them."
+      ],
+      "position": [
+        5540,
+        680
+      ],
+      "links": [
+        {
+          "weight": 3,
+          "id": 86
+        },
+        {
+          "weight": 2,
+          "id": 87
+        },
+        {
+          "weight": 1,
+          "id": 88
+        }
+      ]
+    },
+    {
+      "id": 84,
+      "type": "skip",
+      "label": "Mud Causeway",
+      "text": [
+        "The causeway holds for ten brave steps, then swallows your boot to the knee. Pulling free costs skin and dignity."
+      ],
+      "position": [
+        5540,
+        970
+      ],
+      "nextId": 85,
+      "entryEffects": [
+        "hit(1)"
+      ]
+    },
+    {
+      "id": 85,
+      "type": "action",
+      "label": "Marsh Camp",
+      "text": [
+        "A dry mound offers a rare place to breathe. Smoke from an old hermit's fire curls nearby, and the road vanishes into fog."
+      ],
+      "position": [
+        5540,
+        1260
+      ],
+      "actions": [
+        {
+          "label": "🪙 Use supplies",
+          "id": 85,
+          "condition": "supplies > 0",
+          "effects": [
+            "supplies = supplies - 1",
+            "heal(2)"
+          ]
+        },
+        {
+          "label": "🗣️ Talk hermit",
+          "id": 89
+        },
+        {
+          "label": "⛰️ Press onward",
+          "id": 90
+        }
+      ]
+    },
+    {
+      "id": 86,
+      "type": "skip",
+      "label": "Kind Lights",
+      "text": [
+        "The lights lead you across hidden stepping stones. At the far bank, they sink with a sound like distant laughter."
+      ],
+      "position": [
+        5880,
+        100
+      ],
+      "nextId": 90
+    },
+    {
+      "id": 87,
+      "type": "skip",
+      "label": "False Lights",
+      "text": [
+        "The lights turn suddenly and draw you into waist-deep cold water. You escape with leeches and fewer compliments for fate."
+      ],
+      "position": [
+        5880,
+        390
+      ],
+      "nextId": 90,
+      "entryEffects": [
+        "hit(2)"
+      ]
+    },
+    {
+      "id": 88,
+      "type": "skip",
+      "label": "Rune Reflection",
+      "text": [
+        "One light settles on your marked hand and becomes a tiny sun under the skin. The marsh recognizes old magic."
+      ],
+      "position": [
+        5880,
+        680
+      ],
+      "nextId": 90,
+      "entryEffects": [
+        "arcaneMark = true"
+      ]
+    },
+    {
+      "id": 89,
+      "type": "action",
+      "label": "Mud Hermit",
+      "text": [
+        "The hermit is wrapped in nets and old medals. He stirs his pot with a sword too fine for soup.",
+        "\"Going crownward? Then buy caution or borrow trouble.\""
+      ],
+      "position": [
+        5880,
+        970
+      ],
+      "actions": [
+        {
+          "label": "🪙 Buy antidote",
+          "id": 91,
+          "condition": "gold >= 2",
+          "effects": [
+            "gold = gold - 2",
+            "supplies = supplies + 1"
+          ]
+        },
+        {
+          "label": "🔎 Hear tale",
+          "id": 92
+        },
+        {
+          "label": "🚪 Leave him",
+          "id": 90
+        }
+      ]
+    },
+    {
+      "id": 90,
+      "type": "action",
+      "label": "Scaled Patrol",
+      "text": [
+        "Lizardfolk rise from the reeds with spears of bone and bronze. Their leader studies your ember-warm pack."
+      ],
+      "position": [
+        5880,
+        1260
+      ],
+      "actions": [
+        {
+          "label": "🗣️ Parley",
+          "id": 93
+        },
+        {
+          "label": "⚔️ Ambush them",
+          "id": 94
+        },
+        {
+          "label": "🗣️ Surrender arms",
+          "id": 95
+        }
+      ]
+    },
+    {
+      "id": 91,
+      "type": "skip",
+      "label": "Bitter Bottle",
+      "text": [
+        "The antidote tastes like rotten mint and old pennies. The hermit assures you that means it is working."
+      ],
+      "position": [
+        6220,
+        100
+      ],
+      "nextId": 90
+    },
+    {
+      "id": 92,
+      "type": "skip",
+      "label": "Marsh Tale",
+      "text": [
+        "The hermit tells you Malrec once came through smiling and left with no shadow. That detail troubles everyone but Knox."
+      ],
+      "position": [
+        6220,
+        390
+      ],
+      "nextId": 90,
+      "entryEffects": [
+        "marshFavor = true",
+        "crownLore = true"
+      ]
+    },
+    {
+      "id": 93,
+      "type": "redirect",
+      "label": "Reed Parley",
+      "text": [
+        "You lower your weapon and speak of Malrec. The patrol hisses among themselves, deciding whether humans ever mean what they say."
+      ],
+      "position": [
+        6220,
+        680
+      ],
+      "links": [
+        {
+          "weight": 5,
+          "id": 96,
+          "condition": "marshFavor || royalSigil"
+        },
+        {
+          "weight": 2,
+          "id": 97
+        },
+        {
+          "weight": 1,
+          "id": 96
+        }
+      ]
+    },
+    {
+      "id": 94,
+      "type": "redirect",
+      "label": "Reed Ambush",
+      "text": [
+        "You strike before the patrol surrounds you. Marsh water explodes around knees, shields, and snapping teeth."
+      ],
+      "position": [
+        6220,
+        970
+      ],
+      "links": [
+        {
+          "weight": 3,
+          "id": 98
+        },
+        {
+          "weight": 3,
+          "id": 99
+        }
+      ]
+    },
+    {
+      "id": 95,
+      "type": "skip",
+      "label": "Reed Cage",
+      "text": [
+        "You surrender your weapons and are marched to a cage of green reeds. The lizardfolk leave one guard and many mosquitoes."
+      ],
+      "position": [
+        6220,
+        1260
+      ],
+      "nextId": 100
+    },
+    {
+      "id": 96,
+      "type": "skip",
+      "label": "Marsh Token",
+      "text": [
+        "The leader gives you a sunstone ☀️ carved like a fish scale. \"For the drowned shrine,\" she says. \"Do not make it regret helping you.\""
+      ],
+      "position": [
+        6560,
+        100
+      ],
+      "nextId": 101,
+      "entryEffects": [
+        "sunstone = true"
+      ]
+    },
+    {
+      "id": 97,
+      "type": "skip",
+      "label": "Spear Lesson",
+      "text": [
+        "Your parley becomes a brief lesson in spear distance. The patrol lets you leave, mostly because you are moving away."
+      ],
+      "position": [
+        6560,
+        390
+      ],
+      "nextId": 101,
+      "entryEffects": [
+        "hit(3)"
+      ]
+    },
+    {
+      "id": 98,
+      "type": "skip",
+      "label": "Patrol Routed",
+      "text": [
+        "The patrol breaks after a hard clash. In their abandoned pouch you find a shard wrapped in eel skin."
+      ],
+      "position": [
+        6560,
+        680
+      ],
+      "nextId": 101,
+      "entryEffects": [
+        "gainShard()"
+      ]
+    },
+    {
+      "id": 99,
+      "type": "skip",
+      "label": "Tooth Mark",
+      "text": [
+        "You win space, not glory. One lizardfolk bites deep before vanishing under the water."
+      ],
+      "position": [
+        6560,
+        970
+      ],
+      "nextId": 101,
+      "entryEffects": [
+        "hit(3)"
+      ]
+    },
+    {
+      "id": 100,
+      "type": "action",
+      "label": "Reed Prison",
+      "text": [
+        "The reed cage flexes when you breathe. Your gear lies nearby under a guard's bored eye."
+      ],
+      "position": [
+        6560,
+        1260
+      ],
+      "actions": [
+        {
+          "label": "🚪 Pick lock",
+          "id": 102,
+          "condition": "knox || hasMap"
+        },
+        {
+          "label": "🤝 Call ally",
+          "id": 103,
+          "condition": "liora || bram || knox"
+        },
+        {
+          "label": "⛰️ Wait quietly",
+          "id": 104
+        }
+      ]
+    },
+    {
+      "id": 101,
+      "type": "action",
+      "label": "Drowned Shrine",
+      "text": [
+        "A temple roof rises from black water. Its doorway is submerged, but ember light flickers beneath the surface."
+      ],
+      "position": [
+        6900,
+        100
+      ],
+      "actions": [
+        {
+          "label": "💧 Dive below",
+          "id": 105
+        },
+        {
+          "label": "🔥 Offer sunstone",
+          "id": 106,
+          "condition": "sunstone"
+        },
+        {
+          "label": "🧭 Circle shore",
+          "id": 107
+        }
+      ]
+    },
+    {
+      "id": 102,
+      "type": "redirect",
+      "label": "Bent Reeds",
+      "text": [
+        "You work the reed latch with a nail, a pick, or stubborn optimism. The guard starts turning back."
+      ],
+      "position": [
+        6900,
+        390
+      ],
+      "links": [
+        {
+          "weight": 4,
+          "id": 101
+        },
+        {
+          "weight": 2,
+          "id": 108
+        }
+      ]
+    },
+    {
+      "id": 103,
+      "type": "skip",
+      "label": "Ally Trick",
+      "text": [
+        "Your companion creates exactly the sort of distraction that would be embarrassing to explain later. You snatch your gear and run."
+      ],
+      "position": [
+        6900,
+        680
+      ],
+      "nextId": 101
+    },
+    {
+      "id": 104,
+      "type": "skip",
+      "label": "Patient Escape",
+      "text": [
+        "Night deepens. The guard dozes, and you squeeze through reeds until they scrape your shoulders raw."
+      ],
+      "position": [
+        6900,
+        970
+      ],
+      "nextId": 101,
+      "entryEffects": [
+        "hit(1)"
+      ]
+    },
+    {
+      "id": 105,
+      "type": "redirect",
+      "label": "Black Dive",
+      "text": [
+        "You dive through cold water into the shrine mouth. Something below opens one enormous eye."
+      ],
+      "position": [
+        6900,
+        1260
+      ],
+      "links": [
+        {
+          "weight": 3,
+          "id": 109
+        },
+        {
+          "weight": 3,
+          "id": 110
+        }
+      ]
+    },
+    {
+      "id": 106,
+      "type": "skip",
+      "label": "Sunstone Door",
+      "text": [
+        "The sunstone flashes and the drowned door lifts. Air rushes from below, smelling of candle smoke and river mud."
+      ],
+      "position": [
+        7240,
+        100
+      ],
+      "nextId": 111,
+      "entryEffects": [
+        "gainShard()"
+      ]
+    },
+    {
+      "id": 107,
+      "type": "skip",
+      "label": "Shore Route",
+      "text": [
+        "You circle the shrine and find a broken stair just above the waterline. It is slow, but slow is alive."
+      ],
+      "position": [
+        7240,
+        390
+      ],
+      "nextId": 111
+    },
+    {
+      "id": 108,
+      "type": "skip",
+      "label": "Guard's Club",
+      "text": [
+        "The guard catches your escape with a club and a startled curse. You get away, but the bruise will travel with you."
+      ],
+      "position": [
+        7240,
+        680
+      ],
+      "nextId": 101,
+      "entryEffects": [
+        "hit(2)"
+      ]
+    },
+    {
+      "id": 109,
+      "type": "skip",
+      "label": "Shrine Ember",
+      "text": [
+        "You seize a shard from the flooded altar 🔥 and kick upward while the shrine eye closes behind you."
+      ],
+      "position": [
+        7240,
+        970
+      ],
+      "nextId": 111,
+      "entryEffects": [
+        "gainShard()"
+      ]
+    },
+    {
+      "id": 110,
+      "type": "skip",
+      "label": "Cold Grip",
+      "text": [
+        "A drowned hand closes around your ankle. You tear free at the surface, coughing black water and old prayers."
+      ],
+      "position": [
+        7240,
+        1260
+      ],
+      "nextId": 111,
+      "entryEffects": [
+        "hit(4)"
+      ]
+    },
+    {
+      "id": 111,
+      "type": "action",
+      "label": "Ashen Mine",
+      "text": [
+        "The Ashen Mine breathes smoke through vents in the mountain ⛏️. Rails run into darkness, and sparks crawl along them against the wind."
+      ],
+      "position": [
+        7580,
+        100
+      ],
+      "actions": [
+        {
+          "label": "🔎 Lift cage",
+          "id": 112
+        },
+        {
+          "label": "⛰️ Service tunnel",
+          "id": 113,
+          "condition": "hasTorch || arcaneMark"
+        },
+        {
+          "label": "⛏️ Mine camp",
+          "id": 114
+        }
+      ]
+    },
+    {
+      "id": 112,
+      "type": "redirect",
+      "label": "Old Lift",
+      "text": [
+        "The lift cage hangs above a shaft with more confidence than engineering. You pull the lever anyway."
+      ],
+      "position": [
+        7580,
+        390
+      ],
+      "links": [
+        {
+          "weight": 4,
+          "id": 115
+        },
+        {
+          "weight": 2,
+          "id": 116
+        }
+      ]
+    },
+    {
+      "id": 113,
+      "type": "skip",
+      "label": "Lit Tunnel",
+      "text": [
+        "Your light reveals old chalk marks and small footprints. Whatever lives here knows every shortcut and resents visitors."
+      ],
+      "position": [
+        7580,
+        680
+      ],
+      "nextId": 118
+    },
+    {
+      "id": 114,
+      "type": "action",
+      "label": "Miner Camp",
+      "text": [
+        "A few miners huddle near a cart, too tired to flee. They sell what they can and warn you what they cannot."
+      ],
+      "position": [
+        7580,
+        970
+      ],
+      "actions": [
+        {
+          "label": "🪙 Buy food",
+          "id": 114,
+          "condition": "gold >= 2",
+          "effects": [
+            "gold = gold - 2",
+            "supplies = supplies + 1"
+          ]
+        },
+        {
+          "label": "⚔️ Sharpen blade",
+          "id": 114,
+          "condition": "gold >= 3",
+          "effects": [
+            "gold = gold - 3",
+            "weapon = weapon + 1"
+          ]
+        },
+        {
+          "label": "🚪 Enter mine",
+          "id": 117
+        }
+      ]
+    },
+    {
+      "id": 115,
+      "type": "skip",
+      "label": "Lift Holds",
+      "text": [
+        "The lift screams all the way down but does not fall. That feels like friendship by mine standards."
+      ],
+      "position": [
+        7580,
+        1260
+      ],
+      "nextId": 118
+    },
+    {
+      "id": 116,
+      "type": "skip",
+      "label": "Lift Drop",
+      "text": [
+        "The chain slips. The cage drops one brutal span before catching, and your knees remember the impact."
+      ],
+      "position": [
+        7920,
+        100
+      ],
+      "nextId": 118,
+      "entryEffects": [
+        "hit(3)"
+      ]
+    },
+    {
+      "id": 117,
+      "type": "skip",
+      "label": "Miner Warning",
+      "text": [
+        "\"Ogre in the heart chamber,\" a miner whispers. \"Kobolds feed it coal and compliments.\" You are not sure which is worse."
+      ],
+      "position": [
+        7920,
+        390
+      ],
+      "nextId": 118
+    },
+    {
+      "id": 118,
+      "type": "action",
+      "label": "Kobold Gate",
+      "text": [
+        "Kobolds block a tunnel gate with spears, helmets, and the confidence of creatures defending home ground."
+      ],
+      "position": [
+        7920,
+        680
+      ],
+      "actions": [
+        {
+          "label": "🪙 Bribe guards",
+          "id": 119,
+          "condition": "gold >= 3",
+          "effects": [
+            "gold = gold - 3"
+          ]
+        },
+        {
+          "label": "⚔️ Duel chief",
+          "id": 120
+        },
+        {
+          "label": "🧭 Sneak around",
+          "id": 121,
+          "condition": "knox || hasMap"
+        }
+      ]
+    },
+    {
+      "id": 119,
+      "type": "skip",
+      "label": "Paid Kobolds",
+      "text": [
+        "The kobolds accept your coins after biting each one. \"Metal good,\" their chief says. \"Hero less good, but pass.\""
+      ],
+      "position": [
+        7920,
+        970
+      ],
+      "nextId": 122
+    },
+    {
+      "id": 120,
+      "type": "redirect",
+      "label": "Chief Duel",
+      "text": [
+        "The kobold chief fights with two picks and a hat too large for his head. Neither detail makes him less dangerous."
+      ],
+      "position": [
+        7920,
+        1260
+      ],
+      "links": [
+        {
+          "weight": 4,
+          "id": 123
+        },
+        {
+          "weight": 2,
+          "id": 124
+        }
+      ]
+    },
+    {
+      "id": 121,
+      "type": "redirect",
+      "label": "Side Crawl",
+      "text": [
+        "You squeeze through a ventilation crawlspace that smells of coal dust, mushrooms, and bad decisions."
+      ],
+      "position": [
+        8260,
+        100
+      ],
+      "links": [
+        {
+          "weight": 4,
+          "id": 125
+        },
+        {
+          "weight": 2,
+          "id": 126
+        }
+      ]
+    },
+    {
+      "id": 122,
+      "type": "action",
+      "label": "Crystal Fork",
+      "text": [
+        "Three mine passages split around a pillar of red crystal. One hums blue, one smells of hot iron, and one whispers your name."
+      ],
+      "position": [
+        8260,
+        390
+      ],
+      "actions": [
+        {
+          "label": "🔥 Blue hall",
+          "id": 127
+        },
+        {
+          "label": "🔥 Red winch",
+          "id": 128
+        },
+        {
+          "label": "⛏️ Whisper shaft",
+          "id": 129
+        }
+      ]
+    },
+    {
+      "id": 123,
+      "type": "skip",
+      "label": "Chief Yielded",
+      "text": [
+        "You disarm the chief, who immediately declares you temporary chief of going away. The title comes with a better edge on your weapon."
+      ],
+      "position": [
+        8260,
+        680
+      ],
+      "nextId": 122,
+      "entryEffects": [
+        "weapon = weapon + 1"
+      ]
+    },
+    {
+      "id": 124,
+      "type": "skip",
+      "label": "Pick Wound",
+      "text": [
+        "The chief's pick catches your leg before you force him back. He salutes the wound as if proud of both of you."
+      ],
+      "position": [
+        8260,
+        970
+      ],
+      "nextId": 122,
+      "entryEffects": [
+        "hit(3)"
+      ]
+    },
+    {
+      "id": 125,
+      "type": "skip",
+      "label": "Clean Sneak",
+      "text": [
+        "You crawl above the gate and drop behind the guards. Their argument about helmets continues without you."
+      ],
+      "position": [
+        8260,
+        1260
+      ],
+      "nextId": 122
+    },
+    {
+      "id": 126,
+      "type": "skip",
+      "label": "Coal Slide",
+      "text": [
+        "The crawlspace collapses into a coal chute. You arrive behind the gate in a black cloud and with new bruises."
+      ],
+      "position": [
+        8600,
+        100
+      ],
+      "nextId": 122,
+      "entryEffects": [
+        "hit(2)"
+      ]
+    },
+    {
+      "id": 127,
+      "type": "redirect",
+      "label": "Blue Hall",
+      "text": [
+        "Blue crystals pulse when you pass. The light makes your shadow move half a step late."
+      ],
+      "position": [
+        8600,
+        390
+      ],
+      "links": [
+        {
+          "weight": 4,
+          "id": 130
+        },
+        {
+          "weight": 2,
+          "id": 131
+        }
+      ]
+    },
+    {
+      "id": 128,
+      "type": "action",
+      "label": "Red Winch",
+      "text": [
+        "A huge red winch controls a stone bridge over molten slag. Its handle is wrapped in burned leather."
+      ],
+      "position": [
+        8600,
+        680
+      ],
+      "actions": [
+        {
+          "label": "⛏️ Pull winch",
+          "id": 132
+        },
+        {
+          "label": "🛡️ Brace shield",
+          "id": 133,
+          "condition": "shield > 0"
+        },
+        {
+          "label": "🚪 Leave it",
+          "id": 122
+        }
+      ]
+    },
+    {
+      "id": 129,
+      "type": "skip",
+      "label": "Whisper Shaft",
+      "text": [
+        "The whispering shaft speaks the rune-word under your skin. When you answer, the mountain goes briefly silent."
+      ],
+      "position": [
+        8600,
+        970
+      ],
+      "nextId": 134,
+      "entryEffects": [
+        "arcaneMark = true",
+        "crownLore = true"
+      ]
+    },
+    {
+      "id": 130,
+      "type": "skip",
+      "label": "Blue Ember",
+      "text": [
+        "A crystal breaks open and reveals an ember shard inside 🔥, like a coal trapped in winter glass."
+      ],
+      "position": [
+        8600,
+        1260
+      ],
+      "nextId": 134,
+      "entryEffects": [
+        "gainShard()"
+      ]
+    },
+    {
+      "id": 131,
+      "type": "skip",
+      "label": "Late Shadow",
+      "text": [
+        "Your shadow pulls wrong and drags you into a wall of crystal teeth. You tear free with glittering cuts."
+      ],
+      "position": [
+        8940,
+        100
+      ],
+      "nextId": 134,
+      "entryEffects": [
+        "hit(3)"
+      ]
+    },
+    {
+      "id": 132,
+      "type": "redirect",
+      "label": "Winch Snap",
+      "text": [
+        "The winch turns, then snaps back with a roar. The bridge lurches over the slag."
+      ],
+      "position": [
+        8940,
+        390
+      ],
+      "links": [
+        {
+          "weight": 3,
+          "id": 135
+        },
+        {
+          "weight": 2,
+          "id": 136
+        }
+      ]
+    },
+    {
+      "id": 133,
+      "type": "skip",
+      "label": "Shield Brace",
+      "text": [
+        "You brace the handle with your shield and let the recoil hammer metal instead of bone. The bridge locks into place."
+      ],
+      "position": [
+        8940,
+        680
+      ],
+      "nextId": 134
+    },
+    {
+      "id": 134,
+      "type": "action",
+      "label": "Mine Heart",
+      "text": [
+        "The heart chamber glows orange. An ogre with coal-black skin sleeps beside the Ember Crown's old forge-stone."
+      ],
+      "position": [
+        8940,
+        970
+      ],
+      "actions": [
+        {
+          "label": "⚔️ Fight ogre",
+          "id": 137
+        },
+        {
+          "label": "🔥 Use rune",
+          "id": 138,
+          "condition": "arcaneMark"
+        },
+        {
+          "label": "🪢 Drop roof",
+          "id": 139,
+          "condition": "hasRope"
+        }
+      ]
+    },
+    {
+      "id": 135,
+      "type": "skip",
+      "label": "Bridge Prize",
+      "text": [
+        "The bridge slams down across the slag. In a crate on the far side, you find emergency coin wrapped in miner cloth."
+      ],
+      "position": [
+        8940,
+        1260
+      ],
+      "nextId": 134,
+      "entryEffects": [
+        "gold = gold + 5"
+      ]
+    },
+    {
+      "id": 136,
+      "type": "skip",
+      "label": "Hot Recoil",
+      "text": [
+        "The handle snaps back into your shoulder. Heat flashes white, then settles into a deep, ugly throb."
+      ],
+      "position": [
+        9280,
+        100
+      ],
+      "nextId": 134,
+      "entryEffects": [
+        "hit(4)"
+      ]
+    },
+    {
+      "id": 137,
+      "type": "redirect",
+      "label": "Ogre Fight",
+      "text": [
+        "The ogre wakes angry and confused, a classic combination among things larger than wagons."
+      ],
+      "position": [
+        9280,
+        390
+      ],
+      "links": [
+        {
+          "weight": 5,
+          "id": 140,
+          "condition": "weapon >= 2 || bram"
+        },
+        {
+          "weight": 2,
+          "id": 30
+        },
+        {
+          "weight": 1,
+          "id": 140
+        }
+      ]
+    },
+    {
+      "id": 138,
+      "type": "skip",
+      "label": "Forge Rune",
+      "text": [
+        "You speak the rune-word into the forge-stone. Chains of ember light bind the ogre long enough for you to pass."
+      ],
+      "position": [
+        9280,
+        680
+      ],
+      "nextId": 141,
+      "entryEffects": [
+        "gainShard()"
+      ]
+    },
+    {
+      "id": 139,
+      "type": "skip",
+      "label": "Falling Roof",
+      "text": [
+        "You hook the rope around a cracked beam and pull. Stone crashes between you and the ogre with beautiful finality."
+      ],
+      "position": [
+        9280,
+        970
+      ],
+      "nextId": 141
+    },
+    {
+      "id": 140,
+      "type": "skip",
+      "label": "Ogre Down",
+      "text": [
+        "The ogre falls hard enough to shake sparks from the ceiling. Beneath its bed of coal lies another ember shard."
+      ],
+      "position": [
+        9280,
+        1260
+      ],
+      "nextId": 141,
+      "entryEffects": [
+        "gainShard()",
+        "weapon = weapon + 1"
+      ]
+    },
+    {
+      "id": 141,
+      "type": "action",
+      "label": "Storm Road",
+      "text": [
+        "Above the mine, a stair of black stone climbs into storm cloud ⛈️. The Sky Citadel waits where lightning keeps striking the same tower."
+      ],
+      "position": [
+        9620,
+        100
+      ],
+      "actions": [
+        {
+          "label": "🧭 Climb stairs",
+          "id": 142
+        },
+        {
+          "label": "🪢 Use rope",
+          "id": 143,
+          "condition": "hasRope"
+        },
+        {
+          "label": "🤝 Call favor",
+          "id": 144,
+          "condition": "faeFavor"
+        }
+      ]
+    },
+    {
+      "id": 142,
+      "type": "redirect",
+      "label": "Lightning Stair",
+      "text": [
+        "You climb while lightning walks the rail beside you like a hunting cat made of white fire."
+      ],
+      "position": [
+        9620,
+        390
+      ],
+      "links": [
+        {
+          "weight": 3,
+          "id": 145
+        },
+        {
+          "weight": 4,
+          "id": 146
+        }
+      ]
+    },
+    {
+      "id": 143,
+      "type": "skip",
+      "label": "Rope Traverse",
+      "text": [
+        "You anchor the rope through carved rings and cross a broken span above clouds. Looking down is educational and unhelpful."
+      ],
+      "position": [
+        9620,
+        680
+      ],
+      "nextId": 147
+    },
+    {
+      "id": 144,
+      "type": "skip",
+      "label": "Thorn Wings",
+      "text": [
+        "The thorn token cuts your palm. A huge moth-winged steed arrives from the cloud and carries you past the worst stairs."
+      ],
+      "position": [
+        9620,
+        970
+      ],
+      "nextId": 147
+    },
+    {
+      "id": 145,
+      "type": "skip",
+      "label": "Storm Burn",
+      "text": [
+        "Lightning kisses the stair and throws you sideways. The stone keeps you from falling, but not from smelling your own singed sleeve."
+      ],
+      "position": [
+        9620,
+        1260
+      ],
+      "nextId": 147,
+      "entryEffects": [
+        "hit(3)"
+      ]
+    },
+    {
+      "id": 146,
+      "type": "skip",
+      "label": "Storm Rhythm",
+      "text": [
+        "You learn the lightning's rhythm and climb between strikes. The citadel gate grows from the cloud above you."
+      ],
+      "position": [
+        9960,
+        100
+      ],
+      "nextId": 147
+    },
+    {
+      "id": 147,
+      "type": "action",
+      "label": "Citadel Gate",
+      "text": [
+        "The gate is carved with two crowned figures holding a sun ☀️ between them. The sun's hollow center waits for proof."
+      ],
+      "position": [
+        9960,
+        390
+      ],
+      "actions": [
+        {
+          "label": "👑 Show sigil",
+          "id": 148,
+          "condition": "royalSigil"
+        },
+        {
+          "label": "⚔️ Force gate",
+          "id": 149
+        },
+        {
+          "label": "🧭 Secret drain",
+          "id": 150,
+          "condition": "hasMap || knox"
+        }
+      ]
+    },
+    {
+      "id": 148,
+      "type": "skip",
+      "label": "Gate Remembers",
+      "text": [
+        "The royal sigil wakes the carved sun. The gate opens with the weary grace of something obeying old law."
+      ],
+      "position": [
+        9960,
+        680
+      ],
+      "nextId": 151
+    },
+    {
+      "id": 149,
+      "type": "redirect",
+      "label": "Gate Force",
+      "text": [
+        "You force iron older than your bloodline. The gate resists with a groan like a waking giant."
+      ],
+      "position": [
+        9960,
+        970
+      ],
+      "links": [
+        {
+          "weight": 3,
+          "id": 151
+        },
+        {
+          "weight": 2,
+          "id": 152
+        }
+      ]
+    },
+    {
+      "id": 150,
+      "type": "skip",
+      "label": "Drain Entry",
+      "text": [
+        "The map marks a rain drain under the left tower. It is narrow, wet, and free of heroic statues."
+      ],
+      "position": [
+        9960,
+        1260
+      ],
+      "nextId": 151
+    },
+    {
+      "id": 151,
+      "type": "action",
+      "label": "Mirror Hall",
+      "text": [
+        "Inside, a hall of mirrors 🪞 shows you wearing crowns, chains, ashes, and smiles that do not belong to you."
+      ],
+      "position": [
+        10300,
+        100
+      ],
+      "actions": [
+        {
+          "label": "🧭 Follow image",
+          "id": 153
+        },
+        {
+          "label": "⚔️ Break mirror",
+          "id": 154
+        },
+        {
+          "label": "🔎 Read runes",
+          "id": 155,
+          "condition": "arcaneMark"
+        }
+      ]
+    },
+    {
+      "id": 152,
+      "type": "skip",
+      "label": "Iron Rebuke",
+      "text": [
+        "The gate opens just enough to throw you through it. Royal architecture has opinions about manners."
+      ],
+      "position": [
+        10300,
+        390
+      ],
+      "nextId": 151,
+      "entryEffects": [
+        "hit(3)"
+      ]
+    },
+    {
+      "id": 153,
+      "type": "redirect",
+      "label": "Mirror Path",
+      "text": [
+        "One reflection beckons you into a side passage. It has your face, but it walks like Malrec."
+      ],
+      "position": [
+        10300,
+        680
+      ],
+      "links": [
+        {
+          "weight": 3,
+          "id": 156
+        },
+        {
+          "weight": 3,
+          "id": 157
+        }
+      ]
+    },
+    {
+      "id": 154,
+      "type": "skip",
+      "label": "Broken Glass",
+      "text": [
+        "You smash the nearest mirror. Every reflection screams once, and a thousand glass cuts answer."
+      ],
+      "position": [
+        10300,
+        970
+      ],
+      "nextId": 158,
+      "entryEffects": [
+        "hit(2)"
+      ]
+    },
+    {
+      "id": 155,
+      "type": "skip",
+      "label": "Rune Memory",
+      "text": [
+        "The runes explain the crown's first purpose 👑: not rule, but restraint. It was a lock before it was a throne."
+      ],
+      "position": [
+        10300,
+        1260
+      ],
+      "nextId": 158,
+      "entryEffects": [
+        "crownLore = true"
+      ]
+    },
+    {
+      "id": 156,
+      "type": "skip",
+      "label": "True Turn",
+      "text": [
+        "The reflection leads you to a stair hidden behind blue velvet. It bows before vanishing into ordinary glass."
+      ],
+      "position": [
+        10640,
+        100
+      ],
+      "nextId": 158
+    },
+    {
+      "id": 157,
+      "type": "skip",
+      "label": "False Self",
+      "text": [
+        "The reflection steps through you and leaves cold ambition behind your ribs. For a moment, claiming the crown feels reasonable."
+      ],
+      "position": [
+        10640,
+        390
+      ],
+      "nextId": 158,
+      "entryEffects": [
+        "hit(1)"
+      ]
+    },
+    {
+      "id": 158,
+      "type": "action",
+      "label": "Guardian Duel",
+      "text": [
+        "A bronze guardian kneels before the throne stair, then rises with a sword of sunlit fire ⚔️."
+      ],
+      "position": [
+        10640,
+        680
+      ],
+      "actions": [
+        {
+          "label": "⚔️ Blade clash",
+          "id": 159
+        },
+        {
+          "label": "🔥 Rune answer",
+          "id": 160,
+          "condition": "arcaneMark"
+        },
+        {
+          "label": "🤝 Companion play",
+          "id": 161,
+          "condition": "liora || bram || knox"
+        }
+      ]
+    },
+    {
+      "id": 159,
+      "type": "redirect",
+      "label": "Bronze Blade",
+      "text": [
+        "The guardian's sword rings against yours. It fights like a ceremony that learned anger."
+      ],
+      "position": [
+        10640,
+        970
+      ],
+      "links": [
+        {
+          "weight": 4,
+          "id": 162
+        },
+        {
+          "weight": 2,
+          "id": 163
+        },
+        {
+          "weight": 1,
+          "id": 164
+        }
+      ]
+    },
+    {
+      "id": 160,
+      "type": "redirect",
+      "label": "Rune Counter",
+      "text": [
+        "You raise the rune-mark. The guardian pauses, recognizing a command older than Malrec."
+      ],
+      "position": [
+        10640,
+        1260
+      ],
+      "links": [
+        {
+          "weight": 5,
+          "id": 162
+        },
+        {
+          "weight": 1,
+          "id": 164
+        }
+      ]
+    },
+    {
+      "id": 161,
+      "type": "skip",
+      "label": "Ally Opening",
+      "text": [
+        "Your companion creates the opening you need: a thrown vial, a hammer strike, or a lockpick jammed exactly where legends omit."
+      ],
+      "position": [
+        10980,
+        100
+      ],
+      "nextId": 162
+    },
+    {
+      "id": 162,
+      "type": "skip",
+      "label": "Throne Stair",
+      "text": [
+        "The guardian kneels again and lowers its burning sword. The final stair opens into heat, shadow, and a voice applauding slowly."
+      ],
+      "position": [
+        10980,
+        390
+      ],
+      "nextId": 165
+    },
+    {
+      "id": 163,
+      "type": "skip",
+      "label": "Bronze Cut",
+      "text": [
+        "The guardian's blade slips past your guard and burns without blood. You keep moving because stopping would make the pain louder."
+      ],
+      "position": [
+        10980,
+        680
+      ],
+      "nextId": 165,
+      "entryEffects": [
+        "hit(3)"
+      ]
+    },
+    {
+      "id": 164,
+      "type": "skip",
+      "label": "Sun Dazed",
+      "text": [
+        "A flash of bronze light blinds you. When sight returns, the guardian is gone and the throne stair is open."
+      ],
+      "position": [
+        10980,
+        970
+      ],
+      "nextId": 165,
+      "entryEffects": [
+        "hit(1)"
+      ]
+    },
+    {
+      "id": 165,
+      "type": "action",
+      "label": "Ember Door",
+      "text": [
+        "The last door is a circle of cooling flame 🔥. Beyond it, Malrec waits with the Ember Crown above his head like a captured star."
+      ],
+      "position": [
+        10980,
+        1260
+      ],
+      "actions": [
+        {
+          "label": "✨ Use shards",
+          "id": 166,
+          "condition": "emberShards >= 4"
+        },
+        {
+          "label": "🔥 Use signs",
+          "id": 167,
+          "condition": "royalSigil && sunstone"
+        },
+        {
+          "label": "⚔️ Kick door",
+          "id": 168
+        }
+      ]
+    },
+    {
+      "id": 166,
+      "type": "skip",
+      "label": "Shard Key",
+      "text": [
+        "Your ember shards orbit the door and melt into its seam. The circle opens without smoke, as if relieved."
+      ],
+      "position": [
+        11320,
+        100
+      ],
+      "nextId": 169
+    },
+    {
+      "id": 167,
+      "type": "skip",
+      "label": "Royal Signs",
+      "text": [
+        "The sigil and sunstone flare together. Old law recognizes old law, and the door yields."
+      ],
+      "position": [
+        11320,
+        390
+      ],
+      "nextId": 169
+    },
+    {
+      "id": 168,
+      "type": "redirect",
+      "label": "Fool's Entry",
+      "text": [
+        "You kick the crown-door. For one glorious second, boldness seems like a complete strategy."
+      ],
+      "position": [
+        11320,
+        680
+      ],
+      "links": [
+        {
+          "weight": 2,
+          "id": 169
+        },
+        {
+          "weight": 2,
+          "id": 30
+        }
+      ]
+    },
+    {
+      "id": 169,
+      "type": "action",
+      "label": "Lord Malrec",
+      "text": [
+        "Malrec stands before the throne, gray-eyed and smiling. The Ember Crown 👑 floats above him, dripping black sparks upward.",
+        "\"Asterfall needs a ruler brave enough to be feared,\" he says. \"Will that be me, or you?\""
+      ],
+      "position": [
+        11320,
+        970
+      ],
+      "actions": [
+        {
+          "label": "👑 Break crown",
+          "id": 170,
+          "condition": "crownLore || emberShards >= 4"
+        },
+        {
+          "label": "👑 Claim crown",
+          "id": 171
+        },
+        {
+          "label": "🕯️ Offer mercy",
+          "id": 172,
+          "condition": "cryptBlessing || liora"
+        },
+        {
+          "label": "⚔️ Duel Malrec",
+          "id": 173
+        },
+        {
+          "label": "🗣️ Serve shadow",
+          "id": 174
+        }
+      ]
+    },
+    {
+      "id": 170,
+      "type": "finish",
+      "label": "Crown Broken",
+      "text": [
+        "You break the Ember Crown against the throne stair. Its fire rushes outward 🔥, melting summer back into the mountains.",
+        "Asterfall loses its oldest magic, but the people who survive will decide what replaces it."
+      ],
+      "position": [
+        11320,
+        1260
+      ]
+    },
+    {
+      "id": 171,
+      "type": "finish",
+      "label": "New Monarch",
+      "text": [
+        "You claim the Ember Crown 👑. It burns, then bends, accepting your will with a hunger that feels almost like loyalty.",
+        "Asterfall kneels to a new ruler. Whether that ruler stays merciful is a story for colder nights."
+      ],
+      "position": [
+        11660,
+        100
+      ]
+    },
+    {
+      "id": 172,
+      "type": "finish",
+      "label": "Mercy Flame",
+      "text": [
+        "You lower your weapon and speak Malrec's name without hatred. The crown's black sparks falter, confused by mercy it cannot command.",
+        "By dawn, the throne room is warm, Malrec is in chains, and Asterfall has a chance to heal without forgetting."
+      ],
+      "position": [
+        11660,
+        390
+      ]
+    },
+    {
+      "id": 173,
+      "type": "redirect",
+      "label": "Final Duel",
+      "text": [
+        "Malrec draws a blade from the crown's shadow. It is not metal, not magic, but the shape of every promise he broke."
+      ],
+      "position": [
+        11660,
+        680
+      ],
+      "links": [
+        {
+          "weight": 4,
+          "id": 175,
+          "condition": "weapon >= 3 || bram"
+        },
+        {
+          "weight": 3,
+          "id": 176
+        },
+        {
+          "weight": 2,
+          "id": 177
+        }
+      ]
+    },
+    {
+      "id": 174,
+      "type": "finish",
+      "label": "Shadow Vow",
+      "text": [
+        "You kneel and accept the crown's shadow. Malrec laughs once before it consumes him too.",
+        "The winter stops at Asterfall's borders, but inside them every hearth now burns with a listening black flame."
+      ],
+      "position": [
+        11660,
+        970
+      ]
+    },
+    {
+      "id": 175,
+      "type": "skip",
+      "label": "Malrec Falls",
+      "text": [
+        "You beat Malrec back step by step until his shadow blade cracks. The crown hangs above you, waiting for your judgment."
+      ],
+      "position": [
+        11660,
+        1260
+      ],
+      "nextId": 170
+    },
+    {
+      "id": 176,
+      "type": "action",
+      "label": "Last Wound",
+      "text": [
+        "Malrec's blade opens a cold line across your chest. You drop to one knee, close enough to see fear reach his eyes."
+      ],
+      "position": [
+        12000,
+        100
+      ],
+      "actions": [
+        {
+          "label": "✨ Spend shards",
+          "id": 178,
+          "condition": "emberShards >= 5"
+        },
+        {
+          "label": "🤝 Call ally",
+          "id": 179,
+          "condition": "liora || bram || knox"
+        },
+        {
+          "label": "↩️ Fall back",
+          "id": 30
+        }
+      ]
+    },
+    {
+      "id": 177,
+      "type": "action",
+      "label": "Disarmed",
+      "text": [
+        "Your weapon skids across the floor. Malrec advances, and the Ember Crown dips low enough to touch."
+      ],
+      "position": [
+        12000,
+        390
+      ],
+      "actions": [
+        {
+          "label": "👑 Grab crown",
+          "id": 171
+        },
+        {
+          "label": "⚔️ Kick brazier",
+          "id": 180
+        }
+      ]
+    },
+    {
+      "id": 178,
+      "type": "skip",
+      "label": "Shard Mercy",
+      "text": [
+        "You crush the last shards in your palm. Their fire floods the room, not as a weapon, but as memory of what the crown once guarded."
+      ],
+      "position": [
+        12000,
+        680
+      ],
+      "nextId": 172
+    },
+    {
+      "id": 179,
+      "type": "skip",
+      "label": "Ally's Stand",
+      "text": [
+        "Your companion steps between you and Malrec for one impossible heartbeat. It is enough. You rise and choose the crown's end."
+      ],
+      "position": [
+        12000,
+        970
+      ],
+      "nextId": 170
+    },
+    {
+      "id": 180,
+      "type": "skip",
+      "label": "Brazier Spark",
+      "text": [
+        "Your kick topples the brazier into the crown's shadow. Flame turns black, then bows toward the power that was waiting underneath."
+      ],
+      "position": [
+        12000,
+        1260
+      ],
+      "nextId": 174
+    }
+  ]
+}
