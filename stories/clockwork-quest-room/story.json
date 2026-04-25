@@ -99,7 +99,7 @@
       "type": "skip",
       "label": "Waking",
       "text": [
-        "You wake on a black-and-white marble floor inside a circular room. Brass ribs cross the ceiling like the inside of a clock 🕰️.",
+        "You wake on a black-and-white marble floor inside a circular room. Brass ribs cross the ceiling like the inside of a clock. 🕰️",
         "A sealed door waits opposite you. Above it, small letters read: <b>The exit opens for the one who notices.</b>"
       ],
       "position": [
@@ -170,7 +170,7 @@
       "id": 5,
       "type": "skip",
       "label": "Hidden Tick",
-      "text": "Under the silence, you hear three rhythms: a desk spring clicking, water counting seconds, and a bell humming without being struck 🔔.",
+      "text": "Under the silence, you hear three rhythms: a desk spring clicking, water counting seconds, and a bell humming without being struck. 🔔",
       "position": [
         740,
         1080
@@ -436,7 +436,7 @@
       "id": 17,
       "type": "skip",
       "label": "Dark Ink",
-      "text": "The ink smells faintly of iron and oranges 🖋️. It clings to the glass as if it would rather become writing than stay liquid.",
+      "text": "The ink smells faintly of iron and oranges. 🖋️ It clings to the glass as if it would rather become writing than stay liquid.",
       "position": [
         2680,
         520
@@ -847,7 +847,7 @@
       "id": 40,
       "type": "action",
       "label": "Water Basin",
-      "text": "The basin is dry, though you still hear water ticking behind it 💧. Its rim is carved with twelve marks and one missing valve.",
+      "text": "The basin is dry, though you still hear water ticking behind it. 💧 Its rim is carved with twelve marks and one missing valve.",
       "position": [
         1400,
         1380
@@ -1860,7 +1860,7 @@
       "id": 95,
       "type": "skip",
       "label": "Crystal Star",
-      "text": "The case opens around a small crystal star ⭐. It is cut to fit no lock you have seen, which makes it suspiciously important.",
+      "text": "The case opens around a small crystal star. ⭐ It is cut to fit no lock you have seen, which makes it suspiciously important.",
       "position": [
         3960,
         2060
@@ -2004,7 +2004,7 @@
       "id": 103,
       "type": "skip",
       "label": "Door Holds",
-      "text": "The door does not open. It is not locked by strength, but by missing evidence 🔒.",
+      "text": "The door does not open. It is not locked by strength, but by missing evidence. 🔒",
       "position": [
         2040,
         2700
@@ -2933,7 +2933,7 @@
       "id": 156,
       "type": "skip",
       "label": "Room Remembers",
-      "text": "The final chamber holds a single brass heart 💛. It beats in time with every puzzle you solved above.",
+      "text": "The final chamber holds a single brass heart. 💛 It beats in time with every puzzle you solved above.",
       "position": [
         4920,
         3520

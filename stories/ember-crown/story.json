@@ -121,7 +121,7 @@
       "type": "skip",
       "label": "Iron Oath",
       "text": [
-        "You take a practical sword and a battered shield ⚔️. The weight steadies your hands, and the armory master nods as if steel is a language she trusts."
+        "You take a practical sword and a battered shield. ⚔️ The weight steadies your hands, and the armory master nods as if steel is a language she trusts."
       ],
       "position": [
         100,
@@ -147,7 +147,7 @@
       "type": "skip",
       "label": "Rune Oath",
       "text": [
-        "You press your palm to a warm rune-stone 🔶. It leaves a red mark under your skin and whispers a word you almost understand."
+        "You press your palm to a warm rune-stone. 🔶 It leaves a red mark under your skin and whispers a word you almost understand."
       ],
       "position": [
         100,
@@ -310,7 +310,7 @@
       "type": "action",
       "label": "Village Shrine",
       "text": [
-        "The shrine flame burns in a bowl of ice 🕯️. When you kneel, the flame leans toward your breath like it remembers the first kings.",
+        "The shrine flame burns in a bowl of ice. 🕯️ When you kneel, the flame leans toward your breath like it remembers the first kings.",
         "A carved fox on the altar watches with silver eyes."
       ],
       "position": [
@@ -360,7 +360,7 @@
       "type": "action",
       "label": "Wildwood Gate",
       "text": [
-        "The Wildwood closes around the road in green-black arches 🌲. Frozen leaves hang without falling, each one veined with ember light.",
+        "The Wildwood closes around the road in green-black arches. 🌲 Frozen leaves hang without falling, each one veined with ember light.",
         "Three ways split beneath the trees."
       ],
       "position": [
@@ -715,7 +715,7 @@
       "type": "action",
       "label": "Thorn Court",
       "text": [
-        "The path opens into a court of thorn-crowned fae ✨. Their queen sits on a stump, small as a child and old as rain.",
+        "The path opens into a court of thorn-crowned fae. ✨ Their queen sits on a stump, small as a child and old as rain.",
         "\"Mortal oath-bearer,\" she says, \"what price do you offer for passage?\""
       ],
       "position": [
@@ -1008,7 +1008,7 @@
       "type": "skip",
       "label": "Oak Ember",
       "text": [
-        "Inside the ancient oak, a coal-red seed beats like a tiny heart 🌿. When you take it, the forest exhales around you."
+        "Inside the ancient oak, a coal-red seed beats like a tiny heart. 🌿 When you take it, the forest exhales around you."
       ],
       "position": [
         3160,
@@ -1075,7 +1075,7 @@
       "type": "action",
       "label": "Broken Road",
       "text": [
-        "The Ruined Keep was once a royal checkpoint 🏰. Now its towers lean together like conspirators over a courtyard full of tents."
+        "The Ruined Keep was once a royal checkpoint. 🏰 Now its towers lean together like conspirators over a courtyard full of tents."
       ],
       "position": [
         3500,
@@ -1407,7 +1407,7 @@
       "type": "action",
       "label": "Keep Chapel",
       "text": [
-        "The chapel roof is gone, but the altar flame still burns under open sky 🕯️. Names of dead queens cover the floor."
+        "The chapel roof is gone, but the altar flame still burns under open sky. 🕯️ Names of dead queens cover the floor."
       ],
       "position": [
         4520,
@@ -1652,7 +1652,7 @@
       "type": "action",
       "label": "Sunken Marsh",
       "text": [
-        "The Sunken Marsh spreads under a silver fog 💧. Half-drowned statues point toward places the road no longer reaches."
+        "The Sunken Marsh spreads under a silver fog. 💧 Half-drowned statues point toward places the road no longer reaches."
       ],
       "position": [
         5540,
@@ -2228,7 +2228,7 @@
       "type": "action",
       "label": "Ashen Mine",
       "text": [
-        "The Ashen Mine breathes smoke through vents in the mountain ⛏️. Rails run into darkness, and sparks crawl along them against the wind."
+        "The Ashen Mine breathes smoke through vents in the mountain. ⛏️ Rails run into darkness, and sparks crawl along them against the wind."
       ],
       "position": [
         7580,
@@ -2809,7 +2809,7 @@
       "type": "action",
       "label": "Storm Road",
       "text": [
-        "Above the mine, a stair of black stone climbs into storm cloud ⛈️. The Sky Citadel waits where lightning keeps striking the same tower."
+        "Above the mine, a stair of black stone climbs into storm cloud. ⛈️ The Sky Citadel waits where lightning keeps striking the same tower."
       ],
       "position": [
         9620,
@@ -3116,7 +3116,7 @@
       "type": "action",
       "label": "Guardian Duel",
       "text": [
-        "A bronze guardian kneels before the throne stair, then rises with a sword of sunlit fire ⚔️."
+        "A bronze guardian kneels before the throne stair, then rises with a sword of sunlit fire. ⚔️"
       ],
       "position": [
         10640,
@@ -3250,7 +3250,7 @@
       "type": "action",
       "label": "Ember Door",
       "text": [
-        "The last door is a circle of cooling flame 🔥. Beyond it, Malrec waits with the Ember Crown above his head like a captured star."
+        "The last door is a circle of cooling flame. 🔥 Beyond it, Malrec waits with the Ember Crown above his head like a captured star."
       ],
       "position": [
         10980,
@@ -3376,7 +3376,7 @@
       "type": "finish",
       "label": "New Monarch",
       "text": [
-        "You claim the Ember Crown 👑. It burns, then bends, accepting your will with a hunger that feels almost like loyalty.",
+        "You claim the Ember Crown. 👑 It burns, then bends, accepting your will with a hunger that feels almost like loyalty.",
         "Asterfall kneels to a new ruler. Whether that ruler stays merciful is a story for colder nights."
       ],
       "position": [

@@ -405,7 +405,7 @@
       "type": "redirect",
       "label": "Bell Chorus",
       "text": [
-        "The chapel bells ring for the afternoon parade, and the square breaks apart into moving silk, petals, and street musicians 🔔.",
+        "The chapel bells ring for the afternoon parade, and the square breaks apart into moving silk, petals, and street musicians. 🔔",
         "You lose Julien for one breath, then two, and the town's bright current carries you toward whichever trace of him Bellarose opens first."
       ],
       "links": [
@@ -474,7 +474,7 @@
       "type": "action",
       "label": "Folded Note",
       "text": [
-        "The note is unmistakably Julien's hand, but the seal is still closed and slightly rain-smudged 💌.",
+        "The note is unmistakably Julien's hand, but the seal is still closed and slightly rain-smudged. 💌",
         "You can open it now, return it untouched, or keep it close until evening."
       ],
       "actions": [
@@ -2160,7 +2160,7 @@
       "type": "finish",
       "label": "Bellarose Kiss",
       "text": [
-        "You tell Julien to stay, and then tell him you love him before caution can edit the sentence. His answer comes as laughter, tears, and a kiss under swinging lantern light ❤️.",
+        "You tell Julien to stay, and then tell him you love him before caution can edit the sentence. His answer comes as laughter, tears, and a kiss under swinging lantern light. ❤️",
         "{{aftershockScene:The greenhouse promise of opening petals seems to bloom all at once around you.|The steadiness you found by the sea carries cleanly into the words at last.|The last rehearsal has already taught you how confession sounds when both hearts keep time.}} By sunrise you are planning roses, music, and a reopened conservatory together, with Bellarose glittering around your impossible good luck."
       ],
       "position": [

@@ -14,7 +14,7 @@
       "type": "skip",
       "label": "Black Sails",
       "text": [
-        "Black funeral sails hang over Selucor as your ferry glides beneath the palace hill and its cypress terraces 🌿.",
+        "Black funeral sails hang over Selucor as your ferry glides beneath the palace hill and its cypress terraces. 🌿",
         "You have not seen the capital since exile, but the bronze domes and sea walls remember you too well."
       ],
       "nextId": 2,
@@ -193,7 +193,7 @@
       "type": "skip",
       "label": "Dust Archive",
       "text": [
-        "A page hustles you from Iria's chamber to the state archive, where cedar dust and old lamp oil hang over a bronze-bound chest left open on the table 📚.",
+        "A page hustles you from Iria's chamber to the state archive, where cedar dust and old lamp oil hang over a bronze-bound chest left open on the table. 📚",
         "One seal has been cut too neatly to be honest; whoever touched it knew court habits better than any common thief."
       ],
       "nextId": 14,
@@ -359,7 +359,7 @@
       "type": "skip",
       "label": "Last Words",
       "text": [
-        "A palace physician tells you the emperor woke only once on his final night and said, \"The bridges remember before crowns 👑.\"",
+        "A palace physician tells you the emperor woke only once on his final night and said, \"The bridges remember before crowns. 👑\"",
         "The phrase sounds less like delirium than a warning he died too late to explain."
       ],
       "nextId": 22,
@@ -795,7 +795,7 @@
       "type": "redirect",
       "label": "Procession Jolt",
       "text": [
-        "A mourning procession surges through the inner court with drums, incense, and armed ushers clearing space by force 🥁.",
+        "A mourning procession surges through the inner court with drums, incense, and armed ushers clearing space by force. 🥁",
         "You might be knocked toward the market fire, the soldiers' chapel, a fresco alcove, or back into the prince's entourage."
       ],
       "links": [
@@ -1909,7 +1909,7 @@
       "type": "skip",
       "label": "Waking Alexen",
       "text": [
-        "Alexen comes to the tower without complaint and reads the first visible line of the witness text with unnerving calm 📜.",
+        "Alexen comes to the tower without complaint and reads the first visible line of the witness text with unnerving calm. 📜",
         "\"So they were all supposed to stand together,\" he says. \"No wonder someone separated them.\""
       ],
       "nextId": 110,
@@ -2400,7 +2400,7 @@
       "type": "finish",
       "label": "Peace Bridges",
       "text": [
-        "The covenant is read before shrine, saddle, crown, and envoy, and the bridge court falls into the shocked silence that real truth earns ⚖️.",
+        "The covenant is read before shrine, saddle, crown, and envoy, and the bridge court falls into the shocked silence that real truth earns. ⚖️",
         "Marek is stripped of office, Alexen is crowned under witness rather than flattery, and Orsanna chooses a hard peace that may finally endure."
       ],
       "position": [
