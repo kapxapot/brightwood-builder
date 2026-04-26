@@ -1,0 +1,3939 @@
+{
+  "id": "a4dcb7d2-e691-4f9d-b6ec-337af3cb4e74",
+  "title": "🕵️ The Sable Mirror",
+  "description": "A state-heavy noir detective mystery with clue tracking, suspect trust, hidden evidence, pressure, gated interrogations, and conditional final accusations.",
+  "language": "en",
+  "startId": 1,
+  "prefix": "Time: {{timeLeft}} | Focus: {{focus}} | Heat: {{heat}} | Clues: {{clues}} | Evidence: {{evidenceScore}}",
+  "data": {
+    "init": {
+      "maxFocus": 7,
+      "timeLeft": 60,
+      "focus": 6,
+      "heat": 0,
+      "pressure": 0,
+      "publicTrust": 1,
+      "leverage": 0,
+      "clues": 0,
+      "evidenceScore": 0,
+      "wrongAccusations": 0,
+      "suspectFocus": 0,
+      "caseTheory": "none",
+      "finalProceeding": false,
+      "temporaryLead": false,
+      "hotelSearched": false,
+      "theaterSearched": false,
+      "dockSearched": false,
+      "recordsSearched": false,
+      "interrogationsDone": false,
+      "theoryBuilt": false,
+      "penthouseChecked": false,
+      "staffListChecked": false,
+      "serviceHallChecked": false,
+      "hasMirrorMessage": false,
+      "foundPoisonSign": false,
+      "hasClockPhoto": false,
+      "hasAshTrace": false,
+      "hasPowderTrace": false,
+      "hasBlueThread": false,
+      "hasCandleTiming": false,
+      "metConcierge": false,
+      "roomCardsRead": false,
+      "foundSecondKey": false,
+      "serviceCorridor": false,
+      "rooftopWitness": false,
+      "theaterRoomDone": false,
+      "newsroomDone": false,
+      "guestCircleDone": false,
+      "hasFarewellLetter": false,
+      "claraAlibi": false,
+      "claraLie": false,
+      "miraDraft": false,
+      "miraMotive": false,
+      "foundBlackmailNote": false,
+      "hasBurnedTicket": false,
+      "morgueDone": false,
+      "courierDone": false,
+      "tailDone": false,
+      "foundPoisonVial": false,
+      "hasRoseBox": false,
+      "foundCourierName": false,
+      "ilyaRoute": false,
+      "ilyaMissingMinute": false,
+      "hasBrokenWatch": false,
+      "archiveDone": false,
+      "engineerDone": false,
+      "bankDone": false,
+      "hasLedgerPage": false,
+      "haleDebt": false,
+      "haleContradiction": false,
+      "orsonAccess": false,
+      "orsonContradiction": false,
+      "bellConfession": false,
+      "interviewedClara": false,
+      "interviewedHale": false,
+      "interviewedMira": false,
+      "interviewedOrson": false,
+      "interviewedIlya": false,
+      "timelineBuilt": false,
+      "poisonMatched": false,
+      "routeMapped": false,
+      "motiveMatrix": false,
+      "claraTrust": 0,
+      "haleTrust": 0,
+      "miraTrust": 0,
+      "orsonTrust": 0,
+      "ilyaTrust": 0
+    },
+    "conditions": {
+      "timeGone": "timeLeft <= 0",
+      "burnedOut": "focus <= 0",
+      "heatBoil": "heat >= 10 && !finalProceeding",
+      "knowsMotive": "hasLedgerPage && haleDebt && foundBlackmailNote",
+      "knowsAccess": "foundSecondKey && serviceCorridor && orsonAccess",
+      "knowsPoison": "foundPoisonVial && hasPowderTrace && poisonMatched",
+      "canPressureHale": "knowsMotive() && leverage >= 2",
+      "canClearClara": "hasFarewellLetter && claraAlibi && hasClockPhoto && claraLie",
+      "canBreakBell": "knowsAccess() && leverage >= 2 && orsonContradiction",
+      "canMapCourier": "ilyaRoute && foundCourierName && hasRoseBox",
+      "canAccuseHale": "knowsMotive() && knowsAccess() && knowsPoison() && haleContradiction && routeMapped",
+      "riskyCase": "canAccuseHale() && evidenceScore >= 14",
+      "perfectCase": "canAccuseHale() && canClearClara() && bellConfession && miraDraft && canMapCourier() && wrongAccusations == 0 && publicTrust >= 3 && timeLeft >= 4"
+    },
+    "effects": [
+      {
+        "name": "tick",
+        "args": "amount",
+        "conditions": "amount > 0",
+        "statements": "timeLeft = max(timeLeft - amount, 0)"
+      },
+      {
+        "name": "spendFocus",
+        "args": "amount",
+        "conditions": "amount > 0",
+        "statements": [
+          "focus = max(focus - amount, 0)",
+          "pressure = pressure + amount"
+        ]
+      },
+      {
+        "name": "regainFocus",
+        "args": "amount",
+        "conditions": "amount > 0",
+        "statements": [
+          "focus = min(focus + amount, maxFocus)",
+          "pressure = max(pressure - 1, 0)"
+        ]
+      },
+      {
+        "name": "heatUp",
+        "args": "amount",
+        "conditions": "amount > 0",
+        "statements": "heat = heat + amount"
+      },
+      {
+        "name": "coolHeat",
+        "args": "amount",
+        "conditions": "amount > 0",
+        "statements": "heat = max(heat - amount, 0)"
+      },
+      {
+        "name": "learn",
+        "args": "amount",
+        "conditions": "amount > 0",
+        "statements": [
+          "clues = clues + amount",
+          "evidenceScore = evidenceScore + amount"
+        ]
+      },
+      {
+        "name": "gainLeverage",
+        "args": "amount",
+        "conditions": "amount > 0",
+        "statements": "leverage = leverage + amount"
+      },
+      {
+        "name": "spendLeverage",
+        "args": "amount",
+        "conditions": "leverage >= amount",
+        "statements": "leverage = leverage - amount"
+      },
+      {
+        "name": "raisePublic",
+        "args": "amount",
+        "statements": "publicTrust = min(publicTrust + amount, 5)"
+      },
+      {
+        "name": "raiseClaraTrust",
+        "args": "amount",
+        "statements": "claraTrust = min(max(claraTrust + amount, -3), 4)"
+      },
+      {
+        "name": "raiseHaleTrust",
+        "args": "amount",
+        "statements": "haleTrust = min(max(haleTrust + amount, -3), 4)"
+      },
+      {
+        "name": "raiseMiraTrust",
+        "args": "amount",
+        "statements": "miraTrust = min(max(miraTrust + amount, -3), 4)"
+      },
+      {
+        "name": "raiseOrsonTrust",
+        "args": "amount",
+        "statements": "orsonTrust = min(max(orsonTrust + amount, -3), 4)"
+      },
+      {
+        "name": "raiseIlyaTrust",
+        "args": "amount",
+        "statements": "ilyaTrust = min(max(ilyaTrust + amount, -3), 4)"
+      },
+      {
+        "name": "markSuspect",
+        "args": "number",
+        "statements": "suspectFocus = number"
+      },
+      {
+        "name": "setTheory",
+        "args": "suspect",
+        "statements": "caseTheory = suspect"
+      },
+      {
+        "name": "wrongCharge",
+        "statements": [
+          "wrongAccusations = wrongAccusations + 1",
+          "heatUp(2)",
+          "publicTrust = max(publicTrust - 1, -3)"
+        ]
+      }
+    ],
+    "redirectTriggers": [
+      {
+        "condition": "timeGone()",
+        "targetId": 195
+      },
+      {
+        "condition": "heatBoil()",
+        "targetId": 196
+      },
+      {
+        "condition": "burnedOut()",
+        "targetId": 197
+      }
+    ]
+  },
+  "nodes": [
+    {
+      "position": [
+        120,
+        140
+      ],
+      "id": 1,
+      "type": "skip",
+      "label": "Rain Summons",
+      "text": [
+        "Rain polishes Sable Harbor until every streetlight looks guilty. The call comes at 2:13 a.m.: Lys Rowe, illusionist and civic darling, dead inside the locked observatory of the Glasswater Hotel.",
+        "Your partner, Finch, meets you under the awning with a soaked notebook. \"The room was locked from inside, Mara. The mayor wants a name before breakfast.\""
+      ],
+      "nextId": 2
+    },
+    {
+      "position": [
+        120,
+        360
+      ],
+      "id": 2,
+      "type": "action",
+      "label": "First Look",
+      "text": "The penthouse smells of champagne, lamp oil, and burned roses. A black mirror on the north wall carries a smeared message: <b>THE CITY SAW.</b>",
+      "actions": [
+        {
+          "label": "🔍 Study room",
+          "id": 3,
+          "effects": [
+            "learn(1)"
+          ]
+        },
+        {
+          "label": "📷 Photograph",
+          "id": 4,
+          "effects": [
+            "hasClockPhoto = true",
+            "learn(1)",
+            "tick(1)"
+          ]
+        },
+        {
+          "label": "🗣️ Question staff",
+          "id": 5,
+          "effects": [
+            "metConcierge = true",
+            "raisePublic(1)"
+          ]
+        }
+      ]
+    },
+    {
+      "position": [
+        120,
+        580
+      ],
+      "id": 3,
+      "type": "skip",
+      "label": "Room Geometry",
+      "text": "You mark the observatory: locked door, mirror wall, skylight, service bell, and a carpet dry under the body but damp under the window. Someone understood the room better than its guests.",
+      "nextId": 6,
+      "entryEffects": [
+        "tick(1)"
+      ]
+    },
+    {
+      "position": [
+        120,
+        800
+      ],
+      "id": 4,
+      "type": "skip",
+      "label": "Clock Photograph",
+      "text": "The flash catches the mantle clock at 1:47, its glass cracked in a star. The police photographer grumbles, but the image preserves a minute nobody has explained. 📷",
+      "nextId": 6
+    },
+    {
+      "position": [
+        120,
+        1020
+      ],
+      "id": 5,
+      "type": "skip",
+      "label": "Lobby Whispers",
+      "text": "The night concierge gives you the guest list and three useful lies: no one used the service lift, no one heard a singer crying, and no one knows why a rose box is missing.",
+      "nextId": 6,
+      "entryEffects": [
+        "learn(1)",
+        "tick(1)"
+      ]
+    },
+    {
+      "position": [
+        120,
+        1240
+      ],
+      "id": 6,
+      "type": "action",
+      "label": "Black Mirror",
+      "text": "Lys lies beside the mirror wall, one glove missing. Rain ticks on the skylight. Finch waits for your first theory, but the room resists simple answers.",
+      "actions": [
+        {
+          "label": "✨ Read message",
+          "id": 7,
+          "condition": "!hasMirrorMessage",
+          "effects": [
+            "hasMirrorMessage = true",
+            "learn(1)"
+          ]
+        },
+        {
+          "label": "🧪 Check body",
+          "id": 8,
+          "condition": "!foundPoisonSign",
+          "effects": [
+            "foundPoisonSign = true",
+            "learn(1)",
+            "spendFocus(1)"
+          ]
+        },
+        {
+          "label": "📌 Open board",
+          "id": 9,
+          "condition": "hasMirrorMessage || foundPoisonSign"
+        }
+      ]
+    },
+    {
+      "position": [
+        120,
+        1460
+      ],
+      "id": 7,
+      "type": "skip",
+      "label": "Mirror Words",
+      "text": "The words were written with soot and stage grease. The final stroke slants upward, as if Lys wrote while looking at someone reflected behind her.",
+      "nextId": 6
+    },
+    {
+      "position": [
+        120,
+        1680
+      ],
+      "id": 8,
+      "type": "skip",
+      "label": "Quiet Pulse",
+      "text": "No blood. No bruise worth the city coroner's ink. But her lips hold a bitter almond ghost beneath the cosmetic wax. Poison, then theater, then locked-room theater.",
+      "nextId": 6
+    },
+    {
+      "position": [
+        120,
+        1900
+      ],
+      "id": 9,
+      "type": "action",
+      "label": "Case Board",
+      "text": [
+        "Finch pins your evidence to a portable board. {{hasClockPhoto:The clock photo sits under the mirror message. }}{{hasBlueThread:A blue thread curls beside the guest list. }}{{hasLedgerPage:A ledger page waits like a loaded pistol. }}",
+        "Your current focus: {{suspectFocus:Clara Voss.|Silas Hale.|Mira Quill.|Orson Bell.|Ilya Rook.}} The rain keeps time against the windows."
+      ],
+      "actions": [
+        {
+          "label": "🏨 Hotel",
+          "id": 10,
+          "condition": "!hotelSearched"
+        },
+        {
+          "label": "🎭 Theater",
+          "id": 40,
+          "condition": "hotelSearched && !theaterSearched"
+        },
+        {
+          "label": "⚓ Docks",
+          "id": 70,
+          "condition": "theaterSearched && !dockSearched"
+        },
+        {
+          "label": "📚 Records",
+          "id": 100,
+          "condition": "dockSearched && !recordsSearched"
+        },
+        {
+          "label": "🗣️ Suspects",
+          "id": 130,
+          "condition": "recordsSearched && !interrogationsDone"
+        },
+        {
+          "label": "🧵 Rebuild",
+          "id": 160,
+          "condition": "interrogationsDone && !theoryBuilt"
+        },
+        {
+          "label": "⚖️ Accuse",
+          "id": 180,
+          "condition": "theoryBuilt"
+        },
+        {
+          "label": "☕ Breathe",
+          "id": 9,
+          "condition": "focus < maxFocus",
+          "effects": [
+            "regainFocus(1)",
+            "tick(1)",
+            "coolHeat(1)"
+          ]
+        }
+      ]
+    },
+    {
+      "position": [
+        120,
+        2120
+      ],
+      "id": 10,
+      "type": "action",
+      "label": "Hotel Return",
+      "text": "The Glasswater Hotel has stopped pretending to sleep. Staff polish empty glasses while reporters crowd the velvet ropes outside.",
+      "actions": [
+        {
+          "label": "🔍 Penthouse",
+          "id": 11,
+          "condition": "!penthouseChecked"
+        },
+        {
+          "label": "📋 Staff list",
+          "id": 20,
+          "condition": "!staffListChecked"
+        },
+        {
+          "label": "🛗 Service hall",
+          "id": 30,
+          "condition": "!serviceHallChecked"
+        },
+        {
+          "label": "🧭 Leave hotel",
+          "id": 39,
+          "condition": "penthouseChecked && staffListChecked && serviceHallChecked"
+        }
+      ],
+      "entryEffects": [
+        "tick(1)"
+      ]
+    },
+    {
+      "position": [
+        450,
+        140
+      ],
+      "id": 11,
+      "type": "skip",
+      "label": "Penthouse Again",
+      "text": "Without the first rush of uniforms, the observatory becomes quieter and stranger. Dust has gathered where shoes should have disturbed it.",
+      "nextId": 12
+    },
+    {
+      "position": [
+        450,
+        360
+      ],
+      "id": 12,
+      "type": "action",
+      "label": "Glass Floor",
+      "text": "Three details wait in the locked room. None shouts. That usually means all three matter.",
+      "actions": [
+        {
+          "label": "🧤 Ash tray",
+          "id": 13,
+          "condition": "!hasAshTrace"
+        },
+        {
+          "label": "🧵 Blue thread",
+          "id": 14,
+          "condition": "!hasBlueThread"
+        },
+        {
+          "label": "🕯️ Candle clock",
+          "id": 15,
+          "condition": "!hasCandleTiming"
+        },
+        {
+          "label": "✅ Finish room",
+          "id": 16,
+          "condition": "hasAshTrace && hasBlueThread && hasCandleTiming"
+        }
+      ]
+    },
+    {
+      "position": [
+        450,
+        580
+      ],
+      "id": 13,
+      "type": "skip",
+      "label": "Ash Trace",
+      "text": "The ash tray holds rose-stem ash and a glittering dust that clings to your glove. Stage powder, expensive and faintly medicinal.",
+      "nextId": 17,
+      "entryEffects": [
+        "hasAshTrace = true",
+        "learn(1)",
+        "tick(1)"
+      ]
+    },
+    {
+      "position": [
+        450,
+        800
+      ],
+      "id": 14,
+      "type": "skip",
+      "label": "Blue Thread",
+      "text": "A blue silk thread snags on the brass latch of the mirror wall. Clara Voss wore blue on stage tonight, but so did half the hotel orchestra.",
+      "nextId": 18,
+      "entryEffects": [
+        "hasBlueThread = true",
+        "learn(1)",
+        "markSuspect(1)"
+      ]
+    },
+    {
+      "position": [
+        450,
+        1020
+      ],
+      "id": 15,
+      "type": "skip",
+      "label": "Candle Timing",
+      "text": "The candle beside Lys burned unevenly. Someone trimmed it after death, staging a later time and trusting smoke to make you lazy.",
+      "nextId": 19,
+      "entryEffects": [
+        "hasCandleTiming = true",
+        "learn(1)",
+        "spendFocus(1)"
+      ]
+    },
+    {
+      "position": [
+        450,
+        1240
+      ],
+      "id": 16,
+      "type": "skip",
+      "label": "Penthouse Closed",
+      "text": "You seal the room with three notes circled: powder, silk, false time. Finch looks at the mirror wall and says, \"That wall wants to be a door.\"",
+      "nextId": 10,
+      "entryEffects": [
+        "penthouseChecked = true"
+      ]
+    },
+    {
+      "position": [
+        450,
+        1460
+      ],
+      "id": 17,
+      "type": "skip",
+      "label": "Powder Bloom",
+      "text": "Under a lamp, the dust blooms green at the edge. Not cyanide itself, but a binder used in stage cosmetic. Lys wore it. Someone handled it.",
+      "nextId": 12,
+      "entryEffects": [
+        "hasPowderTrace = true",
+        "learn(1)"
+      ]
+    },
+    {
+      "position": [
+        450,
+        1680
+      ],
+      "id": 18,
+      "type": "skip",
+      "label": "Thread Ledger",
+      "text": "The thread has wax on it, not perfume. It came from a costume stored near candles, not necessarily from Clara's dress.",
+      "nextId": 12,
+      "entryEffects": [
+        "temporaryLead = true"
+      ]
+    },
+    {
+      "position": [
+        450,
+        1900
+      ],
+      "id": 19,
+      "type": "skip",
+      "label": "False Minute",
+      "text": "You compare the candle gutter with the photographed clock. Death came closer to 1:31 than 1:47. Fifteen minutes have gone missing.",
+      "nextId": 12,
+      "entryEffects": [
+        "learn(1)"
+      ]
+    },
+    {
+      "position": [
+        450,
+        2120
+      ],
+      "id": 20,
+      "type": "skip",
+      "label": "Staff Ledger",
+      "text": "The staff ledger sits behind the reception cage, written in three inks and one nervous hand. The night clerk claims the gaps are normal.",
+      "nextId": 21,
+      "entryEffects": [
+        "tick(1)"
+      ]
+    },
+    {
+      "position": [
+        780,
+        140
+      ],
+      "id": 21,
+      "type": "action",
+      "label": "Lobby Names",
+      "text": "Names, keys, and excuses crowd the page. The clerk watches which line your finger chooses.",
+      "actions": [
+        {
+          "label": "🛎️ Concierge",
+          "id": 22,
+          "condition": "!metConcierge"
+        },
+        {
+          "label": "🌙 Night clerk",
+          "id": 24,
+          "condition": "!roomCardsRead"
+        },
+        {
+          "label": "🗝️ Room cards",
+          "id": 26,
+          "condition": "!foundSecondKey"
+        },
+        {
+          "label": "✅ Close list",
+          "id": 29,
+          "condition": "metConcierge && roomCardsRead && foundSecondKey"
+        }
+      ]
+    },
+    {
+      "position": [
+        780,
+        360
+      ],
+      "id": 22,
+      "type": "skip",
+      "label": "Concierge Nerves",
+      "text": "The concierge admits Clara came through the lobby after one, eyes bright with rain or tears. He omitted it because Mr. Hale dislikes scandal before breakfast.",
+      "nextId": 23,
+      "entryEffects": [
+        "metConcierge = true",
+        "claraLie = true",
+        "markSuspect(1)",
+        "learn(1)"
+      ]
+    },
+    {
+      "position": [
+        780,
+        580
+      ],
+      "id": 23,
+      "type": "skip",
+      "label": "Torn Stub",
+      "text": "From his wastebasket, you recover a torn cloakroom stub marked with the theater's midnight seal. It smells of burned paper.",
+      "nextId": 21,
+      "entryEffects": [
+        "hasBurnedTicket = true",
+        "learn(1)"
+      ]
+    },
+    {
+      "position": [
+        780,
+        800
+      ],
+      "id": 24,
+      "type": "skip",
+      "label": "Night Clerk",
+      "text": "The clerk finally shows the late key log. Orson Bell signed out a maintenance ring at 12:58 and returned it with one brass tag polished clean.",
+      "nextId": 25,
+      "entryEffects": [
+        "roomCardsRead = true",
+        "orsonAccess = true",
+        "learn(1)"
+      ]
+    },
+    {
+      "position": [
+        780,
+        1020
+      ],
+      "id": 25,
+      "type": "skip",
+      "label": "Polished Tag",
+      "text": "Fresh polish hides fingerprints but not impatience. The clerk says Orson looked frightened, not proud.",
+      "nextId": 21,
+      "entryEffects": [
+        "markSuspect(4)",
+        "gainLeverage(1)"
+      ]
+    },
+    {
+      "position": [
+        780,
+        1240
+      ],
+      "id": 26,
+      "type": "skip",
+      "label": "Room Cards",
+      "text": "One room card has been filed under the wrong suite. The number belongs to Lys, but the ink matches Hale's private office stationery.",
+      "nextId": 27,
+      "entryEffects": [
+        "foundSecondKey = true",
+        "learn(1)",
+        "markSuspect(2)"
+      ]
+    },
+    {
+      "position": [
+        780,
+        1460
+      ],
+      "id": 27,
+      "type": "redirect",
+      "label": "Card Gamble",
+      "text": "You dust the card while the desk fan rattles. A print may be there, if the cheap powder cooperates.",
+      "links": [
+        {
+          "id": 28,
+          "weight": 7,
+          "condition": "focus >= 3",
+          "effects": [
+            "learn(1)",
+            "gainLeverage(1)"
+          ]
+        },
+        {
+          "id": 21,
+          "weight": 3,
+          "effects": [
+            "spendFocus(1)",
+            "tick(1)"
+          ]
+        }
+      ]
+    },
+    {
+      "position": [
+        780,
+        1680
+      ],
+      "id": 28,
+      "type": "skip",
+      "label": "Partial Print",
+      "text": "The print is partial but useful: a square ring, city council crest, worn on Hale's right hand in every newspaper photograph.",
+      "nextId": 21,
+      "entryEffects": [
+        "haleContradiction = true"
+      ]
+    },
+    {
+      "position": [
+        780,
+        1900
+      ],
+      "id": 29,
+      "type": "skip",
+      "label": "List Complete",
+      "text": "The staff ledger gives you three doors into the case: Clara's hidden lobby passage, Orson's maintenance ring, and Hale's impossible room card.",
+      "nextId": 10,
+      "entryEffects": [
+        "staffListChecked = true"
+      ]
+    },
+    {
+      "position": [
+        780,
+        2120
+      ],
+      "id": 30,
+      "type": "skip",
+      "label": "Service Hall",
+      "text": "Behind the velvet lobby, the hotel becomes pipes, wet stone, and low electric hum. A service lift waits under a sign reading STAFF ONLY.",
+      "nextId": 31,
+      "entryEffects": [
+        "tick(1)"
+      ]
+    },
+    {
+      "position": [
+        1110,
+        140
+      ],
+      "id": 31,
+      "type": "action",
+      "label": "Hidden Routes",
+      "text": "The service hall offers three ways to make a locked room stop looking magical.",
+      "actions": [
+        {
+          "label": "🛗 Lift cage",
+          "id": 32,
+          "condition": "!serviceCorridor"
+        },
+        {
+          "label": "✨ Mirror seam",
+          "id": 34,
+          "condition": "!orsonContradiction"
+        },
+        {
+          "label": "🌧️ Roof hatch",
+          "id": 36,
+          "condition": "!rooftopWitness"
+        },
+        {
+          "label": "✅ Hall done",
+          "id": 38,
+          "condition": "serviceCorridor && orsonContradiction && rooftopWitness"
+        }
+      ]
+    },
+    {
+      "position": [
+        1110,
+        360
+      ],
+      "id": 32,
+      "type": "skip",
+      "label": "Lift Cage",
+      "text": "The lift stops between floors where hotel blueprints pretend there is only wall. Someone used the old illusion corridor.",
+      "nextId": 33,
+      "entryEffects": [
+        "serviceCorridor = true",
+        "learn(1)"
+      ]
+    },
+    {
+      "position": [
+        1110,
+        580
+      ],
+      "id": 33,
+      "type": "skip",
+      "label": "Reflection Slot",
+      "text": "A narrow slot lets a person see the observatory through angled glass. The victim could have seen the killer without facing them.",
+      "nextId": 31,
+      "entryEffects": [
+        "learn(1)"
+      ]
+    },
+    {
+      "position": [
+        1110,
+        800
+      ],
+      "id": 34,
+      "type": "skip",
+      "label": "Mirror Seam",
+      "text": "The mirror wall opens with a sigh when you press a screw hidden under silver leaf. Orson told uniforms it was fixed shut.",
+      "nextId": 35,
+      "entryEffects": [
+        "orsonContradiction = true",
+        "learn(1)",
+        "markSuspect(4)"
+      ]
+    },
+    {
+      "position": [
+        1110,
+        1020
+      ],
+      "id": 35,
+      "type": "redirect",
+      "label": "Dust Fall",
+      "text": "Dust falls from the seam. Finch catches a metal glint before it drops into the grate.",
+      "links": [
+        {
+          "id": 31,
+          "weight": 4,
+          "effects": [
+            "hasPowderTrace = true",
+            "learn(1)"
+          ]
+        },
+        {
+          "id": 31,
+          "weight": 3,
+          "effects": [
+            "spendFocus(1)",
+            "tick(1)"
+          ]
+        }
+      ]
+    },
+    {
+      "position": [
+        1110,
+        1240
+      ],
+      "id": 36,
+      "type": "skip",
+      "label": "Roof Hatch",
+      "text": "On the roof, a janitor smoking under the rain tank admits he saw a courier cross from the river stairs carrying white roses.",
+      "nextId": 37,
+      "entryEffects": [
+        "rooftopWitness = true",
+        "foundCourierName = true",
+        "learn(1)"
+      ]
+    },
+    {
+      "position": [
+        1110,
+        1460
+      ],
+      "id": 37,
+      "type": "skip",
+      "label": "Rooftop Name",
+      "text": "The janitor knows the courier only as Rook. He says Rook limped after leaving, as if one shoe hid something hard.",
+      "nextId": 31,
+      "entryEffects": [
+        "markSuspect(5)",
+        "gainLeverage(1)"
+      ]
+    },
+    {
+      "position": [
+        1110,
+        1680
+      ],
+      "id": 38,
+      "type": "skip",
+      "label": "Hall Complete",
+      "text": "The hotel route is no miracle: service lift, mirror seam, roof hatch. The question is who had courage, key, and reason.",
+      "nextId": 10,
+      "entryEffects": [
+        "serviceHallChecked = true"
+      ]
+    },
+    {
+      "position": [
+        1110,
+        1900
+      ],
+      "id": 39,
+      "type": "skip",
+      "label": "Hotel Pattern",
+      "text": "By dawn the Glasswater has given up its architecture. Finch writes <b>ACCESS IS A CONSPIRACY</b> across the top of the board.",
+      "nextId": 9,
+      "entryEffects": [
+        "hotelSearched = true",
+        "raisePublic(1)"
+      ]
+    },
+    {
+      "position": [
+        1110,
+        2120
+      ],
+      "id": 40,
+      "type": "action",
+      "label": "Stage Circuit",
+      "text": "The theater district wakes late and lies early. Lys rehearsed here, Clara sang here, and Mira Quill bought drinks here for anyone with a secret.",
+      "actions": [
+        {
+          "label": "🎭 Dressing room",
+          "id": 41,
+          "condition": "!theaterRoomDone"
+        },
+        {
+          "label": "📰 News desk",
+          "id": 50,
+          "condition": "!newsroomDone"
+        },
+        {
+          "label": "🍸 Gala circle",
+          "id": 59,
+          "condition": "!guestCircleDone"
+        },
+        {
+          "label": "🧭 Leave stage",
+          "id": 69,
+          "condition": "theaterRoomDone && newsroomDone && guestCircleDone"
+        }
+      ],
+      "entryEffects": [
+        "tick(1)"
+      ]
+    },
+    {
+      "position": [
+        1440,
+        140
+      ],
+      "id": 41,
+      "type": "skip",
+      "label": "Dressing Room",
+      "text": "Lys's dressing room has been searched badly. Drawers gape open, but the makeup mirror still hides a strip of paper under its frame.",
+      "nextId": 42
+    },
+    {
+      "position": [
+        1440,
+        360
+      ],
+      "id": 42,
+      "type": "action",
+      "label": "Backstage Clues",
+      "text": "Backstage dust records panic in smaller handwriting than people do.",
+      "actions": [
+        {
+          "label": "💌 Paper strip",
+          "id": 43,
+          "condition": "!hasFarewellLetter"
+        },
+        {
+          "label": "💄 Makeup tray",
+          "id": 45,
+          "condition": "!foundPoisonVial"
+        },
+        {
+          "label": "🎵 Ask Clara",
+          "id": 47,
+          "condition": "!claraAlibi"
+        },
+        {
+          "label": "✅ Room done",
+          "id": 49,
+          "condition": "hasFarewellLetter && foundPoisonVial && claraAlibi"
+        }
+      ]
+    },
+    {
+      "position": [
+        1440,
+        580
+      ],
+      "id": 43,
+      "type": "skip",
+      "label": "Farewell Strip",
+      "text": "The paper is a letter in Clara's hand: not a threat, a farewell. \"I will not be your alibi anymore,\" it says.",
+      "nextId": 44,
+      "entryEffects": [
+        "hasFarewellLetter = true",
+        "raiseClaraTrust(1)",
+        "learn(1)"
+      ]
+    },
+    {
+      "position": [
+        1440,
+        800
+      ],
+      "id": 44,
+      "type": "skip",
+      "label": "Not Motive",
+      "text": "The letter bruises Clara, but it does not convict her. It places her hurt before midnight, not at the mirror wall.",
+      "nextId": 42,
+      "entryEffects": [
+        "claraLie = true"
+      ]
+    },
+    {
+      "position": [
+        1440,
+        1020
+      ],
+      "id": 45,
+      "type": "skip",
+      "label": "Makeup Tray",
+      "text": "One stage vial is missing from the tray. Its label says pearl base, but the residue smells like almonds under the greasepaint.",
+      "nextId": 46,
+      "entryEffects": [
+        "foundPoisonVial = true",
+        "learn(1)",
+        "markSuspect(3)"
+      ]
+    },
+    {
+      "position": [
+        1440,
+        1240
+      ],
+      "id": 46,
+      "type": "skip",
+      "label": "Cosmetic Poison",
+      "text": "A dresser remembers Mira borrowing the tray to \"test a column detail.\" A journalist with stage poison is either brilliant or terrified.",
+      "nextId": 42,
+      "entryEffects": [
+        "miraMotive = true",
+        "gainLeverage(1)"
+      ]
+    },
+    {
+      "position": [
+        1440,
+        1460
+      ],
+      "id": 47,
+      "type": "skip",
+      "label": "Clara Song",
+      "text": "Clara sings one line before answering: \"Lys was alive when I left.\" The tremor in her voice arrives on <i>alive</i>, not <i>left</i>.",
+      "nextId": 48,
+      "entryEffects": [
+        "claraAlibi = true",
+        "raiseClaraTrust(1)",
+        "learn(1)"
+      ]
+    },
+    {
+      "position": [
+        1440,
+        1680
+      ],
+      "id": 48,
+      "type": "skip",
+      "label": "Stage Door",
+      "text": "The stage doorman confirms Clara left at 1:22 by the alley, before your corrected time of death. Her lie protects grief, not opportunity.",
+      "nextId": 42,
+      "entryEffects": [
+        "learn(1)"
+      ]
+    },
+    {
+      "position": [
+        1440,
+        1900
+      ],
+      "id": 49,
+      "type": "skip",
+      "label": "Room Cleared",
+      "text": "The dressing room clears one suspect without clearing the night. Clara had motive to cry, not a route to kill.",
+      "nextId": 40,
+      "entryEffects": [
+        "theaterRoomDone = true"
+      ]
+    },
+    {
+      "position": [
+        1440,
+        2120
+      ],
+      "id": 50,
+      "type": "skip",
+      "label": "News Desk",
+      "text": "Mira Quill's newspaper office smells of ink and sleeplessness. Her desk is empty except for a typewriter ribbon left warm under its cover.",
+      "nextId": 51,
+      "entryEffects": [
+        "tick(1)"
+      ]
+    },
+    {
+      "position": [
+        1770,
+        140
+      ],
+      "id": 51,
+      "type": "action",
+      "label": "Column Draft",
+      "text": "A locked drawer, a trash basket, and a wall of clipped scandals compete for your attention.",
+      "actions": [
+        {
+          "label": "⌨️ Type ribbon",
+          "id": 52,
+          "condition": "!miraDraft"
+        },
+        {
+          "label": "🗑️ Trash basket",
+          "id": 54,
+          "condition": "!foundBlackmailNote"
+        },
+        {
+          "label": "🧾 Clippings",
+          "id": 56,
+          "condition": "!miraMotive"
+        },
+        {
+          "label": "✅ Desk done",
+          "id": 58,
+          "condition": "miraDraft && foundBlackmailNote && miraMotive"
+        }
+      ]
+    },
+    {
+      "position": [
+        1770,
+        360
+      ],
+      "id": 52,
+      "type": "skip",
+      "label": "Ribbon Ghost",
+      "text": "You shade the ribbon against a lamp. The last column named Hale's debt, Bell's key work, and Lys as the source.",
+      "nextId": 53,
+      "entryEffects": [
+        "miraDraft = true",
+        "learn(2)",
+        "markSuspect(3)"
+      ]
+    },
+    {
+      "position": [
+        1770,
+        580
+      ],
+      "id": 53,
+      "type": "skip",
+      "label": "Missing Ending",
+      "text": "The final paragraph is ripped from the ribbon record. Mira found the truth and then removed the route.",
+      "nextId": 51,
+      "entryEffects": [
+        "gainLeverage(1)"
+      ]
+    },
+    {
+      "position": [
+        1770,
+        800
+      ],
+      "id": 54,
+      "type": "skip",
+      "label": "Trash Basket",
+      "text": "A burned note survives in the metal basket: <b>Pay the mirror man or I print the ledger.</b> The signature is only an initial, L.",
+      "nextId": 55,
+      "entryEffects": [
+        "foundBlackmailNote = true",
+        "learn(1)"
+      ]
+    },
+    {
+      "position": [
+        1770,
+        1020
+      ],
+      "id": 55,
+      "type": "skip",
+      "label": "Blackmail Shape",
+      "text": "Lys was blackmailing someone with access to an engineer and fear of print. That narrows the city more than politics likes.",
+      "nextId": 51,
+      "entryEffects": [
+        "gainLeverage(1)"
+      ]
+    },
+    {
+      "position": [
+        1770,
+        1240
+      ],
+      "id": 56,
+      "type": "skip",
+      "label": "Scandal Wall",
+      "text": "Mira's wall links Hale to river bonds, Orson to hotel renovations, and Ilya Rook to sealed courier deliveries.",
+      "nextId": 57,
+      "entryEffects": [
+        "miraMotive = true",
+        "learn(1)"
+      ]
+    },
+    {
+      "position": [
+        1770,
+        1460
+      ],
+      "id": 57,
+      "type": "skip",
+      "label": "Reporter Fear",
+      "text": "A note in Mira's shorthand says, \"If I disappear, ask why the roses came from the river.\" She expected danger and kept writing.",
+      "nextId": 51,
+      "entryEffects": [
+        "foundCourierName = true",
+        "markSuspect(5)"
+      ]
+    },
+    {
+      "position": [
+        1770,
+        1680
+      ],
+      "id": 58,
+      "type": "skip",
+      "label": "Desk Closed",
+      "text": "Mira's desk gives you motive, warning, and a missing paragraph. She hid the route, not the murder.",
+      "nextId": 40,
+      "entryEffects": [
+        "newsroomDone = true"
+      ]
+    },
+    {
+      "position": [
+        1770,
+        1900
+      ],
+      "id": 59,
+      "type": "skip",
+      "label": "Gala Circle",
+      "text": "The gala survivors occupy a private club where everyone speaks softly because every table has a reporter under it.",
+      "nextId": 60
+    },
+    {
+      "position": [
+        1770,
+        2120
+      ],
+      "id": 60,
+      "type": "action",
+      "label": "Witness Drift",
+      "text": "Three witnesses remember the same hour differently, which means one remembers it usefully.",
+      "actions": [
+        {
+          "label": "🥂 Mayor",
+          "id": 61,
+          "condition": "!haleDebt"
+        },
+        {
+          "label": "🎻 Violinist",
+          "id": 63,
+          "condition": "!hasBurnedTicket"
+        },
+        {
+          "label": "🧤 Coat girl",
+          "id": 65,
+          "condition": "!claraLie || !hasRoseBox"
+        },
+        {
+          "label": "✅ Guests done",
+          "id": 68,
+          "condition": "haleDebt && hasBurnedTicket && hasRoseBox"
+        }
+      ]
+    },
+    {
+      "position": [
+        2100,
+        140
+      ],
+      "id": 61,
+      "type": "skip",
+      "label": "Mayor Smile",
+      "text": "The mayor calls Hale \"indispensable\" twice. That is not praise. It is fear wearing dinner clothes.",
+      "nextId": 62,
+      "entryEffects": [
+        "haleDebt = true",
+        "markSuspect(2)",
+        "learn(1)"
+      ]
+    },
+    {
+      "position": [
+        2100,
+        360
+      ],
+      "id": 62,
+      "type": "redirect",
+      "label": "Political Risk",
+      "text": "Pushing the mayor may earn a clearer answer or a louder complaint.",
+      "links": [
+        {
+          "id": 60,
+          "weight": 5,
+          "condition": "publicTrust >= 2",
+          "effects": [
+            "gainLeverage(1)",
+            "learn(1)"
+          ]
+        },
+        {
+          "id": 60,
+          "weight": 4,
+          "effects": [
+            "heatUp(1)",
+            "spendFocus(1)"
+          ]
+        }
+      ]
+    },
+    {
+      "position": [
+        2100,
+        580
+      ],
+      "id": 63,
+      "type": "skip",
+      "label": "Violinist",
+      "text": "The violinist saw Lys argue with a man in engineer gray, then burn a theater ticket in a candle flame.",
+      "nextId": 64,
+      "entryEffects": [
+        "hasBurnedTicket = true",
+        "learn(1)",
+        "markSuspect(4)"
+      ]
+    },
+    {
+      "position": [
+        2100,
+        800
+      ],
+      "id": 64,
+      "type": "skip",
+      "label": "Grey Sleeve",
+      "text": "The sleeve was hotel gray, but the cufflink was council silver. Someone dressed one class down to move unseen.",
+      "nextId": 60,
+      "entryEffects": [
+        "haleContradiction = true"
+      ]
+    },
+    {
+      "position": [
+        2100,
+        1020
+      ],
+      "id": 65,
+      "type": "skip",
+      "label": "Coat Girl",
+      "text": "The coat girl handled a white rose box that nobody claimed. It was heavy, damp, and addressed to Lys in block letters.",
+      "nextId": 66,
+      "entryEffects": [
+        "hasRoseBox = true",
+        "foundCourierName = true",
+        "learn(1)"
+      ]
+    },
+    {
+      "position": [
+        2100,
+        1240
+      ],
+      "id": 66,
+      "type": "redirect",
+      "label": "Rose Memory",
+      "text": "She can almost remember the courier's face. Fear makes memory slippery.",
+      "links": [
+        {
+          "id": 67,
+          "weight": 6,
+          "condition": "focus >= 3",
+          "effects": [
+            "raiseIlyaTrust(1)",
+            "learn(1)"
+          ]
+        },
+        {
+          "id": 60,
+          "weight": 3,
+          "effects": [
+            "spendFocus(1)",
+            "tick(1)"
+          ]
+        }
+      ]
+    },
+    {
+      "position": [
+        2100,
+        1460
+      ],
+      "id": 67,
+      "type": "skip",
+      "label": "Courier Scar",
+      "text": "She remembers a crescent scar at the courier's jaw and a limp after he left. Rook becomes less rumor and more address.",
+      "nextId": 60,
+      "entryEffects": [
+        "ilyaRoute = true"
+      ]
+    },
+    {
+      "position": [
+        2100,
+        1680
+      ],
+      "id": 68,
+      "type": "skip",
+      "label": "Circle Broken",
+      "text": "The gala witnesses give you political fear, a burned ticket, and a rose box. Everyone saw something. Nobody wanted to be first.",
+      "nextId": 40,
+      "entryEffects": [
+        "guestCircleDone = true"
+      ]
+    },
+    {
+      "position": [
+        2100,
+        1900
+      ],
+      "id": 69,
+      "type": "skip",
+      "label": "Theater Pattern",
+      "text": "The theater district clears Clara's timeline and turns Mira's draft into a loaded question. Finch writes <b>ROSES FROM RIVER</b> beside the mirror sketch.",
+      "nextId": 9,
+      "entryEffects": [
+        "theaterSearched = true",
+        "raisePublic(1)"
+      ]
+    },
+    {
+      "position": [
+        2100,
+        2120
+      ],
+      "id": 70,
+      "type": "action",
+      "label": "River Work",
+      "text": "The river district smells of diesel, wet rope, and fish market coffee. If the rose box came through here, it left a wake.",
+      "actions": [
+        {
+          "label": "⚕️ Morgue",
+          "id": 71,
+          "condition": "!morgueDone"
+        },
+        {
+          "label": "📦 Courier shed",
+          "id": 80,
+          "condition": "!courierDone"
+        },
+        {
+          "label": "🧭 Tail route",
+          "id": 90,
+          "condition": "!tailDone"
+        },
+        {
+          "label": "🧭 Leave docks",
+          "id": 99,
+          "condition": "morgueDone && courierDone && tailDone"
+        }
+      ],
+      "entryEffects": [
+        "tick(1)"
+      ]
+    },
+    {
+      "position": [
+        2430,
+        140
+      ],
+      "id": 71,
+      "type": "skip",
+      "label": "Cold Room",
+      "text": "The coroner has Lys under a sheet and two cups of coffee under his belt. \"Not a romantic death,\" he says. \"Those are rarely so tidy.\"",
+      "nextId": 72
+    },
+    {
+      "position": [
+        2430,
+        360
+      ],
+      "id": 72,
+      "type": "action",
+      "label": "Medical Clues",
+      "text": "The body has three stories left, if you ask carefully.",
+      "actions": [
+        {
+          "label": "🧪 Toxin test",
+          "id": 73,
+          "condition": "!poisonMatched"
+        },
+        {
+          "label": "⌚ Broken watch",
+          "id": 75,
+          "condition": "!hasBrokenWatch"
+        },
+        {
+          "label": "🧤 Missing glove",
+          "id": 77,
+          "condition": "!foundPoisonSign || !hasPowderTrace"
+        },
+        {
+          "label": "✅ Morgue done",
+          "id": 79,
+          "condition": "poisonMatched && hasBrokenWatch && hasPowderTrace"
+        }
+      ]
+    },
+    {
+      "position": [
+        2430,
+        580
+      ],
+      "id": 73,
+      "type": "skip",
+      "label": "Toxin Test",
+      "text": "The coroner's reagent turns violet in the cosmetic residue. The poison rode in makeup wax, not wine.",
+      "nextId": 74,
+      "entryEffects": [
+        "poisonMatched = true",
+        "learn(2)",
+        "spendFocus(1)"
+      ]
+    },
+    {
+      "position": [
+        2430,
+        800
+      ],
+      "id": 74,
+      "type": "skip",
+      "label": "Wax Carrier",
+      "text": "That delivery method required someone who knew Lys would touch her face before stepping into the mirror room.",
+      "nextId": 72,
+      "entryEffects": [
+        "markSuspect(3)"
+      ]
+    },
+    {
+      "position": [
+        2430,
+        1020
+      ],
+      "id": 75,
+      "type": "skip",
+      "label": "Broken Watch",
+      "text": "Lys's wristwatch stopped at 1:32, crushed when she fell. It agrees with your candle correction and humiliates the staged clock.",
+      "nextId": 76,
+      "entryEffects": [
+        "hasBrokenWatch = true",
+        "learn(1)"
+      ]
+    },
+    {
+      "position": [
+        2430,
+        1240
+      ],
+      "id": 76,
+      "type": "skip",
+      "label": "Minute Anchor",
+      "text": "The missing fifteen minutes become a corridor: enough time to enter, poison, speak, leave, and stage the room.",
+      "nextId": 72
+    },
+    {
+      "position": [
+        2430,
+        1460
+      ],
+      "id": 77,
+      "type": "skip",
+      "label": "Missing Glove",
+      "text": "The missing glove was cut from Lys's right hand after death. Someone removed powder transfer before uniforms arrived.",
+      "nextId": 78,
+      "entryEffects": [
+        "foundPoisonSign = true",
+        "learn(1)",
+        "heatUp(1)"
+      ]
+    },
+    {
+      "position": [
+        2430,
+        1680
+      ],
+      "id": 78,
+      "type": "skip",
+      "label": "Late Cleanup",
+      "text": "Cleanup means panic or planning. Either way, the killer expected the police to look at doors before skin.",
+      "nextId": 72
+    },
+    {
+      "position": [
+        2430,
+        1900
+      ],
+      "id": 79,
+      "type": "skip",
+      "label": "Morgue Closed",
+      "text": "The medical facts are simple enough to be cruel: poison, false time, removed glove. The locked room was a stage after the murder.",
+      "nextId": 70,
+      "entryEffects": [
+        "morgueDone = true"
+      ]
+    },
+    {
+      "position": [
+        2430,
+        2120
+      ],
+      "id": 80,
+      "type": "skip",
+      "label": "Courier Shed",
+      "text": "Rook's shed stands behind a shuttered fishmonger. A white rose petal floats in an oil puddle by the door.",
+      "nextId": 81
+    },
+    {
+      "position": [
+        2760,
+        140
+      ],
+      "id": 81,
+      "type": "action",
+      "label": "Rook Shed",
+      "text": "Ilya Rook is absent. His shed offers a ledger, a boot rack, and a locked ice chest.",
+      "actions": [
+        {
+          "label": "📒 Delivery book",
+          "id": 82,
+          "condition": "!foundCourierName || !ilyaRoute"
+        },
+        {
+          "label": "👞 Boot rack",
+          "id": 84,
+          "condition": "!ilyaMissingMinute"
+        },
+        {
+          "label": "🧊 Ice chest",
+          "id": 86,
+          "condition": "!hasRoseBox"
+        },
+        {
+          "label": "✅ Shed done",
+          "id": 89,
+          "condition": "ilyaRoute && ilyaMissingMinute && hasRoseBox"
+        }
+      ]
+    },
+    {
+      "position": [
+        2760,
+        360
+      ],
+      "id": 82,
+      "type": "skip",
+      "label": "Delivery Book",
+      "text": "The book records a rose box to Lys, paid by S.H. and routed through an old hotel service stair.",
+      "nextId": 83,
+      "entryEffects": [
+        "foundCourierName = true",
+        "ilyaRoute = true",
+        "learn(2)",
+        "markSuspect(2)"
+      ]
+    },
+    {
+      "position": [
+        2760,
+        580
+      ],
+      "id": 83,
+      "type": "skip",
+      "label": "Initials Burn",
+      "text": "The initials are too neat. Hale wanted deniability, not invisibility. That usually means he trusted another person to finish the dirty work.",
+      "nextId": 81,
+      "entryEffects": [
+        "gainLeverage(1)"
+      ]
+    },
+    {
+      "position": [
+        2760,
+        800
+      ],
+      "id": 84,
+      "type": "skip",
+      "label": "Boot Rack",
+      "text": "One boot hides a brass splinter in the heel. It matches the mirror seam, explaining Rook's limp after the gala.",
+      "nextId": 85,
+      "entryEffects": [
+        "ilyaMissingMinute = true",
+        "learn(1)",
+        "markSuspect(5)"
+      ]
+    },
+    {
+      "position": [
+        2760,
+        1020
+      ],
+      "id": 85,
+      "type": "skip",
+      "label": "Reluctant Courier",
+      "text": "Rook crossed the roof and touched the mirror seam, but a courier's route is not the same as a killer's hand.",
+      "nextId": 81,
+      "entryEffects": [
+        "raiseIlyaTrust(1)"
+      ]
+    },
+    {
+      "position": [
+        2760,
+        1240
+      ],
+      "id": 86,
+      "type": "skip",
+      "label": "Ice Chest",
+      "text": "The chest contains wilted white roses and a false bottom lined with waxed cloth. The poison vial was not stored here, only transported.",
+      "nextId": 87,
+      "entryEffects": [
+        "hasRoseBox = true",
+        "learn(1)"
+      ]
+    },
+    {
+      "position": [
+        2760,
+        1460
+      ],
+      "id": 87,
+      "type": "redirect",
+      "label": "Hidden Label",
+      "text": "A soaked label clings to the false bottom. It might lift cleanly or dissolve under your tweezers.",
+      "links": [
+        {
+          "id": 88,
+          "weight": 6,
+          "condition": "focus >= 3",
+          "effects": [
+            "learn(1)",
+            "gainLeverage(1)"
+          ]
+        },
+        {
+          "id": 81,
+          "weight": 4,
+          "effects": [
+            "spendFocus(1)",
+            "tick(1)"
+          ]
+        }
+      ]
+    },
+    {
+      "position": [
+        2760,
+        1680
+      ],
+      "id": 88,
+      "type": "skip",
+      "label": "Wax Label",
+      "text": "The label shows the hotel florist did not pack the box. It came from Hale's campaign warehouse by the river.",
+      "nextId": 81,
+      "entryEffects": [
+        "haleDebt = true",
+        "markSuspect(2)"
+      ]
+    },
+    {
+      "position": [
+        2760,
+        1900
+      ],
+      "id": 89,
+      "type": "skip",
+      "label": "Shed Closed",
+      "text": "Rook delivered access in a rose box. Whether he knew it carried murder is still open, but his route ties river to mirror.",
+      "nextId": 70,
+      "entryEffects": [
+        "courierDone = true"
+      ]
+    },
+    {
+      "position": [
+        2760,
+        2120
+      ],
+      "id": 90,
+      "type": "skip",
+      "label": "Tail Route",
+      "text": "Finch finds Rook drinking tea behind a ferry office. He runs when he sees your badge, which is either guilt or excellent survival.",
+      "nextId": 91,
+      "entryEffects": [
+        "tick(1)"
+      ]
+    },
+    {
+      "position": [
+        3090,
+        140
+      ],
+      "id": 91,
+      "type": "redirect",
+      "label": "Rain Chase",
+      "text": "You chase him through fish stalls and under steam pipes. The wet stones choose sides at random.",
+      "links": [
+        {
+          "id": 92,
+          "weight": 5,
+          "condition": "focus >= 3",
+          "effects": [
+            "spendFocus(1)",
+            "learn(1)"
+          ]
+        },
+        {
+          "id": 94,
+          "weight": 3,
+          "effects": [
+            "spendFocus(2)",
+            "heatUp(1)"
+          ]
+        },
+        {
+          "id": 96,
+          "weight": 2,
+          "effects": [
+            "tick(1)",
+            "heatUp(1)"
+          ]
+        }
+      ]
+    },
+    {
+      "position": [
+        3090,
+        360
+      ],
+      "id": 92,
+      "type": "skip",
+      "label": "Rook Caught",
+      "text": "You corner Rook under the ferry clock. He raises both hands and says, \"I delivered a box, detective. I did not know it held a door.\"",
+      "nextId": 93,
+      "entryEffects": [
+        "raiseIlyaTrust(1)",
+        "foundCourierName = true"
+      ]
+    },
+    {
+      "position": [
+        3090,
+        580
+      ],
+      "id": 93,
+      "type": "skip",
+      "label": "Courier Confession",
+      "text": "Rook names Orson as the man who showed him where to leave the box, and Hale as the man whose envelope paid twice the normal rate.",
+      "nextId": 98,
+      "entryEffects": [
+        "orsonAccess = true",
+        "haleDebt = true",
+        "learn(2)"
+      ]
+    },
+    {
+      "position": [
+        3090,
+        800
+      ],
+      "id": 94,
+      "type": "skip",
+      "label": "Lost Corner",
+      "text": "Rook vanishes behind a tram. You find only a torn delivery receipt and your own temper steaming in the rain.",
+      "nextId": 95,
+      "entryEffects": [
+        "foundCourierName = true",
+        "learn(1)"
+      ]
+    },
+    {
+      "position": [
+        3090,
+        1020
+      ],
+      "id": 95,
+      "type": "skip",
+      "label": "Receipt Mark",
+      "text": "The receipt still carries a hotel service mark and Hale's campaign warehouse code. Missing the man does not erase the route.",
+      "nextId": 98,
+      "entryEffects": [
+        "ilyaRoute = true",
+        "haleDebt = true"
+      ]
+    },
+    {
+      "position": [
+        3090,
+        1240
+      ],
+      "id": 96,
+      "type": "skip",
+      "label": "Public Scene",
+      "text": "A patrol wagon cuts off the wrong alley. Reporters see you shove through a crowd, and the morning edition will not be kind.",
+      "nextId": 97,
+      "entryEffects": [
+        "heatUp(1)",
+        "spendFocus(1)"
+      ]
+    },
+    {
+      "position": [
+        3090,
+        1460
+      ],
+      "id": 97,
+      "type": "skip",
+      "label": "Witness Slip",
+      "text": "A ferry clerk quietly hands Finch a note after the scene: Rook was frightened of Orson Bell, not Lys Rowe.",
+      "nextId": 98,
+      "entryEffects": [
+        "orsonAccess = true",
+        "learn(1)"
+      ]
+    },
+    {
+      "position": [
+        3090,
+        1680
+      ],
+      "id": 98,
+      "type": "skip",
+      "label": "Route Marked",
+      "text": "Whatever the chase cost, the river now points at the hotel corridor. The rose box carried access, not romance.",
+      "nextId": 70,
+      "entryEffects": [
+        "tailDone = true"
+      ]
+    },
+    {
+      "position": [
+        3090,
+        1900
+      ],
+      "id": 99,
+      "type": "skip",
+      "label": "Dock Pattern",
+      "text": "The docks give you poison delivery, missing time, and Rook's service route. Finch draws a red line from river warehouse to mirror seam.",
+      "nextId": 9,
+      "entryEffects": [
+        "dockSearched = true",
+        "raisePublic(1)"
+      ]
+    },
+    {
+      "position": [
+        3090,
+        2120
+      ],
+      "id": 100,
+      "type": "action",
+      "label": "Paper City",
+      "text": "Sable Harbor keeps its real sins in ledgers, permits, and basement plans. Paper does not confess, but it tears under pressure.",
+      "actions": [
+        {
+          "label": "📚 Archive",
+          "id": 101,
+          "condition": "!archiveDone"
+        },
+        {
+          "label": "⚙️ Engineer",
+          "id": 110,
+          "condition": "!engineerDone"
+        },
+        {
+          "label": "🏦 Bank files",
+          "id": 120,
+          "condition": "!bankDone"
+        },
+        {
+          "label": "🧭 Leave files",
+          "id": 129,
+          "condition": "archiveDone && engineerDone && bankDone"
+        }
+      ],
+      "entryEffects": [
+        "tick(1)"
+      ]
+    },
+    {
+      "position": [
+        3420,
+        140
+      ],
+      "id": 101,
+      "type": "skip",
+      "label": "City Archive",
+      "text": "The city archive has the temperature of a tomb and the manners of a bank. A clerk tries to send you away with a form for a form.",
+      "nextId": 102
+    },
+    {
+      "position": [
+        3420,
+        360
+      ],
+      "id": 102,
+      "type": "action",
+      "label": "Archive Search",
+      "text": "You can search permits, renovation plans, or old fire maps before the clerk's patience expires.",
+      "actions": [
+        {
+          "label": "🏨 Permits",
+          "id": 103,
+          "condition": "!hasLedgerPage"
+        },
+        {
+          "label": "🧱 Renovations",
+          "id": 105,
+          "condition": "!serviceCorridor"
+        },
+        {
+          "label": "🔥 Fire maps",
+          "id": 107,
+          "condition": "!orsonAccess"
+        },
+        {
+          "label": "✅ Archive done",
+          "id": 109,
+          "condition": "hasLedgerPage && serviceCorridor && orsonAccess"
+        }
+      ]
+    },
+    {
+      "position": [
+        3420,
+        580
+      ],
+      "id": 103,
+      "type": "redirect",
+      "label": "Permit Stack",
+      "text": "The permit stack is misfiled, naturally. You can charm the clerk or start moving boxes.",
+      "links": [
+        {
+          "id": 104,
+          "weight": 6,
+          "condition": "publicTrust >= 3",
+          "effects": [
+            "learn(1)",
+            "tick(1)"
+          ]
+        },
+        {
+          "id": 104,
+          "weight": 4,
+          "effects": [
+            "spendFocus(1)",
+            "tick(2)"
+          ]
+        }
+      ]
+    },
+    {
+      "position": [
+        3420,
+        800
+      ],
+      "id": 104,
+      "type": "skip",
+      "label": "Ledger Page",
+      "text": "Inside a permit folder, you find a copied ledger page listing Hale's river bond debt and payments to Bell Maintenance.",
+      "nextId": 102,
+      "entryEffects": [
+        "hasLedgerPage = true",
+        "haleDebt = true",
+        "learn(2)"
+      ]
+    },
+    {
+      "position": [
+        3420,
+        1020
+      ],
+      "id": 105,
+      "type": "skip",
+      "label": "Renovation Plans",
+      "text": "The renovation plan labels the mirror corridor as decorative glasswork. Someone paid extra to misname a passage.",
+      "nextId": 106,
+      "entryEffects": [
+        "serviceCorridor = true",
+        "learn(1)"
+      ]
+    },
+    {
+      "position": [
+        3420,
+        1240
+      ],
+      "id": 106,
+      "type": "skip",
+      "label": "Hidden Passage",
+      "text": "A pencil note names Orson Bell as consulting engineer and Silas Hale as sponsor. The city signed off without inspection.",
+      "nextId": 102,
+      "entryEffects": [
+        "orsonAccess = true",
+        "markSuspect(4)"
+      ]
+    },
+    {
+      "position": [
+        3420,
+        1460
+      ],
+      "id": 107,
+      "type": "skip",
+      "label": "Fire Maps",
+      "text": "Old fire maps show the roof hatch once fed an escape stair. Bell's later plan bricked it into a one-person corridor.",
+      "nextId": 108,
+      "entryEffects": [
+        "orsonAccess = true",
+        "learn(1)"
+      ]
+    },
+    {
+      "position": [
+        3420,
+        1680
+      ],
+      "id": 108,
+      "type": "skip",
+      "label": "Escape Ghost",
+      "text": "The map makes Rook's route practical and the locked room fraudulent. Architecture, once paid, becomes testimony.",
+      "nextId": 102,
+      "entryEffects": [
+        "ilyaRoute = true"
+      ]
+    },
+    {
+      "position": [
+        3420,
+        1900
+      ],
+      "id": 109,
+      "type": "skip",
+      "label": "Archive Closed",
+      "text": "The archive yields motive, access, and official negligence. The clerk asks if you found what you needed. Finch says, \"We found what they needed hidden.\"",
+      "nextId": 100,
+      "entryEffects": [
+        "archiveDone = true"
+      ]
+    },
+    {
+      "position": [
+        3420,
+        2120
+      ],
+      "id": 110,
+      "type": "skip",
+      "label": "Bell Shop",
+      "text": "Orson Bell's workshop is under the hotel laundry. Tools hang in exact rows, the kind of order that hides panic well.",
+      "nextId": 111
+    },
+    {
+      "position": [
+        3750,
+        140
+      ],
+      "id": 111,
+      "type": "action",
+      "label": "Engineer Bench",
+      "text": "A workbench, a key mold, and an invoice spike wait under the humming bulb.",
+      "actions": [
+        {
+          "label": "🔩 Workbench",
+          "id": 112,
+          "condition": "!orsonContradiction"
+        },
+        {
+          "label": "🗝️ Key mold",
+          "id": 114,
+          "condition": "!foundSecondKey"
+        },
+        {
+          "label": "🧾 Invoices",
+          "id": 116,
+          "condition": "!bellConfession"
+        },
+        {
+          "label": "✅ Shop done",
+          "id": 119,
+          "condition": "orsonContradiction && foundSecondKey && bellConfession"
+        }
+      ]
+    },
+    {
+      "position": [
+        3750,
+        360
+      ],
+      "id": 112,
+      "type": "skip",
+      "label": "Fresh Filing",
+      "text": "Metal filings on the bench match the mirror seam screw. Bell worked on the passage after claiming it had been sealed for months.",
+      "nextId": 113,
+      "entryEffects": [
+        "orsonContradiction = true",
+        "learn(1)",
+        "markSuspect(4)"
+      ]
+    },
+    {
+      "position": [
+        3750,
+        580
+      ],
+      "id": 113,
+      "type": "skip",
+      "label": "Engineer Lie",
+      "text": "A careful lie is still a door. Bell may not have killed Lys, but he made the room possible.",
+      "nextId": 111,
+      "entryEffects": [
+        "gainLeverage(1)"
+      ]
+    },
+    {
+      "position": [
+        3750,
+        800
+      ],
+      "id": 114,
+      "type": "skip",
+      "label": "Key Mold",
+      "text": "The key mold holds brass dust from a duplicate service key. The shape matches the polished tag from the hotel desk.",
+      "nextId": 115,
+      "entryEffects": [
+        "foundSecondKey = true",
+        "learn(1)"
+      ]
+    },
+    {
+      "position": [
+        3750,
+        1020
+      ],
+      "id": 115,
+      "type": "skip",
+      "label": "Duplicate Route",
+      "text": "The duplicate would open the service corridor, not the public door. That explains the locked-room trick without touching the impossible.",
+      "nextId": 111,
+      "entryEffects": [
+        "serviceCorridor = true"
+      ]
+    },
+    {
+      "position": [
+        3750,
+        1240
+      ],
+      "id": 116,
+      "type": "skip",
+      "label": "Invoice Spike",
+      "text": "Three invoices from Bell Maintenance were paid by Hale's campaign fund. The last is marked <i>mirror adjustment, urgent</i>.",
+      "nextId": 117,
+      "entryEffects": [
+        "haleDebt = true",
+        "learn(1)",
+        "gainLeverage(1)"
+      ]
+    },
+    {
+      "position": [
+        3750,
+        1460
+      ],
+      "id": 117,
+      "type": "redirect",
+      "label": "Bell Pressure",
+      "text": "Bell returns early and sees you at the invoice spike. His face folds before his mouth lies.",
+      "links": [
+        {
+          "id": 118,
+          "weight": 7,
+          "condition": "leverage >= 2",
+          "effects": [
+            "spendLeverage(1)",
+            "learn(2)"
+          ]
+        },
+        {
+          "id": 111,
+          "weight": 3,
+          "effects": [
+            "heatUp(1)",
+            "spendFocus(1)"
+          ]
+        }
+      ]
+    },
+    {
+      "position": [
+        3750,
+        1680
+      ],
+      "id": 118,
+      "type": "skip",
+      "label": "Bell Cracks",
+      "text": "Bell admits he sold access and made a duplicate key. He swears Hale ordered the passage opened and Rook delivered the box.",
+      "nextId": 111,
+      "entryEffects": [
+        "bellConfession = true",
+        "orsonAccess = true",
+        "raiseOrsonTrust(1)",
+        "markSuspect(2)"
+      ]
+    },
+    {
+      "position": [
+        3750,
+        1900
+      ],
+      "id": 119,
+      "type": "skip",
+      "label": "Shop Closed",
+      "text": "Bell's workshop turns the mirror from miracle into mechanism. Hale bought the mechanism, Bell built it, and Rook carried it.",
+      "nextId": 100,
+      "entryEffects": [
+        "engineerDone = true"
+      ]
+    },
+    {
+      "position": [
+        3750,
+        2120
+      ],
+      "id": 120,
+      "type": "skip",
+      "label": "Bank Files",
+      "text": "The bank manager hates subpoenas almost as much as he hates wet detectives on marble floors.",
+      "nextId": 121
+    },
+    {
+      "position": [
+        4080,
+        140
+      ],
+      "id": 121,
+      "type": "action",
+      "label": "Debt Trail",
+      "text": "The files can show Hale's debt, Mira's payments, or campaign warehouse rentals.",
+      "actions": [
+        {
+          "label": "💰 Hale debt",
+          "id": 122,
+          "condition": "!haleDebt"
+        },
+        {
+          "label": "📰 Mira pay",
+          "id": 124,
+          "condition": "!miraDraft"
+        },
+        {
+          "label": "🏭 Warehouse",
+          "id": 126,
+          "condition": "!hasRoseBox || !foundCourierName"
+        },
+        {
+          "label": "✅ Bank done",
+          "id": 128,
+          "condition": "haleDebt && miraDraft && hasRoseBox"
+        }
+      ]
+    },
+    {
+      "position": [
+        4080,
+        360
+      ],
+      "id": 122,
+      "type": "skip",
+      "label": "Debt Note",
+      "text": "Hale owed river bonds to men who break fingers for punctuation. Lys's ledger could have ended his career and his breathing.",
+      "nextId": 123,
+      "entryEffects": [
+        "haleDebt = true",
+        "learn(2)",
+        "markSuspect(2)"
+      ]
+    },
+    {
+      "position": [
+        4080,
+        580
+      ],
+      "id": 123,
+      "type": "skip",
+      "label": "Pressure Math",
+      "text": "Debt plus blackmail is motive. Debt plus a mirror corridor is a plan trying to look clever.",
+      "nextId": 121,
+      "entryEffects": [
+        "gainLeverage(1)"
+      ]
+    },
+    {
+      "position": [
+        4080,
+        800
+      ],
+      "id": 124,
+      "type": "skip",
+      "label": "Mira Payment",
+      "text": "Mira paid for copies of Hale's debt statements three days before the gala. Her column was a fuse, not a confession.",
+      "nextId": 125,
+      "entryEffects": [
+        "miraDraft = true",
+        "miraMotive = true",
+        "learn(1)"
+      ]
+    },
+    {
+      "position": [
+        4080,
+        1020
+      ],
+      "id": 125,
+      "type": "skip",
+      "label": "Reporter Trail",
+      "text": "She followed money to Lys and then to Bell. If she hid anything, it was the source she feared would be killed next.",
+      "nextId": 121,
+      "entryEffects": [
+        "raiseMiraTrust(1)"
+      ]
+    },
+    {
+      "position": [
+        4080,
+        1240
+      ],
+      "id": 126,
+      "type": "skip",
+      "label": "Warehouse Rent",
+      "text": "The campaign rented a river warehouse under a civic charity name. White rose boxes shipped from it on gala night.",
+      "nextId": 127,
+      "entryEffects": [
+        "hasRoseBox = true",
+        "foundCourierName = true",
+        "learn(1)"
+      ]
+    },
+    {
+      "position": [
+        4080,
+        1460
+      ],
+      "id": 127,
+      "type": "skip",
+      "label": "Charity Mask",
+      "text": "Hale laundered logistics through charity paperwork. Sable Harbor does love a sin with letterhead.",
+      "nextId": 121,
+      "entryEffects": [
+        "raisePublic(1)"
+      ]
+    },
+    {
+      "position": [
+        4080,
+        1680
+      ],
+      "id": 128,
+      "type": "skip",
+      "label": "Bank Closed",
+      "text": "The bank files finish the money trail: debt, reporter pressure, warehouse route. The case now has a skeleton.",
+      "nextId": 100,
+      "entryEffects": [
+        "bankDone = true"
+      ]
+    },
+    {
+      "position": [
+        4080,
+        1900
+      ],
+      "id": 129,
+      "type": "skip",
+      "label": "Paper Pattern",
+      "text": "Records turn suspicion into structure. Finch pins debt, access, warehouse, and mirror plan into one ugly rectangle.",
+      "nextId": 9,
+      "entryEffects": [
+        "recordsSearched = true",
+        "raisePublic(1)"
+      ]
+    },
+    {
+      "position": [
+        4080,
+        2120
+      ],
+      "id": 130,
+      "type": "action",
+      "label": "Interview Hall",
+      "text": "You borrow a municipal hearing room. Five suspects wait outside in five different kinds of silence.",
+      "actions": [
+        {
+          "label": "🎤 Clara",
+          "id": 131,
+          "condition": "!interviewedClara"
+        },
+        {
+          "label": "🏛️ Hale",
+          "id": 137,
+          "condition": "!interviewedHale"
+        },
+        {
+          "label": "📰 Mira",
+          "id": 143,
+          "condition": "!interviewedMira"
+        },
+        {
+          "label": "⚙️ Orson",
+          "id": 149,
+          "condition": "!interviewedOrson"
+        },
+        {
+          "label": "📦 Ilya",
+          "id": 155,
+          "condition": "!interviewedIlya"
+        },
+        {
+          "label": "✅ End talks",
+          "id": 159,
+          "condition": "interviewedClara && interviewedHale && interviewedMira && interviewedOrson && interviewedIlya"
+        }
+      ],
+      "entryEffects": [
+        "tick(1)"
+      ]
+    },
+    {
+      "position": [
+        4410,
+        140
+      ],
+      "id": 131,
+      "type": "skip",
+      "label": "Clara Waits",
+      "text": "Clara Voss keeps her gloves folded in her lap. The blue silk thread on your board has made her old grief look like evidence.",
+      "nextId": 132,
+      "entryEffects": [
+        "markSuspect(1)"
+      ]
+    },
+    {
+      "position": [
+        4410,
+        360
+      ],
+      "id": 132,
+      "type": "action",
+      "label": "Clara Questions",
+      "text": "Clara will answer more if you show her you know the difference between grief and murder.",
+      "actions": [
+        {
+          "label": "💌 Show letter",
+          "id": 133,
+          "condition": "hasFarewellLetter",
+          "effects": [
+            "raiseClaraTrust(1)"
+          ]
+        },
+        {
+          "label": "📷 Show clock",
+          "id": 134,
+          "condition": "hasClockPhoto && hasBrokenWatch",
+          "effects": [
+            "learn(1)"
+          ]
+        },
+        {
+          "label": "🧵 Press thread",
+          "id": 135,
+          "condition": "hasBlueThread",
+          "effects": [
+            "spendFocus(1)"
+          ]
+        },
+        {
+          "label": "✅ Release",
+          "id": 136,
+          "condition": "claraAlibi || claraTrust >= 1"
+        }
+      ]
+    },
+    {
+      "position": [
+        4410,
+        580
+      ],
+      "id": 133,
+      "type": "skip",
+      "label": "Letter Mercy",
+      "text": "Clara cries when you place the farewell letter between you. \"I lied because the last thing I said to her was cruel.\"",
+      "nextId": 132,
+      "entryEffects": [
+        "claraLie = true",
+        "claraAlibi = true",
+        "learn(1)"
+      ]
+    },
+    {
+      "position": [
+        4410,
+        800
+      ],
+      "id": 134,
+      "type": "skip",
+      "label": "Clock Truth",
+      "text": "The watch and photograph let Clara fix her timeline. She left before the true death window, then returned to the lobby too late.",
+      "nextId": 132,
+      "entryEffects": [
+        "claraAlibi = true",
+        "raiseClaraTrust(1)"
+      ]
+    },
+    {
+      "position": [
+        4410,
+        1020
+      ],
+      "id": 135,
+      "type": "skip",
+      "label": "Thread Hurt",
+      "text": "She recognizes the waxed thread as costume repair silk from the theater, used by three stagehands and one nervous illusionist.",
+      "nextId": 132,
+      "entryEffects": [
+        "learn(1)",
+        "coolHeat(1)"
+      ]
+    },
+    {
+      "position": [
+        4410,
+        1240
+      ],
+      "id": 136,
+      "type": "skip",
+      "label": "Clara Cleared",
+      "text": "You let Clara leave through the side door. Clearing one suspect does not make the room cleaner, but it makes the case more honest.",
+      "nextId": 130,
+      "entryEffects": [
+        "interviewedClara = true",
+        "raisePublic(1)"
+      ]
+    },
+    {
+      "position": [
+        4410,
+        1460
+      ],
+      "id": 137,
+      "type": "skip",
+      "label": "Hale Arrives",
+      "text": "Silas Hale enters with a lawyer, a carnation, and the bright anger of a man unused to narrow rooms.",
+      "nextId": 138,
+      "entryEffects": [
+        "markSuspect(2)"
+      ]
+    },
+    {
+      "position": [
+        4410,
+        1680
+      ],
+      "id": 138,
+      "type": "action",
+      "label": "Hale Questions",
+      "text": "Hale smiles at weak evidence and sweats at documents. Choose which kind of truth to bring.",
+      "actions": [
+        {
+          "label": "🧾 Ledger page",
+          "id": 139,
+          "condition": "hasLedgerPage && (canPressureHale() || leverage >= 1)",
+          "effects": [
+            "gainLeverage(1)"
+          ]
+        },
+        {
+          "label": "📦 Rose box",
+          "id": 140,
+          "condition": "hasRoseBox && foundCourierName",
+          "effects": [
+            "learn(1)"
+          ]
+        },
+        {
+          "label": "🗝️ Service key",
+          "id": 141,
+          "condition": "foundSecondKey && haleContradiction",
+          "effects": [
+            "spendFocus(1)"
+          ]
+        },
+        {
+          "label": "✅ Let sweat",
+          "id": 142,
+          "condition": "haleDebt || haleContradiction"
+        }
+      ]
+    },
+    {
+      "position": [
+        4410,
+        1900
+      ],
+      "id": 139,
+      "type": "skip",
+      "label": "Debt Flinch",
+      "text": "The ledger page makes Hale touch his ring. \"Forgery,\" he says, before reading enough to know what it says.",
+      "nextId": 138,
+      "entryEffects": [
+        "haleDebt = true",
+        "haleContradiction = true",
+        "learn(1)"
+      ]
+    },
+    {
+      "position": [
+        4410,
+        2120
+      ],
+      "id": 140,
+      "type": "redirect",
+      "label": "Rose Pressure",
+      "text": "You ask why his campaign warehouse shipped roses to a dead woman. His lawyer reaches for the door.",
+      "links": [
+        {
+          "id": 138,
+          "weight": 5,
+          "condition": "leverage >= 2",
+          "effects": [
+            "spendLeverage(1)",
+            "haleContradiction = true",
+            "learn(1)"
+          ]
+        },
+        {
+          "id": 138,
+          "weight": 4,
+          "effects": [
+            "heatUp(1)",
+            "raiseHaleTrust(-1)"
+          ]
+        }
+      ]
+    },
+    {
+      "position": [
+        4740,
+        140
+      ],
+      "id": 141,
+      "type": "skip",
+      "label": "Ring Print",
+      "text": "When you mention the partial ring print, Hale stops smiling at the wrong half-second. The lawyer notices too.",
+      "nextId": 138,
+      "entryEffects": [
+        "haleContradiction = true",
+        "gainLeverage(1)"
+      ]
+    },
+    {
+      "position": [
+        4740,
+        360
+      ],
+      "id": 142,
+      "type": "skip",
+      "label": "Hale Sweats",
+      "text": "Hale leaves without confessing, but his timeline now has a crack: he denies the room card before you mention which card.",
+      "nextId": 130,
+      "entryEffects": [
+        "interviewedHale = true",
+        "learn(1)"
+      ]
+    },
+    {
+      "position": [
+        4740,
+        580
+      ],
+      "id": 143,
+      "type": "skip",
+      "label": "Mira Arrives",
+      "text": "Mira Quill brings her own notebook to interrogation, which is either arrogance or habit. Possibly both.",
+      "nextId": 144,
+      "entryEffects": [
+        "markSuspect(3)"
+      ]
+    },
+    {
+      "position": [
+        4740,
+        800
+      ],
+      "id": 144,
+      "type": "action",
+      "label": "Mira Questions",
+      "text": "Mira respects clean questions and despises moral theater. That makes her useful if you can resist performing.",
+      "actions": [
+        {
+          "label": "⌨️ Ribbon",
+          "id": 145,
+          "condition": "miraDraft",
+          "effects": [
+            "raiseMiraTrust(1)"
+          ]
+        },
+        {
+          "label": "🧪 Poison",
+          "id": 146,
+          "condition": "foundPoisonVial && poisonMatched",
+          "effects": [
+            "spendFocus(1)"
+          ]
+        },
+        {
+          "label": "📦 Roses",
+          "id": 147,
+          "condition": "hasRoseBox",
+          "effects": [
+            "learn(1)"
+          ]
+        },
+        {
+          "label": "✅ End column",
+          "id": 148,
+          "condition": "miraTrust >= 1 || miraMotive"
+        }
+      ]
+    },
+    {
+      "position": [
+        4740,
+        1020
+      ],
+      "id": 145,
+      "type": "skip",
+      "label": "Column Source",
+      "text": "Mira admits Lys was her source. \"She wanted Hale exposed, not dead. I cut the route because Rook begged me.\"",
+      "nextId": 144,
+      "entryEffects": [
+        "foundCourierName = true",
+        "learn(1)"
+      ]
+    },
+    {
+      "position": [
+        4740,
+        1240
+      ],
+      "id": 146,
+      "type": "skip",
+      "label": "Poison Denial",
+      "text": "Mira borrowed the makeup tray to prove poison access, then returned it. Her mistake made her look useful to a killer.",
+      "nextId": 144,
+      "entryEffects": [
+        "miraMotive = true",
+        "raiseMiraTrust(1)"
+      ]
+    },
+    {
+      "position": [
+        4740,
+        1460
+      ],
+      "id": 147,
+      "type": "skip",
+      "label": "Roses Note",
+      "text": "She gives you the missing paragraph: \"The roses came through Hale's charity warehouse and Bell's corridor.\"",
+      "nextId": 144,
+      "entryEffects": [
+        "miraDraft = true",
+        "haleDebt = true",
+        "orsonAccess = true"
+      ]
+    },
+    {
+      "position": [
+        4740,
+        1680
+      ],
+      "id": 148,
+      "type": "skip",
+      "label": "Mira Released",
+      "text": "Mira leaves you one sentence for free: \"If Hale falls alone, the city will pretend Bell was a tool, not a door.\"",
+      "nextId": 130,
+      "entryEffects": [
+        "interviewedMira = true",
+        "raisePublic(1)"
+      ]
+    },
+    {
+      "position": [
+        4740,
+        1900
+      ],
+      "id": 149,
+      "type": "skip",
+      "label": "Orson Waits",
+      "text": "Orson Bell sits with his hands flat on the table, as if hiding the memory of every key he has ever copied.",
+      "nextId": 150,
+      "entryEffects": [
+        "markSuspect(4)"
+      ]
+    },
+    {
+      "position": [
+        4740,
+        2120
+      ],
+      "id": 150,
+      "type": "action",
+      "label": "Orson Questions",
+      "text": "Bell can be broken by mechanism, money, or fear. Pick the tool carefully.",
+      "actions": [
+        {
+          "label": "✨ Mirror seam",
+          "id": 151,
+          "condition": "orsonContradiction",
+          "effects": [
+            "gainLeverage(1)"
+          ]
+        },
+        {
+          "label": "🧾 Invoices",
+          "id": 152,
+          "condition": "canBreakBell() || (haleDebt && orsonAccess)",
+          "effects": [
+            "learn(1)"
+          ]
+        },
+        {
+          "label": "📦 Name Rook",
+          "id": 153,
+          "condition": "ilyaRoute",
+          "effects": [
+            "raiseOrsonTrust(-1)"
+          ]
+        },
+        {
+          "label": "✅ Close Bell",
+          "id": 154,
+          "condition": "bellConfession || orsonAccess"
+        }
+      ]
+    },
+    {
+      "position": [
+        5070,
+        140
+      ],
+      "id": 151,
+      "type": "skip",
+      "label": "Mechanism Trap",
+      "text": "You describe the seam screw by screw. Bell corrects one detail before realizing he has corrected a confession.",
+      "nextId": 150,
+      "entryEffects": [
+        "orsonContradiction = true",
+        "learn(1)"
+      ]
+    },
+    {
+      "position": [
+        5070,
+        360
+      ],
+      "id": 152,
+      "type": "skip",
+      "label": "Invoice Trap",
+      "text": "Bell whispers, \"Hale said it was leverage, not murder.\" Then he asks if accessory is spelled with one c or two.",
+      "nextId": 150,
+      "entryEffects": [
+        "bellConfession = true",
+        "learn(2)",
+        "raiseOrsonTrust(1)"
+      ]
+    },
+    {
+      "position": [
+        5070,
+        580
+      ],
+      "id": 153,
+      "type": "skip",
+      "label": "Courier Trap",
+      "text": "Rook's name makes Bell fold. He confirms the rose box hid a duplicate key and a route note.",
+      "nextId": 150,
+      "entryEffects": [
+        "foundSecondKey = true",
+        "serviceCorridor = true",
+        "bellConfession = true"
+      ]
+    },
+    {
+      "position": [
+        5070,
+        800
+      ],
+      "id": 154,
+      "type": "skip",
+      "label": "Bell Held",
+      "text": "You hold Bell as an accessory. He looks relieved, which tells you he expected Hale to arrange worse.",
+      "nextId": 130,
+      "entryEffects": [
+        "interviewedOrson = true",
+        "raisePublic(1)"
+      ]
+    },
+    {
+      "position": [
+        5070,
+        1020
+      ],
+      "id": 155,
+      "type": "skip",
+      "label": "Ilya Waits",
+      "text": "Ilya Rook sits nearest the exit. Couriers measure rooms by escape routes first and furniture second.",
+      "nextId": 156,
+      "entryEffects": [
+        "markSuspect(5)"
+      ]
+    },
+    {
+      "position": [
+        5070,
+        1240
+      ],
+      "id": 156,
+      "type": "action",
+      "label": "Ilya Questions",
+      "text": "Rook needs proof that you know the route and mercy enough not to confuse courier with author.",
+      "actions": [
+        {
+          "label": "📦 Rose box",
+          "id": 157,
+          "condition": "hasRoseBox",
+          "effects": [
+            "raiseIlyaTrust(1)"
+          ]
+        },
+        {
+          "label": "🧭 Route map",
+          "id": 158,
+          "condition": "ilyaRoute || serviceCorridor",
+          "effects": [
+            "learn(1)"
+          ]
+        },
+        {
+          "label": "✅ Release",
+          "id": 130,
+          "condition": "ilyaTrust >= 1",
+          "effects": [
+            "interviewedIlya = true"
+          ]
+        },
+        {
+          "label": "⚠️ Threaten",
+          "id": 130,
+          "condition": "ilyaTrust < 1",
+          "effects": [
+            "wrongCharge",
+            "interviewedIlya = true"
+          ]
+        }
+      ]
+    },
+    {
+      "position": [
+        5070,
+        1460
+      ],
+      "id": 157,
+      "type": "skip",
+      "label": "Box Mercy",
+      "text": "Rook says the box was sealed by Bell, paid by Hale, and too heavy for roses. He thought it carried documents.",
+      "nextId": 156,
+      "entryEffects": [
+        "foundCourierName = true",
+        "ilyaRoute = true",
+        "learn(1)"
+      ]
+    },
+    {
+      "position": [
+        5070,
+        1680
+      ],
+      "id": 158,
+      "type": "skip",
+      "label": "Route Mercy",
+      "text": "When you draw the service corridor, Rook marks the missing minute: Bell took the box from him at the roof hatch.",
+      "nextId": 156,
+      "entryEffects": [
+        "ilyaMissingMinute = true",
+        "orsonAccess = true",
+        "raiseIlyaTrust(1)"
+      ]
+    },
+    {
+      "position": [
+        5070,
+        1900
+      ],
+      "id": 159,
+      "type": "skip",
+      "label": "Voices Sorted",
+      "text": "Five interviews leave one pattern: Clara grieved, Mira chased, Rook carried, Bell opened, Hale paid. The verb that matters is still <i>killed</i>.",
+      "nextId": 9,
+      "entryEffects": [
+        "interrogationsDone = true",
+        "coolHeat(1)"
+      ]
+    },
+    {
+      "position": [
+        5070,
+        2120
+      ],
+      "id": 160,
+      "type": "action",
+      "label": "Rebuild Night",
+      "text": "The board is dense enough to become weather. You need turn evidence into sequence before City Hall turns sequence into fog.",
+      "actions": [
+        {
+          "label": "⏱️ Timeline",
+          "id": 161,
+          "condition": "!timelineBuilt"
+        },
+        {
+          "label": "🧪 Poison",
+          "id": 165,
+          "condition": "!poisonMatched || !motiveMatrix"
+        },
+        {
+          "label": "🧭 Route",
+          "id": 169,
+          "condition": "!routeMapped"
+        },
+        {
+          "label": "🧾 Motive",
+          "id": 173,
+          "condition": "!motiveMatrix"
+        },
+        {
+          "label": "✅ Final theory",
+          "id": 178,
+          "condition": "timelineBuilt && poisonMatched && routeMapped && motiveMatrix"
+        }
+      ],
+      "entryEffects": [
+        "tick(1)",
+        "unset(\"temporaryLead\")"
+      ]
+    },
+    {
+      "position": [
+        5400,
+        140
+      ],
+      "id": 161,
+      "type": "skip",
+      "label": "Timeline Board",
+      "text": "You pin the corrected death window beside the broken watch and clock photograph. The false 1:47 collapses.",
+      "nextId": 162,
+      "entryEffects": [
+        "timelineBuilt = true",
+        "learn(1)"
+      ]
+    },
+    {
+      "position": [
+        5400,
+        360
+      ],
+      "id": 162,
+      "type": "action",
+      "label": "Minute Chain",
+      "text": "The missing minutes need a human shape.",
+      "actions": [
+        {
+          "label": "🎤 Clara gap",
+          "id": 163,
+          "condition": "claraAlibi",
+          "effects": [
+            "raiseClaraTrust(1)"
+          ]
+        },
+        {
+          "label": "📦 Rook gap",
+          "id": 164,
+          "condition": "ilyaMissingMinute",
+          "effects": [
+            "learn(1)"
+          ]
+        }
+      ]
+    },
+    {
+      "position": [
+        5400,
+        580
+      ],
+      "id": 163,
+      "type": "skip",
+      "label": "Clara Gap",
+      "text": "Clara's return came after the true window. You write <b>CLEAR</b> by her name, and the board breathes.",
+      "nextId": 160,
+      "entryEffects": [
+        "raisePublic(1)"
+      ]
+    },
+    {
+      "position": [
+        5400,
+        800
+      ],
+      "id": 164,
+      "type": "skip",
+      "label": "Rook Gap",
+      "text": "Rook's missing minute belongs to Bell taking the rose box. The courier carried the door, then lost control of it.",
+      "nextId": 160,
+      "entryEffects": [
+        "routeMapped = true"
+      ]
+    },
+    {
+      "position": [
+        5400,
+        1020
+      ],
+      "id": 165,
+      "type": "skip",
+      "label": "Poison Board",
+      "text": "You align the vial, powder trace, missing glove, and cosmetic wax. The poison story stops wobbling.",
+      "nextId": 166,
+      "entryEffects": [
+        "poisonMatched = true",
+        "learn(1)"
+      ]
+    },
+    {
+      "position": [
+        5400,
+        1240
+      ],
+      "id": 166,
+      "type": "action",
+      "label": "Toxin Chain",
+      "text": "The toxin needs a carrier and a hand.",
+      "actions": [
+        {
+          "label": "💄 Carrier",
+          "id": 167,
+          "condition": "foundPoisonVial && hasPowderTrace",
+          "effects": [
+            "learn(1)"
+          ]
+        },
+        {
+          "label": "🧤 Cleanup",
+          "id": 168,
+          "condition": "foundPoisonSign",
+          "effects": [
+            "spendFocus(1)"
+          ]
+        }
+      ]
+    },
+    {
+      "position": [
+        5400,
+        1460
+      ],
+      "id": 167,
+      "type": "skip",
+      "label": "Carrier Fixed",
+      "text": "The makeup wax delivered poison before Lys entered the mirror room. Whoever planned it knew her stage habits.",
+      "nextId": 160
+    },
+    {
+      "position": [
+        5400,
+        1680
+      ],
+      "id": 168,
+      "type": "skip",
+      "label": "Cleanup Fixed",
+      "text": "The missing glove proves the killer or helper returned after collapse. That points away from sudden passion and toward staging.",
+      "nextId": 160,
+      "entryEffects": [
+        "heatUp(1)"
+      ]
+    },
+    {
+      "position": [
+        5400,
+        1900
+      ],
+      "id": 169,
+      "type": "skip",
+      "label": "Route Board",
+      "text": "You layer the hotel plan over Rook's delivery route. River, roof hatch, service corridor, mirror seam: the impossible becomes a hallway.",
+      "nextId": 170,
+      "entryEffects": [
+        "routeMapped = true",
+        "learn(1)"
+      ]
+    },
+    {
+      "position": [
+        5400,
+        2120
+      ],
+      "id": 170,
+      "type": "action",
+      "label": "Access Chain",
+      "text": "The hallway needs keys.",
+      "actions": [
+        {
+          "label": "🗝️ Key proof",
+          "id": 171,
+          "condition": "foundSecondKey",
+          "effects": [
+            "learn(1)"
+          ]
+        },
+        {
+          "label": "⚙️ Bell proof",
+          "id": 172,
+          "condition": "orsonAccess",
+          "effects": [
+            "gainLeverage(1)"
+          ]
+        }
+      ]
+    },
+    {
+      "position": [
+        5730,
+        140
+      ],
+      "id": 171,
+      "type": "skip",
+      "label": "Key Fixed",
+      "text": "The duplicate key puts the corridor under human control. Locks are honest only when keys are honest.",
+      "nextId": 160
+    },
+    {
+      "position": [
+        5730,
+        360
+      ],
+      "id": 172,
+      "type": "skip",
+      "label": "Bell Fixed",
+      "text": "Bell's access proof lets you charge him without letting Hale hide behind him.",
+      "nextId": 160,
+      "entryEffects": [
+        "bellConfession = true"
+      ]
+    },
+    {
+      "position": [
+        5730,
+        580
+      ],
+      "id": 173,
+      "type": "skip",
+      "label": "Motive Board",
+      "text": "Debt, blackmail, and a newspaper fuse form a motive ugly enough for City Hall.",
+      "nextId": 174,
+      "entryEffects": [
+        "motiveMatrix = true",
+        "learn(1)"
+      ]
+    },
+    {
+      "position": [
+        5730,
+        800
+      ],
+      "id": 174,
+      "type": "action",
+      "label": "Motive Chain",
+      "text": "You test whether the motive belongs to Hale alone or to the people orbiting him.",
+      "actions": [
+        {
+          "label": "🏛️ Hale debt",
+          "id": 175,
+          "condition": "haleDebt && hasLedgerPage",
+          "effects": [
+            "setTheory(\"hale\")",
+            "markSuspect(2)"
+          ]
+        },
+        {
+          "label": "📰 Mira fear",
+          "id": 176,
+          "condition": "miraDraft",
+          "effects": [
+            "raiseMiraTrust(1)"
+          ]
+        },
+        {
+          "label": "⚙️ Bell fear",
+          "id": 177,
+          "condition": "bellConfession || orsonAccess",
+          "effects": [
+            "raiseOrsonTrust(1)"
+          ]
+        }
+      ]
+    },
+    {
+      "position": [
+        5730,
+        1020
+      ],
+      "id": 175,
+      "type": "skip",
+      "label": "Hale Motive",
+      "text": "Hale had the debt, the public office, and the money trail. His motive is not emotional. It is administrative.",
+      "nextId": 160,
+      "entryEffects": [
+        "caseTheory = \"hale\""
+      ]
+    },
+    {
+      "position": [
+        5730,
+        1240
+      ],
+      "id": 176,
+      "type": "skip",
+      "label": "Mira Motive",
+      "text": "Mira had fear and access to information, but the money never bends toward her. She held a match, not the fuse.",
+      "nextId": 160,
+      "entryEffects": [
+        "miraMotive = true"
+      ]
+    },
+    {
+      "position": [
+        5730,
+        1460
+      ],
+      "id": 177,
+      "type": "skip",
+      "label": "Bell Motive",
+      "text": "Bell had access and fear, but every payment chain points upward. A paid door is not the hand that orders it opened.",
+      "nextId": 160,
+      "entryEffects": [
+        "orsonAccess = true"
+      ]
+    },
+    {
+      "position": [
+        5730,
+        1680
+      ],
+      "id": 178,
+      "type": "skip",
+      "label": "Theory Locks",
+      "text": "The board resolves: Hale paid, Bell opened, Rook carried, Mira nearly printed, Clara mourned, Lys saw too much.",
+      "nextId": 179,
+      "entryEffects": [
+        "theoryBuilt = true",
+        "caseTheory = \"hale\"",
+        "markSuspect(2)"
+      ]
+    },
+    {
+      "position": [
+        5730,
+        1900
+      ],
+      "id": 179,
+      "type": "skip",
+      "label": "Last Walk",
+      "text": "Finch buttons his coat. \"We can take this upstairs now. Question is whether upstairs wants truth or a suspect.\"",
+      "nextId": 9,
+      "entryEffects": [
+        "raisePublic(1)"
+      ]
+    },
+    {
+      "position": [
+        5730,
+        2120
+      ],
+      "id": 180,
+      "type": "action",
+      "label": "Accusation Room",
+      "text": "The prosecutor gives you one hearing before the city wakes. Your accusation must carry motive, access, poison, and sequence.",
+      "actions": [
+        {
+          "label": "🏛️ Accuse Hale",
+          "id": 181,
+          "condition": "canAccuseHale()",
+          "effects": [
+            "finalProceeding = true",
+            "markSuspect(2)"
+          ]
+        },
+        {
+          "label": "🎤 Accuse Clara",
+          "id": 184,
+          "condition": "hasBlueThread",
+          "effects": [
+            "finalProceeding = true",
+            "wrongCharge",
+            "markSuspect(1)"
+          ]
+        },
+        {
+          "label": "⚙️ Accuse Bell",
+          "id": 186,
+          "condition": "orsonAccess",
+          "effects": [
+            "finalProceeding = true",
+            "markSuspect(4)"
+          ]
+        },
+        {
+          "label": "📰 Accuse Mira",
+          "id": 188,
+          "condition": "miraMotive",
+          "effects": [
+            "finalProceeding = true",
+            "wrongCharge",
+            "markSuspect(3)"
+          ]
+        },
+        {
+          "label": "📦 Accuse Ilya",
+          "id": 190,
+          "condition": "ilyaRoute",
+          "effects": [
+            "finalProceeding = true",
+            "wrongCharge",
+            "markSuspect(5)"
+          ]
+        },
+        {
+          "label": "⚖️ Risk case",
+          "id": 192,
+          "condition": "!canAccuseHale()",
+          "effects": [
+            "finalProceeding = true"
+          ]
+        }
+      ],
+      "entryEffects": [
+        "tick(1)"
+      ]
+    },
+    {
+      "position": [
+        6060,
+        140
+      ],
+      "id": 181,
+      "type": "skip",
+      "label": "Hale Named",
+      "text": "You name Silas Hale. The room tightens. Hale laughs once, too loud, and the prosecutor looks down at the ledger page before looking at you.",
+      "nextId": 182
+    },
+    {
+      "position": [
+        6060,
+        360
+      ],
+      "id": 182,
+      "type": "redirect",
+      "label": "Verdict Weight",
+      "text": "Your file lands on the table. The city weighs whether to sacrifice one man or expose its own machinery.",
+      "links": [
+        {
+          "id": 194,
+          "weight": 6,
+          "condition": "perfectCase()"
+        },
+        {
+          "id": 183,
+          "weight": 7,
+          "condition": "riskyCase()"
+        },
+        {
+          "id": 198,
+          "weight": 5,
+          "condition": "!riskyCase()"
+        }
+      ]
+    },
+    {
+      "position": [
+        6060,
+        580
+      ],
+      "id": 183,
+      "type": "skip",
+      "label": "Narrow File",
+      "text": "The file is strong enough to indict Hale, but not clean enough to pull every accomplice into daylight. The prosecutor chooses the charge he can win.",
+      "nextId": 199
+    },
+    {
+      "position": [
+        6060,
+        800
+      ],
+      "id": 184,
+      "type": "skip",
+      "label": "Clara Named",
+      "text": "Clara's blue thread looks dramatic on the table. Then the corrected timeline, farewell letter, and watch make drama look cheap.",
+      "nextId": 185
+    },
+    {
+      "position": [
+        6060,
+        1020
+      ],
+      "id": 185,
+      "type": "redirect",
+      "label": "Thread Snaps",
+      "text": "The room waits to see whether you can recover from accusing grief itself.",
+      "links": [
+        {
+          "id": 198,
+          "weight": 9,
+          "effects": [
+            "heatUp(1)"
+          ]
+        },
+        {
+          "id": 183,
+          "weight": 1,
+          "condition": "canAccuseHale()",
+          "effects": [
+            "raisePublic(-1)"
+          ]
+        }
+      ]
+    },
+    {
+      "position": [
+        6060,
+        1240
+      ],
+      "id": 186,
+      "type": "skip",
+      "label": "Bell Named",
+      "text": "Bell wilts under the accusation, but his confession keeps pointing upward. He built the door. He did not choose the death.",
+      "nextId": 187
+    },
+    {
+      "position": [
+        6060,
+        1460
+      ],
+      "id": 187,
+      "type": "redirect",
+      "label": "Accessory Pivot",
+      "text": "If your Hale file is strong, Bell's fear may become a bridge. If not, it becomes a scapegoat.",
+      "links": [
+        {
+          "id": 183,
+          "weight": 5,
+          "condition": "canAccuseHale() && bellConfession"
+        },
+        {
+          "id": 198,
+          "weight": 5
+        }
+      ]
+    },
+    {
+      "position": [
+        6060,
+        1680
+      ],
+      "id": 188,
+      "type": "skip",
+      "label": "Mira Named",
+      "text": "Mira watches you accuse her with the exhausted disappointment of a woman who already wrote the better ending.",
+      "nextId": 189
+    },
+    {
+      "position": [
+        6060,
+        1900
+      ],
+      "id": 189,
+      "type": "redirect",
+      "label": "Column Burns",
+      "text": "Her draft explains too much to make her the killer. The prosecutor sees it before you finish.",
+      "links": [
+        {
+          "id": 198,
+          "weight": 8,
+          "effects": [
+            "heatUp(1)"
+          ]
+        },
+        {
+          "id": 183,
+          "weight": 2,
+          "condition": "canAccuseHale() && miraDraft"
+        }
+      ]
+    },
+    {
+      "position": [
+        6060,
+        2120
+      ],
+      "id": 190,
+      "type": "skip",
+      "label": "Ilya Named",
+      "text": "Rook does not defend himself well. Couriers are trained to run, not speak. But the route proves a delivery, not intent.",
+      "nextId": 191
+    },
+    {
+      "position": [
+        6390,
+        140
+      ],
+      "id": 191,
+      "type": "redirect",
+      "label": "Courier Breaks",
+      "text": "Rook's statement either helps you pivot to Hale or collapses under the weight of your mistake.",
+      "links": [
+        {
+          "id": 183,
+          "weight": 3,
+          "condition": "canAccuseHale() && canMapCourier()"
+        },
+        {
+          "id": 198,
+          "weight": 7
+        }
+      ]
+    },
+    {
+      "position": [
+        6390,
+        360
+      ],
+      "id": 192,
+      "type": "skip",
+      "label": "Weak Theory",
+      "text": "You bring the case upstairs before the board has hardened. The prosecutor listens because the city is watching, not because the file is ready.",
+      "nextId": 193
+    },
+    {
+      "position": [
+        6390,
+        580
+      ],
+      "id": 193,
+      "type": "redirect",
+      "label": "Thin File",
+      "text": "A thin case can still cut, but it usually cuts the hand holding it.",
+      "links": [
+        {
+          "id": 183,
+          "weight": 3,
+          "condition": "riskyCase()"
+        },
+        {
+          "id": 198,
+          "weight": 7
+        }
+      ]
+    },
+    {
+      "position": [
+        6390,
+        800
+      ],
+      "id": 194,
+      "type": "skip",
+      "label": "Mirror Ledger",
+      "text": "Bell signs, Rook confirms, Mira prints, and Clara's timeline holds. Hale's lawyer asks for a recess. The city hears the mirror answer first.",
+      "nextId": 200
+    },
+    {
+      "position": [
+        6390,
+        1020
+      ],
+      "id": 195,
+      "type": "finish",
+      "label": "Case Cold",
+      "text": "By sunrise, the prosecutor closes the file as a tragic poisoning by unknown hand. The Glasswater reopens within a week. Every mirror in the lobby looks away."
+    },
+    {
+      "position": [
+        6390,
+        1240
+      ],
+      "id": 196,
+      "type": "finish",
+      "label": "Badge Surrendered",
+      "text": "Heat swallows the case. City Hall removes you for misconduct, Hale praises due process, and the evidence room loses one box with your name on it."
+    },
+    {
+      "position": [
+        6390,
+        1460
+      ],
+      "id": 197,
+      "type": "finish",
+      "label": "Burnout",
+      "text": "You push past the edge of focus and the case becomes noise: rain, ink, voices, mirrors. Finch takes you home before the city takes your badge."
+    },
+    {
+      "position": [
+        6390,
+        1680
+      ],
+      "id": 198,
+      "type": "finish",
+      "label": "Wrong Accusation",
+      "text": "Your accusation lands on the wrong life. The real machinery keeps turning, cleaner now because you taught it where the weak parts were."
+    },
+    {
+      "position": [
+        6390,
+        1900
+      ],
+      "id": 199,
+      "type": "finish",
+      "label": "Narrow Conviction",
+      "text": "Hale is indicted for Lys Rowe's murder. Bell takes an accessory charge, Rook survives as witness, and the city pretends the mirror was only one man's crime."
+    },
+    {
+      "position": [
+        6390,
+        2120
+      ],
+      "id": 200,
+      "type": "finish",
+      "label": "Perfect Case",
+      "text": "The full file breaks open: Hale, Bell, the warehouse, the corridor, the poison, and the cover-up. Lys Rowe gets the truth she wrote for, and Sable Harbor has to look into its own mirror."
+    }
+  ]
+}
