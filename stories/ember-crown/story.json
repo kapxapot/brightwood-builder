@@ -25,9 +25,7 @@
       "hasMap": false,
       "arcaneMark": false,
       "cryptBlessing": false,
-      "liora": false,
-      "bram": false,
-      "knox": false,
+      "companion": 0,
       "wolfDefeated": false,
       "faeFavor": false,
       "royalSigil": false,
@@ -38,9 +36,10 @@
     "conditions": {
       "isAlive": "hp > 0",
       "isDead": "hp <= 0",
-      "wellArmed": "weapon >= 2",
-      "strongParty": "liora || bram || knox",
-      "readyForCrown": "emberShards >= 4 || (royalSigil && sunstone)"
+      "hasCompanion": "companion > 0",
+      "isLiora": "companion == 1",
+      "isBram": "companion == 2",
+      "isKnox": "companion == 3"
     },
     "effects": [
       {
@@ -73,8 +72,8 @@
       "type": "skip",
       "label": "Cold Omen",
       "text": [
-        "Summer snow falls over Elderglen ❄️ as the chapel bell cracks by itself. The elders name you oath-bearer before the whole square.",
-        "Lord Malrec has taken the <b>Ember Crown</b> 🔥 to the Sky Citadel. If it burns black by moonrise, Asterfall belongs to winter."
+        "Summer snow falls over Elderglen ❄️ in soft, wrong flakes that hiss when they touch the forge roofs. The chapel bell cracks by itself, and every elder in the square turns toward you before anyone says your name.",
+        "Lord Malrec has taken the <b>Ember Crown</b> 🔥 to the Sky Citadel, where old royal fire once kept winter spirits sealed below stone. If the crown burns black by moonrise, Asterfall will not merely freeze; it will remember how to obey him."
       ],
       "position": [
         100,
@@ -87,7 +86,7 @@
       "type": "action",
       "label": "Oath Path",
       "text": [
-        "The armory master opens three chests. Each holds a different beginning, not a destiny.",
+        "The armory master opens three chests while frost creeps over the weapon racks behind her. Each chest holds a different beginning, not a destiny: iron for the direct road, tools for the hidden one, and a rune-stone that pulses like a patient heart.",
         "\"Choose what gets you through the first mile,\" she says. \"The rest of the road will choose back.\""
       ],
       "position": [
@@ -127,7 +126,7 @@
       "type": "skip",
       "label": "Iron Oath",
       "text": [
-        "You take a practical sword and a battered shield. ⚔️ The weight steadies your hands, and the armory master nods as if steel is a language she trusts."
+        "You take a practical sword and a battered shield. ⚔️ The blade has no ornament, only a clean edge and a grip darkened by old hands. Its weight steadies you, and the armory master nods as if steel is a language she trusts."
       ],
       "position": [
         100,
@@ -140,7 +139,7 @@
       "type": "skip",
       "label": "Trail Oath",
       "text": [
-        "You take a ranger map 🧭, soft boots, and a coil of climbing rope. The roads around Asterfall have teeth, but at least you know where some of them are."
+        "You take a ranger map 🧭, soft boots, and a coil of climbing rope smelling of tar and rain. The roads around Asterfall have teeth, but at least you know where some of them are, and how to step around a few."
       ],
       "position": [
         100,
@@ -153,7 +152,7 @@
       "type": "skip",
       "label": "Rune Oath",
       "text": [
-        "You press your palm to a warm rune-stone. 🔶 It leaves a red mark under your skin and whispers a word you almost understand."
+        "You press your palm to a warm rune-stone. 🔶 It leaves a red mark under your skin, lowers your breath to a careful rhythm, and whispers a word you almost understand. The armory candles bow toward it as if toward a small, dangerous king."
       ],
       "position": [
         100,
@@ -166,7 +165,10 @@
       "type": "action",
       "label": "First Ally",
       "text": [
-        "At the town gate, three volunteers wait under the frost-stiff banners.",
+        "At the town gate, three volunteers wait under frost-stiff banners, each carrying a different answer to fear.",
+        "<b>Liora</b> is a field-healer with inked prayer ribbons, gentle hands, and a stubborn refusal to leave anyone behind. She notices wounds before pride admits them.",
+        "<b>Bram</b> is a broad-shouldered guard with a dented hammer, a soldier's laugh, and the habit of stepping between danger and everyone else.",
+        "<b>Knox</b> is a quick-eyed locksmith in a patched green coat, smiling as if every locked door is a personal insult. He knows roads, rumors, and pockets.",
         "Only one can travel quickly enough with you. The others must hold Elderglen if you fail."
       ],
       "position": [
@@ -178,14 +180,14 @@
           "label": "🤝 Take Liora",
           "id": 7,
           "effects": [
-            "liora = true"
+            "companion = 1"
           ]
         },
         {
           "label": "🤝 Take Bram",
           "id": 8,
           "effects": [
-            "bram = true",
+            "companion = 2",
             "weapon = weapon + 1"
           ]
         },
@@ -193,7 +195,7 @@
           "label": "🤝 Take Knox",
           "id": 9,
           "effects": [
-            "knox = true",
+            "companion = 3",
             "gold = gold + 3"
           ]
         }
@@ -204,7 +206,8 @@
       "type": "skip",
       "label": "Liora Joins",
       "text": [
-        "Liora buckles a healer's satchel across her shoulder. \"I cannot promise miracles,\" she says, \"but I can promise you will not bleed alone.\""
+        "Liora buckles a healer's satchel across her shoulder, then ties one prayer ribbon around your wrist and one around her own. Her gaze keeps flicking to the snow as if sickness can leave tracks.",
+        "\"I cannot promise miracles,\" she says, \"but I can promise you will not bleed alone.\""
       ],
       "position": [
         440,
@@ -217,7 +220,8 @@
       "type": "skip",
       "label": "Bram Joins",
       "text": [
-        "Bram rests his hammer on one shoulder and grins at the closed road. \"If the crown wants a fight, it can stand in line.\""
+        "Bram rests his hammer on one shoulder and takes a last look at the gate he has guarded for three winters. He grins, but the grip he has on the haft is white-knuckled.",
+        "\"If the crown wants a fight,\" he says, \"it can stand in line.\""
       ],
       "position": [
         440,
@@ -230,7 +234,8 @@
       "type": "skip",
       "label": "Knox Joins",
       "text": [
-        "Knox flips a lockpick between his fingers and pockets three coins from nowhere obvious. \"Every doomed quest needs someone sensible,\" he says."
+        "Knox flips a lockpick between his fingers, pockets three coins from nowhere obvious, and studies the road as if it has already tried to cheat him. His grin is quick, bright, and almost certainly rehearsed.",
+        "\"Every doomed quest needs someone sensible,\" he says. \"So, regrettably, here I am.\""
       ],
       "position": [
         440,
@@ -243,8 +248,9 @@
       "type": "action",
       "label": "Town Edge",
       "text": [
-        "Elderglen's last lanterns gutter in blue wind. The market still has a few useful goods, and the shrine door stands open.",
-        "Beyond both waits the road into the Wildwood."
+        "Elderglen's last lanterns gutter in blue wind. The market still has a few useful goods, the shrine door stands open, and neighbors pretend not to watch you too closely because hope is easier from a distance.",
+        "{{companion:Liora checks your pulse with two cool fingers and says the road can wait thirty breaths if your courage needs to catch up.|Bram rolls his shoulders, measuring every rooftop and alley like a battlefield he intends to leave behind in good order.|Knox listens to the market shutters, names three hidden coin boxes by sound, and promises he is showing restraint.}}",
+        "Beyond town waits the road into the Wildwood."
       ],
       "position": [
         440,
@@ -271,7 +277,8 @@
       "label": "Frost Market",
       "text": [
         "The market is almost packed away, but a stubborn trader remains beside a brazier.",
-        "\"Rope, torch, food,\" she says. \"Heroes usually discover they needed all three after prices stop mattering.\""
+        "{{companion:Liora quietly adds bandage thread and fever salt to the list of things nobody remembers until too late.|Bram tests every rope with both hands, deeply suspicious of anything sold as heroic quality.|Knox haggles without seeming to move his mouth and somehow makes the trader enjoy losing.}}",
+        "\"Rope, torch, food,\" the trader says. \"Heroes usually discover they needed all three after prices stop mattering.\""
       ],
       "position": [
         780,
@@ -317,6 +324,7 @@
       "label": "Village Shrine",
       "text": [
         "The shrine flame burns in a bowl of ice. 🕯️ When you kneel, the flame leans toward your breath like it remembers the first kings.",
+        "{{companion:Liora bows to the flame like an old colleague and asks it for steadier hands, not easier roads.|Bram stands awkwardly at the threshold until the priestess tells him courage is also allowed indoors.|Knox studies the donation bowl, then very deliberately adds a coin instead of removing one.}}",
         "A carved fox on the altar watches with silver eyes."
       ],
       "position": [
@@ -353,7 +361,8 @@
       "type": "skip",
       "label": "North Road",
       "text": [
-        "You leave Elderglen by the north road. Behind you, bells ring once for hope and once for warning."
+        "You leave Elderglen by the north road as villagers bar the gate behind you. Behind the walls, bells ring once for hope and once for warning, and the second note follows longer.",
+        "{{companion:Liora walks quietly until the last roofs vanish, then says, \"When fear goes quiet, it starts making plans. Tell me when yours does.\"|Bram keeps pace at your left shoulder. \"North road first,\" he says. \"Panic later, preferably never.\"|Knox walks backward for three steps, salutes the town with two fingers, and murmurs, \"Try not to miss me too loudly.\"}}"
       ],
       "position": [
         780,
@@ -366,7 +375,8 @@
       "type": "action",
       "label": "Wildwood Gate",
       "text": [
-        "The Wildwood closes around the road in green-black arches. 🌲 Frozen leaves hang without falling, each one veined with ember light.",
+        "The Wildwood closes around the road in green-black arches. 🌲 Frozen leaves hang without falling, each one veined with ember light, and the silence under the branches feels arranged rather than empty.",
+        "{{companion:Liora touches one leaf and frowns when frost melts into red sap. \"The forest is fevered,\" she says. \"Fevered things dream badly.\"|Bram taps his hammer against a trunk and listens to the echo. \"Wood should not sound hollow all the way down,\" he mutters.|Knox crouches beside three bootprints facing three different directions. \"Good news,\" he says. \"Everyone before us was also confused.\"}}",
         "Three ways split beneath the trees."
       ],
       "position": [
@@ -394,7 +404,8 @@
       "type": "skip",
       "label": "Old Trail",
       "text": [
-        "You follow wagon ruts filled with glassy ice. Something large moves parallel to you, careful enough to stay unseen."
+        "You follow wagon ruts filled with glassy ice. Something large moves parallel to you, careful enough to stay unseen, and every snapped twig arrives a breath after you expect it.",
+        "{{companion:Liora keeps one hand near her satchel and whispers the names of herbs that stop bleeding.|Bram shifts between you and the noise without comment, letting his hammer answer for him.|Knox studies the untouched snow beside the ruts and says, \"Whatever it is, it knows roads are traps.\"}}"
       ],
       "position": [
         780,
@@ -407,7 +418,8 @@
       "type": "skip",
       "label": "Moon Glade",
       "text": [
-        "The glade is bright with white flowers despite the frost. Liora would call them impossible; Knox would call them expensive."
+        "The glade is bright with white flowers despite the frost, their petals folded around sparks no larger than seeds. The air smells of honey, smoke, and promises made by people who expected to survive them.",
+        "{{companion:Liora kneels with sudden reverence. \"Moonmere lilies,\" she says. \"Impossible, unless the forest is spending its last strength.\"|Bram refuses to step into the flowers until he has circled the glade twice. \"Pretty places can still bite,\" he says.|Knox plucks one fallen petal, weighs it, and sighs. \"Worth a fortune, which means touching the live ones would probably kill us.\"}}"
       ],
       "position": [
         1120,
@@ -423,7 +435,8 @@
       "type": "skip",
       "label": "Ravine Path",
       "text": [
-        "Your rope bites into a dead cedar as you descend the ravine. Below, a stone bridge crosses black water and old bones."
+        "Your rope bites into a dead cedar as you descend the ravine. Below, a stone bridge crosses black water and old bones, and the wind rising from the depths carries the warm stink of a fire no rain can reach.",
+        "{{companion:Liora descends slowly, watching every scrape on your hands as if cataloging debts she means to repay.|Bram goes last, testing the knot with his full weight and pretending the drop is beneath his dignity.|Knox reaches the bottom first, breathless and delighted. \"Wonderful,\" he says. \"A bridge that looks haunted from both sides.\"}}"
       ],
       "position": [
         1120,
@@ -436,7 +449,8 @@
       "type": "action",
       "label": "Wolf Signs",
       "text": [
-        "Fresh claw marks score the trees. A pack is close, and the forest has gone quiet in the way prey understands too late."
+        "Fresh claw marks score the trees in clean white cuts. A pack is close, and the forest has gone quiet in the way prey understands too late: not empty, but listening.",
+        "{{companion:Liora points out drag marks and says the wolves are hungry enough to make poor choices.|Bram crouches, touches the claw cuts, and rises with his hammer already loose in his grip.|Knox finds a second trail circling behind you. \"They are herding us,\" he says, suddenly without humor.}}"
       ],
       "position": [
         1120,
@@ -466,7 +480,8 @@
       "type": "skip",
       "label": "Stone Bridge",
       "text": [
-        "Under the bridge, an old campfire still smolders without fuel. A child's wooden sword lies beside it, charred only at the tip."
+        "Under the bridge, an old campfire still smolders without fuel. A child's wooden sword lies beside it, charred only at the tip, and the ash around it has been shaped into a crown by careful fingers.",
+        "{{companion:Liora bows her head, not quite praying, and covers the toy with a scrap of clean cloth.|Bram stares at the sword for a long moment. \"Someone came this way before they were ready,\" he says.|Knox checks the bridge stones for wires, then looks ashamed of himself for checking.}}"
       ],
       "position": [
         1120,
@@ -479,7 +494,8 @@
       "type": "redirect",
       "label": "Wolf Ambush",
       "text": [
-        "You find the pack and the pack finds you. Yellow eyes circle between trunks as the alpha lowers its frost-white head."
+        "You find the pack and the pack finds you. Yellow eyes circle between trunks as the alpha lowers its frost-white head, and smaller shapes slide through the brush to close every easy exit.",
+        "{{companion:Liora uncorks a vial that smells of pepper and iron. \"Eyes first if they leap,\" she whispers.|Bram bares his teeth back at the alpha. \"Big one is mine if it comes close.\"|Knox palms a thin knife and points with his chin toward the weakest gap in the circle.}}"
       ],
       "position": [
         1120,
@@ -505,7 +521,8 @@
       "type": "skip",
       "label": "Quiet Detour",
       "text": [
-        "You circle away from the claw marks and lose an hour. The forest lets you pass, which feels less like mercy than curiosity."
+        "You circle away from the claw marks and lose an hour to brambles, cold mud, and the patience required not to run. The forest lets you pass, which feels less like mercy than curiosity.",
+        "{{companion:Liora says avoiding a wound is still a kind of victory, though she says it softly enough not to anger your pride.|Bram keeps glancing back, offended by any enemy that refuses to show itself properly.|Knox marks trees with a charcoal nub, then finds one of his marks ahead of you and goes very still.}}"
       ],
       "position": [
         1460,
@@ -518,7 +535,8 @@
       "type": "redirect",
       "label": "Meat Lure",
       "text": [
-        "You leave food in the snow and retreat behind a cedar. The wolves rush the bait, but hunger makes every creature unpredictable."
+        "You leave food in the snow and retreat behind a cedar. The wolves rush the bait, but hunger makes every creature unpredictable, and the alpha keeps its eyes on you instead of the meat.",
+        "{{companion:Liora scatters bitter herbs over the lure, enough to sting noses and slow the first charge.|Bram waits with the stillness of a gate about to slam shut.|Knox tosses the bait farther than expected and grins when two wolves collide over it.}}"
       ],
       "position": [
         1460,
@@ -544,8 +562,8 @@
       "type": "action",
       "label": "Hollow Bridge",
       "text": [
-        "The stone bridge hums under your boots. Runes flare along the rail, asking for either courage, patience, or a very good excuse.",
-        "The water below carries sparks instead of reflections."
+        "The stone bridge hums under your boots. Runes flare along the rail, asking for either courage, patience, or a very good excuse, while the water below carries sparks instead of reflections.",
+        "{{companion:Liora reads the rhythm of the runes like a pulse and warns you when the bridge grows angry.|Bram plants his feet and says old stones respect confidence, which may or may not be engineering.|Knox studies the rail and finds tiny scrape marks left by travelers who preferred climbing to trusting magic.}}"
       ],
       "position": [
         1460,
@@ -572,7 +590,8 @@
       "type": "skip",
       "label": "Alpha Falls",
       "text": [
-        "You break the alpha's charge and the pack scatters into the trees. In the trampled snow, you find an ember shard 🔥 warm as breath."
+        "You break the alpha's charge and the pack scatters into the trees, whining at a victory they suddenly want no part of. In the trampled snow, you find an ember shard 🔥 warm as breath.",
+        "{{companion:Liora presses cloth to the alpha's torn ear before it flees, because mercy is a habit she refuses to ration.|Bram laughs once, sharp with relief, and nudges the shard toward you with the hammer haft.|Knox checks the shard for curses, traps, and resale value, then admits one of those tests was more hopeful than useful.}}"
       ],
       "position": [
         1460,
@@ -589,7 +608,8 @@
       "type": "skip",
       "label": "Bite Price",
       "text": [
-        "The wolves retreat, but not before one tears your sleeve and skin beneath it. The shard they guarded still glows in the snow."
+        "The wolves retreat, but not before one tears your sleeve and the skin beneath it. Blood steams in the cold, and the shard they guarded still glows in the snow as if waiting to see what you paid for it.",
+        "{{companion:Liora binds the wound tight and snaps, \"Do not make me spend the whole quest arguing with your blood.\"|Bram keeps his body between you and the trees until the last howl fades.|Knox scoops up the shard with a gloved hand and says, \"Expensive little coal, this.\"}}"
       ],
       "position": [
         1460,
@@ -607,7 +627,9 @@
       "type": "skip",
       "label": "Dragged Down",
       "text": [
-        "The alpha knocks you into the roots. Your companion drives it off, but pain blooms hot under the cold."
+        "The alpha knocks you into the roots. For one long second the world is teeth, ice, and the hard knot of a root under your spine.",
+        "{{companion:Liora hurls a glass vial into the wolf's eyes, then drags you clear by your collar with surprising strength.|Bram crashes into the alpha shoulder-first and sends it tumbling through dead fern.|Knox jams a lockpick under the beast's collar tag and twists until it yelps away from you.}}",
+        "Pain blooms hot under the cold."
       ],
       "position": [
         1800,
@@ -623,7 +645,8 @@
       "type": "action",
       "label": "Moonwell",
       "text": [
-        "A round well waits beyond the trees. Its water shines upward with a soft red light, and old coins sleep at the bottom."
+        "A round well waits beyond the trees. Its water shines upward with a soft red light, old coins sleep at the bottom, and the stones around the rim are carved with names too weathered to mourn properly.",
+        "{{companion:Liora smells the water before anyone drinks and decides it is strange, not poisoned, which is apparently better.|Bram lowers a pebble into the well on a string and looks satisfied when nothing bites it.|Knox squints at the coins below and says heroism is easier when treasure is inconveniently submerged.}}"
       ],
       "position": [
         1800,
@@ -652,7 +675,8 @@
       "type": "redirect",
       "label": "Wound Check",
       "text": [
-        "You force yourself upright and count breaths. The Wildwood gives no applause for surviving pain."
+        "You force yourself upright and count breaths while the trees sway without wind. The Wildwood gives no applause for surviving pain, only another path and the expectation that you will take it.",
+        "{{companion:Liora watches your pupils and decides whether fear or injury is winning.|Bram grips your forearm until your knees remember their work.|Knox keeps talking, too quickly, because silence would make the blood feel louder.}}"
       ],
       "position": [
         1800,
@@ -676,7 +700,8 @@
       "type": "skip",
       "label": "Well Mercy",
       "text": [
-        "The moonwell chills your teeth, then eases the ache in your ribs. For a moment, the forest smells like rain instead of fear."
+        "The moonwell chills your teeth, then eases the ache in your ribs. For a moment, the forest smells like rain instead of fear, and the red light under the water softens from warning to invitation.",
+        "{{companion:Liora relaxes by a fraction, which from her feels like a festival.|Bram drinks after you and coughs. \"Tastes like melted bells,\" he says.|Knox refuses to drink until he sees both of you survive, then calls that caution rather than cowardice.}}"
       ],
       "position": [
         1800,
@@ -693,6 +718,7 @@
       "label": "Road Death",
       "text": [
         "Your strength leaves you before the quest does.",
+        "{{companion:Liora stays with you until the cold takes your pulse, whispering every prayer she knows and one she invents for you.|Bram tries to lift you anyway, as if strength can bargain with endings if it refuses loudly enough.|Knox sits beside you with his back to the road, all clever words gone where they cannot help.}}",
         "Asterfall's winter deepens, and the Ember Crown burns black in another hand."
       ],
       "position": [
@@ -705,7 +731,8 @@
       "type": "skip",
       "label": "Root Cache",
       "text": [
-        "Among the roots you find bittergreen herbs tied with red thread. Someone meant to return for them and never did."
+        "Among the roots you find bittergreen herbs tied with red thread. Someone meant to return for them and never did, but the bundle is dry, clean, and marked with the sign of a healer who expected strangers to need kindness.",
+        "{{companion:Liora knows the knot and grows quiet, then packs the herbs with almost ceremonial care.|Bram scans the trees while you gather them, uneasy with gifts from absent hands.|Knox checks beneath the bundle for a note, a needle, or a tiny invoice from fate.}}"
       ],
       "position": [
         2140,
@@ -721,8 +748,9 @@
       "type": "action",
       "label": "Thorn Court",
       "text": [
-        "The path opens into a court of thorn-crowned fae. ✨ Their queen sits on a stump, small as a child and old as rain.",
-        "\"Mortal oath-bearer,\" she says, \"what price do you offer for passage?\""
+        "The path opens into a court of thorn-crowned fae. ✨ Their queen sits on a stump, small as a child and old as rain, while courtiers perch in the branches and applaud with fingerbones of polished wood.",
+        "{{companion:Liora lowers her eyes but not her spine, respectful without surrendering.|Bram looks personally offended by a court where nobody is standing at honest height.|Knox's smile becomes careful, the kind he uses around locked jewel boxes and very old knives.}}",
+        "\"Mortal oath-bearer,\" the queen says, \"what price do you offer for passage?\""
       ],
       "position": [
         2140,
@@ -736,7 +764,7 @@
         {
           "label": "👑 Steal sigil",
           "id": 34,
-          "condition": "knox || hasMap"
+          "condition": "isKnox() || hasMap"
         },
         {
           "label": "⚔️ Challenge knight",
@@ -749,7 +777,8 @@
       "type": "skip",
       "label": "Fae Bargain",
       "text": [
-        "You speak honestly of Elderglen. The queen smiles without warmth and gifts you a thorn token that pricks only liars."
+        "You speak honestly of Elderglen: the cracked bell, the frozen wells, the people pretending courage does not cost them sleep. The queen smiles without warmth and gifts you a thorn token that pricks only liars.",
+        "{{companion:Liora adds the names of children she treated that morning, and the court grows briefly, dangerously quiet.|Bram says nothing, but his refusal to kneel makes several thorn-knights grin in approval.|Knox contributes one perfectly chosen compliment, then whispers that fae prefer truth with sharp edges.}}"
       ],
       "position": [
         2140,
@@ -765,7 +794,8 @@
       "type": "redirect",
       "label": "Quick Fingers",
       "text": [
-        "You reach for a silver sigil hanging from the court banner. The court keeps smiling, which is not comforting."
+        "You reach for a silver sigil hanging from the court banner while laughter rustles through the branches. The court keeps smiling, which is not comforting, because none of them seem surprised.",
+        "{{companion:Liora inhales as if to object, then instead steps sideways to block the queen's view for half a second.|Bram coughs loudly and starts an argument about fair passage, which is heroic mostly by accident.|Knox's hand ghosts beside yours, correcting the angle before the banner can bite.}}"
       ],
       "position": [
         2140,
@@ -790,7 +820,8 @@
       "type": "redirect",
       "label": "Thorn Duel",
       "text": [
-        "The fae knight bows and attacks before the bow is finished. His spear is made of a branch that remembers lightning."
+        "The fae knight bows and attacks before the bow is finished. His spear is made of a branch that remembers lightning, and every thrust leaves the smell of storm rain in the frozen air.",
+        "{{companion:Liora calls warnings by watching the knight's feet instead of the flashing spear.|Bram laughs despite himself. \"Finally,\" he says, \"someone here understands manners.\"|Knox retreats to what he calls a safe distance, which still leaves him close enough to steal the knight's dropped bell charm.}}"
       ],
       "position": [
         2140,
@@ -812,7 +843,8 @@
       "type": "skip",
       "label": "Safe Passage",
       "text": [
-        "The court parts. Whether by gift or theft, you carry a mark that makes the thorns lean away from your skin."
+        "The court parts. Whether by gift or theft, you carry a mark that makes the thorns lean away from your skin, and the queen watches you go with the expression of someone who has planted a seed.",
+        "{{companion:Liora says favors are wounds that have not decided how to heal.|Bram keeps his back to the queen until the last possible moment.|Knox waits until the trees close behind you before checking whether all his fingers are still his.}}"
       ],
       "position": [
         2480,
@@ -825,7 +857,8 @@
       "type": "skip",
       "label": "Stinging Debt",
       "text": [
-        "The banner wraps around your wrist and cuts like wire. You keep the sigil, but the court's laughter follows for miles."
+        "The banner wraps around your wrist and cuts like wire. You keep the sigil, but the court's laughter follows for miles, snagging in your thoughts whenever the road grows too quiet.",
+        "{{companion:Liora binds the cut with a look that says later we discuss this properly.|Bram offers to go back and argue with the whole court, which is touching and unwise.|Knox admires the theft with professional pain. \"Clean grab,\" he says. \"Terrible audience.\"}}"
       ],
       "position": [
         2480,
@@ -842,7 +875,8 @@
       "type": "skip",
       "label": "Knight Yielded",
       "text": [
-        "You strike the fae knight's spear aside. He salutes with delight and leaves a sliver of ember-bright bark in your hand."
+        "You strike the fae knight's spear aside, and the court gasps like an audience rewarded. He salutes with delight and leaves a sliver of ember-bright bark in your hand, warm enough to smoke against your glove.",
+        "{{companion:Liora accepts the knight's bow with a healer's grave courtesy.|Bram thumps your shoulder hard enough to count as a second duel.|Knox pockets the knight's bell charm and insists it was clearly a participation prize.}}"
       ],
       "position": [
         2480,
@@ -858,7 +892,8 @@
       "type": "skip",
       "label": "Knight's Lesson",
       "text": [
-        "The fae knight touches your chest with the spear, and pain folds you to one knee. He calls it instruction, not defeat."
+        "The fae knight touches your chest with the spear, and pain folds you to one knee. He calls it instruction, not defeat, then asks whether mortals always learn best when bruised.",
+        "{{companion:Liora answers him with a stare cold enough to make nearby flowers close.|Bram steps forward before you wave him back, jaw tight with borrowed anger.|Knox mutters that he prefers lessons with fewer pointy footnotes.}}"
       ],
       "position": [
         2480,
@@ -874,7 +909,8 @@
       "type": "redirect",
       "label": "Lost Paths",
       "text": [
-        "The Wildwood rearranges itself while you blink. Three paths appear where there had been one."
+        "The Wildwood rearranges itself while you blink. Three paths appear where there had been one, each carrying a different smell: amber resin, winter water, and woodsmoke from a chimney that was not there a moment ago.",
+        "{{companion:Liora listens to the forest as if to a patient refusing to describe the pain honestly.|Bram marks the nearest trunk with his hammer and scowls when the mark closes.|Knox turns slowly, counting exits, then says, \"I miss ordinary dishonest roads.\"}}"
       ],
       "position": [
         2480,
@@ -900,7 +936,8 @@
       "type": "skip",
       "label": "Amber Track",
       "text": [
-        "You follow amber drops hardened on the leaves. Each one is warm enough to melt a thumbprint in the frost."
+        "You follow amber drops hardened on the leaves. Each one is warm enough to melt a thumbprint in the frost, and together they form a trail too deliberate to be accidental.",
+        "{{companion:Liora warns that warm resin can seal wounds or preserve poison, depending on who prepared it.|Bram keeps to the side of the trail, refusing to step exactly where mystery wants him.|Knox pockets the smallest amber bead and immediately gives it back when it starts beating like a heart.}}"
       ],
       "position": [
         2820,
@@ -913,7 +950,8 @@
       "type": "skip",
       "label": "Glass Brook",
       "text": [
-        "A brook of clear ice blocks the path. Beneath it, fish swim through solid water and watch you pass."
+        "A brook of clear ice blocks the path. Beneath it, silver fish swim through solid water and watch you pass with patient, accusing eyes, as if travelers are an old disappointment.",
+        "{{companion:Liora tests the ice and finds it warm underneath, which does not improve anyone's mood.|Bram crosses first, arms out, daring the brook to make a story of him.|Knox refuses to trust fish that can stare through ice and still look judgmental.}}"
       ],
       "position": [
         2820,
@@ -926,7 +964,8 @@
       "type": "action",
       "label": "Hag Hut",
       "text": [
-        "A hut made of wagon wheels creaks between two trees. The hag inside offers soup, gossip, and three different ways to regret both."
+        "A hut made of wagon wheels creaks between two trees. The hag inside offers soup, gossip, and three different ways to regret both, stirring her pot with a spoon carved from royal bone.",
+        "{{companion:Liora identifies four healing herbs in the steam and two that should never share a bowl.|Bram ducks under the doorway and immediately dislikes the ceiling, the soup, and the hag's smile.|Knox greets the hag by name, then privately admits he guessed and is relieved she enjoyed it.}}"
       ],
       "position": [
         2820,
@@ -956,7 +995,8 @@
       "type": "action",
       "label": "Forest Exit",
       "text": [
-        "At last the trees thin. Smoke rises from a ruined keep beyond the valley, but a final pulse of ember light draws your eye."
+        "At last the trees thin. Smoke rises from a ruined keep beyond the valley, but a final pulse of ember light draws your eye back to the forest's last shadows, where the Wildwood seems reluctant to let its debt go unpaid.",
+        "{{companion:Liora says the woods are deciding whether you were medicine or a symptom.|Bram points toward the keep. \"Stone walls,\" he says. \"At least when those try to kill you, they stay put.\"|Knox checks the treeline behind you and says, \"If the forest follows us, I am charging it rent.\"}}"
       ],
       "position": [
         2820,
@@ -982,7 +1022,8 @@
       "type": "skip",
       "label": "Hag's Hint",
       "text": [
-        "The hag slurps your food and points with her spoon. \"Crowns open to blood, keys, or fools. Try to be the first two.\""
+        "The hag slurps your food and points with her spoon toward a hill you had not noticed. \"Crowns open to blood, keys, or fools,\" she says. \"Try to be the first two.\"",
+        "{{companion:Liora asks what Malrec paid her, and the hag's smile disappears for one valuable breath.|Bram calls that the worst advice he has ever considered useful.|Knox repeats the sentence twice, committing it to the place where he keeps profitable warnings.}}"
       ],
       "position": [
         2820,
@@ -998,7 +1039,8 @@
       "type": "skip",
       "label": "Sour Soup",
       "text": [
-        "You refuse politely. The hag throws soup at your boots anyway, and the broth hisses where it touches leather."
+        "You refuse politely. The hag throws soup at your boots anyway, and the broth hisses where it touches leather, burning a perfect crown shape into the mud.",
+        "{{companion:Liora drags you back before the steam reaches your face.|Bram calls the soup cowardly for attacking footwear.|Knox says he has been thrown out of better kitchens by worse cooks, which appears to please the hag.}}"
       ],
       "position": [
         3160,
@@ -1014,7 +1056,8 @@
       "type": "skip",
       "label": "Oak Ember",
       "text": [
-        "Inside the ancient oak, a coal-red seed beats like a tiny heart. 🌿 When you take it, the forest exhales around you."
+        "Inside the ancient oak, a coal-red seed beats like a tiny heart. 🌿 When you take it, the forest exhales around you, and for a moment every branch bends away from the path ahead.",
+        "{{companion:Liora wraps the seed in linen as if it might feel cold.|Bram watches the treetops, uneasy with anything that yields so quietly.|Knox whispers thanks to the oak, then looks embarrassed when he notices you heard.}}"
       ],
       "position": [
         3160,
@@ -1030,7 +1073,8 @@
       "type": "skip",
       "label": "Burning Tracks",
       "text": [
-        "The tracks lead to a stag made of cinders. It lowers its antlers, and every coal in its body brightens."
+        "The tracks lead to a stag made of cinders. It lowers its antlers, and every coal in its body brightens, throwing long shadows that look almost human when they stretch across the snow.",
+        "{{companion:Liora notices an ember shard burning between its ribs and says the creature is more pain than beast.|Bram squares his stance, suddenly solemn in the face of a worthy charge.|Knox looks from you to the antlers and says, \"I vote for not being decorative.\"}}"
       ],
       "position": [
         3160,
@@ -1043,7 +1087,8 @@
       "type": "redirect",
       "label": "Cinder Stag",
       "text": [
-        "The stag charges through a curtain of sparks. You have one heartbeat to meet it or move."
+        "The stag charges through a curtain of sparks. You have one heartbeat to meet it or move, and the whole Wildwood seems to draw that heartbeat out until courage and panic are the same shape.",
+        "{{companion:Liora shouts for you to aim where the fire gutters, not where it burns brightest.|Bram lowers his shoulder beside you, grinning like impact is a language he speaks fluently.|Knox dives for the snow and kicks loose a slick sheet of ice across the stag's path.}}"
       ],
       "position": [
         3160,
@@ -1068,7 +1113,8 @@
       "type": "skip",
       "label": "Wood's Edge",
       "text": [
-        "You leave the Wildwood with smoke in your cloak and ember heat in your pack. Ahead, the Ruined Keep straddles the old road."
+        "You leave the Wildwood with smoke in your cloak and ember heat in your pack. Behind you, branches knit closed over the path, while ahead the Ruined Keep straddles the old road like a broken jaw.",
+        "{{companion:Liora checks the horizon and says the next wounds will come from people, which does not sound like comfort.|Bram breathes easier at the sight of walls, even ruined ones.|Knox studies the keep's leaning towers and says, \"That place has at least six entrances and no honest welcome.\"}}"
       ],
       "position": [
         3160,
@@ -1081,7 +1127,8 @@
       "type": "action",
       "label": "Broken Road",
       "text": [
-        "The Ruined Keep was once a royal checkpoint. 🏰 Now its towers lean together like conspirators over a courtyard full of tents."
+        "The Ruined Keep was once a royal checkpoint. 🏰 Now its towers lean together like conspirators over a courtyard full of tents, cookfires, stolen banners, and men who have mistaken hunger for a kingdom.",
+        "{{companion:Liora watches the smoke and says bandits with cold hands become cruel faster than monsters do.|Bram recognizes guard rotations even in their sloppiness and starts naming weak points under his breath.|Knox studies the tents, the drainage ditch, and the bored lookouts. \"Good,\" he says. \"They are confident. Confident people forget windows.\"}}"
       ],
       "position": [
         3500,
@@ -1107,7 +1154,8 @@
       "type": "skip",
       "label": "Open Approach",
       "text": [
-        "You walk the road openly. Bandit lookouts spot you at once and ring a cracked dinner bell."
+        "You walk the road openly, boots loud on the frozen stones. Bandit lookouts spot you at once and ring a cracked dinner bell, and the sound scatters through the keep like a bad joke told too often.",
+        "{{companion:Liora straightens her satchel so the red healer's mark shows clearly.|Bram rolls his neck, almost pleased to have enemies with faces.|Knox sighs. \"Direct approach,\" he says. \"A bold experiment in making my skills decorative.\"}}"
       ],
       "position": [
         3500,
@@ -1120,7 +1168,8 @@
       "type": "skip",
       "label": "Empty Camp",
       "text": [
-        "You search an abandoned camp and find coins hidden in a boot. The owner probably left quickly or without feet."
+        "You search an abandoned camp and find coins hidden in a boot, beside a half-written letter begging someone named Mara to leave the hills before winter gets teeth. The owner left quickly, or without feet.",
+        "{{companion:Liora folds the letter and tucks it away, unable to abandon one more name.|Bram checks the cold ashes and judges the camp abandoned for less than an hour.|Knox finds a second coin under the boot heel and says amateurs hide money where guilt cannot reach it.}}"
       ],
       "position": [
         3500,
@@ -1136,7 +1185,8 @@
       "type": "skip",
       "label": "Raven Trail",
       "text": [
-        "The ravens lead you around the keep to a narrow postern door carved with a royal flame."
+        "The ravens lead you around the keep, hopping from stone to stone with the impatience of unpaid guides. They stop at a narrow postern door carved with a royal flame, then fall silent all at once.",
+        "{{companion:Liora murmurs that birds do not guide people for free, even enchanted ones.|Bram tests the hinges and finds them stronger than the wall around them.|Knox bows to the ravens. \"My compliments to your locksmith,\" he says.}}"
       ],
       "position": [
         3500,
@@ -1150,7 +1200,8 @@
       "label": "Bandit Toll",
       "text": [
         "A bandit captain blocks the gate with six bored archers behind him.",
-        "\"Toll for crossing royal land,\" he says. \"Royalty is absent, so I am improvising.\""
+        "{{companion:Liora's face hardens when she sees village charms tied to the captain's belt as trophies.|Bram steps half a pace forward, and three archers immediately remember they are mortal.|Knox smiles at the captain's purse, then at the captain, then makes a little show of choosing diplomacy.}}",
+        "\"Toll for crossing royal land,\" the captain says. \"Royalty is absent, so I am improvising.\""
       ],
       "position": [
         3500,
@@ -1180,7 +1231,8 @@
       "type": "action",
       "label": "Raven Door",
       "text": [
-        "The postern door has no handle, only a flame-shaped hollow and old scratch marks around it."
+        "The postern door has no handle, only a flame-shaped hollow and old scratch marks around it. The stone is cold except near the hollow, where heat lingers like a remembered password.",
+        "{{companion:Liora notices dried blood in the scratches and says someone tried prayer after force failed.|Bram braces one hand against the frame, already measuring how badly force might fail again.|Knox kneels, delighted despite himself. \"Now this is a lock with self-respect.\"}}"
       ],
       "position": [
         3840,
@@ -1207,7 +1259,8 @@
       "type": "skip",
       "label": "Paid Passage",
       "text": [
-        "The captain takes your coins and looks disappointed that honesty worked. He waves you through the gate."
+        "The captain takes your coins and looks disappointed that honesty worked. He waves you through the gate, but his archers keep their arrows nocked until the courtyard shadows swallow you.",
+        "{{companion:Liora says buying peace is not the same as trusting it.|Bram mutters that every coin deserved a punch for company.|Knox counts the captain's pouch by sound and announces you overpaid by exactly one insult.}}"
       ],
       "position": [
         3840,
@@ -1220,7 +1273,8 @@
       "type": "redirect",
       "label": "Hard Stare",
       "text": [
-        "You tell the captain what happens to thieves who slow a royal errand. His archers shift uneasily."
+        "You tell the captain what happens to thieves who slow a royal errand. His archers shift uneasily, suddenly aware that their gate is narrow and their courage has to share space with six other men.",
+        "{{companion:Liora says nothing, which somehow makes the threat sound more moral.|Bram plants his hammer head-down on the road, and the crack in the stone speaks for him.|Knox quietly names two of the archers by their stolen nicknames, and both of them go pale.}}"
       ],
       "position": [
         3840,
@@ -1242,7 +1296,8 @@
       "type": "redirect",
       "label": "Gate Skirmish",
       "text": [
-        "You charge before the archers settle. The courtyard erupts into shouts, bootfalls, and the iron taste of risk."
+        "You charge before the archers settle. The courtyard erupts into shouts, bootfalls, and the iron taste of risk, while tents collapse and stolen pots roll through the slush like drums.",
+        "{{companion:Liora moves behind you with a healer's knife held low, cutting bowstrings instead of throats.|Bram meets the first rush with a hammer swing that changes several opinions at once.|Knox vanishes under a wagon and reappears where nobody sensible should be, grinning with two stolen quivers.}}"
       ],
       "position": [
         3840,
@@ -1264,7 +1319,8 @@
       "type": "skip",
       "label": "Royal Flame",
       "text": [
-        "The sigil warms the postern door until its lock melts into harmless wax. A hidden corridor opens."
+        "The sigil warms the postern door until its lock melts into harmless wax. A hidden corridor opens, exhaling air scented with cedar, cold stone, and a royal house too proud to die quietly.",
+        "{{companion:Liora touches the melted lock and whispers thanks to whoever built mercy into a door.|Bram ducks into the passage with his hammer first, because royal secrets can still swing blades.|Knox stares at the melting mechanism like a craftsman watching a rival perform beautifully.}}"
       ],
       "position": [
         3840,
@@ -1280,7 +1336,8 @@
       "type": "skip",
       "label": "Shoulder Bruise",
       "text": [
-        "You force the old door with a shoulder that complains immediately. The lock breaks, but so does your grace."
+        "You force the old door with a shoulder that complains immediately. The lock breaks, but so does your grace, and the corridor beyond receives you in a tumble of dust and offended dignity.",
+        "{{companion:Liora helps you up and begins a lecture with the words \"When bones are resources,\" which promises length.|Bram nods with professional respect for a door that needed commitment.|Knox winces. \"Please never tell a lock I was present for that.\"}}"
       ],
       "position": [
         4180,
@@ -1296,7 +1353,8 @@
       "type": "action",
       "label": "Old Courtyard",
       "text": [
-        "Inside the keep, three places still hold power: the barracks, the chapel, and the tower where ravens circle without landing."
+        "Inside the keep, three places still hold power: the barracks with its rusted discipline, the chapel with its roof torn open to the storm, and the tower where ravens circle without landing.",
+        "{{companion:Liora feels the chapel pulling at the old healer's mark on her satchel.|Bram studies the barracks first, because soldiers leave useful habits behind even when kingdoms fail.|Knox watches the tower birds and decides anything that many eyes guard must be either treasure or trouble.}}"
       ],
       "position": [
         4180,
@@ -1322,7 +1380,8 @@
       "type": "skip",
       "label": "Arrow Warning",
       "text": [
-        "The captain loses his nerve but an archer does not. The arrow cuts your side before the bandits scatter."
+        "The captain loses his nerve but an archer does not. The arrow cuts your side before the bandits scatter, and the captain's brave speech collapses into the sound of men discovering consequences.",
+        "{{companion:Liora has the bandage out before the pain fully arrives.|Bram hurls a broken shield after the archer and nearly makes a legend of poor aim.|Knox collects the fallen arrow, checks the fletching, and promises to remember the maker.}}"
       ],
       "position": [
         4180,
@@ -1338,7 +1397,8 @@
       "type": "skip",
       "label": "Bandits Break",
       "text": [
-        "Bram would approve of the noise you make. The bandits break and leave a purse behind in their hurry."
+        "The noise you make echoes under the gatehouse like a larger army arriving early. The bandits break and leave a purse behind in their hurry, along with several opinions about easier professions.",
+        "{{companion:Liora winces at the chaos but still kicks a dropped knife out of reach with excellent timing.|Bram laughs as the line folds. \"See?\" he says. \"A clear argument, properly delivered.\"|Knox catches the abandoned purse before it hits the mud and calls that battlefield tidying.}}"
       ],
       "position": [
         4180,
@@ -1354,7 +1414,8 @@
       "type": "skip",
       "label": "Messy Victory",
       "text": [
-        "You win the gate, but not cleanly. A cudgel catches your ribs, and every breath afterward feels negotiated."
+        "You win the gate, but not cleanly. A cudgel catches your ribs, and every breath afterward feels negotiated with someone unreasonable.",
+        "{{companion:Liora presses her palm to the bruise and tells you exactly which choices will make it worse.|Bram looks furious enough for both of you, which is useful because breathing still hurts.|Knox offers a joke, sees your face, and wisely upgrades it to silence.}}"
       ],
       "position": [
         4180,
@@ -1370,7 +1431,8 @@
       "type": "skip",
       "label": "Hidden Corridor",
       "text": [
-        "The postern corridor brings you behind the courtyard shrine. Dusty royal banners hang there, untouched by bandit hands."
+        "The postern corridor brings you behind the courtyard shrine. Dusty royal banners hang there, untouched by bandit hands, their embroidered crowns dim but stubborn under a century of grit.",
+        "{{companion:Liora brushes dust from one banner with two fingers, careful as if tending skin.|Bram salutes the old colors before he remembers to be embarrassed by it.|Knox checks behind the banners and finds nothing except his own disappointment.}}"
       ],
       "position": [
         4520,
@@ -1383,7 +1445,8 @@
       "type": "action",
       "label": "Dust Barracks",
       "text": [
-        "The barracks smells of rust and old straw. A shield hangs above a broken bunk, and a locked chest waits below it."
+        "The barracks smells of rust, old straw, and discipline gone stale. A shield hangs above a broken bunk, and a locked chest waits below it with the patient smugness of a thing meant to punish haste.",
+        "{{companion:Liora searches for medicine first and weapons second, because that is the order her world makes sense in.|Bram reads the room like a veteran and points out which bunk belonged to the officer.|Knox greets the chest with, \"Finally, someone here speaks clearly.\"}}"
       ],
       "position": [
         4520,
@@ -1413,7 +1476,8 @@
       "type": "action",
       "label": "Keep Chapel",
       "text": [
-        "The chapel roof is gone, but the altar flame still burns under open sky. 🕯️ Names of dead queens cover the floor."
+        "The chapel roof is gone, but the altar flame still burns under open sky. 🕯️ Names of dead queens cover the floor, each carved deeply enough that rain has never filled them.",
+        "{{companion:Liora kneels before the flame, and for once her hands stop moving.|Bram removes his glove before touching the threshold, which feels like a memory rather than a habit.|Knox stays near the door, uneasy around sacred places that have survived robbery.}}"
       ],
       "position": [
         4520,
@@ -1439,7 +1503,8 @@
       "type": "redirect",
       "label": "Raven Tower",
       "text": [
-        "The tower stairs groan as you climb. Ravens burst from arrow slits and turn the air into black feathers."
+        "The tower stairs groan as you climb. Ravens burst from arrow slits and turn the air into black feathers, wings, and furious echoes that erase the shape of the room.",
+        "{{companion:Liora shields her face and calls each step before you place your foot.|Bram swings his cloak wide, turning feathers aside with offended grandeur.|Knox ducks low and says any bird that lives in a tax office deserves suspicion.}}"
       ],
       "position": [
         4520,
@@ -1465,7 +1530,8 @@
       "type": "skip",
       "label": "Better Guard",
       "text": [
-        "The shield is scarred but sound. Whoever left it behind survived enough battles to make it worth trusting."
+        "The shield is scarred but sound. Whoever left it behind survived enough battles to make it worth trusting, and the old leather strap settles against your arm as if glad to work again.",
+        "{{companion:Liora approves of anything that keeps your blood where she prefers it.|Bram thumps the rim, hears the right ring, and gives it a soldier's nod.|Knox checks inside the boss for hidden coins because optimism is a discipline.}}"
       ],
       "position": [
         4520,
@@ -1478,7 +1544,8 @@
       "type": "redirect",
       "label": "Chest Trap",
       "text": [
-        "The chest lock clicks too easily. Knox would call that a warning, not an invitation."
+        "The chest lock clicks too easily. The sound is neat, polite, and wrong in exactly the way a trap tries to sound like permission.",
+        "{{companion:Liora steps back at once, trusting caution even when she cannot name the mechanism.|Bram raises the shield between you and the chest because simple answers sometimes age well.|Knox whispers, \"That click is lying,\" and starts looking for the spring.}}"
       ],
       "position": [
         4860,
@@ -1500,7 +1567,8 @@
       "type": "action",
       "label": "Keep Gate",
       "text": [
-        "You regroup near the inner gate. The road east drops toward the marsh, but there is still time to steady yourself."
+        "You regroup near the inner gate where the keep's old road drops east toward the marsh. Wind moves through the broken murder-holes overhead, and the place seems relieved to have witnessed one more decision.",
+        "{{companion:Liora offers water before advice, which makes the advice harder to refuse.|Bram watches the gate behind you until he is satisfied nothing brave or stupid is following.|Knox compares the map to reality and accuses both of exaggeration.}}"
       ],
       "position": [
         4860,
@@ -1531,7 +1599,8 @@
       "type": "skip",
       "label": "Queen Names",
       "text": [
-        "You speak the names carved in stone. The chapel answers with a pulse of warmth and the smell of summer rain."
+        "You speak the names carved in stone, one queen after another, until the chapel flame bends toward your voice. It answers with a pulse of warmth and the smell of summer rain.",
+        "{{companion:Liora adds the old healer's response after each name, and the altar brightens for her too.|Bram bows his head, rough and sincere, remembering every guard who died under a banner.|Knox pretends not to be moved, then quietly stops pretending.}}"
       ],
       "position": [
         4860,
@@ -1548,7 +1617,8 @@
       "type": "skip",
       "label": "Crypt Mark",
       "text": [
-        "Below the altar, a royal seal is hidden behind loose stone. It flares when your fingers brush it."
+        "Below the altar, a royal seal is hidden behind loose stone. It flares when your fingers brush it, drawing a crown of warm light across the chapel floor before fading into your palm.",
+        "{{companion:Liora says old oaths can still heal if someone stops using them as chains.|Bram grunts that a seal which waited this long deserves to be useful.|Knox admires the hiding place and admits, under pressure, that he would have missed it.}}"
       ],
       "position": [
         4860,
@@ -1564,7 +1634,8 @@
       "type": "skip",
       "label": "Tower Ember",
       "text": [
-        "At the top, a raven drops a coal-red bead into your palm and caws like it expects payment later."
+        "At the top, a raven drops a coal-red bead into your palm and caws like it expects payment later. The bead burns without smoke, reflecting a tiny upside-down citadel in its heart.",
+        "{{companion:Liora thanks the bird with a seriousness that earns another approving caw.|Bram says he does not like being indebted to anything with a beak, then pockets his pride.|Knox asks the raven for a receipt and receives exactly the look he deserves.}}"
       ],
       "position": [
         4860,
@@ -1580,7 +1651,8 @@
       "type": "skip",
       "label": "Wing Storm",
       "text": [
-        "Ravens hammer your face and shoulders until you stumble back down the stairs, swearing through feathers."
+        "Ravens hammer your face and shoulders until you stumble back down the stairs, swearing through feathers. The tower keeps its prize, but at least the floor has the grace not to vanish beneath you.",
+        "{{companion:Liora pulls a feather from your collar and decides it is not medically relevant, only humiliating.|Bram threatens the whole tower with future repairs it will not enjoy.|Knox claims he let the birds win because he respects local customs.}}"
       ],
       "position": [
         5200,
@@ -1596,7 +1668,8 @@
       "type": "skip",
       "label": "Sky View",
       "text": [
-        "From the tower you see the marsh shining like a cracked mirror. Beyond it, the Ashen Mine smokes under the mountains."
+        "From the tower you see the marsh shining like a cracked mirror. Beyond it, the Ashen Mine smokes under the mountains, and above both the Sky Citadel flashes whenever lightning finds its favorite tower.",
+        "{{companion:Liora marks the few dry ridges that might spare your feet and lungs.|Bram traces the road with one finger and names every place an ambush would love.|Knox commits the view to memory, because maps are honest only until people start needing them.}}"
       ],
       "position": [
         5200,
@@ -1612,7 +1685,8 @@
       "type": "skip",
       "label": "Chest Prize",
       "text": [
-        "The chest contains a small purse, a whetstone, and a note that says, \"Never trust easy locks.\" Useful advice, late delivery."
+        "The chest contains a small purse, a whetstone, and a note that says, \"Never trust easy locks.\" Useful advice, late delivery, but the whetstone takes a fine edge and the purse feels pleasantly real.",
+        "{{companion:Liora asks whether every useful object in this keep has to arrive with a moral lesson.|Bram approves of the whetstone more than the joke.|Knox reads the note twice, offended that the chest has stolen his professional tone.}}"
       ],
       "position": [
         5200,
@@ -1629,7 +1703,8 @@
       "type": "skip",
       "label": "Needle Bite",
       "text": [
-        "A spring needle stabs your thumb. The poison is weak, but the insult is strong."
+        "A spring needle stabs your thumb. The poison is weak, but the insult is strong, and the chest sits open as if proud of its tiny victory.",
+        "{{companion:Liora squeezes the wound until black blood beads up, then says several calm things in an alarming order.|Bram calls the chest a coward and appears to mean it.|Knox looks wounded on behalf of traps everywhere. \"Crude,\" he says. \"Effective, but rude.\"}}"
       ],
       "position": [
         5200,
@@ -1645,7 +1720,8 @@
       "type": "skip",
       "label": "Keep Behind",
       "text": [
-        "You leave the Ruined Keep with its ravens circling above. The road sinks east into mist and mosquito-song."
+        "You leave the Ruined Keep with its ravens circling above, carrying royal signs, bruises, or at least the memory of both. The road sinks east into mist and mosquito-song, and every step smells wetter than the last.",
+        "{{companion:Liora repacks her satchel for damp wounds and fever, already thinking two dangers ahead.|Bram looks back once at the walls, then forward with visible dislike for mud.|Knox flips a stolen bandit token into the ditch and says he prefers criminals with floors.}}"
       ],
       "position": [
         5200,
@@ -1658,7 +1734,8 @@
       "type": "action",
       "label": "Sunken Marsh",
       "text": [
-        "The Sunken Marsh spreads under a silver fog. 💧 Half-drowned statues point toward places the road no longer reaches."
+        "The Sunken Marsh spreads under a silver fog. 💧 Half-drowned statues point toward places the road no longer reaches, and their stone fingers vanish beneath water that reflects stars the sky does not have.",
+        "{{companion:Liora ties her satchel higher and warns that marsh sickness loves heroic haste.|Bram tests the first plank bridge, then tests it again because he deeply distrusts water with opinions.|Knox studies the fog and says any place that hides the horizon is trying to renegotiate the map.}}"
       ],
       "position": [
         5540,
@@ -1684,7 +1761,8 @@
       "type": "skip",
       "label": "Reed Path",
       "text": [
-        "You move between reeds taller than spears. Something follows in the water, matching your pace with patient bubbles."
+        "You move between reeds taller than spears. Something follows in the water, matching your pace with patient bubbles, while insects tick against the stalks like a thousand tiny clocks.",
+        "{{companion:Liora keeps her voice low, naming poisonous plants before your hands can find them.|Bram carries his hammer higher than usual, unhappy that the ground refuses to feel like ground.|Knox walks lightly enough that even the mud seems unsure whether he owes it a footprint.}}"
       ],
       "position": [
         5540,
@@ -1697,7 +1775,8 @@
       "type": "redirect",
       "label": "Ferry Lights",
       "text": [
-        "Blue lights drift over the water like lanterns on invisible boats. They may guide travelers, or count them."
+        "Blue lights drift over the water like lanterns on invisible boats. They may guide travelers, or count them, or simply enjoy how easily desperate people follow anything bright.",
+        "{{companion:Liora says will-o'-wisps often mimic comfort because comfort opens doors fear cannot.|Bram says lights with no hands should not be trusted to carry lanterns.|Knox salutes the lights. \"Professional courtesy,\" he explains, \"from one lure to another.\"}}"
       ],
       "position": [
         5540,
@@ -1723,7 +1802,8 @@
       "type": "skip",
       "label": "Mud Causeway",
       "text": [
-        "The causeway holds for ten brave steps, then swallows your boot to the knee. Pulling free costs skin and dignity."
+        "The causeway holds for ten brave steps, then swallows your boot to the knee. Pulling free costs skin and dignity, and the mud releases you with a sound too satisfied to be natural.",
+        "{{companion:Liora cleans the scrape before the marsh can add its own opinion.|Bram hauls you out by the belt and refuses to call that funny until you are safely angry.|Knox circles the sinkhole and says, \"I have known debt collectors with gentler manners.\"}}"
       ],
       "position": [
         5540,
@@ -1739,7 +1819,8 @@
       "type": "action",
       "label": "Marsh Camp",
       "text": [
-        "A dry mound offers a rare place to breathe. Smoke from an old hermit's fire curls nearby, and the road vanishes into fog."
+        "A dry mound offers a rare place to breathe. Smoke from an old hermit's fire curls nearby, the road vanishes into fog, and your boots steam beside reeds that twitch without wind.",
+        "{{companion:Liora uses the pause to inspect every scratch with the concentration of a judge.|Bram stacks wet wood around the fire and dares it not to burn.|Knox empties his boots, produces something silver that was not yours, and claims the marsh gave it freely.}}"
       ],
       "position": [
         5540,
@@ -1770,7 +1851,8 @@
       "type": "skip",
       "label": "Kind Lights",
       "text": [
-        "The lights lead you across hidden stepping stones. At the far bank, they sink with a sound like distant laughter."
+        "The lights lead you across hidden stepping stones. At the far bank, they sink with a sound like distant laughter, leaving ripples shaped like little blue crowns.",
+        "{{companion:Liora thanks them anyway, because courtesy costs less than anger in old places.|Bram says he still does not like them, which may be the nicest thing he can say about magic.|Knox checks his pockets afterward and seems mildly impressed that nothing is missing.}}"
       ],
       "position": [
         5880,
@@ -1783,7 +1865,8 @@
       "type": "skip",
       "label": "False Lights",
       "text": [
-        "The lights turn suddenly and draw you into waist-deep cold water. You escape with leeches and fewer compliments for fate."
+        "The lights turn suddenly and draw you into waist-deep cold water. You escape with leeches, numb legs, and fewer compliments for fate than you had at sunrise.",
+        "{{companion:Liora peels the leeches away with brisk mercy and mutters about glamorous quests.|Bram splashes after you, furious at any enemy that cannot be punched without getting wetter.|Knox wrings out his coat and announces that betrayal was obvious in retrospect, as betrayals often are.}}"
       ],
       "position": [
         5880,
@@ -1799,7 +1882,8 @@
       "type": "skip",
       "label": "Rune Reflection",
       "text": [
-        "One light settles on your marked hand and becomes a tiny sun under the skin. The marsh recognizes old magic."
+        "One light settles on your marked hand and becomes a tiny sun under the skin. The marsh recognizes old magic, and the fog withdraws just far enough to reveal the next strip of survivable ground.",
+        "{{companion:Liora studies the glow and says your pulse has started answering it.|Bram does not like lights entering people but likes the clearer path enough to compromise.|Knox looks at your hand and says, \"Useful. Concerning, but useful.\"}}"
       ],
       "position": [
         5880,
@@ -1816,6 +1900,7 @@
       "label": "Mud Hermit",
       "text": [
         "The hermit is wrapped in nets and old medals. He stirs his pot with a sword too fine for soup.",
+        "{{companion:Liora recognizes a battlefield triage medal under the mud and softens before she speaks.|Bram recognizes the sword as officer steel and keeps his respect guarded.|Knox recognizes a practiced liar and relaxes, because familiar dangers are almost friendly.}}",
         "\"Going crownward? Then buy caution or borrow trouble.\""
       ],
       "position": [
@@ -1847,7 +1932,8 @@
       "type": "action",
       "label": "Scaled Patrol",
       "text": [
-        "Lizardfolk rise from the reeds with spears of bone and bronze. Their leader studies your ember-warm pack."
+        "Lizardfolk rise from the reeds with spears of bone and bronze. Their leader studies your ember-warm pack, then the mud on your boots, then your face, in that order of trust.",
+        "{{companion:Liora lowers her hands to show empty palms, healer to hunter.|Bram goes very still, the way guards do when one wrong twitch can become a war.|Knox's smile becomes diplomatic, which means thinner, sharper, and less comforting.}}"
       ],
       "position": [
         5880,
@@ -1873,7 +1959,8 @@
       "type": "skip",
       "label": "Bitter Bottle",
       "text": [
-        "The antidote tastes like rotten mint and old pennies. The hermit assures you that means it is working."
+        "The antidote tastes like rotten mint and old pennies. The hermit assures you that means it is working, then refuses to explain what taste would mean it was not.",
+        "{{companion:Liora sniffs the bottle and grudgingly admits the old man knows his marsh fevers.|Bram drinks last, grimaces once, and pretends he did not.|Knox asks whether the bottle has a refund policy and receives a laugh that may be a curse.}}"
       ],
       "position": [
         6220,
@@ -1886,7 +1973,8 @@
       "type": "skip",
       "label": "Marsh Tale",
       "text": [
-        "The hermit tells you Malrec once came through smiling and left with no shadow. That detail troubles everyone but Knox."
+        "The hermit tells you Malrec once came through smiling and left with no shadow. He paid with royal coin still warm from a dead king's hand, then asked which roads led highest and which ones did not forgive.",
+        "{{companion:Liora grows pale at the thought of a man walking without the honest darkness every body earns.|Bram says a missing shadow is just another place to hit if it comes close enough.|Knox pretends the detail does not trouble him, but he keeps checking whether his own shadow is behaving.}}"
       ],
       "position": [
         6220,
@@ -1903,7 +1991,8 @@
       "type": "redirect",
       "label": "Reed Parley",
       "text": [
-        "You lower your weapon and speak of Malrec. The patrol hisses among themselves, deciding whether humans ever mean what they say."
+        "You lower your weapon and speak of Malrec, of the crown, and of villages freezing beyond the marsh. The patrol hisses among themselves, deciding whether humans ever mean what they say.",
+        "{{companion:Liora repeats your promise in the careful cadence of a healer's oath.|Bram keeps his hands visible and his anger leashed, which impresses the spear-carriers more than friendliness would.|Knox names the ferry lights' old toll phrase, proving he listened before bargaining.}}"
       ],
       "position": [
         6220,
@@ -1930,7 +2019,8 @@
       "type": "redirect",
       "label": "Reed Ambush",
       "text": [
-        "You strike before the patrol surrounds you. Marsh water explodes around knees, shields, and snapping teeth."
+        "You strike before the patrol surrounds you. Marsh water explodes around knees, shields, and snapping teeth, while reeds whip back and forth like a crowd unable to choose a side.",
+        "{{companion:Liora cuts spear straps and shouts warnings instead of curses.|Bram drives the nearest shield line back with three heavy blows and one satisfied grunt.|Knox uses the mud like a curtain, appearing only where pockets, knots, or balance are weakest.}}"
       ],
       "position": [
         6220,
@@ -1952,7 +2042,8 @@
       "type": "skip",
       "label": "Reed Cage",
       "text": [
-        "You surrender your weapons and are marched to a cage of green reeds. The lizardfolk leave one guard and many mosquitoes."
+        "You surrender your weapons and are marched to a cage of green reeds woven tighter than rope. The lizardfolk leave one guard, many mosquitoes, and your gear just close enough to become an insult.",
+        "{{companion:Liora studies the guard's limp and whispers that pain can open conversations as well as locks.|Bram tests the cage with one careful hand, already choosing the loudest weak point.|Knox looks at the latch, then at you, with the wounded expression of an artist denied tools.}}"
       ],
       "position": [
         6220,
@@ -1965,7 +2056,9 @@
       "type": "skip",
       "label": "Marsh Token",
       "text": [
-        "The leader gives you a sunstone ☀️ carved like a fish scale. \"For the drowned shrine,\" she says. \"Do not make it regret helping you.\""
+        "The leader gives you a sunstone ☀️ carved like a fish scale. It warms when it touches your palm, and every spear around you lowers by the smallest possible degree.",
+        "{{companion:Liora bows with both hands open, accepting the gift as medicine rather than tribute.|Bram nods once, warrior to warrior, and the leader seems to understand him perfectly.|Knox asks what the stone is worth, then quickly clarifies that he means spiritually.}}",
+        "\"For the drowned shrine,\" she says. \"Do not make it regret helping you.\""
       ],
       "position": [
         6560,
@@ -1981,7 +2074,8 @@
       "type": "skip",
       "label": "Spear Lesson",
       "text": [
-        "Your parley becomes a brief lesson in spear distance. The patrol lets you leave, mostly because you are moving away."
+        "Your parley becomes a brief lesson in spear distance. The patrol lets you leave, mostly because you are moving away, and because their leader looks tired of teaching humans with the blunt end.",
+        "{{companion:Liora binds the shallow cut without saying I told you so, which is worse.|Bram accepts the bruise with visible respect for a clean strike.|Knox mutters that diplomacy should include clearer floor markings.}}"
       ],
       "position": [
         6560,
@@ -1997,7 +2091,8 @@
       "type": "skip",
       "label": "Patrol Routed",
       "text": [
-        "The patrol breaks after a hard clash. In their abandoned pouch you find a shard wrapped in eel skin."
+        "The patrol breaks after a hard clash and vanishes under the water faster than retreat should allow. In their abandoned pouch you find a shard wrapped in eel skin, pulsing like a coal under wet leather.",
+        "{{companion:Liora hopes aloud that the next meeting with the marsh will require fewer apologies.|Bram says winning against people defending home never tastes right.|Knox checks the pouch twice and finds a respectful absence of traps.}}"
       ],
       "position": [
         6560,
@@ -2013,7 +2108,8 @@
       "type": "skip",
       "label": "Tooth Mark",
       "text": [
-        "You win space, not glory. One lizardfolk bites deep before vanishing under the water."
+        "You win space, not glory. One lizardfolk bites deep before vanishing under the water, leaving crescent marks that burn colder than the marsh.",
+        "{{companion:Liora cleans the wound with fierce efficiency and orders you not to admire your own survival yet.|Bram watches the ripples until they stop, hammer raised for a second lesson.|Knox says teeth are an unfair weapon because nobody expects to parry a face.}}"
       ],
       "position": [
         6560,
@@ -2029,7 +2125,8 @@
       "type": "action",
       "label": "Reed Prison",
       "text": [
-        "The reed cage flexes when you breathe. Your gear lies nearby under a guard's bored eye."
+        "The reed cage flexes when you breathe, tightening whenever you test it too obviously. Your gear lies nearby under a guard's bored eye, and the marsh beyond the camp gurgles like it is enjoying the pause.",
+        "{{companion:Liora watches the guard's breathing and waits for the moment pain makes him careless.|Bram keeps very still, saving strength for the kind of mistake that breaks furniture.|Knox studies the latch with open longing and whispers, \"If love were justice, that lock would already be mine.\"}}"
       ],
       "position": [
         6560,
@@ -2039,12 +2136,12 @@
         {
           "label": "🚪 Pick lock",
           "id": 102,
-          "condition": "knox || hasMap"
+          "condition": "isKnox() || hasMap"
         },
         {
           "label": "🤝 Call ally",
           "id": 103,
-          "condition": "liora || bram || knox"
+          "condition": "hasCompanion()"
         },
         {
           "label": "⛰️ Wait quietly",
@@ -2057,7 +2154,8 @@
       "type": "action",
       "label": "Drowned Shrine",
       "text": [
-        "A temple roof rises from black water. Its doorway is submerged, but ember light flickers beneath the surface."
+        "A temple roof rises from black water. Its doorway is submerged, but ember light flickers beneath the surface, glowing through drowned carvings of queens holding back a tide of white hands.",
+        "{{companion:Liora reads the carvings as a warning to heal only what should live.|Bram dislikes any door that asks him to swim, especially one decorated with hands.|Knox studies the half-sunk roofline and finds a dry route that looks legal only to desperate architecture.}}"
       ],
       "position": [
         6900,
@@ -2084,7 +2182,8 @@
       "type": "redirect",
       "label": "Bent Reeds",
       "text": [
-        "You work the reed latch with a nail, a pick, or stubborn optimism. The guard starts turning back."
+        "You work the reed latch with a nail, a pick, or stubborn optimism. The fibers creak apart one by one, but the guard starts turning back just as the last loop loosens.",
+        "{{companion:Liora coughs on purpose to drag the guard's eye away from your hands.|Bram shifts his weight, ready to turn stealth into impact if needed.|Knox keeps whispering advice to the latch as if coaxing a shy animal out from under a porch.}}"
       ],
       "position": [
         6900,
@@ -2106,7 +2205,8 @@
       "type": "skip",
       "label": "Ally Trick",
       "text": [
-        "Your companion creates exactly the sort of distraction that would be embarrassing to explain later. You snatch your gear and run."
+        "{{companion:Liora staggers against the cage and makes the guard think his prisoner is fainting, then jabs a sleep-needle into the gap of his scale glove.|Bram begins a mournful prison song so loudly and badly that the guard comes over to stop the crime against music.|Knox produces a pick from his sleeve, opens the latch, then opens the guard's belt pouch because apparently escape has standards.}}",
+        "You snatch your gear and run before the marsh can decide the joke is over."
       ],
       "position": [
         6900,
@@ -2119,7 +2219,8 @@
       "type": "skip",
       "label": "Patient Escape",
       "text": [
-        "Night deepens. The guard dozes, and you squeeze through reeds until they scrape your shoulders raw."
+        "Night deepens. The guard dozes, and you squeeze through reeds until they scrape your shoulders raw, each inch bought with breath held so long the dark begins to sparkle.",
+        "{{companion:Liora keeps count in whispers, steadying the crawl like a pulse.|Bram forces the reeds apart just enough to spare your ribs, though not his pride.|Knox slips through first and complains the whole time that a cage should have the decency to use hinges.}}"
       ],
       "position": [
         6900,
@@ -2135,7 +2236,8 @@
       "type": "redirect",
       "label": "Black Dive",
       "text": [
-        "You dive through cold water into the shrine mouth. Something below opens one enormous eye."
+        "You dive through cold water into the shrine mouth. The world narrows to bubbles, pressure, and red light, then something below opens one enormous eye.",
+        "{{companion:Liora ties a cord around your wrist before the dive, refusing to trust bravery with directions.|Bram grips the cord on shore like he can intimidate the whole lake into returning you.|Knox points out three safer-looking routes, then admits none of them reach the altar.}}"
       ],
       "position": [
         6900,
@@ -2157,7 +2259,8 @@
       "type": "skip",
       "label": "Sunstone Door",
       "text": [
-        "The sunstone flashes and the drowned door lifts. Air rushes from below, smelling of candle smoke and river mud."
+        "The sunstone flashes and the drowned door lifts. Air rushes from below, smelling of candle smoke and river mud, and the shrine steps rise through the water one by one like remembered bones.",
+        "{{companion:Liora smiles despite the danger, because doors that open to gifts still exist.|Bram steps onto the first stair before it fully dries, trusting stone more than water.|Knox watches the mechanism with frank envy and says ancient engineers were show-offs.}}"
       ],
       "position": [
         7240,
@@ -2173,7 +2276,8 @@
       "type": "skip",
       "label": "Shore Route",
       "text": [
-        "You circle the shrine and find a broken stair just above the waterline. It is slow, but slow is alive."
+        "You circle the shrine and find a broken stair just above the waterline. It is slow, but slow is alive, and the marsh spends the whole climb whispering alternatives beneath the boards.",
+        "{{companion:Liora approves of alive, even when it is tedious.|Bram goes first and breaks two rotten steps before either can break you.|Knox marks the way back with reed knots, then calls them decorative when you notice.}}"
       ],
       "position": [
         7240,
@@ -2186,7 +2290,8 @@
       "type": "skip",
       "label": "Guard's Club",
       "text": [
-        "The guard catches your escape with a club and a startled curse. You get away, but the bruise will travel with you."
+        "The guard catches your escape with a club and a startled curse. You get away, but the bruise will travel with you, blooming purple under mud and mosquito bites.",
+        "{{companion:Liora looks personally betrayed by the bruise and treats it like an enemy with a schedule.|Bram promises the guard a later conversation neither of you has time for.|Knox says the hit was unfairly timed, which is almost a compliment.}}"
       ],
       "position": [
         7240,
@@ -2202,7 +2307,8 @@
       "type": "skip",
       "label": "Shrine Ember",
       "text": [
-        "You seize a shard from the flooded altar 🔥 and kick upward while the shrine eye closes behind you."
+        "You seize a shard from the flooded altar 🔥 and kick upward while the shrine eye closes behind you. The water goes black for one breath, then spits you back into air and rain.",
+        "{{companion:Liora hauls the cord until you surface and only starts trembling after you breathe.|Bram pulls you onto stone with one arm and tells the shrine it missed its chance.|Knox checks that you kept the shard before asking whether you kept all your limbs, which he insists is triage.}}"
       ],
       "position": [
         7240,
@@ -2218,7 +2324,8 @@
       "type": "skip",
       "label": "Cold Grip",
       "text": [
-        "A drowned hand closes around your ankle. You tear free at the surface, coughing black water and old prayers."
+        "A drowned hand closes around your ankle. You tear free at the surface, coughing black water and old prayers, while something below taps twice against the stone as if counting what escaped.",
+        "{{companion:Liora wraps you in her cloak without asking permission, too angry at fear to be gentle.|Bram slams his hammer against the shrine edge until the tapping stops.|Knox says nobody mentioned underwater debt collectors, and he objects to the hidden fee.}}"
       ],
       "position": [
         7240,
@@ -2234,7 +2341,8 @@
       "type": "action",
       "label": "Ashen Mine",
       "text": [
-        "The Ashen Mine breathes smoke through vents in the mountain. ⛏️ Rails run into darkness, and sparks crawl along them against the wind."
+        "The Ashen Mine breathes smoke through vents in the mountain. ⛏️ Rails run into darkness, sparks crawl along them against the wind, and every tunnel mouth glows like a throat remembering fire.",
+        "{{companion:Liora covers her mouth with a herb cloth and warns that smoke can wound slower than steel.|Bram brightens at the sight of rails, ropes, and things heavy enough to understand leverage.|Knox eyes the mine office first. \"Someone organized this place,\" he says. \"Organized people write down where they hide keys.\"}}"
       ],
       "position": [
         7580,
@@ -2261,7 +2369,8 @@
       "type": "redirect",
       "label": "Old Lift",
       "text": [
-        "The lift cage hangs above a shaft with more confidence than engineering. You pull the lever anyway."
+        "The lift cage hangs above a shaft with more confidence than engineering. The chain is thick, the platform is tired, and somewhere below, something large snores through the stone.",
+        "{{companion:Liora checks the brake and looks unconvinced by every part of it.|Bram spits into the shaft, listens, and says the bottom is survivably far, which is not the same as near.|Knox inspects the lever plate and asks why ancient machinery always comes with dramatic choices.}}"
       ],
       "position": [
         7580,
@@ -2283,7 +2392,8 @@
       "type": "skip",
       "label": "Lit Tunnel",
       "text": [
-        "Your light reveals old chalk marks and small footprints. Whatever lives here knows every shortcut and resents visitors."
+        "Your light reveals old chalk marks, small footprints, and warning symbols revised by generations of nervous hands. Whatever lives here knows every shortcut and resents visitors.",
+        "{{companion:Liora reads the chalk marks as miner triage signs and follows the ones that promise air.|Bram stoops under the low beams, muttering that enemies this short still own the ceiling.|Knox admires the side passages with the reverence other people reserve for cathedrals.}}"
       ],
       "position": [
         7580,
@@ -2296,7 +2406,8 @@
       "type": "action",
       "label": "Miner Camp",
       "text": [
-        "A few miners huddle near a cart, too tired to flee. They sell what they can and warn you what they cannot."
+        "A few miners huddle near a cart, too tired to flee and too frightened to stay useful for long. They sell what they can and warn you what they cannot, glancing often toward the deeper rails.",
+        "{{companion:Liora checks their coughs and trades kindness for directions before coin changes hands.|Bram asks practical questions about load-bearing beams, ogre habits, and exits.|Knox finds the camp ledger and learns the mine has been losing tools to something that signs with claw marks.}}"
       ],
       "position": [
         7580,
@@ -2332,7 +2443,8 @@
       "type": "skip",
       "label": "Lift Holds",
       "text": [
-        "The lift screams all the way down but does not fall. That feels like friendship by mine standards."
+        "The lift screams all the way down but does not fall. That feels like friendship by mine standards, and when the gate rattles open below, the darkness ahead smells of hot iron and old sweat.",
+        "{{companion:Liora releases the breath she has been keeping in reserve for disaster.|Bram pats the lift chain as if praising a nervous horse, then remembers it is metal.|Knox kisses two fingers to the lever and says he never doubted it, which is new information for everyone.}}"
       ],
       "position": [
         7580,
@@ -2345,7 +2457,8 @@
       "type": "skip",
       "label": "Lift Drop",
       "text": [
-        "The chain slips. The cage drops one brutal span before catching, and your knees remember the impact."
+        "The chain slips. The cage drops one brutal span before catching, and your knees remember the impact long after your courage pretends it was prepared.",
+        "{{companion:Liora checks you before herself and becomes briefly furious when you object.|Bram holds the cage wall hard enough to bend a bar.|Knox announces from the floor that he has discovered a new and personal hatred of vertical travel.}}"
       ],
       "position": [
         7920,
@@ -2361,7 +2474,8 @@
       "type": "skip",
       "label": "Miner Warning",
       "text": [
-        "\"Ogre in the heart chamber,\" a miner whispers. \"Kobolds feed it coal and compliments.\" You are not sure which is worse."
+        "\"Ogre in the heart chamber,\" a miner whispers. \"Kobolds feed it coal and compliments.\" He looks less afraid of the ogre than of how much it enjoys both.",
+        "{{companion:Liora asks how many miners are missing, and the answer empties the camp of sound.|Bram asks how tall the ogre is, then seems disappointed the answer is not smaller.|Knox asks whether the kobolds keep accounts, because someone always profits from terror.}}"
       ],
       "position": [
         7920,
@@ -2374,7 +2488,8 @@
       "type": "action",
       "label": "Kobold Gate",
       "text": [
-        "Kobolds block a tunnel gate with spears, helmets, and the confidence of creatures defending home ground."
+        "Kobolds block a tunnel gate with spears, helmets, and the confidence of creatures defending home ground. Their barricade is messy but clever, built from rails, shields, and three separate escape routes.",
+        "{{companion:Liora notices their youngest guard shaking and lowers her voice instead of her standards.|Bram respects a barricade more when it has actually been thought through.|Knox studies the escape routes with open professional admiration. \"Annoying,\" he says. \"Competent.\"}}"
       ],
       "position": [
         7920,
@@ -2396,7 +2511,7 @@
         {
           "label": "🧭 Sneak around",
           "id": 121,
-          "condition": "knox || hasMap"
+          "condition": "isKnox() || hasMap"
         }
       ]
     },
@@ -2405,7 +2520,9 @@
       "type": "skip",
       "label": "Paid Kobolds",
       "text": [
-        "The kobolds accept your coins after biting each one. \"Metal good,\" their chief says. \"Hero less good, but pass.\""
+        "The kobolds accept your coins after biting each one. Their chief weighs the payment in a dented helmet, then waves you through with the majesty of someone selling a bridge he does not own.",
+        "{{companion:Liora adds a strip of bandage for their youngest guard, which confuses everyone into silence.|Bram grumbles that paying a toll underground feels like being robbed by architecture.|Knox asks for a stamped receipt and is offered a pebble with teeth marks.}}",
+        "\"Metal good,\" the chief says. \"Hero less good, but pass.\""
       ],
       "position": [
         7920,
@@ -2418,7 +2535,8 @@
       "type": "redirect",
       "label": "Chief Duel",
       "text": [
-        "The kobold chief fights with two picks and a hat too large for his head. Neither detail makes him less dangerous."
+        "The kobold chief fights with two picks and a hat too large for his head. Neither detail makes him less dangerous, especially when the hat hides the angle of his first strike.",
+        "{{companion:Liora calls out each feint after the first, angry at how much harm fits in a small body.|Bram cheers for clean footwork before remembering which side he is on.|Knox says the chief is overcompensating, then ducks a pick meant to challenge that theory.}}"
       ],
       "position": [
         7920,
@@ -2440,7 +2558,8 @@
       "type": "redirect",
       "label": "Side Crawl",
       "text": [
-        "You squeeze through a ventilation crawlspace that smells of coal dust, mushrooms, and bad decisions."
+        "You squeeze through a ventilation crawlspace that smells of coal dust, mushrooms, and bad decisions. The rock presses your shoulders while kobold voices echo below through cracks in the floor.",
+        "{{companion:Liora keeps one hand on your boot so nobody gets lost in the dark.|Bram follows with heroic difficulty and several private remarks about tunnel height.|Knox moves ahead like the crawlspace was built by an admirer and reports every loose board with glee.}}"
       ],
       "position": [
         8260,
@@ -2462,7 +2581,8 @@
       "type": "action",
       "label": "Crystal Fork",
       "text": [
-        "Three mine passages split around a pillar of red crystal. One hums blue, one smells of hot iron, and one whispers your name."
+        "Three mine passages split around a pillar of red crystal. One hums blue, one smells of hot iron, and one whispers your name in a voice that knows how tired you are.",
+        "{{companion:Liora listens to the whisper and says exhaustion is not prophecy.|Bram points his hammer at the hot-iron passage because at least heat is honest.|Knox refuses to answer a tunnel that starts the conversation by being personal.}}"
       ],
       "position": [
         8260,
@@ -2488,7 +2608,8 @@
       "type": "skip",
       "label": "Chief Yielded",
       "text": [
-        "You disarm the chief, who immediately declares you temporary chief of going away. The title comes with a better edge on your weapon."
+        "You disarm the chief, who immediately declares you temporary chief of going away. The title comes with a better edge on your weapon and a chorus of kobolds chanting something that may be respect or accounting.",
+        "{{companion:Liora returns the chief's fallen pick instead of humiliating him further.|Bram approves of a duel that ends with rules still standing.|Knox asks whether temporary chiefs receive treasury access and is firmly ignored.}}"
       ],
       "position": [
         8260,
@@ -2504,7 +2625,8 @@
       "type": "skip",
       "label": "Pick Wound",
       "text": [
-        "The chief's pick catches your leg before you force him back. He salutes the wound as if proud of both of you."
+        "The chief's pick catches your leg before you force him back. He salutes the wound as if proud of both of you, and the kobolds applaud the blood with alarming sincerity.",
+        "{{companion:Liora treats the cut while glaring at the applauding audience.|Bram says any enemy who salutes properly deserves a better exit than being kicked.|Knox asks whether applause is standard with injury or costs extra.}}"
       ],
       "position": [
         8260,
@@ -2520,7 +2642,8 @@
       "type": "skip",
       "label": "Clean Sneak",
       "text": [
-        "You crawl above the gate and drop behind the guards. Their argument about helmets continues without you."
+        "You crawl above the gate and drop behind the guards. Their argument about helmets continues without you, growing more passionate as you slip past the last barricade.",
+        "{{companion:Liora waits until you are clear before breathing normally again.|Bram lands heavier than ideal but turns the thud into a deliberate cough.|Knox closes the hidden panel behind you, because good manners matter in criminal work.}}"
       ],
       "position": [
         8260,
@@ -2533,7 +2656,8 @@
       "type": "skip",
       "label": "Coal Slide",
       "text": [
-        "The crawlspace collapses into a coal chute. You arrive behind the gate in a black cloud and with new bruises."
+        "The crawlspace collapses into a coal chute. You arrive behind the gate in a black cloud, with new bruises and the surprised dignity of someone delivered by machinery against their will.",
+        "{{companion:Liora checks whether the black on your face is coal or blood before deciding how worried to be.|Bram emerges last, wider than the chute wanted, and declares victory over architecture.|Knox lands neatly, then ruins the effect by coughing for a full minute.}}"
       ],
       "position": [
         8600,
@@ -2549,7 +2673,8 @@
       "type": "redirect",
       "label": "Blue Hall",
       "text": [
-        "Blue crystals pulse when you pass. The light makes your shadow move half a step late."
+        "Blue crystals pulse when you pass. The light makes your shadow move half a step late, as if some colder version of you is deciding whether to keep following.",
+        "{{companion:Liora tells you not to watch the shadow too long, then follows her own advice with effort.|Bram steps on his delayed shadow several times, looking increasingly offended.|Knox waves at his shadow and looks relieved when it has the decency not to wave back.}}"
       ],
       "position": [
         8600,
@@ -2571,7 +2696,8 @@
       "type": "action",
       "label": "Red Winch",
       "text": [
-        "A huge red winch controls a stone bridge over molten slag. Its handle is wrapped in burned leather."
+        "A huge red winch controls a stone bridge over molten slag. Its handle is wrapped in burned leather, and the bridge waits upright on the far side like a drawbridge to an angrier world.",
+        "{{companion:Liora warns that burned leather means someone already paid for overconfidence.|Bram grins at the machinery with the simple joy of a man meeting a problem made of leverage.|Knox checks the gears for sabotage and finds three places he would have improved it.}}"
       ],
       "position": [
         8600,
@@ -2598,7 +2724,8 @@
       "type": "skip",
       "label": "Whisper Shaft",
       "text": [
-        "The whispering shaft speaks the rune-word under your skin. When you answer, the mountain goes briefly silent."
+        "The whispering shaft speaks the rune-word under your skin. When you answer, the mountain goes briefly silent, and every crystal along the wall dims as if listening to a law older than fire.",
+        "{{companion:Liora watches your marked hand and says the word sounds less like power than responsibility.|Bram admits he understood none of it, but he likes that the mountain stopped arguing.|Knox writes the sound phonetically on his cuff, then crosses it out when the ink smokes.}}"
       ],
       "position": [
         8600,
@@ -2615,7 +2742,8 @@
       "type": "skip",
       "label": "Blue Ember",
       "text": [
-        "A crystal breaks open and reveals an ember shard inside 🔥, like a coal trapped in winter glass."
+        "A crystal breaks open and reveals an ember shard inside 🔥, like a coal trapped in winter glass. When you take it, the delayed shadow snaps back beneath your feet.",
+        "{{companion:Liora says some cages are built to protect the world from what they hold.|Bram flexes his fingers, glad to have his own shadow moving properly again.|Knox asks whether the shard counts as stolen if the crystal clearly started it.}}"
       ],
       "position": [
         8600,
@@ -2631,7 +2759,8 @@
       "type": "skip",
       "label": "Late Shadow",
       "text": [
-        "Your shadow pulls wrong and drags you into a wall of crystal teeth. You tear free with glittering cuts."
+        "Your shadow pulls wrong and drags you into a wall of crystal teeth. You tear free with glittering cuts, and the blue light fades with the smugness of a trap satisfied by partial success.",
+        "{{companion:Liora plucks crystal splinters from your sleeve with a patience sharpened by anger.|Bram plants himself between you and your own shadow, which is loyal and ridiculous.|Knox says being betrayed by lighting conditions is a new low.}}"
       ],
       "position": [
         8940,
@@ -2647,7 +2776,8 @@
       "type": "redirect",
       "label": "Winch Snap",
       "text": [
-        "The winch turns, then snaps back with a roar. The bridge lurches over the slag."
+        "The winch turns, then snaps back with a roar. The bridge lurches over the slag, half-lowered and shuddering, while heat climbs the walls in red sheets.",
+        "{{companion:Liora shouts for hands clear and knees bent, making disaster sound almost organized.|Bram throws his weight toward the handle with a delighted curse.|Knox dives away from the gears, deeply betrayed by honest machinery.}}"
       ],
       "position": [
         8940,
@@ -2669,7 +2799,8 @@
       "type": "skip",
       "label": "Shield Brace",
       "text": [
-        "You brace the handle with your shield and let the recoil hammer metal instead of bone. The bridge locks into place."
+        "You brace the handle with your shield and let the recoil hammer metal instead of bone. The bridge locks into place, ringing so loudly that dust rains from the ceiling.",
+        "{{companion:Liora checks your arm anyway, because metal can lie about what it spared.|Bram admires the shield's dent like a signature on good work.|Knox gives the winch a polite little bow, happy to survive someone else's solution.}}"
       ],
       "position": [
         8940,
@@ -2682,7 +2813,8 @@
       "type": "action",
       "label": "Mine Heart",
       "text": [
-        "The heart chamber glows orange. An ogre with coal-black skin sleeps beside the Ember Crown's old forge-stone."
+        "The heart chamber glows orange. An ogre with coal-black skin sleeps beside the Ember Crown's old forge-stone, and each breath from its chest blows sparks across the floor like lazy fireflies.",
+        "{{companion:Liora sees chains burned into the ogre's wrists and wonders who taught it to guard pain.|Bram lowers his voice for the first time all day. \"That one,\" he says, \"will not scare politely.\"|Knox points out the roof beams, the forge-rune, and three exits in the order he would prefer to use them.}}"
       ],
       "position": [
         8940,
@@ -2710,7 +2842,8 @@
       "type": "skip",
       "label": "Bridge Prize",
       "text": [
-        "The bridge slams down across the slag. In a crate on the far side, you find emergency coin wrapped in miner cloth."
+        "The bridge slams down across the slag. In a crate on the far side, you find emergency coin wrapped in miner cloth and a scratched message: <i>For whoever gets out.</i>",
+        "{{companion:Liora leaves one coin behind for the message's owner, whether dead or delayed.|Bram says emergency coin is still coin and surviving is expensive.|Knox argues with his conscience for three visible seconds, then takes only the loose pieces.}}"
       ],
       "position": [
         8940,
@@ -2726,7 +2859,8 @@
       "type": "skip",
       "label": "Hot Recoil",
       "text": [
-        "The handle snaps back into your shoulder. Heat flashes white, then settles into a deep, ugly throb."
+        "The handle snaps back into your shoulder. Heat flashes white, then settles into a deep, ugly throb that makes the whole mine pulse in time with your teeth.",
+        "{{companion:Liora cools the bruise with a wet cloth and absolutely no sympathy for the winch.|Bram calls the machine a cheat, which may be true but is not legally binding.|Knox suggests leaving a complaint in the gears with a large rock.}}"
       ],
       "position": [
         9280,
@@ -2742,7 +2876,8 @@
       "type": "redirect",
       "label": "Ogre Fight",
       "text": [
-        "The ogre wakes angry and confused, a classic combination among things larger than wagons."
+        "The ogre wakes angry and confused, a classic combination among things larger than wagons. It rises through a curtain of coal dust, dragging a chain that has been broken recently enough to glow.",
+        "{{companion:Liora shouts that it is hurt as well as dangerous, which is useful and terribly inconvenient.|Bram steps forward with the expression of a man who brought the correct tool at last.|Knox backs toward the roof supports and says, \"No pockets, no manners, terrible room.\"}}"
       ],
       "position": [
         9280,
@@ -2752,7 +2887,7 @@
         {
           "weight": 5,
           "id": 140,
-          "condition": "weapon >= 2 || bram"
+          "condition": "weapon >= 2 || isBram()"
         },
         {
           "weight": 2,
@@ -2769,7 +2904,8 @@
       "type": "skip",
       "label": "Forge Rune",
       "text": [
-        "You speak the rune-word into the forge-stone. Chains of ember light bind the ogre long enough for you to pass."
+        "You speak the rune-word into the forge-stone. Chains of ember light bind the ogre long enough for you to pass, but they glow like old law instead of cruelty.",
+        "{{companion:Liora touches one chain and says restraint is not the same as torment.|Bram keeps his hammer ready until the ogre's breathing slows.|Knox watches the rune flare and says he prefers locks that do not judge the locksmith.}}"
       ],
       "position": [
         9280,
@@ -2785,7 +2921,8 @@
       "type": "skip",
       "label": "Falling Roof",
       "text": [
-        "You hook the rope around a cracked beam and pull. Stone crashes between you and the ogre with beautiful finality."
+        "You hook the rope around a cracked beam and pull. Stone crashes between you and the ogre with beautiful finality, sealing the chamber behind a wall of dust and furious roaring.",
+        "{{companion:Liora covers her mouth and counts everyone twice before accepting success.|Bram looks at the fallen beam with deep respect for useful destruction.|Knox says he has rarely admired ceiling work this much.}}"
       ],
       "position": [
         9280,
@@ -2798,7 +2935,8 @@
       "type": "skip",
       "label": "Ogre Down",
       "text": [
-        "The ogre falls hard enough to shake sparks from the ceiling. Beneath its bed of coal lies another ember shard."
+        "The ogre falls hard enough to shake sparks from the ceiling. Beneath its bed of coal lies another ember shard, wedged beside a broken chain link that glows with the same old fire.",
+        "{{companion:Liora kneels beside the fallen creature just long enough to close one burning eye.|Bram rests his hammer across his shoulders, breathing hard and grinning harder.|Knox retrieves the shard with tongs and says courage is better when properly insulated.}}"
       ],
       "position": [
         9280,
@@ -2815,7 +2953,8 @@
       "type": "action",
       "label": "Storm Road",
       "text": [
-        "Above the mine, a stair of black stone climbs into storm cloud. ⛈️ The Sky Citadel waits where lightning keeps striking the same tower."
+        "Above the mine, a stair of black stone climbs into storm cloud. ⛈️ The Sky Citadel waits where lightning keeps striking the same tower, each flash revealing walls suspended between mountain and weather.",
+        "{{companion:Liora tightens the last clean bandage around your wrist and says final roads should never be walked carelessly.|Bram looks up the stair and smiles without humor. \"At least it is honest about being hard.\"|Knox studies the clouds, the stair, and the impossible angles. \"Next time,\" he says, \"we steal something closer to sea level.\"}}"
       ],
       "position": [
         9620,
@@ -2843,7 +2982,8 @@
       "type": "redirect",
       "label": "Lightning Stair",
       "text": [
-        "You climb while lightning walks the rail beside you like a hunting cat made of white fire."
+        "You climb while lightning walks the rail beside you like a hunting cat made of white fire. The steps are slick with old rain, and every carved crown along the wall has been split by heat.",
+        "{{companion:Liora counts the thunder gaps and turns terror into timing.|Bram keeps one hand near your back when the wind shoves hardest.|Knox mutters odds under his breath, then stops when the numbers become rude.}}"
       ],
       "position": [
         9620,
@@ -2865,7 +3005,8 @@
       "type": "skip",
       "label": "Rope Traverse",
       "text": [
-        "You anchor the rope through carved rings and cross a broken span above clouds. Looking down is educational and unhelpful."
+        "You anchor the rope through carved rings and cross a broken span above clouds. Looking down is educational and unhelpful, revealing the whole storm turning beneath your boots like a gray sea.",
+        "{{companion:Liora crosses with her eyes on the rope, breathing prayers between each handhold.|Bram crosses last, using his weight to steady the line for you first.|Knox crosses fastest, then claims speed is safer than dignity.}}"
       ],
       "position": [
         9620,
@@ -2878,7 +3019,8 @@
       "type": "skip",
       "label": "Thorn Wings",
       "text": [
-        "The thorn token cuts your palm. A huge moth-winged steed arrives from the cloud and carries you past the worst stairs."
+        "The thorn token cuts your palm. A huge moth-winged steed arrives from the cloud and carries you past the worst stairs, its wings shedding silver dust that sizzles when lightning touches it.",
+        "{{companion:Liora thanks the creature as if it were a tired patient doing one last kindness.|Bram holds on with the grim focus of a man betrayed by height.|Knox whispers that any mount arriving through a blood contract should at least include reins.}}"
       ],
       "position": [
         9620,
@@ -2891,7 +3033,8 @@
       "type": "skip",
       "label": "Storm Burn",
       "text": [
-        "Lightning kisses the stair and throws you sideways. The stone keeps you from falling, but not from smelling your own singed sleeve."
+        "Lightning kisses the stair and throws you sideways. The stone keeps you from falling, but not from smelling your own singed sleeve or feeling the shock hum behind your teeth.",
+        "{{companion:Liora slaps out a spark on your cloak and immediately checks your pupils.|Bram hooks your belt before the wind can finish the argument.|Knox announces that he has always preferred doors to stairs and now has evidence.}}"
       ],
       "position": [
         9620,
@@ -2907,7 +3050,8 @@
       "type": "skip",
       "label": "Storm Rhythm",
       "text": [
-        "You learn the lightning's rhythm and climb between strikes. The citadel gate grows from the cloud above you."
+        "You learn the lightning's rhythm and climb between strikes. The citadel gate grows from the cloud above you, black iron rimmed in fire, waiting like the last page of a verdict.",
+        "{{companion:Liora matches her steps to yours until the climb becomes a shared pulse.|Bram laughs once when thunder misses you by a heartbeat, daring it to try better.|Knox marks the timing with finger taps and calls the storm a lock with poor security discipline.}}"
       ],
       "position": [
         9960,
@@ -2920,7 +3064,8 @@
       "type": "action",
       "label": "Citadel Gate",
       "text": [
-        "The gate is carved with two crowned figures holding a sun ☀️ between them. The sun's hollow center waits for proof."
+        "The gate is carved with two crowned figures holding a sun ☀️ between them. The sun's hollow center waits for proof, and black frost crawls outward from the gap as if the citadel is breathing winter through a wound.",
+        "{{companion:Liora says old symbols can remember mercy or violence depending on who wakes them.|Bram sets his shoulder under the carved gaze and says gates are just walls with pride.|Knox traces the drain channels and hidden hinges, delighted that even sky castles leak.}}"
       ],
       "position": [
         9960,
@@ -2939,7 +3084,7 @@
         {
           "label": "🧭 Secret drain",
           "id": 150,
-          "condition": "hasMap || knox"
+          "condition": "hasMap || isKnox()"
         }
       ]
     },
@@ -2948,7 +3093,8 @@
       "type": "skip",
       "label": "Gate Remembers",
       "text": [
-        "The royal sigil wakes the carved sun. The gate opens with the weary grace of something obeying old law."
+        "The royal sigil wakes the carved sun. The gate opens with the weary grace of something obeying old law, and the frost around the threshold melts into clear water.",
+        "{{companion:Liora steps through first only after the water runs clean.|Bram bows his head to the old law, then checks the murder-holes anyway.|Knox whistles softly. \"That is how a proper lock admits defeat.\"}}"
       ],
       "position": [
         9960,
@@ -2961,7 +3107,8 @@
       "type": "redirect",
       "label": "Gate Force",
       "text": [
-        "You force iron older than your bloodline. The gate resists with a groan like a waking giant."
+        "You force iron older than your bloodline. The gate resists with a groan like a waking giant, and the crowned carvings turn their blank stone faces toward you.",
+        "{{companion:Liora warns that pain in old magic often becomes pain in nearby people.|Bram joins the shove with a snarl, delighted to have finally met a gate rude enough for honesty.|Knox searches for a gentler answer right up until the hinges scream.}}"
       ],
       "position": [
         9960,
@@ -2983,7 +3130,8 @@
       "type": "skip",
       "label": "Drain Entry",
       "text": [
-        "The map marks a rain drain under the left tower. It is narrow, wet, and free of heroic statues."
+        "The map marks a rain drain under the left tower. It is narrow, wet, and free of heroic statues, which makes it the most trustworthy entrance the citadel has offered.",
+        "{{companion:Liora wraps her satchel tight against the sludge and says survival is rarely ceremonial.|Bram has to turn sideways and complains at architectural length.|Knox beams in the dark. \"Every castle tells the truth through its plumbing.\"}}"
       ],
       "position": [
         9960,
@@ -2996,7 +3144,8 @@
       "type": "action",
       "label": "Mirror Hall",
       "text": [
-        "Inside, a hall of mirrors ✨ shows you wearing crowns, chains, ashes, and smiles that do not belong to you."
+        "Inside, a hall of mirrors ✨ shows you wearing crowns, chains, ashes, and smiles that do not belong to you. Every reflection lags a little, as if deciding which future would hurt most to offer.",
+        "{{companion:Liora refuses to look at the version of herself with empty hands.|Bram raises his hammer at a reflection wearing Malrec's colors and lowers it only when it raises one too.|Knox checks whether reflections have pockets, then stops when one checks back.}}"
       ],
       "position": [
         10300,
@@ -3023,7 +3172,8 @@
       "type": "skip",
       "label": "Iron Rebuke",
       "text": [
-        "The gate opens just enough to throw you through it. Royal architecture has opinions about manners."
+        "The gate opens just enough to throw you through it. Royal architecture has opinions about manners, and this one expresses them with bruising precision.",
+        "{{companion:Liora helps you up while glaring at the doorway as if it has joined her patient list.|Bram shouts something at the gate that old law almost certainly understood.|Knox dusts himself off and says he respects a lock less when it becomes petty.}}"
       ],
       "position": [
         10300,
@@ -3039,7 +3189,8 @@
       "type": "redirect",
       "label": "Mirror Path",
       "text": [
-        "One reflection beckons you into a side passage. It has your face, but it walks like Malrec."
+        "One reflection beckons you into a side passage. It has your face, but it walks like Malrec, all elegant certainty and borrowed warmth.",
+        "{{companion:Liora whispers that sickness sometimes imitates health until the body trusts it.|Bram keeps his eyes on the reflection's feet, because lies often forget weight.|Knox follows the mirror with a thief's fascination and a sensible amount of distance.}}"
       ],
       "position": [
         10300,
@@ -3061,7 +3212,8 @@
       "type": "skip",
       "label": "Broken Glass",
       "text": [
-        "You smash the nearest mirror. Every reflection screams once, and a thousand glass cuts answer."
+        "You smash the nearest mirror. Every reflection screams once, and a thousand glass cuts answer, each bright line stinging with an image of the ruler you might become.",
+        "{{companion:Liora grabs your wrist before you can strike a second time.|Bram turns his back on the shards, refusing to negotiate with broken pride.|Knox says the first rule of cursed mirrors is never give them an encore.}}"
       ],
       "position": [
         10300,
@@ -3077,7 +3229,8 @@
       "type": "skip",
       "label": "Rune Memory",
       "text": [
-        "The runes explain the crown's first purpose 👑: not rule, but restraint. It was a lock before it was a throne."
+        "The runes explain the crown's first purpose 👑: not rule, but restraint. It was a lock before it was a throne, forged to hold winter under the citadel and temptation inside the hand that wore it.",
+        "{{companion:Liora says a healer recognizes the difference between binding a wound and binding a person.|Bram grunts that kings always rename locks when they want to look noble.|Knox studies the inscription and admits, quietly, that some locks should not be picked.}}"
       ],
       "position": [
         10300,
@@ -3093,7 +3246,8 @@
       "type": "skip",
       "label": "True Turn",
       "text": [
-        "The reflection leads you to a stair hidden behind blue velvet. It bows before vanishing into ordinary glass."
+        "The reflection leads you to a stair hidden behind blue velvet. It bows before vanishing into ordinary glass, leaving only one warm handprint on the mirror's cold skin.",
+        "{{companion:Liora decides the handprint is not hostile, which is the closest thing to approval this hall will get.|Bram dislikes helpful illusions almost as much as harmful ones.|Knox says the mirror may be cursed, but at least it understands shortcuts.}}"
       ],
       "position": [
         10640,
@@ -3106,7 +3260,8 @@
       "type": "skip",
       "label": "False Self",
       "text": [
-        "The reflection steps through you and leaves cold ambition behind your ribs. For a moment, claiming the crown feels reasonable."
+        "The reflection steps through you and leaves cold ambition behind your ribs. For a moment, claiming the crown feels reasonable, even merciful, because every tyrant begins as someone tired of asking.",
+        "{{companion:Liora says your name until it belongs to you again.|Bram grips your shoulder hard enough to bruise, anchoring you with ordinary pain.|Knox snaps his fingers in front of your eyes and says, \"That smile was not yours. It was too expensive.\"}}"
       ],
       "position": [
         10640,
@@ -3122,7 +3277,8 @@
       "type": "action",
       "label": "Guardian Duel",
       "text": [
-        "A bronze guardian kneels before the throne stair, then rises with a sword of sunlit fire. ⚔️"
+        "A bronze guardian kneels before the throne stair, then rises with a sword of sunlit fire. ⚔️ Its face is blank, but the way it holds the blade feels almost sorrowful, as if duty has outlived everyone who could explain it.",
+        "{{companion:Liora reads the sorrow and searches for a way to end the fight without breaking what remains holy.|Bram respects the stance immediately and hates that respect will not keep anyone alive.|Knox sees three moving joints, two pressure plates, and exactly no easy answers.}}"
       ],
       "position": [
         10640,
@@ -3141,7 +3297,7 @@
         {
           "label": "🤝 Companion play",
           "id": 161,
-          "condition": "liora || bram || knox"
+          "condition": "hasCompanion()"
         }
       ]
     },
@@ -3150,7 +3306,8 @@
       "type": "redirect",
       "label": "Bronze Blade",
       "text": [
-        "The guardian's sword rings against yours. It fights like a ceremony that learned anger."
+        "The guardian's sword rings against yours. It fights like a ceremony that learned anger, each strike precise enough to feel less like violence than judgment.",
+        "{{companion:Liora calls the pauses between forms, finding breath where the guardian expects panic.|Bram matches its rhythm with hammer beats on the stair rail, turning ceremony into noise.|Knox throws a loose mirror shard across the floor and grins when the guardian tracks the flash.}}"
       ],
       "position": [
         10640,
@@ -3176,7 +3333,8 @@
       "type": "redirect",
       "label": "Rune Counter",
       "text": [
-        "You raise the rune-mark. The guardian pauses, recognizing a command older than Malrec."
+        "You raise the rune-mark. The guardian pauses, recognizing a command older than Malrec, and the fire along its sword thins to a listening glow.",
+        "{{companion:Liora urges you to speak like a witness, not a conqueror.|Bram keeps still with visible effort, trusting words where blows would be simpler.|Knox whispers that a command accepted by bronze is still a lock opening.}}"
       ],
       "position": [
         10640,
@@ -3198,7 +3356,8 @@
       "type": "skip",
       "label": "Ally Opening",
       "text": [
-        "Your companion creates the opening you need: a thrown vial, a hammer strike, or a lockpick jammed exactly where legends omit."
+        "{{companion:Liora flings a vial at the guardian's sword-arm, and the burst of white vapor cools the bronze just long enough for mercy to become strategy.|Bram meets the guardian shield-to-blade with a hammer blow that rings through the hall like a temple bell.|Knox slides under the blade and jams a lockpick into a knee joint exactly where legends forget to mention maintenance.}}",
+        "The opening is brief, human, and enough."
       ],
       "position": [
         10980,
@@ -3211,7 +3370,8 @@
       "type": "skip",
       "label": "Throne Stair",
       "text": [
-        "The guardian kneels again and lowers its burning sword. The final stair opens into heat, shadow, and a voice applauding slowly."
+        "The guardian kneels again and lowers its burning sword. The final stair opens into heat, shadow, and a voice applauding slowly from above, each clap spaced like a verdict being enjoyed.",
+        "{{companion:Liora whispers that applause before mercy is never a good sign.|Bram tightens his grip and says he liked the guardian better.|Knox looks up the stair and says, \"There is our host. Dreadful manners, excellent acoustics.\"}}"
       ],
       "position": [
         10980,
@@ -3224,7 +3384,8 @@
       "type": "skip",
       "label": "Bronze Cut",
       "text": [
-        "The guardian's blade slips past your guard and burns without blood. You keep moving because stopping would make the pain louder."
+        "The guardian's blade slips past your guard and burns without blood. You keep moving because stopping would make the pain louder, and the stair has no patience for wounded hesitation.",
+        "{{companion:Liora presses a cooling salve into your hand between strikes.|Bram catches the next blow on his hammer, buying you one ragged breath.|Knox throws a coin under the guardian's foot and calls that the most honest bribe available.}}"
       ],
       "position": [
         10980,
@@ -3240,7 +3401,8 @@
       "type": "skip",
       "label": "Sun Dazed",
       "text": [
-        "A flash of bronze light blinds you. When sight returns, the guardian is gone and the throne stair is open."
+        "A flash of bronze light blinds you. When sight returns, the guardian is gone and the throne stair is open, but golden spots still swim in your vision like tiny suns.",
+        "{{companion:Liora keeps a hand on your elbow until the world steadies.|Bram describes the steps ahead in gruff, practical detail so you can move before you can see clearly.|Knox says if anyone asks, he looked magnificent while squinting.}}"
       ],
       "position": [
         10980,
@@ -3256,7 +3418,8 @@
       "type": "action",
       "label": "Ember Door",
       "text": [
-        "The last door is a circle of cooling flame. 🔥 Beyond it, Malrec waits with the Ember Crown above his head like a captured star."
+        "The last door is a circle of cooling flame. 🔥 Beyond it, Malrec waits with the Ember Crown above his head like a captured star, and the black sparks rising from it vanish into the ceiling instead of falling.",
+        "{{companion:Liora says the flame is not dying but being taught cruelty.|Bram flexes his bruised fingers and looks ready to argue with a door, a lord, or a star.|Knox checks the floor for traps, then says the biggest trap is probably the obvious one wearing a crown.}}"
       ],
       "position": [
         10980,
@@ -3284,7 +3447,8 @@
       "type": "skip",
       "label": "Shard Key",
       "text": [
-        "Your ember shards orbit the door and melt into its seam. The circle opens without smoke, as if relieved."
+        "Your ember shards orbit the door and melt into its seam. The circle opens without smoke, as if relieved, and for one breath the flame turns gold instead of black.",
+        "{{companion:Liora exhales like someone hearing a fever break.|Bram steps through while the old fire still remembers being friendly.|Knox looks offended that the door opened beautifully without needing his help.}}"
       ],
       "position": [
         11320,
@@ -3297,7 +3461,8 @@
       "type": "skip",
       "label": "Royal Signs",
       "text": [
-        "The sigil and sunstone flare together. Old law recognizes old law, and the door yields."
+        "The sigil and sunstone flare together. Old law recognizes old law, and the door yields, bowing inward with the slow dignity of a court that has run out of excuses.",
+        "{{companion:Liora says the signs were never keys alone, but promises kept by different hands.|Bram nods once to the door, soldier to soldier, because endurance deserves manners.|Knox admits that sometimes paperwork, jewelry, and ancient authority do solve a problem.}}"
       ],
       "position": [
         11320,
@@ -3310,7 +3475,8 @@
       "type": "redirect",
       "label": "Fool's Entry",
       "text": [
-        "You kick the crown-door. For one glorious second, boldness seems like a complete strategy."
+        "You kick the crown-door. For one glorious second, boldness seems like a complete strategy, and then the flame answers with the patience of something old enough to enjoy consequences.",
+        "{{companion:Liora shouts your name with the exact tone that means this will be discussed if you live.|Bram follows the kick with his shoulder, because if foolishness has momentum he refuses to waste it.|Knox dives sideways and says, \"I would like the record to show I advised elegance.\"}}"
       ],
       "position": [
         11320,
@@ -3333,7 +3499,8 @@
       "label": "Lord Malrec",
       "text": [
         "Malrec stands before the throne, gray-eyed and smiling. The Ember Crown 👑 floats above him, dripping black sparks upward.",
-        "\"Asterfall needs a ruler brave enough to be feared,\" he says. \"Will that be me, or you?\""
+        "{{companion:Liora looks at Malrec and sees not a monster first, but a wound that learned to command others to hurt with it.|Bram looks at Malrec and sees every gate left unguarded, every oath turned into a weapon.|Knox looks at Malrec and sees a thief who stole something too hungry to fence.}}",
+        "\"Asterfall needs a ruler brave enough to be feared,\" Malrec says. \"Will that be me, or you?\""
       ],
       "position": [
         11320,
@@ -3352,7 +3519,7 @@
         {
           "label": "🕯️ Offer mercy",
           "id": 172,
-          "condition": "cryptBlessing || liora"
+          "condition": "cryptBlessing || isLiora()"
         },
         {
           "label": "⚔️ Duel Malrec",
@@ -3370,6 +3537,7 @@
       "label": "Crown Broken",
       "text": [
         "You break the Ember Crown against the throne stair. Its fire rushes outward 🔥, melting summer back into the mountains.",
+        "{{companion:Liora gathers the last harmless embers in a bowl and says grief can be warm without becoming a throne.|Bram plants his hammer where the crown fell and stands guard until dawn, though there is nothing left to guard but choice.|Knox pockets one cold, powerless fragment, not to sell, he says, but to remember the lock that finally stayed broken.}}",
         "Asterfall loses its oldest magic, but the people who survive will decide what replaces it."
       ],
       "position": [
@@ -3383,6 +3551,7 @@
       "label": "New Monarch",
       "text": [
         "You claim the Ember Crown. 👑 It burns, then bends, accepting your will with a hunger that feels almost like loyalty.",
+        "{{companion:Liora does not kneel at first. When she does, it is with tears in her eyes and one warning you can still choose to hear.|Bram kneels like a guard swearing to the person, not the crown, and the difference matters more than court songs will admit.|Knox bows beautifully, then looks up with the expression of a man counting exits from a throne room.}}",
         "Asterfall kneels to a new ruler. Whether that ruler stays merciful is a story for colder nights."
       ],
       "position": [
@@ -3396,6 +3565,7 @@
       "label": "Mercy Flame",
       "text": [
         "You lower your weapon and speak Malrec's name without hatred. The crown's black sparks falter, confused by mercy it cannot command.",
+        "{{companion:Liora steps beside you and makes mercy feel less like surrender than surgery.|Bram keeps his hammer ready until the chains close, proving mercy does not require foolish hands.|Knox unlocks Malrec's hidden dagger before anyone sees it, then says forgiveness is improved by inventory control.}}",
         "By dawn, the throne room is warm, Malrec is in chains, and Asterfall has a chance to heal without forgetting."
       ],
       "position": [
@@ -3408,7 +3578,8 @@
       "type": "redirect",
       "label": "Final Duel",
       "text": [
-        "Malrec draws a blade from the crown's shadow. It is not metal, not magic, but the shape of every promise he broke."
+        "Malrec draws a blade from the crown's shadow. It is not metal, not magic, but the shape of every promise he broke, sharpened by all the people who believed him too late.",
+        "{{companion:Liora says no wound justifies becoming a knife.|Bram moves with you, matching Malrec's first step before the duel even begins.|Knox watches Malrec's off hand, because honest duelists are rare and villains are predictable in their vanity.}}"
       ],
       "position": [
         11660,
@@ -3418,7 +3589,7 @@
         {
           "weight": 4,
           "id": 175,
-          "condition": "weapon >= 3 || bram"
+          "condition": "weapon >= 3 || isBram()"
         },
         {
           "weight": 3,
@@ -3436,6 +3607,7 @@
       "label": "Shadow Vow",
       "text": [
         "You kneel and accept the crown's shadow. Malrec laughs once before it consumes him too.",
+        "{{companion:Liora backs away with one hand over her mouth, already mourning the person still wearing your face.|Bram refuses to kneel until the shadow forces the room cold enough to crack his hammer haft.|Knox smiles because survival demands it, but his eyes keep measuring the distance to the nearest window.}}",
         "The winter stops at Asterfall's borders, but inside them every hearth now burns with a listening black flame."
       ],
       "position": [
@@ -3448,7 +3620,8 @@
       "type": "skip",
       "label": "Malrec Falls",
       "text": [
-        "You beat Malrec back step by step until his shadow blade cracks. The crown hangs above you, waiting for your judgment."
+        "You beat Malrec back step by step until his shadow blade cracks. The crown hangs above you, waiting for your judgment, and for the first time Malrec looks less like a lord than a man who has run out of borrowed fire.",
+        "{{companion:Liora says, \"End the crown, not yourself with it.\"|Bram stands over Malrec and does not strike again, which may be his bravest blow.|Knox kicks the broken shadow blade away and says nobody gets to steal the ending twice.}}"
       ],
       "position": [
         11660,
@@ -3461,7 +3634,8 @@
       "type": "action",
       "label": "Last Wound",
       "text": [
-        "Malrec's blade opens a cold line across your chest. You drop to one knee, close enough to see fear reach his eyes."
+        "Malrec's blade opens a cold line across your chest. You drop to one knee, close enough to see fear reach his eyes, and close enough to understand that even now he thinks the crown will save him first.",
+        "{{companion:Liora is already moving, furious with the wound and the man who made it.|Bram bellows your name so loudly the throne room seems to flinch.|Knox throws every hidden knife he has left, not to win, only to buy the breath after this one.}}"
       ],
       "position": [
         12000,
@@ -3476,7 +3650,7 @@
         {
           "label": "🤝 Call ally",
           "id": 179,
-          "condition": "liora || bram || knox"
+          "condition": "hasCompanion()"
         },
         {
           "label": "↩️ Fall back",
@@ -3489,7 +3663,8 @@
       "type": "action",
       "label": "Disarmed",
       "text": [
-        "Your weapon skids across the floor. Malrec advances, and the Ember Crown dips low enough to touch."
+        "Your weapon skids across the floor. Malrec advances, and the Ember Crown dips low enough to touch, offering itself with the intimate warmth of a hand that has pushed many people over many edges.",
+        "{{companion:Liora shouts for you not to answer pain with hunger.|Bram lunges for your weapon, but shadow chains catch his boots for one terrible second.|Knox sees the crown lower and whispers, \"That is not an opening. That is bait.\"}}"
       ],
       "position": [
         12000,
@@ -3511,7 +3686,8 @@
       "type": "skip",
       "label": "Shard Mercy",
       "text": [
-        "You crush the last shards in your palm. Their fire floods the room, not as a weapon, but as memory of what the crown once guarded."
+        "You crush the last shards in your palm. Their fire floods the room, not as a weapon, but as memory of what the crown once guarded: hearths, harvests, children asleep without frost on their lashes.",
+        "{{companion:Liora catches your bleeding hand and refuses to let sacrifice become theater.|Bram shields you from Malrec's final strike with his own shoulder.|Knox sweeps the shards toward the throne-circle exactly where the old lock needs them.}}"
       ],
       "position": [
         12000,
@@ -3524,7 +3700,8 @@
       "type": "skip",
       "label": "Ally's Stand",
       "text": [
-        "Your companion steps between you and Malrec for one impossible heartbeat. It is enough. You rise and choose the crown's end."
+        "{{companion:Liora steps between you and Malrec with a healer's knife and a voice that makes even the crown hesitate. \"No more,\" she says.|Bram takes Malrec's shadow blade across his hammer haft and holds, boots sliding, grin fierce through pain.|Knox flicks a stolen clasp from Malrec's cloak into the crown's flame, spoiling the spell with one beautifully petty theft.}}",
+        "It is one impossible heartbeat. It is enough. You rise and choose the crown's end."
       ],
       "position": [
         12000,
@@ -3537,7 +3714,8 @@
       "type": "skip",
       "label": "Brazier Spark",
       "text": [
-        "Your kick topples the brazier into the crown's shadow. Flame turns black, then bows toward the power that was waiting underneath."
+        "Your kick topples the brazier into the crown's shadow. Flame turns black, then bows toward the power that was waiting underneath, eager to be mistaken for rescue.",
+        "{{companion:Liora reaches for you and stops, because some thresholds cannot be healed from the outside.|Bram roars a warning that arrives one heartbeat too late.|Knox's face goes very still, the smile gone, all exits suddenly too far away.}}"
       ],
       "position": [
         12000,
