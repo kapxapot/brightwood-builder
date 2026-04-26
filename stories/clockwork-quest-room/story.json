@@ -91,6 +91,12 @@
           "tick(1)"
         ]
       }
+    ],
+    "redirectTriggers": [
+      {
+        "condition": "timeGone()",
+        "targetId": 140
+      }
     ]
   },
   "nodes": [
@@ -123,10 +129,7 @@
       "actions": [
         {
           "label": "🚪 Check door",
-          "id": 3,
-          "effects": [
-            "tick(1)"
-          ]
+          "id": 3
         },
         {
           "label": "🗣️ Call out",
@@ -149,6 +152,9 @@
       "type": "skip",
       "label": "Cold Door",
       "text": "The exit handle refuses to move. Three empty seals sit above it: one shaped like a mirror, one like a bell 🔔, and one like a drop of water.",
+      "entryEffects": [
+        "tick(1)"
+      ],
       "position": [
         740,
         720
@@ -331,8 +337,7 @@
           "condition": "canOpenCabinet()",
           "id": 13,
           "effects": [
-            "openedDeskLock = true",
-            "tick(1)"
+            "openedDeskLock = true"
           ]
         },
         {
@@ -350,6 +355,9 @@
       "type": "action",
       "label": "Secret Drawer",
       "text": "The rolltop sighs upward. Inside are velvet channels, a silver tuning fork, and an index card written in a careful hand.",
+      "entryEffects": [
+        "tick(1)"
+      ],
       "position": [
         2360,
         260
@@ -400,8 +408,7 @@
           "id": 18,
           "effects": [
             "hasExitMap = true",
-            "learn",
-            "tick(1)"
+            "learn"
           ]
         },
         {
@@ -448,6 +455,9 @@
       "type": "skip",
       "label": "Blotter Map",
       "text": "Ink fills the old stains and reveals a tiny map of the room. One red line runs from the exit to a service crawl under the floor.",
+      "entryEffects": [
+        "tick(1)"
+      ],
       "position": [
         2680,
         680
@@ -497,10 +507,7 @@
         },
         {
           "label": "✨ Fog glass",
-          "id": 22,
-          "effects": [
-            "tick(1)"
-          ]
+          "id": 22
         },
         {
           "label": "🔎 Study frame",
@@ -528,6 +535,9 @@
       "type": "redirect",
       "label": "Fogged Glass",
       "text": "Your breath clouds the mirror. Letters rise in the mist, but the lamp behind you decides how much of them can be read.",
+      "entryEffects": [
+        "tick(1)"
+      ],
       "position": [
         1720,
         900
@@ -867,10 +877,7 @@
         },
         {
           "label": "🔎 Test basin",
-          "id": 43,
-          "effects": [
-            "tick(1)"
-          ]
+          "id": 43
         },
         {
           "label": "↩️ Go back",
@@ -925,6 +932,9 @@
       "type": "skip",
       "label": "Dust Ripples",
       "text": "Your fingers brush the dry stone. Dust ripples outward as if stirred by invisible drops, then settles into twelve small rings.",
+      "entryEffects": [
+        "tick(1)"
+      ],
       "position": [
         1720,
         1560
@@ -957,8 +967,7 @@
           "effects": [
             "drainedBasin = true",
             "hasGlassKey = true",
-            "learn",
-            "tick(1)"
+            "learn"
           ]
         },
         {
@@ -1009,6 +1018,9 @@
       "type": "skip",
       "label": "Basin Drains",
       "text": "The invisible water finally becomes visible for one breath, then drains away. A transparent glass key 🗝️ remains in the lowest cup.",
+      "entryEffects": [
+        "tick(1)"
+      ],
       "position": [
         2360,
         1340
@@ -1119,10 +1131,7 @@
         },
         {
           "label": "💧 Fill cup",
-          "id": 56,
-          "effects": [
-            "tick(1)"
-          ]
+          "id": 56
         },
         {
           "label": "↩️ Return",
@@ -1146,6 +1155,9 @@
       "type": "skip",
       "label": "Empty Cup",
       "text": "You cup your hands, but the water has already vanished. The room allows lessons, not hoarding.",
+      "entryEffects": [
+        "tick(1)"
+      ],
       "position": [
         3000,
         1460
@@ -1211,10 +1223,7 @@
       "actions": [
         {
           "label": "🔔 Strike large",
-          "id": 61,
-          "effects": [
-            "tick(1)"
-          ]
+          "id": 61
         },
         {
           "label": "📖 Read plaques",
@@ -1235,6 +1244,9 @@
       "type": "redirect",
       "label": "First Ring",
       "text": "You strike the large bell. The note rolls through the chamber and asks whether you brought the right tool.",
+      "entryEffects": [
+        "tick(1)"
+      ],
       "position": [
         1720,
         1720
@@ -1304,8 +1316,7 @@
           "id": 66,
           "effects": [
             "solvedBells = true",
-            "learn",
-            "tick(1)"
+            "learn"
           ]
         },
         {
@@ -1323,6 +1334,9 @@
       "type": "skip",
       "label": "Correct Chime",
       "text": "Small, low, twin, large. The final note hangs in the room, and a brass panel opens beneath the bells.",
+      "entryEffects": [
+        "tick(1)"
+      ],
       "position": [
         2680,
         1660
@@ -1646,10 +1660,7 @@
         {
           "label": "⚙️ Turn crank",
           "condition": "canSolveOrrery()",
-          "id": 87,
-          "effects": [
-            "tick(1)"
-          ]
+          "id": 87
         },
         {
           "label": "⚙️ Bridge circuit",
@@ -1693,6 +1704,9 @@
       "type": "redirect",
       "label": "Orrery Whirs",
       "text": "You set the planets in order and turn the crank. The machine spins, testing whether its circuit is whole.",
+      "entryEffects": [
+        "tick(1)"
+      ],
       "position": [
         2680,
         2200
@@ -2367,10 +2381,7 @@
       "actions": [
         {
           "label": "🗣️ Bargain",
-          "id": 125,
-          "effects": [
-            "tick(1)"
-          ]
+          "id": 125
         },
         {
           "label": "🗣️ Refuse",
@@ -2388,6 +2399,9 @@
       "type": "redirect",
       "label": "Bargain Test",
       "text": "You offer the room a trade: truth for passage. It weighs what you have actually understood, not just what you have touched.",
+      "entryEffects": [
+        "tick(1)"
+      ],
       "position": [
         4600,
         2380
@@ -2723,10 +2737,7 @@
         },
         {
           "label": "🧭 Crawl onward",
-          "id": 147,
-          "effects": [
-            "tick(1)"
-          ]
+          "id": 147
         }
       ]
     },
@@ -2757,6 +2768,9 @@
       "type": "redirect",
       "label": "Tight Crawl",
       "text": "The crawlspace narrows. It checks your accumulated tension as much as your courage.",
+      "entryEffects": [
+        "tick(1)"
+      ],
       "position": [
         3000,
         3520
