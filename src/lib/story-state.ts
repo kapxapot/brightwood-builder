@@ -26,6 +26,13 @@ import type {
 export type StoryState = Record<StateKey, StateValue>;
 export type RngFn = () => number;
 export type StoryText = string | string[];
+export type StoryEffectLogTone = "info" | "success" | "warning" | "danger";
+export type StoryEffectEvent = {
+  kind: "log";
+  message: string;
+  tone: StoryEffectLogTone;
+};
+export type StoryEffectEventHandler = (event: StoryEffectEvent) => void;
 
 export type StoryStateValidationIssue = {
   nodeId: NodeId;
@@ -84,11 +91,18 @@ type EvaluationContext = {
   scope: Scope;
   conditionStack: string[];
   effectStack: string[];
+  onEvent?: StoryEffectEventHandler;
 };
 
 const expressionCache = new Map<string, ExpressionNode>();
 const statementCache = new Map<string, StatementNode>();
-const builtInEffectNames = new Set(["unset"]);
+const builtInEffectNames = new Set(["unset", "log"]);
+const storyEffectLogTones = new Set<StoryEffectLogTone>([
+  "info",
+  "success",
+  "warning",
+  "danger",
+]);
 
 const builtInFunctions = {
   abs: ([value]: RuntimeValue[]) => Math.abs(asNumber(value)),
@@ -216,6 +230,7 @@ export function evaluateCondition(
     scope,
     conditionStack: [],
     effectStack: [],
+    onEvent: undefined,
   });
 }
 
@@ -237,9 +252,10 @@ export function findMatchingRedirectTrigger(
 export function applyEntryEffects(
   node: StoryNode,
   state: StoryState,
-  storyData?: StoryData
+  storyData?: StoryData,
+  onEvent?: StoryEffectEventHandler
 ): StoryState {
-  return applyEffectInvocations(node.entryEffects, state, storyData);
+  return applyEffectInvocations(node.entryEffects, state, storyData, onEvent);
 }
 
 export function getAvailableActions(
@@ -255,9 +271,10 @@ export function getAvailableActions(
 export function applyActionEffects(
   action: Action,
   state: StoryState,
-  storyData?: StoryData
+  storyData?: StoryData,
+  onEvent?: StoryEffectEventHandler
 ): StoryState {
-  return applyEffectInvocations(action.effects, state, storyData);
+  return applyEffectInvocations(action.effects, state, storyData, onEvent);
 }
 
 export function getEligibleLinks(
@@ -273,9 +290,10 @@ export function getEligibleLinks(
 export function applyLinkEffects(
   link: Link,
   state: StoryState,
-  storyData?: StoryData
+  storyData?: StoryData,
+  onEvent?: StoryEffectEventHandler
 ): StoryState {
-  return applyEffectInvocations(link.effects, state, storyData);
+  return applyEffectInvocations(link.effects, state, storyData, onEvent);
 }
 
 export function resolveRedirectLink(
@@ -316,7 +334,8 @@ export function resolveRedirectLink(
 export function applyEffectInvocations(
   effects: EffectInvocation[] | undefined,
   state: StoryState,
-  storyData?: StoryData
+  storyData?: StoryData,
+  onEvent?: StoryEffectEventHandler
 ): StoryState {
   if (!effects?.length) {
     return { ...state };
@@ -329,6 +348,7 @@ export function applyEffectInvocations(
     scope: {},
     conditionStack: [],
     effectStack: [],
+    onEvent,
   };
 
   for (const effect of effects) {
@@ -448,6 +468,9 @@ export function validateStoryStateModel(
             statement.args[0]
               ? { kind: "expression", value: statement.args[0] }
               : undefined,
+            statement.args[1]
+              ? { kind: "expression", value: statement.args[1] }
+              : undefined,
             storyData
           );
         } catch (error) {
@@ -471,6 +494,9 @@ export function validateStoryStateModel(
           location,
           actualArgs[0] !== undefined
             ? { kind: "value", value: actualArgs[0] }
+            : undefined,
+          actualArgs[1] !== undefined
+            ? { kind: "value", value: actualArgs[1] }
             : undefined,
           storyData
         );
@@ -564,31 +590,43 @@ function validateEffectInvocationTarget(
   actualArgCount: number,
   location: string,
   firstArg?: EffectInvocationValidationTarget,
+  secondArg?: EffectInvocationValidationTarget,
   storyData?: StoryData
 ) {
   if (builtInEffectNames.has(effectName)) {
-    if (actualArgCount !== 1) {
+    if (effectName === "unset") {
+      if (actualArgCount !== 1) {
+        throw new Error(
+          `${location} calls built-in effect "${effectName}" with ${actualArgCount} argument(s), but 1 is required.`
+        );
+      }
+
+      if (firstArg?.kind === "value" && typeof firstArg.value !== "string") {
+        throw new Error(
+          `${location} calls built-in effect "${effectName}" with a non-string key argument.`
+        );
+      }
+
+      if (
+        firstArg?.kind === "expression" &&
+        firstArg.value.type === "literal" &&
+        typeof firstArg.value.value !== "string"
+      ) {
+        throw new Error(
+          `${location} calls built-in effect "${effectName}" with a non-string literal key argument.`
+        );
+      }
+
+      return;
+    }
+
+    if (actualArgCount < 1 || actualArgCount > 2) {
       throw new Error(
-        `${location} calls built-in effect "${effectName}" with ${actualArgCount} argument(s), but 1 is required.`
+        `${location} calls built-in effect "${effectName}" with ${actualArgCount} argument(s), but 1 or 2 are required.`
       );
     }
 
-    if (firstArg?.kind === "value" && typeof firstArg.value !== "string") {
-      throw new Error(
-        `${location} calls built-in effect "${effectName}" with a non-string key argument.`
-      );
-    }
-
-    if (
-      firstArg?.kind === "expression" &&
-      firstArg.value.type === "literal" &&
-      typeof firstArg.value.value !== "string"
-    ) {
-      throw new Error(
-        `${location} calls built-in effect "${effectName}" with a non-string literal key argument.`
-      );
-    }
-
+    validateLogToneTarget(secondArg, location, effectName);
     return;
   }
 
@@ -619,6 +657,50 @@ function parseConditionReferenceOrExpression(
 
   const namedCondition = storyData?.conditions?.[trimmedCondition];
   return parseExpression(namedCondition ?? trimmedCondition);
+}
+
+function validateLogToneTarget(
+  target: EffectInvocationValidationTarget | undefined,
+  location: string,
+  effectName: string
+) {
+  if (!target) {
+    return;
+  }
+
+  if (target.kind === "value") {
+    if (typeof target.value !== "string") {
+      throw new Error(
+        `${location} calls built-in effect "${effectName}" with a non-string tone argument.`
+      );
+    }
+
+    if (!storyEffectLogTones.has(target.value as StoryEffectLogTone)) {
+      throw new Error(
+        `${location} calls built-in effect "${effectName}" with unsupported tone "${target.value}".`
+      );
+    }
+
+    return;
+  }
+
+  if (
+    target.value.type === "literal" &&
+    typeof target.value.value !== "string"
+  ) {
+    throw new Error(
+      `${location} calls built-in effect "${effectName}" with a non-string literal tone argument.`
+    );
+  }
+
+  if (
+    target.value.type === "literal" &&
+    !storyEffectLogTones.has(target.value.value as StoryEffectLogTone)
+  ) {
+    throw new Error(
+      `${location} calls built-in effect "${effectName}" with unsupported tone "${target.value.value}".`
+    );
+  }
 }
 
 function applyEffectInvocation(
@@ -961,6 +1043,28 @@ function parseEffectInvocationStatement(input: string): StatementNode {
   return parseStatement(trimmedInput);
 }
 
+function formatLogMessage(value: RuntimeValue): string {
+  if (value === undefined) {
+    throw new Error("log() expects a defined message value.");
+  }
+
+  return String(value);
+}
+
+function normalizeLogTone(value: RuntimeValue): StoryEffectLogTone {
+  if (value === undefined) {
+    return "info";
+  }
+
+  if (typeof value !== "string" || !storyEffectLogTones.has(value as StoryEffectLogTone)) {
+    throw new Error(
+      'log() expects tone to be one of "info", "success", "warning", or "danger".'
+    );
+  }
+
+  return value as StoryEffectLogTone;
+}
+
 function applyBuiltInEffectInvocation(
   name: string,
   args: RuntimeValue[],
@@ -976,17 +1080,31 @@ function applyBuiltInEffectInvocation(
     );
   }
 
-  if (args.length !== 1) {
-    throw new Error(`unset() expects exactly 1 argument, received ${args.length}.`);
+  if (name === "unset") {
+    if (args.length !== 1) {
+      throw new Error(`unset() expects exactly 1 argument, received ${args.length}.`);
+    }
+
+    const [key] = args;
+
+    if (typeof key !== "string") {
+      throw new Error("unset() expects a string key.");
+    }
+
+    delete context.state[key];
+    return true;
   }
 
-  const [key] = args;
-
-  if (typeof key !== "string") {
-    throw new Error("unset() expects a string key.");
+  if (args.length < 1 || args.length > 2) {
+    throw new Error(`log() expects 1 or 2 arguments, received ${args.length}.`);
   }
 
-  delete context.state[key];
+  const [messageValue, toneValue] = args;
+  context.onEvent?.({
+    kind: "log",
+    message: formatLogMessage(messageValue),
+    tone: normalizeLogTone(toneValue),
+  });
   return true;
 }
 
