@@ -1,0 +1,624 @@
+{
+  "id": "e3ef94bc-130f-4644-8479-fe354864ecbc",
+  "title": "💻 Computer Science Test",
+  "description": "A 20-question computer science assessment with state-based scoring and graded results.",
+  "language": "en",
+  "startId": 1,
+  "data": {
+    "init": {
+      "score": 0,
+      "totalQuestions": 20
+    },
+    "effects": [
+      {
+        "name": "correctAnswer",
+        "statements": "score = score + 1"
+      }
+    ]
+  },
+  "nodes": [
+    {
+      "id": 1,
+      "type": "skip",
+      "label": "Briefing",
+      "text": [
+        "Welcome to the <b>Computer Science Test</b>. You will answer 20 questions across algorithms, systems, databases, networks, security, and software design. 💻",
+        "Each question has four choices and exactly one correct answer. Your score is tracked in state, then converted into a final grade."
+      ],
+      "position": [100, 100],
+      "nextId": 2
+    },
+    {
+      "id": 2,
+      "type": "action",
+      "label": "Question 1",
+      "text": "1/20. Which data structure follows <b>first in, first out</b> behavior?",
+      "position": [420, 100],
+      "actions": [
+        {
+          "label": "📦 Stack",
+          "id": 3
+        },
+        {
+          "label": "🚶 Queue",
+          "id": 3,
+          "effects": ["correctAnswer"]
+        },
+        {
+          "label": "🌳 Tree",
+          "id": 3
+        },
+        {
+          "label": "🧾 Hash map",
+          "id": 3
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "type": "action",
+      "label": "Question 2",
+      "text": "2/20. What is the time complexity of binary search on a sorted array with random access?",
+      "position": [740, 100],
+      "actions": [
+        {
+          "label": "🐢 O(n)",
+          "id": 4
+        },
+        {
+          "label": "⚡ O(log n)",
+          "id": 4,
+          "effects": ["correctAnswer"]
+        },
+        {
+          "label": "🧮 O(n log n)",
+          "id": 4
+        },
+        {
+          "label": "🚀 O(1)",
+          "id": 4
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "type": "action",
+      "label": "Question 3",
+      "text": "3/20. Which HTTP status code usually means a request succeeded and returned an OK response?",
+      "position": [1060, 100],
+      "actions": [
+        {
+          "label": "✅ 200",
+          "id": 5,
+          "effects": ["correctAnswer"]
+        },
+        {
+          "label": "🔁 301",
+          "id": 5
+        },
+        {
+          "label": "🔎 404",
+          "id": 5
+        },
+        {
+          "label": "💥 500",
+          "id": 5
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "type": "action",
+      "label": "Question 4",
+      "text": "4/20. In database ACID properties, what does the <b>I</b> stand for?",
+      "position": [1380, 100],
+      "actions": [
+        {
+          "label": "⚛️ Atomicity",
+          "id": 6
+        },
+        {
+          "label": "🧱 Isolation",
+          "id": 6,
+          "effects": ["correctAnswer"]
+        },
+        {
+          "label": "💾 Durability",
+          "id": 6
+        },
+        {
+          "label": "📇 Indexing",
+          "id": 6
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "type": "action",
+      "label": "Question 5",
+      "text": "5/20. What is a main goal of database normalization?",
+      "position": [1700, 100],
+      "actions": [
+        {
+          "label": "🧹 Reduce redundancy",
+          "id": 7,
+          "effects": ["correctAnswer"]
+        },
+        {
+          "label": "🚀 Add caching",
+          "id": 7
+        },
+        {
+          "label": "🔐 Encrypt rows",
+          "id": 7
+        },
+        {
+          "label": "📈 Increase latency",
+          "id": 7
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "type": "action",
+      "label": "Question 6",
+      "text": "6/20. What do threads in the same process commonly share?",
+      "position": [2020, 100],
+      "actions": [
+        {
+          "label": "🧠 Address space",
+          "id": 8,
+          "effects": ["correctAnswer"]
+        },
+        {
+          "label": "📚 Own codebase",
+          "id": 8
+        },
+        {
+          "label": "🧳 Separate heap",
+          "id": 8
+        },
+        {
+          "label": "🧱 New kernel",
+          "id": 8
+        }
+      ]
+    },
+    {
+      "id": 8,
+      "type": "action",
+      "label": "Question 7",
+      "text": "7/20. Which condition is one of the classic necessary conditions for deadlock?",
+      "position": [2340, 100],
+      "actions": [
+        {
+          "label": "🔁 Circular wait",
+          "id": 9,
+          "effects": ["correctAnswer"]
+        },
+        {
+          "label": "🚪 Open queue",
+          "id": 9
+        },
+        {
+          "label": "⚡ Low latency",
+          "id": 9
+        },
+        {
+          "label": "🧊 Cold cache",
+          "id": 9
+        }
+      ]
+    },
+    {
+      "id": 9,
+      "type": "action",
+      "label": "Question 8",
+      "text": "8/20. Which transport protocol provides an ordered, reliable byte stream?",
+      "position": [2660, 100],
+      "actions": [
+        {
+          "label": "📡 TCP",
+          "id": 10,
+          "effects": ["correctAnswer"]
+        },
+        {
+          "label": "💨 UDP",
+          "id": 10
+        },
+        {
+          "label": "🌐 IP",
+          "id": 10
+        },
+        {
+          "label": "📬 ICMP",
+          "id": 10
+        }
+      ]
+    },
+    {
+      "id": 10,
+      "type": "action",
+      "label": "Question 9",
+      "text": "9/20. What is the primary role of DNS on the internet?",
+      "position": [2980, 100],
+      "actions": [
+        {
+          "label": "🗺️ Name lookup",
+          "id": 11,
+          "effects": ["correctAnswer"]
+        },
+        {
+          "label": "🔐 Packet encryption",
+          "id": 11
+        },
+        {
+          "label": "🧮 CPU scheduling",
+          "id": 11
+        },
+        {
+          "label": "📦 File storage",
+          "id": 11
+        }
+      ]
+    },
+    {
+      "id": 11,
+      "type": "action",
+      "label": "Question 10",
+      "text": "10/20. In public-key cryptography, which key is safe to share openly so others can encrypt data for you?",
+      "position": [3300, 100],
+      "actions": [
+        {
+          "label": "📣 Public key",
+          "id": 12,
+          "effects": ["correctAnswer"]
+        },
+        {
+          "label": "🤫 Private key",
+          "id": 12
+        },
+        {
+          "label": "🧂 Salt",
+          "id": 12
+        },
+        {
+          "label": "🎟️ Session id",
+          "id": 12
+        }
+      ]
+    },
+    {
+      "id": 12,
+      "type": "action",
+      "label": "Question 11",
+      "text": "11/20. Which property should a cryptographic hash function have?",
+      "position": [3620, 100],
+      "actions": [
+        {
+          "label": "🧱 One-way",
+          "id": 13,
+          "effects": ["correctAnswer"]
+        },
+        {
+          "label": "🔓 Reversible",
+          "id": 13
+        },
+        {
+          "label": "🎲 Randomized only",
+          "id": 13
+        },
+        {
+          "label": "📏 Fixed secret",
+          "id": 13
+        }
+      ]
+    },
+    {
+      "id": 13,
+      "type": "action",
+      "label": "Question 12",
+      "text": "12/20. In a compiler, lexical analysis primarily converts source text into what?",
+      "position": [3940, 100],
+      "actions": [
+        {
+          "label": "🔤 Tokens",
+          "id": 14,
+          "effects": ["correctAnswer"]
+        },
+        {
+          "label": "🌳 AST",
+          "id": 14
+        },
+        {
+          "label": "⚙️ Bytecode",
+          "id": 14
+        },
+        {
+          "label": "🧪 Tests",
+          "id": 14
+        }
+      ]
+    },
+    {
+      "id": 14,
+      "type": "action",
+      "label": "Question 13",
+      "text": "13/20. What is the purpose of a base case in a recursive algorithm?",
+      "position": [4260, 100],
+      "actions": [
+        {
+          "label": "🛑 Stop calls",
+          "id": 15,
+          "effects": ["correctAnswer"]
+        },
+        {
+          "label": "🚀 Speed CPU",
+          "id": 15
+        },
+        {
+          "label": "📦 Allocate heap",
+          "id": 15
+        },
+        {
+          "label": "🔁 Start loop",
+          "id": 15
+        }
+      ]
+    },
+    {
+      "id": 15,
+      "type": "action",
+      "label": "Question 14",
+      "text": "14/20. In object-oriented programming, what does polymorphism allow?",
+      "position": [4580, 100],
+      "actions": [
+        {
+          "label": "🎭 Same interface",
+          "id": 16,
+          "effects": ["correctAnswer"]
+        },
+        {
+          "label": "🧬 Data copying",
+          "id": 16
+        },
+        {
+          "label": "🔐 Private fields",
+          "id": 16
+        },
+        {
+          "label": "📏 Fixed sizes",
+          "id": 16
+        }
+      ]
+    },
+    {
+      "id": 16,
+      "type": "action",
+      "label": "Question 15",
+      "text": "15/20. Which HTTP method is generally idempotent for replacing or updating a resource at a known URL?",
+      "position": [4900, 100],
+      "actions": [
+        {
+          "label": "✉️ POST",
+          "id": 17
+        },
+        {
+          "label": "🧱 PUT",
+          "id": 17,
+          "effects": ["correctAnswer"]
+        },
+        {
+          "label": "🧩 PATCH",
+          "id": 17
+        },
+        {
+          "label": "🔌 CONNECT",
+          "id": 17
+        }
+      ]
+    },
+    {
+      "id": 17,
+      "type": "action",
+      "label": "Question 16",
+      "text": "16/20. What usually forms the broad base of the testing pyramid?",
+      "position": [5220, 100],
+      "actions": [
+        {
+          "label": "🧱 Unit tests",
+          "id": 18,
+          "effects": ["correctAnswer"]
+        },
+        {
+          "label": "🌐 E2E tests",
+          "id": 18
+        },
+        {
+          "label": "🧪 Manual tests",
+          "id": 18
+        },
+        {
+          "label": "📊 Dashboards",
+          "id": 18
+        }
+      ]
+    },
+    {
+      "id": 18,
+      "type": "action",
+      "label": "Question 17",
+      "text": "17/20. Under the CAP theorem, when a distributed system has a network partition, what tradeoff must it make?",
+      "position": [5540, 100],
+      "actions": [
+        {
+          "label": "⚖️ C or A",
+          "id": 19,
+          "effects": ["correctAnswer"]
+        },
+        {
+          "label": "💾 Disk speed",
+          "id": 19
+        },
+        {
+          "label": "🧠 CPU cores",
+          "id": 19
+        },
+        {
+          "label": "🔐 Auth mode",
+          "id": 19
+        }
+      ]
+    },
+    {
+      "id": 19,
+      "type": "action",
+      "label": "Question 18",
+      "text": "18/20. Which Git command records staged changes as a new commit?",
+      "position": [5860, 100],
+      "actions": [
+        {
+          "label": "✅ git commit",
+          "id": 20,
+          "effects": ["correctAnswer"]
+        },
+        {
+          "label": "⬇️ git pull",
+          "id": 20
+        },
+        {
+          "label": "🌿 git branch",
+          "id": 20
+        },
+        {
+          "label": "🔎 git status",
+          "id": 20
+        }
+      ]
+    },
+    {
+      "id": 20,
+      "type": "action",
+      "label": "Question 19",
+      "text": "19/20. What is a memory leak?",
+      "position": [6180, 100],
+      "actions": [
+        {
+          "label": "💧 Lost memory",
+          "id": 21,
+          "effects": ["correctAnswer"]
+        },
+        {
+          "label": "⚡ Fast cache",
+          "id": 21
+        },
+        {
+          "label": "🔁 Loop break",
+          "id": 21
+        },
+        {
+          "label": "📦 Small object",
+          "id": 21
+        }
+      ]
+    },
+    {
+      "id": 21,
+      "type": "action",
+      "label": "Question 20",
+      "text": "20/20. Which design principle says high-level modules should depend on abstractions rather than concrete details?",
+      "position": [6500, 100],
+      "actions": [
+        {
+          "label": "🔌 Dependency inversion",
+          "id": 22,
+          "effects": ["correctAnswer"]
+        },
+        {
+          "label": "🧱 Singleton",
+          "id": 22
+        },
+        {
+          "label": "🏭 Factory",
+          "id": 22
+        },
+        {
+          "label": "📚 Inheritance",
+          "id": 22
+        }
+      ]
+    },
+    {
+      "id": 22,
+      "type": "redirect",
+      "label": "Grade Router",
+      "text": [
+        "The console locks your answers and runs the grading script. 📊",
+        "Your final grade is selected from state conditions, then shown with the completed score."
+      ],
+      "position": [6820, 100],
+      "links": [
+        {
+          "id": 23,
+          "weight": 1,
+          "condition": "score <= 7"
+        },
+        {
+          "id": 24,
+          "weight": 1,
+          "condition": "score >= 8 && score <= 13"
+        },
+        {
+          "id": 25,
+          "weight": 1,
+          "condition": "score >= 14 && score <= 17"
+        },
+        {
+          "id": 26,
+          "weight": 1,
+          "condition": "score >= 18"
+        }
+      ]
+    },
+    {
+      "id": 23,
+      "type": "finish",
+      "label": "Junior Result",
+      "text": [
+        "Grade: <b>Junior</b>. Final score: <b>{{score}}/{{totalQuestions}}</b>. 🌱",
+        "You recognize several core ideas, but the fundamentals are still forming. Focus next on data structures, networking basics, databases, and reading code slowly until the patterns become familiar."
+      ],
+      "position": [7140, -1900]
+    },
+    {
+      "id": 24,
+      "type": "finish",
+      "label": "Middle Result",
+      "text": [
+        "Grade: <b>Middle</b>. Final score: <b>{{score}}/{{totalQuestions}}</b>. 🧰",
+        "You have a working practical base and can reason through common engineering problems. To grow, tighten your understanding of systems, complexity, architecture tradeoffs, and edge cases."
+      ],
+      "position": [7140, -600]
+    },
+    {
+      "id": 25,
+      "type": "finish",
+      "label": "Senior Result",
+      "text": [
+        "Grade: <b>Senior</b>. Final score: <b>{{score}}/{{totalQuestions}}</b>. 🚀",
+        "You show strong breadth across computer science fundamentals. Your next gains are in deeper tradeoff analysis, distributed systems nuance, security judgment, and mentoring others through these concepts."
+      ],
+      "position": [7140, 700]
+    },
+    {
+      "id": 26,
+      "type": "finish",
+      "label": "Lead Result",
+      "text": [
+        "Grade: <b>Lead</b>. Final score: <b>{{score}}/{{totalQuestions}}</b>. 🏆",
+        "You handled the test with broad, connected understanding. This result suggests you can not only solve technical problems, but also explain tradeoffs, guide architecture, and raise the engineering bar for a team."
+      ],
+      "position": [7140, 2000]
+    }
+  ]
+}
