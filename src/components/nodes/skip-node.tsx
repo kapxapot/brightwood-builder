@@ -30,7 +30,13 @@ const SkipNode = memo(function SkipNode({ data, selected }: Props) {
     >
       <NodeTitle id={data.id} label={data.label ?? t(nodeLabels.skip)} />
 
-      <NodeEffect effects={data.entryEffects} />
+      <NodeEffect
+        effects={data.entryEffects}
+        readonly={nodeEditing}
+        updateEffects={entryEffects => data.onChange?.({ ...data, entryEffects })}
+        onEditStarted={startEdit}
+        onEditFinished={finishEdit}
+      />
 
       <NodeText
         data={data}

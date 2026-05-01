@@ -9,6 +9,8 @@ import { TextInputLabel } from "../core/text-input-label";
 import { useCharLimit } from "@/hooks/use-char-limit";
 import { useTranslation } from "react-i18next";
 import type { EffectInvocation } from "@/entities/story-data";
+import { effectInvocationsSchema } from "@/schemas/story-data-schema";
+import { formatJson, getJsonEditorErrorMessage, parseJsonWithSchema } from "@/lib/json-editor";
 
 const formatInvocation = (effect: EffectInvocation) => {
   if (typeof effect === "string") {
@@ -43,14 +45,21 @@ export default function NodeAction({ action, index, deletable, nodeEditing, char
   const noLabel = !initialLabel.length;
 
   const [label, setLabel] = useState(initialLabel);
+  const [condition, setCondition] = useState(action.condition ?? "");
+  const [effectsValue, setEffectsValue] = useState(formatJson(action.effects ?? []));
   const [editing, setEditing] = useState(noLabel);
+  const [error, setError] = useState<string | null>(null);
 
   const inputRef = useRef<HTMLInputElement>(null);
+  const effectsRef = useRef<HTMLTextAreaElement>(null);
 
   const { showCharLimit, valueTooLong} = useCharLimit(label, charLimit);
 
   function startEdit() {
     setLabel(initialLabel);
+    setCondition(action.condition ?? "");
+    setEffectsValue(formatJson(action.effects ?? []));
+    setError(null);
 
     setEditing(true);
     onEditStarted();
@@ -60,6 +69,7 @@ export default function NodeAction({ action, index, deletable, nodeEditing, char
 
   function cancelEdit() {
     setEditing(false);
+    setError(null);
     onEditFinished();
 
     if (initialLabel.length) {
@@ -70,18 +80,38 @@ export default function NodeAction({ action, index, deletable, nodeEditing, char
   }
 
   function commitEdit() {
-    setEditing(false);
-    onEditFinished();
+    try {
+      const trimmedEffects = effectsValue.trim();
+      const nextEffects = trimmedEffects.length
+        ? parseJsonWithSchema(trimmedEffects, effectInvocationsSchema)
+        : undefined;
 
-    updateAction?.({
-      ...action,
-      label
-    });
+      setEditing(false);
+      setError(null);
+      onEditFinished();
+
+      updateAction?.({
+        ...action,
+        label,
+        condition: condition.trim() || undefined,
+        effects: nextEffects
+      });
+    } catch (error) {
+      setError(getJsonEditorErrorMessage(error));
+    }
   }
 
   function updateLabel(event: React.ChangeEvent<HTMLInputElement>) {
     const value = event.currentTarget.value;
     setLabel(value.trim());
+  }
+
+  function updateCondition(event: React.ChangeEvent<HTMLInputElement>) {
+    setCondition(event.currentTarget.value);
+  }
+
+  function updateEffectsValue(event: React.ChangeEvent<HTMLTextAreaElement>) {
+    setEffectsValue(event.currentTarget.value);
   }
 
   useEffect(() => {
@@ -92,6 +122,7 @@ export default function NodeAction({ action, index, deletable, nodeEditing, char
   }, []);
 
   useEffect(() => autoHeight(inputRef), [label]);
+  useEffect(() => autoHeight(effectsRef, 220), [editing, effectsValue]);
 
   return (
     <div
@@ -111,11 +142,36 @@ export default function NodeAction({ action, index, deletable, nodeEditing, char
               className="w-full py-1 px-1.5 mb-1 border border-slate-400 rounded-md"
               ref={inputRef}
             />
+            <TextInputLabel>
+              {t("Condition")}
+            </TextInputLabel>
+            <input
+              type="text"
+              defaultValue={condition}
+              onChange={updateCondition}
+              className="w-full py-1 px-1.5 mb-1 border border-slate-400 rounded-md"
+            />
+            <TextInputLabel>
+              {t("Effects JSON")}
+            </TextInputLabel>
+            <textarea
+              defaultValue={effectsValue}
+              onChange={updateEffectsValue}
+              className="w-full py-1 px-1.5 border border-slate-400 rounded-md font-mono"
+              ref={effectsRef}
+              rows={4}
+            >
+            </textarea>
             {showCharLimit &&
               <div className={`text-xs ${valueTooLong ? 'text-red-500' : 'opacity-50'}`}>
                 {label.length} / {charLimit}
               </div>
             }
+            {error && (
+              <div className="mt-1 text-xs text-red-500">
+                {error}
+              </div>
+            )}
             <div className="flex gap-2 mt-1">
               <Button
                 disabled={!label.length || valueTooLong}

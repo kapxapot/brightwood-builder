@@ -11,7 +11,13 @@ import { Flag } from "../core/icons";
 import { useTranslation } from "react-i18next";
 import LanguageSelector from "../language-selector";
 import type { StoryData } from "@/entities/story-data";
-import ReadonlyStateBlock from "../node-parts/readonly-state-block";
+import {
+  conditionDefinitionsSchema,
+  effectDefinitionsSchema,
+  redirectTriggersSchema,
+  stateInitSchema
+} from "@/schemas/story-data-schema";
+import EditableStateInput from "../node-parts/editable-state-input";
 
 type Props = {
   data: StoryInfoGraphNode;
@@ -45,6 +51,32 @@ const StoryInfoNode = memo(function StoryInfoNode({ data, selected }: Props) {
   const updatePrefix = (prefix: string) => {
     data.onChange?.({ ...data, prefix });
   };
+
+  const updateStoryDataField = <K extends keyof StoryData>(
+    key: K,
+    value: StoryData[K] | undefined
+  ) => {
+    const nextStoryData: StoryData = {
+      ...(storyData ?? {})
+    };
+
+    if (value === undefined) {
+      delete nextStoryData[key];
+    } else {
+      nextStoryData[key] = value;
+    }
+
+    data.onChange?.({
+      ...data,
+      data: Object.keys(nextStoryData).length ? nextStoryData : undefined
+    });
+  };
+
+  const formatCountSummary = (count: number, singular: string, plural: string) => (
+    count === 1
+      ? `1 ${singular}`
+      : `${count} ${plural}`
+  );
 
   return (
     <NodeShell
@@ -121,21 +153,73 @@ const StoryInfoNode = memo(function StoryInfoNode({ data, selected }: Props) {
       </div>
 
       <div className="flex flex-col gap-1 mt-1.5">
-        <ReadonlyStateBlock
-          label={t("State init")}
+        <EditableStateInput
+          label={t("Initial state")}
+          emptyLabel={t("Initial data")}
           value={storyData?.init}
+          defaultValue={{}}
+          schema={stateInitSchema}
+          readonly={nodeEditing}
+          rowCount={7}
+          summaryFormatter={value => formatCountSummary(
+            Object.keys(value).length,
+            t("variable"),
+            t("variables")
+          )}
+          onValueChanged={value => updateStoryDataField("init", value)}
+          onEditStarted={startEdit}
+          onEditFinished={finishEdit}
         />
-        <ReadonlyStateBlock
-          label={t("State conditions")}
+        <EditableStateInput
+          label={t("Condition definitions")}
+          emptyLabel={t("Condition definitions")}
           value={storyData?.conditions}
+          defaultValue={{}}
+          schema={conditionDefinitionsSchema}
+          readonly={nodeEditing}
+          rowCount={7}
+          summaryFormatter={value => formatCountSummary(
+            Object.keys(value).length,
+            t("condition"),
+            t("conditions")
+          )}
+          onValueChanged={value => updateStoryDataField("conditions", value)}
+          onEditStarted={startEdit}
+          onEditFinished={finishEdit}
         />
-        <ReadonlyStateBlock
-          label={t("State effects")}
+        <EditableStateInput
+          label={t("Effect definitions")}
+          emptyLabel={t("Effect definitions")}
           value={storyData?.effects}
+          defaultValue={[]}
+          schema={effectDefinitionsSchema}
+          readonly={nodeEditing}
+          rowCount={8}
+          summaryFormatter={value => formatCountSummary(
+            value.length,
+            t("effect"),
+            t("effects")
+          )}
+          onValueChanged={value => updateStoryDataField("effects", value)}
+          onEditStarted={startEdit}
+          onEditFinished={finishEdit}
         />
-        <ReadonlyStateBlock
-          label={t("State redirect triggers")}
+        <EditableStateInput
+          label={t("Redirect triggers")}
+          emptyLabel={t("Redirect triggers")}
           value={storyData?.redirectTriggers}
+          defaultValue={[]}
+          schema={redirectTriggersSchema}
+          readonly={nodeEditing}
+          rowCount={6}
+          summaryFormatter={value => formatCountSummary(
+            value.length,
+            t("trigger"),
+            t("triggers")
+          )}
+          onValueChanged={value => updateStoryDataField("redirectTriggers", value)}
+          onEditStarted={startEdit}
+          onEditFinished={finishEdit}
         />
       </div>
 

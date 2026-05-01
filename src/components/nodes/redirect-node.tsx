@@ -35,7 +35,13 @@ const RedirectNode = memo(function RedirectNode({ data, selected }: Props) {
     >
       <NodeTitle id={data.id} label={data.label ?? t(nodeLabels.redirect)} />
 
-      <NodeEffect effects={data.entryEffects} />
+      <NodeEffect
+        effects={data.entryEffects}
+        readonly={nodeEditing}
+        updateEffects={entryEffects => data.onChange?.({ ...data, entryEffects })}
+        onEditStarted={startEdit}
+        onEditFinished={finishEdit}
+      />
 
       <NodeText
         data={data}

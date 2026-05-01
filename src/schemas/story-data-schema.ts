@@ -5,7 +5,7 @@ const valueSchema = z.union([z.string(), z.number(), z.boolean()]);
 const stateReferenceSchema = z.object({
   ref: valueNameSchema
 });
-const initValueSchema = z.union([valueSchema, stateReferenceSchema]);
+export const initValueSchema = z.union([valueSchema, stateReferenceSchema]);
 
 const effectNameSchema = z.string();
 const effectStatementSchema = z.string();
@@ -13,29 +13,32 @@ const effectStatementSchema = z.string();
 export const conditionNameSchema = z.string();
 const conditionStatementSchema = z.string();
 
-const effectSchema = z.object({
+export const effectSchema = z.object({
   name: effectNameSchema,
   args: z.union([valueNameSchema, z.array(valueNameSchema)]).optional(),
   conditions: z
     .union([conditionNameSchema, z.array(conditionNameSchema)])
     .optional(),
   statements: z
-    .union([effectStatementSchema, z.array(effectStatementSchema)])
-    .optional(),
+    .union([effectStatementSchema, z.array(effectStatementSchema)]),
 });
 
-const redirectTriggerSchema = z.object({
+export const redirectTriggerSchema = z.object({
   condition: conditionStatementSchema,
   targetId: z.number(),
 });
 
+export const stateInitSchema = z.record(valueNameSchema, initValueSchema);
+export const effectDefinitionsSchema = z.array(effectSchema);
+export const conditionDefinitionsSchema = z
+  .record(conditionNameSchema, conditionStatementSchema);
+export const redirectTriggersSchema = z.array(redirectTriggerSchema);
+
 export const storyDataSchema = z.object({
-  init: z.record(valueNameSchema, initValueSchema).optional(),
-  effects: z.array(effectSchema).optional(),
-  conditions: z
-    .record(conditionNameSchema, conditionStatementSchema)
-    .optional(),
-  redirectTriggers: z.array(redirectTriggerSchema).optional(),
+  init: stateInitSchema.optional(),
+  effects: effectDefinitionsSchema.optional(),
+  conditions: conditionDefinitionsSchema.optional(),
+  redirectTriggers: redirectTriggersSchema.optional(),
 });
 
 const effectInvocationObjectSchema = z.object({
@@ -61,3 +64,5 @@ export const effectInvocationSchema = z.union([
   effectInvocationObjectSchema,
   effectInvocationStringSchema,
 ]);
+
+export const effectInvocationsSchema = z.array(effectInvocationSchema);

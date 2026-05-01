@@ -27,7 +27,13 @@ const FinishNode = memo(function FinishNode({ data, selected }: Props) {
     >
       <NodeTitle id={data.id} label={data.label ?? t(nodeLabels.finish)} />
 
-      <NodeEffect effects={data.entryEffects} />
+      <NodeEffect
+        effects={data.entryEffects}
+        readonly={nodeEditing}
+        updateEffects={entryEffects => data.onChange?.({ ...data, entryEffects })}
+        onEditStarted={startEdit}
+        onEditFinished={finishEdit}
+      />
 
       <NodeText
         data={data}

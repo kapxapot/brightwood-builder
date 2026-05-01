@@ -33,7 +33,13 @@ const ActionNode = memo(function ActionNode({ data, selected, dragging }: Props)
     >
       <NodeTitle id={data.id} label={data.label ?? t(nodeLabels.action)} />
 
-      <NodeEffect effects={data.entryEffects} />
+      <NodeEffect
+        effects={data.entryEffects}
+        readonly={editingOrDragging}
+        updateEffects={entryEffects => data.onChange?.({ ...data, entryEffects })}
+        onEditStarted={startEdit}
+        onEditFinished={finishEdit}
+      />
 
       <NodeText
         data={data}
