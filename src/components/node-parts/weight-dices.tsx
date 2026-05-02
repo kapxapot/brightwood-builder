@@ -1,11 +1,12 @@
-import { forwardRef } from "react";
+import { forwardRef, type ComponentPropsWithoutRef } from "react";
+import { cn } from "@/lib/utils";
 import { Cube } from "../core/icons";
 
-type Props = {
+type Props = ComponentPropsWithoutRef<"div"> & {
   weight: number;
-}
+};
 
-const WeightDices = forwardRef<HTMLDivElement, Props>(({ weight }, ref) => {
+const WeightDices = forwardRef<HTMLDivElement, Props>(({ weight, className, ...props }, ref) => {
   if (weight <= 0) {
     return null;
   }
@@ -15,7 +16,7 @@ const WeightDices = forwardRef<HTMLDivElement, Props>(({ weight }, ref) => {
   const float = weight > floor;
 
   return (
-    <div ref={ref} className="flex">
+    <div ref={ref} className={cn("flex", className)} {...props}>
       {Array(diceCount).fill(0).map((_, index) => <Cube key={index} />)}
       {float &&
         <span className="ml-1">
