@@ -6,7 +6,7 @@
     "chooseFileToImport": "Choose a <0>.json</0> story file to import"
   },
   "effects": "effects",
-  "entryEffects": "entry effects",
+  "entryEffects": "Entry effects",
   "Initial state": "Initial state",
   "Initial data": "Initial data",
   "variable": "variable",

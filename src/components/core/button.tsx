@@ -1,16 +1,15 @@
-import { forwardRef, Ref, type PropsWithChildren } from "react";
+import { cn } from "@/lib/utils";
+import { forwardRef, type ButtonHTMLAttributes, type PropsWithChildren, type Ref } from "react";
 
 type Size = "small" | "default" | "large" | "toolbar";
 type Variant = "default" | "primary";
 
-type Props = {
-  onClick?: React.MouseEventHandler<HTMLButtonElement>;
+type Props = ButtonHTMLAttributes<HTMLButtonElement> & {
   size?: Size;
   variant?: Variant;
-  disabled?: boolean;
-}
+};
 
-const Button = forwardRef(({ onClick, size = "default", variant = "default", disabled, children }: PropsWithChildren<Props>, ref: Ref<HTMLButtonElement>) => {
+const Button = forwardRef(({ className, onClick, size = "default", type = "button", variant = "default", disabled, children, ...props }: PropsWithChildren<Props>, ref: Ref<HTMLButtonElement>) => {
   const sizeStyle: Record<Size, string> = {
     "small": "text-sm px-1 py-0.5 rounded-md",
     "default": "text-sm px-2 pb-1 pt-0.5 rounded-lg",
@@ -26,9 +25,16 @@ const Button = forwardRef(({ onClick, size = "default", variant = "default", dis
   return (
     <button
       ref={ref}
+      type={type}
       onClick={onClick}
-      className={`border border-slate-400 ${sizeStyle[size]} ${variantStyle[variant]} disabled:opacity-50 disabled:cursor-not-allowed flex gap-1 items-center`}
+      className={cn(
+        "border border-slate-400 disabled:opacity-50 disabled:cursor-not-allowed flex gap-1 items-center",
+        sizeStyle[size],
+        variantStyle[variant],
+        className
+      )}
       disabled={disabled}
+      {...props}
     >
       {children}
     </button>

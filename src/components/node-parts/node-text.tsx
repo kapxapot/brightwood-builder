@@ -8,6 +8,7 @@ import NodeTextLine from "./node-text-line";
 type Props = {
   data: StoryNode;
   allowEmpty?: boolean;
+  expanded?: boolean;
   readonly?: boolean;
   showAddButton?: boolean;
   onEditStarted: () => void;
@@ -17,6 +18,7 @@ type Props = {
 export default function NodeText({
   data,
   allowEmpty,
+  expanded = false,
   readonly,
   showAddButton = true,
   onEditStarted,
@@ -35,6 +37,7 @@ export default function NodeText({
           index={index}
           line={line}
           deletable={allowEmpty || lines.length > 1}
+          expanded={expanded}
           readonly={readonly}
           charLimit={1000}
           isFirst={index === 0}

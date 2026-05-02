@@ -13,6 +13,7 @@ type Props = {
   line: string;
   index: number;
   deletable: boolean;
+  expanded?: boolean;
   readonly?: boolean;
   charLimit?: number;
   isFirst: boolean;
@@ -25,7 +26,7 @@ type Props = {
   onEditFinished: () => void;
 };
 
-export default function NodeTextLine({ line, index, deletable, readonly, charLimit = 0, isFirst, isLast, updateLine, deleteLine, moveLineUp, moveLineDown, onEditStarted, onEditFinished }: Props) {
+export default function NodeTextLine({ line, index, deletable, expanded = false, readonly, charLimit = 0, isFirst, isLast, updateLine, deleteLine, moveLineUp, moveLineDown, onEditStarted, onEditFinished }: Props) {
   const { t } = useTranslation();
 
   const virgin = !line.length;
@@ -83,6 +84,10 @@ export default function NodeTextLine({ line, index, deletable, readonly, charLim
 
   const imageUrl = extractImageUrl(editedLine);
   const isImage = !!imageUrl;
+  const canInlineEdit = expanded && !readonly && !isImage;
+  const textClassName = expanded
+    ? `block whitespace-pre-wrap [&>pre]:whitespace-pre-wrap ${virgin && "opacity-30"}`
+    : `block overflow-hidden text-ellipsis whitespace-nowrap ${virgin && "opacity-30"}`;
 
   return (
     <>
@@ -123,7 +128,7 @@ export default function NodeTextLine({ line, index, deletable, readonly, charLim
       {/* view */}
       {!editing && (
         <div
-          className={`relative group ${!readonly && !isImage && "cursor-text"} text-sm`}
+          className={`relative group ${canInlineEdit && "cursor-text"} text-sm`}
         >
           {isImage &&
             <ImageDisplay url={imageUrl} />
@@ -131,10 +136,11 @@ export default function NodeTextLine({ line, index, deletable, readonly, charLim
           {!isImage &&
             <p
               className="border border-black border-opacity-20 rounded-lg border-dashed bg-white bg-opacity-50 px-2 py-1 break-words"
-              onClick={startEdit}
+              onClick={canInlineEdit ? startEdit : undefined}
+              title={!expanded && line ? line : undefined}
             >
               <TextDisplay
-                className={`whitespace-pre-wrap [&>pre]:whitespace-pre-wrap ${virgin && "opacity-30"}`}
+                className={textClassName}
                 text={line || `${t("Text line")} ${index + 1}`}
               />
             </p>

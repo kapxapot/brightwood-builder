@@ -1,4 +1,4 @@
-import { memo, useRef } from "react";
+import { memo, useRef, useState } from "react";
 import type { ActionStoryNode } from "../../entities/story-node";
 import { colors, nodeLabels } from "../../lib/constants";
 import NodeShell from "../node-parts/node-shell";
@@ -24,6 +24,7 @@ const ActionNode = memo(function ActionNode({ data, selected, dragging }: Props)
 
   const { nodeEditing, startEdit, finishEdit } = useNodeEditing(data);
   const entryEffectRef = useRef<NodeEffectHandle>(null);
+  const [textExpanded, setTextExpanded] = useState(false);
 
   const editingOrDragging = nodeEditing || dragging;
   const hasEntryEffects = !!data.entryEffects?.length;
@@ -34,13 +35,17 @@ const ActionNode = memo(function ActionNode({ data, selected, dragging }: Props)
       selected={selected}
       color={colors.action.tw}
     >
-      <NodeTitle id={data.id} label={data.label ?? t(nodeLabels.action)} />
+      <NodeTitle
+        id={data.id}
+        label={data.label ?? t(nodeLabels.action)}
+        expanded={textExpanded}
+        onToggleExpanded={() => setTextExpanded(current => !current)}
+      />
 
       <NodeEffect
         ref={entryEffectRef}
         effects={data.entryEffects}
         readonly={editingOrDragging}
-        showAddButton={false}
         updateEffects={entryEffects => data.onChange?.({ ...data, entryEffects })}
         onEditStarted={startEdit}
         onEditFinished={finishEdit}
@@ -48,6 +53,7 @@ const ActionNode = memo(function ActionNode({ data, selected, dragging }: Props)
 
       <NodeText
         data={data}
+        expanded={textExpanded}
         readonly={editingOrDragging}
         showAddButton={false}
         onEditStarted={startEdit}
@@ -73,29 +79,31 @@ const ActionNode = memo(function ActionNode({ data, selected, dragging }: Props)
         />
       )}
 
-      <div className="flex flex-wrap gap-2 pt-1">
-        <Button
-          onClick={() => addTextLine(data)}
-          disabled={editingOrDragging}
-        >
-          {t("Add text")}
-        </Button>
-        <Button
-          onClick={() => addAction(data)}
-          disabled={editingOrDragging}
-        >
-          {t("Add action")}
-        </Button>
-
-        {!hasEntryEffects && (
+      {selected && (
+        <div className="flex flex-wrap gap-2 pt-1">
           <Button
-            onClick={() => entryEffectRef.current?.startEdit()}
+            onClick={() => addTextLine(data)}
             disabled={editingOrDragging}
           >
-            {t("Add entry effect")}
+            {t("Add text")}
           </Button>
-        )}
-      </div>
+          <Button
+            onClick={() => addAction(data)}
+            disabled={editingOrDragging}
+          >
+            {t("Add action")}
+          </Button>
+
+          {!hasEntryEffects && (
+            <Button
+              onClick={() => entryEffectRef.current?.startEdit()}
+              disabled={editingOrDragging}
+            >
+              {t("Add entry effect")}
+            </Button>
+          )}
+        </div>
+      )}
 
       <HandleIn />
     </NodeShell>

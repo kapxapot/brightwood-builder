@@ -224,12 +224,20 @@ const StoryInfoNode = memo(function StoryInfoNode({ data, selected }: Props) {
       </div>
 
       <div className="mt-2 text-sm bg-gradient-to-r from-transparent to-purple-300 p-1 relative -mr-2">
-        <div className="flex gap-1">
-          <Flag />
-          <span>
-            {t("It starts with")}
-          </span>
-          <NodeRef id={data.startId} />
+        <div className="flex items-center gap-2 break-words pr-1">
+          <div className="min-w-0 flex-1">
+            <div className="flex min-w-0 items-start gap-1">
+              <div className="shrink-0 pt-0.5">
+                <Flag />
+              </div>
+              <span className="min-w-0 break-words">
+                {t("It starts with")}
+              </span>
+            </div>
+          </div>
+          <div className="shrink-0">
+            <NodeRef id={data.startId} />
+          </div>
         </div>
         <HandleOut id="0" connected={!!data.startId} />
       </div>

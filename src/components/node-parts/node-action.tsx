@@ -178,19 +178,22 @@ export default function NodeAction({ action, index, deletable, nodeEditing, char
         }
         {/* view */}
         {!editing &&
-          <div className="break-words pr-2">
-            <div className="flex gap-1">
-              <Bolt />
-              <div>
-                {initialLabel} <NodeRef id={action.id} />
+          <div className="flex items-center gap-2 break-words pr-2">
+            <div className="min-w-0 flex-1 space-y-1">
+              <div className="flex min-w-0 items-start gap-1">
+                <div className="shrink-0 pt-0.5">
+                  <Bolt />
+                </div>
+                <div className="min-w-0 truncate">
+                  {initialLabel}
+                </div>
               </div>
+              <ConditionLine condition={action.condition} className="opacity-70" />
+              <EffectLines effects={action.effects} className="opacity-70" />
             </div>
-            {action.condition && (
-              <ConditionLine condition={action.condition} className="mt-1 text-sm opacity-70" />
-            )}
-            {action.effects?.length ? (
-              <EffectLines effects={action.effects} className="mt-1 text-sm opacity-70" />
-            ) : null}
+            <div className="shrink-0">
+              <NodeRef id={action.id} />
+            </div>
           </div>
         }
         {!noLabel &&

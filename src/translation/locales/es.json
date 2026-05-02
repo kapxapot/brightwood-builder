@@ -63,7 +63,7 @@
   "Action label": "Texto de acción",
   "effect": "efecto",
   "effects": "efectos",
-  "entryEffects": "efectos de entrada",
+  "entryEffects": "Efectos de entrada",
   "{{count}} in total": "{{count}} en total",
   "Malformed story JSON.": "Historia JSON mal formada.",
   "Incorrect values": "Valores incorrectos",

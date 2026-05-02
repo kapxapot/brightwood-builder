@@ -1,4 +1,4 @@
-import { memo, useRef } from "react";
+import { memo, useRef, useState } from "react";
 import type { RedirectStoryNode } from "../../entities/story-node";
 import { colors, nodeLabels } from "../../lib/constants";
 import NodeShell from "../node-parts/node-shell";
@@ -23,6 +23,7 @@ const RedirectNode = memo(function RedirectNode({ data, selected }: Props) {
 
   const { nodeEditing, startEdit, finishEdit } = useNodeEditing(data);
   const entryEffectRef = useRef<NodeEffectHandle>(null);
+  const [textExpanded, setTextExpanded] = useState(false);
 
   const totalWeight = data.links.reduce(
     (sum, link) => sum + link.weight,
@@ -36,13 +37,17 @@ const RedirectNode = memo(function RedirectNode({ data, selected }: Props) {
       selected={selected}
       color={colors.redirect.tw}
     >
-      <NodeTitle id={data.id} label={data.label ?? t(nodeLabels.redirect)} />
+      <NodeTitle
+        id={data.id}
+        label={data.label ?? t(nodeLabels.redirect)}
+        expanded={textExpanded}
+        onToggleExpanded={() => setTextExpanded(current => !current)}
+      />
 
       <NodeEffect
         ref={entryEffectRef}
         effects={data.entryEffects}
         readonly={nodeEditing}
-        showAddButton={false}
         updateEffects={entryEffects => data.onChange?.({ ...data, entryEffects })}
         onEditStarted={startEdit}
         onEditFinished={finishEdit}
@@ -50,6 +55,7 @@ const RedirectNode = memo(function RedirectNode({ data, selected }: Props) {
 
       <NodeText
         data={data}
+        expanded={textExpanded}
         readonly={nodeEditing}
         showAddButton={false}
         onEditStarted={startEdit}
@@ -75,29 +81,31 @@ const RedirectNode = memo(function RedirectNode({ data, selected }: Props) {
         />
       )}
 
-      <div className="flex flex-wrap gap-2 pt-1">
-        <Button
-          onClick={() => addTextLine(data)}
-          disabled={nodeEditing}
-        >
-          {t("Add text")}
-        </Button>
-        <Button
-          onClick={() => addLink(data)}
-          disabled={nodeEditing}
-        >
-          {t("Add link")}
-        </Button>
-
-        {!hasEntryEffects && (
+      {selected && (
+        <div className="flex flex-wrap gap-2 pt-1">
           <Button
-            onClick={() => entryEffectRef.current?.startEdit()}
+            onClick={() => addTextLine(data)}
             disabled={nodeEditing}
           >
-            {t("Add entry effect")}
+            {t("Add text")}
           </Button>
-        )}
-      </div>
+          <Button
+            onClick={() => addLink(data)}
+            disabled={nodeEditing}
+          >
+            {t("Add link")}
+          </Button>
+
+          {!hasEntryEffects && (
+            <Button
+              onClick={() => entryEffectRef.current?.startEdit()}
+              disabled={nodeEditing}
+            >
+              {t("Add entry effect")}
+            </Button>
+          )}
+        </div>
+      )}
 
       <HandleIn />
     </NodeShell>

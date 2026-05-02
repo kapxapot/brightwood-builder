@@ -35,6 +35,20 @@ export type StoryGraph = {
   viewport?: Viewport;
 };
 
+export const normalizeSourceHandle = (sourceHandle?: string | number | null) => String(sourceHandle ?? 0);
+
+export const buildEdgeId = (
+  source: string,
+  target: string | number,
+  sourceHandle?: string | number | null
+) => `e${source}-${normalizeSourceHandle(sourceHandle)}-${target}`;
+
+export const normalizeEdgeIds = <TEdge extends BuilderEdge>(edges: TEdge[]) => edges.map(edge => ({
+  ...edge,
+  id: buildEdgeId(edge.source, edge.target, edge.sourceHandle),
+  sourceHandle: normalizeSourceHandle(edge.sourceHandle)
+}));
+
 const positionOrDefault = (dataPosition?: number[]): BuilderPosition => ({
   x: dataPosition ? dataPosition[0] : 0,
   y: dataPosition ? dataPosition[1] : 0
@@ -172,10 +186,11 @@ export function buildNewStoryNode(
 export const nodeKey = (uuid: string, nodeId: number) => `${uuid}_${nodeId}`;
 
 const addEdge = (edges: BuilderEdge[], source: string, target: number, sourceHandle?: number) => {
+  const normalizedSourceHandle = normalizeSourceHandle(sourceHandle);
   const edge = {
-    id: `e${source}-${target}`,
+    id: buildEdgeId(source, target, normalizedSourceHandle),
     source,
-    sourceHandle: String(sourceHandle || 0),
+    sourceHandle: normalizedSourceHandle,
     target: String(target)
   };
 

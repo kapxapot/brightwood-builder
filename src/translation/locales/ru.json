@@ -63,7 +63,7 @@
   "Action label": "Текст действия",
   "effect": "эффект",
   "effects": "эффекты",
-  "entryEffects": "эффекты входа",
+  "entryEffects": "Начальные эффекты",
   "{{count}} in total": "{{count}} всего",
   "Malformed story JSON.": "Некорректный JSON-формат истории.",
   "Incorrect values": "Неверные значения",

@@ -187,29 +187,27 @@ export default function NodeLink({ link, index, totalWeight, deletable, isFirst,
         }
         {/* view */}
         {!editing &&
-          <div className="break-words pr-2">
-            <div className="flex gap-1">
-              <Tooltip
-                tooltip={
-                  <div className="flex flex-col">
-                    <span>{t("Link weight")}: {link.weight}</span>
-                    <span>{t("Probability")}: {weightPercent}%</span>
-                  </div>
-                }
-                side="top"
-              >
-                <WeightDices weight={link.weight} />
-              </Tooltip>
-              <div>
-                <NodeRef id={link.id} />
+          <div className="flex items-center gap-2 break-words pr-2">
+            <div className="min-w-0 flex-1 space-y-1">
+              <div className="flex min-w-0 items-start gap-1">
+                <Tooltip
+                  tooltip={
+                    <div className="flex flex-col">
+                      <span>{t("Link weight")}: {link.weight}</span>
+                      <span>{t("Probability")}: {weightPercent}%</span>
+                    </div>
+                  }
+                  side="top"
+                >
+                  <WeightDices weight={link.weight} />
+                </Tooltip>
               </div>
+              <ConditionLine condition={link.condition} className="opacity-70" />
+              <EffectLines effects={link.effects} className="opacity-70" />
             </div>
-            {link.condition && (
-              <ConditionLine condition={link.condition} className="mt-1 text-sm opacity-70" />
-            )}
-            {link.effects?.length ? (
-              <EffectLines effects={link.effects} className="mt-1 text-sm opacity-70" />
-            ) : null}
+            <div className="shrink-0">
+              <NodeRef id={link.id} />
+            </div>
           </div>
         }
         {!noWeight &&

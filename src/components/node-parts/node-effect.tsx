@@ -12,7 +12,6 @@ import EffectLines from "./effect-lines";
 type Props = {
   effects?: EffectInvocation[];
   readonly?: boolean;
-  showAddButton?: boolean;
   updateEffects: (effects: EffectInvocation[] | undefined) => void;
   onEditStarted: () => void;
   onEditFinished: () => void;
@@ -25,7 +24,6 @@ export type NodeEffectHandle = {
 const NodeEffect = forwardRef<NodeEffectHandle, Props>(function NodeEffect({
   effects,
   readonly = false,
-  showAddButton = true,
   updateEffects,
   onEditStarted,
   onEditFinished
@@ -39,7 +37,6 @@ const NodeEffect = forwardRef<NodeEffectHandle, Props>(function NodeEffect({
   const inputRef = useRef<HTMLTextAreaElement>(null);
 
   const hasValue = !!effects?.length;
-  const showInlineButton = hasValue || showAddButton;
 
   function startEdit() {
     if (readonly) {
@@ -98,69 +95,57 @@ const NodeEffect = forwardRef<NodeEffectHandle, Props>(function NodeEffect({
     startEdit
   }));
 
-  if (!editing && !hasValue) {
-    if (!showAddButton || readonly) {
-      return null;
-    }
-
+  if (editing) {
     return (
-      <div className="text-sm">
-        <Button size="small" onClick={startEdit}>
-          {t("Add")}
-        </Button>
+      <div className="border border-black border-opacity-20 rounded-lg border-dashed bg-white p-1 text-sm nowheel">
+        <TextInputLabel>
+          {t("entryEffects")}
+        </TextInputLabel>
+        <textarea
+          defaultValue={editedEffects}
+          onChange={updateEditedValue}
+          className="w-full py-1 px-1.5 border border-slate-400 rounded-md font-mono"
+          ref={inputRef}
+          rows={4}
+        >
+        </textarea>
+        {error && (
+          <div className="mt-1 text-xs text-red-500">
+            {error}
+          </div>
+        )}
+        <div className="pt-1 flex gap-2">
+          <Button onClick={commitEdit}>
+            {t("Save")}
+          </Button>
+          <Button onClick={cancelEdit}>
+            {t("Cancel")}
+          </Button>
+        </div>
       </div>
     );
   }
 
+  if (!hasValue) {
+    return null;
+  }
+
   return (
     <div className="relative group text-sm">
-      {editing ? (
-        <div className="border border-black border-opacity-20 rounded-lg border-dashed bg-white p-1 text-sm nowheel">
-          <TextInputLabel>
-            {t("entryEffects")}
-          </TextInputLabel>
-          <textarea
-            defaultValue={editedEffects}
-            onChange={updateEditedValue}
-            className="w-full py-1 px-1.5 border border-slate-400 rounded-md font-mono"
-            ref={inputRef}
-            rows={4}
-          >
-          </textarea>
-          {error && (
-            <div className="mt-1 text-xs text-red-500">
-              {error}
-            </div>
-          )}
-          <div className="pt-1 flex gap-2">
-            <Button onClick={commitEdit}>
-              {t("Save")}
+      <div>
+        <EffectLines effects={effects} />
+      </div>
+      {!readonly && hasValue && (
+        <div className="absolute right-0 top-0 hidden group-hover:block">
+          <div className="flex gap-1">
+            <Button size="small" onClick={startEdit}>
+              <Edit />
             </Button>
-            <Button onClick={cancelEdit}>
-              {t("Cancel")}
+            <Button size="small" onClick={clearEffects}>
+              <Delete />
             </Button>
           </div>
         </div>
-      ) : (
-        <>
-          <div className={showInlineButton ? "pr-24" : undefined}>
-            <EffectLines effects={effects ?? []} className="text-sm" />
-          </div>
-          {!readonly && showInlineButton && (
-            <div className={`absolute right-0 top-0 ${hasValue ? "hidden group-hover:block" : "block"}`}>
-              <div className="flex gap-1">
-                <Button size="small" onClick={startEdit}>
-                  {hasValue ? <Edit /> : t("Add")}
-                </Button>
-                {hasValue && (
-                  <Button size="small" onClick={clearEffects}>
-                    <Delete />
-                  </Button>
-                )}
-              </div>
-            </div>
-          )}
-        </>
       )}
     </div>
   );

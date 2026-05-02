@@ -1,12 +1,13 @@
 import "reactflow/dist/base.css";
 import { useCallback, useEffect, useRef, useState } from "react";
+import { flushSync } from "react-dom";
 import ReactFlow, { MiniMap, Controls, Background, useNodesState, useEdgesState, addEdge, BackgroundVariant, type Connection, type ReactFlowInstance, type Node, type Edge, type OnSelectionChangeParams, useKeyPress, useReactFlow } from "reactflow";
 import Toolbar from "./toolbar";
 import ActionNode from "./nodes/action-node";
 import SkipNode from "./nodes/skip-node";
 import RedirectNode from "./nodes/redirect-node";
 import FinishNode from "./nodes/finish-node";
-import { StoryGraph, defaultViewport, nodeKey } from "../builders/story-graph-builder";
+import { StoryGraph, buildEdgeId, defaultViewport, nodeKey, normalizeEdgeIds, normalizeSourceHandle } from "../builders/story-graph-builder";
 import { removeConnections, updateConnection } from "../lib/node-operations";
 import { isAllowedConnection, isDeletable } from "../lib/node-checks";
 import type { ActionStoryNode, GraphNode, NodeEvent, OnChangeHandler, RedirectStoryNode, StoryInfoGraphNode, StoryNode, StoryNodeType } from "../entities/story-node";
@@ -40,6 +41,7 @@ const nodeTypes = {
   finish: FinishNode
 };
 
+const canvasBusyReleaseDelayMs = 150;
 const noStoryDataError = "Failed to get the current story data.";
 const failedToReadFileError = "Failed to read the file.";
 
@@ -76,6 +78,7 @@ export default function Flow() {
   }
 
   const fetchStoryData = async (url: string) => {
+    beginCanvasBusy(t("Loading story..."));
     setIsStoryFetching(true);
 
     try {
@@ -102,6 +105,7 @@ export default function Flow() {
       initAndSetStoryGraph();
     } finally {
       setIsStoryFetching(false);
+      endCanvasBusy();
     }
   };
 
@@ -110,9 +114,11 @@ export default function Flow() {
 
   const reactFlowWrapper = useRef<HTMLDivElement>(null);
   const [reactFlowInstance, setReactFlowInstance] = useState<ReactFlowInstance | null>(null);
+  const canvasBusyTimeoutRef = useRef<number | null>(null);
 
   const [selectedNodes, setSelectedNodes] = useState<Node[]>([]);
   const [selectedEdges, setSelectedEdges] = useState<Edge[]>([]);
+  const [canvasBusyMessage, setCanvasBusyMessage] = useState<string | null>(null);
 
   const [validationMessages, setValidationMessages] = useState<ValidationMessage[]>([]);
 
@@ -127,6 +133,40 @@ export default function Flow() {
   const importStoryDialog = () => setImportStoryDialogOpen(true);
 
   const deletePressed = useKeyPress(["Delete", "Backspace"]);
+  const isCanvasBusy = canvasBusyMessage !== null;
+
+  const beginCanvasBusy = useCallback((message: string, immediate = false) => {
+    if (canvasBusyTimeoutRef.current !== null) {
+      window.clearTimeout(canvasBusyTimeoutRef.current);
+      canvasBusyTimeoutRef.current = null;
+    }
+
+    if (immediate) {
+      flushSync(() => setCanvasBusyMessage(message));
+      return;
+    }
+
+    setCanvasBusyMessage(message);
+  }, []);
+
+  const endCanvasBusy = useCallback((delay = canvasBusyReleaseDelayMs) => {
+    if (canvasBusyTimeoutRef.current !== null) {
+      window.clearTimeout(canvasBusyTimeoutRef.current);
+    }
+
+    canvasBusyTimeoutRef.current = window.setTimeout(() => {
+      setCanvasBusyMessage(null);
+      canvasBusyTimeoutRef.current = null;
+    }, delay);
+  }, []);
+
+  useEffect(() => {
+    return () => {
+      if (canvasBusyTimeoutRef.current !== null) {
+        window.clearTimeout(canvasBusyTimeoutRef.current);
+      }
+    };
+  }, []);
 
   const getCurrentStoryData = useCallback(
     (): StoryInfoGraphNode | null => {
@@ -152,7 +192,7 @@ export default function Flow() {
 
   const onConnect = useCallback(
     (conn: Connection) => {
-      if (!isAllowedConnection(conn, nodes)) {
+      if (isCanvasBusy || !isAllowedConnection(conn, nodes)) {
         return;
       }
 
@@ -177,12 +217,19 @@ export default function Flow() {
 
         // filter the existing edge from the resulting edges
         return addEdge(
-          conn,
+          {
+            ...conn,
+            id: buildEdgeId(
+              conn.source!,
+              conn.target!,
+              normalizeSourceHandle(conn.sourceHandle)
+            )
+          },
           curEdges.filter(e => e !== existingEdge)
         );
       });
     },
-    [nodes, setNodes, setEdges]
+    [isCanvasBusy, nodes, setNodes, setEdges]
   );
 
   const onDragOver = useCallback((event: React.DragEvent<HTMLDivElement>) => {
@@ -209,10 +256,15 @@ export default function Flow() {
 
               return (edge.source !== nodeId || numHandle < Number(event.handle))
                 ? edge
-                : {
-                  ...edge,
-                  sourceHandle: String(numHandle - 1)
-                }
+                : (() => {
+                  const sourceHandle = normalizeSourceHandle(numHandle - 1);
+
+                  return {
+                    ...edge,
+                    id: buildEdgeId(edge.source, edge.target, sourceHandle),
+                    sourceHandle
+                  };
+                })();
             });
           });
 
@@ -239,9 +291,9 @@ export default function Flow() {
               if (action.id) {
                 newEdges = addEdge(
                   {
-                    id: `e${nodeId}-${action.id}`,
+                    id: buildEdgeId(nodeId, action.id, index),
                     source: nodeId,
-                    sourceHandle: String(index || 0),
+                    sourceHandle: normalizeSourceHandle(index),
                     target: String(action.id)
                   },
                   newEdges
@@ -275,9 +327,9 @@ export default function Flow() {
               if (link.id) {
                 newEdges = addEdge(
                   {
-                    id: `e${nodeId}-${link.id}`,
+                    id: buildEdgeId(nodeId, link.id, index),
                     source: nodeId,
-                    sourceHandle: String(index || 0),
+                    sourceHandle: normalizeSourceHandle(index),
                     target: String(link.id)
                   },
                   newEdges
@@ -291,7 +343,7 @@ export default function Flow() {
           break;
         }
     },
-    [setEdges, nodes]
+    [setEdges]
   );
 
   const onNodeDataChange: OnChangeHandler = useCallback(
@@ -315,7 +367,7 @@ export default function Flow() {
     (event: React.DragEvent<HTMLDivElement>) => {
       event.preventDefault();
 
-      if (!reactFlowWrapper?.current || !reactFlowInstance) {
+      if (isCanvasBusy || !reactFlowWrapper?.current || !reactFlowInstance) {
         return;
       }
 
@@ -345,7 +397,7 @@ export default function Flow() {
       setNodes(curNodes => curNodes.concat(newNode));
     },
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    [reactFlowInstance, nodes, setNodes, onNodeDataChange]
+    [isCanvasBusy, reactFlowInstance, nodes, setNodes, onNodeDataChange]
   );
 
   const onEdgesDelete = useCallback(
@@ -385,6 +437,10 @@ export default function Flow() {
   );
 
   useEffect(() => {
+    if (isCanvasBusy) {
+      return;
+    }
+
     // if storyInfo node is selected, do not allow deleting it
     // also do not allow deleting storyInfo edges if their targets are not deleted too
     const isNodeSelected = (node: Node) => selectedNodes.some(n => n.id === node.id);
@@ -402,35 +458,50 @@ export default function Flow() {
       return curNodes.filter(n => !nodesToDelete.includes(n));
     });
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [deletePressed]);
+  }, [deletePressed, isCanvasBusy]);
 
   const autoArrange = useCallback(() => {
-    setNodes(curNodes => autoArrangeStoryNodes(curNodes as Node<GraphNode>[]));
-  }, [setNodes]);
+    setNodes(curNodes => autoArrangeStoryNodes(curNodes as Node<GraphNode>[], edges));
+    setEdges(curEdges => [...curEdges]);
+  }, [edges, setEdges, setNodes]);
 
   const saveStory = useCallback(() => {
-    const currentStoryData = getCurrentStoryData();
-    const storyGraph = getCurrentStoryGraph();
-
-    if (!currentStoryData || !storyGraph) {
-      showError(t(noStoryDataError));
+    if (isCanvasBusy) {
       return;
     }
 
-    const { uuid: id, title } = currentStoryData;
+    beginCanvasBusy(t("Saving story..."), true);
 
-    storeStory(
-      { id, title },
-      storyGraph
-    );
+    try {
+      const currentStoryData = getCurrentStoryData();
+      const storyGraph = getCurrentStoryGraph();
 
-    switchToStory(id);
-    reloadStories();
+      if (!currentStoryData || !storyGraph) {
+        showError(t(noStoryDataError));
+        return;
+      }
 
-    showSuccess(t("Story successfully saved."));
-  }, [t, getCurrentStoryData, getCurrentStoryGraph, reloadStories, showError, showSuccess]);
+      const { uuid: id, title } = currentStoryData;
+
+      storeStory(
+        { id, title },
+        storyGraph
+      );
+
+      switchToStory(id);
+      reloadStories();
+
+      showSuccess(t("Story successfully saved."));
+    } finally {
+      endCanvasBusy();
+    }
+  }, [beginCanvasBusy, endCanvasBusy, getCurrentStoryData, getCurrentStoryGraph, isCanvasBusy, reloadStories, showError, showSuccess, t]);
 
   const checkThenSaveStory = useCallback(() => {
+    if (isCanvasBusy) {
+      return;
+    }
+
     const currentStoryData = getCurrentStoryData();
 
     if (!currentStoryData) {
@@ -449,7 +520,7 @@ export default function Flow() {
     }
 
     confirmOverwriteStoryAlertDialog();
-  }, [t, getCurrentStoryData, isEtherealStory, reloadStories, saveStory, showError, stories]);
+  }, [t, getCurrentStoryData, isCanvasBusy, isEtherealStory, reloadStories, saveStory, showError, stories]);
 
   function switchToEtherealStory() {
     removeCurrentStoryId();
@@ -464,7 +535,7 @@ export default function Flow() {
 
   function setStoryGraph(storyGraph: StoryGraph) {
     setNodes(storyGraph.nodes);
-    setEdges(storyGraph.edges);
+    setEdges(normalizeEdgeIds(storyGraph.edges));
     setViewport(storyGraph.viewport ?? defaultViewport);
   }
 
@@ -482,17 +553,27 @@ export default function Flow() {
   }
 
   function loadStory(id: string) {
-    const storyGraph = loadStoryGraph(id, onNodeDataChange);
-
-    if (!storyGraph) {
-      showError(t("Failed to load story."));
+    if (isCanvasBusy) {
       return;
     }
 
-    setLoadStoryDialogOpen(false);
-    setStoryGraph(storyGraph);
+    beginCanvasBusy(t("Loading story..."), true);
 
-    switchToStory(id);
+    try {
+      const storyGraph = loadStoryGraph(id, onNodeDataChange);
+
+      if (!storyGraph) {
+        showError(t("Failed to load story."));
+        return;
+      }
+
+      setLoadStoryDialogOpen(false);
+      setStoryGraph(storyGraph);
+
+      switchToStory(id);
+    } finally {
+      endCanvasBusy();
+    }
   }
 
   function deleteStory(id: string) {
@@ -502,10 +583,17 @@ export default function Flow() {
   }
 
   function importStory(file: File) {
+    if (isCanvasBusy) {
+      return;
+    }
+
+    beginCanvasBusy(t("Loading story..."), true);
+
     const reader = new FileReader();
 
     reader.onload = () => {
       if (!reader.result) {
+        endCanvasBusy();
         showError(t(failedToReadFileError));
         return;
       }
@@ -514,9 +602,12 @@ export default function Flow() {
         reader.result as string,
         t("Story successfully imported.")
       );
+
+      endCanvasBusy();
     };
 
     reader.onerror = () => {
+      endCanvasBusy();
       showError(t(failedToReadFileError));
     };
 
@@ -610,7 +701,7 @@ export default function Flow() {
           onExport={exportStory}
           exportEnabled={isEmpty(validationMessages)}
         />
-        <div className="flex-grow w-full" ref={reactFlowWrapper}>
+        <div className="relative flex-grow w-full" ref={reactFlowWrapper}>
           <ReactFlow
             nodes={nodes}
             edges={edges}
@@ -627,6 +718,13 @@ export default function Flow() {
             className="bg-gray-100"
             nodeTypes={nodeTypes}
             disableKeyboardA11y={true}
+            nodesDraggable={!isCanvasBusy}
+            nodesConnectable={!isCanvasBusy}
+            elementsSelectable={!isCanvasBusy}
+            panOnDrag={!isCanvasBusy}
+            zoomOnScroll={!isCanvasBusy}
+            zoomOnPinch={!isCanvasBusy}
+            zoomOnDoubleClick={!isCanvasBusy}
           >
             <Controls />
 
@@ -649,6 +747,16 @@ export default function Flow() {
 
             <Background variant={BackgroundVariant.Dots} gap={12} size={1} />
           </ReactFlow>
+          {isCanvasBusy && (
+            <div className="absolute inset-0 z-[60] flex items-center justify-center bg-white/55 backdrop-blur-[2px]">
+              <div className="flex items-center justify-center gap-8 rounded-2xl border border-stone-200 bg-white/95 px-12 py-10 shadow-xl">
+                <div className="h-14 w-14 animate-spin rounded-full border-4 border-stone-300 border-t-stone-700" />
+                <div className="text-3xl font-semibold text-stone-700">
+                  {canvasBusyMessage}
+                </div>
+              </div>
+            </div>
+          )}
         </div>
       </div>
     </>

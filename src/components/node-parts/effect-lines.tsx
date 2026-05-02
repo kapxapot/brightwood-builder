@@ -1,8 +1,9 @@
 import type { EffectInvocation } from "@/entities/story-data";
 import { Sparkles } from "../core/icons";
+import { cn } from "@/lib/utils";
 
 type Props = {
-  effects: EffectInvocation[];
+  effects: EffectInvocation[] | undefined;
   className?: string;
 };
 
@@ -17,12 +18,18 @@ const formatEffectInvocation = (effect: EffectInvocation) => {
 };
 
 export default function EffectLines({ effects, className }: Props) {
+  if (!effects?.length) {
+    return null;
+  }
+
   return (
-    <div className={`flex flex-col gap-0.5 text-left ${className ?? ""}`}>
+    <div className={cn("flex flex-col gap-0.5", className)}>
       {effects.map((effect, index) => (
-        <div key={`${formatEffectInvocation(effect)}-${index}`} className="flex gap-1">
+        <div key={index} className="flex min-w-0 items-center gap-1.5">
           <Sparkles />
-          <div className="break-words">{formatEffectInvocation(effect)}</div>
+          <div className="min-w-0 truncate">
+            {formatEffectInvocation(effect)}
+          </div>
         </div>
       ))}
     </div>
