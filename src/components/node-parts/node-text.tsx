@@ -9,11 +9,19 @@ type Props = {
   data: StoryNode;
   allowEmpty?: boolean;
   readonly?: boolean;
+  showAddButton?: boolean;
   onEditStarted: () => void;
   onEditFinished: () => void;
 };
 
-export default function NodeText({ data, allowEmpty, readonly, onEditStarted, onEditFinished }: Props) {
+export default function NodeText({
+  data,
+  allowEmpty,
+  readonly,
+  showAddButton = true,
+  onEditStarted,
+  onEditFinished
+}: Props) {
   const { t } = useTranslation();
 
   const text = data.text;
@@ -40,12 +48,14 @@ export default function NodeText({ data, allowEmpty, readonly, onEditStarted, on
         />
       )}
 
-      <Button
-        onClick={() => addTextLine(data)}
-        disabled={readonly}
-      >
-        {t("Add text")}
-      </Button>
+      {showAddButton && (
+        <Button
+          onClick={() => addTextLine(data)}
+          disabled={readonly}
+        >
+          {t("Add text")}
+        </Button>
+      )}
     </>
   );
 }

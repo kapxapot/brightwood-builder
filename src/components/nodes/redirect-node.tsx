@@ -1,4 +1,4 @@
-import { memo } from "react";
+import { memo, useRef } from "react";
 import type { RedirectStoryNode } from "../../entities/story-node";
 import { colors, nodeLabels } from "../../lib/constants";
 import NodeShell from "../node-parts/node-shell";
@@ -6,11 +6,12 @@ import Button from "../core/button";
 import NodeLink from "../node-parts/node-link";
 import { useNodeEditing } from "../../hooks/use-node-editing";
 import NodeTitle from "../node-parts/node-title";
-import NodeEffect from "../node-parts/node-effect";
+import NodeEffect, { type NodeEffectHandle } from "../node-parts/node-effect";
 import NodeText from "../node-parts/node-text";
 import { addLink, deleteLink, moveLinkDown, moveLinkUp, updateLink } from "../../lib/link-mutations";
 import HandleIn from "../node-parts/handle-in";
 import { useTranslation } from "react-i18next";
+import { addTextLine } from "../../lib/node-data-mutations";
 
 type Props = {
   data: RedirectStoryNode;
@@ -21,11 +22,13 @@ const RedirectNode = memo(function RedirectNode({ data, selected }: Props) {
   const { t } = useTranslation();
 
   const { nodeEditing, startEdit, finishEdit } = useNodeEditing(data);
+  const entryEffectRef = useRef<NodeEffectHandle>(null);
 
   const totalWeight = data.links.reduce(
     (sum, link) => sum + link.weight,
     0
   );
+  const hasEntryEffects = !!data.entryEffects?.length;
 
   return (
     <NodeShell
@@ -36,8 +39,10 @@ const RedirectNode = memo(function RedirectNode({ data, selected }: Props) {
       <NodeTitle id={data.id} label={data.label ?? t(nodeLabels.redirect)} />
 
       <NodeEffect
+        ref={entryEffectRef}
         effects={data.entryEffects}
         readonly={nodeEditing}
+        showAddButton={false}
         updateEffects={entryEffects => data.onChange?.({ ...data, entryEffects })}
         onEditStarted={startEdit}
         onEditFinished={finishEdit}
@@ -46,6 +51,7 @@ const RedirectNode = memo(function RedirectNode({ data, selected }: Props) {
       <NodeText
         data={data}
         readonly={nodeEditing}
+        showAddButton={false}
         onEditStarted={startEdit}
         onEditFinished={finishEdit}
       />
@@ -69,13 +75,28 @@ const RedirectNode = memo(function RedirectNode({ data, selected }: Props) {
         />
       )}
 
-      <div>
+      <div className="flex flex-wrap gap-2 pt-1">
+        <Button
+          onClick={() => addTextLine(data)}
+          disabled={nodeEditing}
+        >
+          {t("Add text")}
+        </Button>
         <Button
           onClick={() => addLink(data)}
           disabled={nodeEditing}
         >
           {t("Add link")}
         </Button>
+
+        {!hasEntryEffects && (
+          <Button
+            onClick={() => entryEffectRef.current?.startEdit()}
+            disabled={nodeEditing}
+          >
+            {t("Add entry effect")}
+          </Button>
+        )}
       </div>
 
       <HandleIn />

@@ -8,19 +8,10 @@ import { Bolt, Delete, Edit, MoveDown, MoveUp } from "../core/icons";
 import { TextInputLabel } from "../core/text-input-label";
 import { useCharLimit } from "@/hooks/use-char-limit";
 import { useTranslation } from "react-i18next";
-import type { EffectInvocation } from "@/entities/story-data";
 import { effectInvocationsSchema } from "@/schemas/story-data-schema";
 import { formatJson, getJsonEditorErrorMessage, parseJsonWithSchema } from "@/lib/json-editor";
-
-const formatInvocation = (effect: EffectInvocation) => {
-  if (typeof effect === "string") {
-    return effect;
-  }
-
-  const { name, args } = effect;
-  const formattedArgs = args?.map(arg => JSON.stringify(arg)).join(", ");
-  return `${name}(${formattedArgs ?? ""})`;
-};
+import EffectLines from "./effect-lines";
+import ConditionLine from "./condition-line";
 
 type Props = {
   action: Action;
@@ -195,15 +186,10 @@ export default function NodeAction({ action, index, deletable, nodeEditing, char
               </div>
             </div>
             {action.condition && (
-              <div className="text-sm opacity-70 text-left">
-                <span className="italic">{t("if")}:</span> {action.condition}
-              </div>
+              <ConditionLine condition={action.condition} className="mt-1 text-sm opacity-70" />
             )}
             {action.effects?.length ? (
-              <div className="text-sm opacity-70 text-left">
-                <span className="italic">{t("effects")}:</span>{" "}
-                {action.effects.map(formatInvocation).join(", ")}
-              </div>
+              <EffectLines effects={action.effects} className="mt-1 text-sm opacity-70" />
             ) : null}
           </div>
         }

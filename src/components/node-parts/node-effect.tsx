@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { forwardRef, useEffect, useImperativeHandle, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
 import type { EffectInvocation } from "../../entities/story-data";
 import { autoHeight, focus } from "@/lib/ref-operations";
@@ -7,31 +7,29 @@ import { effectInvocationsSchema } from "@/schemas/story-data-schema";
 import Button from "../core/button";
 import { Delete, Edit } from "../core/icons";
 import { TextInputLabel } from "../core/text-input-label";
+import EffectLines from "./effect-lines";
 
 type Props = {
   effects?: EffectInvocation[];
   readonly?: boolean;
+  showAddButton?: boolean;
   updateEffects: (effects: EffectInvocation[] | undefined) => void;
   onEditStarted: () => void;
   onEditFinished: () => void;
 };
 
-const formatInvocation = (effect: EffectInvocation) => {
-  if (typeof effect === "string") {
-    return effect;
-  }
-
-  const args = effect.args?.map(arg => JSON.stringify(arg)).join(", ");
-  return `${effect.name}(${args ?? ""})`;
+export type NodeEffectHandle = {
+  startEdit: () => void;
 };
 
-export default function NodeEffect({
+const NodeEffect = forwardRef<NodeEffectHandle, Props>(function NodeEffect({
   effects,
   readonly = false,
+  showAddButton = true,
   updateEffects,
   onEditStarted,
   onEditFinished
-}: Props) {
+}: Props, ref) {
   const { t } = useTranslation();
 
   const [editing, setEditing] = useState(false);
@@ -40,7 +38,8 @@ export default function NodeEffect({
 
   const inputRef = useRef<HTMLTextAreaElement>(null);
 
-  const hasValue = effects !== undefined;
+  const hasValue = !!effects?.length;
+  const showInlineButton = hasValue || showAddButton;
 
   function startEdit() {
     if (readonly) {
@@ -95,6 +94,24 @@ export default function NodeEffect({
     }
   }, [editing, editedEffects]);
 
+  useImperativeHandle(ref, () => ({
+    startEdit
+  }));
+
+  if (!editing && !hasValue) {
+    if (!showAddButton || readonly) {
+      return null;
+    }
+
+    return (
+      <div className="text-sm">
+        <Button size="small" onClick={startEdit}>
+          {t("Add")}
+        </Button>
+      </div>
+    );
+  }
+
   return (
     <div className="relative group text-sm">
       {editing ? (
@@ -126,14 +143,10 @@ export default function NodeEffect({
         </div>
       ) : (
         <>
-          <div className="pr-24">
-            <span className="italic">{t("entryEffects")}:</span>{" "}
-            {effects?.length
-              ? effects.map(formatInvocation).join(", ")
-              : <span className="opacity-40">{t("Not set")}</span>
-            }
+          <div className={showInlineButton ? "pr-24" : undefined}>
+            <EffectLines effects={effects ?? []} className="text-sm" />
           </div>
-          {!readonly && (
+          {!readonly && showInlineButton && (
             <div className={`absolute right-0 top-0 ${hasValue ? "hidden group-hover:block" : "block"}`}>
               <div className="flex gap-1">
                 <Button size="small" onClick={startEdit}>
@@ -151,4 +164,6 @@ export default function NodeEffect({
       )}
     </div>
   );
-}
+});
+
+export default NodeEffect;

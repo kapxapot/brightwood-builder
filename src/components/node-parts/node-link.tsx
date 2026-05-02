@@ -10,19 +10,10 @@ import { Delete, Edit, MoveDown, MoveUp } from "../core/icons";
 import Tooltip from "../core/tooltip";
 import { TextInputLabel } from "../core/text-input-label";
 import { useTranslation } from "react-i18next";
-import type { EffectInvocation } from "@/entities/story-data";
 import { effectInvocationsSchema } from "@/schemas/story-data-schema";
 import { formatJson, getJsonEditorErrorMessage, parseJsonWithSchema } from "@/lib/json-editor";
-
-const formatInvocation = (effect: EffectInvocation) => {
-  if (typeof effect === "string") {
-    return effect;
-  }
-
-  const { name, args } = effect;
-  const formattedArgs = args?.map(arg => JSON.stringify(arg)).join(", ");
-  return `${name}(${formattedArgs ?? ""})`;
-};
+import EffectLines from "./effect-lines";
+import ConditionLine from "./condition-line";
 
 type Props = {
   link: Link;
@@ -214,15 +205,10 @@ export default function NodeLink({ link, index, totalWeight, deletable, isFirst,
               </div>
             </div>
             {link.condition && (
-              <div className="text-sm opacity-70 text-left">
-                <span className="italic">{t("if")}:</span> {link.condition}
-              </div>
+              <ConditionLine condition={link.condition} className="mt-1 text-sm opacity-70" />
             )}
             {link.effects?.length ? (
-              <div className="text-sm opacity-70 text-left">
-                <span className="italic">{t("effects")}:</span>{" "}
-                {link.effects.map(formatInvocation).join(", ")}
-              </div>
+              <EffectLines effects={link.effects} className="mt-1 text-sm opacity-70" />
             ) : null}
           </div>
         }
