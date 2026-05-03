@@ -302,7 +302,7 @@ export default function NodeLink({
         }
       </div>
       {!editing && !readonly && hoverEnabled &&
-        <div className="absolute right-3 top-1 hidden group-hover:block">
+        <div className="absolute right-2 top-1 hidden group-hover:block">
           <div className="flex gap-1">
             <Button
               size="small"

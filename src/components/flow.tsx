@@ -472,7 +472,7 @@ export default function Flow() {
   );
 
   useEffect(() => {
-    if (isCanvasBusy) {
+    if (isCanvasBusy || !deletePressed) {
       return;
     }
 
@@ -755,7 +755,6 @@ export default function Flow() {
             disableKeyboardA11y={true}
             nodesDraggable={!isCanvasBusy}
             nodesConnectable={!isCanvasBusy}
-            elementsSelectable={!isCanvasBusy}
             panOnDrag={!isCanvasBusy}
             zoomOnScroll={!isCanvasBusy}
             zoomOnPinch={!isCanvasBusy}
