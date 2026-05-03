@@ -5,22 +5,22 @@ import Tooltip from "./tooltip";
 import { colors } from "@/lib/constants";
 import { useTranslation } from "react-i18next";
 
-export const Bolt = () => <BoltIcon className={`w-5 shrink-0 ${colors.action.twIcon}`} />;
-export const Cube = () => <CubeIcon className={`w-5 ${colors.redirect.twIcon}`} />;
-export const Skip = () => <ForwardIcon className={`w-5 ${colors.skip.twIcon}`} />;
-export const Stop = () => <NoSymbolIcon className={`w-5 ${colors.finish.twIcon}`} />;
-export const Flag = () => <FlagIcon className={`w-5 ${colors.storyInfo.twIcon}`} />;
-export const Sparkles = () => <SparklesIcon className="w-5 shrink-0 text-red-600" />;
-export const Condition = () => <QuestionMarkCircleIcon className="w-5 shrink-0 text-black" />;
-export const Collapse = () => <ArrowsPointingInIcon className="w-5 shrink-0" />;
-export const Expand = () => <ArrowsPointingOutIcon className="w-5 shrink-0" />;
-export const Text = () => <ChatBubbleBottomCenterTextIcon className="w-5 shrink-0" />;
+export const Bolt = () => <BoltIcon className={`size-5 shrink-0 ${colors.action.twIcon}`} />;
+export const Cube = () => <CubeIcon className={`size-5 shrink-0 ${colors.redirect.twIcon}`} />;
+export const Skip = () => <ForwardIcon className={`size-5 shrink-0 ${colors.skip.twIcon}`} />;
+export const Stop = () => <NoSymbolIcon className={`size-5 shrink-0 ${colors.finish.twIcon}`} />;
+export const Flag = () => <FlagIcon className={`size-5 shrink-0 ${colors.storyInfo.twIcon}`} />;
+export const Sparkles = () => <SparklesIcon className="size-5 shrink-0 text-red-600" />;
+export const Condition = () => <QuestionMarkCircleIcon className="size-5 shrink-0 text-current" />;
+export const Collapse = () => <ArrowsPointingInIcon className="size-5 shrink-0" />;
+export const Expand = () => <ArrowsPointingOutIcon className="size-5 shrink-0" />;
+export const Text = () => <ChatBubbleBottomCenterTextIcon className="size-5 shrink-0" />;
 
-export const NewStory = () => <PlusIcon className="w-5 text-green-600" />;
-export const SaveStory = () => <ArrowDownTrayIcon className="w-5 text-blue-600" />;
-export const LoadStory = () => <FolderOpenIcon className="w-5 text-yellow-600" />;
-export const ImportStory = () => <ArrowLeftEndOnRectangleIcon className="w-5 text-cyan-600" />;
-export const ExportStory = () => <ArrowRightStartOnRectangleIcon className="w-5 text-pink-600" />;
+export const NewStory = () => <PlusIcon className="size-5 shrink-0 text-green-600" />;
+export const SaveStory = () => <ArrowDownTrayIcon className="size-5 shrink-0 text-blue-600" />;
+export const LoadStory = () => <FolderOpenIcon className="size-5 shrink-0 text-yellow-600" />;
+export const ImportStory = () => <ArrowLeftEndOnRectangleIcon className="size-5 shrink-0 text-cyan-600" />;
+export const ExportStory = () => <ArrowRightStartOnRectangleIcon className="size-5 shrink-0 text-pink-600" />;
 
 export function DragHandle() {
   return <DragHandleDots2Icon className="size-4" />;
@@ -31,7 +31,7 @@ export function Edit() {
 
   return (
     <Tooltip tooltip={t("Edit")} side="top">
-      <PencilIcon className="w-4" />
+      <PencilIcon className="size-4" />
     </Tooltip>
   );
 }
@@ -41,7 +41,7 @@ export function Delete() {
 
   return (
     <Tooltip tooltip={t("Delete")} side="top">
-      <TrashIcon className="w-4 text-red-600" />
+      <TrashIcon className="size-4 text-red-600" />
     </Tooltip>
   );
 }

@@ -782,11 +782,12 @@ export default function Flow() {
 
             <Background variant={BackgroundVariant.Dots} gap={12} size={1} />
           </ReactFlow>
+
           {isCanvasBusy && (
             <div className="absolute inset-0 z-[60] flex items-center justify-center bg-white/55 backdrop-blur-[2px]">
-              <div className="flex items-center justify-center gap-8 rounded-2xl border border-stone-200 bg-white/95 px-12 py-10 shadow-xl">
-                <div className="h-14 w-14 animate-spin rounded-full border-4 border-stone-300 border-t-stone-700" />
-                <div className="text-3xl font-semibold text-stone-700">
+              <div className="flex items-center justify-center gap-4 rounded-2xl border border-stone-200 bg-white/95 px-6 py-5 shadow-xl">
+                <div className="size-10 animate-spin rounded-full border-4 border-stone-300 border-t-stone-700" />
+                <div className="text-xl font-semibold text-stone-700">
                   {canvasBusyMessage}
                 </div>
               </div>

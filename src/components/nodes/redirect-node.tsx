@@ -192,6 +192,7 @@ const RedirectNode = memo(function RedirectNode({ data, selected, dragging }: Pr
             value={item}
             index={index}
             link={item.value}
+            expanded={expanded}
             totalWeight={totalWeight}
             deletable={true}
             readonly={editingOrDragging}

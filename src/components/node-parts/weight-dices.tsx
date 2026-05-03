@@ -4,9 +4,10 @@ import { Cube } from "../core/icons";
 
 type Props = ComponentPropsWithoutRef<"div"> & {
   weight: number;
+  showWeight?: boolean;
 };
 
-const WeightDices = forwardRef<HTMLDivElement, Props>(({ weight, className, ...props }, ref) => {
+const WeightDices = forwardRef<HTMLDivElement, Props>(({ weight, showWeight = false, className, ...props }, ref) => {
   if (weight <= 0) {
     return null;
   }
@@ -18,11 +19,11 @@ const WeightDices = forwardRef<HTMLDivElement, Props>(({ weight, className, ...p
   return (
     <div ref={ref} className={cn("flex", className)} {...props}>
       {Array(diceCount).fill(0).map((_, index) => <Cube key={index} />)}
-      {float &&
+      {(showWeight || float) && (
         <span className="ml-1">
           [{weight}]
         </span>
-      }
+      )}
     </div>
   );
 });

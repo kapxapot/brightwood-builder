@@ -8,7 +8,6 @@ import { weights } from "../../lib/constants";
 import HandleOut from "./handle-out";
 import WeightDices from "./weight-dices";
 import { Delete, DragHandle, Edit } from "../core/icons";
-import Tooltip from "../core/tooltip";
 import { TextInputLabel } from "../core/text-input-label";
 import { useTranslation } from "react-i18next";
 import { effectInvocationsSchema } from "@/schemas/story-data-schema";
@@ -22,6 +21,7 @@ type Props = {
   value: ReorderListItem<Link>;
   link: Link;
   index: number;
+  expanded?: boolean;
   totalWeight: number;
   deletable: boolean;
   readonly?: boolean;
@@ -39,6 +39,7 @@ export default function NodeLink({
   value,
   link,
   index,
+  expanded = true,
   totalWeight,
   deletable,
   readonly,
@@ -254,7 +255,7 @@ export default function NodeLink({
         }
         {/* view */}
         {!editing &&
-          <div className={cn("relative flex items-center gap-2 break-words pr-2", dragging ? "opacity-70" : "")}>
+          <div className={cn("relative flex items-center gap-2 pr-2", dragging ? "opacity-70" : "")}>
             {reorderable && (
               <div className="absolute right-full top-0 flex h-full w-5 items-center pr-0.5">
                 <button
@@ -272,23 +273,22 @@ export default function NodeLink({
                 </button>
               </div>
             )}
+
             <div className="min-w-0 flex-1 space-y-1">
-              <div className="flex min-w-0 items-start gap-1">
-                <Tooltip
-                  tooltip={
-                    <div className="flex flex-col">
-                      <span>{t("Link weight")}: {link.weight}</span>
-                      <span>{t("Probability")}: {weightPercent}%</span>
-                    </div>
-                  }
-                  side="top"
-                >
-                  <WeightDices weight={link.weight} />
-                </Tooltip>
+              <div className="flex items-center gap-1">
+                <WeightDices weight={link.weight} />
+                <span>{weightPercent}%</span>
               </div>
+
               <ConditionLine condition={link.condition} className="opacity-70" />
-              <EffectLines effects={link.effects} className="opacity-70" />
+
+              <EffectLines
+                effects={link.effects}
+                expanded={expanded}
+                className="opacity-70"
+              />
             </div>
+
             <div className="shrink-0">
               <NodeRef id={link.id} />
             </div>

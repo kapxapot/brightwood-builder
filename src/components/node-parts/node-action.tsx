@@ -20,6 +20,7 @@ type Props = {
   value: ReorderListItem<Action>;
   action: Action;
   index: number;
+  expanded?: boolean;
   deletable: boolean;
   readonly?: boolean;
   interactionsDisabled?: boolean;
@@ -37,6 +38,7 @@ export default function NodeAction({
   value,
   action,
   index,
+  expanded = true,
   deletable,
   readonly,
   interactionsDisabled = false,
@@ -246,7 +248,7 @@ export default function NodeAction({
         }
         {/* view */}
         {!editing &&
-          <div className={cn("relative flex items-center gap-2 break-words pr-2", dragging ? "opacity-70" : "")}>
+          <div className={cn("relative flex items-center gap-2 pr-2", dragging ? "opacity-70" : "")}>
             {reorderable && (
               <div className="absolute right-full top-0 flex h-full w-5 items-center pr-0.5">
                 <button
@@ -264,18 +266,24 @@ export default function NodeAction({
                 </button>
               </div>
             )}
+
             <div className="min-w-0 flex-1 space-y-1">
               <div className="flex min-w-0 items-start gap-1">
-                <div className="shrink-0 pt-0.5">
-                  <Bolt />
-                </div>
+                <Bolt />
                 <div className="min-w-0 truncate">
                   {initialLabel}
                 </div>
               </div>
+
               <ConditionLine condition={action.condition} className="opacity-70" />
-              <EffectLines effects={action.effects} className="opacity-70" />
+
+              <EffectLines
+                effects={action.effects}
+                expanded={expanded}
+                className="opacity-70"
+              />
             </div>
+
             <div className="shrink-0">
               <NodeRef id={action.id} />
             </div>

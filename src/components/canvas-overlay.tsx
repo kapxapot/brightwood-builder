@@ -24,8 +24,8 @@ export default function CanvasOverlay({ nodes, onAutoArrange }: Props) {
   };
 
   return (
-    <div className="absolute top-4 right-4 z-50 flex flex-col items-end gap-2">
-      <div className="bg-white/90 backdrop-blur rounded-md border border-stone-200 shadow-md py-2 px-3 flex gap-2 items-center">
+    <div className="pointer-events-none absolute top-4 right-4 z-50 flex flex-col items-end gap-2">
+      <div className="pointer-events-auto bg-white/90 backdrop-blur rounded-md border border-stone-200 shadow-md py-2 px-3 flex gap-2 items-center">
         <h2 className="font-semibold">{storyTitle}</h2>
         <div className="flex gap-1 text-sm font-semibold">
           <div className="text-green-600">
@@ -45,7 +45,7 @@ export default function CanvasOverlay({ nodes, onAutoArrange }: Props) {
       <Button
         onClick={onAutoArrange}
         disabled={!storyInfoData?.startId}
-        className="backdrop-blur shadow-md gap-1.5 px-2 py-1.5"
+        className="pointer-events-auto backdrop-blur shadow-md gap-1.5 px-2 py-1.5"
       >
         <RectangleGroupIcon className="w-5 shrink-0" />
         {t("Auto-arrange")}

@@ -186,6 +186,7 @@ const ActionNode = memo(function ActionNode({ data, selected, dragging }: Props)
             value={item}
             index={index}
             action={item.value}
+            expanded={expanded}
             deletable={true}
             readonly={editingOrDragging}
             interactionsDisabled={actionsReordering}
