@@ -1,4 +1,4 @@
-import { ArrowDownTrayIcon, ArrowLeftEndOnRectangleIcon, ArrowRightStartOnRectangleIcon, BoltIcon, CubeIcon, FlagIcon, FolderOpenIcon, ForwardIcon, NoSymbolIcon, PlusIcon, QuestionMarkCircleIcon, SparklesIcon } from "@heroicons/react/24/outline";
+import { ArrowDownTrayIcon, ArrowLeftEndOnRectangleIcon, ArrowRightStartOnRectangleIcon, ArrowsPointingInIcon, ArrowsPointingOutIcon, BoltIcon, ChatBubbleBottomCenterTextIcon, CubeIcon, FlagIcon, FolderOpenIcon, ForwardIcon, NoSymbolIcon, PlusIcon, QuestionMarkCircleIcon, SparklesIcon } from "@heroicons/react/24/outline";
 import { DragHandleDots2Icon } from "@radix-ui/react-icons";
 import { PencilIcon, TrashIcon } from "@heroicons/react/24/solid";
 import Tooltip from "./tooltip";
@@ -12,6 +12,9 @@ export const Stop = () => <NoSymbolIcon className={`w-5 ${colors.finish.twIcon}`
 export const Flag = () => <FlagIcon className={`w-5 ${colors.storyInfo.twIcon}`} />;
 export const Sparkles = () => <SparklesIcon className="w-5 shrink-0 text-red-600" />;
 export const Condition = () => <QuestionMarkCircleIcon className="w-5 shrink-0 text-black" />;
+export const Collapse = () => <ArrowsPointingInIcon className="w-5 shrink-0" />;
+export const Expand = () => <ArrowsPointingOutIcon className="w-5 shrink-0" />;
+export const Text = () => <ChatBubbleBottomCenterTextIcon className="w-5 shrink-0" />;
 
 export const NewStory = () => <PlusIcon className="w-5 text-green-600" />;
 export const SaveStory = () => <ArrowDownTrayIcon className="w-5 text-blue-600" />;

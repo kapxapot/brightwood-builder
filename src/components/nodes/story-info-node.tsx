@@ -1,4 +1,5 @@
 import { memo } from "react";
+import type { NodeProps } from "reactflow";
 import { useNodeEditing } from "../../hooks/use-node-editing";
 import NodeTitle from "../node-parts/node-title";
 import type { StoryInfoGraphNode } from "../../entities/story-node";
@@ -19,15 +20,13 @@ import {
 } from "@/schemas/story-data-schema";
 import EditableStateInput from "../node-parts/editable-state-input";
 
-type Props = {
-  data: StoryInfoGraphNode;
-  selected: boolean;
-}
+type Props = Pick<NodeProps<StoryInfoGraphNode>, "data" | "selected" | "dragging">;
 
-const StoryInfoNode = memo(function StoryInfoNode({ data, selected }: Props) {
+const StoryInfoNode = memo(function StoryInfoNode({ data, selected, dragging }: Props) {
   const { t } = useTranslation();
 
   const { nodeEditing, startEdit, finishEdit } = useNodeEditing(data);
+  const editingOrDragging = nodeEditing || dragging;
 
   const hasLanguage = !!data.language;
   const storyData = data.data as StoryData | undefined;
@@ -84,6 +83,7 @@ const StoryInfoNode = memo(function StoryInfoNode({ data, selected }: Props) {
       selected={selected}
       color={colors.storyInfo.tw}
       spaceY="none"
+      readonly={editingOrDragging}
     >
       <NodeTitle
         id={data.id}
@@ -93,7 +93,7 @@ const StoryInfoNode = memo(function StoryInfoNode({ data, selected }: Props) {
       <TextInput
         value={data.title}
         label={t("Title")}
-        readonly={nodeEditing}
+        readonly={editingOrDragging}
         charLimit={250}
         onValueChanged={updateTitle}
         onEditStarted={startEdit}
@@ -103,7 +103,7 @@ const StoryInfoNode = memo(function StoryInfoNode({ data, selected }: Props) {
       <TextInput
         value={data.description}
         label={t("Description")}
-        readonly={nodeEditing}
+        readonly={editingOrDragging}
         deletable={true}
         charLimit={1000}
         onValueChanged={updateDescription}
@@ -115,7 +115,7 @@ const StoryInfoNode = memo(function StoryInfoNode({ data, selected }: Props) {
       <TextInput
         value={data.cover}
         label={t("Cover")}
-        readonly={nodeEditing}
+        readonly={editingOrDragging}
         deletable={true}
         charLimit={500}
         renderAsImage={true}
@@ -128,7 +128,7 @@ const StoryInfoNode = memo(function StoryInfoNode({ data, selected }: Props) {
       <TextInput
         value={data.prefix}
         label={t("Prefix")}
-        readonly={nodeEditing}
+        readonly={editingOrDragging}
         deletable={true}
         charLimit={500}
         onValueChanged={updatePrefix}
@@ -146,7 +146,7 @@ const StoryInfoNode = memo(function StoryInfoNode({ data, selected }: Props) {
         <LanguageSelector
           className={`border border-black border-opacity-20 border-dashed bg-white bg-opacity-50 hover:bg-white hover:bg-opacity-50 ${!hasLanguage && "mt-1"}`}
           currentLanguageCode={data.language}
-          disabled={nodeEditing}
+          disabled={editingOrDragging}
           languages={languages}
           onSelect={updateLanguage}
         />
@@ -159,7 +159,7 @@ const StoryInfoNode = memo(function StoryInfoNode({ data, selected }: Props) {
           value={storyData?.init}
           defaultValue={{}}
           schema={stateInitSchema}
-          readonly={nodeEditing}
+          readonly={editingOrDragging}
           rowCount={7}
           summaryFormatter={value => formatCountSummary(
             Object.keys(value).length,
@@ -176,7 +176,7 @@ const StoryInfoNode = memo(function StoryInfoNode({ data, selected }: Props) {
           value={storyData?.conditions}
           defaultValue={{}}
           schema={conditionDefinitionsSchema}
-          readonly={nodeEditing}
+          readonly={editingOrDragging}
           rowCount={7}
           summaryFormatter={value => formatCountSummary(
             Object.keys(value).length,
@@ -193,7 +193,7 @@ const StoryInfoNode = memo(function StoryInfoNode({ data, selected }: Props) {
           value={storyData?.effects}
           defaultValue={[]}
           schema={effectDefinitionsSchema}
-          readonly={nodeEditing}
+          readonly={editingOrDragging}
           rowCount={8}
           summaryFormatter={value => formatCountSummary(
             value.length,
@@ -210,7 +210,7 @@ const StoryInfoNode = memo(function StoryInfoNode({ data, selected }: Props) {
           value={storyData?.redirectTriggers}
           defaultValue={[]}
           schema={redirectTriggersSchema}
-          readonly={nodeEditing}
+          readonly={editingOrDragging}
           rowCount={6}
           summaryFormatter={value => formatCountSummary(
             value.length,

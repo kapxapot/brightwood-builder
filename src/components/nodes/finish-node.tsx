@@ -1,4 +1,5 @@
 import { memo, useRef, useState } from "react";
+import type { NodeProps } from "reactflow";
 import type { FinishStoryNode } from "../../entities/story-node";
 import { colors, nodeLabels } from "../../lib/constants";
 import NodeShell from "../node-parts/node-shell";
@@ -10,37 +11,72 @@ import NodeText from "../node-parts/node-text";
 import { useTranslation } from "react-i18next";
 import Button from "../core/button";
 import { addTextLine } from "../../lib/node-data-mutations";
+import { Collapse, Expand, Sparkles, Text } from "../core/icons";
 
-type Props = {
-  data: FinishStoryNode;
-  selected: boolean;
-}
+type Props = Pick<NodeProps<FinishStoryNode>, "data" | "selected" | "dragging">;
 
-const FinishNode = memo(function FinishNode({ data, selected }: Props) {
+const FinishNode = memo(function FinishNode({ data, selected, dragging }: Props) {
   const { t } = useTranslation();
 
   const { nodeEditing, startEdit, finishEdit } = useNodeEditing(data);
   const entryEffectRef = useRef<NodeEffectHandle>(null);
   const [textExpanded, setTextExpanded] = useState(false);
-  const hasEntryEffects = !!data.entryEffects?.length;
+  const editingOrDragging = nodeEditing || dragging;
+
+  const shellActions = (
+    <>
+      <Button
+        className="backdrop-blur shadow-md gap-1.5 px-2 py-1.5"
+        onClick={() => setTextExpanded(current => !current)}
+      >
+        {textExpanded ? (
+          <>
+            <Collapse />
+            <span>{t("Collapse")}</span>
+          </>
+        ) : (
+          <>
+            <Expand />
+            <span>{t("Expand")}</span>
+          </>
+        )}
+      </Button>
+
+      <Button
+        className="backdrop-blur shadow-md gap-1.5 px-2 py-1.5"
+        onClick={() => addTextLine(data)}
+      >
+        <Text />
+        {t("Add text")}
+      </Button>
+
+      <Button
+        className="backdrop-blur shadow-md gap-1.5 px-2 py-1.5"
+        onClick={() => entryEffectRef.current?.startEdit()}
+      >
+        <Sparkles />
+        {t("Add entry effect")}
+      </Button>
+    </>
+  );
 
   return (
     <NodeShell
       key={data.key}
       selected={selected}
       color={colors.finish.tw}
+      actions={shellActions}
+      readonly={editingOrDragging}
     >
       <NodeTitle
         id={data.id}
         label={data.label ?? t(nodeLabels.finish)}
-        expanded={textExpanded}
-        onToggleExpanded={() => setTextExpanded(current => !current)}
       />
 
       <NodeEffect
         ref={entryEffectRef}
         effects={data.entryEffects}
-        readonly={nodeEditing}
+        readonly={editingOrDragging}
         updateEffects={entryEffects => data.onChange?.({ ...data, entryEffects })}
         onEditStarted={startEdit}
         onEditFinished={finishEdit}
@@ -49,32 +85,11 @@ const FinishNode = memo(function FinishNode({ data, selected }: Props) {
       <NodeText
         data={data}
         expanded={textExpanded}
-        readonly={nodeEditing}
+        readonly={editingOrDragging}
         showAddButton={false}
         onEditStarted={startEdit}
         onEditFinished={finishEdit}
       />
-
-      {selected && (
-        <div className="flex flex-wrap gap-2 pt-1">
-          <Button
-            onClick={() => addTextLine(data)}
-            disabled={nodeEditing}
-          >
-            {t("Add text")}
-          </Button>
-
-          {!hasEntryEffects && (
-            <Button
-              onClick={() => entryEffectRef.current?.startEdit()}
-              disabled={nodeEditing}
-            >
-              {t("Add entry effect")}
-            </Button>
-          )}
-        </div>
-      )}
-
       <HandleIn />
     </NodeShell>
   );

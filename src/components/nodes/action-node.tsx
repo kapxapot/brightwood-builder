@@ -1,5 +1,6 @@
 import { Reorder } from "framer-motion";
 import { memo, useEffect, useRef, useState } from "react";
+import type { NodeProps } from "reactflow";
 import type { Action, ActionStoryNode } from "../../entities/story-node";
 import { colors, nodeLabels } from "../../lib/constants";
 import NodeShell from "../node-parts/node-shell";
@@ -15,12 +16,9 @@ import Button from "../core/button";
 import { addTextLine } from "../../lib/node-data-mutations";
 import { type ReorderListItem, haveReorderValuesChanged, syncReorderItems } from "../../lib/reorder-items";
 import { useReorderNodeInternalsRefresh } from "@/hooks/use-reorder-node-internals-refresh";
+import { Bolt, Collapse, Expand, Sparkles, Text } from "../core/icons";
 
-type Props = {
-  data: ActionStoryNode;
-  selected: boolean;
-  dragging?: boolean;
-};
+type Props = Pick<NodeProps<ActionStoryNode>, "data" | "selected" | "dragging">;
 
 function areActionsEqual(left: Action, right: Action) {
   return (
@@ -48,8 +46,51 @@ const ActionNode = memo(function ActionNode({ data, selected, dragging }: Props)
   const actionItemsRef = useRef<ReorderListItem<Action>[]>(actionItems);
 
   const editingOrDragging = nodeEditing || dragging;
-  const editingDraggingOrReordering = editingOrDragging || actionsReordering;
-  const hasEntryEffects = !!data.entryEffects?.length;
+
+  const shellActions = (
+    <>
+      <Button
+        className="backdrop-blur shadow-md gap-1.5 px-2 py-1.5"
+        onClick={() => setTextExpanded(current => !current)}
+      >
+        {textExpanded ? (
+          <>
+            <Collapse />
+            <span>{t("Collapse")}</span>
+          </>
+        ) : (
+          <>
+            <Expand />
+            <span>{t("Expand")}</span>
+          </>
+        )}
+      </Button>
+
+      <Button
+        className="backdrop-blur shadow-md gap-1.5 px-2 py-1.5"
+        onClick={() => addTextLine(data)}
+      >
+        <Text />
+        {t("Add text")}
+      </Button>
+
+      <Button
+        className="backdrop-blur shadow-md gap-1.5 px-2 py-1.5"
+        onClick={() => addAction(data)}
+      >
+        <Bolt />
+        {t("Add action")}
+      </Button>
+
+      <Button
+        className="backdrop-blur shadow-md gap-1.5 px-2 py-1.5"
+        onClick={() => entryEffectRef.current?.startEdit()}
+      >
+        <Sparkles />
+        {t("Add entry effect")}
+      </Button>
+    </>
+  );
 
   useReorderNodeInternalsRefresh(data.id, actionItems, actionsReordering);
 
@@ -105,12 +146,12 @@ const ActionNode = memo(function ActionNode({ data, selected, dragging }: Props)
       key={data.key}
       selected={selected}
       color={colors.action.tw}
+      actions={shellActions}
+      readonly={editingOrDragging}
     >
       <NodeTitle
         id={data.id}
         label={data.label ?? t(nodeLabels.action)}
-        expanded={textExpanded}
-        onToggleExpanded={() => setTextExpanded(current => !current)}
       />
 
       <NodeEffect
@@ -158,33 +199,6 @@ const ActionNode = memo(function ActionNode({ data, selected, dragging }: Props)
           />
         )}
       </Reorder.Group>
-
-      {selected && (
-        <div className="flex flex-wrap gap-2 pt-1">
-          <Button
-            onClick={() => addTextLine(data)}
-            disabled={editingDraggingOrReordering}
-          >
-            {t("Add text")}
-          </Button>
-          <Button
-            onClick={() => addAction(data)}
-            disabled={editingDraggingOrReordering}
-          >
-            {t("Add action")}
-          </Button>
-
-          {!hasEntryEffects && (
-            <Button
-              onClick={() => entryEffectRef.current?.startEdit()}
-              disabled={editingDraggingOrReordering}
-            >
-              {t("Add entry effect")}
-            </Button>
-          )}
-        </div>
-      )}
-
       <HandleIn />
     </NodeShell>
   );

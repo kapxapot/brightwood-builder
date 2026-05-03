@@ -1,5 +1,6 @@
 import { Reorder } from "framer-motion";
 import { memo, useEffect, useRef, useState } from "react";
+import type { NodeProps } from "reactflow";
 import type { Link, RedirectStoryNode } from "../../entities/story-node";
 import { colors, nodeLabels } from "../../lib/constants";
 import NodeShell from "../node-parts/node-shell";
@@ -15,11 +16,9 @@ import { useTranslation } from "react-i18next";
 import { addTextLine } from "../../lib/node-data-mutations";
 import { type ReorderListItem, haveReorderValuesChanged, syncReorderItems } from "../../lib/reorder-items";
 import { useReorderNodeInternalsRefresh } from "@/hooks/use-reorder-node-internals-refresh";
+import { Collapse, Cube, Expand, Sparkles, Text } from "../core/icons";
 
-type Props = {
-  data: RedirectStoryNode;
-  selected: boolean;
-}
+type Props = Pick<NodeProps<RedirectStoryNode>, "data" | "selected" | "dragging">;
 
 function areLinksEqual(left: Link, right: Link) {
   return (
@@ -30,28 +29,74 @@ function areLinksEqual(left: Link, right: Link) {
   );
 }
 
-const RedirectNode = memo(function RedirectNode({ data, selected }: Props) {
+const RedirectNode = memo(function RedirectNode({ data, selected, dragging }: Props) {
   const { t } = useTranslation();
 
   const { nodeEditing, startEdit, finishEdit } = useNodeEditing(data);
   const entryEffectRef = useRef<NodeEffectHandle>(null);
   const [textExpanded, setTextExpanded] = useState(false);
   const nextLinkIdRef = useRef(0);
+
   const [linkItems, setLinkItems] = useState<ReorderListItem<Link>[]>(() =>
     data.links.map(link => ({
       id: `link-item-${data.id}-${nextLinkIdRef.current++}`,
       value: link
     }))
   );
+
   const [linksReordering, setLinksReordering] = useState(false);
   const linkItemsRef = useRef<ReorderListItem<Link>[]>(linkItems);
+  const editingOrDragging = nodeEditing || dragging;
 
   const totalWeight = data.links.reduce(
     (sum, link) => sum + link.weight,
     0
   );
-  const editingOrReordering = nodeEditing || linksReordering;
-  const hasEntryEffects = !!data.entryEffects?.length;
+
+  const shellActions = (
+    <>
+      <Button
+        className="backdrop-blur shadow-md gap-1.5 px-2 py-1.5"
+        onClick={() => setTextExpanded(current => !current)}
+      >
+        {textExpanded ? (
+          <>
+            <Collapse />
+            <span>{t("Collapse")}</span>
+          </>
+        ) : (
+          <>
+            <Expand />
+            <span>{t("Expand")}</span>
+          </>
+        )}
+      </Button>
+
+      <Button
+        className="backdrop-blur shadow-md gap-1.5 px-2 py-1.5"
+        onClick={() => addTextLine(data)}
+      >
+        <Text />
+        {t("Add text")}
+      </Button>
+
+      <Button
+        className="backdrop-blur shadow-md gap-1.5 px-2 py-1.5"
+        onClick={() => addLink(data)}
+      >
+        <Cube />
+        {t("Add link")}
+      </Button>
+
+      <Button
+        className="backdrop-blur shadow-md gap-1.5 px-2 py-1.5"
+        onClick={() => entryEffectRef.current?.startEdit()}
+      >
+        <Sparkles />
+        {t("Add entry effect")}
+      </Button>
+    </>
+  );
 
   useReorderNodeInternalsRefresh(data.id, linkItems, linksReordering);
 
@@ -107,18 +152,18 @@ const RedirectNode = memo(function RedirectNode({ data, selected }: Props) {
       key={data.key}
       selected={selected}
       color={colors.redirect.tw}
+      actions={shellActions}
+      readonly={editingOrDragging}
     >
       <NodeTitle
         id={data.id}
         label={data.label ?? t(nodeLabels.redirect)}
-        expanded={textExpanded}
-        onToggleExpanded={() => setTextExpanded(current => !current)}
       />
 
       <NodeEffect
         ref={entryEffectRef}
         effects={data.entryEffects}
-        readonly={nodeEditing}
+        readonly={editingOrDragging}
         updateEffects={entryEffects => data.onChange?.({ ...data, entryEffects })}
         onEditStarted={startEdit}
         onEditFinished={finishEdit}
@@ -127,7 +172,7 @@ const RedirectNode = memo(function RedirectNode({ data, selected }: Props) {
       <NodeText
         data={data}
         expanded={textExpanded}
-        readonly={nodeEditing}
+        readonly={editingOrDragging}
         showAddButton={false}
         onEditStarted={startEdit}
         onEditFinished={finishEdit}
@@ -148,9 +193,9 @@ const RedirectNode = memo(function RedirectNode({ data, selected }: Props) {
             link={item.value}
             totalWeight={totalWeight}
             deletable={true}
-            readonly={nodeEditing}
+            readonly={editingOrDragging}
             interactionsDisabled={linksReordering}
-            reorderable={!nodeEditing && linkItems.length > 1}
+            reorderable={!editingOrDragging && linkItems.length > 1}
             updateLink={updatedLink => updateLink(data, index, updatedLink)}
             deleteLink={() => deleteLink(data, index)}
             onReorderStart={handleReorderStart}
@@ -160,33 +205,6 @@ const RedirectNode = memo(function RedirectNode({ data, selected }: Props) {
           />
         )}
       </Reorder.Group>
-
-      {selected && (
-        <div className="flex flex-wrap gap-2 pt-1">
-          <Button
-            onClick={() => addTextLine(data)}
-            disabled={editingOrReordering}
-          >
-            {t("Add text")}
-          </Button>
-          <Button
-            onClick={() => addLink(data)}
-            disabled={editingOrReordering}
-          >
-            {t("Add link")}
-          </Button>
-
-          {!hasEntryEffects && (
-            <Button
-              onClick={() => entryEffectRef.current?.startEdit()}
-              disabled={editingOrReordering}
-            >
-              {t("Add entry effect")}
-            </Button>
-          )}
-        </div>
-      )}
-
       <HandleIn />
     </NodeShell>
   );

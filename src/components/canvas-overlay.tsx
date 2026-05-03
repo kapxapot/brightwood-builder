@@ -1,8 +1,8 @@
 import { useTranslation } from "react-i18next";
 import { Node } from "reactflow";
 import { GraphNode, StoryInfoGraphNode } from "@/entities/story-node";
-import { Button } from "@/components/ui/button";
 import { RectangleGroupIcon } from "@heroicons/react/24/outline";
+import Button from "./core/button";
 
 type Props = {
   nodes: Node<GraphNode>[];
@@ -43,10 +43,9 @@ export default function CanvasOverlay({ nodes, onAutoArrange }: Props) {
         </div>
       </div>
       <Button
-        variant="outlineHighlight"
         onClick={onAutoArrange}
         disabled={!storyInfoData?.startId}
-        className="backdrop-blur shadow-md gap-2 px-3"
+        className="backdrop-blur shadow-md gap-1.5 px-2 py-1.5"
       >
         <RectangleGroupIcon className="w-5 shrink-0" />
         {t("Auto-arrange")}
