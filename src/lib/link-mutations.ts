@@ -1,5 +1,4 @@
 import { Link, RedirectStoryNode } from "../entities/story-node";
-import { moveElementDown, moveElementUp } from "./common";
 import { weights } from "./constants";
 
 export const addLink = (data: RedirectStoryNode) => {
@@ -23,6 +22,18 @@ export const updateLink = (data: RedirectStoryNode, updatedIndex: number, update
   });
 };
 
+export const setLinks = (data: RedirectStoryNode, links: Link[]) => {
+  data.onChange?.(
+    {
+      ...data,
+      links
+    },
+    {
+      type: "linksReordered"
+    }
+  );
+};
+
 export const deleteLink = (data: RedirectStoryNode, index: number) => {
   data.onChange?.(
     {
@@ -32,30 +43,6 @@ export const deleteLink = (data: RedirectStoryNode, index: number) => {
     {
       type: "handleRemoved",
       handle: String(index)
-    }
-  );
-};
-
-export const moveLinkDown = (data: RedirectStoryNode, index: number) => {
-  data.onChange?.(
-    {
-      ...data,
-      links: moveElementDown(data.links, index)
-    },
-    {
-      type: "linksReordered"
-    }
-  );
-};
-
-export const moveLinkUp = (data: RedirectStoryNode, index: number) => {
-  data.onChange?.(
-    {
-      ...data,
-      links: moveElementUp(data.links, index)
-    },
-    {
-      type: "linksReordered"
     }
   );
 };

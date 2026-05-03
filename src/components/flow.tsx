@@ -1,7 +1,7 @@
 import "reactflow/dist/base.css";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { flushSync } from "react-dom";
-import ReactFlow, { MiniMap, Controls, Background, useNodesState, useEdgesState, addEdge, BackgroundVariant, type Connection, type ReactFlowInstance, type Node, type Edge, type OnSelectionChangeParams, useKeyPress, useReactFlow } from "reactflow";
+import ReactFlow, { MiniMap, Controls, Background, useNodesState, useEdgesState, addEdge, BackgroundVariant, type Connection, type ReactFlowInstance, type Node, type Edge, type OnSelectionChangeParams, useKeyPress, useReactFlow, useUpdateNodeInternals } from "reactflow";
 import Toolbar from "./toolbar";
 import ActionNode from "./nodes/action-node";
 import SkipNode from "./nodes/skip-node";
@@ -42,6 +42,7 @@ const nodeTypes = {
 };
 
 const canvasBusyReleaseDelayMs = 150;
+const nodeInternalsRefreshDelayMs = 350;
 const noStoryDataError = "Failed to get the current story data.";
 const failedToReadFileError = "Failed to read the file.";
 
@@ -56,6 +57,7 @@ export default function Flow() {
   const [, setIsStoryFetching] = useState(false); // todo: show loading state
 
   const { setViewport } = useReactFlow();
+  const updateNodeInternals = useUpdateNodeInternals();
 
   useEffect(() => {
     const [isNewStory, editStoryUrl] = getSearchParams("new", "edit");
@@ -115,6 +117,8 @@ export default function Flow() {
   const reactFlowWrapper = useRef<HTMLDivElement>(null);
   const [reactFlowInstance, setReactFlowInstance] = useState<ReactFlowInstance | null>(null);
   const canvasBusyTimeoutRef = useRef<number | null>(null);
+  const nodeInternalsRefreshFrameIdsRef = useRef<number[]>([]);
+  const nodeInternalsRefreshTimeoutIdsRef = useRef<number[]>([]);
 
   const [selectedNodes, setSelectedNodes] = useState<Node[]>([]);
   const [selectedEdges, setSelectedEdges] = useState<Edge[]>([]);
@@ -165,8 +169,33 @@ export default function Flow() {
       if (canvasBusyTimeoutRef.current !== null) {
         window.clearTimeout(canvasBusyTimeoutRef.current);
       }
+
+      nodeInternalsRefreshFrameIdsRef.current.forEach(window.cancelAnimationFrame);
+      nodeInternalsRefreshTimeoutIdsRef.current.forEach(window.clearTimeout);
     };
   }, []);
+
+  const scheduleNodeInternalsRefresh = useCallback((nodeId: string) => {
+    const frameId = window.requestAnimationFrame(() => {
+      updateNodeInternals(nodeId);
+
+      nodeInternalsRefreshFrameIdsRef.current = nodeInternalsRefreshFrameIdsRef.current.filter(
+        currentId => currentId !== frameId
+      );
+
+      const timeoutId = window.setTimeout(() => {
+        updateNodeInternals(nodeId);
+
+        nodeInternalsRefreshTimeoutIdsRef.current = nodeInternalsRefreshTimeoutIdsRef.current.filter(
+          currentId => currentId !== timeoutId
+        );
+      }, nodeInternalsRefreshDelayMs);
+
+      nodeInternalsRefreshTimeoutIdsRef.current.push(timeoutId);
+    });
+
+    nodeInternalsRefreshFrameIdsRef.current.push(frameId);
+  }, [updateNodeInternals]);
 
   const getCurrentStoryData = useCallback(
     (): StoryInfoGraphNode | null => {
@@ -268,6 +297,8 @@ export default function Flow() {
             });
           });
 
+          scheduleNodeInternalsRefresh(nodeId);
+
           break;
 
         case "actionsReordered":
@@ -303,6 +334,8 @@ export default function Flow() {
 
             return newEdges;
           });
+
+          scheduleNodeInternalsRefresh(nodeId);
 
           break;
 
@@ -340,10 +373,12 @@ export default function Flow() {
             return newEdges;
           });
 
+          scheduleNodeInternalsRefresh(nodeId);
+
           break;
         }
     },
-    [setEdges]
+    [scheduleNodeInternalsRefresh, setEdges]
   );
 
   const onNodeDataChange: OnChangeHandler = useCallback(

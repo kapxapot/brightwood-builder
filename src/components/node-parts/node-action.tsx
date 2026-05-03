@@ -1,10 +1,11 @@
-import { type Action } from "../../entities/story-node";
+import { Reorder, useDragControls } from "framer-motion";
+import { useEffect, useRef, useState } from "react";
+import type { Action } from "../../entities/story-node";
 import NodeRef from "./node-ref";
 import Button from "../core/button";
-import { useEffect, useRef, useState } from "react";
 import { autoHeight, focus } from "../../lib/ref-operations";
 import HandleOut from "./handle-out";
-import { Bolt, Delete, Edit, MoveDown, MoveUp } from "../core/icons";
+import { Bolt, Delete, DragHandle, Edit } from "../core/icons";
 import { TextInputLabel } from "../core/text-input-label";
 import { useCharLimit } from "@/hooks/use-char-limit";
 import { useTranslation } from "react-i18next";
@@ -12,24 +13,42 @@ import { effectInvocationsSchema } from "@/schemas/story-data-schema";
 import { formatJson, getJsonEditorErrorMessage, parseJsonWithSchema } from "@/lib/json-editor";
 import EffectLines from "./effect-lines";
 import ConditionLine from "./condition-line";
+import { cn } from "@/lib/utils";
+import type { ReorderListItem } from "@/lib/reorder-items";
 
 type Props = {
+  value: ReorderListItem<Action>;
   action: Action;
   index: number;
   deletable: boolean;
-  nodeEditing?: boolean;
+  readonly?: boolean;
+  interactionsDisabled?: boolean;
   charLimit?: number;
-  isFirst: boolean;
-  isLast: boolean;
+  reorderable?: boolean;
   updateAction: (updatedAction: Action) => void;
   deleteAction: () => void;
-  moveActionDown: () => void;
-  moveActionUp: () => void;
+  onReorderStart: () => void;
+  onReorderEnd: () => void;
   onEditStarted: () => void;
   onEditFinished: () => void;
 }
 
-export default function NodeAction({ action, index, deletable, nodeEditing, charLimit = 0, isFirst, isLast, updateAction, deleteAction, moveActionDown, moveActionUp, onEditStarted, onEditFinished }: Props) {
+export default function NodeAction({
+  value,
+  action,
+  index,
+  deletable,
+  readonly,
+  interactionsDisabled = false,
+  charLimit = 0,
+  reorderable = false,
+  updateAction,
+  deleteAction,
+  onReorderStart,
+  onReorderEnd,
+  onEditStarted,
+  onEditFinished
+}: Props) {
   const { t } = useTranslation();
 
   const initialLabel = action.label;
@@ -39,14 +58,20 @@ export default function NodeAction({ action, index, deletable, nodeEditing, char
   const [condition, setCondition] = useState(action.condition ?? "");
   const [effectsValue, setEffectsValue] = useState(formatJson(action.effects ?? []));
   const [editing, setEditing] = useState(noLabel);
+  const [dragging, setDragging] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const dragControls = useDragControls();
 
   const inputRef = useRef<HTMLInputElement>(null);
   const effectsRef = useRef<HTMLTextAreaElement>(null);
 
-  const { showCharLimit, valueTooLong} = useCharLimit(label, charLimit);
+  const { showCharLimit, valueTooLong } = useCharLimit(label, charLimit);
 
   function startEdit() {
+    if (readonly) {
+      return;
+    }
+
     setLabel(initialLabel);
     setCondition(action.condition ?? "");
     setEffectsValue(formatJson(action.effects ?? []));
@@ -105,6 +130,21 @@ export default function NodeAction({ action, index, deletable, nodeEditing, char
     setEffectsValue(event.currentTarget.value);
   }
 
+  function handlePointerDown(event: React.PointerEvent<HTMLButtonElement>) {
+    event.stopPropagation();
+    dragControls.start(event);
+  }
+
+  function handleDragStart() {
+    setDragging(true);
+    onReorderStart();
+  }
+
+  function handleDragEnd() {
+    setDragging(false);
+    onReorderEnd();
+  }
+
   useEffect(() => {
     if (noLabel) {
       startEdit();
@@ -115,14 +155,42 @@ export default function NodeAction({ action, index, deletable, nodeEditing, char
   useEffect(() => autoHeight(inputRef), [label]);
   useEffect(() => autoHeight(effectsRef, 220), [editing, effectsValue]);
 
+  const hoverEnabled = !interactionsDisabled && !dragging;
+  const layoutTransition = dragging || interactionsDisabled
+    ? {
+        type: "spring",
+        stiffness: 500,
+        damping: 40
+      }
+    : {
+        duration: 0
+      };
+
   return (
-    <div
-      className="relative group text-sm bg-gradient-to-r from-transparent to-green-300 py-1 -mr-2"
+    <Reorder.Item
+      as="div"
+      value={value}
+      drag={reorderable && !editing ? "y" : false}
+      dragControls={dragControls}
+      dragListener={false}
+      layout="position"
+      transition={{ layout: layoutTransition }}
+      onDragStart={handleDragStart}
+      onDragEnd={handleDragEnd}
+      whileDrag={{
+        scale: 1.01,
+        zIndex: 20
+      }}
+      className={cn(
+        "relative -mr-2 bg-gradient-to-r from-transparent to-green-300 py-1 text-sm",
+        hoverEnabled ? "group" : "",
+        dragging ? "z-10" : ""
+      )}
     >
       <div>
         {/* edit */}
         {editing &&
-          <div className="border border-black border-opacity-20 rounded-lg border-dashed bg-white p-1 mr-2 my-1">
+          <div className="my-1 mr-2 rounded-lg border border-black border-opacity-20 border-dashed bg-white p-1">
             <TextInputLabel>
               {t("Action label")}
             </TextInputLabel>
@@ -130,7 +198,7 @@ export default function NodeAction({ action, index, deletable, nodeEditing, char
               type="text"
               defaultValue={label}
               onChange={updateLabel}
-              className="w-full py-1 px-1.5 mb-1 border border-slate-400 rounded-md"
+              className="mb-1 w-full rounded-md border border-slate-400 px-1.5 py-1"
               ref={inputRef}
             />
             <TextInputLabel>
@@ -140,7 +208,7 @@ export default function NodeAction({ action, index, deletable, nodeEditing, char
               type="text"
               defaultValue={condition}
               onChange={updateCondition}
-              className="w-full py-1 px-1.5 mb-1 border border-slate-400 rounded-md"
+              className="mb-1 w-full rounded-md border border-slate-400 px-1.5 py-1"
             />
             <TextInputLabel>
               {t("Effects JSON")}
@@ -148,13 +216,13 @@ export default function NodeAction({ action, index, deletable, nodeEditing, char
             <textarea
               defaultValue={effectsValue}
               onChange={updateEffectsValue}
-              className="w-full py-1 px-1.5 border border-slate-400 rounded-md font-mono"
+              className="w-full rounded-md border border-slate-400 px-1.5 py-1 font-mono"
               ref={effectsRef}
               rows={4}
             >
             </textarea>
             {showCharLimit &&
-              <div className={`text-xs ${valueTooLong ? 'text-red-500' : 'opacity-50'}`}>
+              <div className={`text-xs ${valueTooLong ? "text-red-500" : "opacity-50"}`}>
                 {label.length} / {charLimit}
               </div>
             }
@@ -163,7 +231,7 @@ export default function NodeAction({ action, index, deletable, nodeEditing, char
                 {error}
               </div>
             )}
-            <div className="flex gap-2 mt-1">
+            <div className="mt-1 flex gap-2">
               <Button
                 disabled={!label.length || valueTooLong}
                 onClick={commitEdit}
@@ -178,7 +246,24 @@ export default function NodeAction({ action, index, deletable, nodeEditing, char
         }
         {/* view */}
         {!editing &&
-          <div className="flex items-center gap-2 break-words pr-2">
+          <div className={cn("relative flex items-center gap-2 break-words pr-2", dragging ? "opacity-70" : "")}>
+            {reorderable && (
+              <div className="absolute right-full top-0 flex h-full w-5 items-center pr-0.5">
+                <button
+                  type="button"
+                  aria-label={t("Drag")}
+                  className={cn(
+                    "nodrag nopan shrink-0 cursor-grab items-center rounded-md border border-slate-300 bg-slate-200 py-0.5 text-slate-400 transition active:cursor-grabbing",
+                    hoverEnabled ? "opacity-0 hover:text-slate-700 group-hover:opacity-100" : "opacity-0",
+                    dragging ? "opacity-100 text-slate-700" : ""
+                  )}
+                  onClick={event => event.stopPropagation()}
+                  onPointerDown={handlePointerDown}
+                >
+                  <DragHandle />
+                </button>
+              </div>
+            )}
             <div className="min-w-0 flex-1 space-y-1">
               <div className="flex min-w-0 items-start gap-1">
                 <div className="shrink-0 pt-0.5">
@@ -203,28 +288,9 @@ export default function NodeAction({ action, index, deletable, nodeEditing, char
           />
         }
       </div>
-      {/* view */}
-      {!editing && !nodeEditing &&
+      {!editing && !readonly && hoverEnabled &&
         <div className="absolute right-3 top-1 hidden group-hover:block">
           <div className="flex gap-1">
-            {!isFirst && (
-              <Button
-                size="small"
-                onClick={moveActionUp}
-              >
-                <MoveUp />
-              </Button>
-            )}
-
-            {!isLast && (
-              <Button
-                size="small"
-                onClick={moveActionDown}
-              >
-                <MoveDown />
-              </Button>
-            )}
-
             <Button
               size="small"
               onClick={startEdit}
@@ -243,6 +309,6 @@ export default function NodeAction({ action, index, deletable, nodeEditing, char
           </div>
         </div>
       }
-    </div>
+    </Reorder.Item>
   );
 }

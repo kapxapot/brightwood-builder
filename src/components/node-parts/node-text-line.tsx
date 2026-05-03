@@ -1,4 +1,5 @@
-import { type DragEvent, useEffect, useRef, useState } from "react";
+import { Reorder, useDragControls } from "framer-motion";
+import { useEffect, useRef, useState } from "react";
 import Button from "../core/button";
 import { autoHeight, focus } from "../../lib/ref-operations";
 import { Delete, DragHandle, Edit } from "../core/icons";
@@ -11,45 +12,40 @@ import { ImageDisplay } from "../core/image-display";
 import { cn } from "@/lib/utils";
 
 type Props = {
+  value: {
+    id: string;
+    line: string;
+  };
   line: string;
   index: number;
   deletable: boolean;
   expanded?: boolean;
   readonly?: boolean;
+  interactionsDisabled?: boolean;
   charLimit?: number;
   reorderable?: boolean;
-  isDragging?: boolean;
-  isDropTarget?: boolean;
-  dropTargetClassName?: string;
   updateLine: (updatedLine: string) => void;
   deleteLine: () => void;
-  onDragStart: (event: DragEvent<HTMLDivElement>) => void;
-  onDragEnter: () => void;
-  onDragOver: (event: DragEvent<HTMLDivElement>) => void;
-  onDrop: (event: DragEvent<HTMLDivElement>) => void;
-  onDragEnd: () => void;
+  onReorderStart: () => void;
+  onReorderEnd: () => void;
   onEditStarted: () => void;
   onEditFinished: () => void;
 };
 
 export default function NodeTextLine({
+  value,
   line,
   index,
   deletable,
   expanded = false,
   readonly,
+  interactionsDisabled = false,
   charLimit = 0,
   reorderable = false,
-  isDragging = false,
-  isDropTarget = false,
-  dropTargetClassName,
   updateLine,
   deleteLine,
-  onDragStart,
-  onDragEnter,
-  onDragOver,
-  onDrop,
-  onDragEnd,
+  onReorderStart,
+  onReorderEnd,
   onEditStarted,
   onEditFinished
 }: Props) {
@@ -57,11 +53,11 @@ export default function NodeTextLine({
 
   const virgin = !line.length;
   const inputRef = useRef<HTMLTextAreaElement>(null);
-  const dragPreviewRef = useRef<HTMLDivElement>(null);
-
   const [editedLine, setEditedLine] = useState(line);
   const [editing, setEditing] = useState(virgin);
-  const { showCharLimit, valueTooLong} = useCharLimit(editedLine, charLimit);
+  const [dragging, setDragging] = useState(false);
+  const dragControls = useDragControls();
+  const { showCharLimit, valueTooLong } = useCharLimit(editedLine, charLimit);
 
   function startEdit() {
     if (readonly) {
@@ -98,20 +94,19 @@ export default function NodeTextLine({
     setEditedLine(value);
   }
 
-  function handleLineDragStart(event: DragEvent<HTMLDivElement>) {
-    const dragPreview = dragPreviewRef.current;
+  function handlePointerDown(event: React.PointerEvent<HTMLButtonElement>) {
+    event.stopPropagation();
+    dragControls.start(event);
+  }
 
-    if (dragPreview) {
-      const rect = dragPreview.getBoundingClientRect();
+  function handleDragStart() {
+    setDragging(true);
+    onReorderStart();
+  }
 
-      event.dataTransfer.setDragImage(
-        dragPreview,
-        event.clientX - rect.left,
-        event.clientY - rect.top
-      );
-    }
-
-    onDragStart(event);
+  function handleDragEnd() {
+    setDragging(false);
+    onReorderEnd();
   }
 
   useEffect(() => {
@@ -127,16 +122,46 @@ export default function NodeTextLine({
 
   const imageUrl = extractImageUrl(editedLine);
   const isImage = !!imageUrl;
-  const canInlineEdit = expanded && !readonly && !isImage;
+  const hoverEnabled = !interactionsDisabled && !dragging;
+  const canInlineEdit = expanded && !readonly && !interactionsDisabled && !isImage;
+  const layoutTransition = dragging || interactionsDisabled
+    ? {
+        type: "spring",
+        stiffness: 500,
+        damping: 40
+      }
+    : {
+        duration: 0
+      };
   const textClassName = expanded
     ? `block whitespace-pre-wrap [&>pre]:whitespace-pre-wrap ${virgin && "opacity-30"}`
     : `block overflow-hidden text-ellipsis whitespace-nowrap ${virgin && "opacity-30"}`;
 
   return (
-    <>
+    <Reorder.Item
+      as="div"
+      value={value}
+      drag={reorderable && !editing ? "y" : false}
+      dragControls={dragControls}
+      dragListener={false}
+      layout="position"
+      transition={{ layout: layoutTransition }}
+      onDragStart={handleDragStart}
+      onDragEnd={handleDragEnd}
+      whileDrag={{
+        scale: 1.01,
+        zIndex: 20
+      }}
+      className={cn(
+        "relative text-sm",
+        hoverEnabled ? "group" : "",
+        canInlineEdit ? "cursor-text" : "",
+        dragging ? "z-10" : ""
+      )}
+    >
       {/* edit */}
       {editing && (
-        <div className="border border-black border-opacity-20 rounded-lg border-dashed bg-white p-1 mt-3 text-sm nowheel">
+        <div className="border border-black border-opacity-20 rounded-lg border-dashed bg-white p-1 text-sm nowheel">
           <TextInputLabel>
             {t("Text line")}
           </TextInputLabel>
@@ -170,54 +195,41 @@ export default function NodeTextLine({
       )}
       {/* view */}
       {!editing && (
-        <div
-          className={cn(
-            "relative group text-sm",
-            canInlineEdit ? "cursor-text" : "",
-            isDragging ? "opacity-60" : "",
-            isDropTarget
-              ? cn(
-                "rounded-lg ring-1 ring-offset-2",
-                dropTargetClassName ?? "ring-slate-300 ring-offset-white/50"
-              )
-              : ""
-          )}
-          onDragEnter={reorderable ? onDragEnter : undefined}
-          onDragOver={reorderable ? onDragOver : undefined}
-          onDrop={reorderable ? onDrop : undefined}
-        >
-          <div ref={dragPreviewRef} className="relative flex items-center">
-            {reorderable && (
-              <div className="absolute right-full top-0 flex h-full w-5 items-center pr-0.5">
-                <div
-                  className="shrink-0 cursor-grab items-center rounded-md border border-slate-300 bg-slate-200 py-0.5 text-slate-400 opacity-0 transition hover:text-slate-700 group-hover:opacity-100 pointer-events-none group-hover:pointer-events-auto active:cursor-grabbing"
-                  draggable
-                  onDragStart={handleLineDragStart}
-                  onDragEnd={onDragEnd}
-                  onClick={event => event.stopPropagation()}
-                >
-                  <DragHandle />
-                </div>
-              </div>
-            )}
-            <div className="min-w-0 flex-1">
-              {isImage &&
-                <ImageDisplay url={imageUrl} />
-              }
-              {!isImage &&
-                <p
-                  className="border border-black border-opacity-20 rounded-lg border-dashed bg-white/50 px-2 py-1 break-words"
-                  onClick={canInlineEdit ? startEdit : undefined}
-                >
-                  <TextDisplay
-                    className={textClassName}
-                    text={line || `${t("Text line")} ${index + 1}`}
-                  />
-                </p>
-              }
+        <div className={cn("relative flex items-center", dragging ? "opacity-70" : "")}>
+          {reorderable && (
+            <div className="absolute right-full top-0 flex h-full w-5 items-center pr-0.5">
+              <button
+                type="button"
+                aria-label={t("Drag")}
+                className={cn(
+                  "nodrag nopan shrink-0 cursor-grab items-center rounded-md border border-slate-300 bg-slate-200 py-0.5 text-slate-400 transition active:cursor-grabbing",
+                  hoverEnabled ? "opacity-0 hover:text-slate-700 group-hover:opacity-100" : "opacity-0",
+                  dragging ? "opacity-100 text-slate-700" : ""
+                )}
+                onClick={event => event.stopPropagation()}
+                onPointerDown={handlePointerDown}
+              >
+                <DragHandle />
+              </button>
             </div>
+          )}
+          <div className="min-w-0 flex-1">
+            {isImage &&
+              <ImageDisplay url={imageUrl} />
+            }
+            {!isImage &&
+              <p
+                className="border border-black border-opacity-20 rounded-lg border-dashed bg-white/50 px-2 py-1 break-words"
+                onClick={canInlineEdit ? startEdit : undefined}
+              >
+                <TextDisplay
+                  className={textClassName}
+                  text={line || `${t("Text line")} ${index + 1}`}
+                />
+              </p>
+            }
           </div>
-          {!readonly && (
+          {!readonly && hoverEnabled && (
             <div className="absolute right-1 top-1 hidden group-hover:block">
               <div className="flex gap-1">
                 <Button
@@ -240,6 +252,6 @@ export default function NodeTextLine({
           )}
         </div>
       )}
-    </>
+    </Reorder.Item>
   );
 }

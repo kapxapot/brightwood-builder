@@ -1,11 +1,59 @@
-import { type DragEvent, useState } from "react";
+import { Reorder } from "framer-motion";
+import { useEffect, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
 import type { StoryNode } from "../../entities/story-node";
 import { toArray } from "../../lib/common";
-import { addTextLine, deleteTextLine, moveTextLine, updateTextLine } from "../../lib/node-data-mutations";
-import { colors } from "../../lib/constants";
+import { addTextLine, deleteTextLine, setTextLines, updateTextLine } from "../../lib/node-data-mutations";
 import Button from "../core/button";
 import NodeTextLine from "./node-text-line";
+
+type LineItem = {
+  id: string;
+  line: string;
+};
+
+function syncLineItems(previousItems: LineItem[], lines: string[], nextId: () => string): LineItem[] {
+  const usedIndexes = new Set<number>();
+
+  return lines.map((line, index) => {
+    const samePositionItem = previousItems[index];
+
+    if (samePositionItem && samePositionItem.line === line && !usedIndexes.has(index)) {
+      usedIndexes.add(index);
+      return samePositionItem;
+    }
+
+    const matchingIndex = previousItems.findIndex(
+      (item, itemIndex) => !usedIndexes.has(itemIndex) && item.line === line
+    );
+
+    if (matchingIndex >= 0) {
+      usedIndexes.add(matchingIndex);
+      return previousItems[matchingIndex];
+    }
+
+    if (samePositionItem && previousItems.length === lines.length && !usedIndexes.has(index)) {
+      usedIndexes.add(index);
+
+      return {
+        ...samePositionItem,
+        line
+      };
+    }
+
+    return {
+      id: nextId(),
+      line
+    };
+  });
+}
+
+function hasLineOrderChanged(items: LineItem[], lines: string[]) {
+  return (
+    items.length !== lines.length
+    || items.some((item, index) => item.line !== lines[index])
+  );
+}
 
 type Props = {
   data: StoryNode;
@@ -30,83 +78,97 @@ export default function NodeText({
 
   const text = data.text;
   const lines = toArray(text);
-  const [draggedIndex, setDraggedIndex] = useState<number | null>(null);
-  const [dropIndex, setDropIndex] = useState<number | null>(null);
-  const dropTargetClassName = colors[data.type].dropTargetTw;
+  const nextLineIdRef = useRef(0);
+  const [lineItems, setLineItems] = useState<LineItem[]>(() =>
+    lines.map(line => ({
+      id: `text-line-${data.id}-${nextLineIdRef.current++}`,
+      line
+    }))
+  );
+  const [isReordering, setIsReordering] = useState(false);
+  const lineItemsRef = useRef<LineItem[]>(lineItems);
 
-  function handleDragStart(index: number, event: DragEvent<HTMLDivElement>) {
-    setDraggedIndex(index);
-    setDropIndex(index);
-    event.dataTransfer.effectAllowed = "move";
-    event.dataTransfer.setData("text/plain", String(index));
+  useEffect(() => {
+    const nextLines = toArray(text);
+
+    setLineItems(previousItems => {
+      const nextItems = syncLineItems(
+        previousItems,
+        nextLines,
+        () => `text-line-${data.id}-${nextLineIdRef.current++}`
+      );
+
+      if (
+        previousItems.length === nextItems.length
+        && previousItems.every((item, index) => item === nextItems[index])
+      ) {
+        lineItemsRef.current = previousItems;
+        return previousItems;
+      }
+
+      lineItemsRef.current = nextItems;
+      return nextItems;
+    });
+  }, [data.id, text]);
+
+  useEffect(() => {
+    lineItemsRef.current = lineItems;
+  }, [lineItems]);
+
+  function handleReorder(nextItems: LineItem[]) {
+    lineItemsRef.current = nextItems;
+    setLineItems(nextItems);
   }
 
-  function handleDragEnter(index: number) {
-    if (draggedIndex === null || draggedIndex === index) {
-      return;
-    }
-
-    setDropIndex(index);
+  function handleReorderStart() {
+    setIsReordering(true);
   }
 
-  function handleDragOver(event: DragEvent<HTMLDivElement>) {
-    event.preventDefault();
-    event.dataTransfer.dropEffect = "move";
-  }
+  function handleReorderEnd() {
+    setIsReordering(false);
 
-  function clearDragState() {
-    setDraggedIndex(null);
-    setDropIndex(null);
-  }
+    const reorderedLines = lineItemsRef.current.map(item => item.line);
 
-  function handleDrop(index: number, event: DragEvent<HTMLDivElement>) {
-    event.preventDefault();
-
-    if (draggedIndex === null) {
-      clearDragState();
-      return;
-    }
-
-    const sourceIndex = draggedIndex;
-
-    clearDragState();
-
-    if (sourceIndex !== index) {
-      moveTextLine(data, sourceIndex, index);
+    if (hasLineOrderChanged(lineItemsRef.current, lines)) {
+      setTextLines(data, reorderedLines);
     }
   }
 
   return (
     <>
-      {lines.map((line, index) =>
-        <NodeTextLine
-          key={`${line}-${index}`}
-          index={index}
-          line={line}
-          deletable={allowEmpty || lines.length > 1}
-          expanded={expanded}
-          readonly={readonly}
-          charLimit={1000}
-          reorderable={!readonly && lines.length > 1}
-          isDragging={draggedIndex === index}
-          isDropTarget={dropIndex === index && draggedIndex !== index}
-          dropTargetClassName={dropTargetClassName}
-          updateLine={updatedLine => updateTextLine(data, index, updatedLine)}
-          deleteLine={() => deleteTextLine(data, index)}
-          onDragStart={event => handleDragStart(index, event)}
-          onDragEnter={() => handleDragEnter(index)}
-          onDragOver={handleDragOver}
-          onDrop={event => handleDrop(index, event)}
-          onDragEnd={clearDragState}
-          onEditStarted={onEditStarted}
-          onEditFinished={onEditFinished}
-        />
-      )}
+      <Reorder.Group
+        as="div"
+        axis="y"
+        className="flex flex-col gap-2"
+        values={lineItems}
+        onReorder={handleReorder}
+      >
+        {lineItems.map((item, index) =>
+          <NodeTextLine
+            key={item.id}
+            value={item}
+            index={index}
+            line={item.line}
+            deletable={allowEmpty || lineItems.length > 1}
+            expanded={expanded}
+            readonly={readonly}
+            interactionsDisabled={isReordering}
+            charLimit={1000}
+            reorderable={!readonly && lineItems.length > 1}
+            updateLine={updatedLine => updateTextLine(data, index, updatedLine)}
+            deleteLine={() => deleteTextLine(data, index)}
+            onReorderStart={handleReorderStart}
+            onReorderEnd={handleReorderEnd}
+            onEditStarted={onEditStarted}
+            onEditFinished={onEditFinished}
+          />
+        )}
+      </Reorder.Group>
 
       {showAddButton && (
         <Button
           onClick={() => addTextLine(data)}
-          disabled={readonly}
+          disabled={readonly || isReordering}
         >
           {t("Add text")}
         </Button>
