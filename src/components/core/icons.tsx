@@ -1,4 +1,4 @@
-import { ArrowDownTrayIcon, ArrowLeftEndOnRectangleIcon, ArrowRightStartOnRectangleIcon, ArrowsPointingInIcon, ArrowsPointingOutIcon, BoltIcon, ChatBubbleBottomCenterTextIcon, CubeIcon, FlagIcon, FolderOpenIcon, ForwardIcon, NoSymbolIcon, PlusIcon, QuestionMarkCircleIcon, SparklesIcon } from "@heroicons/react/24/outline";
+import { ArrowDownTrayIcon, ArrowLeftEndOnRectangleIcon, ArrowRightStartOnRectangleIcon, ArrowsPointingInIcon, ArrowsPointingOutIcon, BoltIcon, ChatBubbleBottomCenterTextIcon, CubeIcon, FlagIcon, FolderOpenIcon, ForwardIcon, NoSymbolIcon, PlusIcon, SparklesIcon, VariableIcon } from "@heroicons/react/24/outline";
 import { DragHandleDots2Icon } from "@radix-ui/react-icons";
 import { PencilIcon, TrashIcon } from "@heroicons/react/24/solid";
 import Tooltip from "./tooltip";
@@ -11,7 +11,7 @@ export const Skip = () => <ForwardIcon className={`size-5 shrink-0 ${colors.skip
 export const Stop = () => <NoSymbolIcon className={`size-5 shrink-0 ${colors.finish.twIcon}`} />;
 export const Flag = () => <FlagIcon className={`size-5 shrink-0 ${colors.storyInfo.twIcon}`} />;
 export const Sparkles = () => <SparklesIcon className="size-5 shrink-0 text-red-600" />;
-export const Condition = () => <QuestionMarkCircleIcon className="size-5 shrink-0 text-current" />;
+export const Condition = () => <VariableIcon className="size-5 shrink-0 text-current" />;
 export const Collapse = () => <ArrowsPointingInIcon className="size-5 shrink-0" />;
 export const Expand = () => <ArrowsPointingOutIcon className="size-5 shrink-0" />;
 export const Text = () => <ChatBubbleBottomCenterTextIcon className="size-5 shrink-0" />;
