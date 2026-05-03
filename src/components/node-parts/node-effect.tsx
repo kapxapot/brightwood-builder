@@ -11,6 +11,7 @@ import EffectLines from "./effect-lines";
 
 type Props = {
   effects?: EffectInvocation[];
+  expanded?: boolean;
   readonly?: boolean;
   updateEffects: (effects: EffectInvocation[] | undefined) => void;
   onEditStarted: () => void;
@@ -23,6 +24,7 @@ export type NodeEffectHandle = {
 
 const NodeEffect = forwardRef<NodeEffectHandle, Props>(function NodeEffect({
   effects,
+  expanded = true,
   readonly = false,
   updateEffects,
   onEditStarted,
@@ -133,7 +135,7 @@ const NodeEffect = forwardRef<NodeEffectHandle, Props>(function NodeEffect({
   return (
     <div className="relative group text-sm">
       <div>
-        <EffectLines effects={effects} />
+        <EffectLines effects={effects} expanded={expanded} />
       </div>
       {!readonly && hasValue && (
         <div className="absolute right-0 top-0 hidden group-hover:block">

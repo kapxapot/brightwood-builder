@@ -1,5 +1,5 @@
 import { Reorder } from "framer-motion";
-import { memo, useEffect, useRef, useState } from "react";
+import { memo, useEffect, useLayoutEffect, useRef, useState } from "react";
 import type { NodeProps } from "reactflow";
 import type { Link, RedirectStoryNode } from "../../entities/story-node";
 import { colors, nodeLabels } from "../../lib/constants";
@@ -34,7 +34,7 @@ const RedirectNode = memo(function RedirectNode({ data, selected, dragging }: Pr
 
   const { nodeEditing, startEdit, finishEdit } = useNodeEditing(data);
   const entryEffectRef = useRef<NodeEffectHandle>(null);
-  const [textExpanded, setTextExpanded] = useState(false);
+  const [expanded, setExpanded] = useState(false);
   const nextLinkIdRef = useRef(0);
 
   const [linkItems, setLinkItems] = useState<ReorderListItem<Link>[]>(() =>
@@ -57,9 +57,9 @@ const RedirectNode = memo(function RedirectNode({ data, selected, dragging }: Pr
     <>
       <Button
         className="backdrop-blur shadow-md gap-1.5 px-2 py-1.5"
-        onClick={() => setTextExpanded(current => !current)}
+        onClick={() => setExpanded(current => !current)}
       >
-        {textExpanded ? (
+        {expanded ? (
           <>
             <Collapse />
             <span>{t("Collapse")}</span>
@@ -100,7 +100,7 @@ const RedirectNode = memo(function RedirectNode({ data, selected, dragging }: Pr
 
   useReorderNodeInternalsRefresh(data.id, linkItems, linksReordering);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     const nextLinks = data.links;
 
     setLinkItems(previousItems => {
@@ -163,6 +163,7 @@ const RedirectNode = memo(function RedirectNode({ data, selected, dragging }: Pr
       <NodeEffect
         ref={entryEffectRef}
         effects={data.entryEffects}
+        expanded={expanded}
         readonly={editingOrDragging}
         updateEffects={entryEffects => data.onChange?.({ ...data, entryEffects })}
         onEditStarted={startEdit}
@@ -171,7 +172,7 @@ const RedirectNode = memo(function RedirectNode({ data, selected, dragging }: Pr
 
       <NodeText
         data={data}
-        expanded={textExpanded}
+        expanded={expanded}
         readonly={editingOrDragging}
         showAddButton={false}
         onEditStarted={startEdit}

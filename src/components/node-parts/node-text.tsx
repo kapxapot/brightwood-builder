@@ -1,5 +1,5 @@
 import { Reorder } from "framer-motion";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
 import type { StoryNode } from "../../entities/story-node";
 import { toArray } from "../../lib/common";
@@ -88,7 +88,7 @@ export default function NodeText({
   const [isReordering, setIsReordering] = useState(false);
   const lineItemsRef = useRef<LineItem[]>(lineItems);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     const nextLines = toArray(text);
 
     setLineItems(previousItems => {

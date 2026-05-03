@@ -1,5 +1,5 @@
 import { cn } from "@/lib/utils";
-import { type PropsWithChildren, type ReactNode } from "react";
+import { type MouseEvent, type PropsWithChildren, type ReactNode, useEffect, useRef, useState } from "react";
 
 type Props = {
   selected: boolean;
@@ -9,6 +9,8 @@ type Props = {
   readonly?: boolean;
 }
 
+const MENU_HIDE_DELAY_MS = 500;
+
 export default function NodeShell({
   selected,
   color,
@@ -17,6 +19,51 @@ export default function NodeShell({
   readonly = false,
   children
 }: PropsWithChildren<Props>) {
+  const [menuVisible, setMenuVisible] = useState(false);
+  const hideMenuTimeoutRef = useRef<number | null>(null);
+  const actionsRef = useRef<HTMLDivElement>(null);
+
+  const hasActions = !!actions && !readonly;
+
+  function clearHideMenuTimeout() {
+    if (hideMenuTimeoutRef.current !== null) {
+      window.clearTimeout(hideMenuTimeoutRef.current);
+      hideMenuTimeoutRef.current = null;
+    }
+  }
+
+  function showMenu() {
+    clearHideMenuTimeout();
+    setMenuVisible(true);
+  }
+
+  function hideMenu() {
+    if (actionsRef.current?.contains(document.activeElement)) {
+      (document.activeElement as HTMLElement | null)?.blur?.();
+    }
+
+    setMenuVisible(false);
+  }
+
+  function scheduleHideMenu() {
+    clearHideMenuTimeout();
+    hideMenuTimeoutRef.current = window.setTimeout(() => {
+      hideMenu();
+      hideMenuTimeoutRef.current = null;
+    }, MENU_HIDE_DELAY_MS);
+  }
+
+  function handleActionsMouseUp(event: MouseEvent<HTMLDivElement>) {
+    const button = (event.target as HTMLElement).closest("button");
+    button?.blur();
+  }
+
+  useEffect(() => {
+    return () => {
+      clearHideMenuTimeout();
+    };
+  }, []);
+
   return (
     <div
       className={cn(
@@ -24,14 +71,19 @@ export default function NodeShell({
         selected ? "border-stone-600" : "border-stone-400",
         color
       )}
+      onMouseEnter={hasActions ? showMenu : undefined}
+      onMouseLeave={hasActions ? scheduleHideMenu : undefined}
     >
       <div className={spaceY === "normal" ? "space-y-2" : ""}>
         {children}
       </div>
-      {actions && !readonly && (
+      {hasActions && (
         <div
+          ref={actionsRef}
+          onMouseUpCapture={handleActionsMouseUp}
           className={cn(
-            "pointer-events-none absolute left-full top-0 z-20 w-max pl-1.5 opacity-0 transition-opacity duration-150 group-focus-within/node:pointer-events-auto group-focus-within/node:opacity-100 group-hover/node:pointer-events-auto group-hover/node:opacity-100"
+            "absolute left-full top-0 z-20 w-max pl-1.5 transition-opacity duration-150",
+            menuVisible ? "pointer-events-auto opacity-100" : "pointer-events-none opacity-0"
           )}
         >
           <div className="flex flex-col items-start gap-2">

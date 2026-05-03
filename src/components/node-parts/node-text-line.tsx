@@ -123,7 +123,7 @@ export default function NodeTextLine({
   const imageUrl = extractImageUrl(editedLine);
   const isImage = !!imageUrl;
   const hoverEnabled = !interactionsDisabled && !dragging;
-  const canInlineEdit = expanded && !readonly && !interactionsDisabled && !isImage;
+  const canStartEdit = !readonly && !interactionsDisabled && !isImage;
   const layoutTransition = dragging || interactionsDisabled
     ? {
         type: "spring",
@@ -155,7 +155,7 @@ export default function NodeTextLine({
       className={cn(
         "relative text-sm",
         hoverEnabled ? "group" : "",
-        canInlineEdit ? "cursor-text" : "",
+        canStartEdit ? "cursor-text" : "",
         dragging ? "z-10" : ""
       )}
     >
@@ -220,7 +220,7 @@ export default function NodeTextLine({
             {!isImage &&
               <p
                 className="border border-black border-opacity-20 rounded-lg border-dashed bg-white/50 px-2 py-1 break-words"
-                onClick={canInlineEdit ? startEdit : undefined}
+                onClick={canStartEdit ? startEdit : undefined}
               >
                 <TextDisplay
                   className={textClassName}

@@ -20,16 +20,16 @@ const FinishNode = memo(function FinishNode({ data, selected, dragging }: Props)
 
   const { nodeEditing, startEdit, finishEdit } = useNodeEditing(data);
   const entryEffectRef = useRef<NodeEffectHandle>(null);
-  const [textExpanded, setTextExpanded] = useState(false);
+  const [expanded, setExpanded] = useState(false);
   const editingOrDragging = nodeEditing || dragging;
 
   const shellActions = (
     <>
       <Button
         className="backdrop-blur shadow-md gap-1.5 px-2 py-1.5"
-        onClick={() => setTextExpanded(current => !current)}
+        onClick={() => setExpanded(current => !current)}
       >
-        {textExpanded ? (
+        {expanded ? (
           <>
             <Collapse />
             <span>{t("Collapse")}</span>
@@ -76,6 +76,7 @@ const FinishNode = memo(function FinishNode({ data, selected, dragging }: Props)
       <NodeEffect
         ref={entryEffectRef}
         effects={data.entryEffects}
+        expanded={expanded}
         readonly={editingOrDragging}
         updateEffects={entryEffects => data.onChange?.({ ...data, entryEffects })}
         onEditStarted={startEdit}
@@ -84,7 +85,7 @@ const FinishNode = memo(function FinishNode({ data, selected, dragging }: Props)
 
       <NodeText
         data={data}
-        expanded={textExpanded}
+        expanded={expanded}
         readonly={editingOrDragging}
         showAddButton={false}
         onEditStarted={startEdit}

@@ -1,5 +1,5 @@
 import { Reorder } from "framer-motion";
-import { memo, useEffect, useRef, useState } from "react";
+import { memo, useEffect, useLayoutEffect, useRef, useState } from "react";
 import type { NodeProps } from "reactflow";
 import type { Action, ActionStoryNode } from "../../entities/story-node";
 import { colors, nodeLabels } from "../../lib/constants";
@@ -34,7 +34,7 @@ const ActionNode = memo(function ActionNode({ data, selected, dragging }: Props)
 
   const { nodeEditing, startEdit, finishEdit } = useNodeEditing(data);
   const entryEffectRef = useRef<NodeEffectHandle>(null);
-  const [textExpanded, setTextExpanded] = useState(false);
+  const [expanded, setExpanded] = useState(false);
   const nextActionIdRef = useRef(0);
   const [actionItems, setActionItems] = useState<ReorderListItem<Action>[]>(() =>
     data.actions.map(action => ({
@@ -51,9 +51,9 @@ const ActionNode = memo(function ActionNode({ data, selected, dragging }: Props)
     <>
       <Button
         className="backdrop-blur shadow-md gap-1.5 px-2 py-1.5"
-        onClick={() => setTextExpanded(current => !current)}
+        onClick={() => setExpanded(current => !current)}
       >
-        {textExpanded ? (
+        {expanded ? (
           <>
             <Collapse />
             <span>{t("Collapse")}</span>
@@ -94,7 +94,7 @@ const ActionNode = memo(function ActionNode({ data, selected, dragging }: Props)
 
   useReorderNodeInternalsRefresh(data.id, actionItems, actionsReordering);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     const nextActions = data.actions;
 
     setActionItems(previousItems => {
@@ -157,6 +157,7 @@ const ActionNode = memo(function ActionNode({ data, selected, dragging }: Props)
       <NodeEffect
         ref={entryEffectRef}
         effects={data.entryEffects}
+        expanded={expanded}
         readonly={editingOrDragging}
         updateEffects={entryEffects => data.onChange?.({ ...data, entryEffects })}
         onEditStarted={startEdit}
@@ -165,7 +166,7 @@ const ActionNode = memo(function ActionNode({ data, selected, dragging }: Props)
 
       <NodeText
         data={data}
-        expanded={textExpanded}
+        expanded={expanded}
         readonly={editingOrDragging}
         showAddButton={false}
         onEditStarted={startEdit}
