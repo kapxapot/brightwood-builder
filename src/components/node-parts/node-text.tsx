@@ -1,7 +1,9 @@
+import { type DragEvent, useState } from "react";
 import { useTranslation } from "react-i18next";
 import type { StoryNode } from "../../entities/story-node";
 import { toArray } from "../../lib/common";
-import { addTextLine, deleteTextLine, moveTextLineDown, moveTextLineUp, updateTextLine } from "../../lib/node-data-mutations";
+import { addTextLine, deleteTextLine, moveTextLine, updateTextLine } from "../../lib/node-data-mutations";
+import { colors } from "../../lib/constants";
 import Button from "../core/button";
 import NodeTextLine from "./node-text-line";
 
@@ -28,6 +30,51 @@ export default function NodeText({
 
   const text = data.text;
   const lines = toArray(text);
+  const [draggedIndex, setDraggedIndex] = useState<number | null>(null);
+  const [dropIndex, setDropIndex] = useState<number | null>(null);
+  const dropTargetClassName = colors[data.type].dropTargetTw;
+
+  function handleDragStart(index: number, event: DragEvent<HTMLDivElement>) {
+    setDraggedIndex(index);
+    setDropIndex(index);
+    event.dataTransfer.effectAllowed = "move";
+    event.dataTransfer.setData("text/plain", String(index));
+  }
+
+  function handleDragEnter(index: number) {
+    if (draggedIndex === null || draggedIndex === index) {
+      return;
+    }
+
+    setDropIndex(index);
+  }
+
+  function handleDragOver(event: DragEvent<HTMLDivElement>) {
+    event.preventDefault();
+    event.dataTransfer.dropEffect = "move";
+  }
+
+  function clearDragState() {
+    setDraggedIndex(null);
+    setDropIndex(null);
+  }
+
+  function handleDrop(index: number, event: DragEvent<HTMLDivElement>) {
+    event.preventDefault();
+
+    if (draggedIndex === null) {
+      clearDragState();
+      return;
+    }
+
+    const sourceIndex = draggedIndex;
+
+    clearDragState();
+
+    if (sourceIndex !== index) {
+      moveTextLine(data, sourceIndex, index);
+    }
+  }
 
   return (
     <>
@@ -40,12 +87,17 @@ export default function NodeText({
           expanded={expanded}
           readonly={readonly}
           charLimit={1000}
-          isFirst={index === 0}
-          isLast={index === lines.length - 1}
+          reorderable={!readonly && lines.length > 1}
+          isDragging={draggedIndex === index}
+          isDropTarget={dropIndex === index && draggedIndex !== index}
+          dropTargetClassName={dropTargetClassName}
           updateLine={updatedLine => updateTextLine(data, index, updatedLine)}
           deleteLine={() => deleteTextLine(data, index)}
-          moveLineUp={() => moveTextLineUp(data, index)}
-          moveLineDown={() => moveTextLineDown(data, index)}
+          onDragStart={event => handleDragStart(index, event)}
+          onDragEnter={() => handleDragEnter(index)}
+          onDragOver={handleDragOver}
+          onDrop={event => handleDrop(index, event)}
+          onDragEnd={clearDragState}
           onEditStarted={onEditStarted}
           onEditFinished={onEditFinished}
         />

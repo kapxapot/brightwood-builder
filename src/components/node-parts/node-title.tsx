@@ -22,7 +22,7 @@ export default function NodeTitle({ id, label, expanded, onToggleExpanded }: Pro
       {onToggleExpanded && (
         <Button
           size="small"
-          className="nodrag nopan shrink-0 border-transparent bg-transparent px-0.5 py-0.5 text-slate-600 enabled:hover:bg-black/5 enabled:hover:text-slate-900"
+          className="nodrag nopan shrink-0 border-transparent bg-transparent p-0.5 text-slate-600 enabled:hover:bg-black/5 enabled:hover:text-slate-900"
           aria-label={expanded ? t("Collapse") : t("Expand")}
           onClick={onToggleExpanded}
         >

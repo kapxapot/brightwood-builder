@@ -1,5 +1,5 @@
 import type { StoryNode, Text } from "../entities/story-node";
-import { moveElementDown, moveElementUp, toArray } from "./common";
+import { moveElement, moveElementDown, moveElementUp, toArray } from "./common";
 
 export const addTextLine = (data: StoryNode) => {
   data.onChange?.({
@@ -44,6 +44,15 @@ export const moveTextLineUp = (data: StoryNode, index: number) => {
   data.onChange?.({
     ...data,
     text: moveElementUp(lines, index)
+  });
+};
+
+export const moveTextLine = (data: StoryNode, fromIndex: number, toIndex: number) => {
+  const lines = toArray(data.text);
+
+  data.onChange?.({
+    ...data,
+    text: moveElement(lines, fromIndex, toIndex)
   });
 };
 

@@ -27,6 +27,25 @@ export function moveElementDown<T>(array: T[], index: number): T[] {
   ];
 }
 
+export function moveElement<T>(array: T[], fromIndex: number, toIndex: number): T[] {
+  if (
+    fromIndex === toIndex
+    || fromIndex < 0
+    || fromIndex >= array.length
+    || toIndex < 0
+    || toIndex >= array.length
+  ) {
+    return [...array];
+  }
+
+  const nextArray = [...array];
+  const [element] = nextArray.splice(fromIndex, 1);
+
+  nextArray.splice(toIndex, 0, element);
+
+  return nextArray;
+}
+
 export function moveElementUp<T>(array: T[], index: number): T[] {
   if (index <= 0) {
     return [...array];

@@ -1,4 +1,5 @@
 import { ArrowDownTrayIcon, ArrowLeftEndOnRectangleIcon, ArrowRightStartOnRectangleIcon, BoltIcon, ChevronDownIcon, ChevronUpIcon, CubeIcon, FlagIcon, FolderOpenIcon, ForwardIcon, NoSymbolIcon, PlusIcon, QuestionMarkCircleIcon, SparklesIcon } from "@heroicons/react/24/outline";
+import { DragHandleDots2Icon } from "@radix-ui/react-icons";
 import { PencilIcon, TrashIcon } from "@heroicons/react/24/solid";
 import Tooltip from "./tooltip";
 import { colors } from "@/lib/constants";
@@ -36,6 +37,10 @@ export function MoveDown() {
       <ChevronDownIcon className="w-4" />
     </Tooltip>
   );
+}
+
+export function DragHandle() {
+  return <DragHandleDots2Icon className="size-4" />;
 }
 
 export function Edit() {
