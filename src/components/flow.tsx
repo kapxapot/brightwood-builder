@@ -1,7 +1,7 @@
 import "reactflow/dist/base.css";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { flushSync } from "react-dom";
-import ReactFlow, { MiniMap, Controls, Background, useNodesState, useEdgesState, addEdge, BackgroundVariant, type Connection, type ReactFlowInstance, type Node, type Edge, type OnSelectionChangeParams, useKeyPress, useReactFlow, useUpdateNodeInternals } from "reactflow";
+import ReactFlow, { MiniMap, Controls, Background, useNodesState, useEdgesState, addEdge, BackgroundVariant, type Connection, type ReactFlowInstance, type Node, type Edge, type OnSelectionChangeParams, type CoordinateExtent, useKeyPress, useReactFlow, useStoreApi, useUpdateNodeInternals } from "reactflow";
 import Toolbar from "./toolbar";
 import ActionNode from "./nodes/action-node";
 import SkipNode from "./nodes/skip-node";
@@ -45,6 +45,64 @@ const canvasBusyReleaseDelayMs = 150;
 const nodeInternalsRefreshDelayMs = 350;
 const noStoryDataError = "Failed to get the current story data.";
 const failedToReadFileError = "Failed to read the file.";
+const canvasTranslateExtentPadding = 900;
+const canvasTranslateExtentMinimumWidth = 2400;
+const canvasTranslateExtentMinimumHeight = 1800;
+const canvasTranslateExtentFallbackNodeWidth = 420;
+const canvasTranslateExtentFallbackNodeHeight = 260;
+
+function getCanvasTranslateExtent(nodes: Node[]): CoordinateExtent {
+  if (nodes.length === 0) {
+    return [
+      [
+        -canvasTranslateExtentMinimumWidth / 2 - canvasTranslateExtentPadding,
+        -canvasTranslateExtentMinimumHeight / 2 - canvasTranslateExtentPadding
+      ],
+      [
+        canvasTranslateExtentMinimumWidth / 2 + canvasTranslateExtentPadding,
+        canvasTranslateExtentMinimumHeight / 2 + canvasTranslateExtentPadding
+      ]
+    ];
+  }
+
+  const bounds = nodes.reduce(
+    (currentBounds, node) => {
+      const width = Math.max(node.width ?? 0, canvasTranslateExtentFallbackNodeWidth);
+      const height = Math.max(node.height ?? 0, canvasTranslateExtentFallbackNodeHeight);
+      const x = node.positionAbsolute?.x ?? node.position.x;
+      const y = node.positionAbsolute?.y ?? node.position.y;
+
+      return {
+        minX: Math.min(currentBounds.minX, x),
+        minY: Math.min(currentBounds.minY, y),
+        maxX: Math.max(currentBounds.maxX, x + width),
+        maxY: Math.max(currentBounds.maxY, y + height)
+      };
+    },
+    {
+      minX: Infinity,
+      minY: Infinity,
+      maxX: -Infinity,
+      maxY: -Infinity
+    }
+  );
+
+  const width = Math.max(bounds.maxX - bounds.minX, canvasTranslateExtentMinimumWidth);
+  const height = Math.max(bounds.maxY - bounds.minY, canvasTranslateExtentMinimumHeight);
+  const centerX = (bounds.minX + bounds.maxX) / 2;
+  const centerY = (bounds.minY + bounds.maxY) / 2;
+
+  return [
+    [
+      centerX - width / 2 - canvasTranslateExtentPadding,
+      centerY - height / 2 - canvasTranslateExtentPadding
+    ],
+    [
+      centerX + width / 2 + canvasTranslateExtentPadding,
+      centerY + height / 2 + canvasTranslateExtentPadding
+    ]
+  ];
+}
 
 export default function Flow() {
   const { t } = useTranslation();
@@ -57,6 +115,7 @@ export default function Flow() {
   const [, setIsStoryFetching] = useState(false); // todo: show loading state
 
   const { setViewport } = useReactFlow();
+  const reactFlowStore = useStoreApi();
   const updateNodeInternals = useUpdateNodeInternals();
 
   useEffect(() => {
@@ -206,6 +265,7 @@ export default function Flow() {
   );
 
   const currentStoryData = getCurrentStoryData();
+  const canvasTranslateExtent = getCanvasTranslateExtent(reactFlowInstance?.getNodes() ?? nodes);
 
   const getCurrentStoryGraph = useCallback(
     (): StoryGraph | null => reactFlowInstance
@@ -616,6 +676,10 @@ export default function Flow() {
   }
 
   function setStoryGraph(storyGraph: StoryGraph) {
+    reactFlowStore.getState().setTranslateExtent(
+      getCanvasTranslateExtent(storyGraph.nodes)
+    );
+
     setNodes(storyGraph.nodes);
     setEdges(normalizeEdgeIds(storyGraph.edges));
     setViewport(storyGraph.viewport ?? defaultViewport);
@@ -806,6 +870,7 @@ export default function Flow() {
             zoomOnScroll={!isCanvasBusy}
             zoomOnPinch={!isCanvasBusy}
             zoomOnDoubleClick={!isCanvasBusy}
+            translateExtent={canvasTranslateExtent}
           >
             <Controls />
 
