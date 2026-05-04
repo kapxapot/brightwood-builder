@@ -44,10 +44,28 @@ export function updateConnection(node: NodeType, sourceHandle: string, target: s
       break;
 
     case "storyInfo":
-      node.data = {
-        ...data,
-        startId: toId
-      };
+      if (fromIndex === 0) {
+        node.data = {
+          ...data,
+          startId: toId
+        };
+
+        break;
+      }
+
+      if (data.data?.redirectTriggers) {
+        node.data = {
+          ...data,
+          data: {
+            ...data.data,
+            redirectTriggers: data.data.redirectTriggers.map((redirectTrigger, index) => {
+              return index === fromIndex - 1
+                ? { ...redirectTrigger, targetId: toId }
+                : redirectTrigger;
+            })
+          }
+        };
+      }
 
       break;
   }
@@ -98,21 +116,48 @@ export function removeConnections(node: NodeType, edges: Edge[]): NodeType {
 
       break;
 
-    case "skip":
-      // eslint-disable-next-line no-case-declarations
+    case "skip": {
       const newSkipData = { ...data };
       delete newSkipData.nextId;
 
       node.data = newSkipData;
       break;
+    }
 
-    case "storyInfo":
-      // eslint-disable-next-line no-case-declarations
+    case "storyInfo": {
+      const removedHandleIndexes = new Set(
+        sourceHandles.map(sourceHandle => Number(sourceHandle ?? 0))
+      );
       const newStoryInfoData = { ...data };
-      delete newStoryInfoData.startId;
+
+      if (removedHandleIndexes.has(0)) {
+        delete newStoryInfoData.startId;
+      }
+
+      if (data.data) {
+        const nextStoryData = { ...data.data };
+
+        if (data.data.redirectTriggers) {
+          nextStoryData.redirectTriggers = data.data.redirectTriggers.map((redirectTrigger, index) => {
+            if (!removedHandleIndexes.has(index + 1)) {
+              return redirectTrigger;
+            }
+
+            const nextRedirectTrigger = { ...redirectTrigger };
+            delete nextRedirectTrigger.targetId;
+
+            return nextRedirectTrigger;
+          });
+        }
+
+        newStoryInfoData.data = Object.keys(nextStoryData).length
+          ? nextStoryData
+          : undefined;
+      }
 
       node.data = newStoryInfoData;
       break;
+    }
   }
 
   return node;

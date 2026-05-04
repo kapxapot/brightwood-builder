@@ -12,6 +12,12 @@ const effectStatementSchema = z.string();
 
 export const conditionNameSchema = z.string();
 const conditionStatementSchema = z.string();
+const redirectTriggerConditionSchema = z
+  .string()
+  .trim()
+  .min(1, {
+    message: "Redirect trigger condition must not be empty.",
+  });
 
 export const effectSchema = z.object({
   name: effectNameSchema,
@@ -24,8 +30,8 @@ export const effectSchema = z.object({
 });
 
 export const redirectTriggerSchema = z.object({
-  condition: conditionStatementSchema,
-  targetId: z.number(),
+  condition: redirectTriggerConditionSchema,
+  targetId: z.number().optional(),
 });
 
 export const stateInitSchema = z.record(valueNameSchema, initValueSchema);

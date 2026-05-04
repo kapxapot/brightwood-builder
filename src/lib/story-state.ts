@@ -8,6 +8,7 @@ import type {
   EffectDefinition,
   EffectInvocation,
   InitValue,
+  LinkedRedirectTrigger,
   RedirectTrigger,
   StateKey,
   StateReference,
@@ -125,6 +126,12 @@ const builtInFunctions = {
   round: ([value]: RuntimeValue[]) => Math.round(asNumber(value)),
 } satisfies Record<string, (args: RuntimeValue[]) => StateValue>;
 
+function isLinkedRedirectTrigger(
+  redirectTrigger: LinkedRedirectTrigger | RedirectTrigger
+): redirectTrigger is LinkedRedirectTrigger {
+  return redirectTrigger.targetId !== undefined;
+}
+
 export function createInitialState(storyData?: StoryData): StoryState {
   const initState = { ...(storyData?.init ?? {}) };
   const state: StoryState = {};
@@ -237,11 +244,21 @@ export function evaluateCondition(
 export function findMatchingRedirectTrigger(
   storyData: StoryData | undefined,
   state: StoryState
-): RedirectTrigger | undefined {
+): LinkedRedirectTrigger | undefined {
   const redirectTriggers = storyData?.redirectTriggers ?? [];
 
   for (const redirectTrigger of redirectTriggers) {
-    if (evaluateCondition(redirectTrigger.condition, state, storyData)) {
+    if (!isLinkedRedirectTrigger(redirectTrigger)) {
+      continue;
+    }
+
+    const condition = redirectTrigger.condition?.trim();
+
+    if (!condition) {
+      continue;
+    }
+
+    if (evaluateCondition(condition, state, storyData)) {
       return redirectTrigger;
     }
   }
@@ -366,7 +383,6 @@ export function validateStoryStateModel(
   const issues: StoryStateValidationIssue[] = [];
   const effectDefinitions = storyData?.effects ?? [];
   const effectNameCounts = new Map<string, number>();
-  const nodeIds = new Set(nodes.map(node => node.id));
 
   const addIssue = (nodeId: NodeId, message: string) => {
     issues.push({ nodeId, message });
@@ -537,13 +553,6 @@ export function validateStoryStateModel(
       storyInfoNodeId,
       `Redirect trigger [${index + 1}]`
     );
-
-    if (!nodeIds.has(redirectTrigger.targetId)) {
-      addIssue(
-        storyInfoNodeId,
-        `Redirect trigger [${index + 1}] references unknown target node ${redirectTrigger.targetId}.`
-      );
-    }
   });
 
   for (const node of nodes) {
@@ -852,21 +861,25 @@ function evaluateExpression(
 
     case "unary": {
       const value = evaluateExpression(expression.operand, context);
+      const { operator } = expression;
 
-      switch (expression.operator) {
+      switch (operator) {
         case "!":
           return !asBoolean(value);
 
         case "-":
           return -asNumber(value);
       }
+
+      throw new Error(`Unsupported unary operator "${operator}".`);
     }
 
     case "binary": {
       const left = evaluateExpression(expression.left, context);
       const right = evaluateExpression(expression.right, context);
+      const { operator } = expression;
 
-      switch (expression.operator) {
+      switch (operator) {
         case "||":
           return asBoolean(left) || asBoolean(right);
 
@@ -908,6 +921,8 @@ function evaluateExpression(
         case "%":
           return asNumber(left) % asNumber(right);
       }
+
+      throw new Error(`Unsupported binary operator "${operator}".`);
     }
 
     case "call": {
@@ -1338,7 +1353,7 @@ class ExpressionParser {
   private parseEquality(): ExpressionNode {
     let expression = this.parseComparison();
 
-    while (true) {
+    for (;;) {
       if (this.matchOperator("==")) {
         expression = {
           type: "binary",
@@ -1366,7 +1381,7 @@ class ExpressionParser {
   private parseComparison(): ExpressionNode {
     let expression = this.parseAdditive();
 
-    while (true) {
+    for (;;) {
       if (this.matchOperator(">")) {
         expression = {
           type: "binary",
@@ -1414,7 +1429,7 @@ class ExpressionParser {
   private parseAdditive(): ExpressionNode {
     let expression = this.parseMultiplicative();
 
-    while (true) {
+    for (;;) {
       if (this.matchOperator("+")) {
         expression = {
           type: "binary",
@@ -1442,7 +1457,7 @@ class ExpressionParser {
   private parseMultiplicative(): ExpressionNode {
     let expression = this.parseUnary();
 
-    while (true) {
+    for (;;) {
       if (this.matchOperator("*")) {
         expression = {
           type: "binary",

@@ -376,6 +376,53 @@ export default function Flow() {
           scheduleNodeInternalsRefresh(nodeId);
 
           break;
+
+        case "redirectTriggersReordered":
+          setEdges(curEdges => {
+            const storyInfoData = data as StoryInfoGraphNode;
+
+            if (!storyInfoData) {
+              return curEdges;
+            }
+
+            let newEdges = curEdges.filter(
+              edge => edge.source !== nodeId
+            );
+
+            if (storyInfoData.startId) {
+              newEdges = addEdge(
+                {
+                  id: buildEdgeId(nodeId, storyInfoData.startId, 0),
+                  source: nodeId,
+                  sourceHandle: normalizeSourceHandle(0),
+                  target: String(storyInfoData.startId)
+                },
+                newEdges
+              );
+            }
+
+            storyInfoData.data?.redirectTriggers?.forEach((redirectTrigger, index) => {
+              if (redirectTrigger.targetId === undefined) {
+                return;
+              }
+
+              newEdges = addEdge(
+                {
+                  id: buildEdgeId(nodeId, redirectTrigger.targetId, index + 1),
+                  source: nodeId,
+                  sourceHandle: normalizeSourceHandle(index + 1),
+                  target: String(redirectTrigger.targetId)
+                },
+                newEdges
+              );
+            });
+
+            return newEdges;
+          });
+
+          scheduleNodeInternalsRefresh(nodeId);
+
+          break;
         }
     },
     [scheduleNodeInternalsRefresh, setEdges]

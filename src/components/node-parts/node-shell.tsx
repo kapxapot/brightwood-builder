@@ -272,6 +272,7 @@ export default function NodeShell({
 
       nodeShellMenuControllers.delete(rootElement);
     };
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [hasActions]);
 
   useEffect(() => {
@@ -292,6 +293,7 @@ export default function NodeShell({
       window.removeEventListener("pointermove", handlePointerUpdate);
       window.removeEventListener("scroll", handlePointerUpdate, true);
     };
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [hasActions, menuVisible]);
 
   return (

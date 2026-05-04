@@ -20,6 +20,10 @@ export type EffectDefinition = {
 
 export type RedirectTrigger = {
   condition: ConditionExpression;
+  targetId?: number;
+};
+
+export type LinkedRedirectTrigger = RedirectTrigger & {
   targetId: number;
 };
 

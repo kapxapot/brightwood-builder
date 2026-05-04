@@ -6,6 +6,10 @@ export function isAllowedConnection(conn: Connection, nodes: NodeType[]): boolea
   const sourceNode = nodes.find(n => n.id === conn.source);
   const targetNode = nodes.find(n => n.id === conn.target);
 
+  if (targetNode?.data.type === "storyInfo") {
+    return false;
+  }
+
   if (sourceNode && sourceNode === targetNode && sourceNode.data.type === "skip") {
     return false;
   }

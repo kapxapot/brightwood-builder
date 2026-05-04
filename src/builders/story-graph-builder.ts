@@ -49,77 +49,26 @@ export const normalizeEdgeIds = <TEdge extends BuilderEdge>(edges: TEdge[]) => e
   sourceHandle: normalizeSourceHandle(edge.sourceHandle)
 }));
 
-const positionOrDefault = (dataPosition?: number[]): BuilderPosition => ({
-  x: dataPosition ? dataPosition[0] : 0,
-  y: dataPosition ? dataPosition[1] : 0
-});
-
-export function buildStoryGraph(
-  story: Story,
-  changeHandler: OnChangeHandler
-): StoryGraph {
-  const nodes: BuilderNode[] = [];
+export function buildStoryGraphEdges(nodes: BuilderNode[]): BuilderEdge[] {
   const edges: BuilderEdge[] = [];
-
-  const storyKey = uuid();
-
-  // add story info node
-  const storyInfoData: StoryInfoGraphNode = {
-    id: storyInfoNodeId,
-    key: nodeKey(storyKey, storyInfoNodeId),
-    uuid: story.id,
-    type: "storyInfo",
-    title: story.title,
-    description: story.description,
-    cover: story.cover,
-    language: story.language,
-    startId: story.startId,
-    prefix: story.prefix,
-    data: story.data,
-    storyKey,
-    position: story.position,
-    onChange: changeHandler,
-  };
-
-  const storyInfoNode = {
-    id: String(storyInfoData.id),
-    type: storyInfoData.type,
-    dragHandle: '.custom-drag-handle',
-    position: positionOrDefault(story.position),
-    data: storyInfoData
-  };
-
-  nodes.push(storyInfoNode);
-
-  if (storyInfoNode.data.startId) {
-    addEdge(edges, storyInfoNode.id, storyInfoNode.data.startId);
-  }
-
-  for (const data of story.nodes) {
-    const nodeData: StoryNode = {
-      ...data,
-      key: nodeKey(storyKey, data.id),
-      onChange: changeHandler
-    };
-
-    delete nodeData.position;
-
-    const node = {
-      id: String(nodeData.id),
-      type: nodeData.type,
-      dragHandle: '.custom-drag-handle',
-      position: positionOrDefault(data.position),
-      data: nodeData
-    };
-
-    nodes.push(node);
-  }
 
   for (const node of nodes) {
     const data = node.data;
 
-    // get node's edges and add them to the `edges` array
     switch (data.type) {
+      case "storyInfo":
+        if (data.startId) {
+          addEdge(edges, node.id, data.startId);
+        }
+
+        data.data?.redirectTriggers?.forEach((redirectTrigger, index) => {
+          if (redirectTrigger.targetId !== undefined) {
+            addEdge(edges, node.id, redirectTrigger.targetId, index + 1);
+          }
+        });
+
+        break;
+
       case "action":
         for (let index = 0; index < data.actions.length; index++) {
           const action = data.actions[index];
@@ -151,7 +100,72 @@ export function buildStoryGraph(
     }
   }
 
+  return edges;
+}
+
+const positionOrDefault = (dataPosition?: number[]): BuilderPosition => ({
+  x: dataPosition ? dataPosition[0] : 0,
+  y: dataPosition ? dataPosition[1] : 0
+});
+
+export function buildStoryGraph(
+  story: Story,
+  changeHandler: OnChangeHandler
+): StoryGraph {
+  const nodes: BuilderNode[] = [];
+
+  const storyKey = uuid();
+
+  // add story info node
+  const storyInfoData: StoryInfoGraphNode = {
+    id: storyInfoNodeId,
+    key: nodeKey(storyKey, storyInfoNodeId),
+    uuid: story.id,
+    type: "storyInfo",
+    title: story.title,
+    description: story.description,
+    cover: story.cover,
+    language: story.language,
+    startId: story.startId,
+    prefix: story.prefix,
+    data: story.data,
+    storyKey,
+    position: story.position,
+    onChange: changeHandler,
+  };
+
+  const storyInfoNode = {
+    id: String(storyInfoData.id),
+    type: storyInfoData.type,
+    dragHandle: '.custom-drag-handle',
+    position: positionOrDefault(story.position),
+    data: storyInfoData
+  };
+
+  nodes.push(storyInfoNode);
+
+  for (const data of story.nodes) {
+    const nodeData: StoryNode = {
+      ...data,
+      key: nodeKey(storyKey, data.id),
+      onChange: changeHandler
+    };
+
+    delete nodeData.position;
+
+    const node = {
+      id: String(nodeData.id),
+      type: nodeData.type,
+      dragHandle: '.custom-drag-handle',
+      position: positionOrDefault(data.position),
+      data: nodeData
+    };
+
+    nodes.push(node);
+  }
+
   const viewport = story.viewport ?? defaultViewport;
+  const edges = buildStoryGraphEdges(nodes);
 
   return { nodes, edges, viewport };
 }

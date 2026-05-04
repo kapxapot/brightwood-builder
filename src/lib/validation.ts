@@ -70,7 +70,9 @@ function buildContext(nodes: GraphNode[]): Context {
         }
 
         node.data?.redirectTriggers?.forEach(redirectTrigger => {
-          references.add(redirectTrigger.targetId);
+          if (redirectTrigger.targetId !== undefined) {
+            references.add(redirectTrigger.targetId);
+          }
         });
 
         break;
@@ -140,6 +142,8 @@ function storyInfoNodeIfMessages(
   node: StoryInfoGraphNode,
   context: Context
 ): IfMessage[] {
+  const redirectTriggers = node.data?.redirectTriggers ?? [];
+
   return [
     [
       !node.title || node.title.trim().length === 0,
@@ -159,7 +163,28 @@ function storyInfoNodeIfMessages(
     [
       !node.language,
       t("Select the story language.")
-    ]
+    ],
+    ...redirectTriggers.map((redirectTrigger, index) => [
+      (redirectTrigger.condition ?? "").trim().length === 0,
+      t(
+        "Add a condition for redirect trigger \"[{{index}}]\".",
+        { index: index + 1 }
+      )
+    ] as IfMessage),
+    ...redirectTriggers.map((redirectTrigger, index) => [
+      redirectTrigger.targetId === undefined,
+      t(
+        "Add a destination node for redirect trigger \"[{{index}}]\".",
+        { index: index + 1 }
+      )
+    ] as IfMessage),
+    ...redirectTriggers.map(redirectTrigger => [
+      redirectTrigger.targetId !== undefined && !context.nodeIds.has(redirectTrigger.targetId),
+      t(
+        "The referenced node {{nodeId}} does not exist.",
+        { nodeId: redirectTrigger.targetId }
+      )
+    ] as IfMessage)
   ];
 }
 

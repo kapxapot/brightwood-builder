@@ -21,7 +21,7 @@ export type Link = {
 };
 
 export type NodeEvent = {
-  type: "handleRemoved" | "actionsReordered" | "linksReordered",
+  type: "handleRemoved" | "actionsReordered" | "linksReordered" | "redirectTriggersReordered",
   handle?: string
 };
 

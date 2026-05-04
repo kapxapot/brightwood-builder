@@ -1,4 +1,4 @@
-import { StoryGraph, buildNewStoryNode, buildStoryGraph, defaultViewport, nodeKey } from "@/builders/story-graph-builder";
+import { StoryGraph, buildNewStoryNode, buildStoryGraph, buildStoryGraphEdges, defaultViewport, nodeKey } from "@/builders/story-graph-builder";
 import { Story } from "@/entities/story";
 import { OnChangeHandler } from "@/entities/story-node";
 import { fetchCurrentStoryId, fetchStory } from "@/lib/storage";
@@ -97,23 +97,25 @@ function applyContext(
   changeHandler: OnChangeHandler
 ): StoryGraph {
   const storyKey = uuid();
+  const nodes = storyGraph.nodes.map(node => {
+    const data = node.data;
+
+    if (data.type === "storyInfo") {
+      data.storyKey = storyKey;
+    }
+
+    node.data = {
+      ...data,
+      key: nodeKey(storyKey, data.id),
+      onChange: changeHandler
+    };
+
+    return node;
+  });
 
   return {
     ...storyGraph,
-    nodes: storyGraph.nodes.map(node => {
-      const data = node.data;
-
-      if (data.type === "storyInfo") {
-        data.storyKey = storyKey;
-      }
-
-      node.data = {
-        ...data,
-        key: nodeKey(storyKey, data.id),
-        onChange: changeHandler
-      };
-
-      return node;
-    })
+    nodes,
+    edges: buildStoryGraphEdges(nodes)
   };
 }
