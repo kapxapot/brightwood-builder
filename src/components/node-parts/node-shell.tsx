@@ -5,6 +5,7 @@ import { NodeToolbar, Position, useViewport } from "reactflow";
 type Props = {
   selected: boolean;
   color?: string;
+  selectedClassName?: string;
   spaceY?: "normal" | "none";
   actions?: ReactNode;
   readonly?: boolean;
@@ -74,6 +75,7 @@ function isPointerInsideRect(rect: DOMRect) {
 export default function NodeShell({
   selected,
   color,
+  selectedClassName,
   spaceY = "normal",
   actions,
   readonly = false,
@@ -301,8 +303,10 @@ export default function NodeShell({
       ref={rootRef}
       data-node-shell="true"
       className={cn(
-        "group/node relative w-[250px] cursor-default rounded-md border p-2 shadow-md",
-        selected ? "border-stone-600" : "border-stone-400",
+        "group/node relative w-[250px] cursor-default rounded-md border p-2 transition-[border-color,box-shadow] duration-150",
+        selected
+          ? cn("z-10", selectedClassName)
+          : "border-stone-400 shadow-md",
         color
       )}
       onMouseEnter={hasActions ? scheduleShowMenu : undefined}

@@ -152,6 +152,7 @@ const RedirectNode = memo(function RedirectNode({ data, selected, dragging }: Pr
       key={data.key}
       selected={selected}
       color={colors.redirect.tw}
+      selectedClassName={colors.redirect.selectedTw}
       actions={shellActions}
       readonly={editingOrDragging}
     >

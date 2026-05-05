@@ -146,6 +146,7 @@ const ActionNode = memo(function ActionNode({ data, selected, dragging }: Props)
       key={data.key}
       selected={selected}
       color={colors.action.tw}
+      selectedClassName={colors.action.selectedTw}
       actions={shellActions}
       readonly={editingOrDragging}
     >

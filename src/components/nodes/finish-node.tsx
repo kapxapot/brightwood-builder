@@ -65,6 +65,7 @@ const FinishNode = memo(function FinishNode({ data, selected, dragging }: Props)
       key={data.key}
       selected={selected}
       color={colors.finish.tw}
+      selectedClassName={colors.finish.selectedTw}
       actions={shellActions}
       readonly={editingOrDragging}
     >

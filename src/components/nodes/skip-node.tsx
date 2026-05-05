@@ -67,6 +67,7 @@ const SkipNode = memo(function SkipNode({ data, selected, dragging }: Props) {
       key={data.key}
       selected={selected}
       color={colors.skip.tw}
+      selectedClassName={colors.skip.selectedTw}
       actions={shellActions}
       readonly={editingOrDragging}
     >
@@ -94,7 +95,7 @@ const SkipNode = memo(function SkipNode({ data, selected, dragging }: Props) {
         onEditFinished={finishEdit}
       />
 
-      <div className="text-sm bg-gradient-to-r from-transparent to-cyan-300 p-1 relative -mr-2">
+      <div className="group text-sm bg-gradient-to-r from-transparent to-cyan-300 p-1 relative -mr-2">
         <div className="flex items-center gap-2 break-words pr-1">
           <div className="min-w-0 flex-1 flex items-center gap-1">
             <div className="shrink-0">
@@ -105,7 +106,7 @@ const SkipNode = memo(function SkipNode({ data, selected, dragging }: Props) {
             </span>
           </div>
           <div className="shrink-0">
-            <NodeRef id={data.nextId} />
+            <NodeRef id={data.nextId} className="group-hover:opacity-100" />
           </div>
         </div>
         <HandleOut connected={!!data.nextId} />

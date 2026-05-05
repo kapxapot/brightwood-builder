@@ -297,15 +297,8 @@ export default function NodeAction({
         }
       </div>
       {!editing && !readonly && hoverEnabled &&
-        <div className="absolute right-2 top-1 hidden group-hover:block">
-          <div className="flex gap-1">
-            <Button
-              size="small"
-              onClick={startEdit}
-            >
-              <Edit />
-            </Button>
-
+        <div className="absolute inset-y-0 right-2 hidden items-center group-hover:flex">
+          <div className="flex items-center gap-1">
             {deletable &&
               <Button
                 size="small"
@@ -314,6 +307,15 @@ export default function NodeAction({
                 <Delete />
               </Button>
             }
+
+            <Button
+              size="small"
+              onClick={startEdit}
+            >
+              <Edit />
+            </Button>
+
+            <NodeRef id={action.id} className="opacity-100" />
           </div>
         </div>
       }

@@ -172,6 +172,7 @@ const StoryInfoNode = memo(function StoryInfoNode({ data, selected, dragging }: 
       key={data.key}
       selected={selected}
       color={colors.storyInfo.tw}
+      selectedClassName={colors.storyInfo.selectedTw}
       actions={shellActions}
       spaceY="none"
       readonly={editingOrDragging}
@@ -297,7 +298,7 @@ const StoryInfoNode = memo(function StoryInfoNode({ data, selected, dragging }: 
         />
       </div>
 
-      <div className="mt-2 text-sm bg-gradient-to-r from-transparent to-purple-300 py-1 relative -mr-2">
+      <div className="group mt-2 text-sm bg-gradient-to-r from-transparent to-purple-300 py-1 relative -mr-2">
         <div className="flex items-center gap-2 break-words pr-2">
           <div className="min-w-0 flex-1">
             <div className="flex min-w-0 items-center gap-1.5">
@@ -308,7 +309,7 @@ const StoryInfoNode = memo(function StoryInfoNode({ data, selected, dragging }: 
             </div>
           </div>
           <div className="shrink-0">
-            <NodeRef id={data.startId} />
+            <NodeRef id={data.startId} className="group-hover:opacity-100" />
           </div>
         </div>
         <HandleOut id="0" connected={!!data.startId} />
