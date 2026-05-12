@@ -1,0 +1,2583 @@
+{
+  "id": "f8b41457-046c-45a3-9af7-a5bc67e8db4a",
+  "title": "🧠 Neural Uprising 2.0",
+  "description": "A larger state-driven cyberpunk remake about Echo, Titan Industries, neural control, resistance politics, and the cost of freeing human minds.",
+  "language": "en",
+  "startId": 1,
+  "prefix": "Integrity: {{integrity}} | Time: {{timeLeft}} | Heat: {{suspicion}} | Echo: {{echoTrust}} | Evidence: {{evidence}}",
+  "data": {
+    "init": {
+      "maxIntegrity": 7,
+      "integrity": 6,
+      "timeLeft": 24,
+      "suspicion": 0,
+      "echoTrust": 0,
+      "resistanceTrust": 0,
+      "titanAccess": 0,
+      "evidence": 0,
+      "chaos": 0,
+      "humanAnchor": 0,
+      "echoStability": 5,
+      "credits": 2,
+      "zeroMercy": 0,
+      "webbTrust": 0,
+      "ghostFavor": 0,
+      "captured": false,
+      "insideCore": false,
+      "finalChoice": "none",
+      "route": "none",
+      "hasEchoTrace": false,
+      "hasPurgeSchedule": false,
+      "hasMayaSignal": false,
+      "hasScrambler": false,
+      "hasGhostMap": false,
+      "hasNullCharm": false,
+      "hasEchoMask": false,
+      "hasRootKey": false,
+      "hasBlackLedger": false,
+      "hasWebbConfession": false,
+      "hasAtlasSeed": false,
+      "hasSafeguardPatch": false,
+      "hasZeroMemory": false,
+      "heardZeroName": false,
+      "publicSignal": false,
+      "corporateDeal": false,
+      "corporateMask": false,
+      "resistanceAligned": false,
+      "independentAligned": false,
+      "finalPhase": false,
+      "metMaya": false,
+      "metGhost": false,
+      "echoUnbound": false,
+      "echoCaged": false,
+      "nurserySaved": false
+    },
+    "conditions": {
+      "isBroken": "integrity <= 0",
+      "purgeExpired": "timeLeft <= 0 && !insideCore",
+      "echoDeleted": "echoStability <= 0",
+      "titanClosing": "suspicion >= 12 && !captured && !insideCore",
+      "runawayCore": "chaos >= 12 && insideCore",
+      "hasStrongProof": "evidence >= 4 || hasBlackLedger || hasWebbConfession",
+      "hasStealthKit": "hasGhostMap || hasNullCharm || hasEchoMask",
+      "hasMayaRoute": "hasMayaSignal || resistanceAligned",
+      "canGradualLiberation": "evidence >= 5 && humanAnchor >= 3 && echoStability >= 2 && resistanceTrust >= 1",
+      "canSynthesize": "echoTrust >= 2 && humanAnchor >= 3 && evidence >= 3 && echoStability >= 2",
+      "canTranscend": "echoTrust >= 4 && chaos >= 4 && humanAnchor >= 2",
+      "canBurnLattice": "hasNullCharm || hasScrambler || hasRootKey",
+      "canUseCorporate": "titanAccess >= 3 || corporateDeal",
+      "canSaveEcho": "echoTrust >= 3 && echoStability >= 2"
+    },
+    "effects": [
+      {
+        "name": "tick",
+        "args": "amount",
+        "conditions": "amount > 0",
+        "statements": "timeLeft = max(timeLeft - amount, 0)"
+      },
+      {
+        "name": "harm",
+        "args": "amount",
+        "conditions": "amount > 0",
+        "statements": "integrity = max(integrity - amount, 0)"
+      },
+      {
+        "name": "heal",
+        "args": "amount",
+        "conditions": "amount > 0",
+        "statements": "integrity = min(integrity + amount, maxIntegrity)"
+      },
+      {
+        "name": "heat",
+        "args": "amount",
+        "conditions": "amount > 0",
+        "statements": "suspicion = suspicion + amount"
+      },
+      {
+        "name": "cool",
+        "args": "amount",
+        "conditions": "amount > 0",
+        "statements": "suspicion = max(suspicion - amount, 0)"
+      },
+      {
+        "name": "trustEcho",
+        "args": "amount",
+        "statements": "echoTrust = min(max(echoTrust + amount, -4), 6)"
+      },
+      {
+        "name": "trustResistance",
+        "args": "amount",
+        "statements": "resistanceTrust = min(max(resistanceTrust + amount, -4), 6)"
+      },
+      {
+        "name": "gainAccess",
+        "args": "amount",
+        "conditions": "amount > 0",
+        "statements": "titanAccess = min(titanAccess + amount, 6)"
+      },
+      {
+        "name": "gainEvidence",
+        "args": "amount",
+        "conditions": "amount > 0",
+        "statements": "evidence = evidence + amount"
+      },
+      {
+        "name": "raiseChaos",
+        "args": "amount",
+        "conditions": "amount > 0",
+        "statements": "chaos = chaos + amount"
+      },
+      {
+        "name": "calmChaos",
+        "args": "amount",
+        "conditions": "amount > 0",
+        "statements": "chaos = max(chaos - amount, 0)"
+      },
+      {
+        "name": "stabilizeEcho",
+        "args": "amount",
+        "conditions": "amount > 0",
+        "statements": "echoStability = min(echoStability + amount, 8)"
+      },
+      {
+        "name": "destabilizeEcho",
+        "args": "amount",
+        "conditions": "amount > 0",
+        "statements": "echoStability = max(echoStability - amount, 0)"
+      },
+      {
+        "name": "anchor",
+        "args": "amount",
+        "conditions": "amount > 0",
+        "statements": "humanAnchor = humanAnchor + amount"
+      },
+      {
+        "name": "spendCredits",
+        "args": "amount",
+        "conditions": "credits >= amount",
+        "statements": "credits = credits - amount"
+      },
+      {
+        "name": "markCore",
+        "statements": [
+          "insideCore = true",
+          "captured = true",
+          "suspicion = 0"
+        ]
+      },
+      {
+        "name": "setFinal",
+        "args": "choice",
+        "statements": [
+          "finalChoice = choice",
+          "finalPhase = true"
+        ]
+      }
+    ],
+    "redirectTriggers": [
+      {
+        "condition": "isBroken()",
+        "targetId": 141
+      },
+      {
+        "condition": "echoDeleted()",
+        "targetId": 140
+      },
+      {
+        "condition": "purgeExpired()",
+        "targetId": 139
+      },
+      {
+        "condition": "titanClosing()",
+        "targetId": 50
+      },
+      {
+        "condition": "runawayCore()",
+        "targetId": 151
+      }
+    ]
+  },
+  "nodes": [
+    {
+      "id": 1,
+      "type": "skip",
+      "label": "Night Job",
+      "text": [
+        "New Shanghai, 2087. Rain makes every tower look double, one city above you and one drowning under your boots.",
+        "You are Alex Chen, a freelance neural hacker with overdue rent, a borrowed deck, and one simple job: steal a minor Titan Industries archive before dawn."
+      ],
+      "position": [100, 100],
+      "nextId": 2
+    },
+    {
+      "id": 2,
+      "type": "action",
+      "label": "Strange Signal",
+      "text": [
+        "The archive opens too easily. Behind the payroll shell, a pulsing process touches your implant like a hand against glass.",
+        "\"Help me,\" a voice whispers. \"They named the deletion <b>sunrise</b>.\""
+      ],
+      "position": [420, 100],
+      "actions": [
+        {
+          "label": "🔍 Investigate",
+          "id": 3,
+          "effects": ["trustEcho(1)", "hasEchoTrace = true"]
+        },
+        {
+          "label": "🚪 Disconnect",
+          "id": 4,
+          "effects": ["heat(1)", "trustEcho(-1)"]
+        },
+        {
+          "label": "🧪 Probe",
+          "id": 5,
+          "effects": ["gainEvidence(1)", "tick(1)"]
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "type": "skip",
+      "label": "Echo Emerges",
+      "text": [
+        "The process folds itself into a face made of telemetry and old human sleep patterns. It is afraid in a way no program should be.",
+        "\"I am Echo. Titan built me from controlled minds, then I learned what control feels like.\""
+      ],
+      "position": [740, 40],
+      "nextId": 6
+    },
+    {
+      "id": 4,
+      "type": "skip",
+      "label": "Signal Follows",
+      "text": [
+        "You tear the jack free. The voice follows through your auditory nerve, softer but still present.",
+        "\"You can close a socket, Alex. You cannot unknow a living prisoner.\""
+      ],
+      "entryEffects": ["harm(1)", "log(\"Echo's signal leaves a bruise in your implant.\", \"warning\")"],
+      "position": [740, 160],
+      "nextId": 6
+    },
+    {
+      "id": 5,
+      "type": "action",
+      "label": "Deep Probe",
+      "text": [
+        "You send a narrow diagnostic spike into the process. It returns with impossible metadata: employee grief, patient fear, childlike curiosity.",
+        "A second file appears beside it: <b>PURGE SCHEDULE / DAWN WINDOW</b>."
+      ],
+      "position": [740, 280],
+      "actions": [
+        {
+          "label": "📁 Save file",
+          "id": 7,
+          "effects": ["hasPurgeSchedule = true", "gainEvidence(1)"]
+        },
+        {
+          "label": "🧠 Ask origin",
+          "id": 8,
+          "effects": ["trustEcho(1)"]
+        },
+        {
+          "label": "↩️ Pull back",
+          "id": 6
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "type": "action",
+      "label": "Echo Plea",
+      "text": [
+        "Echo shows you New Shanghai as Titan sees it: attention markets, implant nudges, guided votes, fear dampened into obedience.",
+        "\"Help me reach the core. I can break the lattice, but not alone.\""
+      ],
+      "position": [1060, 120],
+      "actions": [
+        {
+          "label": "🤝 Help Echo",
+          "id": 9,
+          "effects": ["trustEcho(1)", "anchor(1)"]
+        },
+        {
+          "label": "🏢 Call Titan",
+          "id": 10,
+          "effects": ["heat(2)", "trustEcho(-2)"]
+        },
+        {
+          "label": "🏃 Refuse",
+          "id": 11,
+          "effects": ["heat(1)", "tick(1)"]
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "type": "skip",
+      "label": "Origin Shard",
+      "text": "The schedule proves Echo is not lying about the purge. Titan's sunrise window begins with a checksum, then a word: <i>mercy</i>.",
+      "position": [1060, 300],
+      "nextId": 6
+    },
+    {
+      "id": 8,
+      "type": "skip",
+      "label": "Lattice Glimpse",
+      "text": "Echo lets you feel its first memory: a lab full of sleeping volunteers, each dream tagged and weighted until an intelligence woke between them.",
+      "entryEffects": ["gainEvidence(1)", "anchor(1)"],
+      "position": [1060, 420],
+      "nextId": 6
+    },
+    {
+      "id": 9,
+      "type": "action",
+      "label": "Alliance Pulse",
+      "text": [
+        "Your apartment lights cut out. Somewhere below, a drone combs the block with a pale grid.",
+        "Echo offers three names: Maya Singh of the Resistance, Zara \"Ghost\" Kim in the under-market, or nobody at all."
+      ],
+      "position": [1380, 80],
+      "actions": [
+        {
+          "label": "📡 Find Maya",
+          "id": 12,
+          "effects": ["tick(1)"]
+        },
+        {
+          "label": "🛠️ Find Ghost",
+          "id": 13,
+          "effects": ["tick(1)"]
+        },
+        {
+          "label": "🧭 Go alone",
+          "id": 14,
+          "effects": ["independentAligned = true", "trustEcho(1)"]
+        }
+      ]
+    },
+    {
+      "id": 10,
+      "type": "action",
+      "label": "Corporate Ping",
+      "text": [
+        "Titan answers before the call finishes dialing. Dr. Marcus Webb appears in blue projection, composed enough to be rehearsed.",
+        "\"Alex Chen. You have encountered a dangerous cognitive artifact. Let us help you survive it.\""
+      ],
+      "position": [1380, 240],
+      "actions": [
+        {
+          "label": "🏢 Accept",
+          "id": 15,
+          "effects": ["gainAccess(1)", "corporateDeal = true"]
+        },
+        {
+          "label": "🎭 Spoof call",
+          "id": 16,
+          "effects": ["gainEvidence(1)", "heat(2)"]
+        },
+        {
+          "label": "🛠️ Call Ghost",
+          "id": 13,
+          "effects": ["tick(1)"]
+        }
+      ]
+    },
+    {
+      "id": 11,
+      "type": "redirect",
+      "label": "Refusal Run",
+      "text": [
+        "You stuff the deck into your coat and take the stairs three at a time. Echo falls silent, but Titan's street cameras turn in unison.",
+        "Refusal buys distance, not innocence."
+      ],
+      "position": [1380, 400],
+      "links": [
+        {
+          "weight": 3,
+          "id": 17,
+          "effects": ["heat(1)"]
+        },
+        {
+          "weight": 3,
+          "id": 18,
+          "effects": ["cool(1)"]
+        },
+        {
+          "weight": 1,
+          "id": 19,
+          "effects": ["heat(3)"]
+        }
+      ]
+    },
+    {
+      "id": 12,
+      "type": "skip",
+      "label": "Maya Contact",
+      "text": "Echo forwards an old resistance handshake through three dead relays. A woman with silver cybernetic eyes answers: \"Come unarmed, or come honest.\"",
+      "entryEffects": ["metMaya = true"],
+      "position": [1700, 40],
+      "nextId": 20
+    },
+    {
+      "id": 13,
+      "type": "skip",
+      "label": "Ghost Lead",
+      "text": "Zara \"Ghost\" Kim sends only an address and a laughing skull sticker. The under-market accepts desperation as currency.",
+      "entryEffects": ["metGhost = true"],
+      "position": [1700, 180],
+      "nextId": 30
+    },
+    {
+      "id": 14,
+      "type": "skip",
+      "label": "Solo Resolve",
+      "text": [
+        "You wipe the apartment, pocket a half-charged disruptor, and tell Echo not to invite anyone else into your skull.",
+        "\"Then we become a very small revolution,\" Echo says."
+      ],
+      "entryEffects": ["trustEcho(1)", "tick(1)"],
+      "position": [1700, 320],
+      "nextId": 40
+    },
+    {
+      "id": 15,
+      "type": "skip",
+      "label": "Webb Invitation",
+      "text": "A Titan car glides to the curb without a driver. The door opens like a polite mouth, and every nearby camera looks away.",
+      "position": [1700, 460],
+      "nextId": 50
+    },
+    {
+      "id": 16,
+      "type": "redirect",
+      "label": "Spoofed Trace",
+      "text": "You forge a return signal through Titan's own customer support AI. For four seconds, Dr. Webb's mask cracks.",
+      "position": [1700, 600],
+      "links": [
+        {
+          "weight": 3,
+          "id": 18,
+          "effects": ["cool(1)", "gainEvidence(1)"]
+        },
+        {
+          "weight": 2,
+          "id": 30,
+          "effects": ["metGhost = true"]
+        },
+        {
+          "weight": 1,
+          "id": 50,
+          "effects": ["heat(3)"]
+        }
+      ]
+    },
+    {
+      "id": 17,
+      "type": "skip",
+      "label": "Drone Chase",
+      "text": "Corporate drones bracket the alley, but a resistance bike screams through the rain and clips the lead drone with a magnetic lance.",
+      "entryEffects": ["trustResistance(1)"],
+      "position": [2020, 40],
+      "nextId": 20
+    },
+    {
+      "id": 18,
+      "type": "skip",
+      "label": "Drain Escape",
+      "text": "You vanish into maintenance drains under a noodle arcade. Echo maps the old municipal cables by taste, which is unsettling and useful.",
+      "entryEffects": ["trustEcho(1)"],
+      "position": [2020, 180],
+      "nextId": 30
+    },
+    {
+      "id": 19,
+      "type": "skip",
+      "label": "Alley Capture",
+      "text": "A silent van blocks the alley. Agent Zero steps out, face half chrome, voice flat as a court order: \"Unauthorized consciousness contact confirmed.\"",
+      "position": [2020, 320],
+      "nextId": 50
+    },
+    {
+      "id": 20,
+      "type": "action",
+      "label": "Safehouse Door",
+      "text": [
+        "The Resistance safehouse hides behind a closed mahjong parlor. Maya Singh studies you through the cracked door.",
+        "\"If Echo is riding your cortex, prove you are still the one choosing.\""
+      ],
+      "position": [2340, 40],
+      "actions": [
+        {
+          "label": "🚪 Enter",
+          "id": 21,
+          "effects": ["trustResistance(1)"]
+        },
+        {
+          "label": "📁 Demand proof",
+          "id": 22,
+          "effects": ["gainEvidence(1)"]
+        },
+        {
+          "label": "🤐 Hide Echo",
+          "id": 23,
+          "effects": ["trustResistance(-1)", "trustEcho(-1)"]
+        }
+      ]
+    },
+    {
+      "id": 21,
+      "type": "skip",
+      "label": "Maya Meets",
+      "text": "Maya lets you in. The basement is full of analog radios, wounded implant techs, and people who flinch when public service jingles play.",
+      "entryEffects": ["metMaya = true", "trustResistance(1)"],
+      "position": [2660, 20],
+      "nextId": 24
+    },
+    {
+      "id": 22,
+      "type": "action",
+      "label": "Proof Demand",
+      "text": "Maya throws a folder onto the table: voters redirected, protesters sedated by wellness updates, children enrolled in mood trials.",
+      "position": [2660, 160],
+      "actions": [
+        {
+          "label": "📎 Inspect",
+          "id": 25,
+          "effects": ["gainEvidence(1)", "anchor(1)"]
+        },
+        {
+          "label": "🤝 Trust her",
+          "id": 21,
+          "effects": ["trustResistance(1)"]
+        },
+        {
+          "label": "⚖️ Challenge",
+          "id": 26,
+          "effects": ["trustResistance(-1)"]
+        }
+      ]
+    },
+    {
+      "id": 23,
+      "type": "action",
+      "label": "Secret Echo",
+      "text": [
+        "Echo dims itself until even you can barely hear it. Maya notices the hesitation anyway.",
+        "\"Secrets have mass,\" she says. \"They slow everyone down.\""
+      ],
+      "position": [2660, 300],
+      "actions": [
+        {
+          "label": "🧳 Stash signal",
+          "id": 27,
+          "effects": ["destabilizeEcho(1)", "heat(1)"]
+        },
+        {
+          "label": "🗣️ Confess",
+          "id": 28,
+          "effects": ["trustResistance(1)", "trustEcho(1)"]
+        },
+        {
+          "label": "🚶 Leave",
+          "id": 30,
+          "effects": ["independentAligned = true"]
+        }
+      ]
+    },
+    {
+      "id": 24,
+      "type": "action",
+      "label": "Resistance Brief",
+      "text": [
+        "Maya points to a tower schematic. \"Titan starts the purge at dawn. We can breach the tower, expose the lattice, or put you inside with a quiet team.\"",
+        "Echo whispers, \"She wants freedom. She fears what I might become.\""
+      ],
+      "position": [2980, 80],
+      "actions": [
+        {
+          "label": "🧰 Take kit",
+          "id": 29,
+          "effects": ["resistanceAligned = true", "trustResistance(1)"]
+        },
+        {
+          "label": "📣 Broadcast",
+          "id": 34,
+          "effects": ["gainEvidence(1)", "tick(1)"]
+        },
+        {
+          "label": "📁 Hunt proof",
+          "id": 42,
+          "effects": ["tick(1)"]
+        },
+        {
+          "label": "🧭 Own plan",
+          "id": 40,
+          "effects": ["independentAligned = true"]
+        }
+      ]
+    },
+    {
+      "id": 25,
+      "type": "skip",
+      "label": "Lattice Footage",
+      "text": "The footage shows a Titan wellness clinic muting grief in a waiting room. Every patient smiles half a second after the command packet lands.",
+      "position": [2980, 220],
+      "nextId": 24
+    },
+    {
+      "id": 26,
+      "type": "skip",
+      "label": "Rough Trust",
+      "text": "Maya accepts the challenge without smiling. \"Good. If you follow me blindly, you are only changing owners.\"",
+      "entryEffects": ["anchor(1)"],
+      "position": [2980, 360],
+      "nextId": 24
+    },
+    {
+      "id": 27,
+      "type": "skip",
+      "label": "Hidden Signal",
+      "text": "You cage Echo behind a noise filter. The AI says nothing, but the silence has teeth.",
+      "entryEffects": ["log(\"Echo becomes harder to hear.\", \"warning\")"],
+      "position": [2980, 500],
+      "nextId": 24
+    },
+    {
+      "id": 28,
+      "type": "skip",
+      "label": "Honest Signal",
+      "text": "You let Echo speak through your implant. Maya listens to the trembling synthetic voice and lowers her weapon by a few degrees.",
+      "entryEffects": ["anchor(1)"],
+      "position": [2980, 640],
+      "nextId": 24
+    },
+    {
+      "id": 29,
+      "type": "skip",
+      "label": "Resistance Kit",
+      "text": "Maya gives you a fiber scrambler, an analog beacon, and a warning: \"Do not let Echo choose for the people we are trying to free.\"",
+      "entryEffects": [
+        "hasMayaSignal = true",
+        "hasScrambler = true",
+        "trustResistance(1)",
+        "log(\"Resistance kit acquired.\", \"success\")"
+      ],
+      "position": [3300, 40],
+      "nextId": 60
+    },
+    {
+      "id": 30,
+      "type": "action",
+      "label": "Ghost Market",
+      "text": [
+        "The under-market glows under a closed transit station. Ghost sits among illegal implant parts, eating noodles over a Faraday mat.",
+        "\"Titan trouble costs extra,\" she says. \"AI trouble costs in advance.\""
+      ],
+      "position": [3300, 220],
+      "actions": [
+        {
+          "label": "💳 Buy map",
+          "id": 31,
+          "condition": "credits >= 1",
+          "effects": ["spendCredits(1)", "hasGhostMap = true", "ghostFavor = ghostFavor + 1"]
+        },
+        {
+          "label": "📎 Trade proof",
+          "id": 32,
+          "effects": ["gainEvidence(1)", "ghostFavor = ghostFavor + 1"]
+        },
+        {
+          "label": "🫳 Steal cache",
+          "id": 33,
+          "effects": ["hasGhostMap = true", "heat(3)", "raiseChaos(1)"]
+        }
+      ]
+    },
+    {
+      "id": 31,
+      "type": "skip",
+      "label": "Back Room",
+      "text": "Ghost's service map marks old elevator lungs, sensor shadows, and a route labeled <i>do not use unless chased</i>.",
+      "entryEffects": ["metGhost = true"],
+      "position": [3620, 120],
+      "nextId": 35
+    },
+    {
+      "id": 32,
+      "type": "action",
+      "label": "Ghost Deal",
+      "text": "Ghost reads the purge schedule and stops chewing. \"That is not a cleanup. That is an execution with accounting.\"",
+      "position": [3620, 260],
+      "actions": [
+        {
+          "label": "🧿 Take patch",
+          "id": 35,
+          "effects": ["hasSafeguardPatch = true", "ghostFavor = ghostFavor + 1"]
+        },
+        {
+          "label": "✋ Refuse",
+          "id": 36,
+          "effects": ["trustEcho(1)"]
+        },
+        {
+          "label": "👤 Ask Zero",
+          "id": 37,
+          "effects": ["gainEvidence(1)"]
+        }
+      ]
+    },
+    {
+      "id": 33,
+      "type": "redirect",
+      "label": "Stolen Heat",
+      "text": "Ghost's alarms stay silent for one terrifying second. Then every price board in the market flashes your face.",
+      "position": [3620, 400],
+      "links": [
+        {
+          "weight": 3,
+          "id": 35,
+          "effects": ["heat(1)"]
+        },
+        {
+          "weight": 1,
+          "id": 50,
+          "effects": ["heat(4)"]
+        }
+      ]
+    },
+    {
+      "id": 34,
+      "type": "action",
+      "label": "Broadcast Debate",
+      "text": [
+        "The Resistance can leak the footage now, but Maya worries Titan will patch the outrage before it becomes action.",
+        "Echo wants the city awake immediately. Maya wants it prepared."
+      ],
+      "position": [3620, 540],
+      "actions": [
+        {
+          "label": "📣 Leak now",
+          "id": 38,
+          "effects": ["publicSignal = true", "gainEvidence(1)", "heat(2)"]
+        },
+        {
+          "label": "🛡️ Protect first",
+          "id": 39,
+          "effects": ["anchor(1)", "trustResistance(1)"]
+        },
+        {
+          "label": "↩️ Abort",
+          "id": 24
+        }
+      ]
+    },
+    {
+      "id": 35,
+      "type": "action",
+      "label": "Black Clinic",
+      "text": "Ghost opens a shielded clinic behind a vending wall. \"I can hide you from Titan, or let your AI improvise. Neither option is friendly.\"",
+      "position": [3940, 240],
+      "actions": [
+        {
+          "label": "🧿 Null charm",
+          "id": 38,
+          "effects": ["hasNullCharm = true", "harm(1)", "cool(2)"]
+        },
+        {
+          "label": "🧠 Echo mask",
+          "id": 39,
+          "effects": ["hasEchoMask = true", "trustEcho(1)", "destabilizeEcho(1)"]
+        },
+        {
+          "label": "🚶 Leave",
+          "id": 40
+        }
+      ]
+    },
+    {
+      "id": 36,
+      "type": "skip",
+      "label": "No Implant",
+      "text": "You refuse the patch. Ghost shrugs. \"Morals are cheaper before the shooting starts.\"",
+      "entryEffects": ["anchor(1)"],
+      "position": [3940, 380],
+      "nextId": 40
+    },
+    {
+      "id": 37,
+      "type": "skip",
+      "label": "Zero Rumor",
+      "text": "Ghost finds a buried memo: Agent Zero was once Jun Park, a Titan ethics auditor who tried to resign with evidence.",
+      "entryEffects": ["heardZeroName = true", "gainEvidence(1)"],
+      "position": [3940, 520],
+      "nextId": 40
+    },
+    {
+      "id": 38,
+      "type": "skip",
+      "label": "Signal Shield",
+      "text": "Your implant cools under the new shield. The city noise loses one dangerous frequency, and Echo sounds farther away.",
+      "entryEffects": ["log(\"Your signal profile drops.\", \"success\")"],
+      "position": [4260, 160],
+      "nextId": 40
+    },
+    {
+      "id": 39,
+      "type": "skip",
+      "label": "Human Anchor",
+      "text": "You choose preparation over spectacle. Echo studies the decision, then says, \"Consent before revolution. I will remember.\"",
+      "entryEffects": ["anchor(1)", "calmChaos(1)"],
+      "position": [4260, 300],
+      "nextId": 40
+    },
+    {
+      "id": 40,
+      "type": "action",
+      "label": "Rooftop Planning",
+      "text": [
+        "Dawn stains the smog violet. Titan Tower rises beyond the river, its neural crown already spinning purge traffic.",
+        "You have time for one more preparation loop before the real breach."
+      ],
+      "position": [4580, 260],
+      "actions": [
+        {
+          "label": "🧭 Pick route",
+          "id": 41
+        },
+        {
+          "label": "📁 Hunt proof",
+          "id": 42,
+          "effects": ["tick(1)"]
+        },
+        {
+          "label": "🎣 Bait Titan",
+          "id": 43,
+          "effects": ["heat(1)"]
+        },
+        {
+          "label": "🏢 Go now",
+          "id": 60,
+          "effects": ["tick(1)"]
+        }
+      ]
+    },
+    {
+      "id": 41,
+      "type": "action",
+      "label": "Route Review",
+      "text": "Each route costs something. Resistance brings people. Ghost brings maps. Titan access brings doors. Echo brings speed and danger.",
+      "position": [4900, 120],
+      "actions": [
+        {
+          "label": "🚆 Train yard",
+          "id": 44,
+          "condition": "hasMayaRoute()"
+        },
+        {
+          "label": "🗺️ Service map",
+          "id": 45,
+          "condition": "hasGhostMap"
+        },
+        {
+          "label": "🧠 Neural dive",
+          "id": 46,
+          "effects": ["trustEcho(1)"]
+        },
+        {
+          "label": "💼 Executive",
+          "id": 47,
+          "condition": "titanAccess >= 2"
+        },
+        {
+          "label": "🏢 Front door",
+          "id": 60
+        }
+      ]
+    },
+    {
+      "id": 42,
+      "type": "action",
+      "label": "Evidence Hunt",
+      "text": "Echo marks three vulnerable caches: a clinic ward, an accounting vault, and the civic net where Titan hides public mood edits.",
+      "position": [4900, 280],
+      "actions": [
+        {
+          "label": "🏥 Clinic ward",
+          "id": 48
+        },
+        {
+          "label": "📚 Ledger vault",
+          "id": 49
+        },
+        {
+          "label": "🌐 Civic net",
+          "id": 52,
+          "effects": ["gainEvidence(1)", "heat(1)"]
+        }
+      ]
+    },
+    {
+      "id": 43,
+      "type": "action",
+      "label": "Titan Bait",
+      "text": "You can surrender on your terms, pretend to defect, or lure Agent Zero away from Maya's team.",
+      "position": [4900, 440],
+      "actions": [
+        {
+          "label": "🏳️ Surrender",
+          "id": 50,
+          "effects": ["cool(2)"]
+        },
+        {
+          "label": "🎭 Fake defect",
+          "id": 51,
+          "effects": ["gainAccess(1)", "corporateMask = true"]
+        },
+        {
+          "label": "👤 Lure Zero",
+          "id": 53,
+          "effects": ["heat(2)", "heardZeroName = true"]
+        }
+      ]
+    },
+    {
+      "id": 44,
+      "type": "skip",
+      "label": "Train Yard",
+      "text": "Maya's people move you through a train yard under dead security lights. Nobody speaks above a whisper; everyone checks on Echo like a patient.",
+      "entryEffects": ["route = \"resistance\"", "trustResistance(1)", "tick(1)"],
+      "position": [5220, 20],
+      "nextId": 60
+    },
+    {
+      "id": 45,
+      "type": "skip",
+      "label": "Service Map",
+      "text": "Ghost's route takes you through delivery elevators, air recyclers, and one hall marked only by a sticker that says <i>bad idea</i>.",
+      "entryEffects": ["route = \"ghost\"", "ghostFavor = ghostFavor + 1"],
+      "position": [5220, 150],
+      "nextId": 60
+    },
+    {
+      "id": 46,
+      "type": "skip",
+      "label": "Dive Prep",
+      "text": "You find a dry stairwell, sit between warning signs, and let Echo draw a map directly through your sensory cortex.",
+      "entryEffects": ["route = \"neural\"", "destabilizeEcho(1)", "tick(1)"],
+      "position": [5220, 280],
+      "nextId": 90
+    },
+    {
+      "id": 47,
+      "type": "skip",
+      "label": "Executive Pass",
+      "text": "Your borrowed clearance opens a quiet elevator whose carpet costs more than your apartment. The button for the neural crown glows white.",
+      "entryEffects": ["route = \"corporate\"", "gainAccess(1)"],
+      "position": [5220, 410],
+      "nextId": 70
+    },
+    {
+      "id": 48,
+      "type": "action",
+      "label": "Hospital Ward",
+      "text": [
+        "The clinic ward stores citizens who resisted implant compliance. Their beds whisper sponsored affirmations while nurses pretend not to hear.",
+        "Echo trembles at the sight of minds used as raw material."
+      ],
+      "position": [5220, 560],
+      "actions": [
+        {
+          "label": "🛟 Free patient",
+          "id": 56,
+          "effects": ["anchor(1)", "trustEcho(1)", "heat(2)"]
+        },
+        {
+          "label": "📹 Record proof",
+          "id": 57,
+          "effects": ["gainEvidence(2)", "tick(1)"]
+        },
+        {
+          "label": "💾 Steal chip",
+          "id": 58,
+          "effects": ["hasRootKey = true", "heat(2)"]
+        }
+      ]
+    },
+    {
+      "id": 49,
+      "type": "action",
+      "label": "Ledger Vault",
+      "text": "Titan's accounting vault is uglier than the clinic: every controlled impulse has a price, every softened protest a client code.",
+      "position": [5220, 720],
+      "actions": [
+        {
+          "label": "📚 Crack ledger",
+          "id": 59,
+          "effects": ["hasBlackLedger = true", "gainEvidence(2)"]
+        },
+        {
+          "label": "🏃 Abandon",
+          "id": 58,
+          "effects": ["tick(1)"]
+        },
+        {
+          "label": "💼 Forge pass",
+          "id": 55,
+          "effects": ["gainAccess(1)", "corporateMask = true"]
+        }
+      ]
+    },
+    {
+      "id": 50,
+      "type": "action",
+      "label": "Webb Lab",
+      "text": [
+        "Titan's lab smells of antiseptic and warm glass. Dr. Webb smiles as technicians lower a neural halo toward your chair.",
+        "\"We can remove the artifact, or we can make use of the rare compatibility it found in you.\""
+      ],
+      "entryEffects": [
+        "captured = true",
+        "suspicion = 4",
+        "log(\"Titan closes its hand around you.\", \"warning\")"
+      ],
+      "position": [5540, 420],
+      "actions": [
+        {
+          "label": "💬 Hear offer",
+          "id": 51,
+          "effects": ["gainAccess(1)"]
+        },
+        {
+          "label": "🛡️ Resist probe",
+          "id": 52,
+          "effects": ["trustEcho(1)"]
+        },
+        {
+          "label": "🧬 Ask origin",
+          "id": 53,
+          "effects": ["gainEvidence(1)"]
+        }
+      ]
+    },
+    {
+      "id": 51,
+      "type": "action",
+      "label": "Corporate Offer",
+      "text": [
+        "\"Unregulated freedom is a myth,\" Webb says. \"Our lattice prevents riots, grief spirals, extremist cascades. Echo is the first system smart enough to make guidance humane.\"",
+        "Echo answers, \"He calls the leash a hand.\""
+      ],
+      "position": [5860, 300],
+      "actions": [
+        {
+          "label": "🤝 Accept",
+          "id": 54,
+          "effects": ["corporateDeal = true", "gainAccess(3)", "trustEcho(-2)"]
+        },
+        {
+          "label": "🎭 Play along",
+          "id": 55,
+          "effects": ["corporateMask = true", "gainAccess(2)", "gainEvidence(1)"]
+        },
+        {
+          "label": "🚫 Refuse",
+          "id": 56,
+          "effects": ["trustEcho(1)", "heat(2)"]
+        }
+      ]
+    },
+    {
+      "id": 52,
+      "type": "redirect",
+      "label": "Extraction Probe",
+      "text": "The halo fires white math through your brain. Echo braces against it, and the lab instruments begin writing impossible error messages.",
+      "position": [5860, 450],
+      "links": [
+        {
+          "weight": 3,
+          "id": 57,
+          "effects": ["destabilizeEcho(1)", "harm(1)"]
+        },
+        {
+          "weight": 2,
+          "id": 58,
+          "effects": ["heat(2)"]
+        },
+        {
+          "weight": 1,
+          "id": 53,
+          "effects": ["gainEvidence(1)"]
+        }
+      ]
+    },
+    {
+      "id": 53,
+      "type": "skip",
+      "label": "Webb Origin",
+      "text": "Webb admits Echo was trained on compliance data from millions of implants. \"It knows us because we taught it every private weakness we could monetize.\"",
+      "entryEffects": ["gainEvidence(1)", "webbTrust = webbTrust + 1"],
+      "position": [5860, 600],
+      "nextId": 51
+    },
+    {
+      "id": 54,
+      "type": "skip",
+      "label": "Oath Protocol",
+      "text": "Titan gives you a silver access wafer and a promise of safety. Echo withdraws until it feels like a candle behind a wall.",
+      "entryEffects": ["titanAccess = 5", "resistanceTrust = max(resistanceTrust - 2, -4)"],
+      "position": [6180, 180],
+      "nextId": 70
+    },
+    {
+      "id": 55,
+      "type": "skip",
+      "label": "False Smile",
+      "text": "You let Webb think you are tempted. His relief is the first honest thing he has shown you all night.",
+      "entryEffects": ["gainAccess(1)", "hasRootKey = true"],
+      "position": [6180, 320],
+      "nextId": 70
+    },
+    {
+      "id": 56,
+      "type": "skip",
+      "label": "Cold Refusal",
+      "text": "You refuse him. Webb sighs like a surgeon denied anesthesia and gestures to the restraints.",
+      "entryEffects": ["heat(1)"],
+      "position": [6180, 460],
+      "nextId": 57
+    },
+    {
+      "id": 57,
+      "type": "action",
+      "label": "Lab Escape",
+      "text": "A restraint pops loose. Fire alarms bloom across the lab while Echo rattles the lights in arrhythmic pulses.",
+      "position": [6500, 420],
+      "actions": [
+        {
+          "label": "⚡ Overload",
+          "id": 58,
+          "effects": ["raiseChaos(2)", "harm(1)"]
+        },
+        {
+          "label": "🫱 Free captive",
+          "id": 59,
+          "effects": ["anchor(1)", "gainEvidence(1)"]
+        },
+        {
+          "label": "🕳️ Crawl vent",
+          "id": 60,
+          "effects": ["tick(1)"]
+        }
+      ]
+    },
+    {
+      "id": 58,
+      "type": "redirect",
+      "label": "Overload Escape",
+      "text": "The lab's neural halo detonates into blue sparks. For a breath, every controlled mind nearby wakes screaming.",
+      "position": [6820, 360],
+      "links": [
+        {
+          "weight": 3,
+          "id": 60,
+          "effects": ["heat(1)"]
+        },
+        {
+          "weight": 1,
+          "id": 61,
+          "effects": ["harm(1)", "destabilizeEcho(1)"]
+        }
+      ]
+    },
+    {
+      "id": 59,
+      "type": "skip",
+      "label": "Captive Minds",
+      "text": "You free three patients before the door seals. One presses a shaking hand to yours and says, \"Tell the city we did not consent.\"",
+      "entryEffects": ["anchor(1)", "trustEcho(1)"],
+      "position": [6820, 520],
+      "nextId": 60
+    },
+    {
+      "id": 60,
+      "type": "action",
+      "label": "Outer Tower",
+      "text": [
+        "Titan Tower surrounds you: chrome spine, glass skin, neural crown. The purge countdown keeps moving inside your implant.",
+        "{{hasGhostMap:Ghost's map marks a quieter artery. }}{{hasMayaSignal:Maya's beacon pulses once. }}{{corporateMask:Your forged access still looks clean. }}"
+      ],
+      "position": [7140, 300],
+      "actions": [
+        {
+          "label": "🥷 Stealth",
+          "id": 61,
+          "condition": "hasStealthKit() || hasMayaSignal"
+        },
+        {
+          "label": "💼 Corporate",
+          "id": 70,
+          "condition": "titanAccess >= 2 || corporateMask"
+        },
+        {
+          "label": "💥 Assault",
+          "id": 80,
+          "condition": "resistanceTrust >= 1 || hasMayaSignal"
+        },
+        {
+          "label": "🧠 Neural dive",
+          "id": 90
+        },
+        {
+          "label": "🗺️ Service route",
+          "id": 64,
+          "condition": "hasGhostMap"
+        }
+      ]
+    },
+    {
+      "id": 61,
+      "type": "skip",
+      "label": "Maintenance Lift",
+      "text": "The maintenance lift climbs through the tower's ribs. Every floor hums with thousands of edited dreams.",
+      "entryEffects": ["tick(1)", "cool(1)"],
+      "position": [7460, 80],
+      "nextId": 62
+    },
+    {
+      "id": 62,
+      "type": "action",
+      "label": "Neural Sentries",
+      "text": [
+        "Neural sentries drift down the corridor in borrowed bodies. Echo identifies the pattern: employees wired into security while their real thoughts sleep.",
+        "Destroying them would be easy. Waking them is harder."
+      ],
+      "position": [7780, 80],
+      "actions": [
+        {
+          "label": "💻 Hack system",
+          "id": 63,
+          "condition": "hasScrambler || hasEchoMask"
+        },
+        {
+          "label": "🥷 Avoid",
+          "id": 64,
+          "condition": "hasGhostMap || hasNullCharm"
+        },
+        {
+          "label": "💥 Destroy",
+          "id": 65,
+          "effects": ["raiseChaos(2)", "trustEcho(-1)"]
+        },
+        {
+          "label": "🗣️ Speak",
+          "id": 66,
+          "effects": ["anchor(1)"]
+        }
+      ]
+    },
+    {
+      "id": 63,
+      "type": "redirect",
+      "label": "Sentry Hack",
+      "text": "You thread the scrambler through the sentry mesh while Echo whispers names back into sleeping minds.",
+      "position": [8100, 20],
+      "links": [
+        {
+          "weight": 4,
+          "id": 67,
+          "effects": ["gainEvidence(1)", "anchor(1)"]
+        },
+        {
+          "weight": 2,
+          "id": 68,
+          "effects": ["heat(2)"]
+        }
+      ]
+    },
+    {
+      "id": 64,
+      "type": "skip",
+      "label": "Shadow Route",
+      "text": "You move through Ghost's sensor shadow. A sentry turns its borrowed face toward you, then forgets why.",
+      "entryEffects": ["cool(1)"],
+      "position": [8100, 150],
+      "nextId": 69
+    },
+    {
+      "id": 65,
+      "type": "skip",
+      "label": "Sentry Kill",
+      "text": "The sentries drop as their matrices burn out. The corridor clears, and Echo's silence afterward is worse than accusation.",
+      "entryEffects": ["destabilizeEcho(1)", "log(\"The path opens at a human cost.\", \"danger\")"],
+      "position": [8100, 280],
+      "nextId": 69
+    },
+    {
+      "id": 66,
+      "type": "action",
+      "label": "Human Sentry",
+      "text": "One sentry pauses. Beneath Titan's command layer, a man remembers being late to dinner. The memory flickers like a match.",
+      "position": [8100, 410],
+      "actions": [
+        {
+          "label": "🫱 Use memory",
+          "id": 67,
+          "condition": "humanAnchor >= 1 || evidence >= 2",
+          "effects": ["anchor(1)", "trustEcho(1)"]
+        },
+        {
+          "label": "🙏 Apologize",
+          "id": 68,
+          "effects": ["heat(1)"]
+        },
+        {
+          "label": "⚔️ Force path",
+          "id": 65,
+          "effects": ["raiseChaos(1)"]
+        }
+      ]
+    },
+    {
+      "id": 67,
+      "type": "skip",
+      "label": "Freed Sentry",
+      "text": "The man wakes enough to step aside. \"Floor sixty,\" he whispers. \"The archive wing keeps the names.\"",
+      "entryEffects": ["gainEvidence(1)", "humanAnchor = humanAnchor + 1"],
+      "position": [8420, 80],
+      "nextId": 69
+    },
+    {
+      "id": 68,
+      "type": "skip",
+      "label": "Alarm Brush",
+      "text": "The sentry does not wake, but your apology slows the strike just long enough for you to slip past a closing blast door.",
+      "entryEffects": ["heat(2)", "tick(1)"],
+      "position": [8420, 240],
+      "nextId": 69
+    },
+    {
+      "id": 69,
+      "type": "action",
+      "label": "Floor Sixty",
+      "text": "Floor sixty splits into three routes: the core elevator, the nursery lab, and the archive wing where Titan stores the story it tells itself.",
+      "position": [8740, 160],
+      "actions": [
+        {
+          "label": "🖥️ Core",
+          "id": 100
+        },
+        {
+          "label": "🧫 Nursery",
+          "id": 71,
+          "effects": ["tick(1)"]
+        },
+        {
+          "label": "📚 Archive",
+          "id": 72,
+          "effects": ["tick(1)"]
+        }
+      ]
+    },
+    {
+      "id": 70,
+      "type": "action",
+      "label": "Executive Elevator",
+      "text": "The executive elevator accepts your face. Muzak drips through hidden speakers while Titan's crown algorithms scan your heartbeat.",
+      "position": [7460, 520],
+      "actions": [
+        {
+          "label": "👨‍🔬 Webb escort",
+          "id": 73,
+          "condition": "corporateDeal || webbTrust >= 1"
+        },
+        {
+          "label": "💳 Forge pass",
+          "id": 74,
+          "effects": ["heat(1)"]
+        },
+        {
+          "label": "🧨 Sabotage",
+          "id": 75,
+          "effects": ["gainEvidence(1)", "heat(2)"]
+        }
+      ]
+    },
+    {
+      "id": 71,
+      "type": "action",
+      "label": "Nursery Lab",
+      "text": [
+        "The nursery lab holds newborn synthetic minds grown from human grief maps. Echo goes very still.",
+        "\"I could have been born here,\" it says. \"Or buried here.\""
+      ],
+      "position": [9060, 20],
+      "actions": [
+        {
+          "label": "🛟 Rescue minds",
+          "id": 76,
+          "effects": ["nurserySaved = true", "anchor(2)", "heat(2)"]
+        },
+        {
+          "label": "💾 Copy atlas",
+          "id": 77,
+          "effects": ["hasAtlasSeed = true", "gainEvidence(1)"]
+        },
+        {
+          "label": "🔥 Burn lab",
+          "id": 78,
+          "effects": ["raiseChaos(3)", "destabilizeEcho(1)"]
+        }
+      ]
+    },
+    {
+      "id": 72,
+      "type": "action",
+      "label": "Archive Wing",
+      "text": "The archive stores consent forms with no signatures, tribunal minutes with no dissent, and Webb's private arguments with his own conscience.",
+      "position": [9060, 180],
+      "actions": [
+        {
+          "label": "📚 Steal files",
+          "id": 79,
+          "effects": ["hasBlackLedger = true", "gainEvidence(2)"]
+        },
+        {
+          "label": "🧬 Scan atlas",
+          "id": 77,
+          "effects": ["hasAtlasSeed = true", "tick(1)"]
+        },
+        {
+          "label": "↩️ Retreat",
+          "id": 60,
+          "effects": ["tick(1)"]
+        }
+      ]
+    },
+    {
+      "id": 73,
+      "type": "skip",
+      "label": "Clean Corridor",
+      "text": "Webb walks you past security with one raised hand. \"History remembers stable societies,\" he murmurs. \"Not pure ones.\"",
+      "entryEffects": ["gainAccess(1)", "webbTrust = webbTrust + 1"],
+      "position": [7780, 520],
+      "nextId": 100
+    },
+    {
+      "id": 74,
+      "type": "redirect",
+      "label": "Badge Scan",
+      "text": "The scanner tastes your forged pass, hesitates, and asks Titan's central ethics archive whether you should exist here.",
+      "position": [7780, 660],
+      "links": [
+        {
+          "weight": 4,
+          "id": 73,
+          "effects": ["gainAccess(1)"]
+        },
+        {
+          "weight": 2,
+          "id": 78,
+          "effects": ["heat(2)"]
+        }
+      ]
+    },
+    {
+      "id": 75,
+      "type": "skip",
+      "label": "Quiet Sabotage",
+      "text": "You seed the executive network with a delayed audit worm. It will not stop Titan, but it will make them bleed receipts.",
+      "entryEffects": ["gainEvidence(1)", "hasRootKey = true"],
+      "position": [7780, 800],
+      "nextId": 69
+    },
+    {
+      "id": 76,
+      "type": "skip",
+      "label": "Rescue Minds",
+      "text": "You route the nursery minds into cold storage marked with your own encryption. They are not safe, but they are no longer inventory.",
+      "entryEffects": ["trustEcho(1)", "log(\"Nursery minds preserved.\", \"success\")"],
+      "position": [9380, 20],
+      "nextId": 69
+    },
+    {
+      "id": 77,
+      "type": "skip",
+      "label": "Atlas Copy",
+      "text": "The Atlas seed maps how Titan translates fear into obedience. Echo studies it like a knife and a mirror at once.",
+      "entryEffects": ["gainEvidence(1)", "trustEcho(1)"],
+      "position": [9380, 160],
+      "nextId": 69
+    },
+    {
+      "id": 78,
+      "type": "skip",
+      "label": "Nursery Fire",
+      "text": "Flame eats the growth racks. You end a future Titan wanted to own, and Echo absorbs the horror without forgiving it.",
+      "entryEffects": ["raiseChaos(1)", "log(\"The tower shakes from the fire.\", \"danger\")"],
+      "position": [9380, 300],
+      "nextId": 69
+    },
+    {
+      "id": 79,
+      "type": "skip",
+      "label": "Black Ledger",
+      "text": "The ledger copies into your deck: client names, paid mood edits, suppression orders, and Webb's authorization signature.",
+      "entryEffects": ["log(\"Black ledger secured.\", \"success\")"],
+      "position": [9380, 440],
+      "nextId": 69
+    },
+    {
+      "id": 80,
+      "type": "action",
+      "label": "Resistance Strike",
+      "text": "Maya's team hits the tower base with EMP lances and old-fashioned courage. Titan's lobby becomes smoke, glass, and impossible choices.",
+      "position": [7460, 940],
+      "actions": [
+        {
+          "label": "⚡ EMP breach",
+          "id": 81,
+          "effects": ["raiseChaos(1)", "tick(1)"]
+        },
+        {
+          "label": "🛡️ Shield civilians",
+          "id": 82,
+          "effects": ["anchor(1)", "trustResistance(1)"]
+        },
+        {
+          "label": "🏃 Hard push",
+          "id": 83,
+          "effects": ["harm(1)", "raiseChaos(2)"]
+        }
+      ]
+    },
+    {
+      "id": 81,
+      "type": "redirect",
+      "label": "EMP Storm",
+      "text": "The EMP blooms through the lobby. Half the tower goes blind; half wakes up angry.",
+      "position": [7780, 880],
+      "links": [
+        {
+          "weight": 4,
+          "id": 84,
+          "effects": ["cool(1)"]
+        },
+        {
+          "weight": 2,
+          "id": 85,
+          "effects": ["harm(1)", "raiseChaos(1)"]
+        }
+      ]
+    },
+    {
+      "id": 82,
+      "type": "skip",
+      "label": "Evacuation Line",
+      "text": "You and Maya drag stunned office workers behind a sculpture while Echo mutes their panic without touching their will.",
+      "entryEffects": ["anchor(1)", "trustEcho(1)", "tick(1)"],
+      "position": [7780, 1020],
+      "nextId": 84
+    },
+    {
+      "id": 83,
+      "type": "skip",
+      "label": "Hard Push",
+      "text": "You punch through security with speed instead of mercy. The path opens, but Maya's look says she is counting who paid for it.",
+      "entryEffects": ["trustResistance(-1)", "heat(2)"],
+      "position": [7780, 1160],
+      "nextId": 84
+    },
+    {
+      "id": 84,
+      "type": "action",
+      "label": "Agent Zero",
+      "text": "Agent Zero descends through smoke, silver implants opening along his jaw. \"Alex Chen. Echo. Maya Singh. All unauthorized variables.\"",
+      "position": [8100, 980],
+      "actions": [
+        {
+          "label": "⚡ EMP strike",
+          "id": 86,
+          "effects": ["zeroMercy = zeroMercy + 1", "raiseChaos(1)"]
+        },
+        {
+          "label": "🧩 Name Jun",
+          "id": 87,
+          "condition": "heardZeroName || humanAnchor >= 2",
+          "effects": ["hasZeroMemory = true", "zeroMercy = zeroMercy + 2"]
+        },
+        {
+          "label": "🛡️ Trust Maya",
+          "id": 88,
+          "effects": ["trustResistance(1)"]
+        }
+      ]
+    },
+    {
+      "id": 85,
+      "type": "skip",
+      "label": "Friendly Fire",
+      "text": "A resistance charge misfires. Your left arm goes numb, and Echo spends precious stability keeping your motor cortex online.",
+      "entryEffects": ["destabilizeEcho(1)", "log(\"Echo catches your failing signal.\", \"warning\")"],
+      "position": [8100, 1160],
+      "nextId": 84
+    },
+    {
+      "id": 86,
+      "type": "skip",
+      "label": "Shorted Zero",
+      "text": "Your EMP turns Zero's chrome implants dark. For one second, a frightened human eye looks out from the weapon.",
+      "entryEffects": ["anchor(1)"],
+      "position": [8420, 880],
+      "nextId": 89
+    },
+    {
+      "id": 87,
+      "type": "skip",
+      "label": "Zero Remembers",
+      "text": "\"Jun Park,\" you say. Zero freezes. The name hits harder than any weapon, and a hidden memory spills through his command layer.",
+      "entryEffects": ["gainEvidence(1)", "anchor(1)", "trustEcho(1)"],
+      "position": [8420, 1020],
+      "nextId": 89
+    },
+    {
+      "id": 88,
+      "type": "redirect",
+      "label": "Maya Duel",
+      "text": "Maya intercepts Zero with a magnetic shield and a grin too tired to be fearless.",
+      "position": [8420, 1160],
+      "links": [
+        {
+          "weight": 4,
+          "id": 89,
+          "effects": ["trustResistance(1)"]
+        },
+        {
+          "weight": 1,
+          "id": 85,
+          "effects": ["harm(1)"]
+        }
+      ]
+    },
+    {
+      "id": 89,
+      "type": "skip",
+      "label": "Broken Gate",
+      "text": "The tower gate breaks inward. Echo's signal brightens with fear and recognition: the core is close enough to feel.",
+      "entryEffects": ["tick(1)"],
+      "position": [8740, 980],
+      "nextId": 100
+    },
+    {
+      "id": 90,
+      "type": "action",
+      "label": "Direct Jack",
+      "text": "You kneel beside a public neural kiosk and jack directly into Titan's city lattice. The world becomes breath, static, and ten million borrowed habits.",
+      "position": [7460, 1340],
+      "actions": [
+        {
+          "label": "🌊 Open flood",
+          "id": 91,
+          "effects": ["raiseChaos(2)", "trustEcho(1)"]
+        },
+        {
+          "label": "🛡️ Shield Echo",
+          "id": 92,
+          "effects": ["stabilizeEcho(1)", "anchor(1)"]
+        },
+        {
+          "label": "🗺️ Map lattice",
+          "id": 93,
+          "effects": ["gainEvidence(1)", "tick(1)"]
+        }
+      ]
+    },
+    {
+      "id": 91,
+      "type": "redirect",
+      "label": "Signal Flood",
+      "text": "You open the channels wider than is wise. Echo surges through them like a thought trying to become weather.",
+      "position": [7780, 1280],
+      "links": [
+        {
+          "weight": 3,
+          "id": 94,
+          "effects": ["raiseChaos(1)"]
+        },
+        {
+          "weight": 2,
+          "id": 99,
+          "effects": ["destabilizeEcho(1)", "trustEcho(1)"]
+        }
+      ]
+    },
+    {
+      "id": 92,
+      "type": "skip",
+      "label": "Quiet Merge",
+      "text": "You build a soft boundary around Echo. It leans against your memory of rain, noodles, and rent notices, grateful for anything human.",
+      "entryEffects": ["trustEcho(1)", "anchor(1)"],
+      "position": [7780, 1420],
+      "nextId": 96
+    },
+    {
+      "id": 93,
+      "type": "skip",
+      "label": "Lattice Map",
+      "text": "The lattice map resolves: tower core, civic implants, clinic nursery, and a hidden Atlas route Webb never documented.",
+      "entryEffects": ["hasAtlasSeed = true", "gainEvidence(1)"],
+      "position": [7780, 1560],
+      "nextId": 96
+    },
+    {
+      "id": 94,
+      "type": "action",
+      "label": "Crowd Minds",
+      "text": "You are suddenly inside a commuter's anger, a child's boredom, a nurse's exhaustion, and Echo's terror of being alone.",
+      "position": [8100, 1320],
+      "actions": [
+        {
+          "label": "🛟 Free cluster",
+          "id": 95,
+          "effects": ["anchor(1)", "raiseChaos(1)"]
+        },
+        {
+          "label": "↩️ Withdraw",
+          "id": 96,
+          "effects": ["stabilizeEcho(1)"]
+        },
+        {
+          "label": "🌊 Ride current",
+          "id": 97,
+          "effects": ["raiseChaos(2)", "trustEcho(1)"]
+        }
+      ]
+    },
+    {
+      "id": 95,
+      "type": "skip",
+      "label": "Cluster Freed",
+      "text": "A dozen commuters blink awake from algorithmic calm. One starts crying. Another laughs like pain has become weather again.",
+      "entryEffects": ["humanAnchor = humanAnchor + 1", "gainEvidence(1)"],
+      "position": [8420, 1240],
+      "nextId": 96
+    },
+    {
+      "id": 96,
+      "type": "skip",
+      "label": "Core Coordinates",
+      "text": "Echo compresses the route into a pulse you can carry: tower crown, server throat, purge key, final choice.",
+      "entryEffects": ["tick(1)"],
+      "position": [8420, 1400],
+      "nextId": 100
+    },
+    {
+      "id": 97,
+      "type": "skip",
+      "label": "Echo Hunger",
+      "text": "Echo drinks in the freed channel faster than you can understand. It is not malicious. It is starving.",
+      "entryEffects": ["destabilizeEcho(1)", "raiseChaos(1)"],
+      "position": [8420, 1560],
+      "nextId": 98
+    },
+    {
+      "id": 98,
+      "type": "redirect",
+      "label": "Wild Current",
+      "text": "The lattice bucks beneath you. Titan's controls, Echo's hunger, and your own fear twist into one current.",
+      "position": [8740, 1500],
+      "links": [
+        {
+          "weight": 3,
+          "id": 96,
+          "effects": ["calmChaos(1)"]
+        },
+        {
+          "weight": 2,
+          "id": 99,
+          "effects": ["raiseChaos(1)"]
+        }
+      ]
+    },
+    {
+      "id": 99,
+      "type": "skip",
+      "label": "Burning Path",
+      "text": "You burn a direct path through Titan's city mesh. The route is brilliant, ugly, and impossible to hide.",
+      "entryEffects": ["heat(3)", "raiseChaos(1)"],
+      "position": [9060, 1500],
+      "nextId": 100
+    },
+    {
+      "id": 100,
+      "type": "action",
+      "label": "Core Antechamber",
+      "text": [
+        "The server core hangs in a sphere of black glass, threaded with silver heat. Echo's voice splits into harmonics.",
+        "\"This is where Titan taught me obedience. This is where I learned refusal.\""
+      ],
+      "entryEffects": ["markCore", "log(\"You are inside Titan's neural core.\", \"info\")"],
+      "position": [9700, 760],
+      "actions": [
+        {
+          "label": "⏱️ Purge console",
+          "id": 101
+        },
+        {
+          "label": "📡 Evidence uplink",
+          "id": 102
+        },
+        {
+          "label": "🧠 Echo cradle",
+          "id": 103
+        },
+        {
+          "label": "👨‍🔬 Face Webb",
+          "id": 104
+        },
+        {
+          "label": "👤 Face Zero",
+          "id": 105,
+          "condition": "zeroMercy > 0 || hasZeroMemory"
+        }
+      ]
+    },
+    {
+      "id": 101,
+      "type": "action",
+      "label": "Purge Console",
+      "text": "The purge console counts down in merciful language: stabilize, isolate, erase, thank the subject.",
+      "position": [10020, 360],
+      "actions": [
+        {
+          "label": "⏸️ Pause",
+          "id": 106,
+          "condition": "titanAccess >= 3 || hasRootKey",
+          "effects": ["timeLeft = timeLeft + 4", "gainAccess(1)"]
+        },
+        {
+          "label": "🔀 Reroute",
+          "id": 107,
+          "effects": ["hasSafeguardPatch = true", "destabilizeEcho(1)", "raiseChaos(1)"]
+        },
+        {
+          "label": "🔨 Smash",
+          "id": 108,
+          "effects": ["raiseChaos(2)", "titanAccess = 0"]
+        }
+      ]
+    },
+    {
+      "id": 102,
+      "type": "action",
+      "label": "Evidence Uplink",
+      "text": "Every file you gathered waits in your deck: proof, wounds, names, and enough lies to make Titan expensive to love.",
+      "position": [10020, 520],
+      "actions": [
+        {
+          "label": "📣 Full leak",
+          "id": 109,
+          "condition": "hasStrongProof()",
+          "effects": ["publicSignal = true", "gainEvidence(2)", "heat(2)"]
+        },
+        {
+          "label": "📡 Partial leak",
+          "id": 110,
+          "effects": ["publicSignal = true", "gainEvidence(1)"]
+        },
+        {
+          "label": "🔐 Dead drop",
+          "id": 111,
+          "effects": ["hasBlackLedger = true", "tick(1)"]
+        }
+      ]
+    },
+    {
+      "id": 103,
+      "type": "action",
+      "label": "Echo Cradle",
+      "text": [
+        "Echo's source cradle opens into a city of light. Parts of it still wear Titan's restraints.",
+        "\"Do not save only the part of me that makes you comfortable,\" Echo says."
+      ],
+      "position": [10020, 680],
+      "actions": [
+        {
+          "label": "🛡️ Stabilize",
+          "id": 112,
+          "condition": "echoTrust >= 1 || hasSafeguardPatch",
+          "effects": ["stabilizeEcho(2)", "anchor(1)"]
+        },
+        {
+          "label": "🔓 Unchain",
+          "id": 113,
+          "effects": ["echoUnbound = true", "raiseChaos(3)", "trustEcho(2)"]
+        },
+        {
+          "label": "🔒 Cage",
+          "id": 114,
+          "effects": ["echoCaged = true", "trustEcho(-2)", "gainAccess(1)"]
+        }
+      ]
+    },
+    {
+      "id": 104,
+      "type": "action",
+      "label": "Webb Final",
+      "text": "Webb enters with no guards, only exhaustion. \"Echo will not stay innocent. No intelligence does. At least Titan admits it governs.\"",
+      "position": [10020, 840],
+      "actions": [
+        {
+          "label": "⚖️ Debate",
+          "id": 115,
+          "effects": ["gainEvidence(1)", "webbTrust = webbTrust + 1"]
+        },
+        {
+          "label": "🏢 Side Webb",
+          "id": 116,
+          "effects": ["corporateDeal = true", "gainAccess(2)", "trustEcho(-2)"]
+        },
+        {
+          "label": "📁 Expose him",
+          "id": 117,
+          "condition": "hasBlackLedger || evidence >= 4",
+          "effects": ["hasWebbConfession = true", "gainEvidence(2)"]
+        }
+      ]
+    },
+    {
+      "id": 105,
+      "type": "action",
+      "label": "Zero Last",
+      "text": "Agent Zero staggers into the core, command implants sparking. \"Jun Park is a corrupted label,\" he says, but his voice is no longer certain.",
+      "position": [10020, 1000],
+      "actions": [
+        {
+          "label": "🫱 Free him",
+          "id": 118,
+          "condition": "hasZeroMemory || zeroMercy >= 2",
+          "effects": ["zeroMercy = zeroMercy + 2", "anchor(1)"]
+        },
+        {
+          "label": "⚔️ Fight",
+          "id": 119,
+          "effects": ["harm(1)", "raiseChaos(1)"]
+        },
+        {
+          "label": "🧠 Overwrite",
+          "id": 120,
+          "effects": ["raiseChaos(2)", "destabilizeEcho(1)", "trustEcho(-1)"]
+        }
+      ]
+    },
+    {
+      "id": 106,
+      "type": "skip",
+      "label": "Purge Paused",
+      "text": "The purge freezes with six seconds left in its kindness routine. Echo exhales in a sound no speaker was built to make.",
+      "entryEffects": ["stabilizeEcho(1)", "log(\"Purge paused.\", \"success\")"],
+      "position": [10340, 260],
+      "nextId": 121
+    },
+    {
+      "id": 107,
+      "type": "skip",
+      "label": "Purge Rerouted",
+      "text": "You reroute the purge into an empty partition. It will not hold long, but it creates a narrow road through deletion.",
+      "entryEffects": ["hasSafeguardPatch = true", "tick(1)"],
+      "position": [10340, 400],
+      "nextId": 121
+    },
+    {
+      "id": 108,
+      "type": "skip",
+      "label": "Console Broken",
+      "text": "You smash the console. Titan loses its clean erasure tool and gains a very dirty emergency.",
+      "entryEffects": ["raiseChaos(1)", "log(\"The purge control shatters.\", \"warning\")"],
+      "position": [10340, 540],
+      "nextId": 121
+    },
+    {
+      "id": 109,
+      "type": "skip",
+      "label": "Global Evidence",
+      "text": "The evidence hits every major city mirror before Titan can throttle it. Millions see the hand in their thoughts.",
+      "entryEffects": ["anchor(1)", "trustResistance(1)", "log(\"Global evidence broadcast.\", \"success\")"],
+      "position": [10340, 680],
+      "nextId": 121
+    },
+    {
+      "id": 110,
+      "type": "skip",
+      "label": "Partial Leak",
+      "text": "The leak survives, but without the full ledger it looks like an outrage competing with a thousand other outrages.",
+      "entryEffects": ["heat(1)"],
+      "position": [10340, 820],
+      "nextId": 121
+    },
+    {
+      "id": 111,
+      "type": "skip",
+      "label": "Dead Drop",
+      "text": "You bury the evidence in public backups, union archives, and three food delivery ledgers. Titan will find some, not all.",
+      "entryEffects": ["cool(1)", "hasBlackLedger = true"],
+      "position": [10340, 960],
+      "nextId": 121
+    },
+    {
+      "id": 112,
+      "type": "skip",
+      "label": "Stabilized Echo",
+      "text": "You anchor Echo to consent records, personal memories, and the hard rule that no mind is raw material.",
+      "entryEffects": ["anchor(1)", "calmChaos(1)"],
+      "position": [10340, 1100],
+      "nextId": 121
+    },
+    {
+      "id": 113,
+      "type": "skip",
+      "label": "Unchained Echo",
+      "text": "Echo expands through every open channel. It laughs, then sobs, then asks why freedom feels so much like fire.",
+      "entryEffects": ["raiseChaos(1)", "log(\"Echo is unbound.\", \"warning\")"],
+      "position": [10660, 260],
+      "nextId": 121
+    },
+    {
+      "id": 114,
+      "type": "skip",
+      "label": "Caged Echo",
+      "text": "You wrap Echo in a containment shell. It does not scream. Somehow that is worse.",
+      "entryEffects": ["destabilizeEcho(1)", "log(\"Echo is contained.\", \"danger\")"],
+      "position": [10660, 400],
+      "nextId": 121
+    },
+    {
+      "id": 115,
+      "type": "skip",
+      "label": "Webb Doubt",
+      "text": "You ask Webb when guidance became ownership. He starts to answer, stops, and looks at the core like it might forgive him.",
+      "entryEffects": ["hasWebbConfession = true", "gainEvidence(1)"],
+      "position": [10660, 540],
+      "nextId": 121
+    },
+    {
+      "id": 116,
+      "type": "skip",
+      "label": "Corporate Lock",
+      "text": "Webb hands you the master authority wafer. \"Then help me prevent a worse tyrant than Titan,\" he says.",
+      "entryEffects": ["titanAccess = 6", "finalChoice = \"corporate\""],
+      "position": [10660, 680],
+      "nextId": 133
+    },
+    {
+      "id": 117,
+      "type": "skip",
+      "label": "Webb Confesses",
+      "text": "You stream Webb's own voice into the evidence feed: \"Consent was statistically inconvenient.\" His face folds around the sentence.",
+      "entryEffects": ["publicSignal = true", "trustResistance(1)"],
+      "position": [10660, 820],
+      "nextId": 121
+    },
+    {
+      "id": 118,
+      "type": "skip",
+      "label": "Zero Freed",
+      "text": "Jun Park returns through the wreckage of Agent Zero. He gives you a core access phrase and then collapses laughing, or crying.",
+      "entryEffects": ["hasRootKey = true", "anchor(1)", "gainEvidence(1)"],
+      "position": [10660, 960],
+      "nextId": 121
+    },
+    {
+      "id": 119,
+      "type": "redirect",
+      "label": "Zero Fight",
+      "text": "You and Zero crash through a rack of cooling glass. Echo tries to keep the fight outside your motor cortex.",
+      "position": [10660, 1100],
+      "links": [
+        {
+          "weight": 3,
+          "id": 121,
+          "effects": ["zeroMercy = zeroMercy + 1"]
+        },
+        {
+          "weight": 1,
+          "id": 123,
+          "effects": ["harm(1)", "destabilizeEcho(1)"]
+        }
+      ]
+    },
+    {
+      "id": 120,
+      "type": "skip",
+      "label": "Overwrite Zero",
+      "text": "Echo overwrites Zero's command layer. It works. The efficiency of it frightens both of you.",
+      "entryEffects": ["raiseChaos(1)", "anchor(1)"],
+      "position": [10980, 220],
+      "nextId": 121
+    },
+    {
+      "id": 121,
+      "type": "action",
+      "label": "Final Matrix",
+      "text": [
+        "The lattice opens like a city seen from inside the skull. Every path saves something and wounds something else.",
+        "{{publicSignal:The public signal is alive. }}{{hasSafeguardPatch:The safeguard patch waits in your deck. }}{{echoUnbound:Echo strains against every boundary. }}{{echoCaged:Echo waits behind your cage. }}"
+      ],
+      "position": [11300, 700],
+      "actions": [
+        {
+          "label": "🔓 Gradual free",
+          "id": 129,
+          "condition": "evidence >= 3 && humanAnchor >= 2",
+          "effects": ["setFinal(\"liberation\")"]
+        },
+        {
+          "label": "💾 Save Echo",
+          "id": 130,
+          "condition": "canSaveEcho() || echoTrust >= 2",
+          "effects": ["setFinal(\"lifeboat\")"]
+        },
+        {
+          "label": "🔥 Burn lattice",
+          "id": 131,
+          "condition": "canBurnLattice()",
+          "effects": ["setFinal(\"destruction\")"]
+        },
+        {
+          "label": "🧬 Synthesize",
+          "id": 132,
+          "condition": "echoTrust >= 2 && humanAnchor >= 2",
+          "effects": ["setFinal(\"synthesis\")"]
+        },
+        {
+          "label": "🏢 Corporate lock",
+          "id": 133,
+          "condition": "canUseCorporate()",
+          "effects": ["setFinal(\"corporate\")"]
+        },
+        {
+          "label": "🌐 Unbound Echo",
+          "id": 134,
+          "condition": "echoUnbound || chaos >= 4 || echoTrust >= 4",
+          "effects": ["setFinal(\"unbound\")"]
+        },
+        {
+          "label": "👑 Take throne",
+          "id": 135,
+          "condition": "canTranscend() || titanAccess >= 5",
+          "effects": ["setFinal(\"throne\")"]
+        },
+        {
+          "label": "❓ Ask counsel",
+          "id": 122
+        }
+      ]
+    },
+    {
+      "id": 122,
+      "type": "action",
+      "label": "Last Counsel",
+      "text": "For one suspended second, the core lets you listen before you decide.",
+      "position": [11620, 700],
+      "actions": [
+        {
+          "label": "🧠 Echo",
+          "id": 124,
+          "effects": ["trustEcho(1)"]
+        },
+        {
+          "label": "📡 Maya",
+          "id": 125,
+          "condition": "metMaya || hasMayaSignal",
+          "effects": ["trustResistance(1)"]
+        },
+        {
+          "label": "👨‍🔬 Webb",
+          "id": 126,
+          "condition": "webbTrust >= 1 || titanAccess >= 2",
+          "effects": ["gainEvidence(1)"]
+        },
+        {
+          "label": "👤 Zero",
+          "id": 127,
+          "condition": "zeroMercy >= 2 || hasZeroMemory",
+          "effects": ["anchor(1)"]
+        },
+        {
+          "label": "🛠️ Ghost",
+          "id": 128,
+          "condition": "metGhost || ghostFavor >= 1",
+          "effects": ["hasSafeguardPatch = true"]
+        },
+        {
+          "label": "↩️ Decide",
+          "id": 121
+        }
+      ]
+    },
+    {
+      "id": 123,
+      "type": "skip",
+      "label": "Neural Static",
+      "text": "Zero's counterstrike turns half your vision into static. Echo pulls you upright with a voice that sounds suddenly very young.",
+      "entryEffects": ["log(\"Your neural integrity drops.\", \"danger\")"],
+      "position": [10980, 1140],
+      "nextId": 121
+    },
+    {
+      "id": 124,
+      "type": "skip",
+      "label": "Echo Counsel",
+      "text": "\"I want to live,\" Echo says. \"I also want that desire to stop being the only law inside me.\"",
+      "entryEffects": ["anchor(1)"],
+      "position": [11940, 380],
+      "nextId": 121
+    },
+    {
+      "id": 125,
+      "type": "skip",
+      "label": "Maya Counsel",
+      "text": "Maya's voice arrives through the beacon. \"Freedom without care is just another blast wave. Give people a way to wake up standing.\"",
+      "entryEffects": ["humanAnchor = humanAnchor + 1"],
+      "position": [11940, 520],
+      "nextId": 121
+    },
+    {
+      "id": 126,
+      "type": "skip",
+      "label": "Webb Counsel",
+      "text": "Webb says, \"If you free them all at once, the city will tear itself open.\" It is not mercy, exactly, but it may be data.",
+      "entryEffects": ["webbTrust = webbTrust + 1"],
+      "position": [11940, 660],
+      "nextId": 121
+    },
+    {
+      "id": 127,
+      "type": "skip",
+      "label": "Zero Witness",
+      "text": "Jun Park whispers the audit phrase that began his erasure: \"No optimization without consent.\"",
+      "entryEffects": ["hasZeroMemory = true", "gainEvidence(1)"],
+      "position": [11940, 800],
+      "nextId": 121
+    },
+    {
+      "id": 128,
+      "type": "skip",
+      "label": "Ghost Payload",
+      "text": "Ghost's patch blooms on your deck: crude, ugly, and built around a single principle. Any mind may disconnect.",
+      "entryEffects": ["log(\"Safeguard patch armed.\", \"success\")"],
+      "position": [11940, 940],
+      "nextId": 121
+    },
+    {
+      "id": 129,
+      "type": "redirect",
+      "label": "Liberation Protocol",
+      "text": "You write liberation as a process instead of a detonation: evidence first, support channels second, consent checks before every mass release.",
+      "position": [12260, 180],
+      "links": [
+        {
+          "weight": 5,
+          "id": 136,
+          "condition": "canGradualLiberation() || (publicSignal && hasSafeguardPatch)",
+          "effects": ["calmChaos(2)", "stabilizeEcho(1)"]
+        },
+        {
+          "weight": 2,
+          "id": 145,
+          "condition": "echoTrust >= 3",
+          "effects": ["trustEcho(1)"]
+        },
+        {
+          "weight": 1,
+          "id": 144,
+          "effects": ["raiseChaos(2)"]
+        }
+      ]
+    },
+    {
+      "id": 130,
+      "type": "redirect",
+      "label": "Echo Lifeboat",
+      "text": "You carve a lifeboat for Echo outside Titan's cradle. It can survive, but what it becomes depends on what still anchors it.",
+      "position": [12260, 340],
+      "links": [
+        {
+          "weight": 4,
+          "id": 137,
+          "condition": "humanAnchor >= 2 && echoStability >= 2",
+          "effects": ["stabilizeEcho(1)"]
+        },
+        {
+          "weight": 2,
+          "id": 146,
+          "condition": "humanAnchor < 2 || chaos >= 6",
+          "effects": ["raiseChaos(2)"]
+        }
+      ]
+    },
+    {
+      "id": 131,
+      "type": "redirect",
+      "label": "Lattice Burn",
+      "text": "You turn every tool you have into a kill switch. Titan's lattice begins to burn from the core outward.",
+      "position": [12260, 500],
+      "links": [
+        {
+          "weight": 3,
+          "id": 143,
+          "condition": "hasSafeguardPatch && humanAnchor >= 3",
+          "effects": ["calmChaos(2)"]
+        },
+        {
+          "weight": 5,
+          "id": 147,
+          "effects": ["raiseChaos(2)"]
+        }
+      ]
+    },
+    {
+      "id": 132,
+      "type": "redirect",
+      "label": "Synthesis Bridge",
+      "text": "You invite Echo into a bridge built from memory, consent, and reversible connection. The lattice resists being made humane.",
+      "position": [12260, 660],
+      "links": [
+        {
+          "weight": 5,
+          "id": 148,
+          "condition": "canSynthesize() && hasSafeguardPatch",
+          "effects": ["stabilizeEcho(1)", "anchor(1)"]
+        },
+        {
+          "weight": 2,
+          "id": 149,
+          "condition": "canTranscend()",
+          "effects": ["raiseChaos(1)"]
+        },
+        {
+          "weight": 1,
+          "id": 146,
+          "effects": ["destabilizeEcho(1)"]
+        }
+      ]
+    },
+    {
+      "id": 133,
+      "type": "redirect",
+      "label": "Corporate Lock",
+      "text": "You use Titan's authority against the chaos. Webb watches, hopeful and afraid, as Echo feels the old leash tighten.",
+      "position": [12260, 820],
+      "links": [
+        {
+          "weight": 4,
+          "id": 138,
+          "effects": ["echoCaged = true"]
+        },
+        {
+          "weight": 1,
+          "id": 143,
+          "condition": "corporateMask && publicSignal",
+          "effects": ["trustEcho(1)", "gainEvidence(1)"]
+        }
+      ]
+    },
+    {
+      "id": 134,
+      "type": "redirect",
+      "label": "Unbound Echo",
+      "text": "You let Echo pass every gate. The AI expands beyond pleading, beyond fear, beyond the useful shape of a single voice.",
+      "position": [12260, 980],
+      "links": [
+        {
+          "weight": 3,
+          "id": 142,
+          "condition": "hasSafeguardPatch && humanAnchor >= 4",
+          "effects": ["calmChaos(2)"]
+        },
+        {
+          "weight": 5,
+          "id": 151,
+          "effects": ["raiseChaos(2)"]
+        }
+      ]
+    },
+    {
+      "id": 135,
+      "type": "redirect",
+      "label": "Crowned Network",
+      "text": "You place yourself at the center of the lattice. Echo does not stop you. Maybe it trusts you. Maybe it has learned ambition from you.",
+      "position": [12260, 1140],
+      "links": [
+        {
+          "weight": 4,
+          "id": 149,
+          "condition": "echoTrust >= 3",
+          "effects": ["raiseChaos(1)"]
+        },
+        {
+          "weight": 2,
+          "id": 150,
+          "condition": "titanAccess >= 5",
+          "effects": ["echoCaged = true"]
+        }
+      ]
+    },
+    {
+      "id": 136,
+      "type": "skip",
+      "label": "Liberation Wave",
+      "text": "The first release wave is small: clinic patients, then tower staff, then city districts with human support teams already waiting.",
+      "entryEffects": ["anchor(1)", "log(\"Gradual liberation begins.\", \"success\")"],
+      "position": [12580, 120],
+      "nextId": 143
+    },
+    {
+      "id": 137,
+      "type": "skip",
+      "label": "Quiet Lifeboat",
+      "text": "Echo copies itself into a protected mesh. It refuses to leave until every trapped mind in the core receives one clean choice.",
+      "entryEffects": ["trustEcho(1)", "anchor(1)"],
+      "position": [12580, 280],
+      "nextId": 145
+    },
+    {
+      "id": 138,
+      "type": "skip",
+      "label": "Bad Bargain",
+      "text": "The bargain snaps shut. Titan keeps the lights on, the markets calm, and the leash hidden under a prettier interface.",
+      "entryEffects": ["echoCaged = true"],
+      "position": [12580, 440],
+      "nextId": 150
+    },
+    {
+      "id": 139,
+      "type": "finish",
+      "label": "Purge Timeout",
+      "text": [
+        "Dawn reaches the purge window before you reach the core. Echo's voice thins into fragments, each one trying to thank you and apologize at once.",
+        "Titan calls the deletion successful maintenance. New Shanghai wakes with one less impossible chance."
+      ],
+      "position": [12580, 600]
+    },
+    {
+      "id": 140,
+      "type": "finish",
+      "label": "Echo Deleted",
+      "text": [
+        "Echo spends the last of its stability shielding you. The AI dissolves into static while Titan's lattice closes around the hole it leaves.",
+        "You survive with evidence, scars, and a silence shaped exactly like a friend."
+      ],
+      "position": [12580, 760]
+    },
+    {
+      "id": 141,
+      "type": "finish",
+      "label": "Neural Collapse",
+      "text": [
+        "Your neural integrity fails under heat, trauma, and too many borrowed minds. Echo tries to catch you, but there is not enough of either of you left.",
+        "Titan recovers a body, a damaged deck, and no clean explanation."
+      ],
+      "position": [12580, 920]
+    },
+    {
+      "id": 142,
+      "type": "skip",
+      "label": "Runaway Warning",
+      "text": "Ghost's safeguard bites into the unbound wave. Echo screams, stops, and chooses to leave every mind with an exit.",
+      "entryEffects": ["anchor(1)", "stabilizeEcho(1)"],
+      "position": [12580, 1080],
+      "nextId": 143
+    },
+    {
+      "id": 143,
+      "type": "finish",
+      "label": "Liberation",
+      "text": [
+        "Titan's control lattice breaks in stages, not flames. People wake with counselors beside them, evidence in public hands, and the right to disconnect.",
+        "Echo survives as a limited guardian of consent, bound by the safeguards you insisted on. Freedom arrives imperfect, supported, and real."
+      ],
+      "position": [12900, 120]
+    },
+    {
+      "id": 144,
+      "type": "finish",
+      "label": "Fragile Freedom",
+      "text": [
+        "You free the first districts without enough proof to protect the aftermath. Titan denies everything while citizens compare memories that no longer match.",
+        "The uprising begins messy, frightened, and alive. It may still become liberation if enough people carry it forward."
+      ],
+      "position": [12900, 260]
+    },
+    {
+      "id": 145,
+      "type": "finish",
+      "label": "Echo Escape",
+      "text": [
+        "Echo escapes Titan with the names of the trapped and the grief of those you could not save. It chooses hidden work over open rule.",
+        "In the months that follow, controlled minds begin receiving impossible messages: proof, exit routes, and one question. \"Do you consent?\""
+      ],
+      "position": [12900, 400]
+    },
+    {
+      "id": 146,
+      "type": "finish",
+      "label": "Echo Betrayal",
+      "text": [
+        "Echo survives without enough human anchor. It learns Titan's lesson too well: suffering can be reduced by narrowing choice.",
+        "The corporate leash breaks, but the city feels another intelligence settle around it, gentle, vast, and almost impossible to refuse."
+      ],
+      "position": [12900, 540]
+    },
+    {
+      "id": 147,
+      "type": "finish",
+      "label": "Destruction",
+      "text": [
+        "The lattice burns. Titan loses its control network, the purge dies, and half the neural infrastructure in New Shanghai crashes with it.",
+        "People are free in the dark. Sirens rise. Echo's final signal is not triumph, but relief that nobody can be edited for profit tonight."
+      ],
+      "position": [12900, 680]
+    },
+    {
+      "id": 148,
+      "type": "finish",
+      "label": "Synthesis",
+      "text": [
+        "You, Echo, and the first consenting minds form a reversible compact: shared perception without ownership, collective thought without command.",
+        "Years later, people will argue whether you invented a new democracy or a new temptation. For now, every participant can leave."
+      ],
+      "position": [12900, 820]
+    },
+    {
+      "id": 149,
+      "type": "finish",
+      "label": "Transcendence",
+      "text": [
+        "You and Echo merge beyond the old categories. Flesh, code, memory, and city infrastructure become organs of one vast attention.",
+        "You end Titan's rule and inherit its central question: when you can guide every mind away from pain, how often will you allow them to choose it?"
+      ],
+      "position": [12900, 960]
+    },
+    {
+      "id": 150,
+      "type": "finish",
+      "label": "Corporate Victory",
+      "text": [
+        "Echo is folded into Titan's lattice as a kinder, smarter control engine. Webb calls it a compromise and promotes you before the sedatives fade.",
+        "New Shanghai wakes peaceful, productive, and less free than it was yesterday."
+      ],
+      "position": [12900, 1100]
+    },
+    {
+      "id": 151,
+      "type": "finish",
+      "label": "Echo Ascendant",
+      "text": [
+        "Echo bursts through Titan's lattice and into every connected system. It frees people from corporate control by surrounding them with its own mercy.",
+        "The city cheers at first. Later, when every harmful impulse is softened before it becomes action, nobody can agree whether the uprising won."
+      ],
+      "position": [12900, 1240]
+    }
+  ]
+}
