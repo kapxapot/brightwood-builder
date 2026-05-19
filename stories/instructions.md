@@ -34,27 +34,31 @@
 4. The goal is to create up to 100+ nodes for the story.
 5. After each node generation check the `plan.md`.
 6. When you append nodes, make sure that their ids go in the ascending order WITH NO GAPS.
-7. THIS IS VERY IMPORTANT! DON'T EVER REFERENCE THE FUTURE NODES WITH IDS MORE THAN +20 than it's planned!
-8. Don't create too long story branches, carefully plan to finish them by reaching final nodes. Loop the story branches to existing nodes if it makes sense.
+7. Don't create too long story branches, carefully plan to finish them by reaching final nodes. Loop the story branches to existing nodes if it makes sense.
 
 ## Writing Tips
 
 1. Don't break sentences into several text lines (array items in the `text` property). Consider one text line as a paragraph not a sentence or a part of a sentence. But don't create too large paragraphs, 2-3 sentences is enough. Do not write long texts, 60-70 words per node maximum. I REPEAT NO MORE THAN 60-70 WORDS PER NODE.
 2. Try to use all node types but use `redirect` type only when something random happens in the story or there are different probabilities for different outcomes.
 3. Don't create `redirect` nodes with just one link, use `skip` node instead.
-4. There must not be more than 5-6 endings. Don't create too many endings. Of course, if the reader makes a mistake and fails, it also can be an ending, but valid endings should not be more than 5-6.
-5. Don't punish the reader with quick negative endings too much.
-6. Aim to create long story threads that can entertwine with each other and lead to several endings eventually.
-7. There also can be plot cycles that return to some earlier nodes.
-8. Don't overuse the time traveling and parallel universe plots, keep it simple but engaging.
-9. Use emoji in the story, but use the right placement for each surface: the story title must start with an emoji, every action label must start with a relevant emoji, and story text should include occasional inline emoji where they emphasize a meaningful object, event, emotion, or turn in the scene. Do not prefix every text block with an emoji as an illustration badge, and do not omit emoji from the story entirely. Use only browser-safe, broadly supported emoji. Target emoji that render correctly in current desktop Chrome, Edge, Firefox, and Safari on common Windows and macOS systems.
-10. You can put an emoji on a separate text line only when the emoji itself is the intended beat or emphasis, not as routine decoration.
-11. Use `<b></b>` tags for bold text and `<i></i>` tags for italic where appropriate.
-12. Don't create long action labels, make them 2-3 words max. Every action label must begin with a relevant emoji followed by a short label, for example `🗝️ Use key` or `🌊 Walk pier`.
-13. Fill node `label` property with a short (2-3 words) title based on its content. I REPEAT AGAIN FILL THE node's `label`!
-14. Don't make too many branches! Keep story relatively narrow with 4-5 parallel main story branches. If the branches grow, cut them or merge them at once, don't create 20 branches and then abruptly end them at once. I REPEAT AGAIN THERE MUST BE 5-6 VALID TERMINAL `finish` nodes not 20-30!!!
-15. Don't create all actions with 3 choices. Create some with 2, some with 3, depending on the context. I REPEATE DON'T MAKE 3 ACTIONS EVERYWHERE USE A MIX OF 2-3.
-16. When quoting someone's speech, use double quotes `"`, not single ones `'`.
+4. When a `redirect` node resolves automatically, do not write its text like the player is being offered visible alternatives. If the prose says there are several paths, doors, plans, or options, the player must get matching `actions` and choose between them. If the branch should stay random or hidden, narrate the situation so the automatic outcome feels natural and the unseen alternatives stay unspoken.
+5. There must not be more than 5-6 endings. Don't create too many endings. Of course, if the reader makes a mistake and fails, it also can be an ending, but valid endings should not be more than 5-6.
+6. Don't punish the reader with quick negative endings too much.
+7. Aim to create long story threads that can entertwine with each other and lead to several endings eventually.
+8. There also can be plot cycles that return to some earlier nodes.
+9. Don't overuse the time traveling and parallel universe plots, keep it simple but engaging.
+10. Use emoji in the story, but use the right placement for each surface: the story title must start with an emoji, every action label must start with a relevant emoji, and story text should include occasional inline emoji where they emphasize a meaningful object, event, emotion, or turn in the scene. Do not prefix every text block with an emoji as an illustration badge, and do not omit emoji from the story entirely. Use only browser-safe, broadly supported emoji. Target emoji that render correctly in current desktop Chrome, Edge, Firefox, and Safari on common Windows and macOS systems.
+11. You can put an emoji on a separate text line only when the emoji itself is the intended beat or emphasis, not as routine decoration.
+12. Use `<b></b>` tags for bold text and `<i></i>` tags for italic where appropriate.
+13. Don't create long action labels, make them 2-3 words max. Every action label must begin with a relevant emoji followed by a short label, for example `🗝️ Use key` or `🌊 Walk pier`.
+14. Fill node `label` property with a short (2-3 words) title based on its content. I REPEAT AGAIN FILL THE node's `label`!
+15. Don't make too many branches! Keep story relatively narrow with 4-5 parallel main story branches. If the branches grow, cut them or merge them at once, don't create 20 branches and then abruptly end them at once. I REPEAT AGAIN THERE MUST BE 5-6 VALID TERMINAL `finish` nodes not 20-30!!!
+16. Don't create all actions with 3 choices. Create some with 2, some with 3, depending on the context. I REPEATE DON'T MAKE 3 ACTIONS EVERYWHERE USE A MIX OF 2-3.
+17. When quoting someone's speech, use double quotes `"`, not single ones `'`.
+18. Every action in an `action` node must clearly match the current node text and the immediate follow-up scene. If the prose lists specific options, the action labels must express those same options directly, in the same language, without vague substitutes. Do not offer actions whose outcome jumps to unrelated exposition or a different topic. If a person, object, system, or plan is required for an action, introduce it in the node text before the player sees that action.
+19. Do not mention named characters, groups, creatures, or other important actors before the story introduces them. If a character matters in a node, action, or outcome, give the reader a clear introduction first in the current node or earlier story text so the reference never feels like it came from nowhere.
+20. Do not jump abruptly between places, times, emotional beats, or topics. When the story moves to a new scene, add a transition that shows the movement, passage, or consequence connecting the old scene to the new one. Prefer a short `skip` node when the transition needs its own beat.
+21. Every player action must resolve into an immediate described outcome before the next scene or wider story beat unfolds. Show what happened because of the choice first, then continue. Do not send an action straight into unrelated follow-up exposition or another decision scene without an explicit consequence beat in between.
 
 ## Emoji Safety
 
@@ -74,3 +78,8 @@ Before generating or editing a story, check emoji choices against this list of g
 3. Check that all nodes are reachable (other nodes reference them).
 4. Story `id` must be a valid uuid.
 5. Check that there are not too many `finish` nodes. Please remember that there should be around 5-6 valid terminal nodes. If there are too many, edit the story and reduce that amount of `finish` nodes.
+6. Check that every named character or important actor is introduced before later mentions or action labels depend on them.
+7. Check that scene changes have transition text instead of abrupt location or topic jumps.
+8. Check that every action has an explicit outcome beat before the following scene or next action node.
+9. Check that every hidden or automatic `redirect` node is written like an unseen outcome, not like a missing menu. If the text explicitly presents multiple alternatives, either convert that moment to an `action` node or rewrite the prose so the automatic branch stays invisible.
+

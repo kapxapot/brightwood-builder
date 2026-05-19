@@ -1,0 +1,3212 @@
+{
+  "id": "27b76bb1-0977-439e-89a7-e5e8983856db",
+  "title": "🌑 The Ashen Crown",
+  "description": "A dark fantasy adventure through a cursed burial city, using stateful loops, ritual resources, bargains, and several endings shaped by mercy, memory, honor, and shadow debt.",
+  "language": "en",
+  "startId": 1,
+  "prefix": "Blood: {{blood}} | Candle: {{candle}} | Tolls: {{bellTolls}} | Debt: {{shadowDebt}} | Shards: {{crownShards}}",
+  "data": {
+    "init": {
+      "maxBlood": 6,
+      "blood": 5,
+      "maxCandle": 10,
+      "candle": 9,
+      "bellTolls": 0,
+      "shadowDebt": 0,
+      "mercy": 0,
+      "memory": 0,
+      "honor": 0,
+      "crownShards": 0,
+      "marketFavor": 0,
+      "elianTrust": 0,
+      "metElian": false,
+      "metCael": false,
+      "metVessa": false,
+      "metOrra": false,
+      "insideFinal": false,
+      "crownAwake": false,
+      "hasAshKey": false,
+      "hasBlackSalt": false,
+      "hasRootTallow": false,
+      "hasSaintName": false,
+      "hasSaintRelic": false,
+      "hasKnightOath": false,
+      "hasDrownedSeal": false,
+      "hasMarketWrit": false,
+      "hasPardonWrit": false,
+      "hasLastClapper": false,
+      "hasCrownVessel": false,
+      "hasGallowsMap": false,
+      "hasDrownedProphecy": false
+    },
+    "conditions": {
+      "bloodless": "blood <= 0",
+      "candleless": "candle <= 0",
+      "debtClaimed": "shadowDebt >= 10",
+      "seventhToll": "bellTolls >= 7",
+      "canEnterFinal": "crownShards >= 3 || (hasLastClapper && hasCrownVessel && memory >= 3)",
+      "canMend": "crownShards >= 4 && mercy >= 4 && memory >= 3 && candle >= 2 && shadowDebt < 7",
+      "canBreak": "hasBlackSalt && hasLastClapper && honor >= 2 && blood >= 2",
+      "canWear": "shadowDebt >= 4 || (hasMarketWrit && hasKnightOath && crownShards >= 3)",
+      "canBind": "hasCrownVessel && metElian && mercy >= 3 && blood >= 2 && candle >= 1",
+      "wellPrepared": "hasBlackSalt && hasRootTallow && hasSaintName && hasDrownedSeal"
+    },
+    "redirectTriggers": [
+      {
+        "condition": "bloodless() && !insideFinal",
+        "targetId": 160
+      },
+      {
+        "condition": "candleless() && !insideFinal",
+        "targetId": 161
+      },
+      {
+        "condition": "debtClaimed() && !insideFinal",
+        "targetId": 158
+      },
+      {
+        "condition": "seventhToll() && !insideFinal",
+        "targetId": 161
+      }
+    ],
+    "effects": [
+      {
+        "name": "hurt",
+        "args": "amount",
+        "conditions": "amount > 0",
+        "statements": [
+          "blood = max(blood - amount, 0)",
+          "log(\"-\" + amount + \" blood\", \"danger\")"
+        ]
+      },
+      {
+        "name": "heal",
+        "args": "amount",
+        "conditions": "amount > 0",
+        "statements": [
+          "blood = min(blood + amount, maxBlood)",
+          "log(\"+\" + amount + \" blood\", \"success\")"
+        ]
+      },
+      {
+        "name": "dim",
+        "args": "amount",
+        "conditions": "amount > 0",
+        "statements": [
+          "candle = max(candle - amount, 0)",
+          "log(\"The candle gutters.\", \"warning\")"
+        ]
+      },
+      {
+        "name": "light",
+        "args": "amount",
+        "conditions": "amount > 0",
+        "statements": [
+          "candle = min(candle + amount, maxCandle)",
+          "log(\"The candle steadies.\", \"success\")"
+        ]
+      },
+      {
+        "name": "toll",
+        "args": "amount",
+        "conditions": "amount > 0",
+        "statements": [
+          "bellTolls = bellTolls + amount",
+          "log(\"The death-bell tolls.\", \"warning\")"
+        ]
+      },
+      {
+        "name": "debt",
+        "args": "amount",
+        "conditions": "amount > 0",
+        "statements": [
+          "shadowDebt = min(shadowDebt + amount, 12)",
+          "log(\"Shadow debt rises.\", \"danger\")"
+        ]
+      },
+      {
+        "name": "settleDebt",
+        "args": "amount",
+        "conditions": "amount > 0",
+        "statements": [
+          "shadowDebt = max(shadowDebt - amount, 0)",
+          "log(\"A debt is forgiven.\", \"success\")"
+        ]
+      },
+      {
+        "name": "mercyUp",
+        "args": "amount",
+        "statements": "mercy = mercy + amount"
+      },
+      {
+        "name": "memoryUp",
+        "args": "amount",
+        "statements": "memory = memory + amount"
+      },
+      {
+        "name": "honorUp",
+        "args": "amount",
+        "statements": "honor = honor + amount"
+      },
+      {
+        "name": "gainShard",
+        "args": "amount",
+        "conditions": "amount > 0",
+        "statements": [
+          "crownShards = crownShards + amount",
+          "log(\"Crown authority gained.\", \"success\")"
+        ]
+      },
+      {
+        "name": "marketUp",
+        "args": "amount",
+        "statements": "marketFavor = marketFavor + amount"
+      },
+      {
+        "name": "trustElian",
+        "args": "amount",
+        "statements": "elianTrust = elianTrust + amount"
+      },
+      {
+        "name": "claimKnightShard",
+        "conditions": "!hasKnightOath",
+        "statements": [
+          "hasKnightOath = true",
+          "gainShard(1)",
+          "log(\"Sir Cael's oath answers you.\", \"success\")"
+        ]
+      },
+      {
+        "name": "claimSaintShard",
+        "conditions": "!hasSaintRelic",
+        "statements": [
+          "hasSaintRelic = true",
+          "gainShard(1)",
+          "log(\"Saint Orra's relic warms.\", \"success\")"
+        ]
+      },
+      {
+        "name": "claimDrownedShard",
+        "conditions": "!hasDrownedSeal",
+        "statements": [
+          "hasDrownedSeal = true",
+          "gainShard(1)",
+          "log(\"The drowned seal seals itself to you.\", \"success\")"
+        ]
+      },
+      {
+        "name": "claimMarketShard",
+        "conditions": "!hasMarketWrit",
+        "statements": [
+          "hasMarketWrit = true",
+          "gainShard(1)",
+          "log(\"Vessa's writ names you debtor and heir.\", \"success\")"
+        ]
+      },
+      {
+        "name": "markFinal",
+        "statements": [
+          "insideFinal = true",
+          "crownAwake = true",
+          "log(\"You pass beyond ordinary death.\", \"info\")"
+        ]
+      }
+    ]
+  },
+  "nodes": [
+    {
+      "id": 1,
+      "type": "skip",
+      "label": "Black Scaffold",
+      "text": [
+        "Rain blackens the scaffold planks above Veyrholm, and the cathedral bell hangs silent behind the executioner. You are Rowan Vale, branded oath-breaker, with one last breath of a city that already smells buried. 🕯️",
+        "Mother Sable steps from the crowd before the axe falls. \"Send this one below,\" she says. \"The bell has chosen a worse sentence.\""
+      ],
+      "position": [
+        100,
+        100
+      ],
+      "nextId": 2
+    },
+    {
+      "id": 2,
+      "type": "action",
+      "label": "Last Mercy",
+      "text": [
+        "The executioner lowers the axe but does not leave. Mother Sable waits for your answer while the crowd mutters prayers that sound like dirt falling on a coffin."
+      ],
+      "position": [
+        420,
+        100
+      ],
+      "actions": [
+        {
+          "label": "🕯️ Kneel",
+          "id": 3
+        },
+        {
+          "label": "⚔️ Defy",
+          "id": 4
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "type": "skip",
+      "label": "Bitter Kneeling",
+      "text": [
+        "You kneel because survival is sometimes just another kind of courage. Mother Sable presses ash into your brand, and the mark opens like a sealed eye."
+      ],
+      "position": [
+        740,
+        100
+      ],
+      "entryEffects": [
+        "honorUp(1)"
+      ],
+      "nextId": 5
+    },
+    {
+      "id": 4,
+      "type": "skip",
+      "label": "Last Defiance",
+      "text": [
+        "You spit rain from your mouth and tell the priest you owe the city nothing. The brand burns anyway, delighted to prove you wrong."
+      ],
+      "position": [
+        1060,
+        100
+      ],
+      "entryEffects": [
+        "debt(1)"
+      ],
+      "nextId": 5
+    },
+    {
+      "id": 5,
+      "type": "action",
+      "label": "Mother Sable",
+      "text": [
+        "Mother Sable is the last bell-priest of Veyrholm, all white hair, iron keys, and sleepless eyes. She explains that the Ashen Crown under the city has cracked.",
+        "\"Bring me its law or break it,\" she says. \"If you fail, the dead will tithe the living by dawn.\""
+      ],
+      "position": [
+        1380,
+        100
+      ],
+      "actions": [
+        {
+          "label": "🕯️ Accept",
+          "id": 6
+        },
+        {
+          "label": "💰 Bargain",
+          "id": 7
+        },
+        {
+          "label": "🚪 Refuse",
+          "id": 8
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "type": "skip",
+      "label": "Taken Charge",
+      "text": [
+        "You accept the impossible errand without grace. Sable gives you a black candle and looks almost sorry that it lights when it touches your blood."
+      ],
+      "position": [
+        1700,
+        100
+      ],
+      "entryEffects": [
+        "light(1)",
+        "mercyUp(1)"
+      ],
+      "nextId": 9
+    },
+    {
+      "id": 7,
+      "type": "skip",
+      "label": "Hard Bargain",
+      "text": [
+        "You demand pardon in writing. Sable cuts a writ from funeral parchment and warns that grave-law always collects the margin."
+      ],
+      "position": [
+        2020,
+        100
+      ],
+      "entryEffects": [
+        "hasPardonWrit = true",
+        "debt(1)"
+      ],
+      "nextId": 9
+    },
+    {
+      "id": 8,
+      "type": "skip",
+      "label": "No Refusal",
+      "text": [
+        "You refuse. The bell rings once without moving, and a line of blood opens across your palm as if the city signed for you."
+      ],
+      "position": [
+        2340,
+        100
+      ],
+      "entryEffects": [
+        "hurt(1)"
+      ],
+      "nextId": 9
+    },
+    {
+      "id": 9,
+      "type": "action",
+      "label": "First Rite",
+      "text": [
+        "Sable opens a crypt stair beneath the scaffold. Three things lie on the lowest step: a candle of root-tallow, a rusted sword, and a prayer written on skin."
+      ],
+      "position": [
+        2660,
+        100
+      ],
+      "actions": [
+        {
+          "label": "🕯️ Take candle",
+          "id": 10
+        },
+        {
+          "label": "⚔️ Take sword",
+          "id": 11
+        },
+        {
+          "label": "📜 Take prayer",
+          "id": 12
+        }
+      ]
+    },
+    {
+      "id": 10,
+      "type": "skip",
+      "label": "Root Candle",
+      "text": [
+        "You take the candle. Its flame leans toward the stair as if it remembers the way down, and the dark gives you one grudging inch."
+      ],
+      "position": [
+        2980,
+        100
+      ],
+      "entryEffects": [
+        "hasRootTallow = true",
+        "light(1)"
+      ],
+      "nextId": 13
+    },
+    {
+      "id": 11,
+      "type": "skip",
+      "label": "Rusted Sword",
+      "text": [
+        "You take the sword. It is blunt, but it remembers every hand that died holding it, and that memory settles your grip."
+      ],
+      "position": [
+        3300,
+        100
+      ],
+      "entryEffects": [
+        "honorUp(1)"
+      ],
+      "nextId": 13
+    },
+    {
+      "id": 12,
+      "type": "skip",
+      "label": "Skin Prayer",
+      "text": [
+        "You take the prayer. The letters crawl until you read them aloud, then lie still like obedient worms."
+      ],
+      "position": [
+        3620,
+        100
+      ],
+      "entryEffects": [
+        "memoryUp(1)",
+        "mercyUp(1)"
+      ],
+      "nextId": 13
+    },
+    {
+      "id": 13,
+      "type": "skip",
+      "label": "Crypt Descent",
+      "text": [
+        "The stair carries you below the scaffold, below old plague pits, below names scratched out of parish stone. The air grows warm, not with life, but with waiting."
+      ],
+      "position": [
+        3940,
+        100
+      ],
+      "nextId": 14
+    },
+    {
+      "id": 14,
+      "type": "action",
+      "label": "Lantern Child",
+      "text": [
+        "A child ghost waits at the first landing, holding a lantern with no flame. He has solemn eyes and bare feet that do not disturb the dust.",
+        "\"I am Elian,\" he says. \"I remember the turns when you do not.\""
+      ],
+      "position": [
+        4260,
+        100
+      ],
+      "actions": [
+        {
+          "label": "🕯️ Follow Elian",
+          "id": 15
+        },
+        {
+          "label": "🛡️ Ward him",
+          "id": 16
+        },
+        {
+          "label": "❓ Question him",
+          "id": 17
+        }
+      ]
+    },
+    {
+      "id": 15,
+      "type": "skip",
+      "label": "Ghost Guide",
+      "text": [
+        "You let Elian lead. He smiles with relief too old for his small face, and the lantern glimmers once in answer."
+      ],
+      "position": [
+        4580,
+        100
+      ],
+      "entryEffects": [
+        "metElian = true",
+        "trustElian(1)",
+        "mercyUp(1)"
+      ],
+      "nextId": 18
+    },
+    {
+      "id": 16,
+      "type": "skip",
+      "label": "Salt Ward",
+      "text": [
+        "You trace a ward between you and the ghost. Elian flinches, but he stays, and the candle spends itself protecting your suspicion."
+      ],
+      "position": [
+        4900,
+        100
+      ],
+      "entryEffects": [
+        "metElian = true",
+        "dim(1)"
+      ],
+      "nextId": 18
+    },
+    {
+      "id": 17,
+      "type": "skip",
+      "label": "Remembered Turns",
+      "text": [
+        "You ask what he remembers. Elian whispers of wells, markets, drowned songs, and a crown that speaks with many dead mouths."
+      ],
+      "position": [
+        5220,
+        100
+      ],
+      "entryEffects": [
+        "metElian = true",
+        "memoryUp(1)"
+      ],
+      "nextId": 18
+    },
+    {
+      "id": 18,
+      "type": "skip",
+      "label": "Iron Well",
+      "text": [
+        "The stair ends at the Iron Well, a dry circle in the Undertithe where four roads curl away like ribs. Each road bears a cracked crown sigil."
+      ],
+      "position": [
+        5540,
+        100
+      ],
+      "nextId": 19
+    },
+    {
+      "id": 19,
+      "type": "action",
+      "label": "Iron Well",
+      "text": [
+        "You stand at the repeating heart of the Undertithe. The bell's silence feels temporary now; every road promises a different tithe, and every return will cost light."
+      ],
+      "position": [
+        5860,
+        100
+      ],
+      "actions": [
+        {
+          "label": "⚔️ Gallows",
+          "id": 21
+        },
+        {
+          "label": "🕯️ Ossuary",
+          "id": 51
+        },
+        {
+          "label": "🌊 Choir",
+          "id": 81
+        },
+        {
+          "label": "💰 Market",
+          "id": 111
+        },
+        {
+          "label": "🏰 Crown",
+          "id": 141,
+          "condition": "canEnterFinal()"
+        }
+      ]
+    },
+    {
+      "id": 20,
+      "type": "skip",
+      "label": "Bell Return",
+      "text": [
+        "The Iron Well receives you again. New scratches mark the stone rim, and Elian counts them without moving his lips."
+      ],
+      "position": [
+        6180,
+        100
+      ],
+      "entryEffects": [
+        "toll(1)",
+        "dim(1)",
+        "memoryUp(1)"
+      ],
+      "nextId": 19
+    },
+    {
+      "id": 21,
+      "type": "skip",
+      "label": "Gallows Road",
+      "text": [
+        "The gallows road climbs through an underground field of hanging swords. Their points sway without wind, all aimed toward the same unseen judge."
+      ],
+      "position": [
+        6500,
+        -1400
+      ],
+      "entryEffects": [
+        "dim(1)"
+      ],
+      "nextId": 22
+    },
+    {
+      "id": 22,
+      "type": "action",
+      "label": "Hanging Blades",
+      "text": [
+        "Chains cross the road like black vines. Some hold empty helmets; others hold bodies that still whisper verdicts through clenched teeth."
+      ],
+      "position": [
+        6820,
+        -1400
+      ],
+      "actions": [
+        {
+          "label": "🔎 Inspect chains",
+          "id": 23
+        },
+        {
+          "label": "⚔️ Cut bodies",
+          "id": 24
+        },
+        {
+          "label": "🛡️ March on",
+          "id": 25
+        }
+      ]
+    },
+    {
+      "id": 23,
+      "type": "skip",
+      "label": "Chain Marks",
+      "text": [
+        "You study the links and find an old patrol pattern etched in rust. The dead used this road like soldiers, not victims."
+      ],
+      "position": [
+        7140,
+        -1400
+      ],
+      "entryEffects": [
+        "hasGallowsMap = true",
+        "memoryUp(1)"
+      ],
+      "nextId": 26
+    },
+    {
+      "id": 24,
+      "type": "skip",
+      "label": "Mercy Cut",
+      "text": [
+        "You cut down three hanging dead. They crumble before they can thank you, but the road lowers its blades a finger's width."
+      ],
+      "position": [
+        7460,
+        -1400
+      ],
+      "entryEffects": [
+        "mercyUp(1)"
+      ],
+      "nextId": 26
+    },
+    {
+      "id": 25,
+      "type": "skip",
+      "label": "Hard March",
+      "text": [
+        "You keep your eyes forward and walk beneath the swords. Your brand burns, and the road approves of stubbornness more than wisdom."
+      ],
+      "position": [
+        7780,
+        -1400
+      ],
+      "entryEffects": [
+        "honorUp(1)"
+      ],
+      "nextId": 26
+    },
+    {
+      "id": 26,
+      "type": "redirect",
+      "label": "Bone Rain",
+      "text": [
+        "A tremor passes through the hanging field. Rust shakes loose, bones knock together, and the road decides how much blood your courage is worth."
+      ],
+      "position": [
+        8100,
+        -1400
+      ],
+      "links": [
+        {
+          "id": 27,
+          "weight": 4,
+          "condition": "hasGallowsMap"
+        },
+        {
+          "id": 28,
+          "weight": 3,
+          "effects": [
+            "hurt(1)"
+          ]
+        },
+        {
+          "id": 29,
+          "weight": 2,
+          "condition": "memory >= 1",
+          "effects": [
+            "memoryUp(1)"
+          ]
+        }
+      ]
+    },
+    {
+      "id": 27,
+      "type": "skip",
+      "label": "Dry Arch",
+      "text": [
+        "The patrol marks guide you through a dry arch where no blade falls. Beyond it, a knight kneels in chains before a gate of nailed shields."
+      ],
+      "position": [
+        8420,
+        -1400
+      ],
+      "nextId": 30
+    },
+    {
+      "id": 28,
+      "type": "skip",
+      "label": "Blade Storm",
+      "text": [
+        "A sword drops and opens your sleeve before burying itself hilt-deep in the path. Your blood steams on the iron stones."
+      ],
+      "position": [
+        8740,
+        -1400
+      ],
+      "nextId": 30
+    },
+    {
+      "id": 29,
+      "type": "skip",
+      "label": "Hidden Step",
+      "text": [
+        "You remember Elian's warning about the third black stone. The trap bites empty air behind your heel."
+      ],
+      "position": [
+        9060,
+        -1400
+      ],
+      "nextId": 30
+    },
+    {
+      "id": 30,
+      "type": "action",
+      "label": "Chained Knight",
+      "text": [
+        "The chained knight lifts his visor. \"Sir Cael,\" he says, naming himself with the grief of someone still standing guard after death.",
+        "\"No oath-breaker crosses unless they prove which part of the oath survived.\""
+      ],
+      "position": [
+        9380,
+        -1400
+      ],
+      "entryEffects": [
+        "metCael = true"
+      ],
+      "actions": [
+        {
+          "label": "⚔️ Challenge",
+          "id": 31
+        },
+        {
+          "label": "🛡️ Salute",
+          "id": 32
+        },
+        {
+          "label": "🌑 Bribe dark",
+          "id": 33
+        }
+      ]
+    },
+    {
+      "id": 31,
+      "type": "skip",
+      "label": "Steel Answer",
+      "text": [
+        "You answer Sir Cael with steel. He rises gladly, and the nailed shields begin to chant the count of your footwork."
+      ],
+      "position": [
+        9700,
+        -1400
+      ],
+      "entryEffects": [
+        "honorUp(1)"
+      ],
+      "nextId": 34
+    },
+    {
+      "id": 32,
+      "type": "skip",
+      "label": "Old Courtesy",
+      "text": [
+        "You salute with the rusted sword. Sir Cael's dead eyes soften because manners, unlike kingdoms, sometimes survive burial."
+      ],
+      "position": [
+        10020,
+        -1400
+      ],
+      "entryEffects": [
+        "honorUp(1)",
+        "mercyUp(1)"
+      ],
+      "nextId": 38
+    },
+    {
+      "id": 33,
+      "type": "skip",
+      "label": "Dark Bribe",
+      "text": [
+        "You offer the shadow in your brand a taste of Sir Cael's chain. The gate opens a crack, but the dark remembers your permission."
+      ],
+      "position": [
+        10340,
+        -1400
+      ],
+      "entryEffects": [
+        "debt(2)"
+      ],
+      "nextId": 46
+    },
+    {
+      "id": 34,
+      "type": "redirect",
+      "label": "Trial Clash",
+      "text": [
+        "Sir Cael strikes like a chapel bell: measured, mournful, and impossible to ignore. The duel turns on one breath and one remembered oath."
+      ],
+      "position": [
+        10660,
+        -1400
+      ],
+      "links": [
+        {
+          "id": 36,
+          "weight": 4,
+          "condition": "honor >= 2",
+          "effects": [
+            "honorUp(1)"
+          ]
+        },
+        {
+          "id": 35,
+          "weight": 5,
+          "effects": [
+            "hurt(1)"
+          ]
+        },
+        {
+          "id": 37,
+          "weight": 2,
+          "condition": "candle >= 2",
+          "effects": [
+            "dim(1)"
+          ]
+        }
+      ]
+    },
+    {
+      "id": 35,
+      "type": "skip",
+      "label": "Wounded Win",
+      "text": [
+        "You catch Cael's blade on your forearm and step inside his guard. He nods at the blood as if it answered honestly."
+      ],
+      "position": [
+        10980,
+        -1400
+      ],
+      "nextId": 38
+    },
+    {
+      "id": 36,
+      "type": "skip",
+      "label": "Clean Win",
+      "text": [
+        "You turn Cael's strike with the old salute and stop short of his throat. For the first time, the chained knight bows."
+      ],
+      "position": [
+        11300,
+        -1400
+      ],
+      "nextId": 38
+    },
+    {
+      "id": 37,
+      "type": "skip",
+      "label": "Forced Back",
+      "text": [
+        "Cael drives you back to the shield gate. The road lets you breathe, but the chains reset with patient malice."
+      ],
+      "position": [
+        11620,
+        -1400
+      ],
+      "nextId": 30
+    },
+    {
+      "id": 38,
+      "type": "action",
+      "label": "Oath Talk",
+      "text": [
+        "Cael rests his sword point in the dust. \"The crown broke when vows became weapons,\" he says. \"Choose what kind of oath you can carry.\""
+      ],
+      "position": [
+        11940,
+        -1400
+      ],
+      "actions": [
+        {
+          "label": "🛡️ Swear oath",
+          "id": 39
+        },
+        {
+          "label": "⚔️ Break chain",
+          "id": 40
+        },
+        {
+          "label": "📜 Ask sin",
+          "id": 41
+        }
+      ]
+    },
+    {
+      "id": 39,
+      "type": "skip",
+      "label": "New Oath",
+      "text": [
+        "You swear to guard the living from the dead and the dead from being used. The words burn, but they burn clean."
+      ],
+      "position": [
+        12260,
+        -1400
+      ],
+      "entryEffects": [
+        "honorUp(2)"
+      ],
+      "nextId": 47
+    },
+    {
+      "id": 40,
+      "type": "skip",
+      "label": "Broken Chain",
+      "text": [
+        "You break the chain at Cael's throat. He staggers as centuries of obedience leave him all at once."
+      ],
+      "position": [
+        12580,
+        -1400
+      ],
+      "entryEffects": [
+        "mercyUp(1)"
+      ],
+      "nextId": 43
+    },
+    {
+      "id": 41,
+      "type": "skip",
+      "label": "Knight Sin",
+      "text": [
+        "Cael says he once guarded the crown by feeding prisoners to it. The confession stains the gate, and now you know what obedience can cost."
+      ],
+      "position": [
+        12900,
+        -1400
+      ],
+      "entryEffects": [
+        "memoryUp(1)"
+      ],
+      "nextId": 42
+    },
+    {
+      "id": 42,
+      "type": "skip",
+      "label": "Remember Oath",
+      "text": [
+        "The shield gate shows you a dead procession carrying crown fragments into four roads. One road was always meant to be walked twice."
+      ],
+      "position": [
+        13220,
+        -1400
+      ],
+      "entryEffects": [
+        "memoryUp(1)"
+      ],
+      "nextId": 38
+    },
+    {
+      "id": 43,
+      "type": "action",
+      "label": "Cael Freed",
+      "text": [
+        "Sir Cael can leave the gate now, but freedom frightens him more than chains. His hands shake around the sword hilt."
+      ],
+      "position": [
+        13540,
+        -1400
+      ],
+      "actions": [
+        {
+          "label": "🕯️ Release him",
+          "id": 44
+        },
+        {
+          "label": "🛡️ Keep guard",
+          "id": 45
+        }
+      ]
+    },
+    {
+      "id": 44,
+      "type": "skip",
+      "label": "Released Knight",
+      "text": [
+        "You tell Cael his watch is over. His armor collapses around a single bright coal of oath, which settles into your palm."
+      ],
+      "position": [
+        13860,
+        -1400
+      ],
+      "entryEffects": [
+        "mercyUp(1)",
+        "honorUp(1)"
+      ],
+      "nextId": 47
+    },
+    {
+      "id": 45,
+      "type": "skip",
+      "label": "Kept Guard",
+      "text": [
+        "You command Cael to keep guarding the gate. He obeys, and the crown fragment comes easily because you used the old cruelty correctly."
+      ],
+      "position": [
+        14180,
+        -1400
+      ],
+      "entryEffects": [
+        "debt(1)",
+        "honorUp(1)"
+      ],
+      "nextId": 47
+    },
+    {
+      "id": 46,
+      "type": "skip",
+      "label": "Black Shortcut",
+      "text": [
+        "The brand opens the shield gate without Cael's blessing. Behind it, a crown fragment waits like a tooth in a wound."
+      ],
+      "position": [
+        14500,
+        -1400
+      ],
+      "entryEffects": [
+        "debt(1)"
+      ],
+      "nextId": 47
+    },
+    {
+      "id": 47,
+      "type": "skip",
+      "label": "Oath Shard",
+      "text": [
+        "The fragment enters your brand as a line of iron script. Somewhere above, a bell rope twitches and fails to ring."
+      ],
+      "position": [
+        14820,
+        -1400
+      ],
+      "entryEffects": [
+        "claimKnightShard"
+      ],
+      "nextId": 48
+    },
+    {
+      "id": 48,
+      "type": "action",
+      "label": "Road End",
+      "text": [
+        "The gallows road has given what it will. Still, the patrol scratches hint at a safer route if you care to spend time reading them."
+      ],
+      "position": [
+        15140,
+        -1400
+      ],
+      "actions": [
+        {
+          "label": "🚪 Return",
+          "id": 50
+        },
+        {
+          "label": "🔎 Patrol",
+          "id": 49,
+          "condition": "!hasGallowsMap || memory < 3"
+        }
+      ]
+    },
+    {
+      "id": 49,
+      "type": "skip",
+      "label": "Patrol Secret",
+      "text": [
+        "You follow the scratches until they form a map of the Undertithe's old guard posts. Elian will remember this turn even if you do not."
+      ],
+      "position": [
+        15460,
+        -1400
+      ],
+      "entryEffects": [
+        "hasGallowsMap = true",
+        "memoryUp(1)"
+      ],
+      "nextId": 48
+    },
+    {
+      "id": 50,
+      "type": "skip",
+      "label": "Leave Gallows",
+      "text": [
+        "You leave the hanging swords behind. Their tips follow you until the Iron Well's round shadow closes around the road."
+      ],
+      "position": [
+        15780,
+        -1400
+      ],
+      "nextId": 20
+    },
+    {
+      "id": 51,
+      "type": "skip",
+      "label": "Saint Ossuary",
+      "text": [
+        "The ossuary road descends into walls made from polished jawbones. Every tooth points inward, as if the corridor is a mouth learning restraint."
+      ],
+      "position": [
+        16100,
+        1400
+      ],
+      "entryEffects": [
+        "dim(1)"
+      ],
+      "nextId": 52
+    },
+    {
+      "id": 52,
+      "type": "action",
+      "label": "Bone Door",
+      "text": [
+        "A door of interlocked ribs blocks the path. It has no handle, only a small hollow where a living hand could fit."
+      ],
+      "position": [
+        16420,
+        1400
+      ],
+      "actions": [
+        {
+          "label": "✊ Knock",
+          "id": 53
+        },
+        {
+          "label": "⚔️ Pry ribs",
+          "id": 54
+        },
+        {
+          "label": "📜 Sing rite",
+          "id": 55,
+          "condition": "memory >= 1"
+        }
+      ]
+    },
+    {
+      "id": 53,
+      "type": "skip",
+      "label": "Polite Knock",
+      "text": [
+        "You knock with your branded hand. The ribs open one by one, impressed by the courtesy of a condemned guest."
+      ],
+      "position": [
+        16740,
+        1400
+      ],
+      "entryEffects": [
+        "mercyUp(1)"
+      ],
+      "nextId": 57
+    },
+    {
+      "id": 54,
+      "type": "skip",
+      "label": "Pried Ribs",
+      "text": [
+        "You wedge the sword between two ribs. The door opens, but not before the bone bites down and tastes you."
+      ],
+      "position": [
+        17060,
+        1400
+      ],
+      "entryEffects": [
+        "hurt(1)"
+      ],
+      "nextId": 56
+    },
+    {
+      "id": 55,
+      "type": "skip",
+      "label": "Remembered Hymn",
+      "text": [
+        "You sing the skin-prayer's first line. The ossuary answers with a harmony of teeth clicking softly in the dark."
+      ],
+      "position": [
+        17380,
+        1400
+      ],
+      "entryEffects": [
+        "memoryUp(1)"
+      ],
+      "nextId": 57
+    },
+    {
+      "id": 56,
+      "type": "skip",
+      "label": "Tooth Trap",
+      "text": [
+        "A loose tooth remains in your palm after the bite. It is warm, and the warmth feels ashamed."
+      ],
+      "position": [
+        17700,
+        1400
+      ],
+      "entryEffects": [
+        "dim(1)"
+      ],
+      "nextId": 57
+    },
+    {
+      "id": 57,
+      "type": "action",
+      "label": "Orra Whispers",
+      "text": [
+        "A veiled figure appears inside a reliquary of teeth. \"I am Saint Orra,\" she whispers. \"They buried my mercy first, so the crown could use my miracle.\"",
+        "The reliquary opens three small doors: name, blood, and theft."
+      ],
+      "position": [
+        18020,
+        1400
+      ],
+      "entryEffects": [
+        "metOrra = true"
+      ],
+      "actions": [
+        {
+          "label": "📜 Ask name",
+          "id": 58
+        },
+        {
+          "label": "❤️ Offer blood",
+          "id": 59
+        },
+        {
+          "label": "🗝️ Take relic",
+          "id": 60
+        }
+      ]
+    },
+    {
+      "id": 58,
+      "type": "skip",
+      "label": "Saint Name",
+      "text": [
+        "You ask for the name they stole. Orra answers with a sound like a candle being lit inside a skull."
+      ],
+      "position": [
+        18340,
+        1400
+      ],
+      "entryEffects": [
+        "hasSaintName = true",
+        "memoryUp(1)"
+      ],
+      "nextId": 61
+    },
+    {
+      "id": 59,
+      "type": "skip",
+      "label": "Blood Mercy",
+      "text": [
+        "You press your palm to the reliquary. Orra drinks only enough to remember pity, then seals the cut with silver ash."
+      ],
+      "position": [
+        18660,
+        1400
+      ],
+      "entryEffects": [
+        "hurt(1)",
+        "mercyUp(2)"
+      ],
+      "nextId": 61
+    },
+    {
+      "id": 60,
+      "type": "skip",
+      "label": "Stolen Relic",
+      "text": [
+        "You snatch a tooth from the reliquary. The saint does not stop you; that is somehow worse."
+      ],
+      "position": [
+        18980,
+        1400
+      ],
+      "entryEffects": [
+        "debt(1)"
+      ],
+      "nextId": 65
+    },
+    {
+      "id": 61,
+      "type": "action",
+      "label": "Mercy Font",
+      "text": [
+        "Past Orra's veil, a dry font holds reflections of people you failed. Elian's lantern shows one reflection still breathing."
+      ],
+      "position": [
+        19300,
+        1400
+      ],
+      "actions": [
+        {
+          "label": "🕯️ Heal child",
+          "id": 62,
+          "condition": "metElian"
+        },
+        {
+          "label": "❤️ Drink water",
+          "id": 63
+        },
+        {
+          "label": "🌑 Leave dry",
+          "id": 64
+        }
+      ]
+    },
+    {
+      "id": 62,
+      "type": "skip",
+      "label": "Child Healed",
+      "text": [
+        "You pour the font's last gleam into Elian's lantern. He gasps like someone remembering lungs."
+      ],
+      "position": [
+        19620,
+        1400
+      ],
+      "entryEffects": [
+        "trustElian(2)",
+        "mercyUp(1)"
+      ],
+      "nextId": 65
+    },
+    {
+      "id": 63,
+      "type": "skip",
+      "label": "Bitter Water",
+      "text": [
+        "You drink from the dry font. It gives you one clean breath and the aftertaste of every apology you never made."
+      ],
+      "position": [
+        19940,
+        1400
+      ],
+      "entryEffects": [
+        "heal(1)",
+        "memoryUp(1)"
+      ],
+      "nextId": 65
+    },
+    {
+      "id": 64,
+      "type": "skip",
+      "label": "Dry Mercy",
+      "text": [
+        "You leave the font untouched. The restraint is not kindness, but it keeps the saint from weeping."
+      ],
+      "position": [
+        20260,
+        1400
+      ],
+      "entryEffects": [
+        "honorUp(1)"
+      ],
+      "nextId": 65
+    },
+    {
+      "id": 65,
+      "type": "redirect",
+      "label": "Reliquary Hush",
+      "text": [
+        "The ossuary holds its breath. Behind the walls, hidden bones shift toward the version of you they recognize."
+      ],
+      "position": [
+        20580,
+        1400
+      ],
+      "links": [
+        {
+          "id": 66,
+          "weight": 4,
+          "condition": "mercy >= 2",
+          "effects": [
+            "mercyUp(1)"
+          ]
+        },
+        {
+          "id": 67,
+          "weight": 4,
+          "effects": [
+            "dim(1)"
+          ]
+        },
+        {
+          "id": 68,
+          "weight": 2,
+          "condition": "shadowDebt >= 1",
+          "effects": [
+            "debt(1)"
+          ]
+        }
+      ]
+    },
+    {
+      "id": 66,
+      "type": "skip",
+      "label": "Saint Vision",
+      "text": [
+        "Orra shows you a crown mended with gentleness, not obedience. The vision hurts because it is possible."
+      ],
+      "position": [
+        20900,
+        1400
+      ],
+      "entryEffects": [
+        "memoryUp(1)"
+      ],
+      "nextId": 69
+    },
+    {
+      "id": 67,
+      "type": "skip",
+      "label": "Bone Choir",
+      "text": [
+        "The teeth in the walls sing a hymn with no mercy left in it. You learn the melody anyway."
+      ],
+      "position": [
+        21220,
+        1400
+      ],
+      "entryEffects": [
+        "memoryUp(1)"
+      ],
+      "nextId": 69
+    },
+    {
+      "id": 68,
+      "type": "skip",
+      "label": "Empty Nave",
+      "text": [
+        "The nave is empty except for a single black tooth on the altar. It points at your brand as if recognizing kin."
+      ],
+      "position": [
+        21540,
+        1400
+      ],
+      "entryEffects": [
+        "debt(1)"
+      ],
+      "nextId": 69
+    },
+    {
+      "id": 69,
+      "type": "action",
+      "label": "Saint Test",
+      "text": [
+        "Orra asks one question: \"What should be done with a miracle taught to obey a tyrant?\" The teeth wait for your answer."
+      ],
+      "position": [
+        21860,
+        1400
+      ],
+      "actions": [
+        {
+          "label": "🕯️ Forgive it",
+          "id": 70
+        },
+        {
+          "label": "🛡️ Kneel first",
+          "id": 71
+        },
+        {
+          "label": "📜 Answer riddle",
+          "id": 72,
+          "condition": "memory >= 3 || hasSaintName"
+        }
+      ]
+    },
+    {
+      "id": 70,
+      "type": "skip",
+      "label": "Forgiven Miracle",
+      "text": [
+        "You say a miracle can learn mercy again. Orra's veil tears, and warm light spills through the rows of teeth."
+      ],
+      "position": [
+        22180,
+        1400
+      ],
+      "entryEffects": [
+        "mercyUp(2)"
+      ],
+      "nextId": 74
+    },
+    {
+      "id": 71,
+      "type": "skip",
+      "label": "Humble Answer",
+      "text": [
+        "You kneel before answering. \"Then begin beneath it,\" Orra says, and places her cold hand on your bowed head."
+      ],
+      "position": [
+        22500,
+        1400
+      ],
+      "entryEffects": [
+        "honorUp(1)",
+        "mercyUp(1)"
+      ],
+      "nextId": 74
+    },
+    {
+      "id": 72,
+      "type": "skip",
+      "label": "Riddle Answer",
+      "text": [
+        "You answer with Orra's stolen name. The ossuary remembers that saints were people before they became tools."
+      ],
+      "position": [
+        22820,
+        1400
+      ],
+      "entryEffects": [
+        "hasSaintName = true",
+        "memoryUp(1)"
+      ],
+      "nextId": 73
+    },
+    {
+      "id": 73,
+      "type": "skip",
+      "label": "Name Returned",
+      "text": [
+        "Orra breathes her name through every tooth in the wall. A relic loosens from the altar without theft."
+      ],
+      "position": [
+        23140,
+        1400
+      ],
+      "entryEffects": [
+        "mercyUp(1)"
+      ],
+      "nextId": 74
+    },
+    {
+      "id": 74,
+      "type": "skip",
+      "label": "Saint Relic",
+      "text": [
+        "The relic becomes a white crown shard, too gentle to hold without wanting to be better than you are."
+      ],
+      "position": [
+        23460,
+        1400
+      ],
+      "entryEffects": [
+        "claimSaintShard"
+      ],
+      "nextId": 75
+    },
+    {
+      "id": 75,
+      "type": "action",
+      "label": "Ossuary End",
+      "text": [
+        "Orra's ossuary grows still. A confessional niche remains open, and the font glimmers faintly behind you."
+      ],
+      "position": [
+        23780,
+        1400
+      ],
+      "actions": [
+        {
+          "label": "🚪 Return",
+          "id": 80
+        },
+        {
+          "label": "📜 Learn rite",
+          "id": 76
+        },
+        {
+          "label": "🕯️ Confess",
+          "id": 78,
+          "condition": "shadowDebt > 0"
+        }
+      ]
+    },
+    {
+      "id": 76,
+      "type": "skip",
+      "label": "Mending Rite",
+      "text": [
+        "You read the altar scratches until they become a rite for binding power without cruelty. It will matter if dawn still exists."
+      ],
+      "position": [
+        24100,
+        1400
+      ],
+      "entryEffects": [
+        "memoryUp(1)"
+      ],
+      "nextId": 79
+    },
+    {
+      "id": 77,
+      "type": "skip",
+      "label": "Deeper Prayer",
+      "text": [
+        "You pray until the candle flame turns white at the edges. The saint leaves a little light behind."
+      ],
+      "position": [
+        24420,
+        1400
+      ],
+      "entryEffects": [
+        "light(1)",
+        "mercyUp(1)"
+      ],
+      "nextId": 75
+    },
+    {
+      "id": 78,
+      "type": "skip",
+      "label": "Debt Confessed",
+      "text": [
+        "You name one thing you did for survival and do not make it noble. The niche closes around the confession and eats the shadow from it."
+      ],
+      "position": [
+        24740,
+        1400
+      ],
+      "entryEffects": [
+        "settleDebt(1)",
+        "memoryUp(1)"
+      ],
+      "nextId": 75
+    },
+    {
+      "id": 79,
+      "type": "skip",
+      "label": "Old Niche",
+      "text": [
+        "Behind the scratched rite, a second niche holds a spare wick of root-tallow wrapped in hair. Orra must have hidden mercy for later thieves."
+      ],
+      "position": [
+        25060,
+        1400
+      ],
+      "entryEffects": [
+        "hasRootTallow = true"
+      ],
+      "nextId": 77
+    },
+    {
+      "id": 80,
+      "type": "skip",
+      "label": "Leave Ossuary",
+      "text": [
+        "You leave the jawbone corridor. Behind you, the teeth turn outward for the first time in centuries."
+      ],
+      "position": [
+        25380,
+        1400
+      ],
+      "nextId": 20
+    },
+    {
+      "id": 81,
+      "type": "skip",
+      "label": "Drowned Choir",
+      "text": [
+        "The drowned road slopes into black water that hangs above the stones instead of lying on them. Faces move beneath its surface, singing with closed mouths."
+      ],
+      "position": [
+        25700,
+        2800
+      ],
+      "entryEffects": [
+        "dim(1)"
+      ],
+      "nextId": 82
+    },
+    {
+      "id": 82,
+      "type": "action",
+      "label": "River Stair",
+      "text": [
+        "A narrow ferry waits at the flooded stair. The boatman is a drowned old man with coins sewn over his eyes and a pole made of bone."
+      ],
+      "position": [
+        26020,
+        2800
+      ],
+      "actions": [
+        {
+          "label": "❤️ Pay blood",
+          "id": 83
+        },
+        {
+          "label": "👂 Listen",
+          "id": 84
+        },
+        {
+          "label": "🌊 Dive",
+          "id": 85
+        }
+      ]
+    },
+    {
+      "id": 83,
+      "type": "skip",
+      "label": "Red Fare",
+      "text": [
+        "You drip blood into the ferry bowl. The boatman nods, and the sewn coins click against his eyelids."
+      ],
+      "position": [
+        26340,
+        2800
+      ],
+      "entryEffects": [
+        "hurt(1)",
+        "honorUp(1)"
+      ],
+      "nextId": 89
+    },
+    {
+      "id": 84,
+      "type": "skip",
+      "label": "Water Names",
+      "text": [
+        "You listen before boarding. The water recites names in reverse order, ending with yours before you were born."
+      ],
+      "position": [
+        26660,
+        2800
+      ],
+      "entryEffects": [
+        "memoryUp(1)"
+      ],
+      "nextId": 89
+    },
+    {
+      "id": 85,
+      "type": "skip",
+      "label": "Cold Dive",
+      "text": [
+        "You dive beneath the hovering water. It is colder than winter iron and full of hands trying to teach you stillness."
+      ],
+      "position": [
+        26980,
+        2800
+      ],
+      "entryEffects": [
+        "hurt(1)"
+      ],
+      "nextId": 86
+    },
+    {
+      "id": 86,
+      "type": "redirect",
+      "label": "Deep Current",
+      "text": [
+        "The river remembers every body it carried. Its current turns sideways, pulling you through possible drownings."
+      ],
+      "position": [
+        27300,
+        2800
+      ],
+      "links": [
+        {
+          "id": 89,
+          "weight": 4,
+          "effects": [
+            "dim(1)"
+          ]
+        },
+        {
+          "id": 87,
+          "weight": 3,
+          "condition": "memory >= 2",
+          "effects": [
+            "memoryUp(1)"
+          ]
+        },
+        {
+          "id": 88,
+          "weight": 2,
+          "effects": [
+            "hurt(1)"
+          ]
+        }
+      ]
+    },
+    {
+      "id": 87,
+      "type": "skip",
+      "label": "Under Black",
+      "text": [
+        "You find a dry pocket under the water where old bells hang upside down. One of them shows the crown drowning a city."
+      ],
+      "position": [
+        27620,
+        2800
+      ],
+      "entryEffects": [
+        "memoryUp(1)"
+      ],
+      "nextId": 89
+    },
+    {
+      "id": 88,
+      "type": "skip",
+      "label": "Lost Breath",
+      "text": [
+        "Hands close around your throat before the ferry hook catches your collar. The boatman hauls you out without comment."
+      ],
+      "position": [
+        27940,
+        2800
+      ],
+      "nextId": 89
+    },
+    {
+      "id": 89,
+      "type": "action",
+      "label": "Olt Ferryman",
+      "text": [
+        "\"Olt,\" the boatman says when you ask his name. \"Last ferryman. First drowned.\" His voice carries a whole river of resentment.",
+        "Across the water, a court of drowned singers waits around a seal of blue-black wax."
+      ],
+      "position": [
+        28260,
+        2800
+      ],
+      "actions": [
+        {
+          "label": "📜 Ask seal",
+          "id": 90
+        },
+        {
+          "label": "🎵 Sing back",
+          "id": 91
+        },
+        {
+          "label": "⚔️ Threaten",
+          "id": 92
+        }
+      ]
+    },
+    {
+      "id": 90,
+      "type": "skip",
+      "label": "Seal Question",
+      "text": [
+        "You ask why the seal matters. Olt says the crown used it to decide which dead could speak and which must only sing."
+      ],
+      "position": [
+        28580,
+        2800
+      ],
+      "entryEffects": [
+        "memoryUp(1)"
+      ],
+      "nextId": 93
+    },
+    {
+      "id": 91,
+      "type": "skip",
+      "label": "Answer Song",
+      "text": [
+        "You sing the bone choir's melody back to the water. Several drowned faces open their eyes, startled by being heard."
+      ],
+      "position": [
+        28900,
+        2800
+      ],
+      "entryEffects": [
+        "mercyUp(1)"
+      ],
+      "nextId": 93
+    },
+    {
+      "id": 92,
+      "type": "skip",
+      "label": "Ferryman Threat",
+      "text": [
+        "You put the sword near Olt's throat. The river goes silent, and the boatman smiles because threats are also a kind of fare."
+      ],
+      "position": [
+        29220,
+        2800
+      ],
+      "entryEffects": [
+        "debt(1)",
+        "honorUp(1)"
+      ],
+      "nextId": 93
+    },
+    {
+      "id": 93,
+      "type": "action",
+      "label": "Drowned Court",
+      "text": [
+        "The drowned court rises waist-deep from the black river. They do not accuse you; they accuse the crown through you."
+      ],
+      "position": [
+        29540,
+        2800
+      ],
+      "actions": [
+        {
+          "label": "👂 Hear names",
+          "id": 94
+        },
+        {
+          "label": "🗝️ Steal seal",
+          "id": 95
+        },
+        {
+          "label": "🕯️ Grant rest",
+          "id": 96
+        }
+      ]
+    },
+    {
+      "id": 94,
+      "type": "skip",
+      "label": "Heard Names",
+      "text": [
+        "You let every drowned singer speak one name. By the end, your memory feels crowded but stronger."
+      ],
+      "position": [
+        29860,
+        2800
+      ],
+      "entryEffects": [
+        "memoryUp(2)"
+      ],
+      "nextId": 97
+    },
+    {
+      "id": 95,
+      "type": "skip",
+      "label": "Stolen Seal",
+      "text": [
+        "You lunge for the wax seal. The river permits theft, then records it in water colder than ink."
+      ],
+      "position": [
+        30180,
+        2800
+      ],
+      "entryEffects": [
+        "debt(1)",
+        "hurt(1)"
+      ],
+      "nextId": 97
+    },
+    {
+      "id": 96,
+      "type": "skip",
+      "label": "Granted Rest",
+      "text": [
+        "You open the ferry bowl and pour your paid blood into the river. Several singers sink peacefully out of the court."
+      ],
+      "position": [
+        30500,
+        2800
+      ],
+      "entryEffects": [
+        "mercyUp(2)"
+      ],
+      "nextId": 97
+    },
+    {
+      "id": 97,
+      "type": "redirect",
+      "label": "Seal Trial",
+      "text": [
+        "The seal melts into three currents, and each current judges a different hunger in you."
+      ],
+      "position": [
+        30820,
+        2800
+      ],
+      "links": [
+        {
+          "id": 98,
+          "weight": 4,
+          "condition": "mercy >= 2",
+          "effects": [
+            "light(1)"
+          ]
+        },
+        {
+          "id": 99,
+          "weight": 4,
+          "effects": [
+            "hurt(1)"
+          ]
+        },
+        {
+          "id": 100,
+          "weight": 3,
+          "condition": "memory >= 3",
+          "effects": [
+            "memoryUp(1)"
+          ]
+        }
+      ]
+    },
+    {
+      "id": 98,
+      "type": "skip",
+      "label": "Pearl Judge",
+      "text": [
+        "A pearl-eyed singer touches your brow and leaves forgiveness there like a bruise that heals inward."
+      ],
+      "position": [
+        31140,
+        2800
+      ],
+      "entryEffects": [
+        "mercyUp(1)"
+      ],
+      "nextId": 101
+    },
+    {
+      "id": 99,
+      "type": "skip",
+      "label": "Undertow Judge",
+      "text": [
+        "The current drags you under and shows you the scaffold from beneath, where every condemned face looks like yours."
+      ],
+      "position": [
+        31460,
+        2800
+      ],
+      "nextId": 101
+    },
+    {
+      "id": 100,
+      "type": "skip",
+      "label": "Silent Judge",
+      "text": [
+        "The silent current asks no question. It only removes one lie you had been using as a brace."
+      ],
+      "position": [
+        31780,
+        2800
+      ],
+      "entryEffects": [
+        "memoryUp(1)"
+      ],
+      "nextId": 101
+    },
+    {
+      "id": 101,
+      "type": "action",
+      "label": "Seal Choice",
+      "text": [
+        "The wax seal floats within reach. It can command the dead, comfort them, or be refused entirely."
+      ],
+      "position": [
+        32100,
+        2800
+      ],
+      "actions": [
+        {
+          "label": "🗝️ Bind seal",
+          "id": 102
+        },
+        {
+          "label": "📜 Trade memory",
+          "id": 103
+        },
+        {
+          "label": "🛡️ Refuse power",
+          "id": 104
+        }
+      ]
+    },
+    {
+      "id": 102,
+      "type": "skip",
+      "label": "Seal Bound",
+      "text": [
+        "You press the seal into your brand. The drowned court bows because grave-law recognizes an old cruelty wearing a new hand."
+      ],
+      "position": [
+        32420,
+        2800
+      ],
+      "entryEffects": [
+        "debt(1)"
+      ],
+      "nextId": 105
+    },
+    {
+      "id": 103,
+      "type": "skip",
+      "label": "Memory Fare",
+      "text": [
+        "You give the seal one memory of sunlight on your face. In exchange, it leaves command without taking your voice."
+      ],
+      "position": [
+        32740,
+        2800
+      ],
+      "entryEffects": [
+        "memory = max(memory - 1, 0)",
+        "mercyUp(1)"
+      ],
+      "nextId": 105
+    },
+    {
+      "id": 104,
+      "type": "skip",
+      "label": "Power Refused",
+      "text": [
+        "You refuse to command the drowned. Olt laughs once, not kindly, but the court's song warms around you."
+      ],
+      "position": [
+        33060,
+        2800
+      ],
+      "entryEffects": [
+        "honorUp(1)",
+        "mercyUp(1)"
+      ],
+      "nextId": 105
+    },
+    {
+      "id": 105,
+      "type": "skip",
+      "label": "Drowned Seal",
+      "text": [
+        "The seal folds into a crown shard made of water and wax. It does not wet your hand, but it weighs like a tide."
+      ],
+      "position": [
+        33380,
+        2800
+      ],
+      "entryEffects": [
+        "claimDrownedShard"
+      ],
+      "nextId": 106
+    },
+    {
+      "id": 106,
+      "type": "action",
+      "label": "Choir End",
+      "text": [
+        "The ferry turns back toward the Iron Well. Olt waits, but the drowned singers keep one prophecy caught between their teeth."
+      ],
+      "position": [
+        33700,
+        2800
+      ],
+      "actions": [
+        {
+          "label": "🚪 Return",
+          "id": 109
+        },
+        {
+          "label": "👁️ Prophecy",
+          "id": 107
+        },
+        {
+          "label": "🕯️ Rescue ghost",
+          "id": 108,
+          "condition": "metElian"
+        }
+      ]
+    },
+    {
+      "id": 107,
+      "type": "skip",
+      "label": "Drowned Prophecy",
+      "text": [
+        "\"The crown mends by mercy, breaks by salt, rules by debt, and sleeps in a willing heart,\" the singers murmur."
+      ],
+      "position": [
+        34020,
+        2800
+      ],
+      "entryEffects": [
+        "hasDrownedProphecy = true",
+        "memoryUp(1)"
+      ],
+      "nextId": 110
+    },
+    {
+      "id": 108,
+      "type": "skip",
+      "label": "Small Rescue",
+      "text": [
+        "You pull a child-shaped shadow from the river before it becomes another singer. Elian holds its hand until it remembers the way out."
+      ],
+      "position": [
+        34340,
+        2800
+      ],
+      "entryEffects": [
+        "mercyUp(1)",
+        "trustElian(1)"
+      ],
+      "nextId": 106
+    },
+    {
+      "id": 109,
+      "type": "skip",
+      "label": "Leave Choir",
+      "text": [
+        "The ferry docks at a stair that was not there before. When you climb it, the Iron Well is waiting above the waterline."
+      ],
+      "position": [
+        34660,
+        2800
+      ],
+      "nextId": 20
+    },
+    {
+      "id": 110,
+      "type": "skip",
+      "label": "Old Current",
+      "text": [
+        "The prophecy circles back on itself. You realize the river has carried you past this sentence in another turn, and next time you may answer sooner."
+      ],
+      "position": [
+        34980,
+        2800
+      ],
+      "entryEffects": [
+        "memoryUp(1)"
+      ],
+      "nextId": 106
+    },
+    {
+      "id": 111,
+      "type": "skip",
+      "label": "Grave Market",
+      "text": [
+        "The market road smells of wax, old roses, and fresh-dug clay. Stalls unfold from crypt walls as merchants with covered faces light blue lamps."
+      ],
+      "position": [
+        35300,
+        4200
+      ],
+      "entryEffects": [
+        "dim(1)"
+      ],
+      "nextId": 112
+    },
+    {
+      "id": 112,
+      "type": "action",
+      "label": "Market Gate",
+      "text": [
+        "A gatekeeper made of stacked ledgers blocks the arcade. \"Entry requires proof you can lose something,\" it writes with its own finger bone."
+      ],
+      "position": [
+        35620,
+        4200
+      ],
+      "actions": [
+        {
+          "label": "🛡️ Show brand",
+          "id": 113
+        },
+        {
+          "label": "❤️ Pay blood",
+          "id": 114
+        },
+        {
+          "label": "🌑 Sneak in",
+          "id": 115
+        }
+      ]
+    },
+    {
+      "id": 113,
+      "type": "skip",
+      "label": "Brand Shown",
+      "text": [
+        "You show the execution brand. The ledgers flutter with approval; condemned people are excellent customers."
+      ],
+      "position": [
+        35940,
+        4200
+      ],
+      "entryEffects": [
+        "marketUp(1)"
+      ],
+      "nextId": 119
+    },
+    {
+      "id": 114,
+      "type": "skip",
+      "label": "Blood Entry",
+      "text": [
+        "You press your thumb to the ledger. It writes your name in red and opens the gate with brisk professional delight."
+      ],
+      "position": [
+        36260,
+        4200
+      ],
+      "entryEffects": [
+        "hurt(1)",
+        "marketUp(1)"
+      ],
+      "nextId": 119
+    },
+    {
+      "id": 115,
+      "type": "skip",
+      "label": "Stall Shadows",
+      "text": [
+        "You slip between two folded stalls. The market notices but lets you continue, because stolen entry can be invoiced later."
+      ],
+      "position": [
+        36580,
+        4200
+      ],
+      "entryEffects": [
+        "debt(1)"
+      ],
+      "nextId": 116
+    },
+    {
+      "id": 116,
+      "type": "redirect",
+      "label": "Auction Luck",
+      "text": [
+        "An unseen auctioneer calls for bids on your shadow. Somewhere above the lamps, paddles rise and fall."
+      ],
+      "position": [
+        36900,
+        4200
+      ],
+      "links": [
+        {
+          "id": 119,
+          "weight": 4,
+          "effects": [
+            "marketUp(1)"
+          ]
+        },
+        {
+          "id": 117,
+          "weight": 3,
+          "effects": [
+            "debt(1)"
+          ]
+        },
+        {
+          "id": 118,
+          "weight": 2,
+          "condition": "shadowDebt >= 2",
+          "effects": [
+            "marketUp(2)",
+            "debt(1)"
+          ]
+        }
+      ]
+    },
+    {
+      "id": 117,
+      "type": "skip",
+      "label": "Thief Mark",
+      "text": [
+        "A little black price tag appears on your sleeve. It lists your worth as one apology, unpaid."
+      ],
+      "position": [
+        37220,
+        4200
+      ],
+      "entryEffects": [
+        "memoryUp(1)"
+      ],
+      "nextId": 119
+    },
+    {
+      "id": 118,
+      "type": "skip",
+      "label": "Shadow Sale",
+      "text": [
+        "Part of your shadow walks away with a satisfied bidder. You feel lighter in the way a grave feels lighter after robbery."
+      ],
+      "position": [
+        37540,
+        4200
+      ],
+      "nextId": 119
+    },
+    {
+      "id": 119,
+      "type": "action",
+      "label": "Vessa Stall",
+      "text": [
+        "Vessa, a grave-merchant in a veil of receipt paper, greets you as if you are late to an appointment. Her stall offers black salt, root-tallow, and a bell clapper wrapped in velvet.",
+        "\"Everything here is fair,\" she says. \"Fair is not the same as kind.\""
+      ],
+      "position": [
+        37860,
+        4200
+      ],
+      "entryEffects": [
+        "metVessa = true"
+      ],
+      "actions": [
+        {
+          "label": "🔥 Buy salt",
+          "id": 120
+        },
+        {
+          "label": "🕯️ Buy tallow",
+          "id": 121
+        },
+        {
+          "label": "🔔 Ask clapper",
+          "id": 122
+        }
+      ]
+    },
+    {
+      "id": 120,
+      "type": "skip",
+      "label": "Black Salt",
+      "text": [
+        "Vessa pours black salt into a paper twist. \"For breaking crowns, sealing doors, and disappointing tyrants,\" she says."
+      ],
+      "position": [
+        38180,
+        4200
+      ],
+      "entryEffects": [
+        "hasBlackSalt = true",
+        "marketUp(1)"
+      ],
+      "nextId": 123
+    },
+    {
+      "id": 121,
+      "type": "skip",
+      "label": "Bought Tallow",
+      "text": [
+        "The root-tallow wick smells like rain on graves. Your candle leans toward it greedily."
+      ],
+      "position": [
+        38500,
+        4200
+      ],
+      "entryEffects": [
+        "hasRootTallow = true",
+        "light(1)"
+      ],
+      "nextId": 123
+    },
+    {
+      "id": 122,
+      "type": "skip",
+      "label": "Last Clapper",
+      "text": [
+        "Vessa unwraps the bell clapper. It is carved from a king's finger bone and hums whenever your brand gets near."
+      ],
+      "position": [
+        38820,
+        4200
+      ],
+      "entryEffects": [
+        "memoryUp(1)"
+      ],
+      "nextId": 123
+    },
+    {
+      "id": 123,
+      "type": "action",
+      "label": "Vessa Bargain",
+      "text": [
+        "Vessa names three prices for the market's crown writ. None are money. All of them sound legal."
+      ],
+      "position": [
+        39140,
+        4200
+      ],
+      "actions": [
+        {
+          "label": "📜 Trade memory",
+          "id": 124
+        },
+        {
+          "label": "🕯️ Trade mercy",
+          "id": 125
+        },
+        {
+          "label": "🌑 Owe debt",
+          "id": 126
+        }
+      ]
+    },
+    {
+      "id": 124,
+      "type": "skip",
+      "label": "Memory Sold",
+      "text": [
+        "You sell Vessa the memory of your mother's face. The clapper becomes yours, and the loss leaves a clean, terrible blank."
+      ],
+      "position": [
+        39460,
+        4200
+      ],
+      "entryEffects": [
+        "memory = max(memory - 1, 0)",
+        "hasLastClapper = true"
+      ],
+      "nextId": 127
+    },
+    {
+      "id": 125,
+      "type": "skip",
+      "label": "Mercy Sold",
+      "text": [
+        "You sell one mercy you had not yet spent. Vessa bottles it and gives you a crown vessel made of folded funeral glass."
+      ],
+      "position": [
+        39780,
+        4200
+      ],
+      "entryEffects": [
+        "mercy = max(mercy - 1, 0)",
+        "hasCrownVessel = true"
+      ],
+      "nextId": 127
+    },
+    {
+      "id": 126,
+      "type": "skip",
+      "label": "Debt Owed",
+      "text": [
+        "You sign Vessa's receipt without reading the lower half. The clapper and vessel appear in your hands, both colder than law."
+      ],
+      "position": [
+        40100,
+        4200
+      ],
+      "entryEffects": [
+        "debt(2)",
+        "hasLastClapper = true",
+        "hasCrownVessel = true"
+      ],
+      "nextId": 127
+    },
+    {
+      "id": 127,
+      "type": "skip",
+      "label": "Market Writ",
+      "text": [
+        "Vessa stamps your brand with a merchant's crown. The mark is not ownership exactly; it is a promise that ownership is possible."
+      ],
+      "position": [
+        40420,
+        4200
+      ],
+      "entryEffects": [
+        "claimMarketShard"
+      ],
+      "nextId": 128
+    },
+    {
+      "id": 128,
+      "type": "action",
+      "label": "Market End",
+      "text": [
+        "The market folds and unfolds around you. Vessa's smile remains visible even when her face does not."
+      ],
+      "position": [
+        40740,
+        4200
+      ],
+      "actions": [
+        {
+          "label": "🚪 Return",
+          "id": 134
+        },
+        {
+          "label": "💰 Gamble",
+          "id": 129
+        },
+        {
+          "label": "❓ Question Vessa",
+          "id": 133
+        },
+        {
+          "label": "🗝️ Black door",
+          "id": 135,
+          "condition": "hasAshKey || memory >= 2"
+        }
+      ]
+    },
+    {
+      "id": 129,
+      "type": "redirect",
+      "label": "Market Gamble",
+      "text": [
+        "A dice cup rattles itself on an empty stall. The market loves a customer who thinks luck is cheaper than sacrifice."
+      ],
+      "position": [
+        41060,
+        4200
+      ],
+      "links": [
+        {
+          "id": 130,
+          "weight": 3,
+          "effects": [
+            "hasBlackSalt = true",
+            "marketUp(1)"
+          ]
+        },
+        {
+          "id": 131,
+          "weight": 3,
+          "effects": [
+            "hurt(1)"
+          ]
+        },
+        {
+          "id": 132,
+          "weight": 2,
+          "effects": [
+            "debt(1)",
+            "hasRootTallow = true"
+          ]
+        }
+      ]
+    },
+    {
+      "id": 130,
+      "type": "skip",
+      "label": "Salt Win",
+      "text": [
+        "The cup tips over and spills black salt instead of dice. The stall applauds with many invisible hands."
+      ],
+      "position": [
+        41380,
+        4200
+      ],
+      "nextId": 128
+    },
+    {
+      "id": 131,
+      "type": "skip",
+      "label": "Blood Loss",
+      "text": [
+        "The dice show six tiny scaffold faces. One bites your thumb before the cup vanishes."
+      ],
+      "position": [
+        41700,
+        4200
+      ],
+      "nextId": 128
+    },
+    {
+      "id": 132,
+      "type": "skip",
+      "label": "Debt Prize",
+      "text": [
+        "You win a wick of root-tallow tied with a black ribbon. The ribbon writes your debt in neat script."
+      ],
+      "position": [
+        42020,
+        4200
+      ],
+      "nextId": 128
+    },
+    {
+      "id": 133,
+      "type": "skip",
+      "label": "Vessa Question",
+      "text": [
+        "You ask why she helps. Vessa says the crown once standardized grief, and no honest merchant forgives a monopoly."
+      ],
+      "position": [
+        42340,
+        4200
+      ],
+      "entryEffects": [
+        "memoryUp(1)",
+        "marketUp(1)"
+      ],
+      "nextId": 139
+    },
+    {
+      "id": 134,
+      "type": "skip",
+      "label": "Leave Market",
+      "text": [
+        "The market gate bows you out with the politeness of a creditor. The Iron Well waits beyond a curtain of receipt paper."
+      ],
+      "position": [
+        42660,
+        4200
+      ],
+      "nextId": 20
+    },
+    {
+      "id": 135,
+      "type": "action",
+      "label": "Black Door",
+      "text": [
+        "Behind Vessa's stall, a black door wears your brand as its keyhole. From the other side comes the faint sound of the cathedral bell breathing."
+      ],
+      "position": [
+        42980,
+        4200
+      ],
+      "actions": [
+        {
+          "label": "🗝️ Open door",
+          "id": 136,
+          "condition": "hasAshKey || shadowDebt >= 3"
+        },
+        {
+          "label": "📜 Read door",
+          "id": 137
+        },
+        {
+          "label": "🚪 Leave door",
+          "id": 138
+        }
+      ]
+    },
+    {
+      "id": 136,
+      "type": "skip",
+      "label": "Door Opened",
+      "text": [
+        "The door opens onto a shortcut through the crown's old accounts. Every step saves time and adds interest."
+      ],
+      "position": [
+        43300,
+        4200
+      ],
+      "entryEffects": [
+        "debt(1)",
+        "memoryUp(1)"
+      ],
+      "nextId": 140
+    },
+    {
+      "id": 137,
+      "type": "skip",
+      "label": "Door Ledger",
+      "text": [
+        "You read the ledger carved around the keyhole. It explains that the Ashen Crown was built to tax death, then learned to tax hope."
+      ],
+      "position": [
+        43620,
+        4200
+      ],
+      "entryEffects": [
+        "memoryUp(1)",
+        "hasAshKey = true"
+      ],
+      "nextId": 135
+    },
+    {
+      "id": 138,
+      "type": "skip",
+      "label": "Door Left",
+      "text": [
+        "You step away before the keyhole learns your pulse. Vessa gives a small approving nod."
+      ],
+      "position": [
+        43940,
+        4200
+      ],
+      "entryEffects": [
+        "honorUp(1)"
+      ],
+      "nextId": 128
+    },
+    {
+      "id": 139,
+      "type": "skip",
+      "label": "Vessa Warning",
+      "text": [
+        "\"Do not mistake breaking the crown for ending hunger,\" Vessa says. She slips an ash key into your sleeve like a receipt."
+      ],
+      "position": [
+        44260,
+        4200
+      ],
+      "entryEffects": [
+        "hasAshKey = true"
+      ],
+      "nextId": 128
+    },
+    {
+      "id": 140,
+      "type": "skip",
+      "label": "Market Shortcut",
+      "text": [
+        "The shortcut returns you to the market with soot on your boots and a clearer sense of the crown's locked chambers."
+      ],
+      "position": [
+        44580,
+        4200
+      ],
+      "entryEffects": [
+        "memoryUp(1)"
+      ],
+      "nextId": 128
+    },
+    {
+      "id": 141,
+      "type": "skip",
+      "label": "Cathedral Root",
+      "text": [
+        "The Iron Well opens at last, revealing stairs wrapped around the cathedral's deepest root. Every shard you carry pulls toward the same buried heartbeat."
+      ],
+      "position": [
+        44900,
+        100
+      ],
+      "entryEffects": [
+        "markFinal"
+      ],
+      "nextId": 142
+    },
+    {
+      "id": 142,
+      "type": "action",
+      "label": "Root Stairs",
+      "text": [
+        "The stairs descend through bells that were never cast. The Ashen Crown waits below, awake enough to dream of your hands."
+      ],
+      "position": [
+        45220,
+        100
+      ],
+      "actions": [
+        {
+          "label": "📜 Prepare rite",
+          "id": 143
+        },
+        {
+          "label": "⚔️ Rush throne",
+          "id": 144
+        },
+        {
+          "label": "🕯️ Call Elian",
+          "id": 145,
+          "condition": "metElian"
+        }
+      ]
+    },
+    {
+      "id": 143,
+      "type": "skip",
+      "label": "Prepared Rite",
+      "text": [
+        "You arrange salt, candle, relic, seal, oath, and writ in the order the dead roads taught you. The crown's heartbeat stutters."
+      ],
+      "position": [
+        45540,
+        100
+      ],
+      "entryEffects": [
+        "memoryUp(1)",
+        "honorUp(1)"
+      ],
+      "nextId": 146
+    },
+    {
+      "id": 144,
+      "type": "skip",
+      "label": "Rushed Throne",
+      "text": [
+        "You rush the throne before the crown finishes waking. It notices the fear before it notices the blade."
+      ],
+      "position": [
+        45860,
+        100
+      ],
+      "entryEffects": [
+        "hurt(1)",
+        "debt(1)"
+      ],
+      "nextId": 146
+    },
+    {
+      "id": 145,
+      "type": "skip",
+      "label": "Elian Called",
+      "text": [
+        "You call Elian's name. The child ghost lifts his lantern, and all your remembered turns gather behind its little flame."
+      ],
+      "position": [
+        46180,
+        100
+      ],
+      "entryEffects": [
+        "trustElian(1)",
+        "mercyUp(1)",
+        "memoryUp(1)"
+      ],
+      "nextId": 146
+    },
+    {
+      "id": 146,
+      "type": "redirect",
+      "label": "Crown Wakes",
+      "text": [
+        "The Ashen Crown opens without moving. It is bone, ash, law, and appetite, and the chamber chooses which truth reaches you first."
+      ],
+      "position": [
+        46500,
+        100
+      ],
+      "links": [
+        {
+          "id": 147,
+          "weight": 4,
+          "condition": "wellPrepared()",
+          "effects": [
+            "light(1)"
+          ]
+        },
+        {
+          "id": 148,
+          "weight": 4,
+          "effects": [
+            "hurt(1)"
+          ]
+        },
+        {
+          "id": 149,
+          "weight": 3,
+          "condition": "shadowDebt >= 3",
+          "effects": [
+            "debt(1)"
+          ]
+        }
+      ]
+    },
+    {
+      "id": 147,
+      "type": "skip",
+      "label": "Clear Throne",
+      "text": [
+        "For one breath, the crown is only an object. That breath is a gift from every road you honored."
+      ],
+      "position": [
+        46820,
+        100
+      ],
+      "nextId": 150
+    },
+    {
+      "id": 148,
+      "type": "skip",
+      "label": "Hunger Bites",
+      "text": [
+        "The Hunger beneath the crown bites through the chamber and into your old wounds. It knows where you are easiest to open."
+      ],
+      "position": [
+        47140,
+        100
+      ],
+      "nextId": 150
+    },
+    {
+      "id": 149,
+      "type": "skip",
+      "label": "Crown Calls",
+      "text": [
+        "\"Wear me,\" the crown says with the voices of judges, saints, ferrymen, and merchants. \"Rule the tithe instead of paying it.\""
+      ],
+      "position": [
+        47460,
+        100
+      ],
+      "nextId": 150
+    },
+    {
+      "id": 150,
+      "type": "action",
+      "label": "Ritual Circle",
+      "text": [
+        "The final circle is ready. The crown can be mended, broken, worn, or given a living prison, but only the path your choices prepared will hold."
+      ],
+      "position": [
+        47780,
+        100
+      ],
+      "actions": [
+        {
+          "label": "🕯️ Mend crown",
+          "id": 151,
+          "condition": "canMend()"
+        },
+        {
+          "label": "🔥 Break crown",
+          "id": 152,
+          "condition": "canBreak()"
+        },
+        {
+          "label": "👑 Wear crown",
+          "id": 153,
+          "condition": "canWear()"
+        },
+        {
+          "label": "❤️ Bind Hunger",
+          "id": 154,
+          "condition": "canBind()"
+        },
+        {
+          "label": "⚔️ Last stand",
+          "id": 155,
+          "condition": "!canMend() && !canBreak() && !canWear() && !canBind()"
+        }
+      ]
+    },
+    {
+      "id": 151,
+      "type": "skip",
+      "label": "Mending Rite",
+      "text": [
+        "You set mercy before law and memory before punishment. The crown cracks again, but this time the crack fills with dawn-colored fire."
+      ],
+      "position": [
+        48100,
+        100
+      ],
+      "nextId": 156
+    },
+    {
+      "id": 152,
+      "type": "skip",
+      "label": "Breaking Rite",
+      "text": [
+        "You ring the last clapper against black salt. The crown screams in legal language until every clause becomes ash."
+      ],
+      "position": [
+        48420,
+        100
+      ],
+      "nextId": 157
+    },
+    {
+      "id": 153,
+      "type": "skip",
+      "label": "Wearing Rite",
+      "text": [
+        "You lift the crown before it can choose another master. It fits because debt is also a kind of measurement."
+      ],
+      "position": [
+        48740,
+        100
+      ],
+      "nextId": 158
+    },
+    {
+      "id": 154,
+      "type": "skip",
+      "label": "Binding Rite",
+      "text": [
+        "You open the crown vessel against your heart. Elian holds the lantern steady while the Hunger pours into the only prison that volunteered."
+      ],
+      "position": [
+        49060,
+        100
+      ],
+      "nextId": 159
+    },
+    {
+      "id": 155,
+      "type": "skip",
+      "label": "Last Stand",
+      "text": [
+        "You strike the crown with everything left. The blow matters, but not enough; the Hunger answers with all the dark beneath the city."
+      ],
+      "position": [
+        49380,
+        100
+      ],
+      "nextId": 160
+    },
+    {
+      "id": 156,
+      "type": "finish",
+      "label": "Dawn Crown",
+      "text": [
+        "The Ashen Crown becomes a bell of pale fire. Veyrholm hears one clear note, not a tithe, but a release.",
+        "By dawn, the dead keep their names, the living keep their breath, and Rowan Vale is remembered as the oath-breaker who taught grave-law mercy. ✨"
+      ],
+      "position": [
+        49700,
+        5600
+      ]
+    },
+    {
+      "id": 157,
+      "type": "finish",
+      "label": "Broken Crown",
+      "text": [
+        "The crown breaks into harmless ash. Every contract between Veyrholm and its dead tears at once, and the Undertithe exhales centuries of witnesses.",
+        "The city above survives without grave-law, frightened and free. No one knows what will replace the old order, which is the first honest thing about it."
+      ],
+      "position": [
+        50020,
+        5600
+      ]
+    },
+    {
+      "id": 158,
+      "type": "finish",
+      "label": "Grave Throne",
+      "text": [
+        "The crown closes around your brow. Whether by choice or accumulated debt, you become the hand that tallies every grave in Veyrholm.",
+        "The Hunger obeys you for now. The dead kneel, the living survive, and your first royal command is written in shadow. 👑"
+      ],
+      "position": [
+        50340,
+        5600
+      ]
+    },
+    {
+      "id": 159,
+      "type": "finish",
+      "label": "Silent Bell",
+      "text": [
+        "The Hunger enters your heart and finds no throne there, only a locked room and Elian's lantern in the window.",
+        "The bell never rings again. Veyrholm lives, and below it Rowan Vale sleeps standing, holding the dark shut from the inside."
+      ],
+      "position": [
+        50660,
+        5600
+      ]
+    },
+    {
+      "id": 160,
+      "type": "finish",
+      "label": "Bloodless End",
+      "text": [
+        "Your blood runs out before the rite can take shape. The Undertithe folds you gently into its census of failed champions.",
+        "Above, the bell rings for Veyrholm until no living hand remains to count the tolls."
+      ],
+      "position": [
+        50980,
+        5600
+      ]
+    },
+    {
+      "id": 161,
+      "type": "finish",
+      "label": "Candleless End",
+      "text": [
+        "The candle dies, or the seventh toll spends the last of its permission. In the dark, the Hunger no longer needs a crown to find you.",
+        "When Veyrholm wakes, it wakes as a city of open mouths beneath a sky that has forgotten dawn."
+      ],
+      "position": [
+        51300,
+        5600
+      ]
+    }
+  ]
+}
