@@ -1,0 +1,3234 @@
+{
+  "id": "a50ff9b7-7b45-47ed-9734-2c73b35d1c2b",
+  "title": "🛡️ The Wolfroad Compact",
+  "description": "A sworn courier crosses a divided march with a dead king's last compact, bargaining through noble halls, river towns, border camps, and old hill oaths before civil war closes the roads.",
+  "language": "en",
+  "startId": 1,
+  "prefix": "Health: {{health}} | Coin: {{coin}} | Rations: {{rations}} | Proof: {{proof}} | Allies: {{allies}} | Suspicion: {{suspicion}}",
+  "data": {
+    "init": {
+      "maxHealth": 8,
+      "health": 7,
+      "coin": 4,
+      "rations": 5,
+      "proof": 0,
+      "allies": 0,
+      "suspicion": 0,
+      "honor": 0,
+      "cunning": 0,
+      "influence": 0,
+      "insideMoot": false,
+      "hasRoyalWrit": true,
+      "hasSealRing": false,
+      "hasRiverPass": false,
+      "hasOldMap": false,
+      "hasGuestBread": false,
+      "hasBlackLedger": false,
+      "hasIronKey": false,
+      "hasOakToken": false,
+      "hasBanner": false,
+      "hasHerbs": false,
+      "hasCastleKey": false,
+      "hasTreatyDraft": false,
+      "hasHiddenTrail": false,
+      "hasHostageLetter": false,
+      "hasWolfBrooch": false,
+      "hasSquireOath": false,
+      "hasBlackBanner": false,
+      "hasRavenToken": false
+    },
+    "conditions": {
+      "wounded": "health <= 0",
+      "hunted": "suspicion >= 10",
+      "canEnterMoot": "hasRoyalWrit && proof >= 3 && (allies >= 2 || hasTreatyDraft || hasBlackLedger || hasSealRing || influence >= 3)",
+      "canPeace": "hasRoyalWrit && hasTreatyDraft && proof >= 5 && allies >= 3 && honor >= 2 && suspicion < 8",
+      "canOldPact": "hasOakToken && allies >= 3 && proof >= 3",
+      "canRegency": "allies >= 3 && (hasBanner || hasWolfBrooch || hasBlackBanner || influence >= 3)",
+      "canExpose": "(hasBlackLedger || hasHostageLetter) && proof >= 4"
+    },
+    "redirectTriggers": [
+      {
+        "condition": "wounded() && !insideMoot",
+        "targetId": 159
+      },
+      {
+        "condition": "hunted() && !insideMoot",
+        "targetId": 160
+      }
+    ],
+    "effects": [
+      {
+        "name": "harm",
+        "args": "amount",
+        "conditions": "amount > 0",
+        "statements": [
+          "health = max(health - amount, 0)",
+          "log(\"-\" + amount + \" health\", \"danger\")"
+        ]
+      },
+      {
+        "name": "heal",
+        "args": "amount",
+        "conditions": "amount > 0",
+        "statements": [
+          "health = min(health + amount, maxHealth)",
+          "log(\"+\" + amount + \" health\", \"success\")"
+        ]
+      },
+      {
+        "name": "gainCoin",
+        "args": "amount",
+        "conditions": "amount > 0",
+        "statements": [
+          "coin = coin + amount",
+          "log(\"+\" + amount + \" coin\", \"success\")"
+        ]
+      },
+      {
+        "name": "spendCoin",
+        "args": "amount",
+        "conditions": "amount > 0",
+        "statements": [
+          "coin = max(coin - amount, 0)",
+          "log(\"-\" + amount + \" coin\", \"warning\")"
+        ]
+      },
+      {
+        "name": "gainRation",
+        "args": "amount",
+        "conditions": "amount > 0",
+        "statements": [
+          "rations = rations + amount",
+          "log(\"+\" + amount + \" rations\", \"success\")"
+        ]
+      },
+      {
+        "name": "useRation",
+        "args": "amount",
+        "conditions": "amount > 0",
+        "statements": [
+          "rations = max(rations - amount, 0)",
+          "log(\"-\" + amount + \" rations\", \"warning\")"
+        ]
+      },
+      {
+        "name": "gainProof",
+        "args": "amount",
+        "conditions": "amount > 0",
+        "statements": [
+          "proof = proof + amount",
+          "log(\"Proof gained.\", \"success\")"
+        ]
+      },
+      {
+        "name": "gainAlly",
+        "args": "amount",
+        "conditions": "amount > 0",
+        "statements": [
+          "allies = allies + amount",
+          "log(\"An ally joins your cause.\", \"success\")"
+        ]
+      },
+      {
+        "name": "suspicionUp",
+        "args": "amount",
+        "conditions": "amount > 0",
+        "statements": [
+          "suspicion = suspicion + amount",
+          "log(\"Suspicion rises.\", \"warning\")"
+        ]
+      },
+      {
+        "name": "suspicionDown",
+        "args": "amount",
+        "conditions": "amount > 0",
+        "statements": [
+          "suspicion = max(suspicion - amount, 0)",
+          "log(\"Suspicion eases.\", \"success\")"
+        ]
+      },
+      {
+        "name": "honorUp",
+        "args": "amount",
+        "statements": "honor = honor + amount"
+      },
+      {
+        "name": "cunningUp",
+        "args": "amount",
+        "statements": "cunning = cunning + amount"
+      },
+      {
+        "name": "influenceUp",
+        "args": "amount",
+        "statements": "influence = influence + amount"
+      },
+      {
+        "name": "enterMoot",
+        "statements": [
+          "insideMoot = true",
+          "log(\"Highmere's gates close behind you.\", \"info\")"
+        ]
+      }
+    ]
+  },
+  "nodes": [
+    {
+      "id": 1,
+      "type": "skip",
+      "label": "Last Writ",
+      "text": [
+        "King Maelor dies in a shuttered hunting lodge while rain claws at the roof. Lady Maerla Veyne presses his sealed compact into your hands before the candles gutter. 📜",
+        "You are Ren Arlen, sworn courier and minor sword-bearer, suddenly worth more alive than any banner in Harrowmere."
+      ],
+      "nextId": 2,
+      "position": [
+        100,
+        100
+      ]
+    },
+    {
+      "id": 2,
+      "type": "action",
+      "label": "Oath Choice",
+      "text": [
+        "Maerla's guards listen from the doorway. The compact would place Princess Elowen under a council of rivals, denying every house the single prize they expected.",
+        "Maerla asks whether your oath still has legs enough for one last road."
+      ],
+      "actions": [
+        {
+          "label": "🛡️ Swear oath",
+          "id": 3
+        },
+        {
+          "label": "❓ Ask price",
+          "id": 4
+        },
+        {
+          "label": "💰 Demand pay",
+          "id": 5
+        }
+      ],
+      "position": [
+        100,
+        360
+      ]
+    },
+    {
+      "id": 3,
+      "type": "skip",
+      "label": "Oath Taken",
+      "text": [
+        "You kneel on wet rushes and swear by the dead king's hand. Maerla gives one sharp nod, as if gratitude is a coin she cannot safely spend."
+      ],
+      "nextId": 6,
+      "entryEffects": [
+        "honorUp(1)"
+      ],
+      "position": [
+        100,
+        620
+      ]
+    },
+    {
+      "id": 4,
+      "type": "skip",
+      "label": "Hard Price",
+      "text": [
+        "You ask what this road will cost. Maerla answers, \"Friends, sleep, and perhaps the clean idea you have of loyalty.\"",
+        "The honesty is almost generous."
+      ],
+      "nextId": 6,
+      "entryEffects": [
+        "influenceUp(1)"
+      ],
+      "position": [
+        100,
+        880
+      ]
+    },
+    {
+      "id": 5,
+      "type": "skip",
+      "label": "Paid Courier",
+      "text": [
+        "You name a price. Maerla pays from a small iron box, then warns that silver has a louder voice than vows when men start counting motives."
+      ],
+      "nextId": 6,
+      "entryEffects": [
+        "gainCoin(1)",
+        "cunningUp(1)",
+        "suspicionUp(1)"
+      ],
+      "position": [
+        100,
+        1140
+      ]
+    },
+    {
+      "id": 6,
+      "type": "action",
+      "label": "Four Roads",
+      "text": [
+        "By dawn, Harrowmere opens before you: the Wolfroad north, the river market east, Hollow Abbey in the hills, and Red Ford where soldiers wait hungry.",
+        "Highmere lies beyond them all, but arriving empty-handed would only feed the claimants."
+      ],
+      "actions": [
+        {
+          "label": "🧭 Wolfroad",
+          "id": 7
+        },
+        {
+          "label": "🛶 River road",
+          "id": 8
+        },
+        {
+          "label": "🕯️ Hollow Abbey",
+          "id": 9
+        },
+        {
+          "label": "⚔️ Red Ford",
+          "id": 100
+        },
+        {
+          "label": "🏰 Highmere",
+          "id": 141,
+          "condition": "canEnterMoot()"
+        }
+      ],
+      "position": [
+        100,
+        1400
+      ]
+    },
+    {
+      "id": 7,
+      "type": "skip",
+      "label": "North Gate",
+      "text": [
+        "You ride beneath pines heavy with rain. Northmen have tied strips of black wool to the branches, each one a promise that Lord Garran Brant remembers insults."
+      ],
+      "nextId": 10,
+      "position": [
+        100,
+        1660
+      ]
+    },
+    {
+      "id": 8,
+      "type": "skip",
+      "label": "River Gate",
+      "text": [
+        "You turn toward the flat road where barges, tollmen, and fishwives carry rumor faster than horses. The compact lies warm against your ribs."
+      ],
+      "nextId": 40,
+      "position": [
+        100,
+        1920
+      ]
+    },
+    {
+      "id": 9,
+      "type": "skip",
+      "label": "Abbey Gate",
+      "text": [
+        "The hill path climbs toward Hollow Abbey, where royal oaths are copied in brown ink and older promises are kept under stone."
+      ],
+      "nextId": 70,
+      "position": [
+        420,
+        100
+      ]
+    },
+    {
+      "id": 10,
+      "type": "redirect",
+      "label": "Road Weather",
+      "text": [
+        "The Wolfroad narrows between wet pines. Hoofprints cross and recross until the mud looks argued over.",
+        "Weather, men, and chance decide what reaches you first."
+      ],
+      "links": [
+        {
+          "weight": 4,
+          "id": 11
+        },
+        {
+          "weight": 3,
+          "id": 12
+        },
+        {
+          "weight": 3,
+          "id": 13
+        }
+      ],
+      "position": [
+        420,
+        360
+      ]
+    },
+    {
+      "id": 11,
+      "type": "skip",
+      "label": "Clear Mile",
+      "text": [
+        "For one merciful mile the road stays empty. You use the quiet to check the seal, count your food, and listen for pursuit that does not come."
+      ],
+      "nextId": 14,
+      "position": [
+        420,
+        620
+      ]
+    },
+    {
+      "id": 12,
+      "type": "skip",
+      "label": "Broken Cart",
+      "text": [
+        "A crofter's cart has broken an axle in the ditch. You lift before asking names, and the family presses smoked barley into your saddlebag in thanks."
+      ],
+      "nextId": 14,
+      "entryEffects": [
+        "gainRation(1)",
+        "honorUp(1)"
+      ],
+      "position": [
+        420,
+        880
+      ]
+    },
+    {
+      "id": 13,
+      "type": "skip",
+      "label": "Toll Patrol",
+      "text": [
+        "A Brant patrol stops you under a leaning ash. Their sergeant studies your gloves too long, then waves you on with the sour look of a man remembering faces."
+      ],
+      "nextId": 14,
+      "entryEffects": [
+        "suspicionUp(1)"
+      ],
+      "position": [
+        420,
+        1140
+      ]
+    },
+    {
+      "id": 14,
+      "type": "action",
+      "label": "Pine Camp",
+      "text": [
+        "At a hunter's camp, three paths split from the coals. One climbs toward Wolfhall's banners, one turns to an abandoned watch, and one returns south before the north notices you twice."
+      ],
+      "actions": [
+        {
+          "label": "🏰 Wolfhall",
+          "id": 15
+        },
+        {
+          "label": "🔍 Old watch",
+          "id": 32
+        },
+        {
+          "label": "🧭 South road",
+          "id": 6
+        }
+      ],
+      "position": [
+        420,
+        1400
+      ]
+    },
+    {
+      "id": 15,
+      "type": "skip",
+      "label": "Bannered Keep",
+      "text": [
+        "Wolfhall rises from a ridge of black stone, all wet banners and narrow windows. No wolf needs to howl here; the keep itself has teeth enough."
+      ],
+      "nextId": 16,
+      "position": [
+        420,
+        1660
+      ]
+    },
+    {
+      "id": 16,
+      "type": "action",
+      "label": "Keep Yard",
+      "text": [
+        "Stablehands stop talking when they see you. Men in ringmail crowd the yard, and above them Lord Garran's red shield hangs over the great doors."
+      ],
+      "actions": [
+        {
+          "label": "📜 Demand audience",
+          "id": 17
+        },
+        {
+          "label": "⚔️ Offer service",
+          "id": 18
+        },
+        {
+          "label": "🔍 Eavesdrop",
+          "id": 19
+        }
+      ],
+      "position": [
+        420,
+        1920
+      ]
+    },
+    {
+      "id": 17,
+      "type": "skip",
+      "label": "Steel Courtesy",
+      "text": [
+        "You show Maelor's seal openly. The captain at the stair bows with perfect hatred and sends a runner ahead, making sure half the keep knows you came."
+      ],
+      "nextId": 20,
+      "entryEffects": [
+        "suspicionUp(1)",
+        "honorUp(1)"
+      ],
+      "position": [
+        740,
+        100
+      ]
+    },
+    {
+      "id": 18,
+      "type": "skip",
+      "label": "Spear Work",
+      "text": [
+        "You help haul a wagon of spearheads from the rain. Soldiers respect useful hands, and one tells you Lord Garran has been promised more than he admits."
+      ],
+      "nextId": 20,
+      "entryEffects": [
+        "gainAlly(1)",
+        "influenceUp(1)"
+      ],
+      "position": [
+        740,
+        360
+      ]
+    },
+    {
+      "id": 19,
+      "type": "skip",
+      "label": "Servant Door",
+      "text": [
+        "You follow the laundry steam through a side passage and pocket a small iron key from a forgotten hook. The passage smells of soap, fear, and supper smoke."
+      ],
+      "nextId": 21,
+      "entryEffects": [
+        "cunningUp(1)",
+        "hasCastleKey = true",
+        "log(\"Castle key acquired.\", \"success\")"
+      ],
+      "position": [
+        740,
+        620
+      ]
+    },
+    {
+      "id": 20,
+      "type": "action",
+      "label": "Lord Garran",
+      "text": [
+        "Lord Garran Brant receives you beside a hearth big enough to roast an ox. His beard is silver, his hands are scarred, and his courtesy arrives armored."
+      ],
+      "actions": [
+        {
+          "label": "🤝 Negotiate",
+          "id": 22
+        },
+        {
+          "label": "⚔️ Challenge raids",
+          "id": 23
+        },
+        {
+          "label": "👁️ Ask Ilyra",
+          "id": 24
+        }
+      ],
+      "position": [
+        740,
+        880
+      ]
+    },
+    {
+      "id": 21,
+      "type": "skip",
+      "label": "Hidden Gallery",
+      "text": [
+        "Behind the hall's carved screen, Lady Ilyra Brant tells a steward that her father is being fed forged raid reports. She sounds angry enough to be useful."
+      ],
+      "nextId": 24,
+      "entryEffects": [
+        "gainProof(1)"
+      ],
+      "position": [
+        740,
+        1140
+      ]
+    },
+    {
+      "id": 22,
+      "type": "skip",
+      "label": "Hard Terms",
+      "text": [
+        "You speak of a council that would preserve his honor. Garran says honor is often a cloak sewn by men standing far from winter roads."
+      ],
+      "nextId": 25,
+      "entryEffects": [
+        "influenceUp(1)"
+      ],
+      "position": [
+        740,
+        1400
+      ]
+    },
+    {
+      "id": 23,
+      "type": "skip",
+      "label": "Raid Charge",
+      "text": [
+        "You accuse his riders of striking villages to force the council. Garran's fist hits the table; a cup breaks, and a shard cuts your palm before anyone moves."
+      ],
+      "nextId": 25,
+      "entryEffects": [
+        "harm(1)",
+        "gainProof(1)"
+      ],
+      "position": [
+        740,
+        1660
+      ]
+    },
+    {
+      "id": 24,
+      "type": "skip",
+      "label": "Ilyra's Word",
+      "text": [
+        "Lady Ilyra meets you in the hawk court. She gives you a silver brooch shaped like a broken shield and says the false orders passed through her father's steward."
+      ],
+      "nextId": 26,
+      "entryEffects": [
+        "hasWolfBrooch = true",
+        "gainProof(1)"
+      ],
+      "position": [
+        740,
+        1920
+      ]
+    },
+    {
+      "id": 25,
+      "type": "redirect",
+      "label": "Supper Turn",
+      "text": [
+        "Supper begins under antlers, sword belts, and servants pretending not to hear. Every cup raised to the dead king seems to ask who will own his daughter."
+      ],
+      "links": [
+        {
+          "weight": 4,
+          "id": 26
+        },
+        {
+          "weight": 3,
+          "id": 27
+        },
+        {
+          "weight": 3,
+          "id": 28
+        }
+      ],
+      "position": [
+        1060,
+        100
+      ]
+    },
+    {
+      "id": 26,
+      "type": "skip",
+      "label": "Guest Bread",
+      "text": [
+        "Ilyra breaks guest bread with you before the hall. In the north, that small act makes murder inconvenient and friendship at least plausible. 🍞"
+      ],
+      "nextId": 29,
+      "entryEffects": [
+        "gainAlly(1)",
+        "hasGuestBread = true"
+      ],
+      "position": [
+        1060,
+        360
+      ]
+    },
+    {
+      "id": 27,
+      "type": "skip",
+      "label": "Open Insult",
+      "text": [
+        "A young knight calls couriers leashed ravens. You answer mildly enough to keep the peace, sharply enough that the old captains laugh into their cups."
+      ],
+      "nextId": 29,
+      "entryEffects": [
+        "suspicionUp(1)",
+        "honorUp(1)"
+      ],
+      "position": [
+        1060,
+        620
+      ]
+    },
+    {
+      "id": 28,
+      "type": "skip",
+      "label": "Low Whisper",
+      "text": [
+        "A kitchen boy slips you a folded note meant for the steward. It names a hostage kept at Red Ford and a payment due after the council vote."
+      ],
+      "nextId": 29,
+      "entryEffects": [
+        "hasHostageLetter = true",
+        "gainProof(1)",
+        "cunningUp(1)"
+      ],
+      "position": [
+        1060,
+        880
+      ]
+    },
+    {
+      "id": 29,
+      "type": "action",
+      "label": "Postern Choice",
+      "text": [
+        "By midnight, Wolfhall has shown you smiles, knives, and doors. The steward's chamber lies above the buttery, while Garran's riders wait in the yard."
+      ],
+      "actions": [
+        {
+          "label": "📜 Seek ledger",
+          "id": 30
+        },
+        {
+          "label": "🛡️ Take escort",
+          "id": 31
+        },
+        {
+          "label": "🗝️ Use postern",
+          "id": 39,
+          "condition": "hasCastleKey"
+        },
+        {
+          "label": "🧭 Leave hall",
+          "id": 35
+        }
+      ],
+      "position": [
+        1060,
+        1140
+      ]
+    },
+    {
+      "id": 30,
+      "type": "skip",
+      "label": "Ledger Rumor",
+      "text": [
+        "A frightened scullion points you toward the steward's chest and begs you not to say who knew. Fear moves through this keep with better manners than servants."
+      ],
+      "nextId": 36,
+      "position": [
+        1060,
+        1400
+      ]
+    },
+    {
+      "id": 31,
+      "type": "skip",
+      "label": "Wolf Escort",
+      "text": [
+        "Garran lends two riders with old scars and careful eyes. Their banner makes some gates easier and some conversations much more dangerous."
+      ],
+      "nextId": 35,
+      "entryEffects": [
+        "gainAlly(1)",
+        "hasBanner = true"
+      ],
+      "position": [
+        1060,
+        1660
+      ]
+    },
+    {
+      "id": 32,
+      "type": "redirect",
+      "label": "Pine Forage",
+      "text": [
+        "The old watch is half-swallowed by pine roots. You search its stones while rain ticks through the broken roof."
+      ],
+      "links": [
+        {
+          "weight": 4,
+          "id": 33
+        },
+        {
+          "weight": 3,
+          "id": 34
+        },
+        {
+          "weight": 3,
+          "id": 39
+        }
+      ],
+      "position": [
+        1060,
+        1920
+      ]
+    },
+    {
+      "id": 33,
+      "type": "skip",
+      "label": "Bitter Herbs",
+      "text": [
+        "Under the watch stair you find wintergreen and woundwort wrapped in waxed cloth by someone who expected to return and never did."
+      ],
+      "nextId": 14,
+      "entryEffects": [
+        "hasHerbs = true",
+        "gainRation(1)",
+        "log(\"Herbs acquired.\", \"success\")"
+      ],
+      "position": [
+        1380,
+        100
+      ]
+    },
+    {
+      "id": 34,
+      "type": "skip",
+      "label": "Bandit Arrows",
+      "text": [
+        "Men with hunting bows try your purse from the treeline. You drive them off, but one arrow tears your sleeve and leaves a hot line beneath it."
+      ],
+      "nextId": 14,
+      "entryEffects": [
+        "harm(1)",
+        "gainCoin(1)"
+      ],
+      "position": [
+        1380,
+        360
+      ]
+    },
+    {
+      "id": 35,
+      "type": "skip",
+      "label": "South Again",
+      "text": [
+        "You leave Wolfhall with wet boots and more eyes behind you than before. The compact remains sealed, but the north has pressed its thumb into the wax."
+      ],
+      "nextId": 6,
+      "position": [
+        1380,
+        620
+      ]
+    },
+    {
+      "id": 36,
+      "type": "action",
+      "label": "Steward Chest",
+      "text": [
+        "The steward's chamber is narrow, warm, and locked badly. A black ledger sits under folded linens, its clasp stamped with three houses that should not agree."
+      ],
+      "actions": [
+        {
+          "label": "💰 Bribe steward",
+          "id": 37,
+          "condition": "coin >= 2"
+        },
+        {
+          "label": "⚔️ Threaten him",
+          "id": 38
+        },
+        {
+          "label": "🚪 Leave chest",
+          "id": 29
+        }
+      ],
+      "position": [
+        1380,
+        880
+      ]
+    },
+    {
+      "id": 37,
+      "type": "skip",
+      "label": "Purchased Ledger",
+      "text": [
+        "Silver opens the steward faster than steel would have. He gives you the ledger and whispers that forged raid orders are being sold like cattle."
+      ],
+      "nextId": 29,
+      "entryEffects": [
+        "spendCoin(2)",
+        "hasBlackLedger = true",
+        "gainProof(2)"
+      ],
+      "position": [
+        1380,
+        1140
+      ]
+    },
+    {
+      "id": 38,
+      "type": "skip",
+      "label": "Frightened Ink",
+      "text": [
+        "Your hand on the hilt breaks his courage. He gives up the ledger, but his panic will run through the walls before dawn."
+      ],
+      "nextId": 29,
+      "entryEffects": [
+        "suspicionUp(2)",
+        "hasBlackLedger = true",
+        "gainProof(1)"
+      ],
+      "position": [
+        1380,
+        1400
+      ]
+    },
+    {
+      "id": 39,
+      "type": "skip",
+      "label": "Old Postern",
+      "text": [
+        "A narrow postern opens onto a deer trail behind the ridge. It is too small for a war band and therefore perfect for anyone not wishing to be remembered."
+      ],
+      "nextId": 6,
+      "entryEffects": [
+        "hasHiddenTrail = true",
+        "log(\"Hidden trail found.\", \"success\")"
+      ],
+      "position": [
+        1380,
+        1660
+      ]
+    },
+    {
+      "id": 40,
+      "type": "redirect",
+      "label": "River Weather",
+      "text": [
+        "The river road runs beside flooded fields and low stone tollhouses. Barges drag against the current like stubborn thoughts."
+      ],
+      "links": [
+        {
+          "weight": 4,
+          "id": 41
+        },
+        {
+          "weight": 3,
+          "id": 42
+        },
+        {
+          "weight": 3,
+          "id": 43
+        }
+      ],
+      "position": [
+        1380,
+        1920
+      ]
+    },
+    {
+      "id": 41,
+      "type": "skip",
+      "label": "Ferry Calm",
+      "text": [
+        "A ferrywoman carries you across a brown bend without asking more than your destination. That kind of mercy usually means she already knows enough."
+      ],
+      "nextId": 44,
+      "position": [
+        1700,
+        100
+      ]
+    },
+    {
+      "id": 42,
+      "type": "skip",
+      "label": "Mired Wheel",
+      "text": [
+        "A grain wagon sinks to its hubs. You spend half a ration and two hours helping strangers because hungry towns remember both cruelty and kindness."
+      ],
+      "nextId": 44,
+      "entryEffects": [
+        "useRation(1)",
+        "honorUp(1)"
+      ],
+      "position": [
+        1700,
+        360
+      ]
+    },
+    {
+      "id": 43,
+      "type": "skip",
+      "label": "River Patrol",
+      "text": [
+        "Toll riders inspect saddlebags along the causeway. You pass, but one marks your cloak color on a wax tablet."
+      ],
+      "nextId": 44,
+      "entryEffects": [
+        "suspicionUp(1)"
+      ],
+      "position": [
+        1700,
+        620
+      ]
+    },
+    {
+      "id": 44,
+      "type": "action",
+      "label": "Stone Market",
+      "text": [
+        "Stone Market stinks of fish oil, wet wool, and argument. Rumor says Mira Fen can move a priest through a locked gate and make the gate apologize."
+      ],
+      "actions": [
+        {
+          "label": "💰 Buy supplies",
+          "id": 45,
+          "condition": "coin >= 1"
+        },
+        {
+          "label": "🛶 Find Mira",
+          "id": 46
+        },
+        {
+          "label": "🔍 Gallows crowd",
+          "id": 47
+        }
+      ],
+      "position": [
+        1700,
+        880
+      ]
+    },
+    {
+      "id": 45,
+      "type": "skip",
+      "label": "Open Purse",
+      "text": [
+        "You buy hard cheese and oats from a widow who weighs honestly after seeing the royal seal. That worries you more than cheating would have."
+      ],
+      "nextId": 48,
+      "entryEffects": [
+        "spendCoin(1)",
+        "gainRation(2)"
+      ],
+      "position": [
+        1700,
+        1140
+      ]
+    },
+    {
+      "id": 46,
+      "type": "skip",
+      "label": "Mira's Boat",
+      "text": [
+        "Mira Fen waits under a patched awning, boots on a coil of rope and a knife tucked where polite people keep prayer beads."
+      ],
+      "nextId": 49,
+      "position": [
+        1700,
+        1400
+      ]
+    },
+    {
+      "id": 47,
+      "type": "skip",
+      "label": "Gallows Crowd",
+      "text": [
+        "A squire is being dragged toward the gallows for carrying false orders. He keeps shouting that the seal was real, even if the command was not."
+      ],
+      "nextId": 50,
+      "entryEffects": [
+        "gainProof(1)",
+        "suspicionUp(1)"
+      ],
+      "position": [
+        1700,
+        1660
+      ]
+    },
+    {
+      "id": 48,
+      "type": "action",
+      "label": "Market Fork",
+      "text": [
+        "Market noise folds around you. A guide might save time, dice might earn coin, and leaving now would keep your name from settling too deeply here."
+      ],
+      "actions": [
+        {
+          "label": "🧭 Hire guide",
+          "id": 51,
+          "condition": "coin >= 2"
+        },
+        {
+          "label": "🎲 Throw dice",
+          "id": 52
+        },
+        {
+          "label": "🧭 Leave stalls",
+          "id": 57
+        }
+      ],
+      "position": [
+        1700,
+        1920
+      ]
+    },
+    {
+      "id": 49,
+      "type": "action",
+      "label": "Mira Deal",
+      "text": [
+        "Mira names three prices for a quiet passage: coin, a useful secret, or the pleasure of refusing a royal errand to your face."
+      ],
+      "actions": [
+        {
+          "label": "💰 Pay passage",
+          "id": 55,
+          "condition": "coin >= 1"
+        },
+        {
+          "label": "📜 Trade secret",
+          "id": 56
+        },
+        {
+          "label": "🚪 Refuse deal",
+          "id": 57
+        }
+      ],
+      "position": [
+        2020,
+        100
+      ]
+    },
+    {
+      "id": 50,
+      "type": "action",
+      "label": "Condemned Squire",
+      "text": [
+        "The squire sees the compact case and stops shouting. His lip is split, but his eyes are clear enough to understand what kind of road you are on."
+      ],
+      "actions": [
+        {
+          "label": "🗝️ Cut rope",
+          "id": 58
+        },
+        {
+          "label": "❓ Question him",
+          "id": 59
+        },
+        {
+          "label": "🧭 Walk on",
+          "id": 57
+        }
+      ],
+      "position": [
+        2020,
+        360
+      ]
+    },
+    {
+      "id": 51,
+      "type": "skip",
+      "label": "River Guide",
+      "text": [
+        "The guide takes your coin and gives you a reed-marked pass used by ferrymen who prefer profit to law. He also tells you which tollman drinks."
+      ],
+      "nextId": 60,
+      "entryEffects": [
+        "spendCoin(2)",
+        "hasRiverPass = true",
+        "gainAlly(1)"
+      ],
+      "position": [
+        2020,
+        620
+      ]
+    },
+    {
+      "id": 52,
+      "type": "redirect",
+      "label": "Dice Table",
+      "text": [
+        "You sit at a barrel where boatmen throw bone dice and pretend every loss was nearly a win. The market leans closer."
+      ],
+      "links": [
+        {
+          "weight": 4,
+          "id": 53
+        },
+        {
+          "weight": 4,
+          "id": 54
+        },
+        {
+          "weight": 2,
+          "id": 57
+        }
+      ],
+      "position": [
+        2020,
+        880
+      ]
+    },
+    {
+      "id": 53,
+      "type": "skip",
+      "label": "Dice Win",
+      "text": [
+        "The bones favor you. A boatman pays in clipped silver and a warning: someone has been asking after Maerla's courier."
+      ],
+      "nextId": 48,
+      "entryEffects": [
+        "gainCoin(2)",
+        "cunningUp(1)"
+      ],
+      "position": [
+        2020,
+        1140
+      ]
+    },
+    {
+      "id": 54,
+      "type": "skip",
+      "label": "Dice Loss",
+      "text": [
+        "The dice betray you with cheerful indifference. Laughter follows as you leave the barrel poorer in coin and richer in attention."
+      ],
+      "nextId": 48,
+      "entryEffects": [
+        "spendCoin(1)",
+        "suspicionUp(1)"
+      ],
+      "position": [
+        2020,
+        1400
+      ]
+    },
+    {
+      "id": 55,
+      "type": "skip",
+      "label": "Quiet Passage",
+      "text": [
+        "Mira's skiff slips through willow shade and under a toll chain lifted by a boy who never looks up. The river keeps secrets if paid first."
+      ],
+      "nextId": 60,
+      "entryEffects": [
+        "spendCoin(1)",
+        "hasRiverPass = true"
+      ],
+      "position": [
+        2020,
+        1660
+      ]
+    },
+    {
+      "id": 56,
+      "type": "skip",
+      "label": "Traded Name",
+      "text": [
+        "You tell Mira which Brant steward sent false orders. She smiles once, sharp as a hook, and gives you the reed pass."
+      ],
+      "nextId": 60,
+      "entryEffects": [
+        "hasRiverPass = true",
+        "gainProof(1)",
+        "suspicionUp(1)"
+      ],
+      "position": [
+        2020,
+        1920
+      ]
+    },
+    {
+      "id": 57,
+      "type": "skip",
+      "label": "Leave Stalls",
+      "text": [
+        "You leave the market before it can swallow the shape of your errand. Behind you, bells, haggling, and gallows boards keep arguing."
+      ],
+      "nextId": 65,
+      "position": [
+        2340,
+        100
+      ]
+    },
+    {
+      "id": 58,
+      "type": "skip",
+      "label": "Loose Rope",
+      "text": [
+        "You cut the squire free during a scuffle over spilled eels. He vanishes into the crowd, but not before swearing his sword to your need."
+      ],
+      "nextId": 60,
+      "entryEffects": [
+        "hasSquireOath = true",
+        "gainAlly(1)",
+        "suspicionUp(2)"
+      ],
+      "position": [
+        2340,
+        360
+      ]
+    },
+    {
+      "id": 59,
+      "type": "skip",
+      "label": "Last Words",
+      "text": [
+        "The squire whispers that a hostage letter named Red Ford and a black banner. Then the guards drag him away before your face betrays the value of it."
+      ],
+      "nextId": 48,
+      "entryEffects": [
+        "hasHostageLetter = true",
+        "gainProof(1)"
+      ],
+      "position": [
+        2340,
+        620
+      ]
+    },
+    {
+      "id": 60,
+      "type": "redirect",
+      "label": "Smuggler Cut",
+      "text": [
+        "Mira's route leaves the honest road behind. Reeds scrape the boat, and every splash sounds briefly like a drawn blade."
+      ],
+      "links": [
+        {
+          "weight": 4,
+          "id": 61
+        },
+        {
+          "weight": 3,
+          "id": 62
+        },
+        {
+          "weight": 2,
+          "id": 63,
+          "condition": "coin >= 1"
+        },
+        {
+          "weight": 2,
+          "id": 64
+        }
+      ],
+      "position": [
+        2340,
+        880
+      ]
+    },
+    {
+      "id": 61,
+      "type": "skip",
+      "label": "Hidden Ford",
+      "text": [
+        "Mira shows you a ford marked by three white stones under the water. It leads toward the marsh road that taxmen insist does not exist."
+      ],
+      "nextId": 65,
+      "entryEffects": [
+        "hasHiddenTrail = true",
+        "log(\"Hidden trail found.\", \"success\")"
+      ],
+      "position": [
+        2340,
+        1140
+      ]
+    },
+    {
+      "id": 62,
+      "type": "skip",
+      "label": "River Ambush",
+      "text": [
+        "Two masked men rise from the reeds. Mira curses, you duck, and the skiff scrapes free after a brief, ugly exchange of steel."
+      ],
+      "nextId": 65,
+      "entryEffects": [
+        "harm(1)",
+        "suspicionUp(1)"
+      ],
+      "position": [
+        2340,
+        1400
+      ]
+    },
+    {
+      "id": 63,
+      "type": "skip",
+      "label": "Toll Bargain",
+      "text": [
+        "A tollman spots the skiff. One coin and Mira's most insulting smile persuade him that he saw only fog."
+      ],
+      "nextId": 65,
+      "entryEffects": [
+        "spendCoin(1)",
+        "suspicionDown(1)"
+      ],
+      "position": [
+        2340,
+        1660
+      ]
+    },
+    {
+      "id": 64,
+      "type": "skip",
+      "label": "River Fog",
+      "text": [
+        "Fog thickens until the reeds become gray walls. In that hush, you hear an old marching song and somehow know which bend to trust."
+      ],
+      "nextId": 65,
+      "entryEffects": [
+        "influenceUp(1)"
+      ],
+      "position": [
+        2340,
+        1920
+      ]
+    },
+    {
+      "id": 65,
+      "type": "action",
+      "label": "River Choices",
+      "text": [
+        "By dusk you stand where the river road splits toward the mills, the marsh, and the safer way back. Your boots smell permanently of wet rope."
+      ],
+      "actions": [
+        {
+          "label": "🌫️ Marsh path",
+          "id": 126,
+          "condition": "hasHiddenTrail || hasRiverPass"
+        },
+        {
+          "label": "🌾 Grey Mill",
+          "id": 66
+        },
+        {
+          "label": "🧭 Return south",
+          "id": 69
+        }
+      ],
+      "position": [
+        2660,
+        100
+      ]
+    },
+    {
+      "id": 66,
+      "type": "skip",
+      "label": "Grey Mill",
+      "text": [
+        "Grey Mill turns slowly in floodwater while men argue over grain owed to soldiers. Hunger has made everyone legal-minded."
+      ],
+      "nextId": 67,
+      "position": [
+        2660,
+        360
+      ]
+    },
+    {
+      "id": 67,
+      "type": "action",
+      "label": "Miller's Dilemma",
+      "text": [
+        "The miller asks whether the compact will feed children or merely teach lords new words for taking bread. Around him, workers wait for your answer."
+      ],
+      "actions": [
+        {
+          "label": "🛡️ Guard grain",
+          "id": 68
+        },
+        {
+          "label": "🧭 Leave mill",
+          "id": 69
+        }
+      ],
+      "position": [
+        2660,
+        620
+      ]
+    },
+    {
+      "id": 68,
+      "type": "skip",
+      "label": "Grain Guard",
+      "text": [
+        "You help divide the sacks under witness marks, enough for soldiers without starving the village. It is not justice, but it is better than appetite."
+      ],
+      "nextId": 69,
+      "entryEffects": [
+        "gainAlly(1)",
+        "honorUp(1)"
+      ],
+      "position": [
+        2660,
+        880
+      ]
+    },
+    {
+      "id": 69,
+      "type": "skip",
+      "label": "River Return",
+      "text": [
+        "You leave the river country with mud drying on your cloak and rumors clinging beneath it. The main roads wait with new teeth."
+      ],
+      "nextId": 6,
+      "position": [
+        2660,
+        1140
+      ]
+    },
+    {
+      "id": 70,
+      "type": "redirect",
+      "label": "Hill Weather",
+      "text": [
+        "The abbey road climbs through thorn and sheep pasture. Above, Hollow Abbey keeps its windows narrow against wind, thieves, and perhaps memory."
+      ],
+      "links": [
+        {
+          "weight": 4,
+          "id": 71
+        },
+        {
+          "weight": 3,
+          "id": 72
+        },
+        {
+          "weight": 3,
+          "id": 73
+        }
+      ],
+      "position": [
+        2660,
+        1400
+      ]
+    },
+    {
+      "id": 71,
+      "type": "skip",
+      "label": "Clear Bells",
+      "text": [
+        "Abbey bells carry cleanly over the hills. For once, no one stops you before the gate, though the crows on the wall show more curiosity than monks."
+      ],
+      "nextId": 74,
+      "position": [
+        2660,
+        1660
+      ]
+    },
+    {
+      "id": 72,
+      "type": "skip",
+      "label": "Hungry Shrine",
+      "text": [
+        "A wayside shrine shelters three hungry children and their grandmother. You leave food because the old gods and new both notice small accounts."
+      ],
+      "nextId": 74,
+      "entryEffects": [
+        "useRation(1)",
+        "honorUp(1)"
+      ],
+      "position": [
+        2660,
+        1920
+      ]
+    },
+    {
+      "id": 73,
+      "type": "skip",
+      "label": "Pilgrim Trouble",
+      "text": [
+        "A pilgrim recognizes Maerla's clasp on your cloak and asks too loudly whether the king truly died clean. The question runs ahead of you."
+      ],
+      "nextId": 74,
+      "entryEffects": [
+        "suspicionUp(1)"
+      ],
+      "position": [
+        2980,
+        100
+      ]
+    },
+    {
+      "id": 74,
+      "type": "action",
+      "label": "Hollow Abbey",
+      "text": [
+        "Brother Caldus receives you in a hall lined with cracked royal tablets. The abbey smells of ink, beeswax, and winter stored in stone."
+      ],
+      "actions": [
+        {
+          "label": "❓ Ask Caldus",
+          "id": 75
+        },
+        {
+          "label": "🔍 Search relics",
+          "id": 76
+        },
+        {
+          "label": "❤️ Tend sick",
+          "id": 77
+        }
+      ],
+      "position": [
+        2980,
+        360
+      ]
+    },
+    {
+      "id": 75,
+      "type": "skip",
+      "label": "Caldus Speaks",
+      "text": [
+        "Caldus says Maelor feared a council of swords less than a single smiling guardian. He wrote that fear in margins no court singer would copy."
+      ],
+      "nextId": 78,
+      "entryEffects": [
+        "gainProof(1)",
+        "influenceUp(1)"
+      ],
+      "position": [
+        2980,
+        620
+      ]
+    },
+    {
+      "id": 76,
+      "type": "skip",
+      "label": "Reliquary Dust",
+      "text": [
+        "Inside a reliquary drawer, you find an iron key wrapped with a note: \"For the oath beneath the oath.\" Monks are rarely as tidy as they pretend."
+      ],
+      "nextId": 78,
+      "entryEffects": [
+        "hasIronKey = true",
+        "gainProof(1)",
+        "log(\"Iron key acquired.\", \"success\")"
+      ],
+      "position": [
+        2980,
+        880
+      ]
+    },
+    {
+      "id": 77,
+      "type": "skip",
+      "label": "Fever Hall",
+      "text": [
+        "You wash fevered faces and grind bitter leaves. A novice tells you the abbey's lower door opened by itself the night Maelor died."
+      ],
+      "nextId": 78,
+      "entryEffects": [
+        "honorUp(1)",
+        "gainAlly(1)",
+        "heal(1)"
+      ],
+      "position": [
+        2980,
+        1140
+      ]
+    },
+    {
+      "id": 78,
+      "type": "action",
+      "label": "Ink Room",
+      "text": [
+        "Caldus unlocks the ink room. The dead king's hand appears in ledgers, private notes, and a half-drafted copy of the compact."
+      ],
+      "actions": [
+        {
+          "label": "📖 Read notes",
+          "id": 79
+        },
+        {
+          "label": "📜 Copy compact",
+          "id": 80
+        },
+        {
+          "label": "🔍 Test seal",
+          "id": 81
+        }
+      ],
+      "position": [
+        2980,
+        1400
+      ]
+    },
+    {
+      "id": 79,
+      "type": "skip",
+      "label": "King's Margins",
+      "text": [
+        "Maelor's notes name three forged letters and one lord who profited whenever border villages burned. The page is dry, but it feels freshly dangerous."
+      ],
+      "nextId": 82,
+      "entryEffects": [
+        "gainProof(2)"
+      ],
+      "position": [
+        2980,
+        1660
+      ]
+    },
+    {
+      "id": 80,
+      "type": "skip",
+      "label": "Treaty Draft",
+      "text": [
+        "You copy the compact in a clean hand. If the original is stolen, ink may still carry a dead man's will where wax cannot."
+      ],
+      "nextId": 82,
+      "entryEffects": [
+        "hasTreatyDraft = true",
+        "influenceUp(1)",
+        "log(\"Treaty draft copied.\", \"success\")"
+      ],
+      "position": [
+        2980,
+        1920
+      ]
+    },
+    {
+      "id": 81,
+      "type": "skip",
+      "label": "Seal Test",
+      "text": [
+        "The abbey keeps an older seal ring used for minority councils. Its mark matches Maelor's compact, which means the law has deeper roots than ambition."
+      ],
+      "nextId": 82,
+      "entryEffects": [
+        "hasSealRing = true",
+        "gainProof(1)",
+        "log(\"Seal ring acquired.\", \"success\")"
+      ],
+      "position": [
+        3300,
+        100
+      ]
+    },
+    {
+      "id": 82,
+      "type": "redirect",
+      "label": "Cloister Night",
+      "text": [
+        "Night gathers in the cloister. Wind moves through the arches like a courtier touching every shoulder and naming no one."
+      ],
+      "links": [
+        {
+          "weight": 3,
+          "id": 83
+        },
+        {
+          "weight": 3,
+          "id": 84
+        },
+        {
+          "weight": 2,
+          "id": 85
+        },
+        {
+          "weight": 2,
+          "id": 86
+        }
+      ],
+      "position": [
+        3300,
+        360
+      ]
+    },
+    {
+      "id": 83,
+      "type": "skip",
+      "label": "Old Dream",
+      "text": [
+        "You dream of oak roots under a throne and wake with a carved token in your fist. Caldus refuses to look surprised. 🌳"
+      ],
+      "nextId": 87,
+      "entryEffects": [
+        "hasOakToken = true",
+        "influenceUp(1)",
+        "log(\"Oak token acquired.\", \"success\")"
+      ],
+      "position": [
+        3300,
+        620
+      ]
+    },
+    {
+      "id": 84,
+      "type": "skip",
+      "label": "Knife Novice",
+      "text": [
+        "A novice with frightened eyes tries to search your pack by moonlight. You stop him, but his little knife earns blood before tears."
+      ],
+      "nextId": 87,
+      "entryEffects": [
+        "harm(1)",
+        "suspicionUp(1)"
+      ],
+      "position": [
+        3300,
+        880
+      ]
+    },
+    {
+      "id": 85,
+      "type": "skip",
+      "label": "Snowmelt Herbs",
+      "text": [
+        "Behind the kitchen, snowmelt feeds a patch of stubborn herbs. Their smell is sharp enough to convince your body it still has work to do."
+      ],
+      "nextId": 87,
+      "entryEffects": [
+        "hasHerbs = true",
+        "heal(1)",
+        "log(\"Herbs acquired.\", \"success\")"
+      ],
+      "position": [
+        3300,
+        1140
+      ]
+    },
+    {
+      "id": 86,
+      "type": "skip",
+      "label": "Lost Page",
+      "text": [
+        "A loose page slides from a binding as if tired of hiding. It names Highmere's old council rite and the witness seats needed to make it bite."
+      ],
+      "nextId": 87,
+      "entryEffects": [
+        "gainProof(1)"
+      ],
+      "position": [
+        3300,
+        1400
+      ]
+    },
+    {
+      "id": 87,
+      "type": "action",
+      "label": "Abbey Decision",
+      "text": [
+        "Caldus points toward the crypt stair, then toward the border road. \"Words rot if they never meet hunger,\" he says."
+      ],
+      "actions": [
+        {
+          "label": "🗝️ Crypt door",
+          "id": 88,
+          "condition": "hasIronKey"
+        },
+        {
+          "label": "⚔️ Border road",
+          "id": 100
+        },
+        {
+          "label": "🧭 Return south",
+          "id": 99
+        }
+      ],
+      "position": [
+        3300,
+        1660
+      ]
+    },
+    {
+      "id": 88,
+      "type": "skip",
+      "label": "Crypt Stair",
+      "text": [
+        "The iron key opens a door below the copy room. Cold air climbs around your boots, carrying the mineral smell of buried rain."
+      ],
+      "nextId": 89,
+      "position": [
+        3300,
+        1920
+      ]
+    },
+    {
+      "id": 89,
+      "type": "action",
+      "label": "Stone Saints",
+      "text": [
+        "Three old stone figures wait beneath the abbey: one holds a bowl, one a sword, one an empty map. Their faces have been worn soft by vows."
+      ],
+      "actions": [
+        {
+          "label": "🛡️ Swear mercy",
+          "id": 90
+        },
+        {
+          "label": "⚔️ Ask omen",
+          "id": 91
+        },
+        {
+          "label": "🗺️ Pry map",
+          "id": 92
+        }
+      ],
+      "position": [
+        3620,
+        100
+      ]
+    },
+    {
+      "id": 90,
+      "type": "skip",
+      "label": "Mercy Oath",
+      "text": [
+        "You swear that the heir will not be traded like a hostage if your hand can prevent it. The bowl fills with clear water from nowhere."
+      ],
+      "nextId": 93,
+      "entryEffects": [
+        "honorUp(2)",
+        "hasOakToken = true"
+      ],
+      "position": [
+        3620,
+        360
+      ]
+    },
+    {
+      "id": 91,
+      "type": "skip",
+      "label": "War Omen",
+      "text": [
+        "You ask who wins if the houses draw steel. The sword figure weeps rust, and in the stain you recognize the shape of Red Ford."
+      ],
+      "nextId": 93,
+      "entryEffects": [
+        "gainProof(1)",
+        "suspicionUp(1)"
+      ],
+      "position": [
+        3620,
+        620
+      ]
+    },
+    {
+      "id": 92,
+      "type": "skip",
+      "label": "Old Map",
+      "text": [
+        "The empty map is not empty when candlelight strikes it sideways. Marsh causeways and postern tracks crawl into view like veins."
+      ],
+      "nextId": 93,
+      "entryEffects": [
+        "hasOldMap = true",
+        "hasHiddenTrail = true",
+        "log(\"Old map acquired.\", \"success\")"
+      ],
+      "position": [
+        3620,
+        880
+      ]
+    },
+    {
+      "id": 93,
+      "type": "redirect",
+      "label": "Crypt Exit",
+      "text": [
+        "The crypt does not let travelers leave the same way twice. Stone clicks somewhere behind you, patient as law."
+      ],
+      "links": [
+        {
+          "weight": 4,
+          "id": 94
+        },
+        {
+          "weight": 3,
+          "id": 95
+        },
+        {
+          "weight": 3,
+          "id": 96
+        }
+      ],
+      "position": [
+        3620,
+        1140
+      ]
+    },
+    {
+      "id": 94,
+      "type": "skip",
+      "label": "Calm Passage",
+      "text": [
+        "A narrow passage returns you to the abbey garden under a sky rubbed clean by rain. Caldus waits with no questions he expects answered."
+      ],
+      "nextId": 97,
+      "position": [
+        3620,
+        1400
+      ]
+    },
+    {
+      "id": 95,
+      "type": "skip",
+      "label": "Loose Stones",
+      "text": [
+        "A stair gives under your heel. You catch the wall, but the fall bruises your ribs and teaches you humility at speed."
+      ],
+      "nextId": 97,
+      "entryEffects": [
+        "harm(1)"
+      ],
+      "position": [
+        3620,
+        1660
+      ]
+    },
+    {
+      "id": 96,
+      "type": "skip",
+      "label": "Hidden Cache",
+      "text": [
+        "Behind a saint's cracked foot, you find a pilgrim cache: two coins, dried apples, and a note thanking whoever needed them more."
+      ],
+      "nextId": 97,
+      "entryEffects": [
+        "gainCoin(2)",
+        "gainRation(1)"
+      ],
+      "position": [
+        3620,
+        1920
+      ]
+    },
+    {
+      "id": 97,
+      "type": "action",
+      "label": "Abbot's Warning",
+      "text": [
+        "Caldus seals a warning for Highmere and asks whether the living still respect dead hands. His smile suggests he already knows the answer."
+      ],
+      "actions": [
+        {
+          "label": "📜 Carry warning",
+          "id": 98
+        },
+        {
+          "label": "🧭 Leave abbey",
+          "id": 99
+        }
+      ],
+      "position": [
+        3940,
+        100
+      ]
+    },
+    {
+      "id": 98,
+      "type": "skip",
+      "label": "Sealed Warning",
+      "text": [
+        "You tuck the abbot's warning beside the compact. It adds no weight, yet your coat hangs differently with another truth inside it."
+      ],
+      "nextId": 99,
+      "entryEffects": [
+        "influenceUp(1)",
+        "gainProof(1)"
+      ],
+      "position": [
+        3940,
+        360
+      ]
+    },
+    {
+      "id": 99,
+      "type": "skip",
+      "label": "Abbey Return",
+      "text": [
+        "You descend from Hollow Abbey with ink on your cuff and hill wind in your lungs. Below, the roads have not grown kinder."
+      ],
+      "nextId": 6,
+      "position": [
+        3940,
+        620
+      ]
+    },
+    {
+      "id": 100,
+      "type": "redirect",
+      "label": "Border Weather",
+      "text": [
+        "The road to Red Ford runs through burned fields and thin fences. Soldiers have passed here often enough that even scarecrows look enlisted."
+      ],
+      "links": [
+        {
+          "weight": 4,
+          "id": 101
+        },
+        {
+          "weight": 3,
+          "id": 102
+        },
+        {
+          "weight": 3,
+          "id": 103
+        }
+      ],
+      "position": [
+        3940,
+        880
+      ]
+    },
+    {
+      "id": 101,
+      "type": "skip",
+      "label": "Quiet Mile",
+      "text": [
+        "The border road gives you a quiet mile, which feels less like peace than a room holding its breath."
+      ],
+      "nextId": 104,
+      "position": [
+        3940,
+        1140
+      ]
+    },
+    {
+      "id": 102,
+      "type": "skip",
+      "label": "Raider Sign",
+      "text": [
+        "You find hoofprints arranged too neatly beside a burned shed. Real raiders do not usually compose evidence for audiences."
+      ],
+      "nextId": 104,
+      "entryEffects": [
+        "gainProof(1)",
+        "suspicionUp(1)"
+      ],
+      "position": [
+        3940,
+        1400
+      ]
+    },
+    {
+      "id": 103,
+      "type": "skip",
+      "label": "Refugee Line",
+      "text": [
+        "A line of refugees shares the road, carrying pans, blankets, and a silence heavier than furniture. You help lift a child over a flooded ditch."
+      ],
+      "nextId": 104,
+      "entryEffects": [
+        "honorUp(1)"
+      ],
+      "position": [
+        3940,
+        1660
+      ]
+    },
+    {
+      "id": 104,
+      "type": "action",
+      "label": "Red Ford",
+      "text": [
+        "Red Ford is a camp of patched tents, cold cookfires, and soldiers pretending not to count the dead. Captain Dain Locke watches you arrive without blinking."
+      ],
+      "actions": [
+        {
+          "label": "🤝 Meet Dain",
+          "id": 105
+        },
+        {
+          "label": "❤️ Tend wounded",
+          "id": 106
+        },
+        {
+          "label": "🔍 Scout ridge",
+          "id": 107
+        }
+      ],
+      "position": [
+        3940,
+        1920
+      ]
+    },
+    {
+      "id": 105,
+      "type": "skip",
+      "label": "Dain's Measure",
+      "text": [
+        "Dain reads Maelor's seal, then your face. \"If that parchment feeds my soldiers lies,\" he says, \"I will hang it beside the cooks.\""
+      ],
+      "nextId": 108,
+      "entryEffects": [
+        "influenceUp(1)"
+      ],
+      "position": [
+        4260,
+        100
+      ]
+    },
+    {
+      "id": 106,
+      "type": "skip",
+      "label": "Field Tents",
+      "text": [
+        "You bind wounds and share what comfort you can. Men who expected orders receive attention instead, and that unsettles them into loyalty."
+      ],
+      "nextId": 108,
+      "entryEffects": [
+        "honorUp(1)",
+        "gainAlly(1)"
+      ],
+      "position": [
+        4260,
+        360
+      ]
+    },
+    {
+      "id": 107,
+      "type": "redirect",
+      "label": "Ridge Scout",
+      "text": [
+        "You climb the ridge above Red Ford. Smoke, hoofmarks, and banners arrange themselves below like a board game played by hungry men."
+      ],
+      "links": [
+        {
+          "weight": 4,
+          "id": 109
+        },
+        {
+          "weight": 3,
+          "id": 110
+        },
+        {
+          "weight": 3,
+          "id": 111
+        }
+      ],
+      "position": [
+        4260,
+        620
+      ]
+    },
+    {
+      "id": 108,
+      "type": "action",
+      "label": "War Council",
+      "text": [
+        "Dain's officers crowd around a barrel map. They have courage, bad boots, and too many reasons to believe the next rider brings betrayal."
+      ],
+      "actions": [
+        {
+          "label": "🤝 Push truce",
+          "id": 112
+        },
+        {
+          "label": "🛡️ Drill shields",
+          "id": 113
+        },
+        {
+          "label": "📜 Expose raids",
+          "id": 114,
+          "condition": "proof >= 2 || hasHostageLetter"
+        }
+      ],
+      "position": [
+        4260,
+        880
+      ]
+    },
+    {
+      "id": 109,
+      "type": "skip",
+      "label": "Enemy Fires",
+      "text": [
+        "From the ridge you see three campfires placed to seem like thirty. Whoever arranged them wants fear to travel faster than men."
+      ],
+      "nextId": 108,
+      "entryEffects": [
+        "gainProof(1)"
+      ],
+      "position": [
+        4260,
+        1140
+      ]
+    },
+    {
+      "id": 110,
+      "type": "skip",
+      "label": "Horse Fall",
+      "text": [
+        "Your horse slips on shale and throws you hard. The beast limps away offended; you stand slower and with less pride."
+      ],
+      "nextId": 108,
+      "entryEffects": [
+        "harm(2)"
+      ],
+      "position": [
+        4260,
+        1400
+      ]
+    },
+    {
+      "id": 111,
+      "type": "skip",
+      "label": "Black Banner",
+      "text": [
+        "In a ravine, you find a black banner hidden under brush, ready to be raised by men who want the next raid blamed on someone convenient."
+      ],
+      "nextId": 108,
+      "entryEffects": [
+        "hasBlackBanner = true",
+        "gainProof(1)",
+        "log(\"Black banner found.\", \"success\")"
+      ],
+      "position": [
+        4260,
+        1660
+      ]
+    },
+    {
+      "id": 112,
+      "type": "skip",
+      "label": "Truce Speech",
+      "text": [
+        "You argue that tired soldiers make poor kings and worse witnesses. Dain grunts, which his officers interpret as permission to keep listening."
+      ],
+      "nextId": 115,
+      "entryEffects": [
+        "influenceUp(1)",
+        "suspicionDown(1)"
+      ],
+      "position": [
+        4260,
+        1920
+      ]
+    },
+    {
+      "id": 113,
+      "type": "skip",
+      "label": "Shield Drill",
+      "text": [
+        "You spend an hour in the mud helping Dain's line close gaps. Practical competence does what speeches cannot."
+      ],
+      "nextId": 115,
+      "entryEffects": [
+        "gainAlly(1)",
+        "heal(1)"
+      ],
+      "position": [
+        4580,
+        100
+      ]
+    },
+    {
+      "id": 114,
+      "type": "skip",
+      "label": "False Raiders",
+      "text": [
+        "You lay out the forged signs, the hostage letter, and the timing of burned farms. Dain's jaw tightens until the council falls quiet."
+      ],
+      "nextId": 115,
+      "entryEffects": [
+        "gainProof(2)",
+        "hasBlackBanner = true"
+      ],
+      "position": [
+        4580,
+        360
+      ]
+    },
+    {
+      "id": 115,
+      "type": "redirect",
+      "label": "Camp Night",
+      "text": [
+        "Night at Red Ford brings dice, coughing, whetstones, and men whispering the names of places they might never see again."
+      ],
+      "links": [
+        {
+          "weight": 4,
+          "id": 116
+        },
+        {
+          "weight": 3,
+          "id": 117
+        },
+        {
+          "weight": 3,
+          "id": 118
+        }
+      ],
+      "position": [
+        4580,
+        620
+      ]
+    },
+    {
+      "id": 116,
+      "type": "skip",
+      "label": "Friendly Watch",
+      "text": [
+        "A veteran shares a cloak and a cup of barley beer. The warmth is thin, but thin warmth still counts on a border night."
+      ],
+      "nextId": 119,
+      "entryEffects": [
+        "heal(1)"
+      ],
+      "position": [
+        4580,
+        880
+      ]
+    },
+    {
+      "id": 117,
+      "type": "action",
+      "label": "Camp Thief",
+      "text": [
+        "A boy tries to lift your purse near the horse lines. He freezes when you catch his wrist, already expecting the kind of justice camps teach quickly."
+      ],
+      "actions": [
+        {
+          "label": "🏃 Chase him",
+          "id": 120
+        },
+        {
+          "label": "🛡️ Let go",
+          "id": 121
+        }
+      ],
+      "position": [
+        4580,
+        1140
+      ]
+    },
+    {
+      "id": 118,
+      "type": "skip",
+      "label": "Raven Token",
+      "text": [
+        "A messenger from Maerla finds you by the cookfires and gives you a black wax token. It will open one Highmere door or close one mouth."
+      ],
+      "nextId": 119,
+      "entryEffects": [
+        "hasRavenToken = true",
+        "influenceUp(1)",
+        "log(\"Raven token acquired.\", \"success\")"
+      ],
+      "position": [
+        4580,
+        1400
+      ]
+    },
+    {
+      "id": 119,
+      "type": "action",
+      "label": "Border Choice",
+      "text": [
+        "By morning, Red Ford has given you mud, soldiers, and a clearer map of who profits from panic. Dain waits to see where you spend it."
+      ],
+      "actions": [
+        {
+          "label": "🏰 Highmere",
+          "id": 141,
+          "condition": "canEnterMoot()"
+        },
+        {
+          "label": "🌫️ Marsh path",
+          "id": 126,
+          "condition": "hasHiddenTrail || hasOldMap"
+        },
+        {
+          "label": "🤝 Dain favor",
+          "id": 122
+        },
+        {
+          "label": "🧭 Return south",
+          "id": 125
+        }
+      ],
+      "position": [
+        4580,
+        1660
+      ]
+    },
+    {
+      "id": 120,
+      "type": "skip",
+      "label": "Hard Chase",
+      "text": [
+        "You chase the boy through guy ropes and cook smoke. He drops a stolen coin and escapes with your mercy, though your knee protests the pursuit."
+      ],
+      "nextId": 119,
+      "entryEffects": [
+        "harm(1)",
+        "gainCoin(1)"
+      ],
+      "position": [
+        4580,
+        1920
+      ]
+    },
+    {
+      "id": 121,
+      "type": "skip",
+      "label": "Mercy Given",
+      "text": [
+        "You let the boy keep his hand and his terror. By dawn, three soldiers know you are not the easiest kind of cruel."
+      ],
+      "nextId": 119,
+      "entryEffects": [
+        "honorUp(1)",
+        "gainAlly(1)"
+      ],
+      "position": [
+        4900,
+        100
+      ]
+    },
+    {
+      "id": 122,
+      "type": "action",
+      "label": "Dain's Price",
+      "text": [
+        "Dain says he can lend weight to your words, but not blindly. He wants either evidence he can defend or glory he can sell to frightened captains."
+      ],
+      "actions": [
+        {
+          "label": "📜 Share proof",
+          "id": 123
+        },
+        {
+          "label": "⚔️ Promise glory",
+          "id": 124
+        }
+      ],
+      "position": [
+        4900,
+        360
+      ]
+    },
+    {
+      "id": 123,
+      "type": "skip",
+      "label": "Shared Proof",
+      "text": [
+        "You show Dain enough to make his anger disciplined. He names two officers who will stand with you at Highmere if they live to arrive."
+      ],
+      "nextId": 119,
+      "entryEffects": [
+        "gainAlly(1)",
+        "gainProof(1)"
+      ],
+      "position": [
+        4900,
+        620
+      ]
+    },
+    {
+      "id": 124,
+      "type": "skip",
+      "label": "Promised Glory",
+      "text": [
+        "You promise Dain that the council will remember Red Ford. It is a useful promise, though promises have been known to sour in noble kitchens."
+      ],
+      "nextId": 119,
+      "entryEffects": [
+        "influenceUp(1)",
+        "suspicionUp(1)"
+      ],
+      "position": [
+        4900,
+        880
+      ]
+    },
+    {
+      "id": 125,
+      "type": "skip",
+      "label": "Border Return",
+      "text": [
+        "You leave Red Ford while soldiers argue over breakfast and burial duty. Behind you, Dain's camp keeps holding the line because no one has relieved it."
+      ],
+      "nextId": 6,
+      "position": [
+        4900,
+        1140
+      ]
+    },
+    {
+      "id": 126,
+      "type": "redirect",
+      "label": "Marsh Gate",
+      "text": [
+        "The marsh path begins where honest roads give up. Reeds close around you, hiding sky, sound, and every witness who might have been useful."
+      ],
+      "links": [
+        {
+          "weight": 4,
+          "id": 127
+        },
+        {
+          "weight": 3,
+          "id": 128
+        },
+        {
+          "weight": 2,
+          "id": 129
+        },
+        {
+          "weight": 2,
+          "id": 130
+        }
+      ],
+      "position": [
+        4900,
+        1400
+      ]
+    },
+    {
+      "id": 127,
+      "type": "skip",
+      "label": "Reed Path",
+      "text": [
+        "The reeds part along a narrow strip of old stones. Someone built this path for messengers who were not supposed to exist."
+      ],
+      "nextId": 131,
+      "position": [
+        4900,
+        1660
+      ]
+    },
+    {
+      "id": 128,
+      "type": "skip",
+      "label": "Black Mud",
+      "text": [
+        "Black mud takes your boot and nearly takes the rest of you. You get free by sacrificing food, dignity, and several excellent curses."
+      ],
+      "nextId": 131,
+      "entryEffects": [
+        "harm(1)",
+        "useRation(1)"
+      ],
+      "position": [
+        4900,
+        1920
+      ]
+    },
+    {
+      "id": 129,
+      "type": "skip",
+      "label": "Hermit Fire",
+      "text": [
+        "A hermit sits beside a peat fire, wearing a lord's old cloak turned inside out. He says he has been expecting anyone with enough trouble to find him."
+      ],
+      "nextId": 132,
+      "position": [
+        5220,
+        100
+      ]
+    },
+    {
+      "id": 130,
+      "type": "skip",
+      "label": "Old Causeway",
+      "text": [
+        "A cracked causeway surfaces beneath the water. Its stones bear council marks older than Highmere, proof that shared rule was not invented yesterday."
+      ],
+      "nextId": 131,
+      "entryEffects": [
+        "gainProof(1)"
+      ],
+      "position": [
+        5220,
+        360
+      ]
+    },
+    {
+      "id": 131,
+      "type": "action",
+      "label": "Marsh Camp",
+      "text": [
+        "You make a small camp on a dry hump of grass. The old map, the hermit's smoke, and a risky reed-cut all offer ways through."
+      ],
+      "actions": [
+        {
+          "label": "🗺️ Follow map",
+          "id": 133,
+          "condition": "hasOldMap"
+        },
+        {
+          "label": "🔥 Hermit fire",
+          "id": 132
+        },
+        {
+          "label": "⚔️ Cut reeds",
+          "id": 134
+        }
+      ],
+      "position": [
+        5220,
+        620
+      ]
+    },
+    {
+      "id": 132,
+      "type": "action",
+      "label": "Hermit Bargain",
+      "text": [
+        "The hermit knows a dry way to Highmere and has the manners of a man who once dined above salt. He asks what kind of guest you are."
+      ],
+      "actions": [
+        {
+          "label": "🍞 Share food",
+          "id": 135,
+          "condition": "rations >= 1"
+        },
+        {
+          "label": "🛡️ Guest law",
+          "id": 136,
+          "condition": "hasOakToken || hasGuestBread"
+        },
+        {
+          "label": "🧭 Leave him",
+          "id": 137
+        }
+      ],
+      "position": [
+        5220,
+        880
+      ]
+    },
+    {
+      "id": 133,
+      "type": "skip",
+      "label": "Map Causeway",
+      "text": [
+        "The old map leads you across stones hidden just below the water. Each step feels like following a secret the land is tired of keeping."
+      ],
+      "nextId": 138,
+      "entryEffects": [
+        "gainProof(1)",
+        "hasHiddenTrail = true"
+      ],
+      "position": [
+        5220,
+        1140
+      ]
+    },
+    {
+      "id": 134,
+      "type": "skip",
+      "label": "Reed Blades",
+      "text": [
+        "You hack through reeds until your arms ache. The marsh charges blood for impatience, but it does eventually give way."
+      ],
+      "nextId": 138,
+      "entryEffects": [
+        "harm(1)"
+      ],
+      "position": [
+        5220,
+        1400
+      ]
+    },
+    {
+      "id": 135,
+      "type": "skip",
+      "label": "Bread Price",
+      "text": [
+        "You share food. The hermit eats with courtly care, then draws a route on your sleeve in charcoal and refuses to explain why he knows it."
+      ],
+      "nextId": 138,
+      "entryEffects": [
+        "useRation(1)",
+        "hasOldMap = true",
+        "hasHiddenTrail = true"
+      ],
+      "position": [
+        5220,
+        1660
+      ]
+    },
+    {
+      "id": 136,
+      "type": "skip",
+      "label": "Guest Law",
+      "text": [
+        "You show the oak token or lay guest bread between you. The hermit laughs softly and names the old council road by its forbidden name."
+      ],
+      "nextId": 138,
+      "entryEffects": [
+        "gainAlly(1)",
+        "gainProof(1)",
+        "hasHiddenTrail = true"
+      ],
+      "position": [
+        5220,
+        1920
+      ]
+    },
+    {
+      "id": 137,
+      "type": "skip",
+      "label": "No Bargain",
+      "text": [
+        "You leave the hermit with his fire and his secrets. Behind you he begins humming a tune that sounds uncomfortably like a funeral march."
+      ],
+      "nextId": 138,
+      "position": [
+        5540,
+        100
+      ]
+    },
+    {
+      "id": 138,
+      "type": "redirect",
+      "label": "Hidden Ford",
+      "text": [
+        "The marsh thins near a ford under pale grass. Highmere's towers appear and vanish in fog, close enough to tempt mistakes."
+      ],
+      "links": [
+        {
+          "weight": 7,
+          "id": 139
+        },
+        {
+          "weight": 3,
+          "id": 140
+        }
+      ],
+      "position": [
+        5540,
+        360
+      ]
+    },
+    {
+      "id": 139,
+      "type": "skip",
+      "label": "Ford Success",
+      "text": [
+        "You cross before the fog lifts. By the time Highmere's watch sees you, you are already on the lawful side of the ditch."
+      ],
+      "nextId": 141,
+      "position": [
+        5540,
+        620
+      ]
+    },
+    {
+      "id": 140,
+      "type": "skip",
+      "label": "Ford Delay",
+      "text": [
+        "A sunken branch tears your boot and costs you an hour. When you finally climb out, Highmere's outer watch has changed to less friendly faces."
+      ],
+      "nextId": 141,
+      "entryEffects": [
+        "suspicionUp(1)",
+        "useRation(1)"
+      ],
+      "position": [
+        5540,
+        880
+      ]
+    },
+    {
+      "id": 141,
+      "type": "skip",
+      "label": "Highmere Rise",
+      "text": [
+        "Highmere stands on a chalk hill above roads from every rival house. Its banners hang wet and heavy, as if the whole march is holding its breath."
+      ],
+      "nextId": 142,
+      "entryEffects": [
+        "enterMoot()"
+      ],
+      "position": [
+        5540,
+        1140
+      ]
+    },
+    {
+      "id": 142,
+      "type": "action",
+      "label": "Gate Check",
+      "text": [
+        "The gate captain asks for authority. Behind him, courtiers, captains, abbots, and merchants climb toward the moot hall where Princess Elowen waits."
+      ],
+      "actions": [
+        {
+          "label": "📜 Show writ",
+          "id": 143
+        },
+        {
+          "label": "💍 Use seal",
+          "id": 144,
+          "condition": "hasSealRing"
+        },
+        {
+          "label": "🗝️ Postern way",
+          "id": 145,
+          "condition": "hasCastleKey || hasHiddenTrail"
+        }
+      ],
+      "position": [
+        5540,
+        1400
+      ]
+    },
+    {
+      "id": 143,
+      "type": "skip",
+      "label": "Royal Entry",
+      "text": [
+        "Maelor's seal opens the gate, though not every guard likes obeying a dead king. The captain sends a runner ahead to announce you."
+      ],
+      "nextId": 146,
+      "entryEffects": [
+        "influenceUp(1)"
+      ],
+      "position": [
+        5540,
+        1660
+      ]
+    },
+    {
+      "id": 144,
+      "type": "skip",
+      "label": "Seal Entry",
+      "text": [
+        "The old council seal makes the gate captain pale. He bows to law older than his employer and lets you pass without another word."
+      ],
+      "nextId": 146,
+      "entryEffects": [
+        "gainProof(1)"
+      ],
+      "position": [
+        5540,
+        1920
+      ]
+    },
+    {
+      "id": 145,
+      "type": "skip",
+      "label": "Postern Entry",
+      "text": [
+        "You enter through a side postern with damp moss on your shoulder. It saves delay, but appearing from nowhere gives rumor a fine pair of boots."
+      ],
+      "nextId": 146,
+      "entryEffects": [
+        "suspicionUp(1)",
+        "cunningUp(1)"
+      ],
+      "position": [
+        5860,
+        100
+      ]
+    },
+    {
+      "id": 146,
+      "type": "action",
+      "label": "Moot Hall",
+      "text": [
+        "The moot hall is a forest of banners. Princess Elowen sits small beneath them, watching adults discuss her future as if she were a border crossing."
+      ],
+      "actions": [
+        {
+          "label": "📣 Speak first",
+          "id": 147
+        },
+        {
+          "label": "👂 Listen",
+          "id": 148
+        },
+        {
+          "label": "🏴 Black banner",
+          "id": 149,
+          "condition": "hasBlackBanner || proof >= 4"
+        }
+      ],
+      "position": [
+        5860,
+        360
+      ]
+    },
+    {
+      "id": 147,
+      "type": "skip",
+      "label": "First Speech",
+      "text": [
+        "You speak before the factions settle into formation. Surprise gives your words a narrow bridge over the first wave of scorn."
+      ],
+      "nextId": 150,
+      "entryEffects": [
+        "influenceUp(1)"
+      ],
+      "position": [
+        5860,
+        620
+      ]
+    },
+    {
+      "id": 148,
+      "type": "redirect",
+      "label": "Listening Knives",
+      "text": [
+        "You stay silent long enough to hear the room choose its masks. Some men posture for honor, some for fear, and a few for coin."
+      ],
+      "links": [
+        {
+          "weight": 4,
+          "id": 150
+        },
+        {
+          "weight": 3,
+          "id": 151
+        },
+        {
+          "weight": 3,
+          "id": 152
+        }
+      ],
+      "position": [
+        5860,
+        880
+      ]
+    },
+    {
+      "id": 149,
+      "type": "skip",
+      "label": "Banner Accusation",
+      "text": [
+        "You lay the black banner before the hall. Its false colors make several honest men angry and several guilty men suddenly interested in the ceiling."
+      ],
+      "nextId": 150,
+      "entryEffects": [
+        "gainProof(2)",
+        "suspicionUp(1)"
+      ],
+      "position": [
+        5860,
+        1140
+      ]
+    },
+    {
+      "id": 150,
+      "type": "action",
+      "label": "Council Bargains",
+      "text": [
+        "The council fractures into offers. Garran wants a sword-backed regency, Maerla wants law, river voices want food, and Elowen wants someone to ask her a question."
+      ],
+      "actions": [
+        {
+          "label": "📜 Offer compact",
+          "id": 153,
+          "condition": "canPeace() || canOldPact()"
+        },
+        {
+          "label": "🛡️ Name regent",
+          "id": 154,
+          "condition": "canRegency()"
+        },
+        {
+          "label": "📖 Read ledger",
+          "id": 151,
+          "condition": "canExpose()"
+        },
+        {
+          "label": "🕯️ Call oath",
+          "id": 152
+        }
+      ],
+      "position": [
+        5860,
+        1400
+      ]
+    },
+    {
+      "id": 151,
+      "type": "skip",
+      "label": "Ledger Reading",
+      "text": [
+        "You read names, sums, false orders, and paid fires until the hall stops breathing together. Truth enters like a cold guest and takes the best chair."
+      ],
+      "nextId": 153,
+      "entryEffects": [
+        "gainProof(1)",
+        "influenceUp(1)"
+      ],
+      "position": [
+        5860,
+        1660
+      ]
+    },
+    {
+      "id": 152,
+      "type": "skip",
+      "label": "Oath Circle",
+      "text": [
+        "You ask each faction to speak one oath aloud before the heir. The old hall was built for this; even proud voices sound smaller inside it."
+      ],
+      "nextId": 153,
+      "entryEffects": [
+        "honorUp(1)",
+        "gainAlly(1)"
+      ],
+      "position": [
+        5860,
+        1920
+      ]
+    },
+    {
+      "id": 153,
+      "type": "action",
+      "label": "Final Claim",
+      "text": [
+        "At last the compact, the gathered proof, and your bruised road all point toward a choice. Elowen looks at you, not the banners."
+      ],
+      "actions": [
+        {
+          "label": "📜 Hold compact",
+          "id": 155,
+          "condition": "canPeace() || canOldPact()"
+        },
+        {
+          "label": "🛡️ Armed regency",
+          "id": 156,
+          "condition": "canRegency()"
+        },
+        {
+          "label": "📖 Ledger court",
+          "id": 157,
+          "condition": "canExpose()"
+        },
+        {
+          "label": "🧭 Free road",
+          "id": 158
+        }
+      ],
+      "position": [
+        6180,
+        100
+      ]
+    },
+    {
+      "id": 154,
+      "type": "action",
+      "label": "Steel Vote",
+      "text": [
+        "The hall leans toward steel because steel gives frightened people something simple to admire. Garran waits, expression carved from weather and appetite."
+      ],
+      "actions": [
+        {
+          "label": "🛡️ Back Garran",
+          "id": 156
+        },
+        {
+          "label": "📖 Expose all",
+          "id": 157,
+          "condition": "proof >= 4"
+        },
+        {
+          "label": "🌳 Old pact",
+          "id": 155,
+          "condition": "canOldPact()"
+        },
+        {
+          "label": "🧭 Walk away",
+          "id": 158
+        }
+      ],
+      "position": [
+        6180,
+        360
+      ]
+    },
+    {
+      "id": 155,
+      "type": "finish",
+      "label": "Compact Holds",
+      "text": [
+        "The compact is read under royal seal, abbey witness, river mark, and border oath. No one loves the settlement enough to trust it, which is why it might survive.",
+        "Elowen names her own council seat before the hall can forget she has a voice. Harrowmere leaves Highmere bruised, wary, and still whole."
+      ],
+      "position": [
+        6180,
+        620
+      ]
+    },
+    {
+      "id": 156,
+      "type": "finish",
+      "label": "Armed Regency",
+      "text": [
+        "You back an armed regency with Garran's banners and Dain's hard-eyed soldiers binding the hall. The roads quiet within a fortnight.",
+        "Peace arrives wearing mail. It protects Elowen, but every rescued village learns to listen for hooves before bells."
+      ],
+      "position": [
+        6180,
+        880
+      ]
+    },
+    {
+      "id": 157,
+      "type": "finish",
+      "label": "Ledger Court",
+      "text": [
+        "The black ledger becomes a public wound. Lords fall, captains swear innocence, and merchants discover that ink can hang a man as neatly as rope.",
+        "The compact survives in argument rather than ceremony. Harrowmere does not heal quickly, but at least it now knows where the knife entered."
+      ],
+      "position": [
+        6180,
+        1140
+      ]
+    },
+    {
+      "id": 158,
+      "type": "finish",
+      "label": "Free Road",
+      "text": [
+        "You refuse to become the hand that crowns another arrangement of hungry names. With copy, witness, or memory enough to matter, you take the compact back to the roads.",
+        "Behind you, Highmere keeps shouting. Ahead, smaller halls wait, and sometimes history enters by the kitchen door."
+      ],
+      "position": [
+        6180,
+        1400
+      ]
+    },
+    {
+      "id": 159,
+      "type": "finish",
+      "label": "Broken Road",
+      "text": [
+        "The road finally spends what your body could not afford. Fever, blood loss, or plain exhaustion pulls you down before Highmere's towers rise.",
+        "A farmer finds the compact case under your cloak and hides it from the next patrol. Not every failed errand is finished."
+      ],
+      "position": [
+        6180,
+        1660
+      ]
+    },
+    {
+      "id": 160,
+      "type": "finish",
+      "label": "Hunted Courier",
+      "text": [
+        "Suspicion closes the gates before you can reach the moot. Patrols compare notes, tollmen remember your face, and someone with cleaner gloves takes the compact.",
+        "Harrowmere still gathers at Highmere, but your truth arrives late, translated by enemies."
+      ],
+      "position": [
+        6180,
+        1920
+      ]
+    }
+  ]
+}
