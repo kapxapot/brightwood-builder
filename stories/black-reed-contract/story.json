@@ -1,0 +1,2024 @@
+{
+  "id": "d2b1f68e-8b1f-4d2d-a8d4-3ef2c0a0d9c7",
+  "title": "🐺 The Black Reed Contract",
+  "description": "In the border village of Brindleford, a monster contract leads through drowned mills, oath-barrows, and reed-choked chapels, where every answer smells of peat smoke, blood, and old debt.",
+  "language": "en",
+  "startId": 1,
+  "prefix": "Health: {{health}} | Coin: {{coin}} | Rations: {{rations}} | Clues: {{clues}} | Trust: {{trust}} | Dread: {{dread}}",
+  "data": {
+    "init": {
+      "maxHealth": 10,
+      "health": {
+        "ref": "maxHealth"
+      },
+      "coin": 6,
+      "rations": 3,
+      "clues": 0,
+      "trust": 0,
+      "dread": 0,
+      "mercy": 0,
+      "steel": 1,
+      "wards": 0,
+      "companion": 0,
+      "hasMoonIron": false,
+      "hasWitchSalt": false,
+      "hasLantern": false,
+      "hasReedMap": false,
+      "hasHerbs": false,
+      "hasMillCharm": false,
+      "hasBloodTithe": false,
+      "hasBarrowOath": false,
+      "hasChildName": false,
+      "hasGraveKey": false,
+      "hasMayorLedger": false,
+      "hasTrueContract": false,
+      "hasBellShard": false,
+      "hasSilverAsh": false,
+      "hasFenBoat": false,
+      "hasBrewedDraught": false,
+      "campRested": false,
+      "companionCounsel": false,
+      "hasDamSigil": false,
+      "hasEelBlessing": false,
+      "trapReady": false,
+      "insideLair": false
+    },
+    "conditions": {
+      "fallen": "health <= 0",
+      "lostToDread": "dread >= 10 && !insideLair",
+      "hasCompanion": "companion > 0",
+      "isYlva": "companion == 1",
+      "isOrek": "companion == 2",
+      "isMarn": "companion == 3",
+      "canExposeMayor": "hasMayorLedger && clues >= 4",
+      "canBargain": "hasTrueContract && (trust >= 1 || isOrek())",
+      "canRestorePact": "hasTrueContract && hasChildName && hasBellShard && hasBarrowOath && clues >= 5 && mercy >= 2",
+      "canFreeChild": "hasChildName && hasSilverAsh && (mercy >= 2 || hasEelBlessing)",
+      "canSlay": "steel >= 2 || hasMoonIron || trapReady || clues >= 6"
+    },
+    "redirectTriggers": [
+      {
+        "condition": "fallen()",
+        "targetId": 104
+      },
+      {
+        "condition": "lostToDread()",
+        "targetId": 105
+      }
+    ],
+    "effects": [
+      {
+        "name": "harm",
+        "args": "amount",
+        "conditions": "amount > 0",
+        "statements": [
+          "health = max(health - amount, 0)",
+          "log(\"-\" + amount + \" health\", \"danger\")"
+        ]
+      },
+      {
+        "name": "heal",
+        "args": "amount",
+        "conditions": "amount > 0 && health > 0",
+        "statements": [
+          "health = min(health + amount, maxHealth)",
+          "log(\"+\" + amount + \" health\", \"success\")"
+        ]
+      },
+      {
+        "name": "gainCoin",
+        "args": "amount",
+        "conditions": "amount > 0",
+        "statements": [
+          "coin = coin + amount",
+          "log(\"+\" + amount + \" coin\", \"success\")"
+        ]
+      },
+      {
+        "name": "spendCoin",
+        "args": "amount",
+        "conditions": "amount > 0 && coin > 0",
+        "statements": [
+          "coin = max(coin - amount, 0)",
+          "log(\"-\" + amount + \" coin\", \"warning\")"
+        ]
+      },
+      {
+        "name": "gainRation",
+        "args": "amount",
+        "conditions": "amount > 0",
+        "statements": [
+          "rations = rations + amount",
+          "log(\"+\" + amount + \" rations\", \"success\")"
+        ]
+      },
+      {
+        "name": "useRation",
+        "args": "amount",
+        "conditions": "amount > 0 && rations > 0",
+        "statements": [
+          "rations = max(rations - amount, 0)",
+          "log(\"-\" + amount + \" rations\", \"warning\")"
+        ]
+      },
+      {
+        "name": "gainClue",
+        "args": "amount",
+        "conditions": "amount > 0",
+        "statements": [
+          "clues = clues + amount",
+          "log(\"Clue found.\", \"success\")"
+        ]
+      },
+      {
+        "name": "trustUp",
+        "args": "amount",
+        "conditions": "amount > 0",
+        "statements": [
+          "trust = trust + amount",
+          "log(\"Trust rises.\", \"success\")"
+        ]
+      },
+      {
+        "name": "trustDown",
+        "args": "amount",
+        "conditions": "amount > 0",
+        "statements": [
+          "trust = trust - amount",
+          "log(\"Trust falls.\", \"warning\")"
+        ]
+      },
+      {
+        "name": "dreadUp",
+        "args": "amount",
+        "conditions": "amount > 0",
+        "statements": [
+          "dread = dread + amount",
+          "log(\"Dread rises.\", \"warning\")"
+        ]
+      },
+      {
+        "name": "dreadDown",
+        "args": "amount",
+        "conditions": "amount > 0",
+        "statements": [
+          "dread = max(dread - amount, 0)",
+          "log(\"Dread eases.\", \"success\")"
+        ]
+      },
+      {
+        "name": "mercyUp",
+        "args": "amount",
+        "conditions": "amount > 0",
+        "statements": "mercy = mercy + amount"
+      },
+      {
+        "name": "steelUp",
+        "args": "amount",
+        "conditions": "amount > 0",
+        "statements": "steel = steel + amount"
+      },
+      {
+        "name": "wardUp",
+        "args": "amount",
+        "conditions": "amount > 0",
+        "statements": [
+          "wards = wards + amount",
+          "log(\"Ward strengthened.\", \"success\")"
+        ]
+      }
+    ]
+  },
+  "nodes": [
+    {
+      "id": 1,
+      "type": "skip",
+      "label": "Fen Road",
+      "text": [
+        "Rain follows you into Brindleford, soft as a priest's lie. Black reeds sway beyond the last cottages, clicking together though no wind moves them. 🐺",
+        "The mayor's letter promised a monster, twelve coins, and clean work. The villagers watching from shutter cracks look as if clean work has never visited."
+      ],
+      "nextId": 2,
+      "position": [100, 100]
+    },
+    {
+      "id": 2,
+      "type": "action",
+      "label": "Contract Terms",
+      "text": [
+        "Mayor Wex waits under the gallows roof with two guards and a purse held too tightly. \"The Reedwife takes cattle, then men,\" he says. \"Kill her before she remembers children.\"",
+        "The purse is real. So is the fear. Neither proves he is telling the truth."
+      ],
+      "actions": [
+        {
+          "label": "📜 Swear terms",
+          "id": 3,
+          "effects": [
+            "trustUp(1)"
+          ]
+        },
+        {
+          "label": "💰 Raise price",
+          "id": 4,
+          "effects": [
+            "gainCoin(2)",
+            "trustDown(1)"
+          ]
+        },
+        {
+          "label": "🔎 Ask bodies",
+          "id": 5,
+          "effects": [
+            "gainClue(1)"
+          ]
+        }
+      ],
+      "position": [100, 360]
+    },
+    {
+      "id": 3,
+      "type": "skip",
+      "label": "Oath Signed",
+      "text": [
+        "You mark the contract with soot and thumb blood. Wex relaxes at the old gesture, though one guard touches a charm at his throat.",
+        "\"Brindleford remembers fair hands,\" the mayor says. The reeds beyond town click once, as if answering."
+      ],
+      "nextId": 6,
+      "position": [100, 620]
+    },
+    {
+      "id": 4,
+      "type": "skip",
+      "label": "Hard Bargain",
+      "text": [
+        "You name the danger before you name the price. Wex pays with a smile that spoils halfway through, and half the square decides you are necessary rather than welcome.",
+        "Necessary is usually safer."
+      ],
+      "nextId": 6,
+      "position": [100, 880]
+    },
+    {
+      "id": 5,
+      "type": "skip",
+      "label": "Body Talk",
+      "text": [
+        "You ask to see the dead. Wex says the fen took most of them, but a butcher's boy whispers that one body came back full of reeds and lullaby scratches.",
+        "Someone cuffs him silent before he can say whose lullaby."
+      ],
+      "nextId": 6,
+      "position": [100, 1140]
+    },
+    {
+      "id": 6,
+      "type": "action",
+      "label": "Hunter's Kit",
+      "text": [
+        "At the inn table, you lay out the tools that survived your last road. You can carry only one heavy answer into the marsh without slowing every step.",
+        "Steel speaks quickly, salt speaks carefully, and lantern-light asks old things to remember manners."
+      ],
+      "actions": [
+        {
+          "label": "⚔️ Moon blade",
+          "id": 7,
+          "effects": [
+            "steel = 2",
+            "hasMoonIron = true"
+          ]
+        },
+        {
+          "label": "🌿 Witch-salt",
+          "id": 8,
+          "effects": [
+            "hasWitchSalt = true",
+            "hasHerbs = true"
+          ]
+        },
+        {
+          "label": "🕯️ Oath-lantern",
+          "id": 9,
+          "effects": [
+            "hasLantern = true",
+            "wardUp(1)"
+          ]
+        }
+      ],
+      "position": [100, 1400]
+    },
+    {
+      "id": 7,
+      "type": "skip",
+      "label": "Moon Blade",
+      "text": [
+        "You oil the moon-iron blade until its pale edge drinks the lamplight. It was forged for things that wear grief like skin.",
+        "The innkeeper stops pretending not to stare."
+      ],
+      "nextId": 10,
+      "position": [420, 100]
+    },
+    {
+      "id": 8,
+      "type": "skip",
+      "label": "Salt Satchel",
+      "text": [
+        "You choose bitter salts, grave-thyme, dried leechwort, and three corked vials that complain when shaken.",
+        "Monster work is mostly knowing which awful smell means survival."
+      ],
+      "nextId": 10,
+      "position": [420, 360]
+    },
+    {
+      "id": 9,
+      "type": "skip",
+      "label": "Lantern Wick",
+      "text": [
+        "You trim the oath-lantern's black wick and feed it a drop of oil from a sealed bone flask. The flame comes up blue. 🕯️",
+        "In the corner, an old woman crosses herself backward."
+      ],
+      "nextId": 10,
+      "position": [420, 620]
+    },
+    {
+      "id": 10,
+      "type": "action",
+      "label": "Road Company",
+      "text": [
+        "Three locals offer to guide you, each for a reason they do not fully confess.",
+        "<b>Ylva</b> is a marsh guide with eel scars and a map stitched into her sleeve. <b>Brother Orek</b> is a bell-priest whose parish drowned years ago. <b>Marn</b> is the gravedigger, broad as a door and twice as cheerful."
+      ],
+      "actions": [
+        {
+          "label": "🧭 Take Ylva",
+          "id": 11
+        },
+        {
+          "label": "🕯️ Take Orek",
+          "id": 12
+        },
+        {
+          "label": "⚰️ Take Marn",
+          "id": 13
+        }
+      ],
+      "position": [420, 880]
+    },
+    {
+      "id": 11,
+      "type": "skip",
+      "label": "Ylva Joins",
+      "text": [
+        "Ylva tightens her reed cloak and studies you like weather. \"Step where I step,\" she says. \"If I stop, stop first and ask questions after.\"",
+        "The advice has the shape of experience and missing friends."
+      ],
+      "entryEffects": [
+        "companion = 1",
+        "hasReedMap = true"
+      ],
+      "nextId": 14,
+      "position": [420, 1140]
+    },
+    {
+      "id": 12,
+      "type": "skip",
+      "label": "Orek Joins",
+      "text": [
+        "Brother Orek takes up a cracked handbell and a cudgel polished by old fear. \"I know what the fen was promised,\" he says. \"I do not know who broke it.\"",
+        "His bell gives one dry note."
+      ],
+      "entryEffects": [
+        "companion = 2",
+        "wardUp(1)"
+      ],
+      "nextId": 14,
+      "position": [420, 1400]
+    },
+    {
+      "id": 13,
+      "type": "skip",
+      "label": "Marn Joins",
+      "text": [
+        "Marn shoulders a shovel with a chipped iron rim. \"If it kills us,\" he says, \"I know where the ground is soft.\"",
+        "No one laughs except him, which does not seem to bother him at all."
+      ],
+      "entryEffects": [
+        "companion = 3",
+        "steelUp(1)"
+      ],
+      "nextId": 14,
+      "position": [740, 100]
+    },
+    {
+      "id": 14,
+      "type": "action",
+      "label": "Village Square",
+      "text": [
+        "Brindleford's square offers small preparations before the marsh swallows certainty. A trader sells scraps of usefulness, the chapel door hangs open, and the north path runs black between the reeds.",
+        "{{companion:Ylva watches the mud instead of the people, trusting footprints more than faces.|Orek murmurs over the chapel bell and winces when it refuses a clean note.|Marn buys a pie from a terrified baker and calls it morale.}}"
+      ],
+      "actions": [
+        {
+          "label": "💰 Visit trader",
+          "id": 15
+        },
+        {
+          "label": "🕯️ Visit chapel",
+          "id": 16
+        },
+        {
+          "label": "🧭 North path",
+          "id": 17
+        }
+      ],
+      "position": [740, 360]
+    },
+    {
+      "id": 15,
+      "type": "action",
+      "label": "Peat Trader",
+      "text": [
+        "The trader's stall smells of wet wool, smoked fish, and opportunism. He offers a reed map for two coin and hard rations for one.",
+        "\"Hunters always buy after they need things,\" he says. \"I prefer before.\""
+      ],
+      "actions": [
+        {
+          "label": "🗺️ Buy map",
+          "id": 18,
+          "condition": "coin >= 2 && !hasReedMap",
+          "effects": [
+            "spendCoin(2)",
+            "hasReedMap = true"
+          ]
+        },
+        {
+          "label": "🍞 Buy food",
+          "id": 19,
+          "condition": "coin >= 1",
+          "effects": [
+            "spendCoin(1)",
+            "gainRation(1)"
+          ]
+        },
+        {
+          "label": "🚪 Leave stall",
+          "id": 17
+        }
+      ],
+      "position": [740, 620]
+    },
+    {
+      "id": 16,
+      "type": "action",
+      "label": "Damp Chapel",
+      "text": [
+        "The chapel smells of beeswax and river rot. A saint with painted eyes holds a silver fish in one hand and a rusted knife in the other.",
+        "The old records sit beside the altar, swollen by damp but not ruined."
+      ],
+      "actions": [
+        {
+          "label": "🕯️ Pray ward",
+          "id": 20,
+          "effects": [
+            "wardUp(1)",
+            "dreadDown(1)"
+          ]
+        },
+        {
+          "label": "📜 Read records",
+          "id": 21,
+          "condition": "!hasTrueContract",
+          "effects": [
+            "hasTrueContract = true",
+            "gainClue(1)"
+          ]
+        },
+        {
+          "label": "🚪 Leave chapel",
+          "id": 17
+        }
+      ],
+      "position": [740, 880]
+    },
+    {
+      "id": 17,
+      "type": "skip",
+      "label": "North Path",
+      "text": [
+        "You leave the square. Behind you, doors bar in quick sequence; ahead, the black reeds lean together over a path of trampled mud.",
+        "{{companion:Ylva leads without hurry, saving fear for when it becomes useful.|Orek rings his cracked bell once, and the reeds briefly lean away.|Marn spits into the mud and says the road looks hungry.}}"
+      ],
+      "nextId": 22,
+      "position": [740, 1140]
+    },
+    {
+      "id": 18,
+      "type": "skip",
+      "label": "Map Bought",
+      "text": [
+        "The trader hands over a waxed reed map covered in ink marks and old thumbprints. Half the paths end in warning scratches.",
+        "Maps rarely save hunters. They do help hunters curse with more precision."
+      ],
+      "nextId": 15,
+      "position": [740, 1400]
+    },
+    {
+      "id": 19,
+      "type": "skip",
+      "label": "Food Bought",
+      "text": [
+        "You buy oat cakes, smoked eel, and a corked bottle of sour plum drink. None of it looks brave, which is exactly how travel food survives.",
+        "The trader counts your coin twice."
+      ],
+      "nextId": 15,
+      "position": [1060, 100]
+    },
+    {
+      "id": 20,
+      "type": "skip",
+      "label": "Small Ward",
+      "text": [
+        "You light a candle and let the little flame teach your shadow obedience. For one breath, the damp chapel warms around you.",
+        "Outside, something in the reeds stops clicking."
+      ],
+      "nextId": 16,
+      "position": [1060, 360]
+    },
+    {
+      "id": 21,
+      "type": "skip",
+      "label": "Old Records",
+      "text": [
+        "The oldest page says Brindleford never hired hunters before. It paid tithe, rang bells, and gave the fen one true name each generation.",
+        "The last entry has been scraped thin where a child's name should be."
+      ],
+      "nextId": 16,
+      "position": [1060, 620]
+    },
+    {
+      "id": 22,
+      "type": "action",
+      "label": "Reed Edge",
+      "text": [
+        "Three signs wait at the marsh edge: a drowned mill wheel turning without water, an oath-barrow ringed with crow feathers, and a widow's cottage where no smoke rises.",
+        "Farther north, the black chapel waits behind locked reeds, but walking there empty-minded would be a fine way to become a warning."
+      ],
+      "actions": [
+        {
+          "label": "⚙️ Drowned mill",
+          "id": 23
+        },
+        {
+          "label": "⚰️ Oath-barrow",
+          "id": 35
+        },
+        {
+          "label": "🏚️ Widow cottage",
+          "id": 47
+        },
+        {
+          "label": "🕯️ Black chapel",
+          "id": 55,
+          "condition": "clues >= 3"
+        }
+      ],
+      "position": [1060, 880]
+    },
+    {
+      "id": 23,
+      "type": "skip",
+      "label": "Mill Path",
+      "text": [
+        "The mill stands hip-deep in black water, its wheel turning against a current that is not there. Broken dolls hang from the eaves by red thread.",
+        "{{companion:Ylva points to a dry plank line under the scum.|Orek mutters that toys make poor wards and worse apologies.|Marn says he hates mills because they grind everything eventually.}}"
+      ],
+      "nextId": 24,
+      "position": [1060, 1140]
+    },
+    {
+      "id": 24,
+      "type": "redirect",
+      "label": "Mill Floor",
+      "text": [
+        "Inside, the boards breathe under your boots. Water drips upward from the stones, and something small slips behind a flour bin.",
+        "The mill decides how much of your weight it is willing to forgive."
+      ],
+      "links": [
+        {
+          "weight": 4,
+          "id": 25
+        },
+        {
+          "weight": 3,
+          "id": 26
+        },
+        {
+          "weight": 3,
+          "id": 27
+        }
+      ],
+      "position": [1060, 1400]
+    },
+    {
+      "id": 25,
+      "type": "skip",
+      "label": "Quiet Beams",
+      "text": [
+        "The beams hold. Dust lifts from old sacks in gray veils, and the hidden thing keeps its distance.",
+        "You find boot marks beside the dry wall, fresh enough to shame Wex's story."
+      ],
+      "entryEffects": [
+        "gainClue(1)"
+      ],
+      "nextId": 28,
+      "position": [1380, 100]
+    },
+    {
+      "id": 26,
+      "type": "skip",
+      "label": "Rotten Plunge",
+      "text": [
+        "A board snaps. You drop knee-deep into black water, bruise your ribs on a joist, and pull free with a child's red thread stuck to your sleeve.",
+        "The thread smells faintly of chapel smoke."
+      ],
+      "entryEffects": [
+        "harm(1)",
+        "gainClue(1)"
+      ],
+      "nextId": 28,
+      "position": [1380, 360]
+    },
+    {
+      "id": 27,
+      "type": "skip",
+      "label": "Mudling Rush",
+      "text": [
+        "A mudling bursts from the flour bin, all reed teeth and drowned hands. It claws once before your boot and blade convince it to remember the water.",
+        "It leaves behind a knot of hair tied with tax cord."
+      ],
+      "entryEffects": [
+        "harm(1)",
+        "dreadUp(1)",
+        "gainClue(1)"
+      ],
+      "nextId": 28,
+      "position": [1380, 620]
+    },
+    {
+      "id": 28,
+      "type": "action",
+      "label": "Mill Search",
+      "text": [
+        "The mill's heart is a choice of ugly details: gear teeth stuffed with thread, a waterwheel marked in finger bones, and a cellar door swollen shut beneath the meal bins.",
+        "Every useful answer seems determined to be damp."
+      ],
+      "actions": [
+        {
+          "label": "🔎 Gear teeth",
+          "id": 29,
+          "condition": "!hasMillCharm",
+          "effects": [
+            "hasMillCharm = true",
+            "gainClue(1)"
+          ]
+        },
+        {
+          "label": "⚙️ Waterwheel",
+          "id": 30,
+          "effects": [
+            "gainClue(1)"
+          ]
+        },
+        {
+          "label": "🚪 Cellar door",
+          "id": 31,
+          "condition": "hasReedMap || isYlva() || hasLantern",
+          "effects": [
+            "hasBloodTithe = true",
+            "gainClue(2)",
+            "dreadUp(1)"
+          ]
+        }
+      ],
+      "position": [1380, 880]
+    },
+    {
+      "id": 29,
+      "type": "skip",
+      "label": "Thread Charm",
+      "text": [
+        "You cut a charm from the gears: red thread, crow bone, and a milk tooth. It was not made to summon the Reedwife.",
+        "It was made to keep something small from being found."
+      ],
+      "nextId": 32,
+      "position": [1380, 1140]
+    },
+    {
+      "id": 30,
+      "type": "skip",
+      "label": "Finger Marks",
+      "text": [
+        "The waterwheel's finger-bone marks count years, not victims. One year has been gouged deeper than the rest, the same year the chapel record went thin.",
+        "The monster has a calendar."
+      ],
+      "nextId": 32,
+      "position": [1380, 1400]
+    },
+    {
+      "id": 31,
+      "type": "skip",
+      "label": "Cellar Tithe",
+      "text": [
+        "The cellar holds sealed jars of marsh water and blood-dark coins stamped with Wex's crest. Someone has been paying the old tithe in secret, badly and late.",
+        "The jars tremble when you breathe near them."
+      ],
+      "nextId": 32,
+      "position": [1700, 100]
+    },
+    {
+      "id": 32,
+      "type": "action",
+      "label": "Mill Choice",
+      "text": [
+        "The mill has given up what it can without collapsing from shame. The thread charm still warms in your hand, gentle as a fever.",
+        "You can burn it, keep it as evidence, or leave the mill before the water climbs higher."
+      ],
+      "actions": [
+        {
+          "label": "🔥 Burn charm",
+          "id": 33,
+          "condition": "hasMillCharm",
+          "effects": [
+            "wardUp(1)",
+            "dreadDown(1)"
+          ]
+        },
+        {
+          "label": "📜 Keep charm",
+          "id": 34,
+          "condition": "hasMillCharm",
+          "effects": [
+            "mercyUp(1)"
+          ]
+        },
+        {
+          "label": "🧭 Return",
+          "id": 22
+        }
+      ],
+      "position": [1700, 360]
+    },
+    {
+      "id": 33,
+      "type": "skip",
+      "label": "Charm Ash",
+      "text": [
+        "The charm burns with a green sigh. For a moment, a child's laugh escapes the smoke, then breaks into coughing reeds.",
+        "The mill settles lower, relieved and wounded."
+      ],
+      "nextId": 22,
+      "position": [1700, 620]
+    },
+    {
+      "id": 34,
+      "type": "skip",
+      "label": "Charm Kept",
+      "text": [
+        "You wrap the charm in cloth instead of fire. It pulses once against your palm, less like a curse than a frightened heartbeat.",
+        "{{companion:Ylva looks away first.|Orek whispers a prayer with no ending.|Marn says nothing, which is rare enough to matter.}}"
+      ],
+      "nextId": 22,
+      "position": [1700, 880]
+    },
+    {
+      "id": 35,
+      "type": "skip",
+      "label": "Barrow Path",
+      "text": [
+        "The oath-barrow rises above the fen like a knuckle through skin. Crow feathers ring the stones, each tied with black hair.",
+        "Old vows sleep badly here."
+      ],
+      "nextId": 36,
+      "position": [1700, 1140]
+    },
+    {
+      "id": 36,
+      "type": "action",
+      "label": "Barrow Gate",
+      "text": [
+        "A flat stone blocks the entrance. Its carved mouth holds three old choices: gift, wound, or witness.",
+        "The villagers have scratched Wex's crest over older marks, but the older marks are patient."
+      ],
+      "actions": [
+        {
+          "label": "💰 Leave coin",
+          "id": 37,
+          "condition": "coin > 0",
+          "effects": [
+            "spendCoin(1)",
+            "trustUp(1)"
+          ]
+        },
+        {
+          "label": "⚔️ Cut mark",
+          "id": 38,
+          "effects": [
+            "harm(1)",
+            "dreadUp(1)"
+          ]
+        },
+        {
+          "label": "🕯️ Hold light",
+          "id": 39,
+          "condition": "hasLantern || isOrek()",
+          "effects": [
+            "wardUp(1)"
+          ]
+        }
+      ],
+      "position": [1700, 1400]
+    },
+    {
+      "id": 37,
+      "type": "skip",
+      "label": "Coin Gift",
+      "text": [
+        "The coin drops into the carved mouth and does not hit bottom. A breath of dry air rises from the barrow, carrying the smell of oak smoke.",
+        "The old dead approve of exact payments."
+      ],
+      "nextId": 40,
+      "position": [2020, 100]
+    },
+    {
+      "id": 38,
+      "type": "skip",
+      "label": "Blood Mark",
+      "text": [
+        "You cut your thumb and smear blood through Wex's scratched crest. The stone drinks greedily, then cracks along lines the mayor's knife failed to erase.",
+        "Pain buys attention."
+      ],
+      "nextId": 40,
+      "position": [2020, 360]
+    },
+    {
+      "id": 39,
+      "type": "skip",
+      "label": "Lantern Witness",
+      "text": [
+        "Blue light fills the barrow mouth. For one breath, figures stand in the smoke: farmers, fishers, midwives, all holding reed bells.",
+        "They turn toward you as if you have been called to testify."
+      ],
+      "nextId": 40,
+      "position": [2020, 620]
+    },
+    {
+      "id": 40,
+      "type": "redirect",
+      "label": "Barrow Echo",
+      "text": [
+        "The stone mouth opens. Inside, the dark is not empty; it is full of people waiting to remember which part of their anger belongs to you.",
+        "The barrow answers in its own order."
+      ],
+      "links": [
+        {
+          "weight": 4,
+          "id": 41
+        },
+        {
+          "weight": 3,
+          "id": 42
+        },
+        {
+          "weight": 3,
+          "id": 43
+        }
+      ],
+      "position": [2020, 880]
+    },
+    {
+      "id": 41,
+      "type": "skip",
+      "label": "Oath Answer",
+      "text": [
+        "A dead midwife presses a reed bell into your hand, though your fingers pass through hers. \"The pact was broken by a living man,\" she says.",
+        "Her eyes are river stones in a human face."
+      ],
+      "entryEffects": [
+        "hasBarrowOath = true",
+        "gainClue(1)"
+      ],
+      "nextId": 44,
+      "position": [2020, 1140]
+    },
+    {
+      "id": 42,
+      "type": "skip",
+      "label": "Dead Claw",
+      "text": [
+        "Hands burst from the barrow wall, cold and furious. They rake your coat before the oath-stone drags them back into patience.",
+        "Not every witness wants to wait for law."
+      ],
+      "entryEffects": [
+        "harm(1)",
+        "dreadUp(1)"
+      ],
+      "nextId": 44,
+      "position": [2020, 1400]
+    },
+    {
+      "id": 43,
+      "type": "skip",
+      "label": "Child Song",
+      "text": [
+        "A lullaby curls through the dark, naming a child called <b>Tomas</b>. The name sticks under your tongue like a fishbone.",
+        "Somewhere outside, the reeds repeat it once and fall silent."
+      ],
+      "entryEffects": [
+        "hasChildName = true",
+        "gainClue(1)",
+        "mercyUp(1)"
+      ],
+      "nextId": 44,
+      "position": [2340, 100]
+    },
+    {
+      "id": 44,
+      "type": "action",
+      "label": "Barrow Exit",
+      "text": [
+        "The barrow's rear chamber holds a rusted grave key and a shelf of bundled bones wrapped in reed matting.",
+        "Taking from the dead is never free, but neither is leaving useful doors locked."
+      ],
+      "actions": [
+        {
+          "label": "🗝️ Take key",
+          "id": 45,
+          "condition": "!hasGraveKey",
+          "effects": [
+            "hasGraveKey = true",
+            "dreadUp(1)"
+          ]
+        },
+        {
+          "label": "🕯️ Honor bones",
+          "id": 46,
+          "effects": [
+            "mercyUp(1)",
+            "dreadDown(1)"
+          ]
+        },
+        {
+          "label": "🧭 Return",
+          "id": 22
+        }
+      ],
+      "position": [2340, 360]
+    },
+    {
+      "id": 45,
+      "type": "skip",
+      "label": "Grave Key",
+      "text": [
+        "The grave key comes away with flakes of old rust and one reluctant whisper. It fits a church lock, or a coffin lock, or both.",
+        "The dead are practical people."
+      ],
+      "nextId": 22,
+      "position": [2340, 620]
+    },
+    {
+      "id": 46,
+      "type": "skip",
+      "label": "Bones Honored",
+      "text": [
+        "You set the bundled bones straight and speak no grand prayer. Grand prayers often arrive late.",
+        "The barrow dark loosens around your shoulders, less forgiving than satisfied."
+      ],
+      "nextId": 22,
+      "position": [2340, 880]
+    },
+    {
+      "id": 47,
+      "type": "skip",
+      "label": "Widow Smoke",
+      "text": [
+        "Radka's cottage has no smoke, but the hearth inside is warm. The widow opens the door before you knock, one hand wrapped around a child's blue ribbon.",
+        "\"If Wex sent you,\" she says, \"you are late in several ways.\""
+      ],
+      "nextId": 48,
+      "position": [2340, 1140]
+    },
+    {
+      "id": 48,
+      "type": "action",
+      "label": "Widow Table",
+      "text": [
+        "Radka pours nettle tea that tastes like an apology. Beside the hearth sits an empty cradle, freshly dusted, though no infant has slept there in years.",
+        "She watches your hands more than your face."
+      ],
+      "actions": [
+        {
+          "label": "👂 Ask son",
+          "id": 49,
+          "effects": [
+            "gainClue(1)",
+            "trustUp(1)"
+          ]
+        },
+        {
+          "label": "🔎 Check cradle",
+          "id": 50,
+          "effects": [
+            "hasChildName = true",
+            "mercyUp(1)"
+          ]
+        },
+        {
+          "label": "📜 Press lies",
+          "id": 51,
+          "effects": [
+            "gainClue(1)",
+            "trustDown(1)"
+          ]
+        }
+      ],
+      "position": [2340, 1400]
+    },
+    {
+      "id": 49,
+      "type": "skip",
+      "label": "Radka's Son",
+      "text": [
+        "Radka says her son Jarek died at the mill, but not by teeth. He found jars under the floor and tried to bring one to the chapel.",
+        "Wex buried him before dawn."
+      ],
+      "nextId": 52,
+      "position": [2660, 100]
+    },
+    {
+      "id": 50,
+      "type": "skip",
+      "label": "Blue Ribbon",
+      "text": [
+        "Under the cradle straw, you find the name <b>Tomas</b> stitched into a blue ribbon. The thread is old, but the fear in Radka's face is fresh.",
+        "\"My grandson,\" she whispers. \"Given before he knew how to answer.\""
+      ],
+      "nextId": 52,
+      "position": [2660, 360]
+    },
+    {
+      "id": 51,
+      "type": "skip",
+      "label": "Hard Questions",
+      "text": [
+        "You ask why every story bends around Wex. Radka laughs once, brittle as ice. \"Because he owns the grain, the guard, and the graves.\"",
+        "She tells you the mayor keeps a black ledger in the chapel loft."
+      ],
+      "entryEffects": [
+        "hasMayorLedger = true"
+      ],
+      "nextId": 52,
+      "position": [2660, 620]
+    },
+    {
+      "id": 52,
+      "type": "action",
+      "label": "Widow Plea",
+      "text": [
+        "Radka grips the blue ribbon until her knuckles fade. \"If the Reedwife has Tomas, kill the beast. If she <i>is</i> Tomas's prison, then open it.\"",
+        "Grief rarely asks for something simple."
+      ],
+      "actions": [
+        {
+          "label": "🕯️ Promise mercy",
+          "id": 53,
+          "effects": [
+            "mercyUp(1)",
+            "trustUp(1)"
+          ]
+        },
+        {
+          "label": "💰 Demand pay",
+          "id": 54,
+          "effects": [
+            "gainCoin(2)",
+            "trustDown(1)"
+          ]
+        },
+        {
+          "label": "🧭 Leave",
+          "id": 22
+        }
+      ],
+      "position": [2660, 880]
+    },
+    {
+      "id": 53,
+      "type": "skip",
+      "label": "Mercy Promised",
+      "text": [
+        "You promise to learn what can still be saved before you decide what must die. Radka does not thank you.",
+        "She only breathes like someone who has been holding air for years."
+      ],
+      "nextId": 22,
+      "position": [2660, 1140]
+    },
+    {
+      "id": 54,
+      "type": "skip",
+      "label": "Widow Coin",
+      "text": [
+        "Radka opens a clay jar and pays you in coins kept for burial candles. The sound they make in your purse is small and terrible.",
+        "A paid hunter is not always a cleaner hunter."
+      ],
+      "nextId": 22,
+      "position": [2660, 1400]
+    },
+    {
+      "id": 55,
+      "type": "skip",
+      "label": "Chapel Reeds",
+      "text": [
+        "You push north where the reeds grow taller than doorframes. At their center stands the black chapel, roof sagging, bell tower split by lightning.",
+        "No birds perch there. Even crows respect a bad workplace."
+      ],
+      "nextId": 56,
+      "position": [2980, 100]
+    },
+    {
+      "id": 56,
+      "type": "action",
+      "label": "Broken Chapel",
+      "text": [
+        "Inside, rain falls through the roof into a dry font. A rope dangles from the bell tower, and the crypt door bears a keyhole shaped like a kneeling man.",
+        "The place feels less abandoned than withheld."
+      ],
+      "actions": [
+        {
+          "label": "💧 Dry font",
+          "id": 57,
+          "effects": [
+            "hasBellShard = true",
+            "gainClue(1)"
+          ]
+        },
+        {
+          "label": "🔎 Bell loft",
+          "id": 58,
+          "effects": [
+            "hasMayorLedger = true",
+            "gainClue(1)",
+            "dreadUp(1)"
+          ]
+        },
+        {
+          "label": "🗝️ Open crypt",
+          "id": 59,
+          "condition": "hasGraveKey",
+          "effects": [
+            "hasSilverAsh = true",
+            "gainClue(1)"
+          ]
+        }
+      ],
+      "position": [2980, 360]
+    },
+    {
+      "id": 57,
+      "type": "skip",
+      "label": "Bell Shard",
+      "text": [
+        "The dry font holds a shard of the old reed bell, blackened but whole enough to remember its song. When you lift it, water beads on your wrists.",
+        "The bell once called the pact to witness."
+      ],
+      "nextId": 60,
+      "position": [2980, 620]
+    },
+    {
+      "id": 58,
+      "type": "skip",
+      "label": "Loft Ledger",
+      "text": [
+        "In the loft, beneath owl pellets and tax seals, you find Wex's black ledger. It lists grain profits beside late blood tithes.",
+        "The handwriting grows neater as the crimes grow worse."
+      ],
+      "nextId": 60,
+      "position": [2980, 880]
+    },
+    {
+      "id": 59,
+      "type": "skip",
+      "label": "Silver Ash",
+      "text": [
+        "The grave key opens the crypt with a sigh. Inside waits a clay bowl of silver ash used to separate spirit from curse without cutting either cleanly.",
+        "Useful things often look like dirt."
+      ],
+      "nextId": 60,
+      "position": [2980, 1140]
+    },
+    {
+      "id": 60,
+      "type": "redirect",
+      "label": "Chapel Bells",
+      "text": [
+        "The split bell groans above you though no hand pulls the rope. Dust falls in a slow ring around your boots.",
+        "The chapel decides what kind of witness you have become."
+      ],
+      "links": [
+        {
+          "weight": 4,
+          "id": 61
+        },
+        {
+          "weight": 3,
+          "id": 62
+        },
+        {
+          "weight": 3,
+          "id": 63
+        }
+      ],
+      "position": [2980, 1400]
+    },
+    {
+      "id": 61,
+      "type": "skip",
+      "label": "Clear Note",
+      "text": [
+        "The bell gives one clear note and the reeds outside bow away from the chapel door. You leave with fewer shadows clinging to your coat.",
+        "For once, an omen behaves itself."
+      ],
+      "entryEffects": [
+        "dreadDown(1)"
+      ],
+      "nextId": 64,
+      "position": [3300, 100]
+    },
+    {
+      "id": 62,
+      "type": "skip",
+      "label": "Sour Note",
+      "text": [
+        "The bell shrieks. Your ears fill with black water, and for a moment you are kneeling in mud while someone small begs not to be named.",
+        "You come back tasting blood."
+      ],
+      "entryEffects": [
+        "harm(1)",
+        "dreadUp(1)"
+      ],
+      "nextId": 64,
+      "position": [3300, 360]
+    },
+    {
+      "id": 63,
+      "type": "skip",
+      "label": "Whispered Note",
+      "text": [
+        "The bell whispers instead of ringing. \"A contract signed with fear is still a contract,\" it says in three dead voices.",
+        "That sounds less like justice than accounting."
+      ],
+      "entryEffects": [
+        "gainClue(1)"
+      ],
+      "nextId": 64,
+      "position": [3300, 620]
+    },
+    {
+      "id": 64,
+      "type": "action",
+      "label": "Evidence Fork",
+      "text": [
+        "By the chapel door, the marsh opens in two directions: back toward Brindleford's mayor and forward into the deep fen.",
+        "The case is no longer about whether a monster exists. It is about who taught it to hunger."
+      ],
+      "actions": [
+        {
+          "label": "📜 Face mayor",
+          "id": 65,
+          "condition": "canExposeMayor()"
+        },
+        {
+          "label": "🌲 Enter fen",
+          "id": 74,
+          "condition": "clues >= 4"
+        },
+        {
+          "label": "🧭 More clues",
+          "id": 22
+        }
+      ],
+      "position": [3300, 880]
+    },
+    {
+      "id": 65,
+      "type": "skip",
+      "label": "Mayor Hall",
+      "text": [
+        "You return to Wex's hall while rain turns the square to churned soup. Villagers gather quickly; fear likes witnesses when it believes someone else will bleed.",
+        "Wex sees the ledger under your arm and goes still."
+      ],
+      "nextId": 66,
+      "position": [3300, 1140]
+    },
+    {
+      "id": 66,
+      "type": "action",
+      "label": "Mayor Reckoning",
+      "text": [
+        "Wex stands beneath a fox-fur mantle, old enough to know shame and rich enough to rent substitutes.",
+        "\"You were hired for a monster,\" he says. \"Do not confuse yourself with a judge.\""
+      ],
+      "actions": [
+        {
+          "label": "📜 Show ledger",
+          "id": 67,
+          "condition": "hasMayorLedger",
+          "effects": [
+            "hasTrueContract = true",
+            "gainClue(1)",
+            "trustUp(1)"
+          ]
+        },
+        {
+          "label": "👂 Demand truth",
+          "id": 68,
+          "effects": [
+            "hasTrueContract = true",
+            "dreadUp(1)"
+          ]
+        },
+        {
+          "label": "⚔️ Threaten steel",
+          "id": 69,
+          "condition": "steel >= 2 || isMarn()",
+          "effects": [
+            "trustDown(1)",
+            "dreadUp(1)"
+          ]
+        }
+      ],
+      "position": [3300, 1400]
+    },
+    {
+      "id": 67,
+      "type": "skip",
+      "label": "Ledger Opened",
+      "text": [
+        "You read the numbers aloud: grain sold, tithe withheld, guards paid, Radka silenced. The villagers listen until silence becomes another kind of crowd.",
+        "Wex ages ten years without becoming wiser."
+      ],
+      "nextId": 70,
+      "position": [3620, 100]
+    },
+    {
+      "id": 68,
+      "type": "skip",
+      "label": "Truth Forced",
+      "text": [
+        "You ask what name was scraped from the chapel book. Wex says nothing until Radka steps from the crowd with the blue ribbon in her fist.",
+        "Then he says, \"Tomas,\" and the reeds outside begin to sing."
+      ],
+      "entryEffects": [
+        "hasChildName = true",
+        "gainClue(1)"
+      ],
+      "nextId": 70,
+      "position": [3620, 360]
+    },
+    {
+      "id": 69,
+      "type": "skip",
+      "label": "Steel Confession",
+      "text": [
+        "Steel near the throat makes Wex remember quickly. He admits the old tithe kept the fen quiet, then claims any mayor would have chosen grain over ghost law.",
+        "Nobody in the room looks proud of believing him."
+      ],
+      "entryEffects": [
+        "gainClue(1)"
+      ],
+      "nextId": 70,
+      "position": [3620, 620]
+    },
+    {
+      "id": 70,
+      "type": "action",
+      "label": "Hidden Tithe",
+      "text": [
+        "Under Wex's hearth waits a lacquer box of blood-dark coins, reed bells, and one wax packet tied with blue thread.",
+        "The village watches you decide what kind of evidence can still become medicine."
+      ],
+      "actions": [
+        {
+          "label": "💰 Seize tithe",
+          "id": 71,
+          "condition": "!hasBloodTithe",
+          "effects": [
+            "hasBloodTithe = true",
+            "gainCoin(1)"
+          ]
+        },
+        {
+          "label": "🔥 Break tithe",
+          "id": 72,
+          "condition": "hasBellShard || hasLantern",
+          "effects": [
+            "mercyUp(1)",
+            "dreadDown(1)"
+          ]
+        },
+        {
+          "label": "🚪 Spare Wex",
+          "id": 73,
+          "effects": [
+            "trustDown(1)",
+            "mercyUp(1)"
+          ]
+        }
+      ],
+      "position": [3620, 880]
+    },
+    {
+      "id": 71,
+      "type": "skip",
+      "label": "Tithe Seized",
+      "text": [
+        "You take the box. Wex flinches as if the coins were pulled from his teeth, and perhaps they were.",
+        "The old payment is ugly, but it may still open a door in the fen."
+      ],
+      "nextId": 74,
+      "position": [3620, 1140]
+    },
+    {
+      "id": 72,
+      "type": "skip",
+      "label": "Tithe Broken",
+      "text": [
+        "Bell shard or lantern flame cracks the wax packet. A sour wind leaves the hearth, rushes through the hall, and makes every guilty person colder.",
+        "Radka closes her eyes when the blue thread burns."
+      ],
+      "nextId": 74,
+      "position": [3620, 1400]
+    },
+    {
+      "id": 73,
+      "type": "skip",
+      "label": "Mayor Spared",
+      "text": [
+        "You leave Wex breathing because dead men answer fewer questions. The villagers look disappointed, then frightened by their own disappointment.",
+        "Justice postponed is sometimes only cowardice with better posture."
+      ],
+      "nextId": 74,
+      "position": [3940, 100]
+    },
+    {
+      "id": 74,
+      "type": "skip",
+      "label": "Deep Fen",
+      "text": [
+        "The deep fen begins where paths stop pretending. Reeds scrape your sleeves, water shines between roots, and the air tastes like coins left under a tongue.",
+        "{{companion:Ylva moves as if reading a book written in mud.|Orek keeps one hand on his bell, lips moving without sound.|Marn tests every hummock with his shovel and insults the unreliable ones.}}"
+      ],
+      "nextId": 75,
+      "position": [3940, 360]
+    },
+    {
+      "id": 75,
+      "type": "action",
+      "label": "Fen Route",
+      "text": [
+        "Three ways offer themselves with the false politeness of traps. A punt rests under alder roots, map marks lead through pale grass, and the straight reedbed waits for honest suffering.",
+        "The Reedwife's song hides somewhere beyond all three."
+      ],
+      "actions": [
+        {
+          "label": "🧭 Take punt",
+          "id": 76,
+          "effects": [
+            "hasFenBoat = true",
+            "spendCoin(1)"
+          ]
+        },
+        {
+          "label": "🗺️ Follow map",
+          "id": 77,
+          "condition": "hasReedMap || isYlva()",
+          "effects": [
+            "gainClue(1)"
+          ]
+        },
+        {
+          "label": "🌲 Wade reeds",
+          "id": 78,
+          "effects": [
+            "harm(1)",
+            "dreadUp(1)"
+          ]
+        }
+      ],
+      "position": [3940, 620]
+    },
+    {
+      "id": 76,
+      "type": "skip",
+      "label": "Stolen Punt",
+      "text": [
+        "You push the punt into black water. It leaks in three places and complains in four, but it floats.",
+        "In Brindleford, that may count as craftsmanship."
+      ],
+      "nextId": 79,
+      "position": [3940, 880]
+    },
+    {
+      "id": 77,
+      "type": "skip",
+      "label": "Mapped Grass",
+      "text": [
+        "The map's pale grass marks prove true. You cross hidden stones under the water, each slick enough to make confidence expensive.",
+        "The reeds whisper Tomas's name only once."
+      ],
+      "nextId": 79,
+      "position": [3940, 1140]
+    },
+    {
+      "id": 78,
+      "type": "skip",
+      "label": "Hard Wading",
+      "text": [
+        "You shoulder through reeds that cut like paper knives. Leeches find you with civic enthusiasm, and the mud tries to keep one boot as tax.",
+        "The shortest road has opinions."
+      ],
+      "nextId": 79,
+      "position": [3940, 1400]
+    },
+    {
+      "id": 79,
+      "type": "redirect",
+      "label": "Fen Crossing",
+      "text": [
+        "Mist folds over the route. The world narrows to water sounds, reed clicks, and the occasional splash arriving from exactly where nobody stepped.",
+        "The fen chooses what reaches you first."
+      ],
+      "links": [
+        {
+          "weight": 4,
+          "id": 80
+        },
+        {
+          "weight": 3,
+          "id": 81
+        },
+        {
+          "weight": 3,
+          "id": 82
+        }
+      ],
+      "position": [4260, 100]
+    },
+    {
+      "id": 80,
+      "type": "skip",
+      "label": "Smooth Water",
+      "text": [
+        "The mist thins without demanding payment. You find a channel where the reeds lean apart and let you pass like a secret they regret keeping.",
+        "Even mercy here feels suspicious."
+      ],
+      "nextId": 83,
+      "position": [4260, 360]
+    },
+    {
+      "id": 81,
+      "type": "skip",
+      "label": "Leech Mire",
+      "text": [
+        "A floating mat gives way and drops you waist-deep into leech-black water. You crawl out colder, lighter, and much less fond of nature.",
+        "The reeds click in what might be applause."
+      ],
+      "entryEffects": [
+        "harm(1)",
+        "dreadUp(1)"
+      ],
+      "nextId": 83,
+      "position": [4260, 620]
+    },
+    {
+      "id": 82,
+      "type": "skip",
+      "label": "Corpse Lantern",
+      "text": [
+        "A corpse-lantern bobs near the water, wearing a human jaw as its handle. Inside the green flame, a tiny hand taps three times.",
+        "It points toward an island before sinking."
+      ],
+      "entryEffects": [
+        "gainClue(1)",
+        "dreadUp(1)"
+      ],
+      "nextId": 83,
+      "position": [4260, 880]
+    },
+    {
+      "id": 83,
+      "type": "action",
+      "label": "Island Camp",
+      "text": [
+        "You reach a dry island ringed by alder roots. The Reedwife's song trembles beyond the mist, close enough to turn every practical thought brittle.",
+        "There is time for one kind of care before night notices you fully."
+      ],
+      "actions": [
+        {
+          "label": "🍞 Make camp",
+          "id": 84,
+          "condition": "rations > 0 && !campRested",
+          "effects": [
+            "useRation(1)",
+            "heal(2)",
+            "campRested = true"
+          ]
+        },
+        {
+          "label": "🌿 Brew salts",
+          "id": 85,
+          "condition": "hasWitchSalt && !hasBrewedDraught",
+          "effects": [
+            "hasBrewedDraught = true",
+            "heal(1)",
+            "dreadDown(1)"
+          ]
+        },
+        {
+          "label": "👂 Ask companion",
+          "id": 86,
+          "condition": "!companionCounsel",
+          "effects": [
+            "companionCounsel = true",
+            "gainClue(1)"
+          ]
+        },
+        {
+          "label": "🧭 Push on",
+          "id": 87
+        }
+      ],
+      "position": [4260, 1140]
+    },
+    {
+      "id": 84,
+      "type": "skip",
+      "label": "Camp Meal",
+      "text": [
+        "You eat under alder roots while the island pretends not to be listening. Warmth returns slowly, like a suspicious dog.",
+        "The song beyond the mist waits without impatience."
+      ],
+      "nextId": 83,
+      "position": [4260, 1400]
+    },
+    {
+      "id": 85,
+      "type": "skip",
+      "label": "Bitter Draught",
+      "text": [
+        "You brew witch-salt with leechwort and drink the result before smell can change your mind. It tastes like a swamp criticizing your ancestors.",
+        "Useful medicine rarely flatters."
+      ],
+      "nextId": 83,
+      "position": [4580, 100]
+    },
+    {
+      "id": 86,
+      "type": "skip",
+      "label": "Companion Counsel",
+      "text": [
+        "{{companion:Ylva says the Reedwife leaves paths for people she wants to judge, not people she wants to eat.|Orek says a broken pact can be mended only before the last bell answers.|Marn says every grave he dug for this village smelled too clean by half.}}",
+        "None of that is comfort. It is better: it is useful."
+      ],
+      "nextId": 83,
+      "position": [4580, 360]
+    },
+    {
+      "id": 87,
+      "type": "redirect",
+      "label": "Night Visitor",
+      "text": [
+        "Night settles on the island without stars. Something circles just beyond the alder roots, sometimes walking on water, sometimes under it.",
+        "You keep your weapon close and your breathing smaller."
+      ],
+      "links": [
+        {
+          "weight": 4,
+          "id": 88
+        },
+        {
+          "weight": 3,
+          "id": 89
+        },
+        {
+          "weight": 3,
+          "id": 90
+        }
+      ],
+      "position": [4580, 620]
+    },
+    {
+      "id": 88,
+      "type": "skip",
+      "label": "White Fox",
+      "text": [
+        "A white fox steps from the reeds with black water dripping from its whiskers. It drops a fishbone crown at your feet and vanishes.",
+        "The crown points north when touched."
+      ],
+      "entryEffects": [
+        "gainClue(1)",
+        "dreadDown(1)"
+      ],
+      "nextId": 91,
+      "position": [4580, 880]
+    },
+    {
+      "id": 89,
+      "type": "skip",
+      "label": "Drowned Rider",
+      "text": [
+        "A rider rises from the water, horse and man woven from reeds around old bones. It charges once, silently, and breaks apart against your defense.",
+        "A mayoral spur clatters onto the mud."
+      ],
+      "entryEffects": [
+        "harm(1)",
+        "gainClue(1)"
+      ],
+      "nextId": 91,
+      "position": [4580, 1140]
+    },
+    {
+      "id": 90,
+      "type": "skip",
+      "label": "Reed Child",
+      "text": [
+        "A child-shaped shadow stands between the roots. \"Tell grandmother I am not hungry,\" it says in Tomas's voice, then opens its mouth full of reeds.",
+        "The shape falls into a heap of wet grass."
+      ],
+      "entryEffects": [
+        "hasChildName = true",
+        "mercyUp(1)",
+        "dreadUp(1)"
+      ],
+      "nextId": 91,
+      "position": [4580, 1400]
+    },
+    {
+      "id": 91,
+      "type": "action",
+      "label": "Dawn Fork",
+      "text": [
+        "Dawn comes gray and unwilling. Ahead, an old dam hums under the water, an eel shrine glimmers beside a dead tree, and a tunnel of black reeds bends toward the lair.",
+        "The contract has stopped pretending it is only work."
+      ],
+      "actions": [
+        {
+          "label": "⚙️ Old dam",
+          "id": 92,
+          "condition": "!hasDamSigil",
+          "effects": [
+            "hasDamSigil = true",
+            "hasBellShard = true",
+            "gainClue(1)"
+          ]
+        },
+        {
+          "label": "🕯️ Eel shrine",
+          "id": 93,
+          "condition": "!hasEelBlessing",
+          "effects": [
+            "hasEelBlessing = true",
+            "mercyUp(1)",
+            "wardUp(1)"
+          ]
+        },
+        {
+          "label": "🌲 Lair gate",
+          "id": 94
+        }
+      ],
+      "position": [4900, 100]
+    },
+    {
+      "id": 92,
+      "type": "skip",
+      "label": "Dam Sigil",
+      "text": [
+        "The old dam is carved with reed-bell signs, each one chipped by later tools. You scrape mud from the deepest mark and feel the bell shard answer.",
+        "Someone tried to silence a treaty by damaging its alphabet."
+      ],
+      "nextId": 91,
+      "position": [4900, 360]
+    },
+    {
+      "id": 93,
+      "type": "skip",
+      "label": "Eel Shrine",
+      "text": [
+        "At the eel shrine, you leave a drop of blood and receive a coil of cool light around your wrist. The blessing feels less holy than negotiated.",
+        "That may make it sturdier."
+      ],
+      "nextId": 91,
+      "position": [4900, 620]
+    },
+    {
+      "id": 94,
+      "type": "skip",
+      "label": "Lair Gate",
+      "text": [
+        "The black reeds arch into a tunnel, woven tight as ribs. Inside, water reflects a sky with no sun and a village burning upside down.",
+        "You step through before courage can request paperwork."
+      ],
+      "nextId": 95,
+      "position": [4900, 880]
+    },
+    {
+      "id": 95,
+      "type": "action",
+      "label": "Reed Door",
+      "text": [
+        "The lair is a chapel made of living reeds. At its center hangs the Reedwife: antlers of driftwood, veil of black weed, hands gentle enough to drown a child without bruising him.",
+        "She turns Tomas's borrowed eyes toward you."
+      ],
+      "entryEffects": [
+        "insideLair = true"
+      ],
+      "actions": [
+        {
+          "label": "🕯️ Parley",
+          "id": 96,
+          "condition": "canBargain() || hasChildName",
+          "effects": [
+            "mercyUp(1)"
+          ]
+        },
+        {
+          "label": "🛡️ Set trap",
+          "id": 97,
+          "condition": "hasSilverAsh || hasBellShard || hasMoonIron",
+          "effects": [
+            "trapReady = true"
+          ]
+        },
+        {
+          "label": "⚔️ Strike first",
+          "id": 98,
+          "effects": [
+            "harm(2)",
+            "dreadUp(1)"
+          ]
+        }
+      ],
+      "position": [4900, 1140]
+    },
+    {
+      "id": 96,
+      "type": "skip",
+      "label": "Parley Breath",
+      "text": [
+        "You speak Tomas's name, the old tithe, and Wex's theft without pretending any of them are clean. The Reedwife's veil parts around teeth made of pearl and root.",
+        "\"Then judge all of them,\" she says."
+      ],
+      "nextId": 99,
+      "position": [4900, 1400]
+    },
+    {
+      "id": 97,
+      "type": "skip",
+      "label": "Trap Circle",
+      "text": [
+        "You mark a circle with ash, bell-memory, or moon-iron edge. The Reedwife watches, curious rather than afraid.",
+        "A prepared hunter is only slightly less likely to die, but slightly has saved better people than you."
+      ],
+      "nextId": 99,
+      "position": [5220, 100]
+    },
+    {
+      "id": 98,
+      "type": "skip",
+      "label": "First Blood",
+      "text": [
+        "You strike before the lair can arrange another moral problem. The Reedwife screams with Tomas's throat and a hundred reed mouths answer.",
+        "The fight becomes water, antler, steel, and mistakes."
+      ],
+      "nextId": 100,
+      "position": [5220, 360]
+    },
+    {
+      "id": 99,
+      "type": "action",
+      "label": "Final Judgment",
+      "text": [
+        "The Reedwife opens her reed-rib cage. Inside, Tomas's stolen name glows beside a knot of village debts, old bells, and Wex's late blood tithes.",
+        "The monster waits. So does the child. So, in its cowardly way, does Brindleford."
+      ],
+      "actions": [
+        {
+          "label": "🕯️ Restore pact",
+          "id": 102,
+          "condition": "canRestorePact()"
+        },
+        {
+          "label": "🌿 Free child",
+          "id": 103,
+          "condition": "canFreeChild()"
+        },
+        {
+          "label": "⚔️ Slay her",
+          "id": 100,
+          "condition": "canSlay()"
+        },
+        {
+          "label": "🚪 Walk away",
+          "id": 106
+        }
+      ],
+      "position": [5220, 620]
+    },
+    {
+      "id": 100,
+      "type": "redirect",
+      "label": "Moon-Iron Clash",
+      "text": [
+        "The lair convulses into battle. Reeds spear from the floor, black water climbs the walls, and the Reedwife moves with the patience of something that has buried villages before.",
+        "Preparation, luck, and cruelty decide what your blade can finish."
+      ],
+      "links": [
+        {
+          "weight": 6,
+          "id": 101,
+          "condition": "canSlay() || trapReady || hasBrewedDraught"
+        },
+        {
+          "weight": 2,
+          "id": 103,
+          "condition": "hasChildName && mercy >= 2",
+          "effects": [
+            "mercyUp(1)"
+          ]
+        },
+        {
+          "weight": 4,
+          "id": 104
+        }
+      ],
+      "position": [5220, 880]
+    },
+    {
+      "id": 101,
+      "type": "finish",
+      "label": "Contract Paid",
+      "text": [
+        "You kill the Reedwife with steel, ash, and the stubborn refusal to be frightened at the right moment. Her body collapses into reeds that smoke without flame.",
+        "Brindleford pays. The cattle stop dying, but the fen withdraws from every ditch and well. By autumn, the village learns that monsters are not the only things that keep hunger away."
+      ],
+      "position": [5220, 1140]
+    },
+    {
+      "id": 102,
+      "type": "finish",
+      "label": "Pact Restored",
+      "text": [
+        "You ring the bell shard, speak Tomas's name, and lay the barrow oath over Wex's hidden tithe. The Reedwife bows like a queen accepting ugly law.",
+        "Brindleford survives under a new pact: no stolen names, no silent ledgers, and one public bell rung each spring so the village remembers who else lives there."
+      ],
+      "position": [5220, 1400]
+    },
+    {
+      "id": 103,
+      "type": "finish",
+      "label": "Child Freed",
+      "text": [
+        "Silver ash, mercy, and Tomas's true name cut the child loose from the Reedwife's rib cage. He steps out as a pale light with muddy feet and Radka's eyes.",
+        "The Reedwife shrinks into the fen, wounded but alive. Brindleford keeps its dawn, and Radka keeps a voice that says \"grandmother\" once before passing on."
+      ],
+      "position": [5540, 100]
+    },
+    {
+      "id": 104,
+      "type": "finish",
+      "label": "Broken Hunter",
+      "text": [
+        "The contract spends the last of your blood in mud, water, or reed-shadow. Your hand stays closed around the work until strength leaves even that small argument.",
+        "Later, someone finds your blade near a black channel. Brindleford says you failed. The fen, which keeps better records, says you came close."
+      ],
+      "position": [5540, 360]
+    },
+    {
+      "id": 105,
+      "type": "finish",
+      "label": "Fen Taken",
+      "text": [
+        "Dread finally learns your full name. The reeds click in perfect rhythm with your pulse until road, village, and purpose loosen like wet thread.",
+        "You walk into the black fen without deciding to. Brindleford later hires another hunter, and the reeds practice your voice for greeting them."
+      ],
+      "position": [5540, 620]
+    },
+    {
+      "id": 106,
+      "type": "finish",
+      "label": "Bitter Mercy",
+      "text": [
+        "You lower your weapon and leave judgment where the debt began. The Reedwife does not thank you. Monsters with honest memories rarely do.",
+        "By morning, Brindleford's bells ring by themselves. Some villagers flee, some confess, and some vanish. You take no coin, only the knowledge that mercy can have teeth."
+      ],
+      "position": [5540, 880]
+    }
+  ]
+}
